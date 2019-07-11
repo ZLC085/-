@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D2A0EB50-AFD7-4B21-895F-C317BCAD96FF}</ProjectGuid>
+    <ProjectGuid>{764C1081-0B86-42EA-9DCD-3F42DD05A757}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PersonInfoManage.DAL</RootNamespace>
-    <AssemblyName>PersonInfoManage.DAL</AssemblyName>
+    <RootNamespace>PersonInfoManage.IDAL</RootNamespace>
+    <AssemblyName>PersonInfoManage.IDAL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,14 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,35 +40,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cost\CostApply.cs" />
-    <Compile Include="Cost\CostApproval.cs" />
-    <Compile Include="Cost\CostPlanning.cs" />
-    <Compile Include="Login\Login.cs" />
-    <Compile Include="Log\SystemLog.cs" />
-    <Compile Include="Log\UserLog.cs" />
-    <Compile Include="PersonInfo\BasicInfo.cs" />
-    <Compile Include="PersonInfo\RelatedFiles.cs" />
+    <Compile Include="Cost\ICostApply.cs" />
+    <Compile Include="Cost\ICostApproval.cs" />
+    <Compile Include="Cost\ICostPlanning.cs" />
+    <Compile Include="Login\ILogin.cs" />
+    <Compile Include="Log\ISystemLog.cs" />
+    <Compile Include="Log\IUserLog.cs" />
+    <Compile Include="PersonInfo\IBasicInfo.cs" />
+    <Compile Include="PersonInfo\IRelatedFiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="System\PermissionManage.cs" />
-    <Compile Include="System\SystemSettingManage.cs" />
-    <Compile Include="System\UserManage.cs" />
+    <Compile Include="System\IPermissionManage.cs" />
+    <Compile Include="System\ISystemSettingManage.cs" />
+    <Compile Include="System\IUserManage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
+    <Folder Include="Operation\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PersonInfoManage.IDAL\PersonInfoManage.IDAL.csproj">
-      <Project>{764c1081-0b86-42ea-9dcd-3f42dd05a757}</Project>
-      <Name>PersonInfoManage.IDAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PersonInfoManage.Models\PersonInfoManage.Models.csproj">
       <Project>{fddd0771-7e40-49ae-847f-33da33735a5c}</Project>
       <Name>PersonInfoManage.Models</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Operation\" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
 </Project>

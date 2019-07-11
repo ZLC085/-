@@ -49,6 +49,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -93,6 +101,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -124,13 +133,13 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\PersonInfoManage.Models.csproj">
-      <Project>{48eadcf0-ca4b-474b-875e-1710603f80c3}</Project>
-      <Name>PersonInfoManage.Models</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PersonInfoManage.BLL\PersonInfoManage.BLL.csproj">
       <Project>{92ef8815-c7f7-46a6-b212-b5aea0d3cbe3}</Project>
       <Name>PersonInfoManage.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersonInfoManage.Models\PersonInfoManage.Models.csproj">
+      <Project>{fddd0771-7e40-49ae-847f-33da33735a5c}</Project>
+      <Name>PersonInfoManage.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
