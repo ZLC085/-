@@ -11,47 +11,51 @@ namespace PersonInfoManage.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public sys_user()
         {
-            sys_user_role = new HashSet<sys_user_role>();
-            user_log = new HashSet<user_log>();
+            log_user = new HashSet<log_user>();
+            sys_u2r = new HashSet<sys_u2r>();
         }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long user_id { get; set; }
+        public int id { get; set; }
 
-        [StringLength(255)]
+        [Required]
+        [StringLength(50)]
         public string username { get; set; }
 
-        [StringLength(255)]
+        [Required]
+        [StringLength(50)]
         public string name { get; set; }
 
-        [StringLength(255)]
+        [Required]
+        [StringLength(32)]
         public string password { get; set; }
 
-        [StringLength(5)]
+        [Required]
+        [StringLength(1)]
         public string gender { get; set; }
 
-        [StringLength(255)]
+        [Required]
+        [StringLength(20)]
         public string job { get; set; }
 
-        [StringLength(10)]
+        [Required]
+        [StringLength(15)]
         public string phone { get; set; }
 
-        [StringLength(255)]
+        [StringLength(50)]
         public string email { get; set; }
 
-        public byte? status { get; set; }
+        public bool status { get; set; }
 
-        [Column(TypeName = "datetime2")]
-        public DateTime? create_time { get; set; }
+        public DateTime create_time { get; set; }
 
-        [Column(TypeName = "datetime2")]
-        public DateTime? modified_time { get; set; }
+        public DateTime modify_time { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<sys_user_role> sys_user_role { get; set; }
+        public int isdel { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<user_log> user_log { get; set; }
+        public virtual ICollection<log_user> log_user { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<sys_u2r> sys_u2r { get; set; }
     }
 }

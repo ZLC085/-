@@ -12,97 +12,96 @@ namespace PersonInfoManage.Models
         {
         }
 
-        public virtual DbSet<basic_info> basic_info { get; set; }
         public virtual DbSet<cost_detail> cost_detail { get; set; }
-        public virtual DbSet<cost_manage> cost_manage { get; set; }
-        public virtual DbSet<cost_planning> cost_planning { get; set; }
-        public virtual DbSet<data_dict_name> data_dict_name { get; set; }
-        public virtual DbSet<related_files> related_files { get; set; }
-        public virtual DbSet<sys_log> sys_log { get; set; }
+        public virtual DbSet<cost_main> cost_main { get; set; }
+        public virtual DbSet<cost_plan> cost_plan { get; set; }
+        public virtual DbSet<log_sys> log_sys { get; set; }
+        public virtual DbSet<log_user> log_user { get; set; }
+        public virtual DbSet<person_basic> person_basic { get; set; }
+        public virtual DbSet<person_file> person_file { get; set; }
+        public virtual DbSet<sys_dict> sys_dict { get; set; }
         public virtual DbSet<sys_menu> sys_menu { get; set; }
+        public virtual DbSet<sys_r2m> sys_r2m { get; set; }
         public virtual DbSet<sys_role> sys_role { get; set; }
-        public virtual DbSet<sys_role_menu> sys_role_menu { get; set; }
+        public virtual DbSet<sys_u2r> sys_u2r { get; set; }
         public virtual DbSet<sys_user> sys_user { get; set; }
-        public virtual DbSet<sys_user_role> sys_user_role { get; set; }
-        public virtual DbSet<user_log> user_log { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<basic_info>()
-                .Property(e => e.birth_date)
-                .HasPrecision(0);
+            modelBuilder.Entity<cost_detail>()
+                .Property(e => e.cost_type)
+                .IsUnicode(false);
 
-            modelBuilder.Entity<cost_manage>()
-                .Property(e => e.apply_time)
-                .HasPrecision(0);
+            modelBuilder.Entity<cost_main>()
+                .HasMany(e => e.cost_detail)
+                .WithRequired(e => e.cost_main)
+                .HasForeignKey(e => e.cost_id)
+                .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<cost_manage>()
-                .Property(e => e.approval_time)
-                .HasPrecision(0);
+            modelBuilder.Entity<person_basic>()
+                .HasMany(e => e.person_file)
+                .WithRequired(e => e.person_basic)
+                .HasForeignKey(e => e.person_id)
+                .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<cost_manage>()
-                .Property(e => e.apply_money)
-                .HasPrecision(10, 0);
+            modelBuilder.Entity<person_file>()
+                .Property(e => e.filetype)
+                .IsUnicode(false);
 
-            modelBuilder.Entity<cost_manage>()
-                .Property(e => e.approval_money)
-                .HasPrecision(10, 0);
-
-            modelBuilder.Entity<cost_planning>()
-                .Property(e => e.cost)
-                .HasPrecision(38, 0);
-
-            modelBuilder.Entity<cost_planning>()
-                .Property(e => e.start_date)
-                .HasPrecision(0);
-
-            modelBuilder.Entity<cost_planning>()
-                .Property(e => e.end_date)
-                .HasPrecision(0);
-
-            modelBuilder.Entity<data_dict_name>()
-                .Property(e => e.create_time)
-                .HasPrecision(0);
-
-            modelBuilder.Entity<data_dict_name>()
-                .Property(e => e.modified_time)
-                .HasPrecision(0);
-
-            modelBuilder.Entity<related_files>()
-                .Property(e => e.create_time)
-                .HasPrecision(0);
-
-            modelBuilder.Entity<related_files>()
-                .Property(e => e.modified_time)
-                .HasPrecision(0);
+            modelBuilder.Entity<sys_dict>()
+                .Property(e => e.category_name)
+                .IsUnicode(false);
 
             modelBuilder.Entity<sys_menu>()
-                .Property(e => e.create_time)
-                .HasPrecision(0);
+                .Property(e => e.menu_name)
+                .IsUnicode(false);
 
             modelBuilder.Entity<sys_menu>()
-                .Property(e => e.modified_time)
-                .HasPrecision(0);
+                .Property(e => e.perms)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sys_menu>()
+                .HasMany(e => e.sys_r2m)
+                .WithRequired(e => e.sys_menu)
+                .HasForeignKey(e => e.menu_id)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<sys_role>()
-                .Property(e => e.create_time)
-                .HasPrecision(0);
+                .Property(e => e.role_name)
+                .IsUnicode(false);
 
             modelBuilder.Entity<sys_role>()
-                .Property(e => e.modified_time)
-                .HasPrecision(0);
+                .Property(e => e.role_sign)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sys_role>()
+                .Property(e => e.remark)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sys_role>()
+                .HasMany(e => e.sys_r2m)
+                .WithRequired(e => e.sys_role)
+                .HasForeignKey(e => e.role_id)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<sys_role>()
+                .HasMany(e => e.sys_u2r)
+                .WithRequired(e => e.sys_role)
+                .HasForeignKey(e => e.role_id)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<sys_user>()
-                .Property(e => e.create_time)
-                .HasPrecision(0);
+                .HasMany(e => e.log_user)
+                .WithRequired(e => e.sys_user)
+                .HasForeignKey(e => e.user_id)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<sys_user>()
-                .Property(e => e.modified_time)
-                .HasPrecision(0);
-
-            modelBuilder.Entity<user_log>()
-                .Property(e => e.create_time)
-                .HasPrecision(0);
+                .HasMany(e => e.sys_u2r)
+                .WithRequired(e => e.sys_user)
+                .HasForeignKey(e => e.user_id)
+                .WillCascadeOnDelete(false);
         }
     }
 }

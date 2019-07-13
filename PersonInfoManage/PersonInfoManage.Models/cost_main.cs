@@ -6,37 +6,35 @@ namespace PersonInfoManage.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class cost_manage
+    public partial class cost_main
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public cost_manage()
+        public cost_main()
         {
             cost_detail = new HashSet<cost_detail>();
         }
 
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long cost_id { get; set; }
+        public int id { get; set; }
 
-        [StringLength(255)]
+        [Required]
+        [StringLength(50)]
         public string applicant { get; set; }
 
-        [StringLength(255)]
+        [StringLength(50)]
         public string approver { get; set; }
 
-        [Column(TypeName = "datetime2")]
-        public DateTime? apply_time { get; set; }
+        public DateTime apply_time { get; set; }
 
-        [Column(TypeName = "datetime2")]
-        public DateTime? approval_time { get; set; }
+        public DateTime approval_time { get; set; }
 
-        public decimal? apply_money { get; set; }
+        public decimal apply_money { get; set; }
 
         public decimal? approval_money { get; set; }
 
-        public byte? status { get; set; }
+        public byte status { get; set; }
 
-        [StringLength(255)]
+        [StringLength(200)]
         public string remark { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -6,18 +6,14 @@ namespace PersonInfoManage.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class cost_detail
+    public partial class log_sys
     {
         public int id { get; set; }
 
-        public int cost_id { get; set; }
+        public DateTime create_time { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string cost_type { get; set; }
-
-        public decimal money { get; set; }
-
-        public virtual cost_main cost_main { get; set; }
+        [StringLength(500)]
+        public string log_message { get; set; }
     }
 }

@@ -11,28 +11,26 @@ namespace PersonInfoManage.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public sys_menu()
         {
-            sys_role_menu = new HashSet<sys_role_menu>();
+            sys_r2m = new HashSet<sys_r2m>();
         }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long menu_id { get; set; }
+        public int id { get; set; }
 
-        public long? parent_id { get; set; }
+        public int? parent_id { get; set; }
 
-        [StringLength(255)]
+        [Required]
+        [StringLength(10)]
         public string menu_name { get; set; }
 
-        [StringLength(255)]
+        [Required]
+        [StringLength(10)]
         public string perms { get; set; }
 
-        [Column(TypeName = "datetime2")]
-        public DateTime? create_time { get; set; }
+        public DateTime create_time { get; set; }
 
-        [Column(TypeName = "datetime2")]
-        public DateTime? modified_time { get; set; }
+        public DateTime modify_time { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<sys_role_menu> sys_role_menu { get; set; }
+        public virtual ICollection<sys_r2m> sys_r2m { get; set; }
     }
 }

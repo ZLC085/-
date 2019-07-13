@@ -6,23 +6,21 @@ namespace PersonInfoManage.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class basic_info
+    public partial class person_basic
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public basic_info()
+        public person_basic()
         {
-            related_files = new HashSet<related_files>();
+            person_file = new HashSet<person_file>();
         }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long person_id { get; set; }
+        public int id { get; set; }
 
         [Required]
-        [StringLength(255)]
+        [StringLength(50)]
         public string name { get; set; }
 
-        [StringLength(255)]
+        [StringLength(50)]
         public string former_name { get; set; }
 
         [Required]
@@ -33,52 +31,61 @@ namespace PersonInfoManage.Models
         [StringLength(18)]
         public string identity_number { get; set; }
 
-        [Column(TypeName = "datetime2")]
         public DateTime birth_date { get; set; }
 
         [Required]
-        [StringLength(255)]
-        public string birth_place { get; set; }
+        [StringLength(10)]
+        public string city { get; set; }
 
         [Required]
-        [StringLength(5)]
-        public string marry_status { get; set; }
+        [StringLength(10)]
+        public string province { get; set; }
 
-        [Required]
-        [StringLength(255)]
+        public bool marry_status { get; set; }
+
+        [StringLength(50)]
         public string job_status { get; set; }
 
-        public long income { get; set; }
+        public decimal? income { get; set; }
 
-        [Required]
-        [StringLength(255)]
+        [StringLength(100)]
         public string temper { get; set; }
 
-        [Required]
-        [StringLength(255)]
+        [StringLength(100)]
         public string family { get; set; }
 
         [Required]
-        [StringLength(255)]
-        public string type { get; set; }
+        [StringLength(20)]
+        public string person_type { get; set; }
 
-        [Required]
-        [StringLength(255)]
+        [StringLength(20)]
         public string qq { get; set; }
 
         [Required]
-        [StringLength(255)]
+        [StringLength(50)]
         public string address { get; set; }
 
         [Required]
-        [StringLength(255)]
+        [StringLength(15)]
         public string phone { get; set; }
 
         [Required]
-        [StringLength(255)]
+        [StringLength(50)]
         public string belong_place { get; set; }
 
+        [Required]
+        [StringLength(10)]
+        public string nation { get; set; }
+
+        public DateTime input_time { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string input_person { get; set; }
+
+        public int isdel { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<related_files> related_files { get; set; }
+        public virtual ICollection<person_file> person_file { get; set; }
     }
 }

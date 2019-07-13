@@ -6,18 +6,16 @@ namespace PersonInfoManage.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class cost_detail
+    public partial class sys_r2m
     {
         public int id { get; set; }
 
-        public int cost_id { get; set; }
+        public int role_id { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string cost_type { get; set; }
+        public int menu_id { get; set; }
 
-        public decimal money { get; set; }
+        public virtual sys_menu sys_menu { get; set; }
 
-        public virtual cost_main cost_main { get; set; }
+        public virtual sys_role sys_role { get; set; }
     }
 }

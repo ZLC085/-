@@ -51,21 +51,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="basic_info.cs" />
     <Compile Include="cost_detail.cs" />
-    <Compile Include="cost_manage.cs" />
-    <Compile Include="cost_planning.cs" />
-    <Compile Include="data_dict_name.cs" />
+    <Compile Include="cost_main.cs" />
+    <Compile Include="cost_plan.cs" />
     <Compile Include="EFModel.cs" />
+    <Compile Include="log_sys.cs" />
+    <Compile Include="log_user.cs" />
+    <Compile Include="person_basic.cs" />
+    <Compile Include="person_file.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="related_files.cs" />
-    <Compile Include="sys_log.cs" />
+    <Compile Include="sysdiagram.cs" />
+    <Compile Include="sys_dict.cs" />
     <Compile Include="sys_menu.cs" />
+    <Compile Include="sys_r2m.cs" />
     <Compile Include="sys_role.cs" />
-    <Compile Include="sys_role_menu.cs" />
+    <Compile Include="sys_u2r.cs" />
     <Compile Include="sys_user.cs" />
-    <Compile Include="sys_user_role.cs" />
-    <Compile Include="user_log.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

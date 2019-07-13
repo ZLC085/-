@@ -11,33 +11,31 @@ namespace PersonInfoManage.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public sys_role()
         {
-            sys_role_menu = new HashSet<sys_role_menu>();
-            sys_user_role = new HashSet<sys_user_role>();
+            sys_r2m = new HashSet<sys_r2m>();
+            sys_u2r = new HashSet<sys_u2r>();
         }
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long role_id { get; set; }
+        public int id { get; set; }
 
-        [StringLength(255)]
+        [Required]
+        [StringLength(50)]
         public string role_name { get; set; }
 
-        [StringLength(255)]
+        [Required]
+        [StringLength(10)]
         public string role_sign { get; set; }
 
-        [StringLength(255)]
+        [StringLength(100)]
         public string remark { get; set; }
 
-        [Column(TypeName = "datetime2")]
-        public DateTime? create_time { get; set; }
+        public DateTime create_time { get; set; }
 
-        [Column(TypeName = "datetime2")]
-        public DateTime? modified_time { get; set; }
+        public DateTime modify_time { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<sys_role_menu> sys_role_menu { get; set; }
+        public virtual ICollection<sys_r2m> sys_r2m { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<sys_user_role> sys_user_role { get; set; }
+        public virtual ICollection<sys_u2r> sys_u2r { get; set; }
     }
 }

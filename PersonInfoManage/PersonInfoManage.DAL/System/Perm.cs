@@ -1,4 +1,4 @@
-﻿using PersonInfoManage.IDAL.System;
+﻿using PersonInfoManage.DAL.Utils;
 using PersonInfoManage.Models;
 using System;
 using System.Collections.Generic;
@@ -11,26 +11,27 @@ namespace PersonInfoManage.DAL.System
     /// <summary>
     /// 权限管理
     /// </summary>
-    public class PermissionManage : IPermissionManage
+    public class Perm
     {
         /// <summary>
         /// 权限添加
         /// </summary>
         /// <param name="role">权限信息</param>
         /// <returns>添加条数</returns>
-        public int InsertPermission(sys_user_role role)
+        public int InsertPermission(sys_u2r role)
         {
-            throw new NotImplementedException();
+            return new DBOperationsInsert<sys_u2r, DBNull>().Insert(role);
         }
 
         /// <summary>
         /// 权限修改
         /// </summary>
-        /// <param name="role">权限信息</param>
+        /// <param name="id">id</param>
+        /// <param name="newValues">需要修改的值</param>
         /// <returns>修改条数</returns>
-        public int UpdatePermission(sys_user_role role)
+        public int UpdatePermission(int id, Dictionary<string, object> newValues)
         {
-            throw new NotImplementedException();
+            return new DBOperationsUpdate<sys_u2r>().UpdateById(id, newValues);
         }
 
         /// <summary>
@@ -38,20 +39,19 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="userId">用户id</param>
         /// <returns>删除条数</returns>
-        public int DeletePermission(long userId)
+        public int DeletePermission(int userId)
         {
-            throw new NotImplementedException();
+            return new DBOperationsDelete<sys_u2r, DBNull>().DeleteById(userId);
         }
 
         /// <summary>
-        /// 权限检索，通过用户id
+        /// 通过输入条件进行权限检索
         /// </summary>
-        /// <param name="userId">用户id</param>
+        /// <param name="conditions">输入条件</param>
         /// <returns>权限信息</returns>
-        public List<sys_user_role> SelectPermissionByUserId(long userId)
+        public List<sys_u2r> SelectPermissionByConditions(Dictionary<string, object> conditions)
         {
-            throw new NotImplementedException();
+            return new DBOperationsSelect<sys_u2r>().SelectByConditions(conditions);
         }
-
     }
 }

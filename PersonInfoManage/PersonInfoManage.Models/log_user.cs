@@ -6,24 +6,25 @@ namespace PersonInfoManage.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class user_log
+    public partial class log_user
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long id { get; set; }
+        public int id { get; set; }
 
-        public long? user_id { get; set; }
+        public int user_id { get; set; }
 
-        [StringLength(255)]
+        [Required]
+        [StringLength(50)]
         public string username { get; set; }
 
-        [StringLength(255)]
+        [Required]
+        [StringLength(10)]
         public string operation { get; set; }
 
-        [StringLength(12)]
+        [Required]
+        [StringLength(15)]
         public string ip { get; set; }
 
-        [Column(TypeName = "datetime2")]
-        public DateTime? create_time { get; set; }
+        public DateTime create_time { get; set; }
 
         public virtual sys_user sys_user { get; set; }
     }

@@ -137,6 +137,10 @@
       <Project>{92ef8815-c7f7-46a6-b212-b5aea0d3cbe3}</Project>
       <Name>PersonInfoManage.BLL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PersonInfoManage.DAL\PersonInfoManage.DAL.csproj">
+      <Project>{D2A0EB50-AFD7-4B21-895F-C317BCAD96FF}</Project>
+      <Name>PersonInfoManage.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PersonInfoManage.Models\PersonInfoManage.Models.csproj">
       <Project>{fddd0771-7e40-49ae-847f-33da33735a5c}</Project>
       <Name>PersonInfoManage.Models</Name>

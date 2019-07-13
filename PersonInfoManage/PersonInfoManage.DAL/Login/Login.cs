@@ -1,4 +1,4 @@
-﻿using PersonInfoManage.IDAL.Login;
+﻿using PersonInfoManage.DAL.Utils;
 using PersonInfoManage.Models;
 using System;
 using System.Collections.Generic;
@@ -8,17 +8,24 @@ using System.Threading.Tasks;
 
 namespace PersonInfoManage.DAL.Login
 {
-    public class Login : ILogin
+    /// <summary>
+    /// 登录
+    /// </summary>
+    public class Login
     {
         /// <summary>
-        /// 是否允许登录
+        /// 登陆时，通过用户名查询用户信息
         /// </summary>
         /// <param name="userName">用户名</param>
-        /// <param name="password">密码</param>
-        /// <returns>bool，是否允许登录</returns>
-        public bool IsAllowLogin(string userName, string password)
+        /// <returns>用户信息</returns>
+        public List<sys_user> SelectLoginInfoByUserName(string userName)
         {
-            return true;
+            Dictionary<string, object> conditions = new Dictionary<string, object>
+            {
+                { nameof(sys_user), userName }
+            };
+
+            return new DBOperationsSelect<sys_user>().SelectByConditions(conditions);
         }
     }
 }
