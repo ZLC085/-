@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonInfoManage", "PersonInfoManage\PersonInfoManage.csproj", "{6088E8D9-1B5F-4C15-934C-1BFAFF24DBFD}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonInfoManage.BLL", "PersonInfoManage.BLL\PersonInfoManage.BLL.csproj", "{92EF8815-C7F7-46A6-B212-B5AEA0D3CBE3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonInfoManage.Models", "PersonInfoManage.Models\PersonInfoManage.Models.csproj", "{FDDD0771-7E40-49AE-847F-33DA33735A5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{18987E14-4418-41F3-8656-C969CC2029F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{FDDD0771-7E40-49AE-847F-33DA33735A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDDD0771-7E40-49AE-847F-33DA33735A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDDD0771-7E40-49AE-847F-33DA33735A5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18987E14-4418-41F3-8656-C969CC2029F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18987E14-4418-41F3-8656-C969CC2029F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18987E14-4418-41F3-8656-C969CC2029F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18987E14-4418-41F3-8656-C969CC2029F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

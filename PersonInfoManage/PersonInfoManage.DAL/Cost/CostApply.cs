@@ -24,6 +24,11 @@ namespace PersonInfoManage.DAL.Cost
             return new DBOperationsInsert<cost_main, cost_detail>().InsertByTransaction(costMain, detailList);
         }
 
+        public int InsertBill(cost_main costMain)
+        {
+            return new DBOperationsInsert<cost_main, cost_detail>().Insert(costMain);
+        }
+
         /// <summary>
         /// 更新cost_main
         /// </summary>
