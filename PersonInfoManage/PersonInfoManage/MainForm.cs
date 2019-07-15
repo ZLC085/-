@@ -1,14 +1,5 @@
-﻿using PersonInfoManage.DAL.Cost;
-using PersonInfoManage.DAL.Utils;
-using PersonInfoManage.Models;
+﻿using PersonInfoManage.DAL.Utils;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PersonInfoManage
@@ -18,6 +9,9 @@ namespace PersonInfoManage
         public MainForm()
         {
             InitializeComponent();
+
+            //SqlHelper sqlHelper = new SqlHelper();
+            sqlHelper.GetSqlConnection();
         }
 
         private void labelX2_Click(object sender, EventArgs e)

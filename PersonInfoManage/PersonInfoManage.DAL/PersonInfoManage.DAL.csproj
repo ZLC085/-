@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -62,15 +63,19 @@
     <Compile Include="System\SysSetting.cs" />
     <Compile Include="System\SysUser.cs" />
     <Compile Include="Utils\ConditionsToSql.cs" />
+    <Compile Include="Utils\DALBase.cs" />
     <Compile Include="Utils\DBOperationsDelete.cs" />
     <Compile Include="Utils\DBOperationsInsert.cs" />
     <Compile Include="Utils\DBOperationsSelect.cs" />
     <Compile Include="Utils\DBOperationsUpdate.cs" />
     <Compile Include="Utils\FileOperations.cs" />
+    <Compile Include="Utils\SqlHelper.cs" />
     <Compile Include="Utils\TimeTools.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

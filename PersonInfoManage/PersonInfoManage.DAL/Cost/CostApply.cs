@@ -66,12 +66,12 @@ namespace PersonInfoManage.DAL.Cost
         /// </summary>
         /// <param name="costId">费用单编号</param>
         /// <returns>通过费用单编号查询到的费用单</returns>
-        public Dictionary<cost_main, List<cost_detail>> SelectBillByConditions(Dictionary<string,object> conditions)
+        public Dictionary<cost_main, List<cost_detail>> SelectBillByConditions(Dictionary<string, object> conditions)
         {
             Dictionary<cost_main, List<cost_detail>> bills = new Dictionary<cost_main, List<cost_detail>>();
             List<cost_main> mains = new DBOperationsSelect<cost_main>().SelectByConditions(conditions);
 
-            foreach(var item in mains)
+            foreach (var item in mains)
             {
                 Dictionary<string, object> detailCondition = new Dictionary<string, object>
                 {

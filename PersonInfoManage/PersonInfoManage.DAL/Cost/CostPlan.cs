@@ -2,6 +2,9 @@
 using PersonInfoManage.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +14,7 @@ namespace PersonInfoManage.DAL.Cost
     /// <summary>
     /// 费用规划
     /// </summary>
-    public class CostPlan
+    public class CostPlan : DALBase
     {
         /// <summary>
         /// 费用规划添加
@@ -20,7 +23,15 @@ namespace PersonInfoManage.DAL.Cost
         /// <returns>添加条数</returns>
         public int InsertCostPlan(cost_plan plan)
         {
-            return new DBOperationsInsert<cost_plan, DBNull>().Insert(plan);
+            int res = 0;
+            string sql = "insert into cost_plan (cost_type,money) values(@p1,@p2)";
+            SqlParameter sqlParameter = new SqlParameter("@p1",plan.cost_type);
+            SqlParameter sqlParameter1 = new SqlParameter("@p2", plan.money);
+
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1);
+
+            return res;
+            //return new DBOperationsInsert<cost_plan, DBNull>().Insert(plan);
         }
 
         /// <summary>
