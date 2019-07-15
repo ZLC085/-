@@ -48,15 +48,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar.Charts, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -86,26 +79,41 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="person_info_manageDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>person_info_manageDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <None Include="packages.config" />
+    <None Include="person_info_manageDataSet1.xsc">
+      <DependentUpon>person_info_manageDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="person_info_manageDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>person_info_manageDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="person_info_manageDataSet1.xss">
+      <DependentUpon>person_info_manageDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -133,18 +141,48 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Model\PersonInfoManage.Models.csproj">
+      <Project>{48eadcf0-ca4b-474b-875e-1710603f80c3}</Project>
+      <Name>PersonInfoManage.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PersonInfoManage.BLL\PersonInfoManage.BLL.csproj">
       <Project>{92ef8815-c7f7-46a6-b212-b5aea0d3cbe3}</Project>
       <Name>PersonInfoManage.BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\PersonInfoManage.DAL\PersonInfoManage.DAL.csproj">
-      <Project>{D2A0EB50-AFD7-4B21-895F-C317BCAD96FF}</Project>
+      <Project>{d2a0eb50-afd7-4b21-895f-c317bcad96ff}</Project>
       <Name>PersonInfoManage.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PersonInfoManage.Models\PersonInfoManage.Models.csproj">
-      <Project>{fddd0771-7e40-49ae-847f-33da33735a5c}</Project>
-      <Name>PersonInfoManage.Models</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\电源1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\添加3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\详情.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\修改.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\删除.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\撤销1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\办理业务.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\审批1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\重置密码.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

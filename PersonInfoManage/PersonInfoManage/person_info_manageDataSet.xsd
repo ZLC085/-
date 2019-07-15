@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="person_info_manageDataSet" targetNamespace="http://tempuri.org/person_info_manageDataSet.xsd" xmlns:mstns="http://tempuri.org/person_info_manageDataSet.xsd" xmlns="http://tempuri.org/person_info_manageDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="person_info_manageConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="person_info_manageConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.PersonInfoManage.Properties.Settings.GlobalReference.Default.person_info_manageConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="person_basicTableAdapter" GeneratorDataComponentClassName="person_basicTableAdapter" Name="person_basic" UserDataComponentName="person_basicTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="person_info_manageConnectionString (Settings)" DbObjectName="person_info_manage.dbo.person_basic" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT name, former_name, gender, identity_number, birth_date, cities, address, phone FROM dbo.person_basic</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="former_name" DataSetColumn="former_name" />
+              <Mapping SourceColumn="gender" DataSetColumn="gender" />
+              <Mapping SourceColumn="identity_number" DataSetColumn="identity_number" />
+              <Mapping SourceColumn="birth_date" DataSetColumn="birth_date" />
+              <Mapping SourceColumn="cities" DataSetColumn="cities" />
+              <Mapping SourceColumn="address" DataSetColumn="address" />
+              <Mapping SourceColumn="phone" DataSetColumn="phone" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="person_info_manageDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="person_info_manageDataSet" msprop:Generator_UserDSName="person_info_manageDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="person_basic" msprop:Generator_TableClassName="person_basicDataTable" msprop:Generator_TableVarName="tableperson_basic" msprop:Generator_TablePropName="person_basic" msprop:Generator_RowDeletingName="person_basicRowDeleting" msprop:Generator_RowChangingName="person_basicRowChanging" msprop:Generator_RowEvHandlerName="person_basicRowChangeEventHandler" msprop:Generator_RowDeletedName="person_basicRowDeleted" msprop:Generator_UserTableName="person_basic" msprop:Generator_RowChangedName="person_basicRowChanged" msprop:Generator_RowEvArgName="person_basicRowChangeEvent" msprop:Generator_RowClassName="person_basicRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="former_name" msprop:Generator_ColumnVarNameInTable="columnformer_name" msprop:Generator_ColumnPropNameInRow="former_name" msprop:Generator_ColumnPropNameInTable="former_nameColumn" msprop:Generator_UserColumnName="former_name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="gender" msprop:Generator_ColumnVarNameInTable="columngender" msprop:Generator_ColumnPropNameInRow="gender" msprop:Generator_ColumnPropNameInTable="genderColumn" msprop:Generator_UserColumnName="gender">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="identity_number" msprop:Generator_ColumnVarNameInTable="columnidentity_number" msprop:Generator_ColumnPropNameInRow="identity_number" msprop:Generator_ColumnPropNameInTable="identity_numberColumn" msprop:Generator_UserColumnName="identity_number">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="birth_date" msprop:Generator_ColumnVarNameInTable="columnbirth_date" msprop:Generator_ColumnPropNameInRow="birth_date" msprop:Generator_ColumnPropNameInTable="birth_dateColumn" msprop:Generator_UserColumnName="birth_date" type="xs:dateTime" />
+              <xs:element name="cities" msprop:Generator_ColumnVarNameInTable="columncities" msprop:Generator_ColumnPropNameInRow="cities" msprop:Generator_ColumnPropNameInTable="citiesColumn" msprop:Generator_UserColumnName="cities">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="address" msprop:Generator_ColumnVarNameInTable="columnaddress" msprop:Generator_ColumnPropNameInRow="address" msprop:Generator_ColumnPropNameInTable="addressColumn" msprop:Generator_UserColumnName="address">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="phone" msprop:Generator_ColumnVarNameInTable="columnphone" msprop:Generator_ColumnPropNameInRow="phone" msprop:Generator_ColumnPropNameInTable="phoneColumn" msprop:Generator_UserColumnName="phone">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
