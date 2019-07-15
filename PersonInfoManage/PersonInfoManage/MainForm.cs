@@ -10,8 +10,6 @@ namespace PersonInfoManage
         {
             InitializeComponent();
 
-            //SqlHelper sqlHelper = new SqlHelper();
-            sqlHelper.GetSqlConnection();
         }
 
         private void labelX2_Click(object sender, EventArgs e)
@@ -32,7 +30,7 @@ namespace PersonInfoManage
         private void MainForm_Load(object sender, EventArgs e)
         {
             // TODO: 这行代码将数据加载到表“person_info_manageDataSet.person_basic”中。您可以根据需要移动或删除它。
-            this.person_basicTableAdapter.Fill(this.person_info_manageDataSet.person_basic);
+           // this.person_basicTableAdapter.Fill(this.person_info_manageDataSet.person_basic);
 
         }
 
