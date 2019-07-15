@@ -51,9 +51,10 @@
     <Compile Include="Cost\CostApply.cs" />
     <Compile Include="Cost\CostApproval.cs" />
     <Compile Include="Cost\CostPlan.cs" />
+    <Compile Include="Cost\CostStatistic.cs" />
     <Compile Include="Login\Login.cs" />
-    <Compile Include="Log\LogSys.cs" />
-    <Compile Include="Log\LogUser.cs" />
+    <Compile Include="Logs\LogSys.cs" />
+    <Compile Include="Logs\LogUser.cs" />
     <Compile Include="PersonInfo\PersonBasic.cs" />
     <Compile Include="PersonInfo\PersonFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
