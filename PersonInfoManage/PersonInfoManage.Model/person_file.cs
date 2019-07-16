@@ -1,4 +1,4 @@
-namespace PersonInfoManage.Models
+namespace PersonInfoManage.Model
 {
     using System;
     using System.Collections.Generic;

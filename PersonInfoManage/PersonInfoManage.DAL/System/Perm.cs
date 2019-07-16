@@ -1,7 +1,9 @@
 ﻿using PersonInfoManage.DAL.Utils;
-using PersonInfoManage.Models;
+using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +13,7 @@ namespace PersonInfoManage.DAL.System
     /// <summary>
     /// 权限管理
     /// </summary>
-    public class Perm
+    public class Perm :DALBase
     {
         /// <summary>
         /// 权限添加
@@ -20,7 +22,7 @@ namespace PersonInfoManage.DAL.System
         /// <returns>添加条数</returns>
         public int InsertPermission(sys_u2r role)
         {
-            return new DBOperationsInsert<sys_u2r, DBNull>().Insert(role);
+            return 0;
         }
 
         /// <summary>

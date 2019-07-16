@@ -1,5 +1,5 @@
 ﻿using PersonInfoManage.DAL.Utils;
-using PersonInfoManage.Models;
+using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

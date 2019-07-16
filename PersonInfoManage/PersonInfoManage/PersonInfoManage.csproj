@@ -141,10 +141,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\PersonInfoManage.Models.csproj">
-      <Project>{48eadcf0-ca4b-474b-875e-1710603f80c3}</Project>
-      <Name>PersonInfoManage.Models</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PersonInfoManage.BLL\PersonInfoManage.BLL.csproj">
       <Project>{92ef8815-c7f7-46a6-b212-b5aea0d3cbe3}</Project>
       <Name>PersonInfoManage.BLL</Name>
@@ -152,6 +148,10 @@
     <ProjectReference Include="..\PersonInfoManage.DAL\PersonInfoManage.DAL.csproj">
       <Project>{d2a0eb50-afd7-4b21-895f-c317bcad96ff}</Project>
       <Name>PersonInfoManage.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersonInfoManage.Model\PersonInfoManage.Model.csproj">
+      <Project>{4F1CE3DD-23C8-4F36-9988-A5EFDA72699D}</Project>
+      <Name>PersonInfoManage.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
