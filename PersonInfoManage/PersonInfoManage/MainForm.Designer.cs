@@ -1122,7 +1122,6 @@
             this.btnQueryCost.Name = "btnQueryCost";
             this.btnQueryCost.SubItemsExpandWidth = 14;
             this.btnQueryCost.Text = "详情";
-            this.btnQueryCost.Click += new System.EventHandler(this.buttonItem10_Click);
             // 
             // btnUpdateCost
             // 
@@ -1817,7 +1816,6 @@
             this.labelX10.Size = new System.Drawing.Size(92, 23);
             this.labelX10.TabIndex = 1;
             this.labelX10.Text = "统计起始时间：";
-            this.labelX10.Click += new System.EventHandler(this.labelX10_Click);
             // 
             // tabCostStats
             // 
@@ -3084,7 +3082,6 @@
             this.lableNation.TabIndex = 4;
             this.lableNation.Text = "籍贯：";
             this.lableNation.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.lableNation.Click += new System.EventHandler(this.labelX3_Click);
             // 
             // lableIdentityNum
             // 
@@ -3098,7 +3095,6 @@
             this.lableIdentityNum.TabIndex = 2;
             this.lableIdentityNum.Text = "身份证号：";
             this.lableIdentityNum.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.lableIdentityNum.Click += new System.EventHandler(this.labelX2_Click);
             // 
             // lableName
             // 
@@ -3417,7 +3413,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // panelEx25
             // 
@@ -3541,7 +3536,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.Text = "重点人员信息管理系统";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.metroShell1.ResumeLayout(false);
             this.metroShell1.PerformLayout();
             this.metroTabPanel4.ResumeLayout(false);
