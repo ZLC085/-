@@ -37,6 +37,7 @@ namespace PersonInfoManage.DAL.Cost
 
             return res;
             //return new DBOperationsInsert<cost_plan, DBNull>().Insert(plan);
+
         }
 
         /// <summary>
