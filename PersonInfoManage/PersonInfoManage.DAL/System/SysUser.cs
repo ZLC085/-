@@ -2,6 +2,8 @@
 using PersonInfoManage.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,16 +13,42 @@ namespace PersonInfoManage.DAL.System
     /// <summary>
     /// 用户管理
     /// </summary>
-    public class SysUser
+    public class SysUser:DALBase
     {
         /// <summary>
         /// 用户添加
         /// </summary>
         /// <param name="user">用户信息</param>
         /// <returns>添加条数</returns>
-        public int InsertSysUser(sys_user user)
+        public int InsertSysUser(sys_user user,string role_sign)
         {
-            return new DBOperationsInsert<sys_user, DBNull>().Insert(user);
+            int res = 0;
+            int ress = 0;
+            int bloo; 
+            string sql="Insert into sys_user (username,name,password,gender,job,phone,email) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7)";
+            string sql1 = "Insert into sys_role (role_sign) values(@p8)";
+            SqlParameter sqlparameter = new SqlParameter("@p1", user.username);
+            SqlParameter sqlparameter1 = new SqlParameter("@p2", user.name);
+            SqlParameter sqlparameter2 = new SqlParameter("@p3", user.password);
+            SqlParameter sqlparameter3 = new SqlParameter("@p4", user.gender);
+            SqlParameter sqlparameter4 = new SqlParameter("@p5", user.job);
+            SqlParameter sqlparameter5 = new SqlParameter("@p6", user.phone);
+            SqlParameter sqlparameter6 = new SqlParameter("@p7", user.email);
+            SqlParameter sqlparameter7 = new SqlParameter("@p8", role_sign);
+            using (SqlConnection connection = new SqlConnection(ConStr))
+            {
+                connection.Open();
+                SqlTransaction trans = connection.BeginTransaction();
+                .Transaction = trans;
+                res = SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql, sqlparameter, sqlparameter1, sqlparameter2, sqlparameter3, sqlparameter4, sqlparameter5, sqlparameter6, sqlparameter7);
+                ress = SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql1, sqlparameter7);
+                if(res == ress){
+                    bloo = res;
+                }
+            }
+
+                return res;    
+            //return new DBOperationsInsert<sys_user, DBNull>().Insert(user);
         }
 
         /// <summary>

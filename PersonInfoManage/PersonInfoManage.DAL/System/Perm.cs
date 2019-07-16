@@ -2,6 +2,8 @@
 using PersonInfoManage.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +13,7 @@ namespace PersonInfoManage.DAL.System
     /// <summary>
     /// 权限管理
     /// </summary>
-    public class Perm
+    public class Perm :DALBase
     {
         /// <summary>
         /// 权限添加
@@ -20,7 +22,15 @@ namespace PersonInfoManage.DAL.System
         /// <returns>添加条数</returns>
         public int InsertPermission(sys_u2r role)
         {
-            return new DBOperationsInsert<sys_u2r, DBNull>().Insert(role);
+            int res = 0;
+            string sql = "insert into sys_u2r (user_id,role_id,sys_role,sys_user) values(@p1,@p2,@p3,@p4)";
+            SqlParameter sqlParameter = new SqlParameter("@p1",role.user_id );
+            SqlParameter sqlParameter1 = new SqlParameter("@p2",role.role_id );
+            SqlParameter sqlParameter2 = new SqlParameter("@p3",role.sys_role );
+            SqlParameter sqlParameter3 = new SqlParameter("@p4",role.sys_user );
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1,sqlParameter2,sqlParameter3);
+
+            return res;
         }
 
         /// <summary>

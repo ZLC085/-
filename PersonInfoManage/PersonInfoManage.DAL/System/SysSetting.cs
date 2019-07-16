@@ -2,13 +2,15 @@
 using PersonInfoManage.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PersonInfoManage.DAL.System
 {
-    public class SysSetting
+    public class SysSetting:DALBase
     {
         /// <summary>
         /// 添加数据字典
@@ -17,7 +19,12 @@ namespace PersonInfoManage.DAL.System
         /// <returns></returns>
         public int InsertSysDict(sys_dict sysDict)
         {
-            return new DBOperationsInsert<sys_dict, DBNull>().Insert(sysDict);
+            int res = 0;
+            string sql = "insert into sys_dict(category_name) values(@p1)";
+            SqlParameter sqlparameter = new SqlParameter("@p1", sysDict.category_name);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter);
+            return res;    
+            //return new DBOperationsInsert<sys_dict, DBNull>().Insert(sysDict);
         }
 
         /// <summary>
