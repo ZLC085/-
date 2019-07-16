@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PersonInfoManage.DAL.Utils
 {
@@ -22,7 +19,7 @@ namespace PersonInfoManage.DAL.Utils
                 string key = kv.Key;
                 object value = kv.Value;
 
-                sql += key + " LIKE '%" + value + "%'";
+                sql += key + "LIKE %" + value + "%'";
 
                 if (!key.Equals(conditions.Last().Key))
                 {
@@ -41,7 +38,7 @@ namespace PersonInfoManage.DAL.Utils
         /// <returns>更新sql语句</returns>
         public static string UpdateSql(int id, Dictionary<string, object> newValues)
         {
-            string sql = "UPDATE "+ typeof(T).Name + " SET ";
+            string sql = "UPDATE " + typeof(T).Name + " SET ";
 
             foreach (KeyValuePair<string, object> kv in newValues)
             {

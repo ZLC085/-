@@ -1,5 +1,5 @@
 ﻿using PersonInfoManage.DAL.Utils;
-using PersonInfoManage.Models;
+using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -23,6 +23,11 @@ namespace PersonInfoManage.DAL.Cost
         /// <returns>添加条数</returns>
         public int InsertCostPlan(cost_plan plan)
         {
+            //Add 插入
+            //Update 更新
+            //Del 删除
+            //Query 查询
+            //GetById 通过id查询
             int res = 0;
             string sql = "insert into cost_plan (cost_type,money) values(@p1,@p2)";
             SqlParameter sqlParameter = new SqlParameter("@p1",plan.cost_type);
@@ -32,6 +37,7 @@ namespace PersonInfoManage.DAL.Cost
 
             return res;
             //return new DBOperationsInsert<cost_plan, DBNull>().Insert(plan);
+
         }
 
         /// <summary>
