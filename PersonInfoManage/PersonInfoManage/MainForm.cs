@@ -1,4 +1,5 @@
 ﻿using PersonInfoManage.DAL.Utils;
+using PersonInfoManage.Models;
 using System;
 using System.Windows.Forms;
 
@@ -36,10 +37,15 @@ namespace PersonInfoManage
 
         private void labelX10_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void buttonItem10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
