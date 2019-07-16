@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Collections;
 
-namespace PersonInfoManage.Models
-{/// <summary>
- /// SqlServer数据访问帮助类
- /// </summary>
+namespace PersonInfoManage.DAL.Utils
+{
+    /// <summary>
+    /// SqlServer数据访问帮助类
+    /// </summary>
     public sealed class SqlHelper
     {
         #region 私有构造函数和方法

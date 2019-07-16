@@ -1,5 +1,7 @@
-﻿using PersonInfoManage.DAL.Utils;
+﻿using PersonInfoManage.DAL.Cost;
+using PersonInfoManage.Model;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace PersonInfoManage
@@ -10,8 +12,14 @@ namespace PersonInfoManage
         {
             InitializeComponent();
 
-            //SqlHelper sqlHelper = new SqlHelper();
-            sqlHelper.GetSqlConnection();
+            #region
+            CostPlan costPlan = new CostPlan();
+            Dictionary<string, object> conditions = new Dictionary<string, object>();
+            conditions.Add(nameof(cost_plan.cost_type), "出差");
+            conditions.Add(nameof(cost_plan.end_time), new DateTime(2019, 12, 12));
+
+            List<cost_plan> cost_Plans = costPlan.SelectCostPlanByConditions(conditions);
+            #endregion
         }
 
         private void labelX2_Click(object sender, EventArgs e)

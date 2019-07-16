@@ -79,13 +79,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PersonInfoManage.Models\PersonInfoManage.Models.csproj">
-      <Project>{fddd0771-7e40-49ae-847f-33da33735a5c}</Project>
-      <Name>PersonInfoManage.Models</Name>
-    </ProjectReference>
+    <Folder Include="Operation\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Operation\" />
+    <ProjectReference Include="..\PersonInfoManage.Model\PersonInfoManage.Model.csproj">
+      <Project>{4f1ce3dd-23c8-4f36-9988-a5efda72699d}</Project>
+      <Name>PersonInfoManage.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
