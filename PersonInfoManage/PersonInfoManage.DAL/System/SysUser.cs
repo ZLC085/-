@@ -13,19 +13,19 @@ namespace PersonInfoManage.DAL.System
     /// <summary>
     /// 用户管理
     /// </summary>
-    public class SysUser:DALBase
+    public class SysUser : DALBase
     {
         /// <summary>
         /// 用户添加
         /// </summary>
         /// <param name="user">用户信息</param>
         /// <returns>添加条数</returns>
-        public int InsertSysUser(sys_user user,string role_sign)
+        public int InsertSysUser(sys_user user, string role_sign)
         {
             int res = 0;
             int ress = 0;
-            int bloo; 
-            string sql="Insert into sys_user (username,name,password,gender,job,phone,email) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7)";
+
+            string sql = "Insert into sys_user (username,name,password,gender,job,phone,email) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7)";
             string sql1 = "Insert into sys_role (role_sign) values(@p8)";
             SqlParameter sqlparameter = new SqlParameter("@p1", user.username);
             SqlParameter sqlparameter1 = new SqlParameter("@p2", user.name);
@@ -39,17 +39,25 @@ namespace PersonInfoManage.DAL.System
             {
                 connection.Open();
                 SqlTransaction trans = connection.BeginTransaction();
-                .Transaction = trans;
-                res = SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql, sqlparameter, sqlparameter1, sqlparameter2, sqlparameter3, sqlparameter4, sqlparameter5, sqlparameter6, sqlparameter7);
-                ress = SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql1, sqlparameter7);
-                if(res == ress){
-                    bloo = res;
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.Transaction = trans;
+                try
+                {
+
+                    res = SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql, sqlparameter, sqlparameter1, sqlparameter2, sqlparameter3, sqlparameter4, sqlparameter5, sqlparameter6, sqlparameter7);
+                    ress = SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql1, sqlparameter7);
+                    trans.Commit();
+                }
+                catch
+                {
+                    trans.Rollback();
                 }
             }
-
-                return res;    
-            //return new DBOperationsInsert<sys_user, DBNull>().Insert(user);
+            return 1;
         }
+        //return new DBOperationsInsert<sys_user, DBNull>().Insert(user);
+
 
         /// <summary>
         /// 用户信息修改
@@ -86,9 +94,10 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="conditions">查询条件</param>
         /// <returns>通过用户名查询到的用户</returns>
-        public List<sys_user> SelectSysUserByConditions(Dictionary<string,object> conditions)
+        public List<sys_user> SelectSysUserByConditions(Dictionary<string, object> conditions)
         {
             return new DBOperationsSelect<sys_user>().SelectByConditions(conditions);
         }
     }
 }
+
