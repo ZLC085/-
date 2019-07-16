@@ -39,7 +39,7 @@ namespace PersonInfoManage.DAL.Cost
         /// <returns>查询到的费用单</returns>
         public Dictionary<cost_main, List<cost_detail>> SelectBillByConditions(Dictionary<string, object> conditions)
         {
-            return new CostApply().SelectBillByConditions(conditions);
+            return null; //new CostApply().SelectBillByConditions(conditions);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace PersonInfoManage.DAL.Cost
         /// <returns>所有费用单</returns>
         public Dictionary<cost_main, List<cost_detail>> SelectBill()
         {
-            return new CostApply().SelectAllBill();
+            return null;// new CostApply().SelectAllBill();
         }
     }
 }

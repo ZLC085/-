@@ -23,20 +23,18 @@ namespace PersonInfoManage.DAL.Cost
         /// <returns>添加条数</returns>
         public int InsertCostPlan(cost_plan plan)
         {
-            //Add 插入
-            //Update 更新
-            //Del 删除
-            //Query 查询
-            //GetById 通过id查询
+            
             int res = 0;
-            string sql = "insert into cost_plan (cost_type,money) values(@p1,@p2)";
-            SqlParameter sqlParameter = new SqlParameter("@p1",plan.cost_type);
-            SqlParameter sqlParameter1 = new SqlParameter("@p2", plan.money);
+            //string sql = "insert into cost_plan (cost_type,money) values(@p1,@p2)";
+            //sqlparameter sqlparameter = new sqlparameter("@p1",plan.cost_type);
+            //sqlParameter sqlParameter1 = new SqlParameter("@p2", plan.money);
 
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1);
-
+            //res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1);
+            string sql = ConditionsToSql<cost_plan>.InsertSql(plan);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
             return res;
             //return new DBOperationsInsert<cost_plan, DBNull>().Insert(plan);
+
         }
 
         /// <summary>

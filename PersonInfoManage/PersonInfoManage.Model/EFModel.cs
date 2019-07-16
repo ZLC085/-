@@ -32,11 +32,7 @@ namespace PersonInfoManage.Model
                 .Property(e => e.cost_type)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<cost_main>()
-                .HasMany(e => e.cost_detail)
-                .WithRequired(e => e.cost_main)
-                .HasForeignKey(e => e.cost_id)
-                .WillCascadeOnDelete(false);
+            
 
             modelBuilder.Entity<person_basic>()
                 .HasMany(e => e.person_file)
