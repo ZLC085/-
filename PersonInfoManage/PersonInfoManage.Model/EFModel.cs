@@ -1,4 +1,4 @@
-namespace PersonInfoManage.Models
+namespace PersonInfoManage.Model
 {
     using System;
     using System.Data.Entity;
@@ -25,7 +25,6 @@ namespace PersonInfoManage.Models
         public virtual DbSet<sys_role> sys_role { get; set; }
         public virtual DbSet<sys_u2r> sys_u2r { get; set; }
         public virtual DbSet<sys_user> sys_user { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -33,11 +32,7 @@ namespace PersonInfoManage.Models
                 .Property(e => e.cost_type)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<cost_main>()
-                .HasMany(e => e.cost_detail)
-                .WithRequired(e => e.cost_main)
-                .HasForeignKey(e => e.cost_id)
-                .WillCascadeOnDelete(false);
+            
 
             modelBuilder.Entity<person_basic>()
                 .HasMany(e => e.person_file)

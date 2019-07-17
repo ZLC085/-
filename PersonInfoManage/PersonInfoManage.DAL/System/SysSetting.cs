@@ -1,14 +1,16 @@
 ﻿using PersonInfoManage.DAL.Utils;
-using PersonInfoManage.Models;
+using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PersonInfoManage.DAL.System
 {
-    public class SysSetting
+    public class SysSetting : DALBase
     {
         /// <summary>
         /// 添加数据字典
@@ -17,7 +19,12 @@ namespace PersonInfoManage.DAL.System
         /// <returns></returns>
         public int InsertSysDict(sys_dict sysDict)
         {
-            return new DBOperationsInsert<sys_dict, DBNull>().Insert(sysDict);
+            int res = 0;
+            string sql = "insert into sys_dict (category_name) values(@p1)";
+            SqlParameter sqlParameter = new SqlParameter("@p1", sysDict.category_name);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter);
+            return res;
+            // return new DBOperationsInsert<sys_dict, DBNull>().Insert(sysDict);
         }
 
         /// <summary>
@@ -26,9 +33,15 @@ namespace PersonInfoManage.DAL.System
         /// <param name="id">id</param>
         /// <param name="newValues">需要更新的值</param>
         /// <returns>修改条数</returns>
-        public int UpdateSysDict(int id, Dictionary<string,object> newValues)
+        public int UpdateSysDict(int id, sys_dict sysDict)
         {
-            return new DBOperationsUpdate<sys_dict>().UpdateById(id, newValues);
+            int res = 0;
+            string sql = "updata sys_dict  set category_name=@p1 where id=@p2";
+            SqlParameter sqlParameter = new SqlParameter("@p1", sysDict.category_name);
+            SqlParameter sqlparameter2 = new SqlParameter("@p2", id);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter);
+            return res;
+            //return new DBOperationsUpdate<sys_dict>().UpdateById(id, newValues);
         }
 
         /// <summary>
@@ -38,7 +51,12 @@ namespace PersonInfoManage.DAL.System
         /// <returns>删除条数</returns>
         public int DeleteSysDictById(int id)
         {
-            return new DBOperationsDelete<sys_dict, DBNull>().DeleteById(id);
+            int res = 0;
+            string sql = "delete from sys_dict where id=@p";
+            SqlParameter sqlparameter1 = new SqlParameter("@p",id);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            return res;
+            //return new DBOperationsDelete<sys_dict, DBNull>().DeleteById(id);
         }
 
         /// <summary>

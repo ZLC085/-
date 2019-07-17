@@ -1,4 +1,4 @@
-namespace PersonInfoManage.Models
+namespace PersonInfoManage.Model
 {
     using System;
     using System.Collections.Generic;
@@ -6,27 +6,25 @@ namespace PersonInfoManage.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class sys_role
+    public partial class sys_menu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public sys_role()
+        public sys_menu()
         {
             sys_r2m = new HashSet<sys_r2m>();
-            sys_u2r = new HashSet<sys_u2r>();
         }
 
         public int id { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string role_name { get; set; }
+        public int? parent_id { get; set; }
 
         [Required]
         [StringLength(10)]
-        public string role_sign { get; set; }
+        public string menu_name { get; set; }
 
-        [StringLength(100)]
-        public string remark { get; set; }
+        [Required]
+        [StringLength(10)]
+        public string perms { get; set; }
 
         public DateTime create_time { get; set; }
 
@@ -34,8 +32,5 @@ namespace PersonInfoManage.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<sys_r2m> sys_r2m { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<sys_u2r> sys_u2r { get; set; }
     }
 }
