@@ -21,7 +21,7 @@ namespace PersonInfoManage.DAL.Utils
                 string key = kv.Key;
                 object value = kv.Value;
 
-                sql += key + "LIKE %" + value + "%'";
+                sql += key + "LIKE '%" + value + "%'";
 
                 if (!key.Equals(conditions.Last().Key))
                 {
