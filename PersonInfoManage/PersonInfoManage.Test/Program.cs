@@ -146,13 +146,104 @@ namespace PersonInfoManage.Test
 
             //Console.WriteLine(new CostApproval().Update(main));
 
-            CostPlan costPlan = new CostPlan();
-            cost_plan plan = new cost_plan();
-            plan.cost_type = "出行";
-            plan.money = 919;
-            plan.start_time = new DateTime(2011, 1, 1);
-            plan.end_time = new DateTime(2017, 1, 1);
-            costPlan.Add(plan);
+            ///测试函数：costPlan.Add(cost_plan plan)
+            ///返回类型：int
+            ///测试结果：成功
+            ///参数中必需的属性:
+            ///     plan:cost_type、money、start_time、end_time
+
+            //CostPlan costPlan = new CostPlan();
+            //cost_plan plan = new cost_plan();
+            //plan.cost_type = "出行";
+            //plan.money = 99;
+            //plan.start_time = new DateTime(2011, 1, 1);
+            //plan.end_time = new DateTime(2017, 1, 1);
+            //Console.WriteLine(costPlan.Add(plan));
+
+            ///测试函数：costPlan.Update(cost_plan plan)
+            ///返回类型：int
+            ///测试结果：成功
+            ///参数中必需的属性:
+            ///     plan:id、cost_type、money、start_time、end_time
+
+            //CostPlan costPlan = new CostPlan();
+            //cost_plan plan = new cost_plan();
+            //plan.id = 14;
+            //plan.cost_type = "玩";
+            //plan.money = 999;
+            //plan.start_time = new DateTime(2017, 1, 1);
+            //plan.end_time = new DateTime(2017, 5, 1);
+            //Console.WriteLine(costPlan.Update(plan));
+
+            ///测试函数：costPlan.Del(cost_plan plan)
+            ///返回类型：int
+            ///测试结果：成功
+            ///参数中必需的属性:
+            ///     plan:id
+
+            //CostPlan costPlan = new CostPlan();
+            //cost_plan plan = new cost_plan();
+            //plan.id = 14;
+
+            //Console.WriteLine(costPlan.Del(plan));
+
+            ///测试函数：costPlan.GetById(int id)
+            ///返回类型：List<cost_plan> 
+            ///测试结果：成功
+            ///参数中必需的属性:
+            ///     id:费用规划id
+
+            //CostPlan costPlan = new CostPlan();
+            //List<cost_plan> listPlan = costPlan.GetById(15);
+            //foreach(cost_plan plan in listPlan)
+            //{
+            //    Console.WriteLine(plan.id+"  "+plan.cost_type+"  "+plan.start_time+"  "+plan.end_time+"  "+plan.money);
+            //}
+
+            ///测试函数：costPlan.Query()
+            ///返回类型：List<cost_plan> 
+            ///测试结果：成功
+            ///参数中必需的属性:
+            ///     无
+
+            //CostPlan costPlan = new CostPlan();
+            //List<cost_plan> listPlan = costPlan.Query();
+            //foreach (cost_plan plan in listPlan)
+            //{
+            //    Console.WriteLine(plan.id + "  " + plan.cost_type + "  " + plan.start_time + "  " + plan.end_time + "  " + plan.money);
+            //}
+
+            ///测试函数：CostStatistic.GetById(int id)
+            ///返回类型：Dictionary<cost_main, List<cost_detail>>
+            ///测试结果：
+            ///参数中必需的属性:
+            ///     id：费用单id
+
+            //Dictionary<cost_main, List<cost_detail>> dic = new CostStatistic().GetById(1563342091);
+            //foreach (cost_main cm in dic.Keys)
+            //{
+            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approval_time);
+            //    foreach (cost_detail cd in dic[cm])
+            //    {
+            //        Console.WriteLine("\t"+cd.id + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
+            //    }
+            //}
+
+            ///测试函数：CostStatistic.Query()
+            ///返回类型：Dictionary<cost_main, List<cost_detail>>
+            ///测试结果：
+            ///参数中必需的属性:
+            ///     无
+            Dictionary<cost_main, List<cost_detail>> dic = new CostStatistic().Query();
+            foreach (cost_main cm in dic.Keys)
+            {
+                Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approval_time);
+                foreach (cost_detail cd in dic[cm])
+                {
+                    Console.WriteLine("\t" + cd.id + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
+                }
+            }
+
             Console.ReadKey();
         }
     }

@@ -61,6 +61,7 @@ namespace PersonInfoManage.DAL.Cost
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 tran.Rollback();
                 return 0;
             }

@@ -39,7 +39,7 @@ namespace PersonInfoManage.DAL.Cost
             {
                 cost_detail detail = new cost_detail();
                 detail.id = (int)ds2.Tables[0].Rows[i][nameof(cost_detail.id)];
-                detail.cost_id = int.Parse((string)ds2.Tables[0].Rows[i][nameof(cost_detail.cost_id)]);
+                detail.cost_id = (int)ds2.Tables[0].Rows[i][nameof(cost_detail.cost_id)];
                 detail.cost_type = (string)ds2.Tables[0].Rows[i][nameof(cost_detail.cost_type)];
                 detail.money = (decimal)ds2.Tables[0].Rows[i][nameof(cost_detail.money)];
                 listDetail.Add(detail);
@@ -51,8 +51,7 @@ namespace PersonInfoManage.DAL.Cost
         public Dictionary<cost_main, List<cost_detail>> Query()
         {
             Dictionary<cost_main, List<cost_detail>> bills = new Dictionary<cost_main, List<cost_detail>>();
-            cost_main main = new cost_main();
-            List<cost_detail> listDetail = new List<cost_detail>();
+            
 
             string sql1 = "select id,applicant,approval_time from cost_main";
 
@@ -60,6 +59,8 @@ namespace PersonInfoManage.DAL.Cost
 
             for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
             {
+                cost_main main = new cost_main();
+                List<cost_detail> listDetail = new List<cost_detail>();
                 main.id = (int)ds1.Tables[0].Rows[i][nameof(cost_main.id)];
                 main.applicant = (string)ds1.Tables[0].Rows[i][nameof(cost_main.applicant)];
                 main.approval_time = (DateTime)ds1.Tables[0].Rows[i][nameof(cost_main.approval_time)];
@@ -70,7 +71,7 @@ namespace PersonInfoManage.DAL.Cost
                 {
                     cost_detail detail = new cost_detail();
                     detail.id = (int)ds2.Tables[0].Rows[j][nameof(cost_detail.id)];
-                    detail.cost_id = int.Parse((string)ds2.Tables[0].Rows[j][nameof(cost_detail.cost_id)]);
+                    detail.cost_id = (int)ds2.Tables[0].Rows[j][nameof(cost_detail.cost_id)];
                     detail.cost_type = (string)ds2.Tables[0].Rows[j][nameof(cost_detail.cost_type)];
                     detail.money = (decimal)ds2.Tables[0].Rows[j][nameof(cost_detail.money)];
                     listDetail.Add(detail);
