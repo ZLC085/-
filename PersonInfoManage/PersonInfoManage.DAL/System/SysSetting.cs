@@ -79,20 +79,9 @@ namespace PersonInfoManage.DAL.System
                 dict.Add(dict1);
             }
             return dict;
-            //return new DBOperationsSelect<sys_dict>().SelectAll();
-        }
-
-        /// <summary>
-        /// 通过输入条件检索数据字典
-        /// </summary>
-        /// <param name="conditions">输入条件</param>
-        /// <returns>数据字典</returns>
-        public List<sys_dict> SelectSysDictByConditions(Dictionary<string,object> conditions)
-        {
             
-
-
-            return new DBOperationsSelect<sys_dict>().SelectByConditions(conditions);
         }
+
+       
     }
 }
