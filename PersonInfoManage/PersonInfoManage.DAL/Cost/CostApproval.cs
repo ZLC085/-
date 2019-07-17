@@ -28,6 +28,7 @@ namespace PersonInfoManage.DAL.Cost
                 nameof(cost_main.approval_money)+"='"+main.approval_money+"',"+
                 nameof(cost_main.status)+"='"+main.status+"',"+
                 nameof(cost_main.remark)+"=N'"+main.remark+"' where id='"+main.id+"'";
+            Console.WriteLine(sql);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
             return res;
         }
