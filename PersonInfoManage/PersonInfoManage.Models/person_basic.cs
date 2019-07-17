@@ -1,4 +1,4 @@
-namespace PersonInfoManage.Model
+namespace PersonInfoManage.Models
 {
     using System;
     using System.Collections.Generic;
@@ -81,7 +81,7 @@ namespace PersonInfoManage.Model
 
         [Required]
         [StringLength(50)]
-        public string input_person { get; set; }
+        public int user_id { get; set; }
 
         public int isdel { get; set; }
 

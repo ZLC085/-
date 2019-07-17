@@ -1,4 +1,4 @@
-﻿using PersonInfoManage.Model;
+﻿using PersonInfoManage.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
