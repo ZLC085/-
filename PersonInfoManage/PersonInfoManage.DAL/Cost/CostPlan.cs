@@ -83,17 +83,34 @@ namespace PersonInfoManage.DAL.Cost
             //return new DBOperationsDelete<cost_plan, DBNull>().DeleteById(costPlanId);
         }
 
-        /// <summary>
-        /// 根据条件检索费用规划
-        /// </summary>
-        /// <param name="conditions">查询条件</param>
-        /// <returns>费用规划</returns>
+
         //public List<cost_plan> SelectCostPlanByConditions(Dictionary<string, object> conditions)
         //{
         //return new DBOperationsSelect<cost_plan>().SelectByConditions(conditions);
         //}
 
+       /// <summary>
+       /// 费用规划检索，根据id
+       /// </summary>
+       /// <param name="id">费用规划表id</param>
+       /// <returns></returns>
+        public List<cost_plan> GetById(int id)
+        {
+            List<cost_plan> Listplan = new List<cost_plan>();
 
+            string sql = "select * from cost_plan where id='" + id + "'";
+
+            DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+            cost_plan plan = new cost_plan();
+            plan.id = (int)ds.Tables[0].Rows[0][nameof(cost_plan.id)];
+            plan.cost_type = (string)ds.Tables[0].Rows[0][nameof(cost_plan.cost_type)];
+            plan.money = (decimal)ds.Tables[0].Rows[0][nameof(cost_plan.money)];
+            plan.start_time = (DateTime)ds.Tables[0].Rows[0][nameof(cost_plan.start_time)];
+            plan.end_time = (DateTime)ds.Tables[0].Rows[0][nameof(cost_plan.end_time)];
+            Listplan.Add(plan);
+
+            return Listplan;
+        }
 
         /// <summary>
         /// 费用规划检索，所有
@@ -103,5 +120,26 @@ namespace PersonInfoManage.DAL.Cost
         //{
         //return new DBOperationsSelect<cost_plan>().SelectAll();
         //}
+
+        public List<cost_plan> Query()
+        {
+            List<cost_plan> Listplan = new List<cost_plan>();
+
+            string sql = "select * from cost_plan";
+
+            DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                cost_plan plan = new cost_plan();
+                plan.id = (int)ds.Tables[0].Rows[i][nameof(cost_plan.id)];
+                plan.cost_type = (string)ds.Tables[0].Rows[i][nameof(cost_plan.cost_type)];
+                plan.money = (decimal)ds.Tables[0].Rows[i][nameof(cost_plan.money)];
+                plan.start_time = (DateTime)ds.Tables[0].Rows[i][nameof(cost_plan.start_time)];
+                plan.end_time = (DateTime)ds.Tables[0].Rows[i][nameof(cost_plan.end_time)];
+                Listplan.Add(plan);
+            }
+            return Listplan;
+        }
     }
 }
