@@ -79,9 +79,7 @@ namespace PersonInfoManage.Model
 
         public DateTime input_time { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string input_person { get; set; }
+        public int user_id { get; set; }
 
         public int isdel { get; set; }
 
