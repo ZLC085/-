@@ -20,6 +20,9 @@ namespace PersonInfoManage
         private void LabelX1_Click(object sender, EventArgs e)
         {
 
+
+
+
         }
 
         private void LabelX6_Click(object sender, EventArgs e)
