@@ -67,8 +67,6 @@ namespace PersonInfoManage.DAL.Cost
             }
             return res;            
         }
-
-
         /// <summary>
         /// 更新费用单信息
         /// </summary>
@@ -132,7 +130,6 @@ namespace PersonInfoManage.DAL.Cost
             }
             return res;            
         }
-
         /// <summary>
         /// 撤销费用单
         /// </summary>
@@ -176,7 +173,6 @@ namespace PersonInfoManage.DAL.Cost
             return res;
             //return new DBOperationsDelete<cost_main, cost_detail>().DeleteTransaction(nameof(cost_detail.cost_id), costId);
         }
-
         /// <summary>
         /// 费用单查询，通过费用单编号
         /// </summary>
@@ -258,6 +254,87 @@ namespace PersonInfoManage.DAL.Cost
 
             
             return bills;
+        }
+        /// <summary>
+        /// 根据条件查询费用单
+        /// </summary>
+        /// <param name="consitions">条件键值对</param>
+        /// <returns>返回费用单和费用单细节的键值对</returns>
+        public Dictionary<cost_main, List<cost_detail>> Query(Dictionary<string, object> conditions)
+        {
+            //key只能是指定的一些string
+            //id 费用单编号
+            //applicant 申请人
+            //status 审核状态
+            //start_time 起始申请时间
+            //end_time 最终申请时间
+            string[] keys = new string[] {"id", "applicant", "status", "start_time", "end_time" };
+            Dictionary<cost_main, List<cost_detail>> retDic = new Dictionary<cost_main, List<cost_detail>>();
+            List<string> keyList = new List<string>();
+
+            string sql = "select * from cost_main where ";
+            foreach (string key in conditions.Keys)
+            {   //对参数进行合法性检验
+                if (!keys.Contains<string>(key))
+                {
+                    continue;
+                }else
+                {
+                    keyList.Add(key);
+                }
+                
+            }
+
+            foreach (string key in keyList)
+            {   //根据参数列表，拼接sql语句
+                if (!key.Equals(keyList.First()))
+                {
+                    sql += "and ";
+                }
+                if (key.Equals("start_time"))
+                {
+                    sql += " apply_time>=" + conditions["start_time"];
+                }
+                else if (key.Equals("end_time"))
+                {
+                    sql += " apply_time<=" + conditions["end_time"];
+                }
+                else
+                {
+                    sql += " " + key + " like '%" + conditions[key] + "%'";
+                }
+
+            }
+            DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+            for(int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                cost_main main = new cost_main();
+                main.id = int.Parse((string)ds.Tables[0].Rows[i][nameof(cost_main.id)]);
+                main.applicant = (string)ds.Tables[0].Rows[i][nameof(cost_main.applicant)];
+                main.approver = (string)ds.Tables[0].Rows[i][nameof(cost_main.approver)];
+                main.apply_time = (DateTime)ds.Tables[0].Rows[i][nameof(cost_main.apply_time)];
+                main.approval_time = (DateTime)ds.Tables[0].Rows[i][nameof(cost_main.approval_time)];
+                main.apply_money = (decimal)ds.Tables[0].Rows[i][nameof(cost_main.apply_money)];
+                main.approval_money = (decimal)ds.Tables[0].Rows[i][nameof(cost_main.approval_money)];
+                main.status = (byte)ds.Tables[0].Rows[i][nameof(cost_main.status)];
+                main.remark = (string)ds.Tables[0].Rows[i][nameof(cost_main.remark)];
+
+                List<cost_detail> listDetail = new List<cost_detail>();
+                string sql2 = "select * from cost_detail where cost_id='" + main.id + "'";
+                DataSet ds2 = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql2);
+                for (int j = 0; i < ds2.Tables.Count; i++)
+                {
+                    cost_detail detail = new cost_detail();
+                    detail.id = int.Parse((string)ds2.Tables[0].Rows[j][nameof(cost_detail.id)]);
+                    detail.cost_id = int.Parse((string)ds2.Tables[0].Rows[j][nameof(cost_detail.cost_id)]);
+                    detail.cost_type = (string)ds2.Tables[0].Rows[j][nameof(cost_detail.cost_type)];
+                    detail.money = (decimal)ds2.Tables[0].Rows[j][nameof(cost_detail.money)];
+                    listDetail.Add(detail);
+                }
+
+                retDic.Add(main, listDetail);
+            }
+            return retDic;
         }
     }
 }
