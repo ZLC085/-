@@ -36,7 +36,7 @@ namespace PersonInfoManage.DAL.Logs
                 user.create_time = (DateTime)ds.Tables[0].Rows[0][nameof(log_user.create_time)];
                 loguser.Add(user);
             }
-
+            
             return loguser;
         }
         /// <summary>
