@@ -35,7 +35,7 @@ namespace PersonInfoManage.DAL.Cost
             main.approval_time = (DateTime)ds1.Tables[0].Rows[0][nameof(cost_main.approval_time)];
             
             DataSet ds2 = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql2);
-            for (int i = 0; i < ds2.Tables.Count; i++)
+            for (int i = 0; i < ds2.Tables[0].Rows.Count; i++)
             {
                 cost_detail detail = new cost_detail();
                 detail.id = (int)ds2.Tables[0].Rows[i][nameof(cost_detail.id)];
@@ -66,7 +66,7 @@ namespace PersonInfoManage.DAL.Cost
                
                 string sql2 = "select * from cost_detail where cost_id='" + main.id + "'";
                 DataSet ds2 = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql2);
-                for (int j = 0; j < ds2.Tables.Count; j++)
+                for (int j = 0; j < ds2.Tables[0].Rows.Count; j++)
                 {
                     cost_detail detail = new cost_detail();
                     detail.id = (int)ds2.Tables[0].Rows[j][nameof(cost_detail.id)];
