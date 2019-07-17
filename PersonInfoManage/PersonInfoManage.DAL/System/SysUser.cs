@@ -202,9 +202,11 @@ namespace PersonInfoManage.DAL.System
         /// <returns>通过用户名查询到的用户</returns>
         public Dictionary<sys_user, List<sys_role>> SelectSysUserByConditions(Dictionary<string, object> conditions)
         {
-            string[] keys = new string[] { "name", "username", "gender", "phone", "job", "role_sign" };
             Dictionary<sys_user, List<sys_role>> Dic = new Dictionary<sys_user, List<sys_role>>();
-            List<string> List = new List<string>();
+            foreach (var Kit in Dic)
+            {
+                string name = Kit.Key.ToString();
+            }
             string sql = "select * from sys_user where ";
 
             return Dic;
