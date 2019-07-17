@@ -20,20 +20,19 @@ namespace PersonInfoManage.Model
         public virtual DbSet<person_basic> person_basic { get; set; }
         public virtual DbSet<person_file> person_file { get; set; }
         public virtual DbSet<sys_dict> sys_dict { get; set; }
-        public virtual DbSet<sys_g2m> sys_g2m { get; set; }
-        public virtual DbSet<sys_group> sys_group { get; set; }
         public virtual DbSet<sys_menu> sys_menu { get; set; }
-        public virtual DbSet<sys_u2g> sys_u2g { get; set; }
+        public virtual DbSet<sys_r2m> sys_r2m { get; set; }
+        public virtual DbSet<sys_role> sys_role { get; set; }
+        public virtual DbSet<sys_u2r> sys_u2r { get; set; }
         public virtual DbSet<sys_user> sys_user { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<cost_main>()
-                .HasMany(e => e.cost_detail)
-                .WithRequired(e => e.cost_main)
-                .HasForeignKey(e => e.cost_id)
-                .WillCascadeOnDelete(false);
+            modelBuilder.Entity<cost_detail>()
+                .Property(e => e.cost_type)
+                .IsUnicode(false);
+
+            
 
             modelBuilder.Entity<person_basic>()
                 .HasMany(e => e.person_file)
@@ -49,30 +48,6 @@ namespace PersonInfoManage.Model
                 .Property(e => e.category_name)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<sys_group>()
-                .Property(e => e.group_name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<sys_group>()
-                .Property(e => e.role_sign)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<sys_group>()
-                .Property(e => e.remark)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<sys_group>()
-                .HasMany(e => e.sys_g2m)
-                .WithRequired(e => e.sys_group)
-                .HasForeignKey(e => e.group_id)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<sys_group>()
-                .HasMany(e => e.sys_u2g)
-                .WithRequired(e => e.sys_group)
-                .HasForeignKey(e => e.group_id)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<sys_menu>()
                 .Property(e => e.menu_name)
                 .IsUnicode(false);
@@ -82,9 +57,33 @@ namespace PersonInfoManage.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<sys_menu>()
-                .HasMany(e => e.sys_g2m)
+                .HasMany(e => e.sys_r2m)
                 .WithRequired(e => e.sys_menu)
                 .HasForeignKey(e => e.menu_id)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<sys_role>()
+                .Property(e => e.role_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sys_role>()
+                .Property(e => e.role_sign)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sys_role>()
+                .Property(e => e.remark)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<sys_role>()
+                .HasMany(e => e.sys_r2m)
+                .WithRequired(e => e.sys_role)
+                .HasForeignKey(e => e.role_id)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<sys_role>()
+                .HasMany(e => e.sys_u2r)
+                .WithRequired(e => e.sys_role)
+                .HasForeignKey(e => e.role_id)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<sys_user>()
@@ -94,7 +93,7 @@ namespace PersonInfoManage.Model
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<sys_user>()
-                .HasMany(e => e.sys_u2g)
+                .HasMany(e => e.sys_u2r)
                 .WithRequired(e => e.sys_user)
                 .HasForeignKey(e => e.user_id)
                 .WillCascadeOnDelete(false);
