@@ -8,7 +8,6 @@ namespace PersonInfoManage
         public MainForm()
         {
             InitializeComponent();
-
         }
     }
 }
