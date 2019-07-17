@@ -29,10 +29,10 @@ namespace PersonInfoManage.DAL.Cost
             //Query 查询
             //GetById 通过id查询
             int res = 0;
-            string sql = "insert into cost_plan (cost_type,money,start_time,end_time) values(@cost_type,@money,@start_time,@end_time)";
+            string sql = "insert into cost_plan(cost_type,money,start_time,end_time) values(@cost_type,@money,@start_time,@end_time)";
             SqlParameter sqlParameter = new SqlParameter("@cost_type", plan.cost_type);
             SqlParameter sqlParameter1 = new SqlParameter("@money", plan.money);
-            SqlParameter sqlParameter2 = new SqlParameter("@stsrt_time", plan.start_time);
+            SqlParameter sqlParameter2 = new SqlParameter("@start_time", plan.start_time);
             SqlParameter sqlParameter3 = new SqlParameter("@end_time", plan.end_time);
 
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1, sqlParameter2, sqlParameter3);
@@ -50,7 +50,7 @@ namespace PersonInfoManage.DAL.Cost
         {
             int res = 0;
 
-            string sql = "update cost_plan set cost_type = @cost_type , money = @money,start_time=@start_time,end_time=@end_time" + " where id = @id";
+            string sql = "update cost_plan set cost_type = @cost_type, money = @money,start_time=@start_time,end_time=@end_time where id = @id";
             SqlParameter sqlParmeter = new SqlParameter("@cost_type", plan.cost_type);
             SqlParameter sqlParmeter1 = new SqlParameter("@money", plan.money);
             SqlParameter sqlParmeter2 = new SqlParameter("@start_time", plan.start_time);
@@ -60,8 +60,7 @@ namespace PersonInfoManage.DAL.Cost
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParmeter, sqlParmeter1, sqlParmeter2, sqlParmeter3, sqlParmeter4);
 
             return res;
-
-            //return new DBOperationsUpdate<cost_plan>().UpdateById(id, newValues);
+            
         }
 
         /// <summary>

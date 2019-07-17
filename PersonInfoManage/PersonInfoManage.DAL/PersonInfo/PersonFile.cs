@@ -25,7 +25,7 @@ namespace PersonInfoManage.DAL.PersonInfo
         {
             int res = 0;
             String sql = "insert into person_file(filetype,person_basic) values(@p1,@p2)";
-            SqlParameter sqlParameter = new SqlParameter("@p1",file.filetype);
+            SqlParameter sqlParameter = new SqlParameter("@p1", file.filetype);
             SqlParameter sqlParameter1 = new SqlParameter("@p2", file.person_basic);
 
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1);
@@ -43,11 +43,10 @@ namespace PersonInfoManage.DAL.PersonInfo
         public int UpdatePersonFile(int fileId, string newFileName)
         {
             int res = 0;
-            String sql = "update personFile set fileName = @newFileName" + "where id = @id";
+            String sql = "update PersonFile set filename = @newFileName" + "where id = @id";
             SqlParameter sqlParameter = new SqlParameter("@newFileName", fileId);
 
-
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter );
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter);
 
             return res;
             //Dictionary<string, object> newValues = new Dictionary<string, object>
@@ -69,7 +68,7 @@ namespace PersonInfoManage.DAL.PersonInfo
             String sql = "delete from person_file where id = @id";
             SqlParameter sqlParameter = new SqlParameter("@id", fileId);
 
-            res = SqlHelper.ExecuteNonQuery( DALBase.ConStr, CommandType.Text, sql,sqlParameter);
+            res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, sqlParameter);
 
             return res;
             //return new DBOperationsDelete<person_file, DBNull>().DeleteById(fileId);
@@ -82,27 +81,8 @@ namespace PersonInfoManage.DAL.PersonInfo
         /// <returns>通过输入条件查询到的文件信息</returns>
         public List<person_file> SelectPersonFilesByconditions(Dictionary<string,object> conditions)
         {
-            Dictionary<person_file,List<PersonFile>> files = new Dictionary<person_file, List<PersonFile>>();
-            person_file file = new person_file();
-            List<PersonFile> listPersonFile = new List<PersonFile>();
-
-            String sql = "select * from person_file where condition = '"+ conditions +"'";
-
-            DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
-
-            file.id = int.Parse((string)ds.Tables[0].Rows[0][nameof(person_file.id)]);
-            file.person_id = int.Parse((string)ds.Tables[0].Rows[0][nameof(person_file.person_id)]);
-            file.filename = ((string)ds.Tables[0].Rows[0][nameof(person_file.filename)]);
-            file.file = ((byte[])ds.Tables[0].Rows[0][nameof(person_file.file)]);
-            file.filetype = ((string)ds.Tables[0].Rows[0][nameof(person_file.filetype)]);
-            file.create_time = ((DateTime)ds.Tables[0].Rows[0][nameof(person_file.create_time)]);
-            file.modify_time = ((DateTime)DateTime.Tables[0].Rows[0][nameof(person_file.modify_time)]);
-            file.person_basic = ((person_basic)person_basic.Tables[0].Rows[0][nameof(person_file.person_basic)]);
-
-            files.Add(file, listPersonFile);
-            return files;
-           
-            //return new DBOperationsSelect<person_file>().SelectByConditions(conditions);
+            
+            return new DBOperationsSelect<person_file>().SelectByConditions(conditions);
         }
     }
 }

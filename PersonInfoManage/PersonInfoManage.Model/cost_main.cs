@@ -7,9 +7,10 @@ namespace PersonInfoManage.Model
     using System.Data.Entity.Spatial;
 
     public partial class cost_main
-    {
+    {        
         public cost_main()
-        { }
+        {           
+        }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
@@ -33,6 +34,7 @@ namespace PersonInfoManage.Model
 
         [StringLength(200)]
         public string remark { get; set; }
+
         
     }
 }

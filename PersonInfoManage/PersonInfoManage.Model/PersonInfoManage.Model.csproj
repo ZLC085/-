@@ -59,11 +59,12 @@
     <Compile Include="person_basic.cs" />
     <Compile Include="person_file.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sysdiagram.cs" />
     <Compile Include="sys_dict.cs" />
+    <Compile Include="sys_g2m.cs" />
+    <Compile Include="sys_group.cs" />
     <Compile Include="sys_menu.cs" />
-    <Compile Include="sys_r2m.cs" />
-    <Compile Include="sys_role.cs" />
-    <Compile Include="sys_u2r.cs" />
+    <Compile Include="sys_u2g.cs" />
     <Compile Include="sys_user.cs" />
   </ItemGroup>
   <ItemGroup>

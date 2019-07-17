@@ -114,15 +114,8 @@ namespace PersonInfoManage.DAL.Utils
                     sql = sql.Insert(sql.Length, "N'" + t.GetType().GetProperty(info.Name).GetValue(t) + "'");
                 }
                 else
-                {   if(info.Name.Equals("id"))
-                    {
-                        sql = sql.Insert(sql.Length, "'" + TimeTools.Timestamp() + "'");
-                    }
-                    else
-                    {
-                        sql = sql.Insert(sql.Length, "'" + t.GetType().GetProperty(info.Name).GetValue(t) + "'");
-                    }                
-                    
+                {
+                    sql = sql.Insert(sql.Length, "'" + t.GetType().GetProperty(info.Name).GetValue(t) + "'");
                 }   
                              
                 if (!info.Equals(properties.Last()))
