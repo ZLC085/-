@@ -52,8 +52,8 @@ namespace PersonInfoManage.DAL.System
         public int DeleteSysDictById(int id)
         {
             int res = 0;
-            string sql = "delete from sys_dict where id=@p1";
-            SqlParameter sqlparameter1 = new SqlParameter("@p1",id);
+            string sql = "delete from sys_dict where id=@p";
+            SqlParameter sqlparameter1 = new SqlParameter("@p",id);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
             return res;
             //return new DBOperationsDelete<sys_dict, DBNull>().DeleteById(id);

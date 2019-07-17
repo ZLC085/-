@@ -16,6 +16,7 @@ namespace PersonInfoManage.DAL.PersonInfo
     /// </summary>
     public class PersonFile:DALBase
     {
+
         /// <summary>
         /// 文件添加
         /// </summary>
@@ -43,9 +44,8 @@ namespace PersonInfoManage.DAL.PersonInfo
         public int UpdatePersonFile(int fileId, string newFileName)
         {
             int res = 0;
-            String sql = "update personFile set fileName = @newFileName" + "where id = @id";
+            String sql = "update PersonFile set filename = @newFileName" + "where id = @id";
             SqlParameter sqlParameter = new SqlParameter("@newFileName", fileId);
-
 
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter );
 
@@ -82,11 +82,12 @@ namespace PersonInfoManage.DAL.PersonInfo
         /// <returns>通过输入条件查询到的文件信息</returns>
         public List<person_file> SelectPersonFilesByconditions(Dictionary<string,object> conditions)
         {
-            Dictionary<person_file,List<PersonFile>> files = new Dictionary<person_file, List<PersonFile>>();
+            Dictionary<person_file,List<person_basic>> files = new Dictionary<person_file, List<person_basic>>();
             person_file file = new person_file();
-            List<PersonFile> listPersonFile = new List<PersonFile>();
+            List<person_file> listPersonFile = new List<person_file>();
 
             String sql = "select * from person_file where condition = '"+ conditions +"'";
+            String sql1 = "select * from person_basic where condition = '" + conditions + "'";
 
             DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
 
@@ -96,11 +97,40 @@ namespace PersonInfoManage.DAL.PersonInfo
             file.file = ((byte[])ds.Tables[0].Rows[0][nameof(person_file.file)]);
             file.filetype = ((string)ds.Tables[0].Rows[0][nameof(person_file.filetype)]);
             file.create_time = ((DateTime)ds.Tables[0].Rows[0][nameof(person_file.create_time)]);
-            file.modify_time = ((DateTime)DateTime.Tables[0].Rows[0][nameof(person_file.modify_time)]);
-            file.person_basic = ((person_basic)person_basic.Tables[0].Rows[0][nameof(person_file.person_basic)]);
+            file.modify_time = ((DateTime)ds.Tables[0].Rows[0][nameof(person_file.modify_time)]);
+            file.person_basic = ((person_basic)ds.Tables[0].Rows[0][nameof(person_file.person_basic)]);
 
-            files.Add(file, listPersonFile);
-            return files;
+            DataSet ds1 = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql1);
+            for (int i = 0; i < ds1.Tables.Count; i++)
+            {
+                person_basic basic = new person_basic();
+                basic.id = int.Parse((string)ds.Tables[0].Rows[i][nameof(person_basic.id)]);
+                basic.name = ((string)ds.Tables[0].Rows[i][nameof(person_basic.name)]);
+                basic.former_name = ((string)ds.Tables[0].Rows[i][nameof(person_basic.former_name)]);
+                basic.gender = ((string)ds.Tables[0].Rows[i][nameof(person_basic.gender)]);
+                basic.identity_number = ((string)ds.Tables[0].Rows[i][nameof(person_basic.identity_number)]);
+                basic.birth_date = ((DateTime)ds.Tables[0].Rows[i][nameof(person_basic.birth_date)]);
+                basic.city= ((string)ds.Tables[0].Rows[i][nameof(person_basic.city)]);
+                basic.province = ((string)ds.Tables[0].Rows[i][nameof(person_basic.province)]);
+                basic.marry_status = ((bool)ds.Tables[0].Rows[i][nameof(person_basic.marry_status)]);
+                basic.job_status = ((string)ds.Tables[0].Rows[i][nameof(person_basic.job_status)]);
+                basic.income = ((decimal)ds.Tables[0].Rows[i][nameof(person_basic.income)]);
+                basic.temper = ((string)ds.Tables[0].Rows[i][nameof(person_basic.temper)]);
+                basic.family = ((string)ds.Tables[0].Rows[i][nameof(person_basic.family)]);
+                basic.person_type = ((string)ds.Tables[0].Rows[i][nameof(person_basic.person_type)]);
+                basic.qq = ((string)ds.Tables[0].Rows[i][nameof(person_basic.qq)]);
+                basic.address = ((string)ds.Tables[0].Rows[i][nameof(person_basic.address)]);
+                basic.phone = ((string)ds.Tables[0].Rows[i][nameof(person_basic.phone)]);
+                basic.belong_place = ((string)ds.Tables[0].Rows[i][nameof(person_basic.belong_place)]);
+                basic.nation = ((string)ds.Tables[0].Rows[i][nameof(person_basic.nation)]);
+                basic.input_time = ((DateTime)ds.Tables[0].Rows[i][nameof(person_basic.input_time)]);
+                basic.input_person = ((string)ds.Tables[0].Rows[i][nameof(person_basic.input_person)]);
+                basic.isdel = int.Parse((string)ds.Tables[0].Rows[i][nameof(person_basic.isdel)]);
+                basic.person_file = person_basic.Parse((person_file)ds.Tables[0].Rows[i][nameof(person_basic.person_file)]);
+                listBasic.Add(basic);
+            }
+            files.Add(files,listBasic);
+            return listPersonFile;
            
             //return new DBOperationsSelect<person_file>().SelectByConditions(conditions);
         }
