@@ -29,7 +29,7 @@ namespace PersonInfoManage.DAL.Cost
             //Query 查询
             //GetById 通过id查询
             int res = 0;
-            string sql = "insert into cost_plan (cost_type,money,start_time,end_time) values(@cost_type,@money,@start_time,@end_time)";
+            string sql = "insert into cost_plan(cost_type,money,start_time,end_time) values(@cost_type,@money,@start_time,@end_time)";
             SqlParameter sqlParameter = new SqlParameter("@cost_type", plan.cost_type);
             SqlParameter sqlParameter1 = new SqlParameter("@money", plan.money);
             SqlParameter sqlParameter2 = new SqlParameter("@start_time", plan.start_time);

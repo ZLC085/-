@@ -23,17 +23,17 @@ namespace PersonInfoManage.Test
             ///         cost_detail：cost_type、money
 
             //cost_main main = new cost_main();
-            //main.applicant = "小明";
-            //main.apply_money = 1200;
-            //main.apply_time = new DateTime(2019, 1, 1);
+            //main.applicant = "成创空间";
+            //main.apply_money = 120;
+            //main.apply_time = new DateTime(2011, 5, 1);
 
             //cost_detail detail = new cost_detail();
             //detail.cost_type = "出行";
-            //detail.money = 500;
+            //detail.money = 40;
 
             //cost_detail detail2 = new cost_detail();
             //detail2.cost_type = "住宿";
-            //detail2.money = 700;
+            //detail2.money = 30;
 
             //List<cost_detail> listDetail = new List<cost_detail>();
             //listDetail.Add(detail);
@@ -136,15 +136,23 @@ namespace PersonInfoManage.Test
             ///测试结果：成功
             ///参数中必需的属性:
             ///     main:approver、approval_time、approval_money、status、id
-            cost_main main = new cost_main();
-            main.id = 1563342091;
-            main.approver = "小Abor";
-            main.approval_time = new DateTime(2019,7,17);
-            main.approval_money = 99;
-            main.status = 1;
 
-            Console.WriteLine(new CostApproval().Update(main));
+            //cost_main main = new cost_main();
+            //main.id = 1563342091;
+            //main.approver = "小Abor";
+            //main.approval_time = new DateTime(2019, 7, 17);
+            //main.approval_money = 99;
+            //main.status = 1;
 
+            //Console.WriteLine(new CostApproval().Update(main));
+
+            CostPlan costPlan = new CostPlan();
+            cost_plan plan = new cost_plan();
+            plan.cost_type = "出行";
+            plan.money = 919;
+            plan.start_time = new DateTime(2011, 1, 1);
+            plan.end_time = new DateTime(2017, 1, 1);
+            costPlan.Add(plan);
             Console.ReadKey();
         }
     }
