@@ -36,8 +36,9 @@ namespace PersonInfoManage.DAL.System
         public int UpdateSysDict(int id, sys_dict sysDict)
         {
             int res = 0;
-            string sql = "updata sys_dict  set category_name=@p1 where id=id";
+            string sql = "updata sys_dict  set category_name=@p1 where id=@p2";
             SqlParameter sqlParameter = new SqlParameter("@p1", sysDict.category_name);
+            SqlParameter sqlparameter2 = new SqlParameter("@p2", id);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter);
             return res;
             //return new DBOperationsUpdate<sys_dict>().UpdateById(id, newValues);
@@ -51,7 +52,8 @@ namespace PersonInfoManage.DAL.System
         public int DeleteSysDictById(int id)
         {
             int res = 0;
-            string sql = "delete from sys_dict where id=id";
+            string sql = "delete from sys_dict where id=@p";
+            SqlParameter sqlparameter1 = new SqlParameter("@p",id);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
             return res;
             //return new DBOperationsDelete<sys_dict, DBNull>().DeleteById(id);
