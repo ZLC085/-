@@ -131,6 +131,20 @@ namespace PersonInfoManage.Test
             //    }
             //}
 
+            ///测试函数：costApproval.Update(cost_main main)
+            ///返回类型：int
+            ///测试结果：成功
+            ///参数中必需的属性:
+            ///     main:approver、approval_time、approval_money、status、id
+            cost_main main = new cost_main();
+            main.id = 1563342091;
+            main.approver = "小Abor";
+            main.approval_time = new DateTime(2019,7,17);
+            main.approval_money = 99;
+            main.status = 1;
+
+            Console.WriteLine(new CostApproval().Update(main));
+
             Console.ReadKey();
         }
     }
