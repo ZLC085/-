@@ -28,7 +28,7 @@ namespace PersonInfoManage.DAL.PersonInfo
             SqlParameter sqlParameter = new SqlParameter("@p1",file.filetype);
             SqlParameter sqlParameter1 = new SqlParameter("@p2", file.person_basic);
 
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1);
+           // res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1);
 
             return res;
             //return new DBOperationsInsert<person_file, DBNull>().Insert(file);
@@ -47,9 +47,9 @@ namespace PersonInfoManage.DAL.PersonInfo
             SqlParameter sqlParameter = new SqlParameter(newFileName, newFileName);
            
    
-            file = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter);
+            //file = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter);
 
-            return file;
+            //return file;
             //Dictionary<string, object> newValues = new Dictionary<string, object>
             //{
             //    { nameof(person_file.filename), newFileName }
