@@ -5,15 +5,67 @@ using System.Text;
 using System.Threading.Tasks;
 using PersonInfoManage.Model;
 using PersonInfoManage.DAL.Utils;
+using PersonInfoManage.DAL.System;
 using PersonInfoManage.DAL.Cost;
-
+using PersonInfoManage.DAL.Login;
 namespace PersonInfoManage.Test
 {
     class Program
     {
         static void Main(string[] args)
         {
-            CostApply apply = new CostApply();
+            //测试函数：Login.SelectLogin(user)  测试成功
+            //Login Login = new Login();
+            //sys_user user = new sys_user();
+            //user.username = "1";
+            //Console.WriteLine(Login.SelectLogin(user));
+
+            //测试函数：SysUser.add(sys_user user,int groupid)  测试成功
+            //SysUser sysuser = new SysUser();
+            //sys_user user = new sys_user();
+            //user.username = "lihua";
+            //user.name = "李华";
+            //user.password = "123456";
+            //user.gender = "男";
+            //user.job = "员工";
+            //user.phone = "18990533905";
+            //user.email = "873257742@qq.com";
+            //user.status = false;
+            //user.isdel = 0;
+            //sys_group group = new sys_group();
+            //int groupid = 11;
+            //Console.WriteLine(sysuser.add(user, groupid));
+
+            //测试函数：SysUser.Update(sys_user user,int groupid)  测试成功
+            //SysUser sysuser = new SysUser();
+            //sys_user user = new sys_user();
+            //user.username = "lihua";
+            //user.name = "李华";
+            //user.password = "123";
+            //user.gender = "男";
+            //user.job = "员工";
+            //user.phone = "18990533905";
+            //user.email = "873257742@qq.com";
+            //user.status = false;
+            //user.isdel = 0;
+            //sys_group group = new sys_group();
+            //int groupid = 11;
+            //int id = 20;
+            //Console.WriteLine(sysuser.Update(id,user, groupid));
+
+            //测试函数：SysUser.Del(id)  测试成功
+            //int id = 20;
+            //SysUser sysuser = new SysUser();
+            //Console.WriteLine(sysuser.Del(id));
+
+            //测试函数：SysUser.Selectall()  测试成功
+            //SysUser sysuser = new SysUser();
+            //Console.WriteLine(sysuser.Selectall());
+
+            //测试函数：set.SelectAllSysDict()  测试成功
+            SysSetting set = new SysSetting();
+            Console.WriteLine(set.SelectAllSysDict());
+
             ///测试函数：costApply.Add(cost_main costMain, List<cost_detail> detailList)
             ///返回类型：int
             ///测试结果：成功
@@ -146,14 +198,14 @@ namespace PersonInfoManage.Test
 
             //Console.WriteLine(new CostApproval().Update(main));
 
-            CostPlan costPlan = new CostPlan();
-            cost_plan plan = new cost_plan();
-            plan.cost_type = "出行";
-            plan.money = 919;
-            plan.start_time = new DateTime(2011, 1, 1);
-            plan.end_time = new DateTime(2017, 1, 1);
-            costPlan.Add(plan);
-            Console.ReadKey();
+            //CostPlan costPlan = new CostPlan();
+            //cost_plan plan = new cost_plan();
+            //plan.cost_type = "出行";
+            //plan.money = 919;
+            //plan.start_time = new DateTime(2011, 1, 1);
+            //plan.end_time = new DateTime(2017, 1, 1);
+            //costPlan.Add(plan);
+            //Console.ReadKey();
         }
     }
 }
