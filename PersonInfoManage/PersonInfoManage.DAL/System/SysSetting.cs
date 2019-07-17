@@ -65,21 +65,7 @@ namespace PersonInfoManage.DAL.System
         /// <returns>所有数据字典</returns>
         public List<sys_dict> SelectAllSysDict()
         {
-            sys_dict dict1 = new sys_dict();
-            List<sys_dict> dict = new List<sys_dict>();
-            DataSet ds = new DataSet();
-            string sql = "select * from sys_dict";
-            ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                dict1.id = int.Parse((string)ds.Tables[0].Rows[i][nameof(sys_dict.id)]);
-                dict1.category_name = (string)ds.Tables[0].Rows[i][nameof(sys_dict.category_name)];
-                dict1.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_dict.create_time)];
-                dict1.modify_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_dict.modify_time)];
-                dict.Add(dict1);
-            }
-            return dict;
-            //return new DBOperationsSelect<sys_dict>().SelectAll();
+            return new DBOperationsSelect<sys_dict>().SelectAll();
         }
 
         /// <summary>
@@ -89,9 +75,6 @@ namespace PersonInfoManage.DAL.System
         /// <returns>数据字典</returns>
         public List<sys_dict> SelectSysDictByConditions(Dictionary<string,object> conditions)
         {
-            
-
-
             return new DBOperationsSelect<sys_dict>().SelectByConditions(conditions);
         }
     }

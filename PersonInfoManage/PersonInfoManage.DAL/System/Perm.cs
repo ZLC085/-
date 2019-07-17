@@ -96,23 +96,23 @@ namespace PersonInfoManage.DAL.System
         public List<sys_role> SelectPermissionByConditions(string role_name,string role_sign)
         {
             DataSet ds = new DataSet();
-            string sql1 = "Select * from sys_role where role_name=@p1 or role_sign=@p2";
+            string sql1 = "Select id as 序号,role_name as 角色名称 ,role_sign as 身份标识,remark as 权限描述,create_time as 创建时间,modify_time as 修改时间 from sys_role where role_name=@p1 or role_sign=@p2";
             SqlParameter sqlparameter1 = new SqlParameter("@p1", role_name);
             SqlParameter sqlparameter2 = new SqlParameter("@p2", role_sign);
             ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql1);
-            sys_role role1 = new sys_role();
-            List<sys_role> role = new List<sys_role>();        
+            sys_role dict1 = new sys_role();
+            List<sys_role> dict = new List<sys_role>();        
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
-                role1.id = int.Parse((string)ds.Tables[0].Rows[i][nameof(sys_role.id)]);
-                role1.role_name= (string)ds.Tables[0].Rows[i][nameof(sys_role.role_name)];
-                role1.role_sign = (string)ds.Tables[0].Rows[i][nameof(sys_role.role_sign)];
-                role1.remark = (string)ds.Tables[0].Rows[i][nameof(sys_role.remark)];
-                role1.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_role.create_time)];
-                role1.modify_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_role.modify_time)];
+                dict1.id = int.Parse((string)ds.Tables[0].Rows[i][nameof(sys_role.id)]);
+                dict1. role_name= (string)ds.Tables[0].Rows[i][nameof(sys_role.role_name)];
+                dict1.role_sign = (string)ds.Tables[0].Rows[i][nameof(sys_role.role_sign)];
+                dict1.remark = (string)ds.Tables[0].Rows[i][nameof(sys_role.remark)];
+                dict1.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_role.create_time)];
+                dict1.modify_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_role.modify_time)];
             }
-            role.Add(role1);
-            return role;
+            dict.Add(dict1);
+            return dict;
 
             //return new DBOperationsSelect<sys_u2r>().SelectByConditions(conditions);
         }
