@@ -14,7 +14,7 @@ namespace PersonInfoManage.DAL.PersonInfo
     /// <summary>
     /// 相关文件管理
     /// </summary>
-    public class PersonFile
+    public class PersonFile:DALBase
     {
         /// <summary>
         /// 文件添加
@@ -42,14 +42,14 @@ namespace PersonInfoManage.DAL.PersonInfo
         /// <returns>修改条数</returns>
         public int UpdatePersonFile(int fileId, string newFileName)
         {
-            int file;
-            String sql = "update fileId set fileName = newFileName";
-            SqlParameter sqlParameter = new SqlParameter(newFileName, newFileName);
-           
-   
-            file = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter);
+            int res = 0;
+            String sql = "update personFile set fileName = @newFileName" + "where id = @id";
+            SqlParameter sqlParameter = new SqlParameter("@newFileName", fileId);
 
-            return file;
+
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter );
+
+            return res;
             //Dictionary<string, object> newValues = new Dictionary<string, object>
             //{
             //    { nameof(person_file.filename), newFileName }
@@ -65,13 +65,13 @@ namespace PersonInfoManage.DAL.PersonInfo
         /// <returns>删除条数</returns>
         public int DeletePersonFile(int fileId)
         {
-            int result;
-            String Del = "delete from person_file where id = @id";
+            int res;
+            String sql = "delete from person_file where id = @id";
             SqlParameter sqlParameter = new SqlParameter("@id", fileId);
 
-            result = SqlHelper.ExecuteNonQuery( DALBase.ConStr, CommandType.Text, Del,sqlParameter);
+            res = SqlHelper.ExecuteNonQuery( DALBase.ConStr, CommandType.Text, sql,sqlParameter);
 
-            return result;
+            return res;
             //return new DBOperationsDelete<person_file, DBNull>().DeleteById(fileId);
         }
 
@@ -82,7 +82,27 @@ namespace PersonInfoManage.DAL.PersonInfo
         /// <returns>通过输入条件查询到的文件信息</returns>
         public List<person_file> SelectPersonFilesByconditions(Dictionary<string,object> conditions)
         {
-            return new DBOperationsSelect<person_file>().SelectByConditions(conditions);
+            Dictionary<person_file,List<PersonFile>> files = new Dictionary<person_file, List<PersonFile>>();
+            person_file file = new person_file();
+            List<PersonFile> listPersonFile = new List<PersonFile>();
+
+            String sql = "select * from person_file where condition = '"+ conditions +"'";
+
+            DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+
+            file.id = int.Parse((string)ds.Tables[0].Rows[0][nameof(person_file.id)]);
+            file.person_id = int.Parse((string)ds.Tables[0].Rows[0][nameof(person_file.person_id)]);
+            file.filename = ((string)ds.Tables[0].Rows[0][nameof(person_file.filename)]);
+            file.file = ((byte[])ds.Tables[0].Rows[0][nameof(person_file.file)]);
+            file.filetype = ((string)ds.Tables[0].Rows[0][nameof(person_file.filetype)]);
+            file.create_time = ((DateTime)ds.Tables[0].Rows[0][nameof(person_file.create_time)]);
+            file.modify_time = ((DateTime)DateTime.Tables[0].Rows[0][nameof(person_file.modify_time)]);
+            file.person_basic = ((person_basic)person_basic.Tables[0].Rows[0][nameof(person_file.person_basic)]);
+
+            files.Add(file, listPersonFile);
+            return files;
+           
+            //return new DBOperationsSelect<person_file>().SelectByConditions(conditions);
         }
     }
 }
