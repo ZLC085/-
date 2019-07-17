@@ -60,8 +60,7 @@ namespace PersonInfoManage.DAL.Cost
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParmeter, sqlParmeter1, sqlParmeter2, sqlParmeter3, sqlParmeter4);
 
             return res;
-
-            //return new DBOperationsUpdate<cost_plan>().UpdateById(id, newValues);
+            
         }
 
         /// <summary>

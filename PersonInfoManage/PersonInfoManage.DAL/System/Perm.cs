@@ -25,7 +25,7 @@ namespace PersonInfoManage.DAL.System
            
 
             int res;
-            string sql1 = "Insert into sys_group(role_name,rolo_sign,remark) values(@p1,@p2,@p3)";
+            string sql1 = "Insert into sys_group(group_name,remark) values(@p1,@p2)";
             SqlParameter sqlparameter1 = new SqlParameter("@p1", group.group_name);
             SqlParameter sqlparameter2 = new SqlParameter("@p2", group.remark);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql1, sqlparameter1, sqlparameter2);       
