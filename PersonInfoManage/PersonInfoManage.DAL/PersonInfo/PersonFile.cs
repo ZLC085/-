@@ -14,7 +14,7 @@ namespace PersonInfoManage.DAL.PersonInfo
     /// <summary>
     /// 相关文件管理
     /// </summary>
-    public class PersonFile:DALBase
+    public class PersonFile
     {
         /// <summary>
         /// 文件添加
