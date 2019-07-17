@@ -11,7 +11,7 @@ namespace PersonInfoManage.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public sys_menu()
         {
-            sys_r2m = new HashSet<sys_r2m>();
+            sys_g2m = new HashSet<sys_g2m>();
         }
 
         public int id { get; set; }
@@ -31,6 +31,6 @@ namespace PersonInfoManage.Model
         public DateTime modify_time { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<sys_r2m> sys_r2m { get; set; }
+        public virtual ICollection<sys_g2m> sys_g2m { get; set; }
     }
 }
