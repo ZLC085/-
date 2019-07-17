@@ -176,9 +176,9 @@ namespace PersonInfoManage.DAL.System
                         string sql1 = "select from sys_u2r where user_id='" + user1.id + "'";
                         ds1 = SqlHelper.ExecuteDataset(connection, CommandType.Text, sql);
                         u2r.role_id = int.Parse((string)ds.Tables[0].Rows[0][nameof(sys_u2r.user_id)]);
-                        string sql2 = "select from role where id='" + u2r.role_id + "'";
+                        string sql2 = "select from sys_role where id='" + u2r.role_id + "'";
                         ds2 = SqlHelper.ExecuteDataset(connection, CommandType.Text, sql);
-                        role.id = int.Parse((string)ds.Tables[0].Rows[0][nameof(sys_role.id)]);
+                        role.role_name = (string)ds.Tables[0].Rows[0][nameof(sys_role.role_name)];
                         listrole.Add(role);
                         user.Add(user1, listrole);
                     }
@@ -200,10 +200,17 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="conditions">查询条件</param>
         /// <returns>通过用户名查询到的用户</returns>
-        public List<sys_user> SelectSysUserByConditions(Dictionary<string, object> conditions)
+        public Dictionary<sys_user, List<sys_role>> SelectSysUserByConditions(Dictionary<string, object> conditions)
         {
-            return new DBOperationsSelect<sys_user>().SelectByConditions(conditions);
+            string[] keys = new string[] { "name", "username", "gender", "phone", "job", "role_sign" };
+            Dictionary<sys_user, List<sys_role>> Dic = new Dictionary<sys_user, List<sys_role>>();
+            List<string> List = new List<string>();
+            string sql = "select * from sys_user where ";
+
+            return Dic;
+            }
+            //return new DBOperationsSelect<sys_user>().SelectByConditions(conditions);
         }
     }
-}
+
 
