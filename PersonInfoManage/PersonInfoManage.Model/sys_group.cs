@@ -6,20 +6,20 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class sys_role
+    public partial class sys_group
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public sys_role()
+        public sys_group()
         {
-            sys_r2m = new HashSet<sys_r2m>();
-            sys_u2r = new HashSet<sys_u2r>();
+            sys_g2m = new HashSet<sys_g2m>();
+            sys_u2g = new HashSet<sys_u2g>();
         }
 
         public int id { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string role_name { get; set; }
+        public string group_name { get; set; }
 
         [Required]
         [StringLength(10)]
@@ -33,9 +33,9 @@ namespace PersonInfoManage.Model
         public DateTime modify_time { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<sys_r2m> sys_r2m { get; set; }
+        public virtual ICollection<sys_g2m> sys_g2m { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<sys_u2r> sys_u2r { get; set; }
+        public virtual ICollection<sys_u2g> sys_u2g { get; set; }
     }
 }

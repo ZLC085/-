@@ -54,7 +54,7 @@ namespace PersonInfoManage
 
             if (remUserNamecheckBox.Checked)
             {
-                if (UserNameTextBox.Text == "")
+                if (UserNameTextBox.Text == string.Empty)
                 {
                     loginTipLabel.Text = "用户名不能为空！";
                     flag= false;

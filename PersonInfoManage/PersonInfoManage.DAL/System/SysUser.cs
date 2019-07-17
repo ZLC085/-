@@ -42,7 +42,7 @@ namespace PersonInfoManage.DAL.System
                 try
                 {
                     SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql, sqlparameter, sqlparameter1, sqlparameter2, sqlparameter3, sqlparameter4, sqlparameter5, sqlparameter6);
-                    //SqlParameter sqlparameter7 = new SqlParameter("@p8", user.id);
+                    SqlParameter sqlparameter7 = new SqlParameter("@p8", user.id);
                     SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql1, sqlparameter7,sqlparameter8);
                     trans.Commit();
                     return 1;
