@@ -3663,8 +3663,6 @@
         private DevComponents.DotNetBar.ButtonX btnSearchPerson;
         private DevComponents.DotNetBar.LabelX lableNation;
         private DevComponents.DotNetBar.PanelEx panelEx3;
-        private person_info_manageDataSet person_info_manageDataSet;
-        private person_info_manageDataSetTableAdapters.person_basicTableAdapter person_basicTableAdapter;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgvUserLog;
         private DevComponents.DotNetBar.PanelEx panelEx6;
         private DevComponents.DotNetBar.PanelEx panelEx5;
