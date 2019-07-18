@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PersonInfoManage.Model;
 using PersonInfoManage.DAL.Utils;
-using PersonInfoManage.DAL.Cost;
+using PersonInfoManage.DAL.System;
 
 namespace PersonInfoManage.Test
 {
