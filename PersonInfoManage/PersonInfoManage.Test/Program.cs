@@ -94,11 +94,11 @@ namespace PersonInfoManage.Test
             //group.group_name = "lisi";
             //Console.WriteLine(sysuser.SelectBy(user, group));
 
-            //测试函数：set.Insert(dict)  测试成功 
+            //测试函数：set.Add(dict)  测试成功 
             //SysSetting set = new SysSetting();
             //sys_dict dict = new sys_dict();
             //dict.category_name = "huang";
-            //Console.WriteLine(set.Insert(dict));
+            //Console.WriteLine(set.Add(dict));
 
             //测试函数：set.Update(dict)  测试成功 
             //SysSetting set = new SysSetting();
@@ -113,9 +113,9 @@ namespace PersonInfoManage.Test
             //dict.id = 8;
             //Console.WriteLine(set.Del(dict));
 
-            //测试函数：set.SelectAllSysDict()  测试成功
+            //测试函数：set.SelectAll()  测试成功
             //SysSetting set = new SysSetting();
-            //Console.WriteLine(set.SelectAllSysDict());
+            //Console.WriteLine(set.SelectAll());
 
             //CostApply apply = new CostApply();
 
