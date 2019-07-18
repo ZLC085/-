@@ -84,7 +84,7 @@ namespace PersonInfoManage.Test
             //SysSetting set = new SysSetting();
             //Console.WriteLine(set.SelectAllSysDict());
 
-            //CostApply apply = new CostApply();
+            CostApply apply = new CostApply();
 
             ///测试函数：costApply.Add(cost_main costMain, List<cost_detail> detailList)
             ///返回类型：int
@@ -288,17 +288,17 @@ namespace PersonInfoManage.Test
 
             ///测试函数：costPlan.Query(Dictionary<string, object> conditions)
             ///返回类型：List<cost_plan> 
-            ///测试结果：
+            ///测试结果：成功
             ///参数中必需的属性:
             ///     conditions：条件键值对词典  key建议是"start_time", "end_time", "cost_type", "id"其中的，否则无效
 
-            Dictionary<string, object> conditions = new Dictionary<string, object>();
-            conditions.Add("cost_type","餐饮");
-            List<cost_plan> listPlan = new CostPlan().Query(conditions);
-            foreach(cost_plan plan in listPlan)
-            {
-                Console.WriteLine(plan.id+" "+plan.cost_type+" "+plan.start_time+" "+plan.end_time+" "+plan.money);
-            }
+            //Dictionary<string, object> conditions = new Dictionary<string, object>();
+            //conditions.Add("cost_type","餐饮");
+            //List<cost_plan> listPlan = new CostPlan().Query(conditions);
+            //foreach(cost_plan plan in listPlan)
+            //{
+            //    Console.WriteLine(plan.id+" "+plan.cost_type+" "+plan.start_time+" "+plan.end_time+" "+plan.money);
+            //}
             Console.ReadKey();
 
         }

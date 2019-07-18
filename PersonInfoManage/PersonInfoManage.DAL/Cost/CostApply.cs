@@ -275,7 +275,7 @@ namespace PersonInfoManage.DAL.Cost
             Dictionary<cost_main, List<cost_detail>> retDic = new Dictionary<cost_main, List<cost_detail>>();
             List<string> keyList = new List<string>();
 
-            string sql = "select * from cost_main where ";
+            
             foreach (string key in conditions.Keys)
             {   //对参数进行合法性检验
                 if (!keys.Contains<string>(key))
@@ -287,27 +287,33 @@ namespace PersonInfoManage.DAL.Cost
                 }
                 
             }
+            string sql = "select * from cost_main ";
+            if (keyList.Count != 0)
+            {
+                sql += "where ";
+                foreach (string key in keyList)
+                {   //根据参数列表，拼接sql语句
+                    if (!key.Equals(keyList.First()))
+                    {
+                        sql += "and ";
+                    }
+                    if (key.Equals("start_time"))
+                    {
+                        sql += " apply_time>='" + conditions["start_time"] + "'";
+                    }
+                    else if (key.Equals("end_time"))
+                    {
+                        sql += " apply_time<='" + conditions["end_time"] + "'";
+                    }
+                    else
+                    {   //增加对中文的支持
+                        sql += " " + key + " like N'%" + conditions[key] + "%'";
+                    }
 
-            foreach (string key in keyList)
-            {   //根据参数列表，拼接sql语句
-                if (!key.Equals(keyList.First()))
-                {
-                    sql += "and ";
                 }
-                if (key.Equals("start_time"))
-                {
-                    sql += " apply_time>='" + conditions["start_time"]+"'";
-                }
-                else if (key.Equals("end_time"))
-                {
-                    sql += " apply_time<='" + conditions["end_time"]+ "'";
-                }
-                else
-                {   //增加对中文的支持
-                    sql += " " + key + " like N'%" + conditions[key] + "%'";
-                }
-
             }
+
+            
             DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
             for(int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
