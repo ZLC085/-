@@ -18,18 +18,19 @@ namespace PersonInfoManage.DAL.Cost
         /// <summary>
         /// 添加费用单
         /// </summary>
-        /// <param name="costMain">费用单</param>
-        /// <param name="detailList">费用明细</param>
-        /// <returns>插入条数</returns>
+        /// <param name="costMain">费用单对象cost_main：applicant、apply_money、apply_time</param>
+        /// <param name="detailList">费用类型明细列表cost_detail:cost_type、money</param>
+        /// <returns>数据表受影响的行数</returns>
         public int Add(cost_main costMain, List<cost_detail> detailList)
         {
-            int res = 0;
+            //先构造所有的sql语句
             string[] sqlArray = new string[1 + detailList.Count];
+            //先构造插入cost_main表的语句
             int timeStamp = TimeTools.Timestamp();
-            costMain.id = timeStamp;
+            costMain.id = timeStamp;//主键(费用单id)是时间戳
+            costMain.approval_money = 0;
             sqlArray[0] = ConditionsToSql<cost_main>.InsertSql(costMain);
-
-            
+            //再构造插入cost_detail表语句
             int count = 0;
             foreach(cost_detail detail in detailList)
             {
@@ -37,54 +38,24 @@ namespace PersonInfoManage.DAL.Cost
                 sqlArray[count + 1] = ConditionsToSql<cost_detail>.InsertSql(detail);
                 count++;
             }
-
-            SqlConnection conn = new SqlConnection(ConStr);
-            SqlCommand command = new SqlCommand();
-            SqlTransaction tran = null;
-            try
-            {
-                conn.Open();
-                tran = conn.BeginTransaction();
-                command.Transaction = tran;
-                command.Connection = conn;
-
-                foreach (string sql in sqlArray)
-                {
-                    command.CommandType = CommandType.Text;
-                    command.CommandText = sql;
-                    command.ExecuteNonQuery();
-                    res++;
-                }
-                tran.Commit();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                tran.Rollback();
-                return 0;
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return res;            
+            //调用方法以事务方式执行sql数组里的语句
+            return sqlArrayToTran.doTran(sqlArray);            
         }
         /// <summary>
         /// 更新费用单信息
         /// </summary>
-        /// <param name="costMain">费用单</param>
-        /// <param name="detailList">费用详情列表</param>
-        /// <returns>更新记录的行数</returns>
+        /// <param name="costMain">费用单对象cost_main：id、apply_money</param>
+        /// <param name="detailList">费用类型明细列表cost_detail:cost_type、money</param>
+        /// <returns>数据表受影响的行数</returns>
         public int Update(cost_main costMain, List<cost_detail> detailList)
         {
-            int res = 0;
-
+            //构造sql语句数组
             string[] sqlArray = new string[2+detailList.Count];
             //先更新cost_main表
             sqlArray[0]= "update cost_main set " +
                 nameof(cost_main.apply_money) + "=" + costMain.apply_money +
                 " where id='" + costMain.id + "'";
-            //在删除cost_detail表数据
+            //再删除cost_detail表数据
             sqlArray[1] = "delete from cost_detail where "+nameof(cost_detail.cost_id)+"='"+costMain.id+"'";
             //再插入cost_detail表数据
             int count = 1;
@@ -94,90 +65,30 @@ namespace PersonInfoManage.DAL.Cost
                 sqlArray[count + 1] = ConditionsToSql<cost_detail>.InsertSql(detail);
                 count++;
             }
-            foreach (string str in sqlArray)
-            {
-                Console.WriteLine(str);
-            }
-            SqlConnection conn = new SqlConnection(ConStr);
-            SqlCommand command = new SqlCommand();
-            SqlTransaction tran = null;
-            try
-            {
-                conn.Open();
-                tran = conn.BeginTransaction();
-                command.Transaction = tran;
-                command.Connection = conn;
-
-                foreach (string sql in sqlArray)
-                {
-                    command.CommandType = CommandType.Text;
-                    command.CommandText = sql;
-                    res += command.ExecuteNonQuery();
-
-                }
-                tran.Commit();
-            }
-            catch (Exception ex)
-            {
-               Console.WriteLine(ex.Message);
-                tran.Rollback();
-                return 0;
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return res;            
+            //调用方法以事务方式执行sql数组里的语句
+            return sqlArrayToTran.doTran(sqlArray);            
         }
         /// <summary>
         /// 撤销费用单
         /// </summary>
-        /// <param name="costMain">费用单</param>
-        /// <returns>删除记录数</returns>
+        /// <param name="costMain">费用单对象cost_main：id</param>
+        /// <returns>数据表受影响的行数</returns>
         public int Del(cost_main costMain)
         {
-            int res = 0;
+            //构造sql语句数组
             string[] sqlArray = new string[2];
-            sqlArray[1] = "delete from cost_main where id='"+costMain.id+"'";
+            //先删除费用类型表记录
             sqlArray[0] = "delete from cost_detail where "+nameof(cost_detail.cost_id)+"="+costMain.id;
-
-            SqlConnection conn = new SqlConnection(ConStr);
-            SqlCommand command = new SqlCommand();
-            SqlTransaction tran = null;
-            try
-            {
-                conn.Open();
-                tran = conn.BeginTransaction();
-                command.Transaction = tran;
-                command.Connection = conn;
-
-                foreach (string sql in sqlArray)
-                {
-                    command.CommandType = CommandType.Text;
-                    command.CommandText = sql;
-                    res += command.ExecuteNonQuery();
-                    
-                }
-                tran.Commit();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                tran.Rollback();
-                return 0;
-            }
-            finally
-            {
-                conn.Close();
-            }
-            return res;
-            //return new DBOperationsDelete<cost_main, cost_detail>().DeleteTransaction(nameof(cost_detail.cost_id), costId);
+            //再删除费用单表记录
+            sqlArray[1] = "delete from cost_main where id='" + costMain.id + "'";
+            //调用方法以事务方式执行sql数组里的语句
+            return sqlArrayToTran.doTran(sqlArray);            
         }
         /// <summary>
-        /// 费用单查询，通过费用单编号
+        /// 通过费用单编号查询费用单详情
         /// </summary>
         /// <param name="id">费用单编号</param>
-        /// <returns>通过费用单编号查询到的费用单</returns>
+        /// <returns>费用单对象与费用详情对象列表构成的词典键值对</returns>
         public Dictionary<cost_main, List<cost_detail>> GetById(int id)
         {
             Dictionary<cost_main, List<cost_detail>> bills = new Dictionary<cost_main, List<cost_detail>>();
@@ -193,7 +104,11 @@ namespace PersonInfoManage.DAL.Cost
             main.applicant = (string)ds1.Tables[0].Rows[0][nameof(cost_main.applicant)];
             main.approver = (string)ds1.Tables[0].Rows[0][nameof(cost_main.approver)];
             main.apply_time = (DateTime)ds1.Tables[0].Rows[0][nameof(cost_main.apply_time)];
-            main.approval_time = (DateTime)ds1.Tables[0].Rows[0][nameof(cost_main.approval_time)];
+            //判断approval_time单元格是否为null
+            if (ds1.Tables[0].Rows[0][nameof(cost_main.approval_time)] != DBNull.Value)
+                main.approval_time = (DateTime)ds1.Tables[0].Rows[0][nameof(cost_main.approval_time)];
+            else
+                main.approval_time = null;
             main.apply_money = (decimal)ds1.Tables[0].Rows[0][nameof(cost_main.apply_money)];
             main.approval_money = (decimal)ds1.Tables[0].Rows[0][nameof(cost_main.approval_money)];
             main.status =(byte)ds1.Tables[0].Rows[0][nameof(cost_main.status)];
@@ -211,11 +126,11 @@ namespace PersonInfoManage.DAL.Cost
             }
             bills.Add(main, listDetail);
             return bills;
-        }        
+        }
         /// <summary>
         /// 查询所有费用单
         /// </summary>
-        /// <returns>费用单的词典</returns>
+        /// <returns>费用单对象与费用详情对象列表构成的词典键值对</returns>
         public Dictionary<cost_main, List<cost_detail>> Query()
         {
             Dictionary<cost_main, List<cost_detail>> bills = new Dictionary<cost_main, List<cost_detail>>();
@@ -233,7 +148,11 @@ namespace PersonInfoManage.DAL.Cost
                 main.applicant = (string)ds1.Tables[0].Rows[i][nameof(cost_main.applicant)];
                 main.approver = (string)ds1.Tables[0].Rows[i][nameof(cost_main.approver)];
                 main.apply_time = (DateTime)ds1.Tables[0].Rows[i][nameof(cost_main.apply_time)];
-                main.approval_time = (DateTime)ds1.Tables[0].Rows[i][nameof(cost_main.approval_time)];
+                //判断approval_time单元格是否为null
+                if (ds1.Tables[0].Rows[i][nameof(cost_main.approval_time)] != DBNull.Value)
+                    main.approval_time = (DateTime)ds1.Tables[0].Rows[i][nameof(cost_main.approval_time)];
+                else
+                    main.approval_time = null;
                 main.apply_money = (decimal)ds1.Tables[0].Rows[i][nameof(cost_main.apply_money)];
                 main.approval_money = (decimal)ds1.Tables[0].Rows[i][nameof(cost_main.approval_money)];
                 main.status = (byte)ds1.Tables[0].Rows[i][nameof(cost_main.status)];
@@ -257,10 +176,10 @@ namespace PersonInfoManage.DAL.Cost
             return bills;
         }
         /// <summary>
-        /// 根据条件查询费用单
+        /// 根据组合条件查询费用单
         /// </summary>
-        /// <param name="consitions">条件键值对</param>
-        /// <returns>返回费用单和费用单细节的键值对</returns>
+        /// <param name="consitions">条件键值对key: "id", "applicant", "status", "start_time", "end_time"</param>
+        /// <returns>费用单对象与费用详情对象列表构成的词典键值对</returns>
         public Dictionary<cost_main, List<cost_detail>> Query(Dictionary<string, object> conditions)
         {
             string[] keys = new string[] {"id", "applicant", "status", "start_time", "end_time" };
@@ -270,14 +189,9 @@ namespace PersonInfoManage.DAL.Cost
             
             foreach (string key in conditions.Keys)
             {   //对参数进行合法性检验
-                if (!keys.Contains<string>(key))
-                {
-                    continue;
-                }else
-                {
+                if (keys.Contains(key))
                     keyList.Add(key);
-                }
-                
+
             }
             string sql = "select * from cost_main ";
             if (keyList.Count != 0)
@@ -314,7 +228,11 @@ namespace PersonInfoManage.DAL.Cost
                 main.applicant = (string)ds.Tables[0].Rows[i][nameof(cost_main.applicant)];
                 main.approver = (string)ds.Tables[0].Rows[i][nameof(cost_main.approver)];
                 main.apply_time = (DateTime)ds.Tables[0].Rows[i][nameof(cost_main.apply_time)];
-                main.approval_time = (DateTime)ds.Tables[0].Rows[i][nameof(cost_main.approval_time)];
+                //判断approval_time单元格是否为null
+                if (ds.Tables[0].Rows[i][nameof(cost_main.approval_time)] != DBNull.Value)
+                    main.approval_time = (DateTime)ds.Tables[0].Rows[i][nameof(cost_main.approval_time)];
+                else
+                    main.approval_time = null;
                 main.apply_money = (decimal)ds.Tables[0].Rows[i][nameof(cost_main.apply_money)];
                 main.approval_money = (decimal)ds.Tables[0].Rows[i][nameof(cost_main.approval_money)];
                 main.status = (byte)ds.Tables[0].Rows[i][nameof(cost_main.status)];
