@@ -25,8 +25,6 @@ namespace PersonInfoManage.DAL.Cost
         {
             int res = 0;
             string[] sqlArray = new string[1 + detailList.Count];
-            costMain.approval_time = new DateTime(1754, 01, 01);
-            costMain.approval_money = 0;
             int timeStamp = TimeTools.Timestamp();
             costMain.id = timeStamp;
             sqlArray[0] = ConditionsToSql<cost_main>.InsertSql(costMain);
