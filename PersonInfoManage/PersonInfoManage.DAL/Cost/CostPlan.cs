@@ -18,7 +18,7 @@ namespace PersonInfoManage.DAL.Cost
     {
         /// <summary>
         /// 费用规划添加
-        /// </summary>
+        /// </summary>  
         /// <param name="plan">费用规划</param>
         /// <returns>添加条数</returns>
         public int Add(cost_plan plan)
@@ -40,7 +40,6 @@ namespace PersonInfoManage.DAL.Cost
             return res;
             //return new DBOperationsInsert<cost_plan, DBNull>().Insert(plan);
         }
-
         /// <summary>
         /// 费用规划修改
         /// </summary>
@@ -60,9 +59,8 @@ namespace PersonInfoManage.DAL.Cost
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParmeter, sqlParmeter1, sqlParmeter2, sqlParmeter3, sqlParmeter4);
 
             return res;
-            
-        }
 
+        }
         /// <summary>
         /// 费用规划删除，通过费用规划id
         /// </summary>
@@ -81,18 +79,11 @@ namespace PersonInfoManage.DAL.Cost
 
             //return new DBOperationsDelete<cost_plan, DBNull>().DeleteById(costPlanId);
         }
-
-
-        //public List<cost_plan> SelectCostPlanByConditions(Dictionary<string, object> conditions)
-        //{
-        //return new DBOperationsSelect<cost_plan>().SelectByConditions(conditions);
-        //}
-
-       /// <summary>
-       /// 费用规划检索，根据id
-       /// </summary>
-       /// <param name="id">费用规划表id</param>
-       /// <returns></returns>
+        /// <summary>
+        /// 费用规划检索，根据id
+        /// </summary>
+        /// <param name="id">费用规划表id</param>
+        /// <returns></returns>
         public List<cost_plan> GetById(int id)
         {
             List<cost_plan> Listplan = new List<cost_plan>();
@@ -110,16 +101,10 @@ namespace PersonInfoManage.DAL.Cost
 
             return Listplan;
         }
-
         /// <summary>
         /// 费用规划检索，所有
         /// </summary>
         /// <returns>费用规划</returns>
-        //public List<cost_plan> SelectAllCostPlan()
-        //{
-        //return new DBOperationsSelect<cost_plan>().SelectAll();
-        //}
-
         public List<cost_plan> Query()
         {
             List<cost_plan> Listplan = new List<cost_plan>();
@@ -139,6 +124,58 @@ namespace PersonInfoManage.DAL.Cost
                 Listplan.Add(plan);
             }
             return Listplan;
+        }
+        /// <summary>
+        /// 费用规划检索，根据组合条件
+        /// </summary>
+        /// <param name="conditions">组合条件词典</param>
+        /// <returns>费用规划列表</returns>
+        public List<cost_plan> Query(Dictionary<string, object> conditions)
+        {
+            string[] keys = new string[] { "start_time", "end_time", "cost_type", "id" };
+            List<cost_plan> retList = new List<cost_plan>();
+            List<string> listKey = new List<string>();
+            foreach (string key in conditions.Keys)
+            {
+                if (keys.Contains(key))
+                {
+                    listKey.Add(key);
+                }
+
+            }
+            string sql = "select * from cost_plan where ";
+            foreach (string key in listKey)
+            {
+                if (!key.Equals(listKey.First()))
+                {
+                    sql += " and ";
+                }
+                if (key.Equals("start_time"))
+                {
+                    sql += " start_time >='" + conditions[key] + "'";
+                }
+                else if (key.Equals("end_time"))
+                {
+                    sql += " end_time<='" + conditions[key] + "'";
+                }
+                else
+                {
+                    sql += " " + key + " like '%" + conditions[key] + "%'";
+                }
+            }
+            DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+            DataTable dt = ds.Tables[0];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                cost_plan plan = new cost_plan();
+                plan.id = (int)dt.Rows[i]["id"];
+                plan.cost_type = (string)dt.Rows[i]["cost_type"];
+                plan.start_time = (DateTime)dt.Rows[i]["start_time"];
+                plan.end_time = (DateTime)dt.Rows[i]["end_time"];
+                retList.Add(plan);
+            }
+
+            return retList;
         }
     }
 }
