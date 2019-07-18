@@ -46,7 +46,7 @@ namespace PersonInfoManage.DAL.Cost
                 }
                 else
                 {
-                    sql += " " + key + " like '%" + conditions[key] + "%'";
+                    sql += " " + key + " like N'%" + conditions[key] + "%'";
                 }
             }
             DataTable dt = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0];
