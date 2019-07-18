@@ -21,10 +21,6 @@ namespace PersonInfoManage.Model
         [StringLength(50)]
         public string group_name { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string role_sign { get; set; }
-
         [StringLength(100)]
         public string remark { get; set; }
 

@@ -11,6 +11,7 @@ namespace PersonInfoManage.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public person_basic()
         {
+            businesses = new HashSet<business>();
             person_file = new HashSet<person_file>();
         }
 
@@ -82,6 +83,9 @@ namespace PersonInfoManage.Model
         public int user_id { get; set; }
 
         public int isdel { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<business> businesses { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<person_file> person_file { get; set; }

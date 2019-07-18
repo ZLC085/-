@@ -16,11 +16,13 @@ namespace PersonInfoManage.DAL.System
         /// 添加数据字典
         /// </summary>
         /// <param name="sysDict">数据字典</param>
-        /// <returns></returns>
-        public int Insert(sys_dict sysDict)
+        /// <returns>
+        /// 返回修改条数
+        /// </returns>
+        public int Add(sys_dict sysDict)
         {
             int res = 0;
-            string sql = "insert into sys_dict (category_name) values(@p1)";
+            string sql = "insert into sys_dict (category_name,create_time,modify_time) values(@p1,getdate(),getdate())";
             SqlParameter sqlParameter = new SqlParameter("@p1", sysDict.category_name);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter);
             return res;
@@ -28,20 +30,20 @@ namespace PersonInfoManage.DAL.System
         }
 
         /// <summary>
-        /// 根据id数据字典修改
+        /// 根据id进行数据字典修改
         /// </summary>
         /// <param name="id">id</param>
         /// <param name="newValues">需要更新的值</param>
         /// <returns>修改条数</returns>
-        public int Update(int id, sys_dict sysDict)
+        public int Update(sys_dict sysDict)
         {
             int res = 0;
             SqlParameter sqlParameter = new SqlParameter("@p1", sysDict.category_name);
-            SqlParameter sqlparameter2 = new SqlParameter("@p2", id);
-            string sql = "updata sys_dict set category_name=@p1 where id=@p2";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter);
+            SqlParameter sqlparameter2 = new SqlParameter("@p2", sysDict.id);
+            string sql = "update sys_dict set category_name = @p1 where id = @p2";
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlparameter2);
             return res;
-            //return new DBOperationsUpdate<sys_dict>().UpdateById(id, newValues);
+            
         }
 
         /// <summary>
@@ -49,14 +51,14 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="id">数据字典id</param>
         /// <returns>删除条数</returns>
-        public int Del(int id)
+        public int Del(sys_dict sysDict)
         {
             int res = 0;
             string sql = "delete from sys_dict where id=@p";
-            SqlParameter sqlparameter1 = new SqlParameter("@p", id);
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            SqlParameter sqlparameter1 = new SqlParameter("@p", sysDict.id);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter1);
             return res;
-            //return new DBOperationsDelete<sys_dict, DBNull>().DeleteById(id);
+           
         }
 
         /// <summary>
