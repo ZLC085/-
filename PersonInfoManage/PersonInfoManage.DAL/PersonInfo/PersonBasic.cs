@@ -217,7 +217,7 @@ namespace PersonInfoManage.DAL.PersonInfo
 
         /// 根据条件对人员信息检索
         /// </summary>
-        /// <param name="conditions">输入的条件</param>
+        /// <param name="info">输入的条件</param>
         /// <returns>人员信息</returns>
         public List<person_basic> QueryByCond(person_basic info)
         //public List<person_basic> QueryByConditions(Dictionary<string, object> conditions)
@@ -227,14 +227,29 @@ namespace PersonInfoManage.DAL.PersonInfo
             try
             {
                 // sql语句
-                string sql = "select * from person_basic where name = @name and identity_number = @identity_number";
-                // 参数赋值
-                SqlParameter name = new SqlParameter("@name", info.name);
-                SqlParameter identity_number = new SqlParameter("@identity_number", info.identity_number);
+                string sql = "select * from person_basic where isdel = 1 ";
+                //所有文本框的值
+                List<SqlParameter> sqlPara = new List<SqlParameter>();
+                // 判断参数
+                if (!string.IsNullOrEmpty(info.name)) // name
+                {
+                    sql += " and name like @name";
+                    sqlPara.Add(new SqlParameter("@name", "%" + info.name + "%"));
+                }
+                if (!string.IsNullOrEmpty(info.identity_number)) // identity_number
+                {
+                    sql += " and identity_number like @identity_number";
+                    sqlPara.Add(new SqlParameter("@identity_number", "%" + info.identity_number + "%"));
+                }
+                if (!string.IsNullOrEmpty(info.city)) // city
+                {
+                    sql += " and city like @city";
+                    sqlPara.Add(new SqlParameter("@city", "%" + info.city + "%"));
+                }
 
                 DataSet ds = new DataSet();
                 // 执行sql语句并返回数据集
-                ds = SqlHelper.ExecuteDataset(conStr, CommandType.Text, sql, name, identity_number);
+                ds = SqlHelper.ExecuteDataset(conStr, CommandType.Text, sql, sqlPara.ToArray());
                 // 遍历表中的行
                 foreach (DataRow dr in ds.Tables[0].Rows)
                 {

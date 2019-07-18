@@ -17,8 +17,33 @@ namespace PersonInfoManage.Test
             //测试函数：Login.SelectLogin(user)  测试成功
             //Login Login = new Login();
             //sys_user user = new sys_user();
-            //user.username = "1";
+            //user.name = "lihua";
             //Console.WriteLine(Login.SelectLogin(user));
+
+            //测试函数：perm.add(group)  测试成功
+            //Perm perm = new Perm();
+            //sys_group group = new sys_group();
+            //group.group_name = "admin";
+            //group.remark = "all";
+            //Console.WriteLine(perm.add(group));
+
+            //测试函数:perm.Update(group_id,grouplist) 测试成功
+            //Perm perm = new Perm();
+            //int group_id = 14;
+            //string[] temp = { "per", "cost", "sys"};
+            //List<string> grouplist = new List<string>(temp);
+            //Console.WriteLine(perm.Update(group_id,grouplist));
+
+            //测试函数：perm.Del(group_id) 测试成功
+            //Perm perm = new Perm();
+            //int group_id = 13;
+            //Console.WriteLine(perm.Del(group_id));
+
+            //测试函数：perm.Selectgroup(group) 测试成功
+            //Perm perm = new Perm();
+            //sys_group group = new sys_group();
+            //group.group_name = "lisi";
+            //Console.WriteLine(perm.Selectgroup(group));
 
             //测试函数：SysUser.add(sys_user user,int groupid)  测试成功
             //SysUser sysuser = new SysUser();
@@ -62,11 +87,37 @@ namespace PersonInfoManage.Test
             //SysUser sysuser = new SysUser();
             //Console.WriteLine(sysuser.Selectall());
 
+            //测试函数：sysuser.SelectBy(user, group） 测试成功 
+            //SysUser sysuser = new SysUser();
+            //sys_user user = new sys_user();
+            //sys_group group = new sys_group();
+            //group.group_name = "lisi";
+            //Console.WriteLine(sysuser.SelectBy(user, group));
+
+            //测试函数：set.Insert(dict)  测试成功 
+            //SysSetting set = new SysSetting();
+            //sys_dict dict = new sys_dict();
+            //dict.category_name = "huang";
+            //Console.WriteLine(set.Insert(dict));
+
+            //测试函数：set.Update(dict)  测试成功 
+            //SysSetting set = new SysSetting();
+            //sys_dict dict = new sys_dict();
+            //dict.category_name = "du";
+            //dict.id = 8;
+            //Console.WriteLine(set.Update(dict));
+
+            //测试函数：set.Del(dict)  测试成功 
+            //SysSetting set = new SysSetting();
+            //sys_dict dict = new sys_dict();
+            //dict.id = 8;
+            //Console.WriteLine(set.Del(dict));
+
             //测试函数：set.SelectAllSysDict()  测试成功
             //SysSetting set = new SysSetting();
             //Console.WriteLine(set.SelectAllSysDict());
 
-            CostApply apply = new CostApply();
+            //CostApply apply = new CostApply();
 
             ///测试函数：costApply.Add(cost_main costMain, List<cost_detail> detailList)
             ///返回类型：int
@@ -267,37 +318,41 @@ namespace PersonInfoManage.Test
             //    Console.WriteLine(plan.id + "  " + plan.cost_type + "  " + plan.start_time + "  " + plan.end_time + "  " + plan.money);
             //}
 
-            ///测试函数：CostStatistic.GetById(int id)
-            ///返回类型：Dictionary<cost_main, List<cost_detail>>
-            ///测试结果：
-            ///参数中必需的属性:
-            ///     id：费用单id
 
-            //Dictionary<cost_main, List<cost_detail>> dic = new CostStatistic().GetById(1563342091);
-            //foreach (cost_main cm in dic.Keys)
+            ///测试函数：costPlan.Query(Dictionary<string, object> conditions)
+            ///返回类型：List<cost_plan> 
+            ///测试结果：成功
+            ///参数中必需的属性:
+            ///     conditions：条件键值对词典  key建议是"start_time", "end_time", "cost_type", "id"其中的，否则无效
+
+            //Dictionary<string, object> conditions = new Dictionary<string, object>();
+            //conditions.Add("cost_type","餐饮");
+            //List<cost_plan> listPlan = new CostPlan().Query(conditions);
+            //foreach(cost_plan plan in listPlan)
             //{
-            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approval_time);
-            //    foreach (cost_detail cd in dic[cm])
-            //    {
-            //        Console.WriteLine("\t"+cd.id + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
-            //    }
+            //Console.WriteLine(plan.id+" "+plan.cost_type+" "+plan.start_time+" "+plan.end_time+" "+plan.money);
             //}
 
-            ///测试函数：CostStatistic.Query()
-            ///返回类型：Dictionary<cost_main, List<cost_detail>>
-            ///测试结果：
+            ///测试函数：CostStastic.Query(Dictionary<string, object> conditions)
+            ///返回类型：Dictionary<cost_main, List<cost_detail>> 
+            ///测试结果：成功
             ///参数中必需的属性:
-            ///     无
-            Dictionary<cost_main, List<cost_detail>> dic = new CostStatistic().Query();
-            foreach (cost_main cm in dic.Keys)
-            {
-                Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approval_time);
-                foreach (cost_detail cd in dic[cm])
-                {
-                    Console.WriteLine("\t" + cd.id + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
-                }
-            }
+            ///     conditions：条件键值对词典  key建议是"start_time", "end_time", "applicant"其中的，否则无效
 
+            Dictionary<string, object> conditions = new Dictionary<string, object>();
+            //conditions.Add("applicant", "小明");
+            conditions.Add("start_time", new DateTime(2017, 1, 1));
+            //conditions.Add("end_time",new DateTime(2020,1,1));
+            Dictionary<cost_main, List<cost_detail>> retDic = new CostStatistic().Query(conditions);
+            foreach (cost_main main in retDic.Keys)
+            {
+                Console.WriteLine(main.applicant+" "+main.approval_time);
+                foreach (cost_detail detail in retDic[main])
+                {
+                    Console.WriteLine("\t"+detail.cost_id + " " + detail.cost_type + " " + detail.money);
+                }
+               
+            }
             Console.ReadKey();
 
         }
