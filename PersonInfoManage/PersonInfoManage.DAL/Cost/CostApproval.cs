@@ -14,7 +14,7 @@ namespace PersonInfoManage.DAL.Cost
     /// 费用审批
     /// </summary>
     public class CostApproval:DALBase
-    {
+    { //000
         /// <summary>
         /// 费用审批添加/修改 添加/修改审批金额、审批状态（待审批，通过，驳回）以及审批意见
         /// </summary>
