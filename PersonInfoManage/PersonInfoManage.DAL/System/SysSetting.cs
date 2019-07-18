@@ -36,7 +36,7 @@ namespace PersonInfoManage.DAL.System
         public int UpdateSysDict(int id, sys_dict sysDict)
         {
             int res = 0;
-            string sql = "updata sys_dict  set category_name=@p1 where id=@p2";
+            string sql = "update sys_dict  set category_name = @p1 where id = @p2";
             SqlParameter sqlParameter = new SqlParameter("@p1", sysDict.category_name);
             SqlParameter sqlparameter2 = new SqlParameter("@p2", id);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter);
@@ -54,7 +54,7 @@ namespace PersonInfoManage.DAL.System
             int res = 0;
             string sql = "delete from sys_dict where id=@p";
             SqlParameter sqlparameter1 = new SqlParameter("@p",id);
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql,sqlparameter1);
             return res;
             //return new DBOperationsDelete<sys_dict, DBNull>().DeleteById(id);
         }
@@ -72,27 +72,16 @@ namespace PersonInfoManage.DAL.System
             ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
-                dict1.id = int.Parse((string)ds.Tables[0].Rows[i][nameof(sys_dict.id)]);
+                dict1.id = (int)ds.Tables[0].Rows[i][nameof(sys_dict.id)];
                 dict1.category_name = (string)ds.Tables[0].Rows[i][nameof(sys_dict.category_name)];
                 dict1.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_dict.create_time)];
                 dict1.modify_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_dict.modify_time)];
                 dict.Add(dict1);
             }
             return dict;
-            //return new DBOperationsSelect<sys_dict>().SelectAll();
-        }
-
-        /// <summary>
-        /// 通过输入条件检索数据字典
-        /// </summary>
-        /// <param name="conditions">输入条件</param>
-        /// <returns>数据字典</returns>
-        public List<sys_dict> SelectSysDictByConditions(Dictionary<string,object> conditions)
-        {
             
-
-
-            return new DBOperationsSelect<sys_dict>().SelectByConditions(conditions);
         }
+
+       
     }
 }
