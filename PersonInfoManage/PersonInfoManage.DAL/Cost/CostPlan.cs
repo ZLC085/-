@@ -161,7 +161,7 @@ namespace PersonInfoManage.DAL.Cost
                 }
                 else
                 {
-                    sql += " " + key + " like '%" + conditions[key] + "%'";
+                    sql += " " + key + " like N'%" + conditions[key] + "%'";
                 }
             }
             Console.WriteLine(sql);
