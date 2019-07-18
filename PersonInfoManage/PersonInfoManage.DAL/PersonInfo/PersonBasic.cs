@@ -227,12 +227,7 @@ namespace PersonInfoManage.DAL.PersonInfo
             try
             {
                 // sql语句
-                //string sql = "select * from person_basic where name = @name and identity_number = @identity_number";
                 string sql = "select * from person_basic where isdel = 1 ";
-                // 参数赋值
-                //SqlParameter name = new SqlParameter("@name", info.name);
-                //SqlParameter identity_number = new SqlParameter("@identity_number", info.identity_number);
-
                 //所有文本框的值
                 List<SqlParameter> sqlPara = new List<SqlParameter>();
                 // 判断参数
