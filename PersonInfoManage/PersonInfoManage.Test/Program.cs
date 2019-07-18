@@ -20,6 +20,17 @@ namespace PersonInfoManage.Test
             //user.username = "1";
             //Console.WriteLine(Login.SelectLogin(user));
 
+            //测试函数：perm.Del(group_id) 测试成功
+            //Perm perm = new Perm();
+            //int group_id = 13;
+            //Console.WriteLine(perm.Del(group_id));
+
+            //测试函数：perm.Selectgroup(group) 测试成功
+            //Perm perm = new Perm();
+            //sys_group group = new sys_group();
+            //group.group_name = "lisi";
+            //Console.WriteLine(perm.Selectgroup(group));
+
             //测试函数：SysUser.add(sys_user user,int groupid)  测试成功
             //SysUser sysuser = new SysUser();
             //sys_user user = new sys_user();
@@ -66,7 +77,7 @@ namespace PersonInfoManage.Test
             //SysSetting set = new SysSetting();
             //Console.WriteLine(set.SelectAllSysDict());
 
-            CostApply apply = new CostApply();
+            //CostApply apply = new CostApply();
 
             ///测试函数：costApply.Add(cost_main costMain, List<cost_detail> detailList)
             ///返回类型：int
@@ -288,17 +299,17 @@ namespace PersonInfoManage.Test
             ///测试结果：
             ///参数中必需的属性:
             ///     无
-            Dictionary<cost_main, List<cost_detail>> dic = new CostStatistic().Query();
-            foreach (cost_main cm in dic.Keys)
-            {
-                Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approval_time);
-                foreach (cost_detail cd in dic[cm])
-                {
-                    Console.WriteLine("\t" + cd.id + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
-                }
-            }
+            //Dictionary<cost_main, List<cost_detail>> dic = new CostStatistic().Query();
+            //foreach (cost_main cm in dic.Keys)
+            //{
+            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approval_time);
+            //    foreach (cost_detail cd in dic[cm])
+            //    {
+            //        Console.WriteLine("\t" + cd.id + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
+            //    }
+            //}
 
-            Console.ReadKey();
+            //Console.ReadKey();
 
         }
     }
