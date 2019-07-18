@@ -138,8 +138,8 @@ namespace PersonInfoManage.DAL.Cost
         {
             int res = 0;
             string[] sqlArray = new string[2];
-            sqlArray[0] = "delete from cost_main where id='"+costMain.id+"'";
-            sqlArray[1] = "delete from cost_detail where "+nameof(cost_detail.cost_id)+"="+costMain.id;
+            sqlArray[1] = "delete from cost_main where id='"+costMain.id+"'";
+            sqlArray[0] = "delete from cost_detail where "+nameof(cost_detail.cost_id)+"="+costMain.id;
 
             SqlConnection conn = new SqlConnection(ConStr);
             SqlCommand command = new SqlCommand();
@@ -263,12 +263,6 @@ namespace PersonInfoManage.DAL.Cost
         /// <returns>返回费用单和费用单细节的键值对</returns>
         public Dictionary<cost_main, List<cost_detail>> Query(Dictionary<string, object> conditions)
         {
-            //key只能是指定的一些string
-            //id 费用单编号
-            //applicant 申请人
-            //status 审核状态
-            //start_time 起始申请时间
-            //end_time 最终申请时间
             string[] keys = new string[] {"id", "applicant", "status", "start_time", "end_time" };
             Dictionary<cost_main, List<cost_detail>> retDic = new Dictionary<cost_main, List<cost_detail>>();
             List<string> keyList = new List<string>();
