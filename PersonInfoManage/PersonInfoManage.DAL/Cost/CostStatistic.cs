@@ -46,22 +46,22 @@ namespace PersonInfoManage.DAL.Cost
                 }
                 else
                 {
-                    sql += " " + key + " like '%" + conditions[key] + "%'";
+                    sql += " " + key + " like N'%" + conditions[key] + "%'";
                 }
             }
             DataTable dt = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0];
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 cost_main main = new cost_main();
-                main.id = (int)dt.Rows[0][nameof(cost_main.id)];
-                main.applicant = (string)dt.Rows[0][nameof(cost_main.applicant)];
-                main.approver = (string)dt.Rows[0][nameof(cost_main.approver)];
-                main.apply_time = (DateTime)dt.Rows[0][nameof(cost_main.apply_time)];
-                main.approval_time = (DateTime)dt.Rows[0][nameof(cost_main.approval_time)];
-                main.apply_money = (decimal)dt.Rows[0][nameof(cost_main.apply_money)];
-                main.approval_money = (decimal)dt.Rows[0][nameof(cost_main.approval_money)];
-                main.status = (byte)dt.Rows[0][nameof(cost_main.status)];
-                main.remark = (string)dt.Rows[0][nameof(cost_main.remark)];
+                main.id = (int)dt.Rows[i][nameof(cost_main.id)];
+                main.applicant = (string)dt.Rows[i][nameof(cost_main.applicant)];
+                main.approver = (string)dt.Rows[i][nameof(cost_main.approver)];
+                main.apply_time = (DateTime)dt.Rows[i][nameof(cost_main.apply_time)];
+                main.approval_time = (DateTime)dt.Rows[i][nameof(cost_main.approval_time)];
+                main.apply_money = (decimal)dt.Rows[i][nameof(cost_main.apply_money)];
+                main.approval_money = (decimal)dt.Rows[i][nameof(cost_main.approval_money)];
+                main.status = (byte)dt.Rows[i][nameof(cost_main.status)];
+                main.remark = (string)dt.Rows[i][nameof(cost_main.remark)];
 
                 string sql2 = "select * from cost_detail where cost_id='" + main.id + "'";
                 DataTable dt2 = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql2).Tables[0];
@@ -70,10 +70,10 @@ namespace PersonInfoManage.DAL.Cost
                 for (int j = 0; j < dt2.Rows.Count; j++)
                 {
                     cost_detail detail = new cost_detail();
-                    detail.id = (int)dt2.Rows[i][nameof(cost_detail.id)];
-                    detail.cost_id = (int)dt2.Rows[i][nameof(cost_detail.cost_id)];
-                    detail.cost_type = (string)dt2.Rows[i][nameof(cost_detail.cost_type)];
-                    detail.money = (decimal)dt2.Rows[i][nameof(cost_detail.money)];
+                    detail.id = (int)dt2.Rows[j][nameof(cost_detail.id)];
+                    detail.cost_id = (int)dt2.Rows[j][nameof(cost_detail.cost_id)];
+                    detail.cost_type = (string)dt2.Rows[j][nameof(cost_detail.cost_type)];
+                    detail.money = (decimal)dt2.Rows[j][nameof(cost_detail.money)];
                     listDetail.Add(detail);
                 }
                 retDic.Add(main, listDetail);

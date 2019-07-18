@@ -318,38 +318,42 @@ namespace PersonInfoManage.Test
             //    Console.WriteLine(plan.id + "  " + plan.cost_type + "  " + plan.start_time + "  " + plan.end_time + "  " + plan.money);
             //}
 
-            ///测试函数：CostStatistic.GetById(int id)
-            ///返回类型：Dictionary<cost_main, List<cost_detail>>
-            ///测试结果：
-            ///参数中必需的属性:
-            ///     id：费用单id
 
-            //Dictionary<cost_main, List<cost_detail>> dic = new CostStatistic().GetById(1563342091);
-            //foreach (cost_main cm in dic.Keys)
+            ///测试函数：costPlan.Query(Dictionary<string, object> conditions)
+            ///返回类型：List<cost_plan> 
+            ///测试结果：成功
+            ///参数中必需的属性:
+            ///     conditions：条件键值对词典  key建议是"start_time", "end_time", "cost_type", "id"其中的，否则无效
+
+            //Dictionary<string, object> conditions = new Dictionary<string, object>();
+            //conditions.Add("cost_type","餐饮");
+            //List<cost_plan> listPlan = new CostPlan().Query(conditions);
+            //foreach(cost_plan plan in listPlan)
             //{
-            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approval_time);
-            //    foreach (cost_detail cd in dic[cm])
-            //    {
-            //        Console.WriteLine("\t"+cd.id + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
-            //    }
+            //Console.WriteLine(plan.id+" "+plan.cost_type+" "+plan.start_time+" "+plan.end_time+" "+plan.money);
             //}
 
-            ///测试函数：CostStatistic.Query()
-            ///返回类型：Dictionary<cost_main, List<cost_detail>>
-            ///测试结果：
+            ///测试函数：CostStastic.Query(Dictionary<string, object> conditions)
+            ///返回类型：Dictionary<cost_main, List<cost_detail>> 
+            ///测试结果：成功
             ///参数中必需的属性:
-            ///     无
-            //Dictionary<cost_main, List<cost_detail>> dic = new CostStatistic().Query();
-            //foreach (cost_main cm in dic.Keys)
-            //{
-            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approval_time);
-            //    foreach (cost_detail cd in dic[cm])
-            //    {
-            //        Console.WriteLine("\t" + cd.id + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
-            //    }
-            //}
+            ///     conditions：条件键值对词典  key建议是"start_time", "end_time", "applicant"其中的，否则无效
 
-            //Console.ReadKey();
+            Dictionary<string, object> conditions = new Dictionary<string, object>();
+            //conditions.Add("applicant", "小明");
+            conditions.Add("start_time", new DateTime(2017, 1, 1));
+            //conditions.Add("end_time",new DateTime(2020,1,1));
+            Dictionary<cost_main, List<cost_detail>> retDic = new CostStatistic().Query(conditions);
+            foreach (cost_main main in retDic.Keys)
+            {
+                Console.WriteLine(main.applicant+" "+main.approval_time);
+                foreach (cost_detail detail in retDic[main])
+                {
+                    Console.WriteLine("\t"+detail.cost_id + " " + detail.cost_type + " " + detail.money);
+                }
+               
+            }
+            Console.ReadKey();
 
         }
     }
