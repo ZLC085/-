@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PersonInfoManage
 {
-    public partial class UpdatFileName : Form
+    public partial class Login : Form
     {
-        public UpdatFileName()
+        public Login()
         {
             InitializeComponent();
         }
