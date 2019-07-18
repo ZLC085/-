@@ -24,12 +24,13 @@ namespace PersonInfoManage.DAL.System
         {
 
             int res;
-            string sql1 = "Insert into sys_group(group_name,remark,create_time,modify_time) values(@p1,@p2,,getdate(),getdate())";
+            string sql1 = "Insert into sys_group(group_name,remark,create_time,modify_time) values(@p1,@p2,getdate(),getdate())";
             SqlParameter sqlparameter1 = new SqlParameter("@p1", group.group_name);
             SqlParameter sqlparameter2 = new SqlParameter("@p2", group.remark);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql1, sqlparameter1, sqlparameter2);                  
             return res;
         }
+
 
         /// <summary>
         /// 用户组权限修改
@@ -90,6 +91,7 @@ namespace PersonInfoManage.DAL.System
             return res;
             // return new DBOperationsDelete<sys_u2r, DBNull>().DeleteById(userId);
         }
+
 
         /// <summary>
         /// 通过输入条件进行权限检索

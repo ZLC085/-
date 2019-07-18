@@ -18,21 +18,21 @@ namespace PersonInfoManage.Test
             //Login Login = new Login();
             //sys_user user = new sys_user();
             //user.name = "lihua";
-            //Console.WriteLine(Login.SelectLogin(user));
+            //Console.WriteLine(Login.SelectLogin(user));            
 
             //测试函数：perm.add(group)  测试成功
             //Perm perm = new Perm();
             //sys_group group = new sys_group();
-            //group.group_name = "admin";
-            //group.remark = "all";
+            //group.group_name = "yuangong";
+            //group.remark = "123";
             //Console.WriteLine(perm.add(group));
 
             //测试函数:perm.Update(group_id,grouplist) 测试成功
             //Perm perm = new Perm();
             //int group_id = 14;
-            //string[] temp = { "per", "cost", "sys"};
+            //string[] temp = { "per", "cost", "sys","test"};
             //List<string> grouplist = new List<string>(temp);
-            //Console.WriteLine(perm.Update(group_id,grouplist));
+            //Console.WriteLine(perm.Update(group_id, grouplist));
 
             //测试函数：perm.Del(group_id) 测试成功
             //Perm perm = new Perm();
@@ -67,16 +67,16 @@ namespace PersonInfoManage.Test
             //user.username = "lihua";
             //user.name = "李华";
             //user.password = "123";
-            //user.gender = "男";
-            //user.job = "员工";
+            //user.gender = "女";
+            //user.job = "管理员";
             //user.phone = "18990533905";
             //user.email = "873257742@qq.com";
             //user.status = false;
             //user.isdel = 0;
             //sys_group group = new sys_group();
             //int groupid = 11;
-            //int id = 20;
-            //Console.WriteLine(sysuser.Update(id,user, groupid));
+            //int id = 27;
+            //Console.WriteLine(sysuser.Update(id, user, groupid));
 
             //测试函数：SysUser.Del(id)  测试成功
             //int id = 20;
@@ -339,20 +339,20 @@ namespace PersonInfoManage.Test
             ///参数中必需的属性:
             ///     conditions：条件键值对词典  key建议是"start_time", "end_time", "applicant"其中的，否则无效
 
-            Dictionary<string, object> conditions = new Dictionary<string, object>();
-            //conditions.Add("applicant", "小明");
-            conditions.Add("start_time", new DateTime(2017, 1, 1));
-            //conditions.Add("end_time",new DateTime(2020,1,1));
-            Dictionary<cost_main, List<cost_detail>> retDic = new CostStatistic().Query(conditions);
-            foreach (cost_main main in retDic.Keys)
-            {
-                Console.WriteLine(main.applicant+" "+main.approval_time);
-                foreach (cost_detail detail in retDic[main])
-                {
-                    Console.WriteLine("\t"+detail.cost_id + " " + detail.cost_type + " " + detail.money);
-                }
-               
-            }
+            //Dictionary<string, object> conditions = new Dictionary<string, object>();
+            ////conditions.Add("applicant", "小明");
+            //conditions.Add("start_time", new DateTime(2017, 1, 1));
+            ////conditions.Add("end_time",new DateTime(2020,1,1));
+            //Dictionary<cost_main, List<cost_detail>> retDic = new CostStatistic().Query(conditions);
+            //foreach (cost_main main in retDic.Keys)
+            //{
+            //    Console.WriteLine(main.applicant+" "+main.approval_time);
+            //    foreach (cost_detail detail in retDic[main])
+            //    {
+            //        Console.WriteLine("\t"+detail.cost_id + " " + detail.cost_type + " " + detail.money);
+            //    }
+
+            //}
             Console.ReadKey();
 
         }
