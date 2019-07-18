@@ -132,6 +132,7 @@ namespace PersonInfoManage.DAL.Cost
         /// <returns>费用规划列表</returns>
         public List<cost_plan> Query(Dictionary<string, object> conditions)
         {
+            Console.WriteLine(1);
             string[] keys = new string[] { "start_time", "end_time", "cost_type", "id" };
             List<cost_plan> retList = new List<cost_plan>();
             List<string> listKey = new List<string>();
@@ -163,6 +164,7 @@ namespace PersonInfoManage.DAL.Cost
                     sql += " " + key + " like '%" + conditions[key] + "%'";
                 }
             }
+            Console.WriteLine(sql);
             DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
             DataTable dt = ds.Tables[0];
             for (int i = 0; i < dt.Rows.Count; i++)
