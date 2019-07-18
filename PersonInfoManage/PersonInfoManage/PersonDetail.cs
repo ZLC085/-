@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace PersonInfoManage
 {
-    public partial class PersonBasicForm : Form
+    public partial class PersonDetail : Form
     {
-        public PersonBasicForm()
+        public PersonDetail()
         {
             InitializeComponent();
-        }
-
-        private void LabelX1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LabelX6_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
