@@ -267,36 +267,7 @@ namespace PersonInfoManage.Test
             //    Console.WriteLine(plan.id + "  " + plan.cost_type + "  " + plan.start_time + "  " + plan.end_time + "  " + plan.money);
             //}
 
-            ///测试函数：CostStatistic.GetById(int id)
-            ///返回类型：Dictionary<cost_main, List<cost_detail>>
-            ///测试结果：
-            ///参数中必需的属性:
-            ///     id：费用单id
-
-            //Dictionary<cost_main, List<cost_detail>> dic = new CostStatistic().GetById(1563342091);
-            //foreach (cost_main cm in dic.Keys)
-            //{
-            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approval_time);
-            //    foreach (cost_detail cd in dic[cm])
-            //    {
-            //        Console.WriteLine("\t"+cd.id + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
-            //    }
-            //}
-
-            ///测试函数：CostStatistic.Query()
-            ///返回类型：Dictionary<cost_main, List<cost_detail>>
-            ///测试结果：
-            ///参数中必需的属性:
-            ///     无
-            Dictionary<cost_main, List<cost_detail>> dic = new CostStatistic().Query();
-            foreach (cost_main cm in dic.Keys)
-            {
-                Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approval_time);
-                foreach (cost_detail cd in dic[cm])
-                {
-                    Console.WriteLine("\t" + cd.id + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
-                }
-            }
+            
 
             Console.ReadKey();
 
