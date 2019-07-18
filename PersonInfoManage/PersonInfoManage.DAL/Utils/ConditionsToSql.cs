@@ -91,6 +91,10 @@ namespace PersonInfoManage.DAL.Utils
                 {   //id是自增(除了cost_main表)，不需要加在sql语句里面
                     continue;
                 }
+                if (info.Name.Equals("approval_time") || info.Name.Equals("approval_money"))
+                {
+                    continue;
+                }
 
                 sql = sql.Insert(sql.Length, info.Name);
                 if (!info.Equals(properties.Last()))
@@ -109,12 +113,17 @@ namespace PersonInfoManage.DAL.Utils
                 {   //id是自增(除了cost_main表)，不需要加在sql语句里面
                     continue;
                 }
+                if (info.Name.Equals("approval_time") || info.Name.Equals("approval_money"))
+                {
+                    continue;
+                }
                 if (info.PropertyType.FullName.Equals("System.String"))
                 {   //对字符串数据的中文处理    
                     sql = sql.Insert(sql.Length, "N'" + t.GetType().GetProperty(info.Name).GetValue(t) + "'");
                 }
                 else
                 {
+                    
                     sql = sql.Insert(sql.Length, "'" + t.GetType().GetProperty(info.Name).GetValue(t) + "'");
                 }   
                              

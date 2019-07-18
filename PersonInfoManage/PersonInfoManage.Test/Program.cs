@@ -84,7 +84,7 @@ namespace PersonInfoManage.Test
             //SysSetting set = new SysSetting();
             //Console.WriteLine(set.SelectAllSysDict());
 
-            //CostApply apply = new CostApply();
+            CostApply apply = new CostApply();
 
             ///测试函数：costApply.Add(cost_main costMain, List<cost_detail> detailList)
             ///返回类型：int
@@ -95,12 +95,12 @@ namespace PersonInfoManage.Test
             ///         cost_detail：cost_type、money
 
             //cost_main main = new cost_main();
-            //main.applicant = "成创空间";
+            //main.applicant = "成创空间test";
             //main.apply_money = 120;
-            //main.apply_time = new DateTime(2011, 5, 1);
+            //main.apply_time = new DateTime(2017, 5, 1);
 
             //cost_detail detail = new cost_detail();
-            //detail.cost_type = "出行";
+            //detail.cost_type = "出行test";
             //detail.money = 40;
 
             //cost_detail detail2 = new cost_detail();
@@ -122,22 +122,19 @@ namespace PersonInfoManage.Test
             ///         cost_detail：cost_type、money
 
             //cost_main main = new cost_main();
-            //main.id = 1563345759;
+            //main.id = 1563441012;
             //main.apply_money = 700;
 
             //cost_detail detail = new cost_detail();
-            //detail.cost_type = "出行test";
+            //detail.cost_type = "test";
             //detail.money = 500;
 
-            //cost_detail detail2 = new cost_detail();
-            //detail2.cost_type = "饮食";
-            //detail2.money = 200;
+
 
             //List<cost_detail> listDetail = new List<cost_detail>();
             //listDetail.Add(detail);
-            //listDetail.Add(detail2);
 
-            //Console.WriteLine(apply.Update(main,listDetail));
+            //Console.WriteLine(apply.Update(main, listDetail));
 
             ///测试函数：costApply.Del(cost_main costMain)
             ///返回类型：int
@@ -146,7 +143,7 @@ namespace PersonInfoManage.Test
             ///     costMain:id
 
             //cost_main main = new cost_main();
-            //main.id = 1563345759;
+            //main.id = 1563441012;
             //Console.WriteLine(apply.Del(main));
 
             ///测试函数：costApply.GetById(int id)
@@ -156,12 +153,12 @@ namespace PersonInfoManage.Test
             ///     id:费用单编号
 
             //Dictionary<cost_main, List<cost_detail>> dic = apply.GetById(1563342091);
-            //foreach(cost_main cm in dic.Keys)
+            //foreach (cost_main cm in dic.Keys)
             //{
-            //    Console.WriteLine(cm.id+"  "+cm.apply_money+"  "+cm.applicant);
-            //    foreach(cost_detail cd in dic[cm])
+            //    Console.WriteLine(cm.id + "  " + cm.apply_money + "  " + cm.applicant);
+            //    foreach (cost_detail cd in dic[cm])
             //    {
-            //        Console.WriteLine("\t"+cd.cost_id+"  "+cd.cost_type+"  "+cd.money);
+            //        Console.WriteLine("\t" + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
             //    }
             //}
 
@@ -188,11 +185,11 @@ namespace PersonInfoManage.Test
             ///     conditions:键值对 key建议是 "id", "applicant", "status", "start_time", "end_time"其中的，否则无效
 
             //Dictionary<string, object> conditions = new Dictionary<string, object>();
-            //conditions.Add("id", 156);
-            //conditions.Add("applicant", "小明");
-            //conditions.Add("status", 0);
-            //conditions.Add("start_time", new DateTime(2017, 1, 1));
-            //conditions.Add("end_time", new DateTime(2017, 5, 1));
+            ////conditions.Add("id", 156);
+            //conditions.Add("applicant", "成创空间");
+            ////conditions.Add("status", 0);
+            ////conditions.Add("start_time", new DateTime(2017, 1, 1));
+            ////conditions.Add("end_time", new DateTime(2017, 5, 1));
             //Dictionary<cost_main, List<cost_detail>> dic = apply.Query(conditions);
             //foreach (cost_main cm in dic.Keys)
             //{
@@ -306,20 +303,20 @@ namespace PersonInfoManage.Test
             ///参数中必需的属性:
             ///     conditions：条件键值对词典  key建议是"start_time", "end_time", "applicant"其中的，否则无效
 
-            Dictionary<string, object> conditions = new Dictionary<string, object>();
-            //conditions.Add("applicant", "小明");
-            conditions.Add("start_time", new DateTime(2017, 1, 1));
-            //conditions.Add("end_time",new DateTime(2020,1,1));
-            Dictionary<cost_main, List<cost_detail>> retDic = new CostStatistic().Query(conditions);
-            foreach (cost_main main in retDic.Keys)
-            {
-                Console.WriteLine(main.applicant+" "+main.approval_time);
-                foreach (cost_detail detail in retDic[main])
-                {
-                    Console.WriteLine("\t"+detail.cost_id + " " + detail.cost_type + " " + detail.money);
-                }
-               
-            }
+            //Dictionary<string, object> conditions = new Dictionary<string, object>();
+            ////conditions.Add("applicant", "小明");
+            //conditions.Add("start_time", new DateTime(2017, 1, 1));
+            ////conditions.Add("end_time",new DateTime(2020,1,1));
+            //Dictionary<cost_main, List<cost_detail>> retDic = new CostStatistic().Query(conditions);
+            //foreach (cost_main main in retDic.Keys)
+            //{
+            //    Console.WriteLine(main.applicant+" "+main.approval_time);
+            //    foreach (cost_detail detail in retDic[main])
+            //    {
+            //        Console.WriteLine("\t"+detail.cost_id + " " + detail.cost_type + " " + detail.money);
+            //    }
+
+            //}
             Console.ReadKey();
 
         }
