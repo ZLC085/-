@@ -82,7 +82,7 @@ namespace PersonInfoManage.DAL.System
             List<sys_group> role = new List<sys_group>();        
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
-                group1.id = int.Parse((string)ds.Tables[0].Rows[i][nameof(sys_group.id)]);
+                group1.id = (int)ds.Tables[0].Rows[i][nameof(sys_group.id)];
                 group1.group_name= (string)ds.Tables[0].Rows[i][nameof(sys_group.group_name)];
               
                 group1.remark = (string)ds.Tables[0].Rows[i][nameof(sys_group.remark)];
