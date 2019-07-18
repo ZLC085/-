@@ -17,8 +17,15 @@ namespace PersonInfoManage.Test
             //测试函数：Login.SelectLogin(user)  测试成功
             //Login Login = new Login();
             //sys_user user = new sys_user();
-            //user.username = "1";
+            //user.name = "lihua";
             //Console.WriteLine(Login.SelectLogin(user));
+
+            //测试函数：perm.add(group)  测试成功
+            //Perm perm = new Perm();
+            //sys_group group = new sys_group();
+            //group.group_name = "admin";
+            //group.remark = "all";
+            //Console.WriteLine(perm.add(group));
 
             //测试函数:perm.Update(group_id,grouplist) 测试成功
             //Perm perm = new Perm();
@@ -79,6 +86,32 @@ namespace PersonInfoManage.Test
             //测试函数：SysUser.Selectall()  测试成功
             //SysUser sysuser = new SysUser();
             //Console.WriteLine(sysuser.Selectall());
+
+            //测试函数：sysuser.SelectBy(user, group） 测试成功 
+            //SysUser sysuser = new SysUser();
+            //sys_user user = new sys_user();
+            //sys_group group = new sys_group();
+            //group.group_name = "lisi";
+            //Console.WriteLine(sysuser.SelectBy(user, group));
+
+            //测试函数：set.Insert(dict)  测试成功 
+            //SysSetting set = new SysSetting();
+            //sys_dict dict = new sys_dict();
+            //dict.category_name = "huang";
+            //Console.WriteLine(set.Insert(dict));
+
+            //测试函数：set.Update(dict)  测试成功 
+            //SysSetting set = new SysSetting();
+            //sys_dict dict = new sys_dict();
+            //dict.category_name = "du";
+            //dict.id = 8;
+            //Console.WriteLine(set.Update(dict));
+
+            //测试函数：set.Del(dict)  测试成功 
+            //SysSetting set = new SysSetting();
+            //sys_dict dict = new sys_dict();
+            //dict.id = 8;
+            //Console.WriteLine(set.Del(dict));
 
             //测试函数：set.SelectAllSysDict()  测试成功
             //SysSetting set = new SysSetting();
