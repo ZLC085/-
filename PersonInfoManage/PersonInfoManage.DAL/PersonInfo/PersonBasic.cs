@@ -31,13 +31,7 @@ namespace PersonInfoManage.DAL.PersonInfo
                 // sql语句
                 string sql = "insert into person_basic (name, former_name, gender, identity_number, birth_date, city, province, marry_status, job_status, income, temper, family, person_type, qq, address, phone, belong_place, nation, input_time, user_id, isdel) "
                     + "values(@name, @former_name, @gender, @identity_number, @birth_date, @city, @province, @marry_status, @job_status, @income, @temper, @family, @person_type, @qq, @address, @phone, @belong_place, @nation, @input_time, @user_id, @isdel)";
-
-                // 1.连接数据库
-                //SqlConnection con = new SqlConnection(conStr);
-                //con.Open();
-                //SqlCommand cmd = new SqlCommand(sql, con);
-
-                // 2.参数赋值
+                // 参数赋值
                 SqlParameter name = new SqlParameter("@name", info.name);
                 SqlParameter former_name = new SqlParameter("@former_name", info.former_name);
                 SqlParameter gender = new SqlParameter("@gender", info.gender);
@@ -59,16 +53,7 @@ namespace PersonInfoManage.DAL.PersonInfo
                 SqlParameter input_time = new SqlParameter("@input_time", info.input_time);
                 SqlParameter user_id = new SqlParameter("@user_id", info.user_id);
                 SqlParameter isdel = new SqlParameter("@isdel", info.isdel);
-
-                //SqlParameter[] paras = new SqlParameter[]
-                //{
-                //    name, former_name, gender, identity_number, birth_date, city, province, marry_status, job_status, income, temper, family, person_type, qq, address, phone, belong_place, nation, input_time, input_person, isdel
-                //};
-
-                //cmd.Parameters.AddRange(paras);
-
-                // 3.执行sql语句
-                //res = cmd.ExecuteNonQuery();
+                // 执行sql语句
                 res = SqlHelper.ExecuteNonQuery(conStr, CommandType.Text, sql, name, former_name, gender, identity_number, birth_date, city, province, marry_status, job_status, income, temper, family, person_type, qq, address, phone, belong_place, nation, input_time, user_id, isdel);
                 Console.WriteLine("执行成功！");
             }
@@ -144,7 +129,8 @@ namespace PersonInfoManage.DAL.PersonInfo
             try
             {
                 // sql语句
-                string sql = "delete from person_basic where id = @id";
+                //string sql = "delete from person_basic where id = @id";
+                string sql = "update set isdel = 0 person_basic where id = @id";
                 // 参数赋值
                 SqlParameter sp_id = new SqlParameter("@id", id);
                 // 执行sql语句
