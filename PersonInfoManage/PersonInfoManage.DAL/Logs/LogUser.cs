@@ -13,13 +13,28 @@ namespace PersonInfoManage.DAL.Logs
     /// <summary>
     /// 用户日志
     /// </summary>
-    public class LogUser:DALBase
+    public class LogUser : DALBase
     {
+        /// <summary>
+        /// 用户日志删除
+        /// </summary>
+        /// <param name="id">用户日志id</param>
+        /// <returns>删除条数</returns>
+        public int Del(log_user userlog)
+        {
+            int result;
+            string Del = "delete from log_user where id=@id";
+            SqlParameter sqlParameter = new SqlParameter("@id", userlog.id);
+            result = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, Del, sqlParameter);
+            return result;
+        }
+
+
         /// <summary>
         /// 用户日志查询，所有
         /// </summary>
         /// <returns>所有用户日志</returns>
-        public List<log_user> SelectAllLogUser()
+        public List<log_user> Query()
         {
             List<log_user> loguser = new List<log_user>();
 
@@ -28,54 +43,79 @@ namespace PersonInfoManage.DAL.Logs
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 log_user user = new log_user();
-                user.id = int.Parse((string)ds.Tables[0].Rows[0][nameof(log_user.id)]);
-                user.user_id = int.Parse((string)ds.Tables[0].Rows[0][nameof(log_user.user_id)]);
+                user.id = (int)ds.Tables[0].Rows[i][nameof(log_user.id)];
+                user.user_id = (int)ds.Tables[0].Rows[i][nameof(log_user.user_id)];
+                user.username = (string)ds.Tables[0].Rows[i][nameof(log_user.username)];
+                user.operation = (string)ds.Tables[0].Rows[i][nameof(log_user.operation)];
+                user.ip = (string)ds.Tables[0].Rows[i][nameof(log_user.ip)];
+                user.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(log_user.create_time)];
+                loguser.Add(user);
+            }
+
+            return loguser;
+        }
+
+
+        /// <summary>
+        /// 通过输入条件查询用户日志
+        /// </summary>
+        /// <param name="conditions">输入用户名</param>
+        /// <returns>通过输入条件查询到的用户日志</returns>
+        public List<log_user> GetByUserName(string username)
+        {
+
+            string sql = "select * from log_user where username='" + username + "'";
+            List<log_user> loguser = new List<log_user>();
+            DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+          
+                log_user user = new log_user();
+                user.id = (int)ds.Tables[0].Rows[0][nameof(log_user.id)];
+                user.user_id =(int)ds.Tables[0].Rows[0][nameof(log_user.user_id)];
                 user.username = (string)ds.Tables[0].Rows[0][nameof(log_user.username)];
                 user.operation = (string)ds.Tables[0].Rows[0][nameof(log_user.operation)];
                 user.ip = (string)ds.Tables[0].Rows[0][nameof(log_user.ip)];
                 user.create_time = (DateTime)ds.Tables[0].Rows[0][nameof(log_user.create_time)];
                 loguser.Add(user);
-            }
             
             return loguser;
         }
+
         /// <summary>
         /// 通过输入条件查询用户日志
         /// </summary>
-        /// <param name="conditions">输入条件</param>
-        /// <returns>通过输入条件查询到的用户日志</returns>
-        public List<log_user> SelectLogUserByConditions(Dictionary<string, object> conditions)
-        {
-            List<log_user> loguser = new List<log_user>();
-            log_user user = new log_user();
-            string sql = "select * from log_user where conditions='" + conditions + "' ";
+        /// <param name="conditions">输入时间段</param>
+        /// <returns>通过输入时间段查询到的用户日志</returns>    
 
-            DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+        //public List<log_user> GetByTimeQuantum(string CBeginYear, string CBeginMouth, string CBeginDay, string CEndYear, string CEndMouth, string CEndDay)
+        //{
 
-            user.id = int.Parse((string)ds.Tables[0].Rows[0][nameof(log_user.id)]);
-            user.user_id = int.Parse((string)ds.Tables[0].Rows[0][nameof(log_user.user_id)]);
-            user.username = (string)ds.Tables[0].Rows[0][nameof(log_user.username)];
-            user.operation = (string)ds.Tables[0].Rows[0][nameof(log_user.operation)];
-            user.ip = (string)ds.Tables[0].Rows[0][nameof(log_user.ip)];
-            user.create_time = (DateTime)ds.Tables[0].Rows[0][nameof(log_user.create_time)];
 
-            loguser.Add(user);
-            return loguser;
-            //return new DBOperationsSelect<log_user>().SelectByConditions(conditions);
-        }
+        //    string strBack = "";
+        //    string strBegin = CBeginYear + "-" + CBeginMouth + "-" + CBeginDay+"   "+"00:00:00";
+        //    string strEnd = CEndYear + "-" + CEndMouth + "-" + CEndDay + "   "+"23:59:59";
+        //    strBack += strBegin + " AND " + strEnd;
 
-        /// <summary>
-        /// 用户日志删除
-        /// </summary>
-        /// <param name="id">用户日志id</param>
-        /// <returns>删除条数</returns>
-        public int DeleteUserLogByUserName(log_user userlog)
-        {
-            int result;
-            string Del = "delete from log_user where id=@id";
-            SqlParameter sqlParameter = new SqlParameter("@id", userlog.id);
-            result = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, Del, sqlParameter);
-            return result;
-        }
+        //   // string sql = "select * from log_user where create_time between strBegin and strEnd";
+        //    string sql1= "select * from log_user where create_time between (yyyy-mm-dd) and (yyyy-mm-dd)";
+        //    List<log_user> loguser = new List<log_user>();
+        //    DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text,sql1);
+
+        //    log_user user = new log_user();
+        //    user.id = (int)ds.Tables[0].Rows[0][nameof(log_user.id)];
+        //    user.user_id = (int)ds.Tables[0].Rows[0][nameof(log_user.user_id)];
+        //    user.username = (string)ds.Tables[0].Rows[0][nameof(log_user.username)];
+        //    user.operation = (string)ds.Tables[0].Rows[0][nameof(log_user.operation)];
+        //    user.ip = (string)ds.Tables[0].Rows[0][nameof(log_user.ip)];
+        //    user.create_time = (DateTime)ds.Tables[0].Rows[0][nameof(log_user.create_time)];
+        //    loguser.Add(user);
+
+        //    return loguser;
+        //}
+
+
+
+
+
+
     }
 }
