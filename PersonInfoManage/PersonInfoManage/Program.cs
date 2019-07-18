@@ -18,7 +18,10 @@ namespace PersonInfoManage
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MainForm());
             //Application.Run(new LoginForm());
-            Application.Run(new PersonDetail());
+            //Application.Run(new PersonDetail());
+            //Application.Run(new UpdatFileName());
+            //Application.Run(new CostApplyDetail());
+            Application.Run(new CostPlan());
         }
     }
 }
