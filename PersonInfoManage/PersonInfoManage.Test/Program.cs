@@ -23,8 +23,8 @@ namespace PersonInfoManage.Test
             //测试函数：perm.add(group)  测试成功
             //Perm perm = new Perm();
             //sys_group group = new sys_group();
-            //group.group_name = "yuangong";
-            //group.remark = "123";
+            //group.group_name = "user";
+            //group.remark = "111";
             //Console.WriteLine(perm.add(group));
 
             //测试函数:perm.Update(group_id,grouplist) 测试成功
@@ -36,7 +36,7 @@ namespace PersonInfoManage.Test
 
             //测试函数：perm.Del(group_id) 测试成功
             //Perm perm = new Perm();
-            //int group_id = 13;
+            //int group_id = 11;
             //Console.WriteLine(perm.Del(group_id));
 
             //测试函数：perm.Selectgroup(group) 测试成功
@@ -94,23 +94,24 @@ namespace PersonInfoManage.Test
             //group.group_name = "lisi";
             //Console.WriteLine(sysuser.SelectBy(user, group));
 
+            //数据字典测试开始
             //测试函数：set.Add(dict)  测试成功 
             //SysSetting set = new SysSetting();
             //sys_dict dict = new sys_dict();
-            //dict.category_name = "huang";
+            //dict.category_name = "update";
             //Console.WriteLine(set.Add(dict));
 
             //测试函数：set.Update(dict)  测试成功 
             //SysSetting set = new SysSetting();
             //sys_dict dict = new sys_dict();
-            //dict.category_name = "du";
-            //dict.id = 8;
+            //dict.category_name = "select";
+            //dict.id = 10;
             //Console.WriteLine(set.Update(dict));
 
             //测试函数：set.Del(dict)  测试成功 
             //SysSetting set = new SysSetting();
             //sys_dict dict = new sys_dict();
-            //dict.id = 8;
+            //dict.id = 7;
             //Console.WriteLine(set.Del(dict));
 
             //测试函数：set.SelectAll()  测试成功
