@@ -12,72 +12,75 @@ namespace PersonInfoManage.DAL.Cost
     /// <summary>
     /// 费用统计
     /// </summary>
-    public class CostStatistic:DALBase
+    public class CostStatistic : DALBase
     {
         /// <summary>
-        /// 费用统计，根据id
+        /// 根据组合条件查询已审核通过的费用单词典
         /// </summary>
-        /// <param name="id">费用单id</param>
-        /// <returns></returns>
-        public Dictionary<cost_main, List<cost_detail>> GetById(int id)
+        /// <param name="conditions">组合条件词典</param>
+        /// <returns>费用单与费用详情列表的词典</returns>
+        public Dictionary<cost_main, List<cost_detail>> Query(Dictionary<string, object> conditions)
         {
-            Dictionary<cost_main, List<cost_detail>> bills = new Dictionary<cost_main, List<cost_detail>>();
-            cost_main main = new cost_main();
-            List<cost_detail> listDetail = new List<cost_detail>();
-
-            string sql1 = "select id,applicant,approval_time from cost_main where id='" + id + "'";
-            string sql2 = "select * from cost_detail where cost_id='" + id + "'";
-
-            DataSet ds1 = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql1);
-
-            main.id = (int)ds1.Tables[0].Rows[0][nameof(cost_main.id)];
-            main.applicant = (string)ds1.Tables[0].Rows[0][nameof(cost_main.applicant)];
-            main.approval_time = (DateTime)ds1.Tables[0].Rows[0][nameof(cost_main.approval_time)];
-            
-            DataSet ds2 = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql2);
-            for (int i = 0; i < ds2.Tables[0].Rows.Count; i++)
+            string[] keys = new string[] { "start_time", "end_time", "applicant" };
+            Dictionary<cost_main, List<cost_detail>> retDic = new Dictionary<cost_main, List<cost_detail>>();
+            List<string> listKey = new List<string>();
+            foreach (string key in conditions.Keys)
             {
-                cost_detail detail = new cost_detail();
-                detail.id = (int)ds2.Tables[0].Rows[i][nameof(cost_detail.id)];
-                detail.cost_id = int.Parse((string)ds2.Tables[0].Rows[i][nameof(cost_detail.cost_id)]);
-                detail.cost_type = (string)ds2.Tables[0].Rows[i][nameof(cost_detail.cost_type)];
-                detail.money = (decimal)ds2.Tables[0].Rows[i][nameof(cost_detail.money)];
-                listDetail.Add(detail);
+                if (keys.Contains(key))
+                {
+                    listKey.Add(key);
+                }
+
             }
-            bills.Add(main, listDetail);
-            return bills;
-        }
-
-        public Dictionary<cost_main, List<cost_detail>> Query()
-        {
-            Dictionary<cost_main, List<cost_detail>> bills = new Dictionary<cost_main, List<cost_detail>>();
-            cost_main main = new cost_main();
-            List<cost_detail> listDetail = new List<cost_detail>();
-
-            string sql1 = "select id,applicant,approval_time from cost_main";
-
-            DataSet ds1 = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql1);
-
-            for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+            string sql = "select * from cost_main where status ='1' ";
+            foreach (string key in listKey)
             {
-                main.id = (int)ds1.Tables[0].Rows[i][nameof(cost_main.id)];
-                main.applicant = (string)ds1.Tables[0].Rows[i][nameof(cost_main.applicant)];
-                main.approval_time = (DateTime)ds1.Tables[0].Rows[i][nameof(cost_main.approval_time)];
-               
+                sql += " and ";
+                if (key.Equals("start_time"))
+                {
+                    sql += " approval_time >='" + conditions[key] + "'";
+                }
+                else if (key.Equals("end_time"))
+                {
+                    sql += " approval_time<='" + conditions[key] + "'";
+                }
+                else
+                {
+                    sql += " " + key + " like N'%" + conditions[key] + "%'";
+                }
+            }
+            DataTable dt = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                cost_main main = new cost_main();
+                main.id = (int)dt.Rows[i][nameof(cost_main.id)];
+                main.applicant = (string)dt.Rows[i][nameof(cost_main.applicant)];
+                main.approver = (string)dt.Rows[i][nameof(cost_main.approver)];
+                main.apply_time = (DateTime)dt.Rows[i][nameof(cost_main.apply_time)];
+                main.approval_time = (DateTime)dt.Rows[i][nameof(cost_main.approval_time)];
+                main.apply_money = (decimal)dt.Rows[i][nameof(cost_main.apply_money)];
+                main.approval_money = (decimal)dt.Rows[i][nameof(cost_main.approval_money)];
+                main.status = (byte)dt.Rows[i][nameof(cost_main.status)];
+                main.remark = (string)dt.Rows[i][nameof(cost_main.remark)];
+
                 string sql2 = "select * from cost_detail where cost_id='" + main.id + "'";
-                DataSet ds2 = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql2);
-                for (int j = 0; j < ds2.Tables[0].Rows.Count; j++)
+                DataTable dt2 = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql2).Tables[0];
+
+                List<cost_detail> listDetail = new List<cost_detail>();
+                for (int j = 0; j < dt2.Rows.Count; j++)
                 {
                     cost_detail detail = new cost_detail();
-                    detail.id = (int)ds2.Tables[0].Rows[j][nameof(cost_detail.id)];
-                    detail.cost_id = int.Parse((string)ds2.Tables[0].Rows[j][nameof(cost_detail.cost_id)]);
-                    detail.cost_type = (string)ds2.Tables[0].Rows[j][nameof(cost_detail.cost_type)];
-                    detail.money = (decimal)ds2.Tables[0].Rows[j][nameof(cost_detail.money)];
+                    detail.id = (int)dt2.Rows[j][nameof(cost_detail.id)];
+                    detail.cost_id = (int)dt2.Rows[j][nameof(cost_detail.cost_id)];
+                    detail.cost_type = (string)dt2.Rows[j][nameof(cost_detail.cost_type)];
+                    detail.money = (decimal)dt2.Rows[j][nameof(cost_detail.money)];
                     listDetail.Add(detail);
                 }
-                bills.Add(main, listDetail);
+                retDic.Add(main, listDetail);
             }
-            return bills;
+            return retDic;
+
         }
+
     }
 }

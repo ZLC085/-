@@ -5,15 +5,120 @@ using System.Text;
 using System.Threading.Tasks;
 using PersonInfoManage.Model;
 using PersonInfoManage.DAL.Utils;
+using PersonInfoManage.DAL.System;
 using PersonInfoManage.DAL.Cost;
-
+using PersonInfoManage.DAL.Login;
 namespace PersonInfoManage.Test
 {
     class Program
     {
         static void Main(string[] args)
         {
-            CostApply apply = new CostApply();
+            //测试函数：Login.SelectLogin(user)  测试成功
+            //Login Login = new Login();
+            //sys_user user = new sys_user();
+            //user.name = "lihua";
+            //Console.WriteLine(Login.SelectLogin(user));
+
+            //测试函数：perm.add(group)  测试成功
+            //Perm perm = new Perm();
+            //sys_group group = new sys_group();
+            //group.group_name = "admin";
+            //group.remark = "all";
+            //Console.WriteLine(perm.add(group));
+
+            //测试函数:perm.Update(group_id,grouplist) 测试成功
+            //Perm perm = new Perm();
+            //int group_id = 14;
+            //string[] temp = { "per", "cost", "sys"};
+            //List<string> grouplist = new List<string>(temp);
+            //Console.WriteLine(perm.Update(group_id,grouplist));
+
+            //测试函数：perm.Del(group_id) 测试成功
+            //Perm perm = new Perm();
+            //int group_id = 13;
+            //Console.WriteLine(perm.Del(group_id));
+
+            //测试函数：perm.Selectgroup(group) 测试成功
+            //Perm perm = new Perm();
+            //sys_group group = new sys_group();
+            //group.group_name = "lisi";
+            //Console.WriteLine(perm.Selectgroup(group));
+
+            //测试函数：SysUser.add(sys_user user,int groupid)  测试成功
+            //SysUser sysuser = new SysUser();
+            //sys_user user = new sys_user();
+            //user.username = "lihua";
+            //user.name = "李华";
+            //user.password = "123456";
+            //user.gender = "男";
+            //user.job = "员工";
+            //user.phone = "18990533905";
+            //user.email = "873257742@qq.com";
+            //user.status = false;
+            //user.isdel = 0;
+            //sys_group group = new sys_group();
+            //int groupid = 11;
+            //Console.WriteLine(sysuser.add(user, groupid));
+
+            //测试函数：SysUser.Update(sys_user user,int groupid)  测试成功
+            //SysUser sysuser = new SysUser();
+            //sys_user user = new sys_user();
+            //user.username = "lihua";
+            //user.name = "李华";
+            //user.password = "123";
+            //user.gender = "男";
+            //user.job = "员工";
+            //user.phone = "18990533905";
+            //user.email = "873257742@qq.com";
+            //user.status = false;
+            //user.isdel = 0;
+            //sys_group group = new sys_group();
+            //int groupid = 11;
+            //int id = 20;
+            //Console.WriteLine(sysuser.Update(id,user, groupid));
+
+            //测试函数：SysUser.Del(id)  测试成功
+            //int id = 20;
+            //SysUser sysuser = new SysUser();
+            //Console.WriteLine(sysuser.Del(id));
+
+            //测试函数：SysUser.Selectall()  测试成功
+            //SysUser sysuser = new SysUser();
+            //Console.WriteLine(sysuser.Selectall());
+
+            //测试函数：sysuser.SelectBy(user, group） 测试成功 
+            //SysUser sysuser = new SysUser();
+            //sys_user user = new sys_user();
+            //sys_group group = new sys_group();
+            //group.group_name = "lisi";
+            //Console.WriteLine(sysuser.SelectBy(user, group));
+
+            //测试函数：set.Insert(dict)  测试成功 
+            //SysSetting set = new SysSetting();
+            //sys_dict dict = new sys_dict();
+            //dict.category_name = "huang";
+            //Console.WriteLine(set.Insert(dict));
+
+            //测试函数：set.Update(dict)  测试成功 
+            //SysSetting set = new SysSetting();
+            //sys_dict dict = new sys_dict();
+            //dict.category_name = "du";
+            //dict.id = 8;
+            //Console.WriteLine(set.Update(dict));
+
+            //测试函数：set.Del(dict)  测试成功 
+            //SysSetting set = new SysSetting();
+            //sys_dict dict = new sys_dict();
+            //dict.id = 8;
+            //Console.WriteLine(set.Del(dict));
+
+            //测试函数：set.SelectAllSysDict()  测试成功
+            //SysSetting set = new SysSetting();
+            //Console.WriteLine(set.SelectAllSysDict());
+
+            //CostApply apply = new CostApply();
+
             ///测试函数：costApply.Add(cost_main costMain, List<cost_detail> detailList)
             ///返回类型：int
             ///测试结果：成功
@@ -146,14 +251,110 @@ namespace PersonInfoManage.Test
 
             //Console.WriteLine(new CostApproval().Update(main));
 
-            CostPlan costPlan = new CostPlan();
-            cost_plan plan = new cost_plan();
-            plan.cost_type = "出行";
-            plan.money = 919;
-            plan.start_time = new DateTime(2011, 1, 1);
-            plan.end_time = new DateTime(2017, 1, 1);
-            costPlan.Add(plan);
+            ///测试函数：costPlan.Add(cost_plan plan)
+            ///返回类型：int
+            ///测试结果：成功
+            ///参数中必需的属性:
+            ///     plan:cost_type、money、start_time、end_time
+
+            //CostPlan costPlan = new CostPlan();
+            //cost_plan plan = new cost_plan();
+            //plan.cost_type = "出行";
+            //plan.money = 99;
+            //plan.start_time = new DateTime(2011, 1, 1);
+            //plan.end_time = new DateTime(2017, 1, 1);
+            //Console.WriteLine(costPlan.Add(plan));
+
+            ///测试函数：costPlan.Update(cost_plan plan)
+            ///返回类型：int
+            ///测试结果：成功
+            ///参数中必需的属性:
+            ///     plan:id、cost_type、money、start_time、end_time
+
+            //CostPlan costPlan = new CostPlan();
+            //cost_plan plan = new cost_plan();
+            //plan.id = 14;
+            //plan.cost_type = "玩";
+            //plan.money = 999;
+            //plan.start_time = new DateTime(2017, 1, 1);
+            //plan.end_time = new DateTime(2017, 5, 1);
+            //Console.WriteLine(costPlan.Update(plan));
+
+            ///测试函数：costPlan.Del(cost_plan plan)
+            ///返回类型：int
+            ///测试结果：成功
+            ///参数中必需的属性:
+            ///     plan:id
+
+            //CostPlan costPlan = new CostPlan();
+            //cost_plan plan = new cost_plan();
+            //plan.id = 14;
+
+            //Console.WriteLine(costPlan.Del(plan));
+
+            ///测试函数：costPlan.GetById(int id)
+            ///返回类型：List<cost_plan> 
+            ///测试结果：成功
+            ///参数中必需的属性:
+            ///     id:费用规划id
+
+            //CostPlan costPlan = new CostPlan();
+            //List<cost_plan> listPlan = costPlan.GetById(15);
+            //foreach(cost_plan plan in listPlan)
+            //{
+            //    Console.WriteLine(plan.id+"  "+plan.cost_type+"  "+plan.start_time+"  "+plan.end_time+"  "+plan.money);
+            //}
+
+            ///测试函数：costPlan.Query()
+            ///返回类型：List<cost_plan> 
+            ///测试结果：成功
+            ///参数中必需的属性:
+            ///     无
+
+            //CostPlan costPlan = new CostPlan();
+            //List<cost_plan> listPlan = costPlan.Query();
+            //foreach (cost_plan plan in listPlan)
+            //{
+            //    Console.WriteLine(plan.id + "  " + plan.cost_type + "  " + plan.start_time + "  " + plan.end_time + "  " + plan.money);
+            //}
+
+
+            ///测试函数：costPlan.Query(Dictionary<string, object> conditions)
+            ///返回类型：List<cost_plan> 
+            ///测试结果：成功
+            ///参数中必需的属性:
+            ///     conditions：条件键值对词典  key建议是"start_time", "end_time", "cost_type", "id"其中的，否则无效
+
+            //Dictionary<string, object> conditions = new Dictionary<string, object>();
+            //conditions.Add("cost_type","餐饮");
+            //List<cost_plan> listPlan = new CostPlan().Query(conditions);
+            //foreach(cost_plan plan in listPlan)
+            //{
+            //Console.WriteLine(plan.id+" "+plan.cost_type+" "+plan.start_time+" "+plan.end_time+" "+plan.money);
+            //}
+
+            ///测试函数：CostStastic.Query(Dictionary<string, object> conditions)
+            ///返回类型：Dictionary<cost_main, List<cost_detail>> 
+            ///测试结果：成功
+            ///参数中必需的属性:
+            ///     conditions：条件键值对词典  key建议是"start_time", "end_time", "applicant"其中的，否则无效
+
+            Dictionary<string, object> conditions = new Dictionary<string, object>();
+            //conditions.Add("applicant", "小明");
+            conditions.Add("start_time", new DateTime(2017, 1, 1));
+            //conditions.Add("end_time",new DateTime(2020,1,1));
+            Dictionary<cost_main, List<cost_detail>> retDic = new CostStatistic().Query(conditions);
+            foreach (cost_main main in retDic.Keys)
+            {
+                Console.WriteLine(main.applicant+" "+main.approval_time);
+                foreach (cost_detail detail in retDic[main])
+                {
+                    Console.WriteLine("\t"+detail.cost_id + " " + detail.cost_type + " " + detail.money);
+                }
+               
+            }
             Console.ReadKey();
+
         }
     }
 }

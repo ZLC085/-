@@ -32,7 +32,6 @@ namespace PersonInfoManage.DAL.Cost
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
             return res;
         }
-
         /// <summary>
         /// 根据费用单id查询
         /// </summary>
@@ -42,7 +41,6 @@ namespace PersonInfoManage.DAL.Cost
         {
             return new CostApply().GetById(costId);
         }
-
         /// <summary>
         /// 所有费用审批查询
         /// </summary>
