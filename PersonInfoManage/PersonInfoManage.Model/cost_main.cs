@@ -7,11 +7,9 @@ namespace PersonInfoManage.Model
     using System.Data.Entity.Spatial;
 
     public partial class cost_main
-    {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    {        
         public cost_main()
-        {
-            cost_detail = new HashSet<cost_detail>();
+        {           
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -37,7 +35,6 @@ namespace PersonInfoManage.Model
         [StringLength(200)]
         public string remark { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cost_detail> cost_detail { get; set; }
+        
     }
 }
