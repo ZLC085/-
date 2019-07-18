@@ -19,7 +19,7 @@ namespace PersonInfoManage.DAL.System
         ///添加用户组
         /// </summary>
         /// <param name="group">用户组信息</param>
-        /// <returns>添加条数</returns>
+        /// <returns>返回添加条数</returns>
         public int add(sys_group group)
         {
 
@@ -29,6 +29,7 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlparameter2 = new SqlParameter("@p2", group.remark);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql1, sqlparameter1, sqlparameter2);                  
             return res;
+
         }
 
 
