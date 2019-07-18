@@ -33,21 +33,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.listPersonDetail = new DevComponents.DotNetBar.ListBoxAdv();
+            this.listBoxItem1 = new DevComponents.DotNetBar.ListBoxItem();
+            this.listBoxItem2 = new DevComponents.DotNetBar.ListBoxItem();
             this.superTabItem1 = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel2 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
+            this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
+            this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
+            this.labelItem6 = new DevComponents.DotNetBar.LabelItem();
             this.btnUpdateFile = new DevComponents.DotNetBar.ButtonItem();
             this.btnDelFile = new DevComponents.DotNetBar.ButtonItem();
             this.buttonItem3 = new DevComponents.DotNetBar.ButtonItem();
-            this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
             this.btnAddFile = new DevComponents.DotNetBar.ButtonItem();
-            this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
-            this.labelItem6 = new DevComponents.DotNetBar.LabelItem();
-            this.listBoxAdv1 = new DevComponents.DotNetBar.ListBoxAdv();
-            this.listBoxItem1 = new DevComponents.DotNetBar.ListBoxItem();
-            this.listBoxItem2 = new DevComponents.DotNetBar.ListBoxItem();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControl1)).BeginInit();
             this.superTabControl1.SuspendLayout();
             this.superTabControlPanel1.SuspendLayout();
@@ -91,13 +91,46 @@
             // 
             // superTabControlPanel1
             // 
-            this.superTabControlPanel1.Controls.Add(this.listBoxAdv1);
+            this.superTabControlPanel1.Controls.Add(this.listPersonDetail);
             this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControlPanel1.Location = new System.Drawing.Point(0, 28);
             this.superTabControlPanel1.Name = "superTabControlPanel1";
             this.superTabControlPanel1.Size = new System.Drawing.Size(484, 483);
             this.superTabControlPanel1.TabIndex = 1;
             this.superTabControlPanel1.TabItem = this.superTabItem1;
+            // 
+            // listPersonDetail
+            // 
+            this.listPersonDetail.AutoScroll = true;
+            // 
+            // 
+            // 
+            this.listPersonDetail.BackgroundStyle.Class = "ListBoxAdv";
+            this.listPersonDetail.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.listPersonDetail.ContainerControlProcessDialogKey = true;
+            this.listPersonDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listPersonDetail.DragDropSupport = true;
+            this.listPersonDetail.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.listPersonDetail.ItemHeight = 35;
+            this.listPersonDetail.Items.Add(this.listBoxItem1);
+            this.listPersonDetail.Items.Add(this.listBoxItem2);
+            this.listPersonDetail.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
+            this.listPersonDetail.Location = new System.Drawing.Point(0, 0);
+            this.listPersonDetail.Name = "listPersonDetail";
+            this.listPersonDetail.Size = new System.Drawing.Size(484, 483);
+            this.listPersonDetail.TabIndex = 0;
+            this.listPersonDetail.Text = "listBoxAdv1";
+            // 
+            // listBoxItem1
+            // 
+            this.listBoxItem1.IsSelected = true;
+            this.listBoxItem1.Name = "listBoxItem1";
+            this.listBoxItem1.Text = "Item 1";
+            // 
+            // listBoxItem2
+            // 
+            this.listBoxItem2.Name = "listBoxItem2";
+            this.listBoxItem2.Text = "Item 2";
             // 
             // superTabItem1
             // 
@@ -133,7 +166,7 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -204,30 +237,6 @@
             // 
             this.ribbonBar2.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // btnUpdateFile
-            // 
-            this.btnUpdateFile.Image = global::PersonInfoManage.Properties.Resources.修改;
-            this.btnUpdateFile.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnUpdateFile.Name = "btnUpdateFile";
-            this.btnUpdateFile.SubItemsExpandWidth = 14;
-            this.btnUpdateFile.Text = "修改";
-            // 
-            // btnDelFile
-            // 
-            this.btnDelFile.Image = global::PersonInfoManage.Properties.Resources.删除;
-            this.btnDelFile.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnDelFile.Name = "btnDelFile";
-            this.btnDelFile.SubItemsExpandWidth = 14;
-            this.btnDelFile.Text = "删除";
-            // 
-            // buttonItem3
-            // 
-            this.buttonItem3.Image = global::PersonInfoManage.Properties.Resources.导出;
-            this.buttonItem3.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.buttonItem3.Name = "buttonItem3";
-            this.buttonItem3.SubItemsExpandWidth = 14;
-            this.buttonItem3.Text = "导出";
-            // 
             // ribbonBar1
             // 
             this.ribbonBar1.AutoOverflowEnabled = true;
@@ -259,14 +268,6 @@
             // 
             this.ribbonBar1.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
-            // btnAddFile
-            // 
-            this.btnAddFile.Image = global::PersonInfoManage.Properties.Resources.添加;
-            this.btnAddFile.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.btnAddFile.Name = "btnAddFile";
-            this.btnAddFile.SubItemsExpandWidth = 14;
-            this.btnAddFile.Text = "添加";
-            // 
             // superTabItem2
             // 
             this.superTabItem2.AttachedControl = this.superTabControlPanel2;
@@ -279,37 +280,37 @@
             this.labelItem6.GlobalItem = false;
             this.labelItem6.Name = "labelItem6";
             // 
-            // listBoxAdv1
+            // btnUpdateFile
             // 
-            this.listBoxAdv1.AutoScroll = true;
+            this.btnUpdateFile.Image = global::PersonInfoManage.Properties.Resources.修改;
+            this.btnUpdateFile.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnUpdateFile.Name = "btnUpdateFile";
+            this.btnUpdateFile.SubItemsExpandWidth = 14;
+            this.btnUpdateFile.Text = "修改";
             // 
+            // btnDelFile
             // 
+            this.btnDelFile.Image = global::PersonInfoManage.Properties.Resources.删除;
+            this.btnDelFile.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnDelFile.Name = "btnDelFile";
+            this.btnDelFile.SubItemsExpandWidth = 14;
+            this.btnDelFile.Text = "删除";
             // 
-            this.listBoxAdv1.BackgroundStyle.Class = "ListBoxAdv";
-            this.listBoxAdv1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.listBoxAdv1.CheckStateMember = null;
-            this.listBoxAdv1.ContainerControlProcessDialogKey = true;
-            this.listBoxAdv1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBoxAdv1.DragDropSupport = true;
-            this.listBoxAdv1.Items.Add(this.listBoxItem1);
-            this.listBoxAdv1.Items.Add(this.listBoxItem2);
-            this.listBoxAdv1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
-            this.listBoxAdv1.Location = new System.Drawing.Point(0, 0);
-            this.listBoxAdv1.Name = "listBoxAdv1";
-            this.listBoxAdv1.Size = new System.Drawing.Size(484, 483);
-            this.listBoxAdv1.TabIndex = 0;
-            this.listBoxAdv1.Text = "listBoxAdv1";
+            // buttonItem3
             // 
-            // listBoxItem1
+            this.buttonItem3.Image = global::PersonInfoManage.Properties.Resources.导出;
+            this.buttonItem3.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.buttonItem3.Name = "buttonItem3";
+            this.buttonItem3.SubItemsExpandWidth = 14;
+            this.buttonItem3.Text = "导出";
             // 
-            this.listBoxItem1.IsSelected = true;
-            this.listBoxItem1.Name = "listBoxItem1";
-            this.listBoxItem1.Text = "Item 1";
+            // btnAddFile
             // 
-            // listBoxItem2
-            // 
-            this.listBoxItem2.Name = "listBoxItem2";
-            this.listBoxItem2.Text = "Item 2";
+            this.btnAddFile.Image = global::PersonInfoManage.Properties.Resources.添加;
+            this.btnAddFile.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnAddFile.Name = "btnAddFile";
+            this.btnAddFile.SubItemsExpandWidth = 14;
+            this.btnAddFile.Text = "添加";
             // 
             // PersonDetail
             // 
@@ -351,7 +352,7 @@
         private DevComponents.DotNetBar.ButtonItem btnAddFile;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
         private DevComponents.DotNetBar.LabelItem labelItem6;
-        private DevComponents.DotNetBar.ListBoxAdv listBoxAdv1;
+        private DevComponents.DotNetBar.ListBoxAdv listPersonDetail;
         private DevComponents.DotNetBar.ListBoxItem listBoxItem1;
         private DevComponents.DotNetBar.ListBoxItem listBoxItem2;
     }

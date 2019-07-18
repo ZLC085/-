@@ -76,6 +76,48 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCostDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCostDetail.Designer.cs">
+      <DependentUpon>AddCostDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddUserGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddUserGroup.Designer.cs">
+      <DependentUpon>AddUserGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CostApply.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CostApply.Designer.cs">
+      <DependentUpon>CostApply.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CostApplyDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CostApplyDetail.Designer.cs">
+      <DependentUpon>CostApplyDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CostApproval.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CostApproval.Designer.cs">
+      <DependentUpon>CostApproval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CostPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CostPlan.Designer.cs">
+      <DependentUpon>CostPlan.cs</DependentUpon>
+    </Compile>
     <Compile Include="LocalUserInfo.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -103,6 +145,33 @@
     <Compile Include="UpdatFileName.Designer.cs">
       <DependentUpon>UpdatFileName.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserGroupRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserGroupRole.Designer.cs">
+      <DependentUpon>UserGroupRole.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddCostDetail.resx">
+      <DependentUpon>AddCostDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddUserGroup.resx">
+      <DependentUpon>AddUserGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CostApply.resx">
+      <DependentUpon>CostApply.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CostApplyDetail.resx">
+      <DependentUpon>CostApplyDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CostApproval.resx">
+      <DependentUpon>CostApproval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CostPlan.resx">
+      <DependentUpon>CostPlan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -119,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UpdatFileName.resx">
       <DependentUpon>UpdatFileName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserGroupRole.resx">
+      <DependentUpon>UserGroupRole.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
