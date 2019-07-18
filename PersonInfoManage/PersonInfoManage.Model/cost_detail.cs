@@ -18,6 +18,6 @@ namespace PersonInfoManage.Model
 
         public decimal money { get; set; }
 
-        
+        public virtual cost_main cost_main { get; set; }
     }
 }
