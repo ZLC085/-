@@ -26,10 +26,17 @@ namespace PersonInfoManage.Model
         public virtual DbSet<sys_u2g> sys_u2g { get; set; }
         public virtual DbSet<sys_user> sys_user { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<business> businesses { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
            
+
+            modelBuilder.Entity<person_basic>()
+                .HasMany(e => e.businesses)
+                .WithRequired(e => e.person_basic)
+                .HasForeignKey(e => e.person_id)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<person_basic>()
                 .HasMany(e => e.person_file)
@@ -47,10 +54,6 @@ namespace PersonInfoManage.Model
 
             modelBuilder.Entity<sys_group>()
                 .Property(e => e.group_name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<sys_group>()
-                .Property(e => e.role_sign)
                 .IsUnicode(false);
 
             modelBuilder.Entity<sys_group>()
@@ -94,6 +97,18 @@ namespace PersonInfoManage.Model
                 .WithRequired(e => e.sys_user)
                 .HasForeignKey(e => e.user_id)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<business>()
+                .Property(e => e._event)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<business>()
+                .Property(e => e.location)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<business>()
+                .Property(e => e.remark)
+                .IsUnicode(false);
         }
     }
 }
