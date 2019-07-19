@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PersonInfoManage.BLL\PersonInfoManage.BLL.csproj">
+      <Project>{92ef8815-c7f7-46a6-b212-b5aea0d3cbe3}</Project>
+      <Name>PersonInfoManage.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PersonInfoManage.DAL\PersonInfoManage.DAL.csproj">
       <Project>{d2a0eb50-afd7-4b21-895f-c317bcad96ff}</Project>
       <Name>PersonInfoManage.DAL</Name>
@@ -58,6 +62,9 @@
       <Project>{4f1ce3dd-23c8-4f36-9988-a5efda72699d}</Project>
       <Name>PersonInfoManage.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
