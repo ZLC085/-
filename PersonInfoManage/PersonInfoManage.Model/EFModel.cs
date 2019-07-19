@@ -27,6 +27,7 @@ namespace PersonInfoManage.Model
         public virtual DbSet<sys_user> sys_user { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<business> businesses { get; set; }
+        public virtual DbSet<View_CostMainDetail> View_CostMainDetail { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

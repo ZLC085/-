@@ -55,9 +55,10 @@ namespace PersonInfoManage.Model
         [StringLength(100)]
         public string family { get; set; }
 
-        [Required]
+        public int person_type { get; set; }
+
         [StringLength(20)]
-        public string person_type { get; set; }
+        public string person_type_name { get; set; }
 
         [StringLength(20)]
         public string qq { get; set; }
