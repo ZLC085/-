@@ -25,21 +25,22 @@ namespace PersonInfoManage.Test
             //测试函数：perm.add(group)  测试成功
             //Perm perm = new Perm();
             //sys_group group = new sys_group();
-            //group.group_name = "普通用户1";
-            //group.remark = "no";
+            //group.group_name = "管理员";
+            //group.remark = "局长";
             //Console.WriteLine(perm.add(group));
 
             //测试函数:perm.Update(group_id,grouplist) 测试成功
             //Perm perm = new Perm();
-            //int group_id = 15;
-            //string[] temp = { "per", "cost", "sys", "test" };
+            //int group_id = 20;
+            //string[] temp = { "人员信息管理", "费用管理", "日志管理", "系统管理" };
             //List<string> grouplist = new List<string>(temp);
             //Console.WriteLine(perm.Update(group_id, grouplist));
 
             //测试函数：perm.Del(group_id) 测试成功
-            Perm perm = new Perm();
-            int group_id = 22;
-            Console.WriteLine(perm.Del(group_id));
+            //Perm perm = new Perm();
+            //int group_id = 17;
+            //Console.WriteLine(perm.Del(group_id));
+
 
             //测试函数：perm.Selectgroup(group) 测试成功
             //Perm perm = new Perm();
@@ -415,13 +416,13 @@ namespace PersonInfoManage.Test
 
 
             //根据ID查询文件
-            //PersonFile files = new PersonFile();
-            //List<person_file> Listfile = files.GetById(26);
-            //foreach (person_file B in Listfile)
-            //{
-            //    Console.WriteLine(B.id + " " + B.person_id + " " + B.filename + " " + B.file + " " + B.filetype + " " + B.create_time + " " + B.modify_time);
+            PersonFile files = new PersonFile();
+            List<person_file> Listfile = files.GetById(26);
+            foreach (person_file B in Listfile)
+            {
+                Console.WriteLine(B.id + " " + B.person_id + " " + B.filename + " " + B.file + " " + B.filetype + " " + B.create_time + " " + B.modify_time);
 
-            //}
+            }
 
 
             Console.ReadKey();
