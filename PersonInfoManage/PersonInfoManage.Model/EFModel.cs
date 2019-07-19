@@ -31,11 +31,7 @@ namespace PersonInfoManage.Model
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<cost_main>()
-                .HasMany(e => e.cost_detail)
-                .WithRequired(e => e.cost_main)
-                .HasForeignKey(e => e.cost_id)
-                .WillCascadeOnDelete(false);
+            
 
             modelBuilder.Entity<person_basic>()
                 .HasMany(e => e.businesses)

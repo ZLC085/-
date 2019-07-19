@@ -10,15 +10,11 @@ using System.Windows.Forms;
 
 namespace PersonInfoManage
 {
-    public partial class CostApplyForm : Form
+    public partial class UpdateRoleForm : Form
     {
-        public CostApplyForm()
+        public UpdateRoleForm()
         {
             InitializeComponent();
-        }
-        private void AddCostDeatil_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -20,7 +20,7 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="user">用户信息</param>
         /// <returns>添加条数</returns>
-        public int add(sys_user user, int groupid)
+        public int add(sys_user user, sys_group group)
         {
             string sql = "insert into sys_user (username,name,password,gender,job,phone,email,status,isdel,create_time,modify_time) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p10,@p11,getdate(),getdate())";
             string sql1 = "insert into sys_u2g (user_id,group_id) values(@p8,@p9)";
@@ -50,7 +50,7 @@ namespace PersonInfoManage.DAL.System
                     ds = SqlHelper.ExecuteDataset(connection, CommandType.Text, SelectSql);
                     user.id = (int)ds.Tables[0].Rows[0][nameof(sys_user.id)];
                     SqlParameter sqlparameter7 = new SqlParameter("@p8", user.id);
-                    SqlParameter sqlparameter8 = new SqlParameter("@p9", groupid);
+                    SqlParameter sqlparameter8 = new SqlParameter("@p9", group.id);
                     SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql1, sqlparameter7, sqlparameter8);
                     trans.Commit();
                     return 1;
@@ -64,16 +64,18 @@ namespace PersonInfoManage.DAL.System
             }
             //return new DBOperationsInsert<sys_user, DBNull>().Insert(user);
         }
+
+
         /// <summary>
         /// 用户信息修改
         /// </summary>
         /// <param name="id">id</param>
         /// <param name="newValues">用户信息</param>
         /// <returns>修改条数</returns>
-        public int Update(int id, sys_user user, int group_id)
+        public int Update(sys_user user,sys_group group)
         {
-            string sql = "update sys_user SET username = @p1,name = @p2,password = @p3,gender = @p4,job = @p5,phone = @p6,email = @p7 where id = '" + id + "'";
-            string sql1 = "update sys_u2g SET group_id=@p9 where user_id=id";
+            string sql = "update sys_user SET username = @p1,name = @p2,password = @p3,gender = @p4,job = @p5,phone = @p6,email = @p7 where id = '" + user.id + "'";
+            string sql1 = "update sys_u2g SET group_id=@p9 where user_id= '"+user.id+"'";
             SqlParameter sqlParameter = new SqlParameter("@p1", user.username);
             SqlParameter sqlParameter1 = new SqlParameter("@p2", user.name);
             SqlParameter sqlParameter2 = new SqlParameter("@p3", user.password);
@@ -82,7 +84,7 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlParameter5 = new SqlParameter("@p6", user.phone);
             SqlParameter sqlParameter6 = new SqlParameter("@p7", user.email);
             SqlParameter sqlParameter7 = new SqlParameter("@p8", user.status);
-            SqlParameter sqlParameter8 = new SqlParameter("@p9", group_id);
+            SqlParameter sqlParameter8 = new SqlParameter("@p9", group.id);
             using (SqlConnection connection = new SqlConnection(ConStr))
             {
                 SqlConnection conn = new SqlConnection(ConStr);
@@ -117,7 +119,7 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="userId">用户id</param>
         /// <returns>删除条数</returns>
-        public int Del(int id)
+        public int Del(sys_user user)
         {
             using (SqlConnection connection = new SqlConnection(ConStr))
             {
@@ -130,8 +132,8 @@ namespace PersonInfoManage.DAL.System
                     trans = conn.BeginTransaction();
                     command.Transaction = trans;
                     command.Connection = conn;
-                    string sql = "delete from sys_user where id= '" + id + "'";
-                    string sql1 = "delete from sys_u2g where user_id='" + id + "'";
+                    string sql = "delete from sys_user where id= '" + user.id + "'";
+                    string sql1 = "delete from sys_u2g where user_id='" + user.id + "'";
                     SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql1);
                     SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql);
 

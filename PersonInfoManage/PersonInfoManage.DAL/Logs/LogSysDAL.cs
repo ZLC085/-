@@ -11,7 +11,7 @@ namespace PersonInfoManage.DAL.Logs
     /// <summary>
     /// 系统运行日志
     /// </summary>
-    public class LogSys
+    public class LogSysDAL
     {
         /// <summary>
         /// 系统运行日志查询，所有
