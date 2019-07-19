@@ -23,8 +23,8 @@ namespace PersonInfoManage.Test
             //测试函数：perm.add(group)  测试成功
             //Perm perm = new Perm();
             //sys_group group = new sys_group();
-            //group.group_name = "yuangong";
-            //group.remark = "123";
+            //group.group_name = "user";
+            //group.remark = "111";
             //Console.WriteLine(perm.add(group));
 
             //测试函数:perm.Update(group_id,grouplist) 测试成功
@@ -36,7 +36,7 @@ namespace PersonInfoManage.Test
 
             //测试函数：perm.Del(group_id) 测试成功
             //Perm perm = new Perm();
-            //int group_id = 13;
+            //int group_id = 11;
             //Console.WriteLine(perm.Del(group_id));
 
             //测试函数：perm.Selectgroup(group) 测试成功
@@ -94,30 +94,31 @@ namespace PersonInfoManage.Test
             //group.group_name = "lisi";
             //Console.WriteLine(sysuser.SelectBy(user, group));
 
+            //数据字典测试开始
             //测试函数：set.Add(dict)  测试成功 
             //SysSetting set = new SysSetting();
             //sys_dict dict = new sys_dict();
-            //dict.category_name = "huang";
+            //dict.category_name = "update";
             //Console.WriteLine(set.Add(dict));
 
             //测试函数：set.Update(dict)  测试成功 
             //SysSetting set = new SysSetting();
             //sys_dict dict = new sys_dict();
-            //dict.category_name = "du";
-            //dict.id = 8;
+            //dict.category_name = "select";
+            //dict.id = 10;
             //Console.WriteLine(set.Update(dict));
 
             //测试函数：set.Del(dict)  测试成功 
             //SysSetting set = new SysSetting();
             //sys_dict dict = new sys_dict();
-            //dict.id = 8;
+            //dict.id = 7;
             //Console.WriteLine(set.Del(dict));
 
             //测试函数：set.SelectAll()  测试成功
             //SysSetting set = new SysSetting();
             //Console.WriteLine(set.SelectAll());
 
-            //CostApply apply = new CostApply();
+            CostApply apply = new CostApply();
 
             ///测试函数：costApply.Add(cost_main costMain, List<cost_detail> detailList)
             ///返回类型：int
@@ -128,17 +129,17 @@ namespace PersonInfoManage.Test
             ///         cost_detail：cost_type、money
 
             //cost_main main = new cost_main();
-            //main.applicant = "成创空间";
-            //main.apply_money = 120;
-            //main.apply_time = new DateTime(2011, 5, 1);
+            //main.applicant = "测试add";
+            //main.apply_money = 130;
+            //main.apply_time = new DateTime(2014, 5, 5, 21, 12, 34);
 
             //cost_detail detail = new cost_detail();
             //detail.cost_type = "出行";
-            //detail.money = 40;
+            //detail.money = 30;
 
             //cost_detail detail2 = new cost_detail();
             //detail2.cost_type = "住宿";
-            //detail2.money = 30;
+            //detail2.money = 100;
 
             //List<cost_detail> listDetail = new List<cost_detail>();
             //listDetail.Add(detail);
@@ -155,22 +156,22 @@ namespace PersonInfoManage.Test
             ///         cost_detail：cost_type、money
 
             //cost_main main = new cost_main();
-            //main.id = 1563345759;
+            //main.id = 1563464932;
             //main.apply_money = 700;
 
             //cost_detail detail = new cost_detail();
-            //detail.cost_type = "出行test";
+            //detail.cost_type = "测试类型1";
             //detail.money = 500;
 
             //cost_detail detail2 = new cost_detail();
-            //detail2.cost_type = "饮食";
+            //detail2.cost_type = "住宿测试2";
             //detail2.money = 200;
 
             //List<cost_detail> listDetail = new List<cost_detail>();
             //listDetail.Add(detail);
             //listDetail.Add(detail2);
 
-            //Console.WriteLine(apply.Update(main,listDetail));
+            //Console.WriteLine(apply.Update(main, listDetail));
 
             ///测试函数：costApply.Del(cost_main costMain)
             ///返回类型：int
@@ -179,7 +180,7 @@ namespace PersonInfoManage.Test
             ///     costMain:id
 
             //cost_main main = new cost_main();
-            //main.id = 1563345759;
+            //main.id = 1563464932;
             //Console.WriteLine(apply.Del(main));
 
             ///测试函数：costApply.GetById(int id)
@@ -188,13 +189,13 @@ namespace PersonInfoManage.Test
             ///参数中必需的属性:
             ///     id:费用单编号
 
-            //Dictionary<cost_main, List<cost_detail>> dic = apply.GetById(1563342091);
-            //foreach(cost_main cm in dic.Keys)
+            //Dictionary<cost_main, List<cost_detail>> dic = apply.GetById(1563464932);
+            //foreach (cost_main cm in dic.Keys)
             //{
-            //    Console.WriteLine(cm.id+"  "+cm.apply_money+"  "+cm.applicant);
-            //    foreach(cost_detail cd in dic[cm])
+            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
+            //    foreach (cost_detail cd in dic[cm])
             //    {
-            //        Console.WriteLine("\t"+cd.cost_id+"  "+cd.cost_type+"  "+cd.money);
+            //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
             //    }
             //}
 
@@ -207,10 +208,10 @@ namespace PersonInfoManage.Test
             //Dictionary<cost_main, List<cost_detail>> dic = apply.Query();
             //foreach (cost_main cm in dic.Keys)
             //{
-            //    Console.WriteLine(cm.id + "  " + cm.apply_money + "  " + cm.applicant);
+            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
             //    foreach (cost_detail cd in dic[cm])
             //    {
-            //        Console.WriteLine("\t" + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
+            //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
             //    }
             //}
 
@@ -222,17 +223,17 @@ namespace PersonInfoManage.Test
 
             //Dictionary<string, object> conditions = new Dictionary<string, object>();
             //conditions.Add("id", 156);
-            //conditions.Add("applicant", "小明");
+            //conditions.Add("applicant", "测试add");
             //conditions.Add("status", 0);
             //conditions.Add("start_time", new DateTime(2017, 1, 1));
             //conditions.Add("end_time", new DateTime(2017, 5, 1));
             //Dictionary<cost_main, List<cost_detail>> dic = apply.Query(conditions);
             //foreach (cost_main cm in dic.Keys)
             //{
-            //    Console.WriteLine(cm.id + "  " + cm.apply_money + "  " + cm.applicant);
+            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
             //    foreach (cost_detail cd in dic[cm])
             //    {
-            //        Console.WriteLine("\t" + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
+            //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
             //    }
             //}
 
@@ -340,18 +341,17 @@ namespace PersonInfoManage.Test
             ///     conditions：条件键值对词典  key建议是"start_time", "end_time", "applicant"其中的，否则无效
 
             //Dictionary<string, object> conditions = new Dictionary<string, object>();
-            ////conditions.Add("applicant", "小明");
+            //conditions.Add("applicant", "小明");
             //conditions.Add("start_time", new DateTime(2017, 1, 1));
-            ////conditions.Add("end_time",new DateTime(2020,1,1));
+            //conditions.Add("end_time",new DateTime(2019,7,19));
             //Dictionary<cost_main, List<cost_detail>> retDic = new CostStatistic().Query(conditions);
-            //foreach (cost_main main in retDic.Keys)
+            //foreach (cost_main cm in retDic.Keys)
             //{
-            //    Console.WriteLine(main.applicant+" "+main.approval_time);
-            //    foreach (cost_detail detail in retDic[main])
+            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
+            //    foreach (cost_detail cd in retDic[cm])
             //    {
-            //        Console.WriteLine("\t"+detail.cost_id + " " + detail.cost_type + " " + detail.money);
+            //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
             //    }
-
             //}
             Console.ReadKey();
 

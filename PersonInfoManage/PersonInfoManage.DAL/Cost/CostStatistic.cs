@@ -15,10 +15,10 @@ namespace PersonInfoManage.DAL.Cost
     public class CostStatistic : DALBase
     {
         /// <summary>
-        /// 根据组合条件查询已审核通过的费用单词典
+        /// 根据组合条件查询已审核通过的费用单
         /// </summary>
-        /// <param name="conditions">组合条件词典</param>
-        /// <returns>费用单与费用详情列表的词典</returns>
+        /// <param name="conditions">条件键值对key: "applicant","start_time", "end_time"</param>
+        /// <returns>费用单对象与费用详情对象列表构成的词典键值对</returns>
         public Dictionary<cost_main, List<cost_detail>> Query(Dictionary<string, object> conditions)
         {
             string[] keys = new string[] { "start_time", "end_time", "applicant" };
@@ -57,7 +57,11 @@ namespace PersonInfoManage.DAL.Cost
                 main.applicant = (string)dt.Rows[i][nameof(cost_main.applicant)];
                 main.approver = (string)dt.Rows[i][nameof(cost_main.approver)];
                 main.apply_time = (DateTime)dt.Rows[i][nameof(cost_main.apply_time)];
-                main.approval_time = (DateTime)dt.Rows[i][nameof(cost_main.approval_time)];
+                //判断approval_time单元格是否为null
+                if (dt.Rows[i][nameof(cost_main.approval_time)] != DBNull.Value)
+                    main.approval_time = (DateTime)dt.Rows[i][nameof(cost_main.approval_time)];
+                else
+                    main.approval_time = null;
                 main.apply_money = (decimal)dt.Rows[i][nameof(cost_main.apply_money)];
                 main.approval_money = (decimal)dt.Rows[i][nameof(cost_main.approval_money)];
                 main.status = (byte)dt.Rows[i][nameof(cost_main.status)];
