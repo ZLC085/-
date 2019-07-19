@@ -118,7 +118,7 @@ namespace PersonInfoManage.Test
             //SysSetting set = new SysSetting();
             //Console.WriteLine(set.SelectAll());
 
-            CostApply apply = new CostApply();
+            //CostApply apply = new CostApply();
 
             ///测试函数：costApply.Add(cost_main costMain, List<cost_detail> detailList)
             ///返回类型：int
@@ -252,19 +252,43 @@ namespace PersonInfoManage.Test
 
             //Console.WriteLine(new CostApproval().Update(main));
 
-            ///测试函数：costPlan.Add(cost_plan plan)
+            ///测试函数：costPlan.Add(List<cost_plan> listPlan)
             ///返回类型：int
             ///测试结果：成功
             ///参数中必需的属性:
             ///     plan:cost_type、money、start_time、end_time
 
             //CostPlan costPlan = new CostPlan();
+            //List<cost_plan> planList = new List<cost_plan>();
             //cost_plan plan = new cost_plan();
-            //plan.cost_type = "出行";
-            //plan.money = 99;
-            //plan.start_time = new DateTime(2011, 1, 1);
-            //plan.end_time = new DateTime(2017, 1, 1);
-            //Console.WriteLine(costPlan.Add(plan));
+            //plan.cost_type = "测试规划1";
+            //plan.money = 199;
+            //plan.start_time = new DateTime(2020, 1, 1);
+            //plan.end_time = new DateTime(2020, 2, 1);
+
+            //cost_plan plan2 = new cost_plan();
+            //plan2.cost_type = "测试规划2";
+            //plan2.money = 299;
+            //plan2.start_time = new DateTime(2020, 1, 1);
+            //plan2.end_time = new DateTime(2020, 2, 1);
+
+            //cost_plan plan3 = new cost_plan();
+            //plan3.cost_type = "测试规划3";
+            //plan3.money = 399;
+            //plan3.start_time = new DateTime(2020, 1, 1);
+            //plan3.end_time = new DateTime(2020, 2, 1);
+
+            //cost_plan plan4 = new cost_plan();
+            //plan4.cost_type = "测试规划4";
+            //plan4.money = 499;
+            //plan4.start_time = new DateTime(2020, 1, 1);
+            //plan4.end_time = new DateTime(2020, 2, 1);
+
+            //planList.Add(plan);
+            //planList.Add(plan2);
+            //planList.Add(plan3);
+            //planList.Add(plan4);
+            //Console.WriteLine(costPlan.Add(planList));
 
             ///测试函数：costPlan.Update(cost_plan plan)
             ///返回类型：int
@@ -274,7 +298,7 @@ namespace PersonInfoManage.Test
 
             //CostPlan costPlan = new CostPlan();
             //cost_plan plan = new cost_plan();
-            //plan.id = 14;
+            //plan.id = 19;
             //plan.cost_type = "玩";
             //plan.money = 999;
             //plan.start_time = new DateTime(2017, 1, 1);
