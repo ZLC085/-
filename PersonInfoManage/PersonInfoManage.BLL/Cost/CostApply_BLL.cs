@@ -10,6 +10,12 @@ namespace PersonInfoManage.BLL.Cost
 {
     public class CostApply_BLL
     {
+        /// <summary>
+        /// 添加费用单
+        /// </summary>
+        /// <param name="main"></param>
+        /// <param name="listDeatil"></param>
+        /// <returns></returns>
         public bool Add(cost_main main,List<cost_detail> listDeatil)
         {
             bool flag = false;

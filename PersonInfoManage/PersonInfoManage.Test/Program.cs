@@ -136,7 +136,7 @@ namespace PersonInfoManage.Test
             //SysSetting set = new SysSetting();
             //Console.WriteLine(set.SelectAll());
 
-            //CostApply apply = new CostApply();
+            // CostApply apply = new CostApply();
 
             ///测试函数：costApply.Add(cost_main costMain, List<cost_detail> detailList)
             ///返回类型：int
@@ -146,23 +146,27 @@ namespace PersonInfoManage.Test
             ///     detailList：
             ///         cost_detail：cost_type、money
 
-            //cost_main main = new cost_main();
-            //main.applicant = "测试add";
-            //main.apply_money = 130;
-            //main.apply_time = new DateTime(2014, 5, 5, 21, 12, 34);
-
-            //cost_detail detail = new cost_detail();
-            //detail.cost_type = "出行";
-            //detail.money = 30;
-
-            //cost_detail detail2 = new cost_detail();
-            //detail2.cost_type = "住宿";
-            //detail2.money = 100;
-
-            //List<cost_detail> listDetail = new List<cost_detail>();
-            //listDetail.Add(detail);
-            //listDetail.Add(detail2);
-
+            //cost_main main = new cost_main
+            //{
+            //    applicant = "小红",
+            //    apply_money = 420,
+            //    apply_time = new DateTime(2019, 7, 19, 15, 0, 0)
+            //};
+            //cost_detail detail = new cost_detail
+            //{
+            //    cost_type = "餐饮",
+            //    money = 200
+            //};
+            //cost_detail detail2 = new cost_detail
+            //{
+            //    cost_type = "出行",
+            //    money = 220
+            //};
+            //List<cost_detail> listDetail = new List<cost_detail>
+            //{
+            //    detail,
+            //    detail2
+            //};
             //Console.WriteLine(apply.Add(main, listDetail));
 
             ///测试函数：costApply.Update(cost_main costMain, List<cost_detail> detailList)
@@ -173,21 +177,29 @@ namespace PersonInfoManage.Test
             ///     detailList：
             ///         cost_detail：cost_type、money
 
-            //cost_main main = new cost_main();
-            //main.id = 1563464932;
-            //main.apply_money = 700;
+            //cost_main main = new cost_main
+            //{
+            //    id = 1563517332,
+            //    apply_money = 900
+            //};
 
-            //cost_detail detail = new cost_detail();
-            //detail.cost_type = "测试类型1";
-            //detail.money = 500;
+            //cost_detail detail = new cost_detail
+            //{
+            //    cost_type = "测试类型1",
+            //    money = 500
+            //};
 
-            //cost_detail detail2 = new cost_detail();
-            //detail2.cost_type = "住宿测试2";
-            //detail2.money = 200;
+            //cost_detail detail2 = new cost_detail
+            //{
+            //    cost_type = "住宿",
+            //    money = 400
+            //};
 
-            //List<cost_detail> listDetail = new List<cost_detail>();
-            //listDetail.Add(detail);
-            //listDetail.Add(detail2);
+            //List<cost_detail> listDetail = new List<cost_detail>
+            //{
+            //    detail,
+            //    detail2
+            //};
 
             //Console.WriteLine(apply.Update(main, listDetail));
 
@@ -197,8 +209,10 @@ namespace PersonInfoManage.Test
             ///参数中必需的属性:
             ///     costMain:id
 
-            //cost_main main = new cost_main();
-            //main.id = 1563464932;
+            //cost_main main = new cost_main
+            //{
+            //    id = 1563517150
+            //};
             //Console.WriteLine(apply.Del(main));
 
             ///测试函数：costApply.GetById(int id)
@@ -207,7 +221,7 @@ namespace PersonInfoManage.Test
             ///参数中必需的属性:
             ///     id:费用单编号
 
-            //Dictionary<cost_main, List<cost_detail>> dic = apply.GetById(1563464932);
+            //Dictionary<cost_main, List<cost_detail>> dic = apply.GetById(1563517332);
             //foreach (cost_main cm in dic.Keys)
             //{
             //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
@@ -239,12 +253,14 @@ namespace PersonInfoManage.Test
             ///参数中必需的属性:
             ///     conditions:键值对 key建议是 "id", "applicant", "status", "start_time", "end_time"其中的，否则无效
 
-            //Dictionary<string, object> conditions = new Dictionary<string, object>();
-            //conditions.Add("id", 156);
-            //conditions.Add("applicant", "测试add");
-            //conditions.Add("status", 0);
-            //conditions.Add("start_time", new DateTime(2017, 1, 1));
-            //conditions.Add("end_time", new DateTime(2017, 5, 1));
+            //Dictionary<string, object> conditions = new Dictionary<string, object>
+            //{
+            //    { "id", 1563517332 },
+            //    { "applicant", "测试add" },
+            //    { "status", 1 },
+            //    { "start_time", new DateTime(2017, 1, 1) },
+            //    { "end_time", new DateTime(2017, 5, 5) }
+            //};
             //Dictionary<cost_main, List<cost_detail>> dic = apply.Query(conditions);
             //foreach (cost_main cm in dic.Keys)
             //{
@@ -261,13 +277,14 @@ namespace PersonInfoManage.Test
             ///参数中必需的属性:
             ///     main:approver、approval_time、approval_money、status、id
 
-            //cost_main main = new cost_main();
-            //main.id = 1563342091;
-            //main.approver = "小Abor";
-            //main.approval_time = new DateTime(2019, 7, 17);
-            //main.approval_money = 99;
-            //main.status = 1;
-
+            //cost_main main = new cost_main
+            //{
+            //    id = 1563517332,
+            //    approver = "小Abor",
+            //    approval_time = new DateTime(2019, 7, 18),
+            //    approval_money = 950,
+            //    status = 1
+            //};
             //Console.WriteLine(new CostApproval().Update(main));
 
             ///测试函数：costPlan.Add(List<cost_plan> listPlan)
@@ -276,39 +293,27 @@ namespace PersonInfoManage.Test
             ///参数中必需的属性:
             ///     plan:cost_type、money、start_time、end_time
 
-            //CostPlan costPlan = new CostPlan();
-            //List<cost_plan> planList = new List<cost_plan>();
+            // CostPlan costplan = new CostPlan();
             //cost_plan plan = new cost_plan();
-            //plan.cost_type = "测试规划1";
-            //plan.money = 199;
-            //plan.start_time = new DateTime(2020, 1, 1);
-            //plan.end_time = new DateTime(2020, 2, 1);
+            //plan.cost_type = "出行";
+            //plan.money = 99;
+            //plan.start_time = new DateTime(2011, 1, 1);
+            //plan.end_time = new DateTime(2017, 1, 1);
+
 
             //cost_plan plan2 = new cost_plan();
-            //plan2.cost_type = "测试规划2";
-            //plan2.money = 299;
-            //plan2.start_time = new DateTime(2020, 1, 1);
-            //plan2.end_time = new DateTime(2020, 2, 1);
+            //plan2.cost_type = "餐饮";
+            //plan2.money = 222;
+            //plan2.start_time = new DateTime(2013, 1, 1);
+            //plan2.end_time = new DateTime(2017, 1, 1);
 
-            //cost_plan plan3 = new cost_plan();
-            //plan3.cost_type = "测试规划3";
-            //plan3.money = 399;
-            //plan3.start_time = new DateTime(2020, 1, 1);
-            //plan3.end_time = new DateTime(2020, 2, 1);
+            //List<cost_plan> ListPlan = new List<cost_plan>();
+            //ListPlan.Add(plan);
+            //ListPlan.Add(plan2);
 
-            //cost_plan plan4 = new cost_plan();
-            //plan4.cost_type = "测试规划4";
-            //plan4.money = 499;
-            //plan4.start_time = new DateTime(2020, 1, 1);
-            //plan4.end_time = new DateTime(2020, 2, 1);
+            //Console.WriteLine(costplan.Add(ListPlan));
 
-            //planList.Add(plan);
-            //planList.Add(plan2);
-            //planList.Add(plan3);
-            //planList.Add(plan4);
-            //Console.WriteLine(costPlan.Add(planList));
-
-            ///测试函数：costPlan.Update(cost_plan plan)
+            ///测试函数：costPlan.Update(List<cost_plan> ListPlan)
             ///返回类型：int
             ///测试结果：成功
             ///参数中必需的属性:
@@ -316,24 +321,43 @@ namespace PersonInfoManage.Test
 
             //CostPlan costPlan = new CostPlan();
             //cost_plan plan = new cost_plan();
-            //plan.id = 19;
-            //plan.cost_type = "玩";
+            //plan.cost_type = "出行";
             //plan.money = 999;
-            //plan.start_time = new DateTime(2017, 1, 1);
-            //plan.end_time = new DateTime(2017, 5, 1);
-            //Console.WriteLine(costPlan.Update(plan));
+            //plan.start_time = new DateTime(2011, 1, 1);
+            //plan.end_time = new DateTime(2017, 1, 1);
 
-            ///测试函数：costPlan.Del(cost_plan plan)
+            //cost_plan plan2 = new cost_plan();
+            //plan2.cost_type = "餐饮";
+            //plan2.money = 999;
+            //plan2.start_time = new DateTime(2011, 1, 1);
+            //plan2.end_time = new DateTime(2017, 1, 1);
+
+            //List<cost_plan> ListPlan = new List<cost_plan>();
+            //ListPlan.Add(plan);
+            //ListPlan.Add(plan2);
+
+            //Console.WriteLine(costPlan.Update(ListPlan));
+
+            ///测试函数：costPlan.Del(List<cost_plan> ListPlan )
             ///返回类型：int
             ///测试结果：成功
             ///参数中必需的属性:
-            ///     plan:id
+            ///     plan:start_time,end_time
 
-            //CostPlan costPlan = new CostPlan();
+            //CostPlan costplan = new CostPlan();
             //cost_plan plan = new cost_plan();
-            //plan.id = 14;
+            //plan.start_time = (new DateTime(2011, 1, 1));
+            //plan.end_time = (new DateTime(2017, 1, 1));
 
-            //Console.WriteLine(costPlan.Del(plan));
+            //cost_plan plan2 = new cost_plan();
+            //plan2.start_time = (new DateTime(2011, 1, 9));
+            //plan2.end_time = (new DateTime(2017, 1, 1));
+
+            //List<cost_plan> ListPlan = new List<cost_plan>();
+            //ListPlan.Add(plan);
+            //ListPlan.Add(plan2);
+
+            //Console.WriteLine(costplan.Del(ListPlan));
 
             ///测试函数：costPlan.GetById(int id)
             ///返回类型：List<cost_plan> 
