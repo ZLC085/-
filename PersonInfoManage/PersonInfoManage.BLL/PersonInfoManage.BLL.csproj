@@ -41,8 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cost\CostApply_BLL.cs" />
-    <Compile Include="Login\Login.cs" />
+    <Compile Include="Cost\CostApply.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
