@@ -25,8 +25,8 @@ namespace PersonInfoManage.Test
             //测试函数：perm.add(group)  测试成功
             //Perm perm = new Perm();
             //sys_group group = new sys_group();
-            //group.group_name = "yuangong";
-            //group.remark = "123";
+            //group.group_name = "普通用户1";
+            //group.remark = "no";
             //Console.WriteLine(perm.add(group));
 
             //测试函数:perm.Update(group_id,grouplist) 测试成功
@@ -37,9 +37,9 @@ namespace PersonInfoManage.Test
             //Console.WriteLine(perm.Update(group_id, grouplist));
 
             //测试函数：perm.Del(group_id) 测试成功
-            //Perm perm = new Perm();
-            //int group_id = 17;
-            //Console.WriteLine(perm.Del(group_id));
+            Perm perm = new Perm();
+            int group_id = 22;
+            Console.WriteLine(perm.Del(group_id));
 
             //测试函数：perm.Selectgroup(group) 测试成功
             //Perm perm = new Perm();
@@ -100,20 +100,22 @@ namespace PersonInfoManage.Test
             //测试函数：set.Add(dict)  测试成功 
             //SysSetting set = new SysSetting();
             //sys_dict dict = new sys_dict();
-            //dict.category_name = "update";
+            //dict.dict_name = "费用类别";
+            //dict.category_name = "其他";
             //Console.WriteLine(set.Add(dict));
 
             //测试函数：set.Update(dict)  测试成功 
             //SysSetting set = new SysSetting();
             //sys_dict dict = new sys_dict();
-            //dict.category_name = "select";
-            //dict.id = 10;
+            //dict.category_name = "其他1";
+            //dict.dict_name = "费用类别";
+            //dict.id = 6;
             //Console.WriteLine(set.Update(dict));
 
             //测试函数：set.Del(dict)  测试成功 
             //SysSetting set = new SysSetting();
             //sys_dict dict = new sys_dict();
-            //dict.id = 7;
+            //dict.id = 6;
             //Console.WriteLine(set.Del(dict));
 
             //测试函数：set.SelectAll()  测试成功
@@ -413,13 +415,13 @@ namespace PersonInfoManage.Test
 
 
             //根据ID查询文件
-            PersonFile files = new PersonFile();
-            List<person_file> Listfile = files.GetById(26);
-            foreach (person_file B in Listfile)
-            {
-                Console.WriteLine(B.id + " " + B.person_id + " " + B.filename + " " + B.file + " " + B.filetype + " " + B.create_time + " " + B.modify_time);
+            //PersonFile files = new PersonFile();
+            //List<person_file> Listfile = files.GetById(26);
+            //foreach (person_file B in Listfile)
+            //{
+            //    Console.WriteLine(B.id + " " + B.person_id + " " + B.filename + " " + B.file + " " + B.filetype + " " + B.create_time + " " + B.modify_time);
 
-            }
+            //}
 
 
             Console.ReadKey();
