@@ -12,7 +12,7 @@ namespace PersonInfoManage.Model
 
         [Required]
         [StringLength(50)]
-        public string category_type { get; set; }
+        public string dict_name { get; set; }
 
         [Required]
         [StringLength(50)]
