@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PersonInfoManage
 {
-    public partial class AddUserGroup : Form
+    public partial class AddUserGroupForm : Form
     {
-        public AddUserGroup()
+        public AddUserGroupForm()
         {
             InitializeComponent();
         }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PersonInfoManage
 {
-    public partial class AddCostDetail : Form
+    public partial class CostPlanForm : Form
     {
-        public AddCostDetail()
+        public CostPlanForm()
         {
             InitializeComponent();
         }

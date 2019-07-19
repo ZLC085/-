@@ -148,6 +148,9 @@
   <data name="电源" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\电源1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="警徽01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\警徽01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="首页1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\首页1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -157,7 +160,7 @@
   <data name="人员信息" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\人员信息.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="警徽01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\警徽01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="导出" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\导出.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

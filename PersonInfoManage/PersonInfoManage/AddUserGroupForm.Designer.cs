@@ -1,6 +1,6 @@
 ﻿namespace PersonInfoManage
 {
-    partial class AddUserGroup
+    partial class AddUserGroupForm
     {
         /// <summary>
         /// Required designer variable.
