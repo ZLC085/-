@@ -9,6 +9,7 @@ using PersonInfoManage.DAL.System;
 using PersonInfoManage.DAL.Cost;
 using PersonInfoManage.DAL.Login;
 using PersonInfoManage.DAL.PersonInfo;
+using PersonInfoManage.DAL.Logs;
 
 namespace PersonInfoManage.Test
 {
@@ -462,6 +463,71 @@ namespace PersonInfoManage.Test
             //}
 
 
+
+
+
+            //// 删除信息，测试
+            ////根据id删除
+            // //测试结果：成功
+            // LogSysDAL sys = new LogSysDAL();
+            // log_sys logsys = new log_sys();
+            // logsys.id = 3;
+            // Console.WriteLine(sys.Del(logsys));//1成功，0失败
+
+            ////日志查询   测试
+            //查询所有
+            //测试结果：成功
+            //LogUser user = new LogUser();
+            //List<log_user> listuser = user.Query();
+            //foreach (log_user loguser in listuser)
+            //{
+            //    Console.WriteLine(loguser.id + "  " + loguser.user_id + "  " + loguser.username + "  " + loguser.operation + "  " + loguser.ip + "  " + loguser.create_time);
+            //}
+
+            //////系统日志查询，所有
+            //LogSysDAL sys = new LogSysDAL();
+            //List<log_sys> listsys = sys.Query();
+            //foreach (log_sys logsys in listsys)
+            //{
+            //    Console.WriteLine(logsys.id + "  " + logsys.log_message + "  " + logsys.create_time);
+            //}
+            //////日志查询   测试
+            ////根据用户名查询
+            ////测试结果：成功
+            //LogUser user = new LogUser();
+            //List<log_user> listuser = user.GetByUserName("1");
+            //foreach (log_user loguser in listuser)
+            //{
+            //    Console.WriteLine(loguser.id + "  " + loguser.user_id + "  " + loguser.username + "  " + loguser.operation + "  " + loguser.ip + "  " + loguser.create_time);
+            //}
+
+            ////日志条件查询
+            ////用户名，时间段查询
+            ////测试结果：
+            //Dictionary<string, object> conditions = new Dictionary<string, object>();
+            //conditions.Add("username", "1");
+            //conditions.Add("start_time", new DateTime(2017, 1, 1));
+            //conditions.Add("end_time", new DateTime(2019, 7, 19));
+            //List<log_user> user = new LogUser().GetByConditionns(conditions);
+            //foreach (log_user loguser in user)
+            //{
+            //    Console.WriteLine(loguser.id + "  " + loguser.user_id + "  " + loguser.username + "  " + loguser.operation + "  " + loguser.ip + "  " + loguser.create_time);
+
+            //}
+
+
+            //日志条件查询
+            //用户名，时间段查询
+            //测试结果：
+            Dictionary<string, object> conditions = new Dictionary<string, object>();
+            conditions.Add("start_time", new DateTime(2017,7,1));
+            conditions.Add("end_time", new DateTime(2019, 7, 20));
+            List<log_sys> sys = new LogSysDAL().GetByConditionns(conditions);
+            foreach (log_sys logsys in sys)
+            {
+                Console.WriteLine(logsys.id + " " + logsys.create_time + "  " + logsys.log_message);
+
+            }
             Console.ReadKey();
         }
     }
