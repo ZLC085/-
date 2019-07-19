@@ -80,7 +80,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Operation\" />
+    <Folder Include="Business\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PersonInfoManage.Model\PersonInfoManage.Model.csproj">

@@ -30,7 +30,7 @@ namespace PersonInfoManage.Model
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-           
+            
 
             modelBuilder.Entity<person_basic>()
                 .HasMany(e => e.businesses)
@@ -44,22 +44,6 @@ namespace PersonInfoManage.Model
                 .HasForeignKey(e => e.person_id)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<person_file>()
-                .Property(e => e.filetype)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<sys_dict>()
-                .Property(e => e.category_name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<sys_group>()
-                .Property(e => e.group_name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<sys_group>()
-                .Property(e => e.remark)
-                .IsUnicode(false);
-
             modelBuilder.Entity<sys_group>()
                 .HasMany(e => e.sys_g2m)
                 .WithRequired(e => e.sys_group)
@@ -71,14 +55,6 @@ namespace PersonInfoManage.Model
                 .WithRequired(e => e.sys_group)
                 .HasForeignKey(e => e.group_id)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<sys_menu>()
-                .Property(e => e.menu_name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<sys_menu>()
-                .Property(e => e.perms)
-                .IsUnicode(false);
 
             modelBuilder.Entity<sys_menu>()
                 .HasMany(e => e.sys_g2m)
@@ -97,18 +73,6 @@ namespace PersonInfoManage.Model
                 .WithRequired(e => e.sys_user)
                 .HasForeignKey(e => e.user_id)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<business>()
-                .Property(e => e._event)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<business>()
-                .Property(e => e.location)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<business>()
-                .Property(e => e.remark)
-                .IsUnicode(false);
         }
     }
 }
