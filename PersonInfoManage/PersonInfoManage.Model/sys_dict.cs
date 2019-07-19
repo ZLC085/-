@@ -12,6 +12,10 @@ namespace PersonInfoManage.Model
 
         [Required]
         [StringLength(50)]
+        public string category_type { get; set; }
+
+        [Required]
+        [StringLength(50)]
         public string category_name { get; set; }
 
         public DateTime create_time { get; set; }

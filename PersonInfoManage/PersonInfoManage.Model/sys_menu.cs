@@ -19,11 +19,11 @@ namespace PersonInfoManage.Model
         public int? parent_id { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(50)]
         public string menu_name { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(50)]
         public string perms { get; set; }
 
         public DateTime create_time { get; set; }
