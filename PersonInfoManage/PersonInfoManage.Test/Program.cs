@@ -19,48 +19,48 @@ namespace PersonInfoManage.Test
             //测试函数：Login.SelectLogin(user)  测试成功
             //Login Login = new Login();
             //sys_user user = new sys_user();
-            //user.name = "lihua";
-            //Console.WriteLine(Login.SelectLogin(user));            
+            //user.username = "lihua";
+            //Console.WriteLine(Login.SelectLogin(user));
 
             //测试函数：perm.add(group)  测试成功
             //Perm perm = new Perm();
             //sys_group group = new sys_group();
-            //group.group_name = "user";
-            //group.remark = "111";
+            //group.group_name = "yuangong";
+            //group.remark = "123";
             //Console.WriteLine(perm.add(group));
 
             //测试函数:perm.Update(group_id,grouplist) 测试成功
             //Perm perm = new Perm();
-            //int group_id = 14;
-            //string[] temp = { "per", "cost", "sys","test"};
+            //int group_id = 15;
+            //string[] temp = { "per", "cost", "sys", "test" };
             //List<string> grouplist = new List<string>(temp);
             //Console.WriteLine(perm.Update(group_id, grouplist));
 
             //测试函数：perm.Del(group_id) 测试成功
             //Perm perm = new Perm();
-            //int group_id = 11;
+            //int group_id = 17;
             //Console.WriteLine(perm.Del(group_id));
 
             //测试函数：perm.Selectgroup(group) 测试成功
             //Perm perm = new Perm();
             //sys_group group = new sys_group();
-            //group.group_name = "lisi";
+            //group.group_name = "admin";
             //Console.WriteLine(perm.Selectgroup(group));
 
             //测试函数：SysUser.add(sys_user user,int groupid)  测试成功
             //SysUser sysuser = new SysUser();
             //sys_user user = new sys_user();
-            //user.username = "lihua";
-            //user.name = "李华";
-            //user.password = "123456";
+            //user.username = "xiaoming";
+            //user.name = "小明";
+            //user.password = "789";
             //user.gender = "男";
-            //user.job = "员工";
-            //user.phone = "18990533905";
-            //user.email = "873257742@qq.com";
+            //user.job = "领导";
+            //user.phone = "17396226172";
+            //user.email = "1258323278@qq.com";
             //user.status = false;
             //user.isdel = 0;
             //sys_group group = new sys_group();
-            //int groupid = 11;
+            //int groupid = 15;
             //Console.WriteLine(sysuser.add(user, groupid));
 
             //测试函数：SysUser.Update(sys_user user,int groupid)  测试成功
@@ -68,9 +68,9 @@ namespace PersonInfoManage.Test
             //sys_user user = new sys_user();
             //user.username = "lihua";
             //user.name = "李华";
-            //user.password = "123";
+            //user.password = "456";
             //user.gender = "女";
-            //user.job = "管理员";
+            //user.job = "员工";
             //user.phone = "18990533905";
             //user.email = "873257742@qq.com";
             //user.status = false;
@@ -81,7 +81,7 @@ namespace PersonInfoManage.Test
             //Console.WriteLine(sysuser.Update(id, user, groupid));
 
             //测试函数：SysUser.Del(id)  测试成功
-            //int id = 20;
+            //int id = 33;
             //SysUser sysuser = new SysUser();
             //Console.WriteLine(sysuser.Del(id));
 
@@ -93,7 +93,7 @@ namespace PersonInfoManage.Test
             //SysUser sysuser = new SysUser();
             //sys_user user = new sys_user();
             //sys_group group = new sys_group();
-            //group.group_name = "lisi";
+            //group.group_name = "admin";
             //Console.WriteLine(sysuser.SelectBy(user, group));
 
             //数据字典测试开始
@@ -120,7 +120,7 @@ namespace PersonInfoManage.Test
             //SysSetting set = new SysSetting();
             //Console.WriteLine(set.SelectAll());
 
-            CostApply apply = new CostApply();
+            //CostApply apply = new CostApply();
 
             ///测试函数：costApply.Add(cost_main costMain, List<cost_detail> detailList)
             ///返回类型：int
@@ -254,19 +254,43 @@ namespace PersonInfoManage.Test
 
             //Console.WriteLine(new CostApproval().Update(main));
 
-            ///测试函数：costPlan.Add(cost_plan plan)
+            ///测试函数：costPlan.Add(List<cost_plan> listPlan)
             ///返回类型：int
             ///测试结果：成功
             ///参数中必需的属性:
             ///     plan:cost_type、money、start_time、end_time
 
             //CostPlan costPlan = new CostPlan();
+            //List<cost_plan> planList = new List<cost_plan>();
             //cost_plan plan = new cost_plan();
-            //plan.cost_type = "出行";
-            //plan.money = 99;
-            //plan.start_time = new DateTime(2011, 1, 1);
-            //plan.end_time = new DateTime(2017, 1, 1);
-            //Console.WriteLine(costPlan.Add(plan));
+            //plan.cost_type = "测试规划1";
+            //plan.money = 199;
+            //plan.start_time = new DateTime(2020, 1, 1);
+            //plan.end_time = new DateTime(2020, 2, 1);
+
+            //cost_plan plan2 = new cost_plan();
+            //plan2.cost_type = "测试规划2";
+            //plan2.money = 299;
+            //plan2.start_time = new DateTime(2020, 1, 1);
+            //plan2.end_time = new DateTime(2020, 2, 1);
+
+            //cost_plan plan3 = new cost_plan();
+            //plan3.cost_type = "测试规划3";
+            //plan3.money = 399;
+            //plan3.start_time = new DateTime(2020, 1, 1);
+            //plan3.end_time = new DateTime(2020, 2, 1);
+
+            //cost_plan plan4 = new cost_plan();
+            //plan4.cost_type = "测试规划4";
+            //plan4.money = 499;
+            //plan4.start_time = new DateTime(2020, 1, 1);
+            //plan4.end_time = new DateTime(2020, 2, 1);
+
+            //planList.Add(plan);
+            //planList.Add(plan2);
+            //planList.Add(plan3);
+            //planList.Add(plan4);
+            //Console.WriteLine(costPlan.Add(planList));
 
             ///测试函数：costPlan.Update(cost_plan plan)
             ///返回类型：int
@@ -276,7 +300,7 @@ namespace PersonInfoManage.Test
 
             //CostPlan costPlan = new CostPlan();
             //cost_plan plan = new cost_plan();
-            //plan.id = 14;
+            //plan.id = 19;
             //plan.cost_type = "玩";
             //plan.money = 999;
             //plan.start_time = new DateTime(2017, 1, 1);
@@ -356,18 +380,49 @@ namespace PersonInfoManage.Test
             //    }
             //}
 
-            //PersonBasic PB = new PersonBasic();
-            //if (PB.Del(1012) > 0)
-            //{
-            //    Console.WriteLine("删除成功");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("删除失败");
-            //}
+
+
+
+
+            /////添加文件
+            //PersonFile files = new PersonFile();
+            //person_file A = new person_file();
+            //A.id = 22;
+            //A.person_id = 1;
+            //A.filename = "张安的XXX";
+            //A.filetype = "222";
+            //A.create_time = new DateTime(2019, 4, 1);
+            //A.modify_time = new DateTime(2018, 1, 18);
+            //Console.WriteLine(files.Add(A));
+
+
+            //更改文件名
+
+            //PersonFile files = new PersonFile();
+            //person_file A = new person_file();
+            //A.id = 12;
+            //A.filename = "zhao";
+            //Console.WriteLine(files.Update(A));
+
+
+            ////删除文件
+            //PersonFile files = new PersonFile();
+            //person_file A = new person_file();
+            //A.id = 25;
+            //Console.WriteLine(files.Del(A));
+
+
+            //根据ID查询文件
+            PersonFile files = new PersonFile();
+            List<person_file> Listfile = files.GetById(26);
+            foreach (person_file B in Listfile)
+            {
+                Console.WriteLine(B.id + " " + B.person_id + " " + B.filename + " " + B.file + " " + B.filetype + " " + B.create_time + " " + B.modify_time);
+
+            }
+
 
             Console.ReadKey();
-
         }
     }
 }
