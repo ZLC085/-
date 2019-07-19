@@ -8,6 +8,8 @@ using PersonInfoManage.DAL.Utils;
 using PersonInfoManage.DAL.System;
 using PersonInfoManage.DAL.Cost;
 using PersonInfoManage.DAL.Login;
+using PersonInfoManage.DAL.PersonInfo;
+
 namespace PersonInfoManage.Test
 {
     class Program
@@ -353,6 +355,17 @@ namespace PersonInfoManage.Test
             //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
             //    }
             //}
+
+            //PersonBasic PB = new PersonBasic();
+            //if (PB.Del(1012) > 0)
+            //{
+            //    Console.WriteLine("删除成功");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("删除失败");
+            //}
+
             Console.ReadKey();
 
         }

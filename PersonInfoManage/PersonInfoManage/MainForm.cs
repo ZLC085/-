@@ -9,5 +9,11 @@ namespace PersonInfoManage
         {
             InitializeComponent();
         }
+
+        private void BtnAddPerson_Click(object sender, EventArgs e)
+        {
+            PersonBasicForm pbForm = new PersonBasicForm();
+            pbForm.Show();
+        }
     }
 }
