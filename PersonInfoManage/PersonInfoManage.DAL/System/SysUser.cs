@@ -22,7 +22,7 @@ namespace PersonInfoManage.DAL.System
         /// <returns>添加条数</returns>
         public int add(sys_user user, int groupid)
         {
-            string sql = "insert into sys_user (username,name,password,gender,job,phone,email,status,isdel) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p10,@p11)";
+            string sql = "insert into sys_user (username,name,password,gender,job,phone,email,status,isdel,create_time,modify_time) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p10,@p11,getdate(),getdate())";
             string sql1 = "insert into sys_u2g (user_id,group_id) values(@p8,@p9)";
             string SelectSql = "select * from sys_user where username='" + user.username + "'";
             DataSet ds = new DataSet();
@@ -279,19 +279,19 @@ namespace PersonInfoManage.DAL.System
                         {
                            if(group1.group_name == group.group_name)
                             {
-                                Dic.Add(user1, group1);                              
+                                Dic.Add(user1, group1);  
+                                                            
                             }
                             else
-                            {
-                                trans.Rollback();
+                            {                               
                             }
                         }
                         else
                         {
                             Dic.Add(user1, group1);
                         }
-                    }                  
-                    trans.Commit();                    
+                    }
+                    trans.Commit();
                     return Dic;   
                 }
                 catch (Exception e)

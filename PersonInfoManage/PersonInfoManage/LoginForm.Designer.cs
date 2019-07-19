@@ -45,9 +45,10 @@
             // 
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Location = new System.Drawing.Point(177, 363);
+            this.labelX1.Location = new System.Drawing.Point(76, 161);
+            this.labelX1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(154, 56);
+            this.labelX1.Size = new System.Drawing.Size(66, 25);
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "用 户 名：";
             // 
@@ -57,9 +58,10 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(177, 446);
+            this.labelX2.Location = new System.Drawing.Point(76, 198);
+            this.labelX2.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(154, 56);
+            this.labelX2.Size = new System.Drawing.Size(66, 25);
             this.labelX2.TabIndex = 1;
             this.labelX2.Text = "密    码：";
             // 
@@ -70,10 +72,11 @@
             // 
             this.UserNameTextBox.Border.Class = "TextBoxBorder";
             this.UserNameTextBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.UserNameTextBox.Location = new System.Drawing.Point(370, 363);
+            this.UserNameTextBox.Location = new System.Drawing.Point(159, 161);
+            this.UserNameTextBox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.UserNameTextBox.Name = "UserNameTextBox";
             this.UserNameTextBox.PreventEnterBeep = true;
-            this.UserNameTextBox.Size = new System.Drawing.Size(270, 38);
+            this.UserNameTextBox.Size = new System.Drawing.Size(116, 21);
             this.UserNameTextBox.TabIndex = 2;
             // 
             // PsdTextBox
@@ -83,19 +86,21 @@
             // 
             this.PsdTextBox.Border.Class = "TextBoxBorder";
             this.PsdTextBox.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.PsdTextBox.Location = new System.Drawing.Point(370, 446);
+            this.PsdTextBox.Location = new System.Drawing.Point(159, 198);
+            this.PsdTextBox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.PsdTextBox.Name = "PsdTextBox";
             this.PsdTextBox.PasswordChar = '*';
             this.PsdTextBox.PreventEnterBeep = true;
-            this.PsdTextBox.Size = new System.Drawing.Size(270, 38);
+            this.PsdTextBox.Size = new System.Drawing.Size(116, 21);
             this.PsdTextBox.TabIndex = 3;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::PersonInfoManage.Properties.Resources.background;
-            this.pictureBox1.Location = new System.Drawing.Point(177, 30);
+            this.pictureBox1.Location = new System.Drawing.Point(76, 13);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(463, 276);
+            this.pictureBox1.Size = new System.Drawing.Size(198, 123);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -104,9 +109,10 @@
             // 
             this.LoginButton.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.LoginButton.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.LoginButton.Location = new System.Drawing.Point(317, 580);
+            this.LoginButton.Location = new System.Drawing.Point(136, 258);
+            this.LoginButton.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(227, 60);
+            this.LoginButton.Size = new System.Drawing.Size(97, 27);
             this.LoginButton.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.LoginButton.TabIndex = 5;
             this.LoginButton.Text = "登    录";
@@ -118,9 +124,10 @@
             // 
             // 
             this.remUserNamecheckBox.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.remUserNamecheckBox.Location = new System.Drawing.Point(177, 520);
+            this.remUserNamecheckBox.Location = new System.Drawing.Point(76, 231);
+            this.remUserNamecheckBox.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.remUserNamecheckBox.Name = "remUserNamecheckBox";
-            this.remUserNamecheckBox.Size = new System.Drawing.Size(171, 29);
+            this.remUserNamecheckBox.Size = new System.Drawing.Size(73, 13);
             this.remUserNamecheckBox.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.remUserNamecheckBox.TabIndex = 7;
             this.remUserNamecheckBox.Text = "记住用户名";
@@ -132,16 +139,17 @@
             // 
             this.loginTipLabel.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.loginTipLabel.ForeColor = System.Drawing.Color.Red;
-            this.loginTipLabel.Location = new System.Drawing.Point(370, 520);
+            this.loginTipLabel.Location = new System.Drawing.Point(159, 231);
+            this.loginTipLabel.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.loginTipLabel.Name = "loginTipLabel";
-            this.loginTipLabel.Size = new System.Drawing.Size(257, 38);
+            this.loginTipLabel.Size = new System.Drawing.Size(110, 17);
             this.loginTipLabel.TabIndex = 8;
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(815, 665);
+            this.ClientSize = new System.Drawing.Size(484, 461);
             this.Controls.Add(this.loginTipLabel);
             this.Controls.Add(this.remUserNamecheckBox);
             this.Controls.Add(this.LoginButton);
@@ -151,6 +159,7 @@
             this.Controls.Add(this.labelX2);
             this.Controls.Add(this.labelX1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.Text = "登录";

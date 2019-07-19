@@ -22,7 +22,7 @@ namespace PersonInfoManage.DAL.Login
         public string SelectLogin(sys_user user)
         {
             sys_user usertemp = new sys_user();
-            string sql = "select * from sys_user where name='" + user.name + "'";
+            string sql = "select * from sys_user where username='" + user.username + "'";
             DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
             usertemp.password= (string)ds.Tables[0].Rows[0][nameof(sys_user.password)];  
             return usertemp.password;

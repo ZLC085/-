@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace PersonInfoManage
 {
-    public partial class AddUser : Form
+    public partial class CostApplyDetailForm : Form
     {
-        public AddUser()
+        public CostApplyDetailForm()
         {
             InitializeComponent();
+            //this.Text = "111111111";
         }
     }
 }

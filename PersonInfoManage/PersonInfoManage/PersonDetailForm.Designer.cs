@@ -1,6 +1,6 @@
 ﻿namespace PersonInfoManage
 {
-    partial class PersonDetail
+    partial class PersonDetailForm
     {
         /// <summary>
         /// Required designer variable.
