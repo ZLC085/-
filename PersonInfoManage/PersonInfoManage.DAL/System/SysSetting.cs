@@ -69,13 +69,13 @@ namespace PersonInfoManage.DAL.System
         /// <returns>所有数据字典</returns>
         public List<sys_dict> SelectAll()
         {
-            sys_dict dict1 = new sys_dict();
             List<sys_dict> dict = new List<sys_dict>();
             DataSet ds = new DataSet();
             string sql = "select * from sys_dict";
             ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
+                sys_dict dict1 = new sys_dict();
                 dict1.id = (int)ds.Tables[0].Rows[i][nameof(sys_dict.id)];
                 dict1.dict_name = (string)ds.Tables[0].Rows[i][nameof(sys_dict.dict_name)];
                 dict1.category_name = (string)ds.Tables[0].Rows[i][nameof(sys_dict.category_name)];

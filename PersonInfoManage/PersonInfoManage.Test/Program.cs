@@ -109,7 +109,7 @@ namespace PersonInfoManage.Test
             //SysSetting set = new SysSetting();
             //sys_dict dict = new sys_dict();
             //dict.dict_name = "费用类别";
-            //dict.category_name = "其他";
+            //dict.category_name = "其他2";
             //Console.WriteLine(set.Add(dict));
 
             //测试函数：set.Update(dict)  测试成功 
@@ -423,13 +423,13 @@ namespace PersonInfoManage.Test
 
 
             //根据ID查询文件
-            PersonFile files = new PersonFile();
-            List<person_file> Listfile = files.GetById(26);
-            foreach (person_file B in Listfile)
-            {
-                Console.WriteLine(B.id + " " + B.person_id + " " + B.filename + " " + B.file + " " + B.filetype + " " + B.create_time + " " + B.modify_time);
+            //PersonFile files = new PersonFile();
+            //List<person_file> Listfile = files.GetById(26);
+            //foreach (person_file B in Listfile)
+            //{
+            //    Console.WriteLine(B.id + " " + B.person_id + " " + B.filename + " " + B.file + " " + B.filetype + " " + B.create_time + " " + B.modify_time);
 
-            }
+            //}
 
 
             Console.ReadKey();
