@@ -23,14 +23,14 @@ namespace PersonInfoManage.Test
             //测试函数：perm.add(group)  测试成功
             //Perm perm = new Perm();
             //sys_group group = new sys_group();
-            //group.group_name = "yuangong";
-            //group.remark = "123";
+            //group.group_name = "管理员";
+            //group.remark = "局长";
             //Console.WriteLine(perm.add(group));
 
             //测试函数:perm.Update(group_id,grouplist) 测试成功
             //Perm perm = new Perm();
-            //int group_id = 15;
-            //string[] temp = { "per", "cost", "sys", "test" };
+            //int group_id = 20;
+            //string[] temp = { "人员信息管理", "费用管理", "日志管理", "系统管理" };
             //List<string> grouplist = new List<string>(temp);
             //Console.WriteLine(perm.Update(group_id, grouplist));
 
