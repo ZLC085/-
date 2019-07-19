@@ -50,8 +50,6 @@ namespace PersonInfoManage.Model
 
         public DateTime modify_time { get; set; }
 
-        public int isdel { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<log_user> log_user { get; set; }
 

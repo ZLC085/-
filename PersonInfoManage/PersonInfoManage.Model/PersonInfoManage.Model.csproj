@@ -67,6 +67,7 @@
     <Compile Include="sys_menu.cs" />
     <Compile Include="sys_u2g.cs" />
     <Compile Include="sys_user.cs" />
+    <Compile Include="View_CostMainDetail.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

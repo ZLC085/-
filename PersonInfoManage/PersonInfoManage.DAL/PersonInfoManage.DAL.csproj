@@ -49,13 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cost\CostApply.cs" />
-    <Compile Include="Cost\CostApproval.cs" />
-    <Compile Include="Cost\CostPlan.cs" />
-    <Compile Include="Cost\CostStatistic.cs" />
+    <Compile Include="Cost\CostApplyDAL.cs" />
+    <Compile Include="Cost\CostApprovaDAL.cs" />
+    <Compile Include="Cost\CostPlanDAL.cs" />
+    <Compile Include="Cost\CostStatisticDAL.cs" />
     <Compile Include="Login\Login.cs" />
-    <Compile Include="Logs\LogSys.cs" />
-    <Compile Include="Logs\LogUser.cs" />
+    <Compile Include="Logs\LogSysDAL.cs" />
+    <Compile Include="Logs\LogUserDAL.cs" />
     <Compile Include="PersonInfo\PersonBasic.cs" />
     <Compile Include="PersonInfo\PersonFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
