@@ -16,5 +16,9 @@ namespace PersonInfoManage
         {
             InitializeComponent();
         }
+        private void AddCostDeatil_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
