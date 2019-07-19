@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PersonInfoManage.BLL.logs
 {
-    class LogUser
+    class LogSysBLL
     {
     }
 }

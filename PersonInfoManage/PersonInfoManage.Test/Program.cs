@@ -9,6 +9,7 @@ using PersonInfoManage.DAL.System;
 using PersonInfoManage.DAL.Cost;
 using PersonInfoManage.DAL.Login;
 using PersonInfoManage.DAL.PersonInfo;
+using PersonInfoManage.DAL.Logs;
 
 namespace PersonInfoManage.Test
 {
@@ -423,16 +424,56 @@ namespace PersonInfoManage.Test
 
 
             //根据ID查询文件
-            PersonFile files = new PersonFile();
-            List<person_file> Listfile = files.GetById(26);
-            foreach (person_file B in Listfile)
-            {
-                Console.WriteLine(B.id + " " + B.person_id + " " + B.filename + " " + B.file + " " + B.filetype + " " + B.create_time + " " + B.modify_time);
+            //PersonFile files = new PersonFile();
+            //List<person_file> Listfile = files.GetById(26);
+            //foreach (person_file B in Listfile)
+            //{
+            //    Console.WriteLine(B.id + " " + B.person_id + " " + B.filename + " " + B.file + " " + B.filetype + " " + B.create_time + " " + B.modify_time);
 
+            //}
+
+
+
+
+
+
+
+            // 删除信息，测试
+            //根据id删除
+            //测试结果：成功
+            //LogUser user = new LogUser();
+            //log_user loguser = new log_user();
+            //loguser.id =13;          
+            //Console.WriteLine(user.Del(loguser));//1成功，0失败
+
+            //日志查询   测试
+           // 查询所有
+            //测试结果：成功
+            LogUserDAL user = new LogUserDAL();
+            List<log_user> listuser = user.Query();
+            foreach (log_user loguser in listuser)
+            {
+                Console.WriteLine(loguser.id + "  " + loguser.user_id + "  " + loguser.username + "  " + loguser.operation + "  " + loguser.ip + "  " + loguser.create_time);
             }
+
+
+            ////日志条件查询
+            ////用户名，时间段查询
+            ////测试结果：
+            //Dictionary<string, object> conditions = new Dictionary<string, object>();
+            //conditions.Add("username", "1");
+            //conditions.Add("start_time", new DateTime(2017, 7, 18));
+            //conditions.Add("end_time", new DateTime(2019, 7, 19));
+            //List<log_user> user = new LogUser().GetByConditionns(conditions);
+            //foreach (log_user loguser in user)
+            //{
+            //    Console.WriteLine(loguser.id + "  " + loguser.user_id + "  " + loguser.username + "  " + loguser.operation + "  " + loguser.ip + "  " + loguser.create_time);
+
+            //}
 
 
             Console.ReadKey();
         }
+
     }
-}
+    }
