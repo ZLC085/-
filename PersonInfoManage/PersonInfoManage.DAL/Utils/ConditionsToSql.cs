@@ -91,7 +91,7 @@ namespace PersonInfoManage.DAL.Utils
                 {   //id是自增(除了cost_main表)，不需要加在sql语句里面
                     continue;
                 }
-                if (info.Name.Equals("approval_time") || info.Name.Equals("approval_money"))
+                if (info.Name.Equals("approval_time"))
                 {
                     continue;
                 }
@@ -113,7 +113,7 @@ namespace PersonInfoManage.DAL.Utils
                 {   //id是自增(除了cost_main表)，不需要加在sql语句里面
                     continue;
                 }
-                if (info.Name.Equals("approval_time") || info.Name.Equals("approval_money"))
+                if (info.Name.Equals("approval_time"))
                 {
                     continue;
                 }

@@ -24,7 +24,7 @@ namespace PersonInfoManage.Model
 
         public DateTime apply_time { get; set; }
 
-        public DateTime approval_time { get; set; }
+        public DateTime? approval_time { get; set; }
 
         public decimal apply_money { get; set; }
 

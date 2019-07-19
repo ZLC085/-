@@ -19,7 +19,7 @@ namespace PersonInfoManage.DAL.System
         ///添加用户组
         /// </summary>
         /// <param name="group">用户组信息</param>
-        /// <returns>添加条数</returns>
+        /// <returns>返回添加条数</returns>
         public int add(sys_group group)
         {
 
@@ -29,6 +29,7 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlparameter2 = new SqlParameter("@p2", group.remark);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql1, sqlparameter1, sqlparameter2);                  
             return res;
+
         }
 
 
@@ -74,22 +75,47 @@ namespace PersonInfoManage.DAL.System
                     return 0;
                 }
             }
-        }                   
-        
+        }
+
 
         /// <summary>
         /// 删除用户组
         /// </summary>
         /// <param name="userId">用户id</param>
-        /// <returns>删除条数</returns>
+        /// <returns>删除失败与否</returns>
         public int Del(int group_id)
         {
-            int res;
+
             string sql1 = "Delete from sys_group where id=@p1";
+            string sql2 = "Delete from sys_g2m where group_id=@p1";
             SqlParameter sqlparameter1 = new SqlParameter("@p1", group_id);
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql1, sqlparameter1);
-            return res;
+
+
             // return new DBOperationsDelete<sys_u2r, DBNull>().DeleteById(userId);
+
+            using (SqlConnection connection = new SqlConnection(ConStr))
+            {
+                SqlConnection conn = new SqlConnection(ConStr);
+                SqlCommand command = new SqlCommand();
+                SqlTransaction trans = null;
+                try
+                {
+                    conn.Open();
+                    trans = conn.BeginTransaction();
+                    command.Transaction = trans;
+                    command.Connection = conn;
+                    SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql2, sqlparameter1);
+                    SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql1, sqlparameter1);
+                    trans.Commit();
+                    return 1;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    trans.Rollback();
+                    return 0;
+                }
+            }
         }
 
 
