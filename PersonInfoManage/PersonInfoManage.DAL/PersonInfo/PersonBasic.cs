@@ -130,7 +130,7 @@ namespace PersonInfoManage.DAL.PersonInfo
             {
                 // sql语句
                 //string sql = "delete from person_basic where id = @id";
-                string sql = "update set isdel = 0 person_basic where id = @id";
+                string sql = "update person_basic set isdel = 0 where id = @id";
                 // 参数赋值
                 SqlParameter sp_id = new SqlParameter("@id", id);
                 // 执行sql语句
