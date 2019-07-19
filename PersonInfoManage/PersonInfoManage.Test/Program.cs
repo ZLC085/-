@@ -17,8 +17,8 @@ namespace PersonInfoManage.Test
             //测试函数：Login.SelectLogin(user)  测试成功
             //Login Login = new Login();
             //sys_user user = new sys_user();
-            //user.name = "lihua";
-            //Console.WriteLine(Login.SelectLogin(user));            
+            //user.username = "lihua";
+            //Console.WriteLine(Login.SelectLogin(user));
 
             //测试函数：perm.add(group)  测试成功
             //Perm perm = new Perm();
@@ -29,36 +29,36 @@ namespace PersonInfoManage.Test
 
             //测试函数:perm.Update(group_id,grouplist) 测试成功
             //Perm perm = new Perm();
-            //int group_id = 14;
-            //string[] temp = { "per", "cost", "sys","test"};
+            //int group_id = 15;
+            //string[] temp = { "per", "cost", "sys", "test" };
             //List<string> grouplist = new List<string>(temp);
             //Console.WriteLine(perm.Update(group_id, grouplist));
 
             //测试函数：perm.Del(group_id) 测试成功
             //Perm perm = new Perm();
-            //int group_id = 13;
+            //int group_id = 17;
             //Console.WriteLine(perm.Del(group_id));
 
             //测试函数：perm.Selectgroup(group) 测试成功
             //Perm perm = new Perm();
             //sys_group group = new sys_group();
-            //group.group_name = "lisi";
+            //group.group_name = "admin";
             //Console.WriteLine(perm.Selectgroup(group));
 
             //测试函数：SysUser.add(sys_user user,int groupid)  测试成功
             //SysUser sysuser = new SysUser();
             //sys_user user = new sys_user();
-            //user.username = "lihua";
-            //user.name = "李华";
-            //user.password = "123456";
+            //user.username = "xiaoming";
+            //user.name = "小明";
+            //user.password = "789";
             //user.gender = "男";
-            //user.job = "员工";
-            //user.phone = "18990533905";
-            //user.email = "873257742@qq.com";
+            //user.job = "领导";
+            //user.phone = "17396226172";
+            //user.email = "1258323278@qq.com";
             //user.status = false;
             //user.isdel = 0;
             //sys_group group = new sys_group();
-            //int groupid = 11;
+            //int groupid = 15;
             //Console.WriteLine(sysuser.add(user, groupid));
 
             //测试函数：SysUser.Update(sys_user user,int groupid)  测试成功
@@ -66,9 +66,9 @@ namespace PersonInfoManage.Test
             //sys_user user = new sys_user();
             //user.username = "lihua";
             //user.name = "李华";
-            //user.password = "123";
+            //user.password = "456";
             //user.gender = "女";
-            //user.job = "管理员";
+            //user.job = "员工";
             //user.phone = "18990533905";
             //user.email = "873257742@qq.com";
             //user.status = false;
@@ -79,7 +79,7 @@ namespace PersonInfoManage.Test
             //Console.WriteLine(sysuser.Update(id, user, groupid));
 
             //测试函数：SysUser.Del(id)  测试成功
-            //int id = 20;
+            //int id = 33;
             //SysUser sysuser = new SysUser();
             //Console.WriteLine(sysuser.Del(id));
 
@@ -88,11 +88,11 @@ namespace PersonInfoManage.Test
             //Console.WriteLine(sysuser.Selectall());
 
             //测试函数：sysuser.SelectBy(user, group） 测试成功 
-            //SysUser sysuser = new SysUser();
-            //sys_user user = new sys_user();
-            //sys_group group = new sys_group();
-            //group.group_name = "lisi";
-            //Console.WriteLine(sysuser.SelectBy(user, group));
+            SysUser sysuser = new SysUser();
+            sys_user user = new sys_user();
+            sys_group group = new sys_group();
+            group.group_name = "admin";
+            Console.WriteLine(sysuser.SelectBy(user, group));
 
             //测试函数：set.Add(dict)  测试成功 
             //SysSetting set = new SysSetting();
