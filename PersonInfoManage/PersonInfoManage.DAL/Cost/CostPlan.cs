@@ -16,67 +16,73 @@ namespace PersonInfoManage.DAL.Cost
     /// </summary>
     public class CostPlan : DALBase
     {
+       
         /// <summary>
         /// 费用规划添加
-        /// </summary>  
-        /// <param name="plan">费用规划</param>
-        /// <returns>添加条数</returns>
-        public int Add(cost_plan plan)
+        /// </summary>
+        /// <param name="ListPlan"></param>
+        /// <returns>添加数目</returns>
+        public int Add(List<cost_plan> ListPlan)
         {
-            //Add 插入
-            //Update 更新
-            //Del 删除
-            //Query 查询
-            //GetById 通过id查询
-            int res = 0;
-            string sql = "insert into cost_plan(cost_type,money,start_time,end_time) values(@cost_type,@money,@start_time,@end_time)";
-            SqlParameter sqlParameter = new SqlParameter("@cost_type", plan.cost_type);
-            SqlParameter sqlParameter1 = new SqlParameter("@money", plan.money);
-            SqlParameter sqlParameter2 = new SqlParameter("@start_time", plan.start_time);
-            SqlParameter sqlParameter3 = new SqlParameter("@end_time", plan.end_time);
+            string[] sqlPlan = new string[ListPlan.Count];
 
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1, sqlParameter2, sqlParameter3);
+            int count = 0;
+            foreach (cost_plan plan in ListPlan)
+            {
+                sqlPlan[count] = "insert into cost_plan(cost_type,money,start_time,end_time) values(N'"+plan .cost_type+ "','"+plan.money+"','"+plan.start_time+"','"+plan.end_time+"')";
+                count++;
+            }
 
-            return res;
-            //return new DBOperationsInsert<cost_plan, DBNull>().Insert(plan);
+            return sqlArrayToTran.doTran(sqlPlan);
         }
+       
         /// <summary>
         /// 费用规划修改
         /// </summary>
-        /// <param name="plan">费用规划</param>
-        /// <returns>修改的条数</returns>
-        public int Update(cost_plan plan)
+        /// <param name="ListPlan"></param>
+        /// <returns>修改条数</returns>
+        public int Update(List<cost_plan> ListPlan)
         {
-            int res = 0;
+            string[] sqlPlan = new string[ListPlan.Count];
 
-            string sql = "update cost_plan set cost_type = @cost_type, money = @money,start_time=@start_time,end_time=@end_time where id = @id";
-            SqlParameter sqlParmeter = new SqlParameter("@cost_type", plan.cost_type);
-            SqlParameter sqlParmeter1 = new SqlParameter("@money", plan.money);
-            SqlParameter sqlParmeter2 = new SqlParameter("@start_time", plan.start_time);
-            SqlParameter sqlParmeter3 = new SqlParameter("@end_time", plan.end_time);
-            SqlParameter sqlParmeter4 = new SqlParameter("@id", plan.id);
+            int count = 0;
+            foreach (cost_plan plan in ListPlan)
+            {
+                sqlPlan[count] = "update cost_plan set  "+nameof(cost_plan.money)+"= '"+plan.money+ "' where " +
+                    "" + nameof(cost_plan.cost_type) + " =N'" + plan.cost_type + "' and " + 
+                    nameof(cost_plan.start_time) + "='" + plan.start_time + "' and " + 
+                    nameof(cost_plan.end_time) + "='" + plan.end_time + "'";
+                //Console.WriteLine(sqlPlan[count]);
+                count++;
+            }
 
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParmeter, sqlParmeter1, sqlParmeter2, sqlParmeter3, sqlParmeter4);
-
-            return res;
-
+            return sqlArrayToTran.doTran(sqlPlan); 
         }
+     
         /// <summary>
-        /// 费用规划删除，通过费用规划id
+        /// 费用规划删除，根据时间
         /// </summary>
-        /// <param name="plan"></param>
-        /// <returns>删除的条数</returns>
-        public int Del(cost_plan plan)
+        /// <param name="ListPlan"></param>
+        /// <returns>删除条数</returns>
+        public int Del(List<cost_plan> ListPlan)
         {
-            int res = 0;
+            string[] sqlPlan = new string[ListPlan.Count];
 
-            string sql = "delete from cost_plan where id = @id";
-            SqlParameter sqlParmeter = new SqlParameter("@id", plan.id);
+            int count = 0;
+            foreach (cost_plan plan in ListPlan)
+            {
+                sqlPlan[count] = "delete from cost_plan where " + nameof(cost_plan.start_time) + "='" + plan.start_time + "' and " + nameof(cost_plan.end_time) + "='" + plan.end_time + "'";
+                count++;
+            }
 
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParmeter);
+            return sqlArrayToTran.doTran(sqlPlan);
 
-            return res;
-
+            //int res = 0;
+            //string sql = "delete from cost_plan where start_time = @start_time and end_time=@end_time";
+            //SqlParameter sqlParameter = new SqlParameter("@start_time",plan.start_time);
+            //SqlParameter sqlParameter2 = new SqlParameter("@end_time",plan.end_time);
+            //res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter,sqlParameter2);
+            //return res;
             //return new DBOperationsDelete<cost_plan, DBNull>().DeleteById(costPlanId);
         }
         /// <summary>
