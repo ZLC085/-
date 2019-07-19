@@ -8,6 +8,8 @@ using PersonInfoManage.DAL.Utils;
 using PersonInfoManage.DAL.System;
 using PersonInfoManage.DAL.Cost;
 using PersonInfoManage.DAL.Login;
+using PersonInfoManage.DAL.PersonInfo;
+
 namespace PersonInfoManage.Test
 {
     class Program
@@ -377,8 +379,50 @@ namespace PersonInfoManage.Test
             //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
             //    }
             //}
-            Console.ReadKey();
 
+
+
+
+
+            /////添加文件
+            //PersonFile files = new PersonFile();
+            //person_file A = new person_file();
+            //A.id = 22;
+            //A.person_id = 1;
+            //A.filename = "张安的XXX";
+            //A.filetype = "222";
+            //A.create_time = new DateTime(2019, 4, 1);
+            //A.modify_time = new DateTime(2018, 1, 18);
+            //Console.WriteLine(files.Add(A));
+
+
+            //更改文件名
+
+            //PersonFile files = new PersonFile();
+            //person_file A = new person_file();
+            //A.id = 12;
+            //A.filename = "zhao";
+            //Console.WriteLine(files.Update(A));
+
+
+            ////删除文件
+            //PersonFile files = new PersonFile();
+            //person_file A = new person_file();
+            //A.id = 25;
+            //Console.WriteLine(files.Del(A));
+
+
+            //根据ID查询文件
+            PersonFile files = new PersonFile();
+            List<person_file> Listfile = files.GetById(26);
+            foreach (person_file B in Listfile)
+            {
+                Console.WriteLine(B.id + " " + B.person_id + " " + B.filename + " " + B.file + " " + B.filetype + " " + B.create_time + " " + B.modify_time);
+
+            }
+
+
+            Console.ReadKey();
         }
     }
 }
