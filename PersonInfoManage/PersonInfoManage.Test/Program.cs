@@ -440,22 +440,22 @@ namespace PersonInfoManage.Test
 
             //更改文件名
 
-            //PersonFile files = new PersonFile();
-            //person_file A = new person_file();
-            //A.id = 12;
-            //A.filename = "zhao";
-            //Console.WriteLine(files.Update(A));
+            PersonFileDAL files = new PersonFileDAL();
+            person_file A = new person_file();
+            A.id = 12;
+            A.filename = "zhao";
+            Console.WriteLine(files.Update(A));
 
 
             ////删除文件
-            //PersonFile files = new PersonFile();
+            //PersonFileDAL files = new PersonFileDAL();
             //person_file A = new person_file();
             //A.id = 25;
             //Console.WriteLine(files.Del(A));
 
 
             //根据ID查询文件
-            //PersonFile files = new PersonFile();
+            //PersonFileDAL files = new PersonFileDAL();
             //List<person_file> Listfile = files.GetById(26);
             //foreach (person_file B in Listfile)
             //{
