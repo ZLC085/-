@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PersonInfoManage.BLL.PersonInfo
 {
-    class PersonBasicBLL
+    class PersonFileBLL
     {
     }
 }
