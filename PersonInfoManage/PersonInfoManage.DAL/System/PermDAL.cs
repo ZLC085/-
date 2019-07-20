@@ -65,6 +65,21 @@ namespace PersonInfoManage.DAL.System
             return res;
         }
 
+        /// <summary>
+        /// 用户组修改
+        /// </summary>
+        /// <param name="group">用户组信息</param>
+        /// <returns>返回修改条数</returns>
+        public int Update(sys_group groupinfo)
+        {
+            int res;
+            string sql = "update syss_group set group_name = @p1,remark = @p2,modify_time = @p3,";
+            SqlParameter sqlParameter = new SqlParameter("@p1", groupinfo.group_name);
+            SqlParameter sqlParameter1 = new SqlParameter("@p2", groupinfo.remark);
+            SqlParameter sqlParameter3 = new SqlParameter("@p4", groupinfo.modify_time);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            return res;
+        }
 
         /// <summary>
         /// 用户组关联修改
