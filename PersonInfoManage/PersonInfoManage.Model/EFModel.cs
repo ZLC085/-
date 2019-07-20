@@ -27,8 +27,8 @@ namespace PersonInfoManage.Model
         public virtual DbSet<sys_user> sys_user { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<business> businesses { get; set; }
-        public virtual DbSet<View_1> View_1 { get; set; }
-        public virtual DbSet<View_CostMainDetail> View_CostMainDetail { get; set; }
+        public virtual DbSet<view_cost_main_detail> view_cost_main_detail { get; set; }
+        public virtual DbSet<view_log_user> view_log_user { get; set; }
         public virtual DbSet<view_sys_g2m> view_sys_g2m { get; set; }
         public virtual DbSet<view_sys_u2g> view_sys_u2g { get; set; }
 
