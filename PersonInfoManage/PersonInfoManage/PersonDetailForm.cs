@@ -31,9 +31,11 @@ namespace PersonInfoManage
                 string fileName = openFile.SafeFileName;
 
                 
-                int index = fileName.LastIndexOf('.');
-                string fileType = fileName.Substring(index);
+                int index = filePath.LastIndexOf('.');
+                string fileType = filePath.Substring(index);
 
+                int i = filePath.LastIndexOf(@"\");
+                string f = filePath.Substring(i);
                 //return fileType;
             }
            
