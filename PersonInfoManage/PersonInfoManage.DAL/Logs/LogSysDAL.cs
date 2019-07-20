@@ -21,14 +21,12 @@ namespace PersonInfoManage.DAL.Logs
         /// </summary>
         /// <param name="id">id</param>
         /// <returns>删除条数</returns>
-        public int Del(log_sys sys)
+            public  int Del(int id)
         {
-            int res = 0;
-            string sql = "delete from log_sys where id=@id";
-            SqlParameter sqlparater = new SqlParameter("@id", sys.id);
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparater);
+            int res;
+            string sql = "delete from log_sys where id='"+id+"' ";
+            res = SqlHelper.ExecuteNonQuery(ConStr,CommandType.Text,sql);
             return res;
-            //return new DBOperationsDelete<log_sys, DBNull>().DeleteById(id);
         }
         /// <summary>
         /// 系统运行日志查询，所有
