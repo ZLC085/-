@@ -16,5 +16,20 @@ namespace PersonInfoManage
         {
             InitializeComponent();
         }
+
+        private void BtnAddFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Multiselect = false;
+            openFile.Title = "请选择文件";
+            openFile.Filter = "所有文件(*.*)|*.*";
+
+            if (openFile.ShowDialog() == DialogResult.OK)
+            {
+                string filePath= openFile.FileName;
+                string fileName = openFile.SafeFileName;
+            }
+                
+        }
     }
 }
