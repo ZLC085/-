@@ -51,6 +51,7 @@
     <Compile Include="System\Perm.cs" />
     <Compile Include="System\SysSetting.cs" />
     <Compile Include="System\SysUser.cs" />
+    <Compile Include="Utils\FileOperations.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PersonInfoManage.DAL\PersonInfoManage.DAL.csproj">
