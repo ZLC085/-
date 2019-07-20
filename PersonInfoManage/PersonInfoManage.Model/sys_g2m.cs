@@ -13,9 +13,5 @@ namespace PersonInfoManage.Model
         public int group_id { get; set; }
 
         public int menu_id { get; set; }
-
-        public virtual sys_menu sys_menu { get; set; }
-
-        public virtual sys_group sys_group { get; set; }
     }
 }

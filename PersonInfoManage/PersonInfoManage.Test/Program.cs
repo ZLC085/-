@@ -49,11 +49,14 @@ namespace PersonInfoManage.Test
             //Perm perm = new Perm();
             //Console.WriteLine(perm.Selectall());
 
-            //测试函数：perm.Selectgroup(group) 测试成功
             //PermDAL perm = new PermDAL();
             //sys_group group = new sys_group();
             //group.group_name = "管理员";
+            //DateTime a = new DateTime(2011,1,1,0,0,0);
+            //group.create_time = a;
+            //group.modify_time = new DateTime(2022,1,1,1,1,1);
             //Console.WriteLine(perm.Selectgroup(group));
+
 
             //测试函数：SysUser.add(sys_user user,int groupid)  测试成功
             //SysUser sysuser = new SysUser();
@@ -432,7 +435,7 @@ namespace PersonInfoManage.Test
             //Console.WriteLine(files.Add(A));
 
 
-            //更改文件名
+            ////更改文件名
 
             //PersonFileDAL files = new PersonFileDAL();
             //person_file A = new person_file();
@@ -461,23 +464,21 @@ namespace PersonInfoManage.Test
 
 
 
-            //// 删除信息，测试
-            ////根据id删除
-            // //测试结果：成功
-            // LogSysDAL sys = new LogSysDAL();
-            // log_sys logsys = new log_sys();
-            // logsys.id = 3;
-            // Console.WriteLine(sys.Del(logsys));//1成功，0失败
+            // 删除信息，测试
+            //根据id删除
+            //测试结果：成功
+            //LogSysDAL sys = new LogSysDAL();
+            //Console.WriteLine(sys.Del(4));//1成功，0失败
 
             ////日志查询   测试
             //查询所有
             //测试结果：成功
-            //LogUser user = new LogUser();
-            //List<log_user> listuser = user.Query();
-            //foreach (log_user loguser in listuser)
-            //{
-            //    Console.WriteLine(loguser.id + "  " + loguser.user_id + "  " + loguser.username + "  " + loguser.operation + "  " + loguser.ip + "  " + loguser.create_time);
-            //}
+            LogUserDAL user = new LogUserDAL();
+            List<log_user> listuser = user.Query(18);
+            foreach (log_user loguser in listuser)
+            {
+                Console.WriteLine(loguser.id + "  " + loguser.user_id + "  " + loguser.username + "  " + loguser.operation + "  " + loguser.ip + "  " + loguser.create_time);
+            }
 
             //////系统日志查询，所有
             //LogSysDAL sys = new LogSysDAL();
