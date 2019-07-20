@@ -8,7 +8,7 @@ using PersonInfoManage.Model;
 
 namespace PersonInfoManage.BLL.System
 {
-    class SysUser
+    class SysUserBLL
     {
         public int add(sys_user user,sys_group group)
         {
