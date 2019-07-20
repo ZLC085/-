@@ -21,13 +21,15 @@ namespace PersonInfoManage.DAL.Utils
         /// <returns>person_file</returns>
         public person_file SetFile(int pesonId, string fullFileName)
         {
-            person_file file = new person_file();
-            file.filename = GetFileName(fullFileName);
-            file.file = ReadFile(fullFileName);
-            file.filetype = GetFileType(fullFileName);
-            file.person_id = pesonId;
-            file.create_time = DateTime.Now;
-            file.modify_time = DateTime.Now;
+            person_file file = new person_file
+            {
+                filename = GetFileName(fullFileName),
+                file = ReadFile(fullFileName),
+                filetype = GetFileType(fullFileName),
+                person_id = pesonId,
+                create_time = DateTime.Now,
+                modify_time = DateTime.Now
+            };
 
             return file;
         }
@@ -39,7 +41,7 @@ namespace PersonInfoManage.DAL.Utils
         /// <returns>文件类型</returns>
         private string GetFileType(string fullFileName)
         {
-            int index = fullFileName.LastIndexOf('.');
+            int index = fullFileName.LastIndexOf(".") + 1;
             string fileType = fullFileName.Substring(index);
 
             return fileType;
@@ -52,7 +54,7 @@ namespace PersonInfoManage.DAL.Utils
         /// <returns>文件名</returns>
         private string GetFileName(string fullFileName)
         {
-            int index = fullFileName.LastIndexOf('/');
+            int index = fullFileName.LastIndexOf(@"\") + 1;
             string fileName = fullFileName.Substring(index);
 
             return fileName;
