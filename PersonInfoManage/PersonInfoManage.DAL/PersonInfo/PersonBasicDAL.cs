@@ -168,8 +168,8 @@ namespace PersonInfoManage.DAL.PersonInfo
         /// <summary>
         /// 人员信息检索
         /// </summary>
-        /// <param name="info"></param>
-        /// <returns></returns>
+        /// <param name="info">查询条件</param>
+        /// <returns>List类型</returns>
         public List<person_basic> Query(person_basic info)
         {
             // 用于返回的列表
@@ -181,28 +181,25 @@ namespace PersonInfoManage.DAL.PersonInfo
                 // 用于拼接查询
                 List<SqlParameter> sqlPara = new List<SqlParameter>();
                 // 判断参数(可优化)
-                if (info.id != 0)
+                if (!string.IsNullOrEmpty(info.name)) // name
                 {
-                    if (!string.IsNullOrEmpty(info.name)) // name
-                    {
-                        sql += " and name like @name";
-                        sqlPara.Add(new SqlParameter("@name", "%" + info.name + "%"));
-                    }
-                    if (!string.IsNullOrEmpty(info.identity_number)) // identity_number
-                    {
-                        sql += " and identity_number like @identity_number";
-                        sqlPara.Add(new SqlParameter("@identity_number", "%" + info.identity_number + "%"));
-                    }
-                    if (!string.IsNullOrEmpty(info.person_type_name)) // person_type_name
-                    {
-                        sql += " and person_type_name like @person_type_name";
-                        sqlPara.Add(new SqlParameter("@person_type_name", "%" + info.person_type_name + "%"));
-                    }
-                    if (!string.IsNullOrEmpty(info.native_place)) // native_place
-                    {
-                        sql += " and native_place like @native_place";
-                        sqlPara.Add(new SqlParameter("@native_place", "%" + info.native_place + "%"));
-                    }
+                    sql += " and name like @name";
+                    sqlPara.Add(new SqlParameter("@name", "%" + info.name + "%"));
+                }
+                if (!string.IsNullOrEmpty(info.identity_number)) // identity_number
+                {
+                    sql += " and identity_number like @identity_number";
+                    sqlPara.Add(new SqlParameter("@identity_number", "%" + info.identity_number + "%"));
+                }
+                if (!string.IsNullOrEmpty(info.person_type_name)) // person_type_name
+                {
+                    sql += " and person_type_name like @person_type_name";
+                    sqlPara.Add(new SqlParameter("@person_type_name", "%" + info.person_type_name + "%"));
+                }
+                if (!string.IsNullOrEmpty(info.native_place)) // native_place
+                {
+                    sql += " and native_place like @native_place";
+                    sqlPara.Add(new SqlParameter("@native_place", "%" + info.native_place + "%"));
                 }
 
                 DataSet ds = new DataSet();
