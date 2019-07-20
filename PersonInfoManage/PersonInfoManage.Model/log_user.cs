@@ -25,7 +25,5 @@ namespace PersonInfoManage.Model
         public string ip { get; set; }
 
         public DateTime create_time { get; set; }
-
-        public virtual sys_user sys_user { get; set; }
     }
 }

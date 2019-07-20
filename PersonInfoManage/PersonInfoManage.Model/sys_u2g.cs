@@ -13,9 +13,5 @@ namespace PersonInfoManage.Model
         public int user_id { get; set; }
 
         public int group_id { get; set; }
-
-        public virtual sys_group sys_group { get; set; }
-
-        public virtual sys_user sys_user { get; set; }
     }
 }
