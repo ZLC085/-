@@ -14,7 +14,7 @@ namespace PersonInfoManage.DAL.PersonInfo
     /// <summary>
     /// 基本信息管理
     /// </summary>
-    public class PersonBasic : DALBase
+    public class PersonBasicDAL : DALBase
     {
         private string conStr = "SERVER=47.106.235.197;DATABASE=person_info_manage;UID=SA;PASSWORD=qwer-123456;";
         private int res = 0; //用于返回受影响行
@@ -64,17 +64,14 @@ namespace PersonInfoManage.DAL.PersonInfo
             }
             // 返回执行成功条数
             return res;
-            //return new DBOperationsInsert<person_basic, DBNull>().Insert(info);
         }
 
         /// <summary>
         /// 人员信息修改
         /// </summary>
-        /// <param name="id">人员编号</param>
         /// <param name="info">需要更新的人员信息</param>
         /// <returns>更新条数</returns>
-        public int update(int id, person_basic info)
-        //public int update(int id, Dictionary<string, object> newValues)
+        public int Update(person_basic info)
         {
             try
             {
@@ -104,9 +101,9 @@ namespace PersonInfoManage.DAL.PersonInfo
                 SqlParameter input_time = new SqlParameter("@input_time", info.input_time);
                 SqlParameter user_id = new SqlParameter("@user_id", info.user_id);
                 SqlParameter isdel = new SqlParameter("@isdel", info.isdel);
-                SqlParameter sp_id = new SqlParameter("@id", id);
+                SqlParameter id = new SqlParameter("@id", info.id);
                 // 执行sql语句
-                res = SqlHelper.ExecuteNonQuery(conStr, CommandType.Text, sql, name, former_name, gender, identity_number, birth_date, city, province, marry_status, job_status, income, temper, family, person_type, qq, address, phone, belong_place, nation, input_time, user_id, isdel, sp_id);
+                res = SqlHelper.ExecuteNonQuery(conStr, CommandType.Text, sql, name, former_name, gender, identity_number, birth_date, city, province, marry_status, job_status, income, temper, family, person_type, qq, address, phone, belong_place, nation, input_time, user_id, isdel, id);
                 Console.WriteLine("执行成功！");
             }
             catch (Exception e)
@@ -116,20 +113,18 @@ namespace PersonInfoManage.DAL.PersonInfo
             }
             // 返回执行成功条数
             return res;
-            //return new DBOperationsUpdate<person_basic>().UpdateById(id, newValues);
         }
 
         /// <summary>
-        /// 人员信息删除
+        /// 人员信息移除
         /// </summary>
-        /// <param name="id">人员信息id</param>
-        /// <returns>删除条数</returns>
-        public int Del(int id)
+        /// <param name="id"></param>
+        /// <returns>移除条数</returns>
+        public int Remove(int id)
         {
             try
             {
                 // sql语句
-                //string sql = "delete from person_basic where id = @id";
                 string sql = "update person_basic set isdel = 0 where id = @id";
                 // 参数赋值
                 SqlParameter sp_id = new SqlParameter("@id", id);
@@ -142,71 +137,38 @@ namespace PersonInfoManage.DAL.PersonInfo
             }
             //返回成功条数
             return res;
-            //return new DBOperationsDelete<person_basic, person_file>().DeleteTransaction(nameof(person_file.person_id), id);
         }
 
         /// <summary>
-        /// 人员信息检索（所有）
+        /// 人员信息删除
         /// </summary>
-        /// <returns>所有的人员信息</returns>
-        public List<person_basic> Query()
+        /// <param name="id">人员信息id</param>
+        /// <returns>删除条数</returns>
+        public int Del(int id)
         {
-            // 用于返回的列表
-            List<person_basic> list = new List<person_basic>();
             try
             {
                 // sql语句
-                string sql = "select * from person_basic";
-
-                DataSet ds = new DataSet();
-                // 执行sql语句并返回数据集
-                ds = SqlHelper.ExecuteDataset(conStr, CommandType.Text, sql);
-                // 遍历表中的行
-                foreach (DataRow dr in ds.Tables[0].Rows)
-                {
-                    // 封装实体类
-                    person_basic pb = new person_basic();
-                    pb.id = int.Parse(dr[0].ToString());
-                    pb.name = dr[1].ToString();
-                    pb.former_name = dr[2].ToString();
-                    pb.gender = dr[3].ToString();
-                    pb.identity_number = dr[4].ToString();
-                    pb.birth_date = DateTime.Parse(dr[5].ToString());
-                    pb.city = dr[6].ToString();
-                    pb.province = dr[7].ToString();
-                    pb.marry_status = bool.Parse(dr[8].ToString());
-                    pb.job_status = dr[9].ToString();
-                    pb.income = decimal.Parse(dr[10].ToString());
-                    pb.temper = dr[11].ToString();
-                    pb.family = dr[12].ToString();
-                    pb.person_type = dr[13].ToString();
-                    pb.qq = dr[14].ToString();
-                    pb.address = dr[15].ToString();
-                    pb.phone = dr[16].ToString();
-                    pb.belong_place = dr[17].ToString();
-                    pb.nation = dr[18].ToString();
-                    pb.input_time = DateTime.Parse(dr[19].ToString());
-                    pb.user_id = int.Parse(dr[20].ToString());
-                    pb.isdel = int.Parse(dr[21].ToString());
-                    list.Add(pb);
-                }
+                string sql = "delete from person_basic where id = @id";
+                // 参数赋值
+                SqlParameter sp_id = new SqlParameter("@id", id);
+                // 执行sql语句
+                res = SqlHelper.ExecuteNonQuery(conStr, CommandType.Text, sql, sp_id);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
-                throw e;
+                return 0;
             }
-            // 返回列表
-            return list;
-            //return new DBOperationsSelect<person_basic>().SelectAll();
+            //返回成功条数
+            return res;
         }
 
-        /// 根据条件对人员信息检索
+        /// <summary>
+        /// 人员信息检索
         /// </summary>
-        /// <param name="info">输入的条件</param>
-        /// <returns>人员信息</returns>
-        public List<person_basic> QueryByCond(person_basic info)
-        //public List<person_basic> QueryByConditions(Dictionary<string, object> conditions)
+        /// <param name="info"></param>
+        /// <returns></returns>
+        public List<person_basic> Query(person_basic info)
         {
             // 用于返回的列表
             List<person_basic> list = new List<person_basic>();
@@ -214,23 +176,31 @@ namespace PersonInfoManage.DAL.PersonInfo
             {
                 // sql语句
                 string sql = "select * from person_basic where isdel = 1 ";
-                //所有文本框的值
+                // 用于拼接查询
                 List<SqlParameter> sqlPara = new List<SqlParameter>();
                 // 判断参数
-                if (!string.IsNullOrEmpty(info.name)) // name
+                if (info.id != 0)
                 {
-                    sql += " and name like @name";
-                    sqlPara.Add(new SqlParameter("@name", "%" + info.name + "%"));
-                }
-                if (!string.IsNullOrEmpty(info.identity_number)) // identity_number
-                {
-                    sql += " and identity_number like @identity_number";
-                    sqlPara.Add(new SqlParameter("@identity_number", "%" + info.identity_number + "%"));
-                }
-                if (!string.IsNullOrEmpty(info.city)) // city
-                {
-                    sql += " and city like @city";
-                    sqlPara.Add(new SqlParameter("@city", "%" + info.city + "%"));
+                    if (!string.IsNullOrEmpty(info.name)) // name
+                    {
+                        sql += " and name like @name";
+                        sqlPara.Add(new SqlParameter("@name", "%" + info.name + "%"));
+                    }
+                    if (!string.IsNullOrEmpty(info.identity_number)) // identity_number
+                    {
+                        sql += " and identity_number like @identity_number";
+                        sqlPara.Add(new SqlParameter("@identity_number", "%" + info.identity_number + "%"));
+                    }
+                    if (!string.IsNullOrEmpty(info.person_type)) // person_type
+                    {
+                        //sql += " and person_type like @person_type";
+                        //sqlPara.Add(new SqlParameter("@person_type", "%" + info.person_type + "%"));
+                    }
+                    if (!string.IsNullOrEmpty(info.city)) // city
+                    {
+                        //sql += " and city like @city";
+                        //sqlPara.Add(new SqlParameter("@city", "%" + info.city + "%"));
+                    }
                 }
 
                 DataSet ds = new DataSet();
@@ -254,7 +224,7 @@ namespace PersonInfoManage.DAL.PersonInfo
                     pb.income = decimal.Parse(dr[10].ToString());
                     pb.temper = dr[11].ToString();
                     pb.family = dr[12].ToString();
-                    pb.person_type = dr[13].ToString();
+                    //pb.person_type = dr[13].ToString();
                     pb.qq = dr[14].ToString();
                     pb.address = dr[15].ToString();
                     pb.phone = dr[16].ToString();
@@ -273,7 +243,6 @@ namespace PersonInfoManage.DAL.PersonInfo
             }
             // 返回列表
             return list;
-            //return new DBOperationsSelect<person_basic>().SelectByConditions(conditions);
         }
     }
 }
