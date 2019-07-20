@@ -164,6 +164,11 @@
     <Compile Include="PersonBasicForm.Designer.cs">
       <DependentUpon>PersonBasicForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="person_infoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>person_infoDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleSetForm.cs">
@@ -234,6 +239,17 @@
     <EmbeddedResource Include="UserGroupRoleForm.resx">
       <DependentUpon>UserGroupRoleForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="person_infoDataSet.xsc">
+      <DependentUpon>person_infoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="person_infoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>person_infoDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="person_infoDataSet.xss">
+      <DependentUpon>person_infoDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -327,6 +343,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\设置.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

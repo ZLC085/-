@@ -23,7 +23,9 @@ namespace PersonInfoManage
             //Application.Run(new CostApplyDetailForm());
             //Application.Run(new CostPlanForm());
             //Application.Run(new CostApplyDetailForm());
-            Application.Run(new RoleSetForm());
+            //Application.Run(new RoleSetForm());
+            Application.Run(new AddCostDetailForm());
+            
         }
     }
 }

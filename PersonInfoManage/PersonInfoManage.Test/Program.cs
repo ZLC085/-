@@ -137,7 +137,7 @@ namespace PersonInfoManage.Test
             //SysSetting set = new SysSetting();
             //Console.WriteLine(set.SelectAll());
 
-            // CostApply apply = new CostApply();
+             CostApplyDAL apply = new CostApplyDAL();
 
             ///测试函数：costApply.Add(cost_main costMain, List<cost_detail> detailList)
             ///返回类型：int
@@ -519,15 +519,15 @@ namespace PersonInfoManage.Test
             //日志条件查询
             //用户名，时间段查询
             //测试结果：
-            Dictionary<string, object> conditions = new Dictionary<string, object>();
-            conditions.Add("start_time", new DateTime(2017,7,1));
-            conditions.Add("end_time", new DateTime(2019, 7, 20));
-            List<log_sys> sys = new LogSysDAL().GetByConditionns(conditions);
-            foreach (log_sys logsys in sys)
-            {
-                Console.WriteLine(logsys.id + " " + logsys.create_time + "  " + logsys.log_message);
+            //Dictionary<string, object> conditions = new Dictionary<string, object>();
+            //conditions.Add("start_time", new DateTime(2017,7,1));
+            //conditions.Add("end_time", new DateTime(2019, 7, 20));
+            //List<log_sys> sys = new LogSysDAL().GetByConditionns(conditions);
+            //foreach (log_sys logsys in sys)
+            //{
+            //    Console.WriteLine(logsys.id + " " + logsys.create_time + "  " + logsys.log_message);
 
-            }
+            //}
             Console.ReadKey();
         }
     }
