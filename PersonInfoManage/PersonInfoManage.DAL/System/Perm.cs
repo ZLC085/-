@@ -115,7 +115,7 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="userId">用户id</param>
         /// <returns>删除失败与否</returns>
-        public int DelG2t(int id)
+        public int DelG2m(int id)
         {
             int res = 0;            
             string sql= "Delete from sys_g2m where group_id=@p1";           
