@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cost\CostApplyBLL.cs" />
+    <Compile Include="Cost\CostApprovalBLL.cs" />
     <Compile Include="Login\LoginBLL.cs" />
     <Compile Include="logs\LogSysBLL.cs" />
     <Compile Include="logs\LogUserBLL.cs" />
@@ -63,6 +64,5 @@
       <Name>PersonInfoManage.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -25,6 +25,7 @@ namespace PersonInfoManage.DAL.Cost
             //先构造插入cost_main表的语句
             int timeStamp = TimeTools.Timestamp();
             costMain.id = timeStamp;//主键(费用单id)是时间戳
+            costMain.approval_money = 0;
             sqlArray[0] = ConditionsToSql<cost_main>.InsertSql(costMain);
             //再构造插入cost_detail表语句
             int count = 0;
@@ -48,7 +49,8 @@ namespace PersonInfoManage.DAL.Cost
             //构造sql语句数组
             string[] sqlArray = new string[2+detailList.Count];
             //先更新cost_main表
-            sqlArray[0]= "update cost_main set " +
+            //更新费用金额信息和状态
+            sqlArray[0]= "update cost_main " +
                 nameof(cost_main.apply_money) + "=" + costMain.apply_money +
                 " where id='" + costMain.id + "'";
             //再删除cost_detail表数据
@@ -169,6 +171,22 @@ namespace PersonInfoManage.DAL.Cost
                 listMain.Add(main);
             }
             return listMain;
+        }
+        /// <summary>
+        /// 获取数据字典中的费用类别
+        /// </summary>
+        /// <returns>费用类别的列表</returns>
+        public List<string> GetCostTypes()
+        {
+            List<string> list = new List<string>();
+            string sql = "select * from sys_dict where dict_name=N'费用类别'";
+            DataTable db = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0];
+            for(int i = 0; i < db.Rows.Count; i++)
+            {
+                DataRow row = db.Rows[i];
+                list.Add((string)row["category_name"]);
+            }
+            return list;
         }
     }
 }

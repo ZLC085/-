@@ -12,10 +12,18 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="user">用户信息</param>
         /// <returns>影响行数</returns>
-        public int add(sys_user user)
+        public bool add(sys_user user)
         {
-            SysUserDAL login = new SysUserDAL();
-            return login.add(user);
+            SysUserDAL Sysuser = new SysUserDAL();
+            try
+            {
+                Sysuser.Add(user);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -23,32 +31,51 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="user">用户信息</param>
         /// <returns>影响行数</returns>
-        public int Update(sys_user user)
+        public bool Update(sys_user user)
         {
-            SysUserDAL login = new SysUserDAL();
-            return login.Update(user);
+            SysUserDAL Sysuser = new SysUserDAL();
+            try
+            {
+                Sysuser.Update(user);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
+
 
         /// <summary>
         /// 删除用户
         /// </summary>
-        /// <param name="user_id">用户id</param>
+        /// <param name="UserId">用户id</param>
         /// <returns>影响行数</returns>
-        public int Del(int user_id)
+        public bool Del(int UserId)
         {
-            SysUserDAL login = new SysUserDAL();
-            return login.Del(user_id);
+            SysUserDAL Sysuser = new SysUserDAL();
+            PermDAL group = new PermDAL();
+            try
+            {
+                group.Delu2g(UserId);
+                Sysuser.Del(UserId);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
-
+         
         /// <summary>
         /// 查询用户
         /// </summary>
-        /// <param name="u2g"></param>
+        /// <param name="UserInfo">查询条件</param>
         /// <returns>用户信息</returns>
-        public List<view_sys_u2g> Select(sys_user user)
+        public List<view_sys_u2g> Select(sys_user UserInfo)
         {
-            SysUserDAL login = new SysUserDAL();
-            return login.Select(user);
+            SysUserDAL Sysuser = new SysUserDAL();
+            return Sysuser.Select(UserInfo);
         }
     }
 }
