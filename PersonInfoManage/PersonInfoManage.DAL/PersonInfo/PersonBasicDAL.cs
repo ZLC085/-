@@ -16,7 +16,6 @@ namespace PersonInfoManage.DAL.PersonInfo
     /// </summary>
     public class PersonBasicDAL : DALBase
     {
-        //private string conStr = "SERVER=47.106.235.197;DATABASE=person_info;UID=SA;PASSWORD=qwer-123456;";
         private int res = 0; //用于返回受影响行
 
         /// <summary>
