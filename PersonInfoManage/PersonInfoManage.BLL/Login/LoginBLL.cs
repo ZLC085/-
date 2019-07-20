@@ -12,7 +12,7 @@ namespace PersonInfoManage.BLL.Login
     {
         public int Loginsever(sys_user user)
         {
-            DAL.Login.LoginDAL login = new DAL.Login.LoginDAL();
+            LoginDAL login = new LoginDAL();
             string password = login.SelectLogin(user.username);
             if (password == user.password)
             {
