@@ -49,11 +49,14 @@ namespace PersonInfoManage.Test
             //Perm perm = new Perm();
             //Console.WriteLine(perm.Selectall());
 
-            //测试函数：perm.Selectgroup(group) 测试成功
             //PermDAL perm = new PermDAL();
             //sys_group group = new sys_group();
             //group.group_name = "管理员";
+            //DateTime a = new DateTime(2011,1,1,0,0,0);
+            //group.create_time = a;
+            //group.modify_time = new DateTime(2022,1,1,1,1,1);
             //Console.WriteLine(perm.Selectgroup(group));
+
 
             //测试函数：SysUser.add(sys_user user,int groupid)  测试成功
             //SysUser sysuser = new SysUser();
