@@ -123,7 +123,7 @@ namespace PersonInfoManage.DAL.Cost
             {
                 cost_plan plan = new cost_plan();
                 plan.id = (int)dt.Rows[i]["id"];
-                plan.cost_type = (string)dt.Rows[i]["cost_type"];
+                plan.cost_type = (int)dt.Rows[i]["cost_type"];
                 plan.start_time = (DateTime)dt.Rows[i]["start_time"];
                 plan.end_time = (DateTime)dt.Rows[i]["end_time"];
                 plan.cost_type_name = (string)dt.Rows[i]["cost_type_name"];
