@@ -12,55 +12,52 @@ namespace PersonInfoManage.DAL.System
 {
     public class SysSettingDAL : DALBase
     {
+       
         /// <summary>
         /// 添加数据字典
         /// </summary>
-        /// <param name="sysDict">数据字典</param>
+        /// <param name="SysDict">数据字典</param>
         /// <returns>
         /// 返回修改条数
         /// </returns>
-        public int Add(sys_dict sysDict)
+        public int Add(sys_dict SysDict)
         {
             int res = 0;
             string sql = "insert into sys_dict (dict_name,category_name,create_time,modify_time) values(@p2,@p1,getdate(),getdate())";
-            SqlParameter sqlParameter = new SqlParameter("@p1", sysDict.category_name);
-            SqlParameter sqlParameter2 = new SqlParameter("@p2", sysDict.dict_name);
+            SqlParameter sqlParameter = new SqlParameter("@p1", SysDict.category_name);
+            SqlParameter sqlParameter2 = new SqlParameter("@p2", SysDict.dict_name);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter,sqlParameter2);
-            return res;
-            
+            return res;            
         }
 
         /// <summary>
         /// 根据id进行数据字典修改
         /// </summary>
-        /// <param name="id">id</param>
-        /// <param name="newValues">需要更新的值</param>
-        /// <returns>修改条数</returns>
-        public int Update(sys_dict sysDict)
+        /// <param name="SysDict">数据字典信息</param>
+        /// <returns>修改修改条数</returns>
+        public int Update(sys_dict SysDict)
         {
             int res = 0;
-            SqlParameter sqlParameter = new SqlParameter("@p1", sysDict.category_name);
-            SqlParameter sqlparameter2 = new SqlParameter("@p2", sysDict.id);
-            SqlParameter sqlparameter3 = new SqlParameter("@p3", sysDict.dict_name);
+            SqlParameter sqlParameter = new SqlParameter("@p1", SysDict.category_name);
+            SqlParameter sqlparameter2 = new SqlParameter("@p2", SysDict.id);
+            SqlParameter sqlparameter3 = new SqlParameter("@p3", SysDict.dict_name);
             string sql = "update sys_dict set category_name = @p1,dict_name = @p3 where id = @p2";
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlparameter2,sqlparameter3);
-            return res;
-            
+            return res;           
         }
 
         /// <summary>
         /// 通过Id删除数据字典
         /// </summary>
         /// <param name="id">数据字典id</param>
-        /// <returns>删除条数</returns>
+        /// <returns>返回删除条数</returns>
         public int Del(int id)
         {
             int res = 0;
             string sql = "delete from sys_dict where id=@p";
             SqlParameter sqlparameter1 = new SqlParameter("@p", id);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter1);
-            return res;
-           
+            return res;          
         }
 
         /// <summary>
@@ -84,9 +81,6 @@ namespace PersonInfoManage.DAL.System
                 dict.Add(dict1);
             }
             return dict;
-
         }
-
-
     }
 }

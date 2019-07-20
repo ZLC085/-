@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PersonInfoManage.BLL.Login;
+using System;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
@@ -19,10 +20,10 @@ namespace PersonInfoManage
         {
             string userName = UserNameTextBox.Text;
             string psd = PsdTextBox.Text;
-
             string md5psd = MD5Psd(psd);
-
-            if ("aa" == "aa")
+            LoginBLL loginBLL = new LoginBLL();
+            bool res=loginBLL.Login(userName, md5psd);
+            if (res == true)
             {
                 if (SaveUserInfoToLocal()) {
                     new Thread(() => Application.Run(new MainForm())).Start();

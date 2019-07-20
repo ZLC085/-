@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PersonInfoManage.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,8 +29,16 @@ namespace PersonInfoManage
             {
                 string filePath= openFile.FileName;
                 string fileName = openFile.SafeFileName;
-            }
+
                 
+                int index = filePath.LastIndexOf(".")+1;
+                string fileType = filePath.Substring(index);
+
+                int i = filePath.LastIndexOf(@"\")+1;
+                string f = filePath.Substring(i);
+                //return fileType;
+            }
+           
         }
     }
 }

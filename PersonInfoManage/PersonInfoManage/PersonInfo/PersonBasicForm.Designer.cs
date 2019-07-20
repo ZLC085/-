@@ -113,7 +113,6 @@
             this.labelX1.Size = new System.Drawing.Size(78, 17);
             this.labelX1.TabIndex = 2;
             this.labelX1.Text = "曾 用 名：";
-            this.labelX1.Click += new System.EventHandler(this.LabelX1_Click);
             // 
             // labelX3
             // 
@@ -394,7 +393,6 @@
             this.labelX6.Size = new System.Drawing.Size(106, 17);
             this.labelX6.TabIndex = 28;
             this.labelX6.Text = "收 入  状 况：";
-            this.labelX6.Click += new System.EventHandler(this.LabelX6_Click);
             // 
             // textBoxX4
             // 

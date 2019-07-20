@@ -6,7 +6,7 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class View_1
+    public partial class view_log_user
     {
         [Key]
         [Column(Order = 0)]

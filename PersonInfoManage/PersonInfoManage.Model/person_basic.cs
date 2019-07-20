@@ -35,12 +35,8 @@ namespace PersonInfoManage.Model
         public DateTime birth_date { get; set; }
 
         [Required]
-        [StringLength(10)]
-        public string city { get; set; }
-
-        [Required]
-        [StringLength(10)]
-        public string province { get; set; }
+        [StringLength(50)]
+        public string native_place { get; set; }
 
         public bool marry_status { get; set; }
 
@@ -71,9 +67,11 @@ namespace PersonInfoManage.Model
         [StringLength(15)]
         public string phone { get; set; }
 
+        public int belong_place { get; set; }
+
         [Required]
         [StringLength(50)]
-        public string belong_place { get; set; }
+        public string belong_place_name { get; set; }
 
         [Required]
         [StringLength(10)]
