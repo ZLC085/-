@@ -4,15 +4,10 @@ namespace PersonInfoManage.Model
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
     public partial class cost_main
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public cost_main()
-        {
-            
-        }
-
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 

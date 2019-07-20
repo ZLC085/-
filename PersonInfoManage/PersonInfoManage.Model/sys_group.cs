@@ -8,13 +8,6 @@ namespace PersonInfoManage.Model
 
     public partial class sys_group
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public sys_group()
-        {
-            sys_g2m = new HashSet<sys_g2m>();
-            sys_u2g = new HashSet<sys_u2g>();
-        }
-
         public int id { get; set; }
 
         [Required]
