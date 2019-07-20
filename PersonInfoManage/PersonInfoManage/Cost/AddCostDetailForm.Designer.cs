@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.labelX32 = new DevComponents.DotNetBar.LabelX();
             this.btn = new DevComponents.DotNetBar.ButtonX();
             this.btnAddCostKind = new DevComponents.DotNetBar.ButtonX();
             this.texCostCount = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.texCostKind = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.labelX32 = new DevComponents.DotNetBar.LabelX();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,12 +44,12 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.comboBox1);
             this.panelEx1.Controls.Add(this.labelX4);
             this.panelEx1.Controls.Add(this.labelX32);
             this.panelEx1.Controls.Add(this.btn);
             this.panelEx1.Controls.Add(this.btnAddCostKind);
             this.panelEx1.Controls.Add(this.texCostCount);
-            this.panelEx1.Controls.Add(this.texCostKind);
             this.panelEx1.Controls.Add(this.labelX2);
             this.panelEx1.Controls.Add(this.labelX1);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
@@ -65,6 +65,32 @@
             this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 0;
+            // 
+            // labelX4
+            // 
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.ForeColor = System.Drawing.Color.Red;
+            this.labelX4.Location = new System.Drawing.Point(263, 190);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(108, 23);
+            this.labelX4.TabIndex = 68;
+            this.labelX4.Text = "请填写费用金额！";
+            // 
+            // labelX32
+            // 
+            // 
+            // 
+            // 
+            this.labelX32.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX32.ForeColor = System.Drawing.Color.Red;
+            this.labelX32.Location = new System.Drawing.Point(263, 112);
+            this.labelX32.Name = "labelX32";
+            this.labelX32.Size = new System.Drawing.Size(108, 23);
+            this.labelX32.TabIndex = 67;
+            this.labelX32.Text = "请选择费用类型！";
             // 
             // btn
             // 
@@ -105,21 +131,6 @@
             this.texCostCount.Size = new System.Drawing.Size(176, 21);
             this.texCostCount.TabIndex = 3;
             // 
-            // texCostKind
-            // 
-            // 
-            // 
-            // 
-            this.texCostKind.BackgroundStyle.Class = "TextBoxBorder";
-            this.texCostKind.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.texCostKind.ButtonDropDown.Visible = true;
-            this.texCostKind.Location = new System.Drawing.Point(195, 86);
-            this.texCostKind.Name = "texCostKind";
-            this.texCostKind.Size = new System.Drawing.Size(176, 20);
-            this.texCostKind.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.texCostKind.TabIndex = 2;
-            this.texCostKind.Text = "";
-            // 
             // labelX2
             // 
             // 
@@ -142,35 +153,17 @@
             this.labelX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX1.Location = new System.Drawing.Point(103, 86);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(97, 23);
+            this.labelX1.Size = new System.Drawing.Size(91, 23);
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "费用类型：";
             // 
-            // labelX32
+            // comboBox1
             // 
-            // 
-            // 
-            // 
-            this.labelX32.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX32.ForeColor = System.Drawing.Color.Red;
-            this.labelX32.Location = new System.Drawing.Point(263, 112);
-            this.labelX32.Name = "labelX32";
-            this.labelX32.Size = new System.Drawing.Size(108, 23);
-            this.labelX32.TabIndex = 67;
-            this.labelX32.Text = "请选择费用类型！";
-            // 
-            // labelX4
-            // 
-            // 
-            // 
-            // 
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.ForeColor = System.Drawing.Color.Red;
-            this.labelX4.Location = new System.Drawing.Point(263, 190);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(108, 23);
-            this.labelX4.TabIndex = 68;
-            this.labelX4.Text = "请填写费用金额！";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(195, 86);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(176, 20);
+            this.comboBox1.TabIndex = 69;
             // 
             // AddCostDetailForm
             // 
@@ -196,9 +189,9 @@
         private DevComponents.DotNetBar.ButtonX btn;
         private DevComponents.DotNetBar.ButtonX btnAddCostKind;
         private DevComponents.DotNetBar.Controls.TextBoxX texCostCount;
-        private DevComponents.DotNetBar.Controls.TextBoxDropDown texCostKind;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.LabelX labelX32;
         private DevComponents.DotNetBar.LabelX labelX4;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

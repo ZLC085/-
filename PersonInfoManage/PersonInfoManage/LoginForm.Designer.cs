@@ -158,9 +158,9 @@
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Font = new System.Drawing.Font("隶书", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX3.Location = new System.Drawing.Point(100, 24);
+            this.labelX3.Location = new System.Drawing.Point(100, 12);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(316, 23);
+            this.labelX3.Size = new System.Drawing.Size(316, 35);
             this.labelX3.TabIndex = 9;
             this.labelX3.Text = "重点人员信息管理系统";
             this.labelX3.TextAlignment = System.Drawing.StringAlignment.Center;

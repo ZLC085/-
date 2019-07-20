@@ -22,7 +22,7 @@ namespace PersonInfoManage
             //Application.Run(new UpdatFileNameForm());
             //Application.Run(new CostApplyDetailForm());
             //Application.Run(new CostPlanForm());
-            Application.Run(new PersonBasicForm());
+            Application.Run(new AddUserToGroupForm());
             //Application.Run(new CostApplyForm());
         }
     }
