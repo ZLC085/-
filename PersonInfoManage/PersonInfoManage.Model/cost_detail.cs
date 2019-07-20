@@ -12,9 +12,11 @@ namespace PersonInfoManage.Model
 
         public int cost_id { get; set; }
 
+        public int cost_type { get; set; }
+
         [Required]
         [StringLength(50)]
-        public string cost_type { get; set; }
+        public string cost_type_name { get; set; }
 
         public decimal money { get; set; }
 

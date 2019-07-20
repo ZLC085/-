@@ -25,7 +25,6 @@ namespace PersonInfoManage.Model
         public virtual DbSet<sys_menu> sys_menu { get; set; }
         public virtual DbSet<sys_u2g> sys_u2g { get; set; }
         public virtual DbSet<sys_user> sys_user { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<business> businesses { get; set; }
         public virtual DbSet<view_cost_main_detail> view_cost_main_detail { get; set; }
         public virtual DbSet<view_log_user> view_log_user { get; set; }
