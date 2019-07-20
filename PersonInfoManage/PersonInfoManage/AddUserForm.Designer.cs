@@ -29,16 +29,15 @@
         private void InitializeComponent()
         {
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.labelX32 = new DevComponents.DotNetBar.LabelX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.textBoxDropDown2 = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
             this.textBoxDropDown1 = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
             this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
-            this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX5 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
@@ -53,7 +52,6 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.labelX32 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,14 +62,12 @@
             this.panelEx1.Controls.Add(this.labelX32);
             this.panelEx1.Controls.Add(this.buttonX2);
             this.panelEx1.Controls.Add(this.buttonX1);
-            this.panelEx1.Controls.Add(this.textBoxDropDown2);
             this.panelEx1.Controls.Add(this.textBoxDropDown1);
             this.panelEx1.Controls.Add(this.labelX13);
             this.panelEx1.Controls.Add(this.labelX12);
             this.panelEx1.Controls.Add(this.labelX11);
             this.panelEx1.Controls.Add(this.labelX10);
             this.panelEx1.Controls.Add(this.labelX9);
-            this.panelEx1.Controls.Add(this.labelX8);
             this.panelEx1.Controls.Add(this.labelX7);
             this.panelEx1.Controls.Add(this.textBoxX5);
             this.panelEx1.Controls.Add(this.labelX6);
@@ -90,7 +86,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(484, 458);
+            this.panelEx1.Size = new System.Drawing.Size(484, 420);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -100,13 +96,26 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 0;
             // 
+            // labelX32
+            // 
+            // 
+            // 
+            // 
+            this.labelX32.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX32.ForeColor = System.Drawing.Color.Red;
+            this.labelX32.Location = new System.Drawing.Point(121, 310);
+            this.labelX32.Name = "labelX32";
+            this.labelX32.Size = new System.Drawing.Size(108, 23);
+            this.labelX32.TabIndex = 67;
+            this.labelX32.Text = "请填写必填项！";
+            // 
             // buttonX2
             // 
             this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(280, 400);
+            this.buttonX2.Location = new System.Drawing.Point(279, 359);
             this.buttonX2.Name = "buttonX2";
-            this.buttonX2.Size = new System.Drawing.Size(80, 24);
+            this.buttonX2.Size = new System.Drawing.Size(80, 25);
             this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX2.Symbol = "";
             this.buttonX2.SymbolColor = System.Drawing.Color.Red;
@@ -117,29 +126,14 @@
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(120, 400);
+            this.buttonX1.Location = new System.Drawing.Point(121, 359);
             this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(80, 24);
+            this.buttonX1.Size = new System.Drawing.Size(80, 25);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.Symbol = "";
             this.buttonX1.SymbolColor = System.Drawing.Color.Green;
             this.buttonX1.TabIndex = 24;
             this.buttonX1.Text = "添加";
-            // 
-            // textBoxDropDown2
-            // 
-            // 
-            // 
-            // 
-            this.textBoxDropDown2.BackgroundStyle.Class = "TextBoxBorder";
-            this.textBoxDropDown2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxDropDown2.ButtonDropDown.Visible = true;
-            this.textBoxDropDown2.Location = new System.Drawing.Point(178, 320);
-            this.textBoxDropDown2.Name = "textBoxDropDown2";
-            this.textBoxDropDown2.Size = new System.Drawing.Size(181, 20);
-            this.textBoxDropDown2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.textBoxDropDown2.TabIndex = 23;
-            this.textBoxDropDown2.Text = "";
             // 
             // textBoxDropDown1
             // 
@@ -206,7 +200,7 @@
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX10.ForeColor = System.Drawing.Color.Red;
-            this.labelX10.Location = new System.Drawing.Point(286, 347);
+            this.labelX10.Location = new System.Drawing.Point(268, 310);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(16, 23);
             this.labelX10.TabIndex = 18;
@@ -218,24 +212,11 @@
             // 
             // 
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(258, 347);
+            this.labelX9.Location = new System.Drawing.Point(243, 310);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(135, 23);
             this.labelX9.TabIndex = 17;
             this.labelX9.Text = "注：   表示不能为空";
-            // 
-            // labelX8
-            // 
-            // 
-            // 
-            // 
-            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX8.Location = new System.Drawing.Point(81, 320);
-            this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(94, 23);
-            this.labelX8.TabIndex = 14;
-            this.labelX8.Text = "所属用户组：";
             // 
             // labelX7
             // 
@@ -415,24 +396,11 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "姓  名：";
             // 
-            // labelX32
-            // 
-            // 
-            // 
-            // 
-            this.labelX32.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX32.ForeColor = System.Drawing.Color.Red;
-            this.labelX32.Location = new System.Drawing.Point(100, 350);
-            this.labelX32.Name = "labelX32";
-            this.labelX32.Size = new System.Drawing.Size(108, 23);
-            this.labelX32.TabIndex = 67;
-            this.labelX32.Text = "请填写必填项！";
-            // 
             // AddUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 458);
+            this.ClientSize = new System.Drawing.Size(484, 420);
             this.Controls.Add(this.panelEx1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -454,14 +422,12 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.ButtonX buttonX2;
         private DevComponents.DotNetBar.ButtonX buttonX1;
-        private DevComponents.DotNetBar.Controls.TextBoxDropDown textBoxDropDown2;
         private DevComponents.DotNetBar.Controls.TextBoxDropDown textBoxDropDown1;
         private DevComponents.DotNetBar.LabelX labelX13;
         private DevComponents.DotNetBar.LabelX labelX12;
         private DevComponents.DotNetBar.LabelX labelX11;
         private DevComponents.DotNetBar.LabelX labelX10;
         private DevComponents.DotNetBar.LabelX labelX9;
-        private DevComponents.DotNetBar.LabelX labelX8;
         private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX5;
         private DevComponents.DotNetBar.LabelX labelX6;
