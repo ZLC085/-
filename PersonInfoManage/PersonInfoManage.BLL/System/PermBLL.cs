@@ -101,7 +101,7 @@ namespace PersonInfoManage.BLL.System
             PermDAL perm = new PermDAL();
             try
             {
-                perm.Update(group);
+                //perm.Update(group);
                 return true;
             }
             catch
