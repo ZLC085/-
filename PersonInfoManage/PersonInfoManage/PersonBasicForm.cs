@@ -1,5 +1,4 @@
-﻿using PersonInfoManage.DAL.PersonInfo;
-using PersonInfoManage.Model;
+﻿using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,40 +30,38 @@ namespace PersonInfoManage
 
         private void ButtonX1_Click(object sender, EventArgs e)
         {
-            PersonBasic PB = new PersonBasic();
             person_basic pb = new person_basic();
             // 封装
-            pb.name = "王大柱";
-            pb.former_name = "酸菜";
-            pb.gender = "女";
-            pb.identity_number = "2016";
-            pb.birth_date = DateTime.Now;
-            pb.city = "成都";
-            pb.province = "四川";
-            pb.marry_status = true;
-            pb.job_status = "餐厅服务员";
-            pb.income = 2000;
-            pb.temper = "火辣";
-            pb.family = "";
-            pb.person_type = "肇事";
-            pb.qq = "";
-            pb.address = "双流区北二街1号";
-            pb.phone = "12345678910";
-            pb.belong_place = "成都市双流区公安局";
-            pb.nation = "汉";
+            pb.name = textBoxX1.Text;
+            pb.former_name = textBoxX2.Text;
+            pb.gender = radioButton1.Name;
+            pb.identity_number = textBoxX3.Text;
+            pb.birth_date = dateTimePicker1.Value;
+            pb.city = textBoxDropDown3.Text;
+            pb.province = textBoxDropDown1.Text;
+            pb.marry_status = true;// *
+            pb.job_status = textBoxX8.Text;
+            pb.income = decimal.Parse(textBoxX4.Text);
+            pb.temper = textBoxX9.Text;
+            pb.family = textBoxX6.Text;
+            pb.person_type = textBoxDropDown7.Text;
+            pb.qq = textBoxX11.Text;
+            pb.address = textBoxX5.Text;
+            pb.phone = textBoxX12.Text;
+            pb.belong_place = textBoxDropDown5.Text;
+            pb.nation = textBoxDropDown4.Text;
             pb.input_time = DateTime.Now;
-            pb.user_id = 1;
+            pb.user_id = 1;// *
             pb.isdel = 1;
-            // 插入判断
-            if (PB.Add(pb) > 0)
+            // 数据传输
+            if (new BLL.PersonInfo.PersonBasicBLL().Add(pb))
             {
-                MessageBox.Show("添加成功！");
+                MessageBox.Show("添加成功");
             }
             else
             {
-                MessageBox.Show("添加失败！");
+                MessageBox.Show("添加失败");
             }
-            
         }
 
         private void TextBoxX1_TextChanged(object sender, EventArgs e)

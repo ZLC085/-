@@ -8,7 +8,7 @@ using PersonInfoManage.Model;
 
 namespace PersonInfoManage.BLL.Cost
 {
-    public class CostApply_BLL
+    public class CostApplyBLL
     {
         /// <summary>
         /// 添加费用单
@@ -23,7 +23,7 @@ namespace PersonInfoManage.BLL.Cost
             {
                 return flag;
             }            
-            int rows = new CostApply().Add(main, listDeatil);
+            int rows = new CostApplyDAL().Add(main, listDeatil);
             if(rows == 1 + listDeatil.Count)
             {
                 flag = true;
@@ -37,10 +37,9 @@ namespace PersonInfoManage.BLL.Cost
             {
                 return flag;
             }
-            CostApply apply = new CostApply();
-            //先获取未更新时费用详情记录数
-            Dictionary<cost_main, List<cost_detail>> dic = apply.GetById(main.id);
-            int originDetailCount = dic[dic.Keys.First()].Count;
+            CostApplyDAL apply = new CostApplyDAL();
+            //先获取未更新时费用详情记录数           
+            int originDetailCount = apply.QueryDetail(main.id).Count;
             //再更新费用单
             int rows = apply.Update(main, listDeatil);
             if (rows == 1 + originDetailCount + listDeatil.Count)
@@ -49,23 +48,13 @@ namespace PersonInfoManage.BLL.Cost
             }
             return flag;
         }
-        public bool Del(cost_main main)
+        public bool Del(int id)
         {
             bool flag = false;
-            if (main == null)
-            {
-                return flag;
-            }
-            CostApply apply = new CostApply();
-            Dictionary<cost_main, List<cost_detail>> dic = apply.GetById(main.id);
-            if (dic.Count != 0)
-            {
-                int rows = apply.Del(main);
-                if(rows == dic[dic.Keys.First()].Count + 1)
-                {
-                    flag = true;
-                }
-            }
+            CostApplyDAL apply = new CostApplyDAL();
+            List<cost_detail> listDetail = apply.QueryDetail(id);
+            if (apply.Del(id) == listDetail.Count + 1)
+                flag = true;
             return flag;
         }
     }

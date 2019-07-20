@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersonInfoManage.BLL.logs
+namespace PersonInfoManage.BLL.PersonInfo
 {
-    class LogSys
+    class PersonFileBLL
     {
     }
 }

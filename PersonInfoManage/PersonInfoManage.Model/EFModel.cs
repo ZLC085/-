@@ -27,10 +27,18 @@ namespace PersonInfoManage.Model
         public virtual DbSet<sys_user> sys_user { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<business> businesses { get; set; }
+        public virtual DbSet<View_1> View_1 { get; set; }
+        public virtual DbSet<View_CostMainDetail> View_CostMainDetail { get; set; }
+        public virtual DbSet<view_sys_g2m> view_sys_g2m { get; set; }
+        public virtual DbSet<view_sys_u2g> view_sys_u2g { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            
+            modelBuilder.Entity<cost_main>()
+                .HasMany(e => e.cost_detail)
+                .WithRequired(e => e.cost_main)
+                .HasForeignKey(e => e.cost_id)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<person_basic>()
                 .HasMany(e => e.businesses)

@@ -8,7 +8,7 @@ using PersonInfoManage.Model;
 
 namespace PersonInfoManage.BLL.System
 {
-    class SysSetting
+    class SysSettingBLL
     {
         /// <summary>
         /// 添加数据字典
@@ -33,11 +33,11 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="sysDict"></param>
         /// <returns>成功与否</returns>
-        public int Del(sys_dict sysDict)
+        public int Del(int id)
         {
             DAL.System.SysSetting set = new DAL.System.SysSetting();
            
-                if (set.Del(sysDict) == 0)
+                if (set.Del(id) == 0)
                 {
                     return 0;
                 }
