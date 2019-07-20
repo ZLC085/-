@@ -13,7 +13,7 @@ namespace PersonInfoManage.DAL.System
     /// <summary>
     /// 用户管理
     /// </summary>
-    public class SysUser : DALBase
+    public class SysUserDAL : DALBase
     {
         /// <summary>
         /// 用户添加
@@ -23,7 +23,7 @@ namespace PersonInfoManage.DAL.System
         public int add(sys_user user)
         {
             int res;
-            string sql = "insert into sys_user (username,name,password,gender,job,phone,email,status,isdel,create_time,modify_time) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,getdate(),getdate())";
+            string sql = "insert into sys_user (username,name,password,gender,job,phone,email,status,create_time,modify_time) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,getdate(),getdate())";
             SqlParameter sqlparameter = new SqlParameter("@p1", user.username);
             SqlParameter sqlparameter1 = new SqlParameter("@p2", user.name);
             SqlParameter sqlparameter2 = new SqlParameter("@p3", user.password);
@@ -32,8 +32,7 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlparameter5 = new SqlParameter("@p6", user.phone);
             SqlParameter sqlparameter6 = new SqlParameter("@p7", user.email);
             SqlParameter sqlparameter7 = new SqlParameter("@p8", user.status);
-            SqlParameter sqlparameter8 = new SqlParameter("@p9", user.isdel);
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter, sqlparameter1, sqlparameter2, sqlparameter3, sqlparameter4, sqlparameter5, sqlparameter6, sqlparameter7, sqlparameter8);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter, sqlparameter1, sqlparameter2, sqlparameter3, sqlparameter4, sqlparameter5, sqlparameter6, sqlparameter7);
             return res;
         }
             //return new DBOperationsInsert<sys_user, DBNull>().Insert(user);    
@@ -46,7 +45,7 @@ namespace PersonInfoManage.DAL.System
         public int Update(sys_user user)
         {
             int res;
-            string sql = "update sys_user SET username = @p1,name = @p2,password = @p3,gender = @p4,job = @p5,phone = @p6,email = @p7,status = @p8,isdel = @p9,modify_time=getdate() where id = '" + user.id + "'";
+            string sql = "update sys_user SET username = @p1,name = @p2,password = @p3,gender = @p4,job = @p5,phone = @p6,email = @p7,status = @p8,modify_time=getdate() where id = '" + user.id + "'";
             SqlParameter sqlParameter = new SqlParameter("@p1", user.username);
             SqlParameter sqlParameter1 = new SqlParameter("@p2", user.name);
             SqlParameter sqlParameter2 = new SqlParameter("@p3", user.password);
@@ -55,8 +54,7 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlParameter5 = new SqlParameter("@p6", user.phone);
             SqlParameter sqlParameter6 = new SqlParameter("@p7", user.email);
             SqlParameter sqlParameter7 = new SqlParameter("@p8", user.status);
-            SqlParameter sqlParameter8 = new SqlParameter("@p9", user.isdel);
-            res =SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1, sqlParameter2, sqlParameter3, sqlParameter4, sqlParameter5, sqlParameter6, sqlParameter7, sqlParameter8);
+            res =SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1, sqlParameter2, sqlParameter3, sqlParameter4, sqlParameter5, sqlParameter6, sqlParameter7);
             return res;
             //return new DBOperationsUpdate<sys_dict>().UpdateById(id, newValues);
         }
@@ -140,7 +138,11 @@ namespace PersonInfoManage.DAL.System
         public List<sys_user> SelectBy(sys_user user)
         {
             List<sys_user> user1 = new List<sys_user>();
-            string sql = "SELECT dbo.sys_user.create_time, dbo.sys_user.email, dbo.sys_user.gender, dbo.sys_user.id, dbo.sys_user.job, dbo.sys_user.modify_time, dbo.sys_user.name, dbo.sys_user.password,dbo.sys_user.phone,dbo.sys_user.status,dbo.sys_user.username,dbo.sys_group.id AS group_id,dbo.sys_group.remark,dbo.sys_group.group_name FROM dbo.sys_user INNER JOIN dbo.sys_u2g ON dbo.sys_u2g.user_id = dbo.sys_user.id INNER JOIN dbo.sys_group ON dbo.sys_u2g.group_id = dbo.sys_group.id  ";           
+            string sql = "SELECT dbo.sys_user.create_time, dbo.sys_user.email, dbo.sys_user.gender, dbo.sys_user.id, dbo.sys_user.job,"
+                + "dbo.sys_user.modify_time, dbo.sys_user.name, dbo.sys_user.password,dbo.sys_user.phone,dbo.sys_user.status,"
+                + "dbo.sys_user.username,dbo.sys_group.id AS group_id,dbo.sys_group.remark,dbo.sys_group.group_name"
+                + "FROM dbo.sys_user INNER JOIN dbo.sys_u2g ON dbo.sys_u2g.user_id = dbo.sys_user.id INNER JOIN dbo.sys_group "
+                +"ON dbo.sys_u2g.group_id = dbo.sys_group.id  ";
             List<SqlParameter> sqlPara = new List<SqlParameter>();
             if (!string.IsNullOrEmpty(user.username))
             {

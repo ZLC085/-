@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PersonInfoManage.DAL.System
 {
-    public class SysSetting : DALBase
+    public class SysSettingDAL : DALBase
     {
         /// <summary>
         /// 添加数据字典
