@@ -12,7 +12,7 @@ namespace PersonInfoManage.DAL.Login
     /// <summary>
     /// 登录
     /// </summary>
-    public class Login:DALBase
+    public class LoginDAL:DALBase
     {
         /// <summary>
         /// 登陆时，通过用户名查询用户信息

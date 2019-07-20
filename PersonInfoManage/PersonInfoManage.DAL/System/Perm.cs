@@ -13,7 +13,7 @@ namespace PersonInfoManage.DAL.System
     /// <summary>
     /// 权限管理
     /// </summary>
-    public class Perm :DALBase
+    public class PermDAL :DALBase
     {
         /// <summary>
         ///添加用户组

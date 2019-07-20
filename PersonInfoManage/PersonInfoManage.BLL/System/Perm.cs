@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PersonInfoManage.BLL.System
 {
-    class Perm
+    class PermBLL
     {
     }
 }

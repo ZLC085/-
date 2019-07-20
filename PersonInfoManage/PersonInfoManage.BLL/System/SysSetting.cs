@@ -8,7 +8,7 @@ using PersonInfoManage.Model;
 
 namespace PersonInfoManage.BLL.System
 {
-    class SysSetting
+    class SysSettingBLL
     {
         /// <summary>
         /// 添加数据字典
