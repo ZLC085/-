@@ -34,6 +34,23 @@ namespace PersonInfoManage.DAL.System
 
 
         /// <summary>
+        /// 关联用户与用户组
+        /// </summary>
+        /// <param name="user_id">用户id</param>
+        /// <param name="group_id">用户组id</param>
+        /// <returns>返回添加条数</returns>
+        public int add(int user_id,int group_id)
+        {
+            int res;
+            string sql = "insert into sys_u2g (user_id,group_id) values(@p1,@p2)";
+            SqlParameter sqlparameter = new SqlParameter("@p1", user_id);
+            SqlParameter sqlparameter1 = new SqlParameter("@p2", group_id);
+            res=SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter, sqlparameter1);
+            return res;
+        }
+
+
+        /// <summary>
         /// 用户组权限修改
         /// </summary>
         /// <param name="id">id</param>
@@ -79,43 +96,53 @@ namespace PersonInfoManage.DAL.System
 
 
         /// <summary>
+        /// 用户组关联修改
+        /// </summary>
+        /// <param name="user_id">用户id</param>
+        /// <param name="group_id">用户组id</param>
+        /// <returns>返回添加条数</returns>
+        public int Update(int user_id, int group_id)
+        {
+            int res;
+            string sql = "update sys_u2g SET group_id= '"+group_id+"' where user_id= '" + user_id + "'";
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            return res;
+        }
+
+
+        /// <summary>
         /// 删除用户组
         /// </summary>
         /// <param name="userId">用户id</param>
         /// <returns>删除失败与否</returns>
-        public int Del(int group_id)
+        public int DelG2t(int id)
         {
+            int res = 0;            
+            string sql= "Delete from sys_g2m where group_id=@p1";           
+            SqlParameter sqlparameter1 = new SqlParameter("@p1",id);  
+            res=SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter1);
+            return res;
+        }
+        public int Del(int id)
+        {
+            int res = 0;
+            string sql = "Delete from sys_group where id=@p1";
+            SqlParameter sqlparameter1 = new SqlParameter("@p1", id);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter1);
+            return res;
+        }
 
-            string sql1 = "Delete from sys_group where id=@p1";
-            string sql2 = "Delete from sys_g2m where group_id=@p1";
-            SqlParameter sqlparameter1 = new SqlParameter("@p1", group_id);
-
-
-            // return new DBOperationsDelete<sys_u2r, DBNull>().DeleteById(userId);
-
-            using (SqlConnection connection = new SqlConnection(ConStr))
-            {
-                SqlConnection conn = new SqlConnection(ConStr);
-                SqlCommand command = new SqlCommand();
-                SqlTransaction trans = null;
-                try
-                {
-                    conn.Open();
-                    trans = conn.BeginTransaction();
-                    command.Transaction = trans;
-                    command.Connection = conn;
-                    SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql2, sqlparameter1);
-                    SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql1, sqlparameter1);
-                    trans.Commit();
-                    return 1;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    trans.Rollback();
-                    return 0;
-                }
-            }
+        /// <summary>
+        /// 用户组关联删除
+        /// </summary>
+        /// <param name="user_id">用户id</param>
+        /// <returns>删除条数</returns>
+        public int Delu2g(int user_id)
+        {
+            int res;
+            string sql = "delete from sys_u2g where user_id='" + user_id + "'";
+            res=SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            return res;
         }
 
         /// <summary>
@@ -166,7 +193,7 @@ namespace PersonInfoManage.DAL.System
             }
             return group2;
 
-            //return new DBOperationsSelect<sys_u2r>().SelectByConditions(conditions);
+           
         }
     }
 }
