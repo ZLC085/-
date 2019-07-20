@@ -8,13 +8,6 @@ namespace PersonInfoManage.Model
 
     public partial class sys_group
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public sys_group()
-        {
-            sys_g2m = new HashSet<sys_g2m>();
-            sys_u2g = new HashSet<sys_u2g>();
-        }
-
         public int id { get; set; }
 
         [Required]
@@ -27,11 +20,5 @@ namespace PersonInfoManage.Model
         public DateTime create_time { get; set; }
 
         public DateTime modify_time { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<sys_g2m> sys_g2m { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<sys_u2g> sys_u2g { get; set; }
     }
 }

@@ -20,7 +20,7 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="user">用户信息</param>
         /// <returns>添加条数</returns>
-        public int add(sys_user user)
+        public int Add(sys_user user)
         {
             int res;
             string sql = "insert into sys_user (username,name,password,gender,job,phone,email,status,create_time,modify_time) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,getdate(),getdate())";
@@ -45,7 +45,7 @@ namespace PersonInfoManage.DAL.System
         public int Update(sys_user user)
         {
             int res;
-            string sql = "update sys_user SET username = @p1,name = @p2,password = @p3,gender = @p4,job = @p5,phone = @p6,email = @p7,status = @p8,modify_time=getdate() where id = '" + user.id + "'";
+            string sql = "Update sys_user SET username = @p1,name = @p2,password = @p3,gender = @p4,job = @p5,phone = @p6,email = @p7,status = @p8,modify_time=getdate() where id = '" + user.id + "'";
             SqlParameter sqlParameter = new SqlParameter("@p1", user.username);
             SqlParameter sqlParameter1 = new SqlParameter("@p2", user.name);
             SqlParameter sqlParameter2 = new SqlParameter("@p3", user.password);
@@ -65,10 +65,10 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="user_id">用户id</param>
         /// <returns>删除条数</returns>
-        public int Del(int user_id)
+        public int Del(int UserId)
         {
             int res;
-            string sql = "delete from sys_user where id= '" + user_id + "'";
+            string sql = "delete from sys_user where id= '" + UserId + "'";
             res=SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
             return res;
             //return new DBOperationsDelete<sys_user, DBNull>().DeleteById(userId);
@@ -80,46 +80,46 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="conditions">查询条件</param>
         /// <returns>通过用户名查询到的用户</returns>
-        public List<view_sys_u2g> Select(view_sys_u2g u2g)
+        public List<view_sys_u2g> Select(sys_user UserInfo)
         {
             List<view_sys_u2g> user = new List<view_sys_u2g>();
             string sql = "SELECT * from view_sys_u2g";
-            List<SqlParameter> sqlPara = new List<SqlParameter>();
-            if (!string.IsNullOrEmpty(u2g.username))
+            List<SqlParameter> SqlPara = new List<SqlParameter>();
+            if (!string.IsNullOrEmpty(UserInfo.username))
             {
                 sql += " and username like @username";
-                sqlPara.Add(new SqlParameter("@username", "%" + u2g.username + "%"));
+                SqlPara.Add(new SqlParameter("@username", "%" + UserInfo.username + "%"));
             }
-            if (!string.IsNullOrEmpty(u2g.name))
+            if (!string.IsNullOrEmpty(UserInfo.name))
             {
                 sql += " and name like @name";
-                sqlPara.Add(new SqlParameter("@name", "%" + u2g.name + "%"));
+                SqlPara.Add(new SqlParameter("@name", "%" + UserInfo.name + "%"));
             }
 
-            if (!string.IsNullOrEmpty(u2g.gender))
+            if (!string.IsNullOrEmpty(UserInfo.gender))
             {
                 sql += " and gender like @gender";
-                sqlPara.Add(new SqlParameter("@gender", "%" + u2g.gender + "%"));
+                SqlPara.Add(new SqlParameter("@gender", "%" + UserInfo.gender + "%"));
             }
-            if (!string.IsNullOrEmpty(u2g.job))
+            if (!string.IsNullOrEmpty(UserInfo.job))
             {
                 sql += " and job like @job";
-                sqlPara.Add(new SqlParameter("@job", "%" + u2g.job + "%"));
+                SqlPara.Add(new SqlParameter("@job", "%" + UserInfo.job + "%"));
             }
             DataSet ds = new DataSet();
-            ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql, sqlPara.ToArray());
+            ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql, SqlPara.ToArray());
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++) 
             {
-                view_sys_u2g u2g1 = new view_sys_u2g();
-                u2g1.id = (int)ds.Tables[0].Rows[i][nameof(view_sys_u2g.id)];
-                u2g1.name = (string)ds.Tables[0].Rows[i][nameof(sys_user.name)];
-                u2g1.username = (string)ds.Tables[0].Rows[i][nameof(sys_user.username)];
-                u2g1.gender = (string)ds.Tables[0].Rows[i][nameof(sys_user.gender)];
-                u2g1.phone = (string)ds.Tables[0].Rows[i][nameof(sys_user.phone)];
-                u2g1.job = (string)ds.Tables[0].Rows[i][nameof(sys_user.job)];
-                u2g1.status = (bool)ds.Tables[0].Rows[i][nameof(view_sys_u2g.status)];
-                u2g1.group_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.group_name)];
-                user.Add(u2g1);               
+                view_sys_u2g u2g = new view_sys_u2g();
+                u2g.id = (int)ds.Tables[0].Rows[i][nameof(view_sys_u2g.id)];
+                u2g.name = (string)ds.Tables[0].Rows[i][nameof(sys_user.name)];
+                u2g.username = (string)ds.Tables[0].Rows[i][nameof(sys_user.username)];
+                u2g.gender = (string)ds.Tables[0].Rows[i][nameof(sys_user.gender)];
+                u2g.phone = (string)ds.Tables[0].Rows[i][nameof(sys_user.phone)];
+                u2g.job = (string)ds.Tables[0].Rows[i][nameof(sys_user.job)];
+                u2g.status = (bool)ds.Tables[0].Rows[i][nameof(view_sys_u2g.status)];
+                u2g.group_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.group_name)];
+                user.Add(u2g);               
                 }
             return user;
             //return new DBOperationsSelect<sys_user>().SelectByConditions(conditions);

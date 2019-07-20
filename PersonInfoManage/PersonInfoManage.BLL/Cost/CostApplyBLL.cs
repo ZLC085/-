@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PersonInfoManage.BLL.Utils;
 using PersonInfoManage.DAL.Cost;
 using PersonInfoManage.Model;
 
@@ -13,49 +14,96 @@ namespace PersonInfoManage.BLL.Cost
         /// <summary>
         /// 添加费用单
         /// </summary>
-        /// <param name="main"></param>
-        /// <param name="listDeatil"></param>
-        /// <returns></returns>
-        public bool Add(cost_main main,List<cost_detail> listDeatil)
+        /// <param name="cost">费用单对象main：applicant、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
+        /// <returns>添加是否成功</returns>
+        public Result Add(cost cost)
         {
-            bool flag = false;
+            cost_main main = cost.main;
+            List<cost_detail> listDeatil = cost.DetailList;
+            Result res = new Result();
             if (main == null || listDeatil == null || listDeatil.Count == 0)
             {
-                return flag;
+                res.Code = RES.ERROR;
+                res.Message = "添加失败";
+                return res;
             }            
-            int rows = new CostApplyDAL().Add(main, listDeatil);
+            int rows = new CostApplyDAL().Add(cost);
             if(rows == 1 + listDeatil.Count)
             {
-                flag = true;
+                res.Code = RES.OK;
+                res.Message="添加成功";
             }
-            return flag;
+            return res;
         }
-        public bool Update(cost_main main, List<cost_detail> listDeatil)
+        /// <summary>
+        /// 更新费用单信息
+        /// </summary>
+        /// <param name="cost">费用单对象main：applicant、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
+        /// <returns>更新是否成功</returns>
+        public bool Update(cost cost)
         {
+            cost_main main = cost.main;
+            List<cost_detail> listDeatil = cost.DetailList;
             bool flag = false;
             if (main == null || listDeatil == null || listDeatil.Count == 0)
             {
                 return flag;
             }
             CostApplyDAL apply = new CostApplyDAL();
+            //获取该费用单的审批状态
+            byte status = apply.QueryMain(new Dictionary<string, object>
+            {
+                {"id",main.id }
+            }).First().status;
+            //如果费用单不是未审批状态，则更新信息失败
+            if (status != 0)
+            {
+                return flag;
+            }
             //先获取未更新时费用详情记录数           
             int originDetailCount = apply.QueryDetail(main.id).Count;
             //再更新费用单
-            int rows = apply.Update(main, listDeatil);
+            int rows = apply.Update(cost);
             if (rows == 1 + originDetailCount + listDeatil.Count)
             {
                 flag = true;
             }
             return flag;
         }
+        /// <summary>
+        /// 删除费用单信息
+        /// </summary>
+        /// <param name="id">费用单id</param>
+        /// <returns><费用单信息是否删除成功/returns>
         public bool Del(int id)
         {
             bool flag = false;
             CostApplyDAL apply = new CostApplyDAL();
+            //获取该费用单的审批状态
+            byte status = apply.QueryMain(new Dictionary<string, object>
+            {
+                {"id",id }
+            }).First().status;
+            //如果费用单不是未审批状态，则删除失败
+            if (status != 0)
+            {
+                return flag;
+            }
             List<cost_detail> listDetail = apply.QueryDetail(id);
             if (apply.Del(id) == listDetail.Count + 1)
                 flag = true;
             return flag;
         }
+        /// <summary>
+        /// 费用类型列表属性
+        /// </summary>
+        public List<string> CostTypes
+        {
+            get
+            {
+                return new CostApplyDAL().GetCostTypes();
+            }
+        }
+        
     }
 }

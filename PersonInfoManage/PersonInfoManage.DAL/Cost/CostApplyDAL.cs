@@ -15,16 +15,18 @@ namespace PersonInfoManage.DAL.Cost
         /// <summary>
         /// 添加费用单
         /// </summary>
-        /// <param name="costMain">费用单对象cost_main：applicant、apply_money、apply_time</param>
-        /// <param name="detailList">费用类型明细列表cost_detail:cost_type、money</param>
+        /// <param name="cost">费用单对象main：applicant、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
         /// <returns>数据表受影响的行数</returns>
-        public int Add(cost_main costMain, List<cost_detail> detailList)
+        public int Add(cost cost)
         {
+            cost_main costMain = cost.main;
+            List<cost_detail> detailList = cost.DetailList;
             //先构造所有的sql语句
             string[] sqlArray = new string[1 + detailList.Count];
             //先构造插入cost_main表的语句
             int timeStamp = TimeTools.Timestamp();
             costMain.id = timeStamp;//主键(费用单id)是时间戳
+            costMain.approval_money = 0;
             sqlArray[0] = ConditionsToSql<cost_main>.InsertSql(costMain);
             //再构造插入cost_detail表语句
             int count = 0;
@@ -40,15 +42,17 @@ namespace PersonInfoManage.DAL.Cost
         /// <summary>
         /// 更新费用单信息
         /// </summary>
-        /// <param name="costMain">费用单对象cost_main：id、apply_money</param>
-        /// <param name="detailList">费用类型明细列表cost_detail:cost_type、money</param>
+        /// <param name="cost">费用单对象main：applicant、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
         /// <returns>数据表受影响的行数</returns>
-        public int Update(cost_main costMain, List<cost_detail> detailList)
+        public int Update(cost cost)
         {
+            cost_main costMain = cost.main;
+            List<cost_detail> detailList = cost.DetailList;
             //构造sql语句数组
             string[] sqlArray = new string[2+detailList.Count];
             //先更新cost_main表
-            sqlArray[0]= "update cost_main set " +
+            //更新费用金额信息和状态
+            sqlArray[0]= "update cost_main " +
                 nameof(cost_main.apply_money) + "=" + costMain.apply_money +
                 " where id='" + costMain.id + "'";
             //再删除cost_detail表数据
@@ -97,7 +101,8 @@ namespace PersonInfoManage.DAL.Cost
                 {
                     id = (int)row["id"],
                     cost_id = (int)row["cost_id"],
-                    cost_type = (string)row["cost_type"],
+                    cost_type = (int)row["cost_type"],
+                    cost_type_name=(string)row["cost_type_name"],
                     money = (decimal)row["money"]
                 };
                 listDetail.Add(detail);
@@ -169,6 +174,22 @@ namespace PersonInfoManage.DAL.Cost
                 listMain.Add(main);
             }
             return listMain;
+        }
+        /// <summary>
+        /// 获取数据字典中的费用类别
+        /// </summary>
+        /// <returns>费用类别的列表</returns>
+        public List<string> GetCostTypes()
+        {
+            List<string> list = new List<string>();
+            string sql = "select * from sys_dict where dict_name=N'费用类别'";
+            DataTable db = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0];
+            for(int i = 0; i < db.Rows.Count; i++)
+            {
+                DataRow row = db.Rows[i];
+                list.Add((string)row["category_name"]);
+            }
+            return list;
         }
     }
 }
