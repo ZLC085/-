@@ -57,6 +57,10 @@
       <Project>{d2a0eb50-afd7-4b21-895f-c317bcad96ff}</Project>
       <Name>PersonInfoManage.DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PersonInfoManage.Model\PersonInfoManage.Model.csproj">
+      <Project>{57FD6832-9634-42B2-B901-E31DDF01F7C9}</Project>
+      <Name>PersonInfoManage.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
