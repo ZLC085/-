@@ -1,4 +1,5 @@
-﻿using PersonInfoManage.DAL.Logs;
+﻿using PersonInfoManage.BLL.Utils;
+using PersonInfoManage.DAL.Logs;
 using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
@@ -15,17 +16,32 @@ namespace PersonInfoManage.BLL.logs
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool Del(int id)
+        public Result Del(int id)
         {
-            bool a = false;
-            LogSysDAL logsys = new LogSysDAL();
-            List<log_sys> sysList = new List<log_sys>();
-            if (logsys.Del(id) == sysList.Count)
-                a = true;
-            return a;
+            Result r = new Result();
+            if (new DAL.Logs.LogSysDAL().Del(id) > 0)
+            {
+                r.Code = RES.OK;
+                r.Message = "删除成功！";
+            }
+            else
+            {
+                r.Code = RES.ERROR;
+                r.Message = "删除失败！";
+            }
+            return r;
         }
-
-
+        /// <summary>
+        /// 系统日志查询
+        /// 条件：时间段
+        /// </summary>
+        /// <param name="conditions"></param>
+        /// <returns></returns>
+        public List<log_sys> Query(Dictionary<string, object> conditions)
+        {
+            List<log_sys> userList = new DAL.Logs.LogSysDAL().GetByConditionns(conditions);
+            return userList;
+        }
 
 
     }
