@@ -10,6 +10,7 @@ using PersonInfoManage.DAL.Cost;
 using PersonInfoManage.DAL.Login;
 using PersonInfoManage.DAL.PersonInfo;
 using PersonInfoManage.DAL.Logs;
+using PersonInfoManage.BLL.Login;
 
 namespace PersonInfoManage.Test
 {
@@ -18,7 +19,7 @@ namespace PersonInfoManage.Test
         static void Main(string[] args)
         {
             //测试函数：login.Loginsever(user)  测试成功BLL
-            //BLL.Login.Login login = new BLL.Login.Login();
+            //LoginBLL login = new LoginBLL();
             //sys_user user = new sys_user();
             //user.username = "lihua";
             //user.password = "456";
@@ -426,15 +427,15 @@ namespace PersonInfoManage.Test
 
 
             ///添加文件
-            PersonFileDAL files = new PersonFileDAL();
-            person_file A = new person_file();
-            A.id = 22;
-            A.person_id = 1;
-            A.filename = "张安的XXX";
-            A.filetype = "222";
-            A.create_time = new DateTime(2019, 4, 1);
-            A.modify_time = new DateTime(2018, 1, 18);
-            Console.WriteLine(files.Add(A));
+            //PersonFileDAL files = new PersonFileDAL();
+            //person_file A = new person_file();
+            //A.id = 22;
+            //A.person_id = 1;
+            //A.filename = "张安的XXX";
+            //A.filetype = "222";
+            //A.create_time = new DateTime(2019, 4, 1);
+            //A.modify_time = new DateTime(2018, 1, 18);
+            //Console.WriteLine(files.Add(A));
 
 
             //更改文件名
