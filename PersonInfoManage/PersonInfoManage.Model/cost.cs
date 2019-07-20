@@ -9,6 +9,6 @@ namespace PersonInfoManage.Model
     public partial class cost
     {
         public cost_main main { get; set; }
-        public List<cost_detail> listDetail { get; set; }
+        public List<cost_detail> DetailList { get; set; }
     }
 }

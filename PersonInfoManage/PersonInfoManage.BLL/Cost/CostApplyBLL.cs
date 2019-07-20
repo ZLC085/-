@@ -14,11 +14,12 @@ namespace PersonInfoManage.BLL.Cost
         /// <summary>
         /// 添加费用单
         /// </summary>
-        /// <param name="costMain">费用单对象cost_main：applicant、apply_money、apply_time</param>
-        /// <param name="detailList">费用类型明细列表cost_detail:cost_type、money</param>
-        /// <returns>是否添加成功</returns>
-        public Result Add(cost_main main,List<cost_detail> listDeatil)
+        /// <param name="cost">费用单对象main：applicant、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
+        /// <returns>添加是否成功</returns>
+        public Result Add(cost cost)
         {
+            cost_main main = cost.main;
+            List<cost_detail> listDeatil = cost.DetailList;
             Result res = new Result();
             if (main == null || listDeatil == null || listDeatil.Count == 0)
             {
@@ -26,7 +27,7 @@ namespace PersonInfoManage.BLL.Cost
                 res.Message = "添加失败";
                 return res;
             }            
-            int rows = new CostApplyDAL().Add(main, listDeatil);
+            int rows = new CostApplyDAL().Add(cost);
             if(rows == 1 + listDeatil.Count)
             {
                 res.Code = RES.OK;
@@ -37,11 +38,12 @@ namespace PersonInfoManage.BLL.Cost
         /// <summary>
         /// 更新费用单信息
         /// </summary>
-        /// <param name="costMain">费用单对象cost_main：id、apply_money</param>
-        /// <param name="detailList">费用类型明细列表cost_detail:cost_type、money</param>
-        /// <returns>费用单信息是否更新成功</returns>
-        public bool Update(cost_main main, List<cost_detail> listDeatil)
+        /// <param name="cost">费用单对象main：applicant、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
+        /// <returns>更新是否成功</returns>
+        public bool Update(cost cost)
         {
+            cost_main main = cost.main;
+            List<cost_detail> listDeatil = cost.DetailList;
             bool flag = false;
             if (main == null || listDeatil == null || listDeatil.Count == 0)
             {
@@ -61,7 +63,7 @@ namespace PersonInfoManage.BLL.Cost
             //先获取未更新时费用详情记录数           
             int originDetailCount = apply.QueryDetail(main.id).Count;
             //再更新费用单
-            int rows = apply.Update(main, listDeatil);
+            int rows = apply.Update(cost);
             if (rows == 1 + originDetailCount + listDeatil.Count)
             {
                 flag = true;

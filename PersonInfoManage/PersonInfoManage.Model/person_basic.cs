@@ -8,13 +8,6 @@ namespace PersonInfoManage.Model
 
     public partial class person_basic
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public person_basic()
-        {
-            businesses = new HashSet<business>();
-            person_file = new HashSet<person_file>();
-        }
-
         public int id { get; set; }
 
         [Required]

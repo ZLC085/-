@@ -60,13 +60,23 @@ namespace PersonInfoManage.DAL.System
         {
 
             int res;
-            string sql1 = "Insert into sys_g2m(group_id,menu_id) values(@p1,@p2)";
+            string sql = "Insert into sys_g2m(group_id,menu_id) values(@p1,@p2)";
             SqlParameter sqlParameter1 = new SqlParameter("@p1", group_id);
             SqlParameter sqlParameter2 = new SqlParameter("@p2", menu_id);
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql1, sqlParameter1, sqlParameter2);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter1, sqlParameter2);
             return res;
         }
 
+        public int Update(sys_group group)
+        {
+            int res;
+            string sql = "update sys_group set group_name = @p1,remark = @p2,modify_time =@p3";
+            SqlParameter sqlParameter1 = new SqlParameter("@p1", group.group_name);
+            SqlParameter sqlParameter2 = new SqlParameter("@p2", group.remark);
+            SqlParameter sqlParameter3 = new SqlParameter("@p2", group.modify_time);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter1, sqlParameter2, sqlParameter3);
+            return res;
+        }
 
         /// <summary>
         /// 用户组关联修改
