@@ -36,8 +36,41 @@ namespace PersonInfoManage.BLL.System
 
         }
 
+        /// <summary>
+        /// 用户组权限修改
+        /// </summary>
+        /// <param name="group_id">用户组id</param>
+        /// <param name="menu_id">菜单id</param>
+        /// <returns>修改条数</returns>
+        public int Updateg2m(int group_id,int menu_id)
+        {
+            PermDAL perm = new PermDAL();
+            return perm.Updateg2m(group_id,menu_id);
+        }
 
+        /// <summary>
+        /// 用户所在用户组修改
+        /// </summary>
+        /// <param name="user_id">用户id</param>
+        /// <param name="group_id">用户组id</param>
+        /// <returns>修改条数</returns>
+        public int Updateu2g(int user_id, int group_id)
+        {
+            PermDAL perm = new PermDAL();
+            return perm.Updateg2m(user_id, group_id);
+        }
 
+        /// <summary>
+        /// 用户组修改
+        /// </summary>
+        /// <param name="user_id">用户id</param>
+        /// <param name="group_id">用户组id</param>
+        /// <returns>修改条数</returns>
+        public int Update(sys_group group)
+        {
+            PermDAL perm = new PermDAL();
+            return perm.Update(group);
+        }
 
         /// <summary>
         /// 删除用户组
@@ -73,6 +106,11 @@ namespace PersonInfoManage.BLL.System
 
         }
 
+        /// <summary>
+        /// 查询用户组
+        /// </summary>
+        /// <param name="group">查询条件</param>
+        /// <returns>用户组信息</returns>
         public List<sys_group> Selectgroup(sys_group group)
         {
             PermDAL perm = new PermDAL();
