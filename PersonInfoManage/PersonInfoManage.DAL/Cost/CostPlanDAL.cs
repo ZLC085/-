@@ -52,7 +52,6 @@ namespace PersonInfoManage.DAL.Cost
                     "" + nameof(cost_plan.cost_type) + " =N'" + plan.cost_type + "' and " + 
                     nameof(cost_plan.start_time) + "='" + plan.start_time + "' and " + 
                     nameof(cost_plan.end_time) + "='" + plan.end_time + "'";
-                //Console.WriteLine(sqlPlan[count]);
                 count++;
             }
 

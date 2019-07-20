@@ -52,7 +52,7 @@ namespace PersonInfoManage.DAL.Cost
             string[] sqlArray = new string[2+detailList.Count];
             //先更新cost_main表
             //更新费用金额信息和状态
-            sqlArray[0]= "update cost_main " +
+            sqlArray[0]= "update cost_main set " +
                 nameof(cost_main.apply_money) + "=" + costMain.apply_money +
                 " where id='" + costMain.id + "'";
             //再删除cost_detail表数据
@@ -112,12 +112,12 @@ namespace PersonInfoManage.DAL.Cost
         /// <summary>
         /// 根据组合条件查询费用单
         /// </summary>
-        /// <param name="consitions">条件键值对key: "id", "applicant", "status", "start_time", "end_time"</param>
+        /// <param name="consitions">条件键值对key: "id", "applicant", "status", "start_time", "end_time","page","limit"</param>
         /// <returns>费用单对象与费用详情对象列表构成的词典键值对</returns>
         public List<cost_main> QueryMain(Dictionary<string, object> conditions)
         {
-            //对参数进行合法性检验，获取合法的查询参数列表
-            string[] keys = new string[] {"id", "applicant", "status", "start_time", "end_time" };            
+            //对组合条件参数进行合法性检验，获取合法的查询参数列表
+            string[] keys = new string[] {"id", "applicant", "status", "start_time", "end_time" };
             List<string> keyList = new List<string>();            
             foreach (string key in conditions.Keys)
             {   
@@ -125,34 +125,46 @@ namespace PersonInfoManage.DAL.Cost
                     keyList.Add(key);
 
             }
-            //根据参数列表，拼接sql语句
-            string sql = "select * from cost_main ";
-            if (keyList.Count != 0)
+            //根据参数列表，拼接组合条件sql语句
+            string sql = "select ROW_NUMBER () OVER ( ORDER BY id ) AS rowNumber, * from cost_main ";
+            foreach (string key in keyList)
             {
-                sql += "where ";
-                foreach (string key in keyList)
-                {   
-                    //对第一个key特殊处理
-                    if (!key.Equals(keyList.First()))
-                    {
-                        sql += "and ";
-                    }
-                    //对比较特别的关键字做不同的处理方式
-                    if (key.Equals("start_time"))
-                    {
-                        sql += " apply_time>='" + conditions["start_time"] + "'";
-                    }
-                    else if (key.Equals("end_time"))
-                    {
-                        sql += " apply_time<='" + conditions["end_time"] + "'";
-                    }
-                    else
-                    {   //增加对中文的支持
-                        sql += " " + key + " like N'%" + conditions[key] + "%'";
-                    }
-
+                //对第一个key特殊处理
+                if (key.Equals(keyList.First()))
+                {
+                    sql += " where ";
                 }
+                else
+                {
+                    sql += " and ";
+                }
+                //对比较特别的关键字做不同的处理方式
+                if (key.Equals("start_time"))
+                {
+                    sql += " apply_time>='" + conditions["start_time"] + "'";
+                }
+                else if (key.Equals("end_time"))
+                {
+                    sql += " apply_time<='" + conditions["end_time"] + "'";
+                }
+                else
+                {   //增加对中文的支持
+                    sql += " " + key + " like N'%" + conditions[key] + "%'";
+                }
+
+            }            
+            //分页基础参数
+            int page = 1, limit = 10;//默认查询第一页，一页十条数据
+            if (conditions.Keys.Contains("page"))
+            {
+                page = (int)conditions["page"];
             }
+            if (conditions.Keys.Contains("limit"))
+            {
+                limit = (int)conditions["limit"];
+            }
+            //拼接分页sql语句
+            sql = "select top " + limit + " * from ( " + sql + " ) as t where rowNumber > " + (limit * (page - 1));
             //执行查询获取数据并封装返回
             List<cost_main> listMain = new List<cost_main>();
             DataTable dataTable = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0];
@@ -165,12 +177,19 @@ namespace PersonInfoManage.DAL.Cost
                     applicant = (string)row["applicant"],
                     approver = (string)row["approver"],
                     apply_time = (DateTime)row["apply_time"],
-                    approval_time = (DateTime)(row["approval_time"] == DBNull.Value ? null : row["approval_time"]),
                     apply_money = (decimal)row["apply_money"],
                     approval_money = (decimal)row["approval_money"],
                     status = (byte)row["status"],
                     remark = (string)row["remark"]
                 };
+                if(row["approval_time"] == DBNull.Value)
+                {
+                    main.approval_time = null;
+                }
+                else
+                {
+                    main.approval_time =(DateTime) row["approval_time"];
+                }
                 listMain.Add(main);
             }
             return listMain;
