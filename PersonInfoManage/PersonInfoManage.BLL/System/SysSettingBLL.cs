@@ -15,20 +15,36 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="sysDict"></param>
         /// <returns>成功与否</returns>
-        public int Add(sys_dict SysDict)          
+        public bool Add(sys_dict SysDict)          
       {
             SysSettingDAL set = new SysSettingDAL();
-            return set.Add(SysDict);               
+            try
+            {
+                set.Add(SysDict);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }                         
         }
         /// <summary>
         /// 删除数据字典
         /// </summary>
         /// <param name="sysDict"></param>
         /// <returns>成功与否</returns>
-        public int Del(int id)
+        public bool Del(int id)
         {
             SysSettingDAL set = new SysSettingDAL();
-            return set.Del(id);
+            try
+            {
+                set.Del(id);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -36,10 +52,18 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="sysDict"></param>
         /// <returns></returns>
-        public int Update(sys_dict SysDict)
+        public bool Update(sys_dict SysDict)
         {
             SysSettingDAL set = new SysSettingDAL();
-            return set.Update(SysDict);            
+            try
+            {
+                set.Update(SysDict);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }           
         }
 
         /// <summary>
