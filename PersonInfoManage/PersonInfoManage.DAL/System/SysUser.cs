@@ -20,12 +20,10 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="user">用户信息</param>
         /// <returns>添加条数</returns>
-        public int add(sys_user user, sys_group group)
+        public int add(sys_user user)
         {
-            string sql = "insert into sys_user (username,name,password,gender,job,phone,email,status,isdel,create_time,modify_time) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p10,@p11,getdate(),getdate())";
-            string sql1 = "insert into sys_u2g (user_id,group_id) values(@p8,@p9)";
-            string SelectSql = "select * from sys_user where username='" + user.username + "'";
-            DataSet ds = new DataSet();
+            int res;
+            string sql = "insert into sys_user (username,name,password,gender,job,phone,email,status,isdel,create_time,modify_time) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,getdate(),getdate())";
             SqlParameter sqlparameter = new SqlParameter("@p1", user.username);
             SqlParameter sqlparameter1 = new SqlParameter("@p2", user.name);
             SqlParameter sqlparameter2 = new SqlParameter("@p3", user.password);
@@ -33,49 +31,22 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlparameter4 = new SqlParameter("@p5", user.job);
             SqlParameter sqlparameter5 = new SqlParameter("@p6", user.phone);
             SqlParameter sqlparameter6 = new SqlParameter("@p7", user.email);
-            SqlParameter sqlparameter9 = new SqlParameter("@p10", user.status);
-            SqlParameter sqlparameter10 = new SqlParameter("@p11", user.isdel);
-            using (SqlConnection connection = new SqlConnection(ConStr))
-            {
-                SqlConnection conn = new SqlConnection(ConStr);
-                SqlCommand command = new SqlCommand();
-                SqlTransaction trans = null;
-                try
-                {
-                    conn.Open();
-                    trans = conn.BeginTransaction();
-                    command.Transaction = trans;
-                    command.Connection = conn;
-                    SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql, sqlparameter, sqlparameter1, sqlparameter2, sqlparameter3, sqlparameter4, sqlparameter5, sqlparameter6, sqlparameter9, sqlparameter10);
-                    ds = SqlHelper.ExecuteDataset(connection, CommandType.Text, SelectSql);
-                    user.id = (int)ds.Tables[0].Rows[0][nameof(sys_user.id)];
-                    SqlParameter sqlparameter7 = new SqlParameter("@p8", user.id);
-                    SqlParameter sqlparameter8 = new SqlParameter("@p9", group.id);
-                    SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql1, sqlparameter7, sqlparameter8);
-                    trans.Commit();
-                    return 1;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    trans.Rollback();
-                    return 0;
-                }
-            }
-            //return new DBOperationsInsert<sys_user, DBNull>().Insert(user);
+            SqlParameter sqlparameter7 = new SqlParameter("@p8", user.status);
+            SqlParameter sqlparameter8 = new SqlParameter("@p9", user.isdel);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter, sqlparameter1, sqlparameter2, sqlparameter3, sqlparameter4, sqlparameter5, sqlparameter6, sqlparameter7, sqlparameter8);
+            return res;
         }
-
+            //return new DBOperationsInsert<sys_user, DBNull>().Insert(user);    
 
         /// <summary>
         /// 用户信息修改
         /// </summary>
-        /// <param name="id">id</param>
-        /// <param name="newValues">用户信息</param>
+        /// <param name="user">用户信息</param>
         /// <returns>修改条数</returns>
-        public int Update(sys_user user,sys_group group)
+        public int Update(sys_user user)
         {
-            string sql = "update sys_user SET username = @p1,name = @p2,password = @p3,gender = @p4,job = @p5,phone = @p6,email = @p7 where id = '" + user.id + "'";
-            string sql1 = "update sys_u2g SET group_id=@p9 where user_id= '"+user.id+"'";
+            int res;
+            string sql = "update sys_user SET username = @p1,name = @p2,password = @p3,gender = @p4,job = @p5,phone = @p6,email = @p7,status = @p8,isdel = @p9,modify_time=getdate() where id = '" + user.id + "'";
             SqlParameter sqlParameter = new SqlParameter("@p1", user.username);
             SqlParameter sqlParameter1 = new SqlParameter("@p2", user.name);
             SqlParameter sqlParameter2 = new SqlParameter("@p3", user.password);
@@ -84,70 +55,24 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlParameter5 = new SqlParameter("@p6", user.phone);
             SqlParameter sqlParameter6 = new SqlParameter("@p7", user.email);
             SqlParameter sqlParameter7 = new SqlParameter("@p8", user.status);
-            SqlParameter sqlParameter8 = new SqlParameter("@p9", group.id);
-            using (SqlConnection connection = new SqlConnection(ConStr))
-            {
-                SqlConnection conn = new SqlConnection(ConStr);
-                SqlCommand command = new SqlCommand();
-                SqlTransaction trans = null;
-                try
-                {
-                    conn.Open();
-                    trans = conn.BeginTransaction();
-                    command.Transaction = trans;
-                    command.Connection = conn;
-                    SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql, sqlParameter, sqlParameter1, sqlParameter2, sqlParameter3, sqlParameter4, sqlParameter5, sqlParameter6, sqlParameter7);
-                    SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql1, sqlParameter8);
-                    trans.Commit();
-                    return 1;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    trans.Rollback();
-                    return 0;
-                }
-            }
-
+            SqlParameter sqlParameter8 = new SqlParameter("@p9", user.isdel);
+            res =SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1, sqlParameter2, sqlParameter3, sqlParameter4, sqlParameter5, sqlParameter6, sqlParameter7, sqlParameter8);
+            return res;
             //return new DBOperationsUpdate<sys_dict>().UpdateById(id, newValues);
         }
-
 
 
         /// <summary>
         /// 用户删除
         /// </summary>
-        /// <param name="userId">用户id</param>
+        /// <param name="user_id">用户id</param>
         /// <returns>删除条数</returns>
-        public int Del(sys_user user)
+        public int Del(int user_id)
         {
-            using (SqlConnection connection = new SqlConnection(ConStr))
-            {
-                SqlConnection conn = new SqlConnection(ConStr);
-                SqlCommand command = new SqlCommand();
-                SqlTransaction trans = null;
-                try
-                {
-                    conn.Open();
-                    trans = conn.BeginTransaction();
-                    command.Transaction = trans;
-                    command.Connection = conn;
-                    string sql = "delete from sys_user where id= '" + user.id + "'";
-                    string sql1 = "delete from sys_u2g where user_id='" + user.id + "'";
-                    SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql1);
-                    SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql);
-
-                    trans.Commit();
-                    return 1;
-
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    trans.Rollback();
-                    return 0;
-                }
-            }
+            int res;
+            string sql = "delete from sys_user where id= '" + user_id + "'";
+            res=SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            return res;
             //return new DBOperationsDelete<sys_user, DBNull>().DeleteById(userId);
         }
 
@@ -172,9 +97,7 @@ namespace PersonInfoManage.DAL.System
                 {
                     conn.Open();
                     trans = conn.BeginTransaction();
-                    command.Transaction = trans;
-                    command.Connection = conn;
-                    ds = SqlHelper.ExecuteDataset(connection, CommandType.Text, sql);
+                    ds = SqlHelper.ExecuteDataset(trans, CommandType.Text, sql);
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                     {
                         sys_user user1 = new sys_user();
@@ -188,10 +111,10 @@ namespace PersonInfoManage.DAL.System
                         user1.job = (string)ds.Tables[0].Rows[i][nameof(sys_user.job)];
                         user1.status = (Boolean)ds.Tables[0].Rows[i][nameof(sys_user.status)];
                         string sql1 = "select * from sys_u2g where user_id = '" + user1.id + "' ";
-                        ds1 = SqlHelper.ExecuteDataset(connection, CommandType.Text, sql1);
+                        ds1 = SqlHelper.ExecuteDataset(trans, CommandType.Text, sql1);
                         u2g.group_id = (int)ds1.Tables[0].Rows[0][nameof(sys_u2g.group_id)];
                         string sql2 = "select * from sys_group where id='" + u2g.group_id + "'";
-                        ds2 = SqlHelper.ExecuteDataset(connection, CommandType.Text, sql2);
+                        ds2 = SqlHelper.ExecuteDataset(trans, CommandType.Text, sql2);
                         group.group_name = (string)ds2.Tables[0].Rows[0][nameof(sys_group.group_name)];
                         user.Add(user1, group);
                     }
@@ -214,52 +137,39 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="conditions">查询条件</param>
         /// <returns>通过用户名查询到的用户</returns>
-        public Dictionary<sys_user, sys_group> SelectBy(sys_user user, sys_group group)
+        public List<sys_user> SelectBy(sys_user user)
         {
-            Dictionary<sys_user, sys_group> Dic = new Dictionary<sys_user, sys_group>();
-            string sql = "select * from sys_user where isdel = 0 ";           
+            List<sys_user> user1 = new List<sys_user>();
+            string sql = "SELECT dbo.sys_user.create_time, dbo.sys_user.email, dbo.sys_user.gender, dbo.sys_user.id, dbo.sys_user.job, dbo.sys_user.modify_time, dbo.sys_user.name, dbo.sys_user.password,dbo.sys_user.phone,dbo.sys_user.status,dbo.sys_user.username,dbo.sys_group.id AS group_id,dbo.sys_group.remark,dbo.sys_group.group_name FROM dbo.sys_user INNER JOIN dbo.sys_u2g ON dbo.sys_u2g.user_id = dbo.sys_user.id INNER JOIN dbo.sys_group ON dbo.sys_u2g.group_id = dbo.sys_group.id  ";           
             List<SqlParameter> sqlPara = new List<SqlParameter>();
-            using (SqlConnection connection = new SqlConnection(ConStr))
+            if (!string.IsNullOrEmpty(user.username))
             {
-                SqlConnection conn = new SqlConnection(ConStr);
-                SqlCommand command = new SqlCommand();
-                SqlTransaction trans = null;
-                try
-                {
-                    conn.Open();
-                    trans = conn.BeginTransaction();
-                    command.Transaction = trans;
-                    command.Connection = conn;
-                    if (!string.IsNullOrEmpty(user.username))
-                    {
-                        sql += " and username like @username";
-                        sqlPara.Add(new SqlParameter("@username", "%" + user.username + "%"));
-                    }
-                    if (!string.IsNullOrEmpty(user.name))
-                    {
-                        sql += " and name like @name";
-                        sqlPara.Add(new SqlParameter("@name", "%" + user.name + "%"));
-                    }
-                   
-                    if (!string.IsNullOrEmpty(user.gender))
-                    {
-                        sql += " and gender like @gender";
-                        sqlPara.Add(new SqlParameter("@gender", "%" + user.gender + "%"));
-                    }
-                    if (!string.IsNullOrEmpty(user.phone))
-                    {
-                        sql += " and phone like @phone";
-                        sqlPara.Add(new SqlParameter("@phone", "%" + user.phone + "%"));
-                    }
-                    if (!string.IsNullOrEmpty(user.job))
-                    {
-                        sql += " and job like @job";
-                        sqlPara.Add(new SqlParameter("@job", "%" + user.job + "%"));
-                    }
+                sql += " and username like @username";
+                sqlPara.Add(new SqlParameter("@username", "%" + user.username + "%"));
+            }
+            if (!string.IsNullOrEmpty(user.name))
+            {
+                sql += " and name like @name";
+                sqlPara.Add(new SqlParameter("@name", "%" + user.name + "%"));
+            }
+
+            if (!string.IsNullOrEmpty(user.gender))
+            {
+                sql += " and gender like @gender";
+                sqlPara.Add(new SqlParameter("@gender", "%" + user.gender + "%"));
+            }
+            if (!string.IsNullOrEmpty(user.phone))
+            {
+                sql += " and phone like @phone";
+                sqlPara.Add(new SqlParameter("@phone", "%" + user.phone + "%"));
+            }
+            if (!string.IsNullOrEmpty(user.job))
+            {
+                sql += " and job like @job";
+                sqlPara.Add(new SqlParameter("@job", "%" + user.job + "%"));
+            }
                     DataSet ds = new DataSet();
-                    DataSet ds1 = new DataSet();
-                    DataSet ds2 = new DataSet();
-                    ds = SqlHelper.ExecuteDataset(connection, CommandType.Text, sql, sqlPara.ToArray());
+                    ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql, sqlPara.ToArray());
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i ++)
                     {
                         sys_user user1 = new sys_user();
