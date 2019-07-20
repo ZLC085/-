@@ -193,7 +193,34 @@ namespace PersonInfoManage.DAL.System
             }
             return group2;
 
-           
+            //string sql = "SELECT dbo.sys_user.create_time, dbo.sys_user.email, dbo.sys_user.gender, dbo.sys_user.id, dbo.sys_user.job,"
+            //     + "dbo.sys_user.modify_time, dbo.sys_user.name, dbo.sys_user.password,dbo.sys_user.phone,dbo.sys_user.status,"
+            //     + "dbo.sys_user.username,dbo.sys_group.id AS group_id,dbo.sys_group.remark,dbo.sys_group.group_name"
+            //     + "FROM dbo.sys_user INNER JOIN dbo.sys_u2g ON dbo.sys_u2g.user_id = dbo.sys_user.id INNER JOIN dbo.sys_group "
+            //     + "ON dbo.sys_u2g.group_id = dbo.sys_group.id  ";
+            //List<SqlParameter> sqlPara = new List<SqlParameter>();
+            //if (!string.IsNullOrEmpty(user.username))
+            //{
+            //    sql += " and username like @username";
+            //    sqlPara.Add(new SqlParameter("@username", "%" + user.username + "%"));
+            //}
+            //if (!string.IsNullOrEmpty(user.name))
+            //{
+            //    sql += " and name like @name";
+            //    sqlPara.Add(new SqlParameter("@name", "%" + user.name + "%"));
+            //}
+
+            //if (!string.IsNullOrEmpty(user.gender))
+            //{
+            //    sql += " and gender like @gender";
+            //    sqlPara.Add(new SqlParameter("@gender", "%" + user.gender + "%"));
+            //}
+            //if (!string.IsNullOrEmpty(user.phone))
+            //{
+            //    sql += " and phone like @phone";
+            //    sqlPara.Add(new SqlParameter("@phone", "%" + user.phone + "%"));
+            //}
+        
         }
     }
 }
