@@ -27,7 +27,7 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlParameter2 = new SqlParameter("@p2", sysDict.dict_name);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter,sqlParameter2);
             return res;
-            // return new DBOperationsInsert<sys_dict, DBNull>().Insert(sysDict);
+            
         }
 
         /// <summary>
@@ -53,20 +53,20 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="id">数据字典id</param>
         /// <returns>删除条数</returns>
-        public int Del(sys_dict sysDict)
+        public int Del(int id)
         {
             int res = 0;
             string sql = "delete from sys_dict where id=@p";
-            SqlParameter sqlparameter1 = new SqlParameter("@p", sysDict.id);
+            SqlParameter sqlparameter1 = new SqlParameter("@p", id);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter1);
             return res;
            
         }
 
         /// <summary>
-        /// 数据字典检索， 所有
+        /// 数据字典检索
         /// </summary>
-        /// <returns>所有数据字典</returns>
+        /// <returns>数据字典list表</returns>
         public List<sys_dict> SelectAll()
         {
             List<sys_dict> dict = new List<sys_dict>();

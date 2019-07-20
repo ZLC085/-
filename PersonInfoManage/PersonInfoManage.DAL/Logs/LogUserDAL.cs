@@ -13,7 +13,7 @@ namespace PersonInfoManage.DAL.Logs
     /// <summary>
     /// 用户日志
     /// </summary>
-    public class LogUser : DALBase
+    public class LogUserDAL : DALBase
     {
         /// <summary>
         /// 用户日志删除
@@ -37,7 +37,7 @@ namespace PersonInfoManage.DAL.Logs
         public List<log_user> Query()
         {
             List<log_user> loguser = new List<log_user>();
-
+            //string sql = "select * from View_1 ";
             string sql = "select * from log_user ";
             DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
@@ -48,8 +48,10 @@ namespace PersonInfoManage.DAL.Logs
                 user.username = (string)ds.Tables[0].Rows[i][nameof(log_user.username)];
                 user.operation = (string)ds.Tables[0].Rows[i][nameof(log_user.operation)];
                 user.ip = (string)ds.Tables[0].Rows[i][nameof(log_user.ip)];
-                user.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(log_user.create_time)];
+                user.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(log_user.create_time)];            
+               
                 loguser.Add(user);
+
             }
 
             return loguser;
@@ -96,7 +98,7 @@ namespace PersonInfoManage.DAL.Logs
                     sql += " " + key + "=" + conditions[key];
                 }
             }
-            Console.WriteLine(sql);
+            //Console.WriteLine(sql);
             DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
             DataTable dt = ds.Tables[0];
             for (int i = 0; i < dt.Rows.Count; i++)

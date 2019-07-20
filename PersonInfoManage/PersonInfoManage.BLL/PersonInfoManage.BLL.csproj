@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cost\CostApply_BLL.cs" />
+    <Compile Include="Cost\CostApplyBLL.cs" />
     <Compile Include="Login\Login.cs" />
-    <Compile Include="logs\LogSys.cs" />
-    <Compile Include="logs\LogUser.cs" />
+    <Compile Include="logs\LogSysBLL.cs" />
+    <Compile Include="logs\LogUserBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\Perm.cs" />
     <Compile Include="System\SysSetting.cs" />

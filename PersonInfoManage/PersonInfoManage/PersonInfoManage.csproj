@@ -73,6 +73,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddBusiness.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddBusiness.Designer.cs">
+      <DependentUpon>AddBusiness.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddCategoreTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCategoreTypeForm.Designer.cs">
+      <DependentUpon>AddCategoreTypeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddCostDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,12 +154,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdateRoleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateRoleForm.Designer.cs">
+      <DependentUpon>UpdateRoleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserGroupRoleForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserGroupRoleForm.Designer.cs">
       <DependentUpon>UserGroupRoleForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddBusiness.resx">
+      <DependentUpon>AddBusiness.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddCategoreTypeForm.resx">
+      <DependentUpon>AddCategoreTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddCostDetailForm.resx">
       <DependentUpon>AddCostDetailForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +209,9 @@
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateRoleForm.resx">
+      <DependentUpon>UpdateRoleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserGroupRoleForm.resx">
       <DependentUpon>UserGroupRoleForm.cs</DependentUpon>
