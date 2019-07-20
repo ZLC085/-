@@ -103,6 +103,12 @@
     <Compile Include="AddUserGroupForm.Designer.cs">
       <DependentUpon>AddUserGroupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddUserToGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddUserToGroupForm.Designer.cs">
+      <DependentUpon>AddUserToGroupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CostApplyForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,12 @@
     </Compile>
     <Compile Include="CostApprovalForm.Designer.cs">
       <DependentUpon>CostApprovalForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GroupManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GroupManageForm.Designer.cs">
+      <DependentUpon>GroupManageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PersonDetailForm.Designer.cs">
       <DependentUpon>PersonDetailForm.cs</DependentUpon>
@@ -154,11 +166,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UpdateRoleForm.cs">
+    <Compile Include="RoleSetForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateRoleForm.Designer.cs">
-      <DependentUpon>UpdateRoleForm.cs</DependentUpon>
+    <Compile Include="RoleSetForm.Designer.cs">
+      <DependentUpon>RoleSetForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserGroupRoleForm.cs">
       <SubType>Form</SubType>
@@ -181,6 +193,9 @@
     <EmbeddedResource Include="AddUserGroupForm.resx">
       <DependentUpon>AddUserGroupForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddUserToGroupForm.resx">
+      <DependentUpon>AddUserToGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CostApplyForm.resx">
       <DependentUpon>CostApplyForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -192,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CostPlanForm.resx">
       <DependentUpon>CostPlanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GroupManageForm.resx">
+      <DependentUpon>GroupManageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -210,8 +228,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateRoleForm.resx">
-      <DependentUpon>UpdateRoleForm.cs</DependentUpon>
+    <EmbeddedResource Include="RoleSetForm.resx">
+      <DependentUpon>RoleSetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserGroupRoleForm.resx">
       <DependentUpon>UserGroupRoleForm.cs</DependentUpon>
@@ -303,6 +321,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\导出.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\用户组.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\设置.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
