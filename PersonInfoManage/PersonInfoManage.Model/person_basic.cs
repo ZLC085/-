@@ -67,9 +67,11 @@ namespace PersonInfoManage.Model
         [StringLength(15)]
         public string phone { get; set; }
 
+        public int belong_place { get; set; }
+
         [Required]
         [StringLength(50)]
-        public string belong_place { get; set; }
+        public string belong_place_name { get; set; }
 
         [Required]
         [StringLength(10)]
