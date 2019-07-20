@@ -193,6 +193,8 @@ namespace PersonInfoManage.DAL.PersonInfo
                     }
                     if (!string.IsNullOrEmpty(info.person_type)) // person_type
                     {
+                        Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
+                        keyValuePairs.Add(nameof(person_basic.name), "aa");
                         //sql += " and person_type like @person_type";
                         //sqlPara.Add(new SqlParameter("@person_type", "%" + info.person_type + "%"));
                     }
