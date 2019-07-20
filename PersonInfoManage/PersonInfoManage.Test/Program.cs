@@ -10,6 +10,7 @@ using PersonInfoManage.DAL.Cost;
 using PersonInfoManage.DAL.Login;
 using PersonInfoManage.DAL.PersonInfo;
 using PersonInfoManage.DAL.Logs;
+using PersonInfoManage.BLL.Login;
 
 namespace PersonInfoManage.Test
 {
@@ -18,7 +19,7 @@ namespace PersonInfoManage.Test
         static void Main(string[] args)
         {
             //测试函数：login.Loginsever(user)  测试成功BLL
-            //BLL.Login.Login login = new BLL.Login.Login();
+            //LoginBLL login = new LoginBLL();
             //sys_user user = new sys_user();
             //user.username = "lihua";
             //user.password = "456";
@@ -425,8 +426,8 @@ namespace PersonInfoManage.Test
 
 
 
-            /////添加文件
-            //PersonFile files = new PersonFile();
+            ///添加文件
+            //PersonFileDAL files = new PersonFileDAL();
             //person_file A = new person_file();
             //A.id = 22;
             //A.person_id = 1;
@@ -439,22 +440,22 @@ namespace PersonInfoManage.Test
 
             //更改文件名
 
-            //PersonFile files = new PersonFile();
-            //person_file A = new person_file();
-            //A.id = 12;
-            //A.filename = "zhao";
-            //Console.WriteLine(files.Update(A));
+            PersonFileDAL files = new PersonFileDAL();
+            person_file A = new person_file();
+            A.id = 12;
+            A.filename = "zhao";
+            Console.WriteLine(files.Update(A));
 
 
             ////删除文件
-            //PersonFile files = new PersonFile();
+            //PersonFileDAL files = new PersonFileDAL();
             //person_file A = new person_file();
             //A.id = 25;
             //Console.WriteLine(files.Del(A));
 
 
             //根据ID查询文件
-            //PersonFile files = new PersonFile();
+            //PersonFileDAL files = new PersonFileDAL();
             //List<person_file> Listfile = files.GetById(26);
             //foreach (person_file B in Listfile)
             //{
@@ -516,18 +517,18 @@ namespace PersonInfoManage.Test
             //}
 
 
-            //日志条件查询
-            //用户名，时间段查询
-            //测试结果：
-            Dictionary<string, object> conditions = new Dictionary<string, object>();
-            conditions.Add("start_time", new DateTime(2017,7,1));
-            conditions.Add("end_time", new DateTime(2019, 7, 20));
-            List<log_sys> sys = new LogSysDAL().GetByConditionns(conditions);
-            foreach (log_sys logsys in sys)
-            {
-                Console.WriteLine(logsys.id + " " + logsys.create_time + "  " + logsys.log_message);
+            ////日志条件查询
+            ////用户名，时间段查询
+            ////测试结果：
+            //Dictionary<string, object> conditions = new Dictionary<string, object>();
+            //conditions.Add("start_time", new DateTime(2017,7,1));
+            //conditions.Add("end_time", new DateTime(2019, 7, 20));
+            //List<log_sys> sys = new LogSysDAL().GetByConditionns(conditions);
+            //foreach (log_sys logsys in sys)
+            //{
+            //    Console.WriteLine(logsys.id + " " + logsys.create_time + "  " + logsys.log_message);
 
-            }
+            //}
             Console.ReadKey();
         }
     }

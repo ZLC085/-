@@ -29,22 +29,22 @@ namespace PersonInfoManage.DAL.PersonInfo
             try
             {
                 // sql语句
-                string sql = "insert into person_basic (name, former_name, gender, identity_number, birth_date, city, province, marry_status, job_status, income, temper, family, person_type, qq, address, phone, belong_place, nation, input_time, user_id, isdel) "
-                    + "values(@name, @former_name, @gender, @identity_number, @birth_date, @city, @province, @marry_status, @job_status, @income, @temper, @family, @person_type, @qq, @address, @phone, @belong_place, @nation, @input_time, @user_id, @isdel)";
+                string sql = "insert into person_basic (name, former_name, gender, identity_number, birth_date, native_place, marry_status, job_status, income, temper, family, person_type, person_type_name, qq, address, phone, belong_place, nation, input_time, user_id, isdel) "
+                    + "values(@name, @former_name, @gender, @identity_number, @birth_date, @native_place, @marry_status, @job_status, @income, @temper, @family, @person_type, @person_type_name, @qq, @address, @phone, @belong_place, @nation, @input_time, @user_id, @isdel)";
                 // 参数赋值
                 SqlParameter name = new SqlParameter("@name", info.name);
                 SqlParameter former_name = new SqlParameter("@former_name", info.former_name);
                 SqlParameter gender = new SqlParameter("@gender", info.gender);
                 SqlParameter identity_number = new SqlParameter("@identity_number", info.identity_number);
                 SqlParameter birth_date = new SqlParameter("@birth_date", info.birth_date);
-                SqlParameter city = new SqlParameter("@city", info.city);
-                SqlParameter province = new SqlParameter("@province", info.province);
+                SqlParameter native_place = new SqlParameter("@native_place", info.native_place);
                 SqlParameter marry_status = new SqlParameter("@marry_status", info.marry_status);
                 SqlParameter job_status = new SqlParameter("@job_status", info.job_status);
                 SqlParameter income = new SqlParameter("@income", info.income);
                 SqlParameter temper = new SqlParameter("@temper", info.temper);
                 SqlParameter family = new SqlParameter("@family", info.family);
                 SqlParameter person_type = new SqlParameter("@person_type", info.person_type);
+                SqlParameter person_type_name = new SqlParameter("@person_type_name", info.person_type_name);
                 SqlParameter qq = new SqlParameter("@qq", info.qq);
                 SqlParameter address = new SqlParameter("@address", info.address);
                 SqlParameter phone = new SqlParameter("@phone", info.phone);
@@ -54,7 +54,7 @@ namespace PersonInfoManage.DAL.PersonInfo
                 SqlParameter user_id = new SqlParameter("@user_id", info.user_id);
                 SqlParameter isdel = new SqlParameter("@isdel", info.isdel);
                 // 执行sql语句
-                res = SqlHelper.ExecuteNonQuery(conStr, CommandType.Text, sql, name, former_name, gender, identity_number, birth_date, city, province, marry_status, job_status, income, temper, family, person_type, qq, address, phone, belong_place, nation, input_time, user_id, isdel);
+                res = SqlHelper.ExecuteNonQuery(conStr, CommandType.Text, sql, name, former_name, gender, identity_number, birth_date, native_place, marry_status, job_status, income, temper, family, person_type, person_type_name, qq, address, phone, belong_place, nation, input_time, user_id, isdel);
                 Console.WriteLine("执行成功！");
             }
             catch (Exception e)
@@ -77,7 +77,7 @@ namespace PersonInfoManage.DAL.PersonInfo
             {
                 // sql语句
                 string sql = "update person_basic set "
-                + "name = @name, former_name = @former_name, gender = @gender, identity_number = @identity_number, birth_date = @birth_date, city = @city, province = @province, marry_status = @marry_status, job_status = @job_status, income = @income, temper = @temper, family = @family, person_type = @person_type, qq = @qq, address = @address, phone = @phone, belong_place = @belong_place, nation = @nation, input_time = @input_time, user_id = @user_id, isdel = @isdel "
+                + "name = @name, former_name = @former_name, gender = @gender, identity_number = @identity_number, birth_date = @birth_date, native_place = @native_place, marry_status = @marry_status, job_status = @job_status, income = @income, temper = @temper, family = @family, person_type = @person_type, person_type_name = @person_type_name, qq = @qq, address = @address, phone = @phone, belong_place = @belong_place, nation = @nation, input_time = @input_time, user_id = @user_id, isdel = @isdel "
                 + "where id = @id";
                 // 参数赋值
                 SqlParameter name = new SqlParameter("@name", info.name);
@@ -85,14 +85,14 @@ namespace PersonInfoManage.DAL.PersonInfo
                 SqlParameter gender = new SqlParameter("@gender", info.gender);
                 SqlParameter identity_number = new SqlParameter("@identity_number", info.identity_number);
                 SqlParameter birth_date = new SqlParameter("@birth_date", info.birth_date);
-                SqlParameter city = new SqlParameter("@city", info.city);
-                SqlParameter province = new SqlParameter("@province", info.province);
+                SqlParameter native_place = new SqlParameter("@native_place", info.native_place);
                 SqlParameter marry_status = new SqlParameter("@marry_status", info.marry_status);
                 SqlParameter job_status = new SqlParameter("@job_status", info.job_status);
                 SqlParameter income = new SqlParameter("@income", info.income);
                 SqlParameter temper = new SqlParameter("@temper", info.temper);
                 SqlParameter family = new SqlParameter("@family", info.family);
                 SqlParameter person_type = new SqlParameter("@person_type", info.person_type);
+                SqlParameter person_type_name = new SqlParameter("@person_type_name", info.person_type_name);
                 SqlParameter qq = new SqlParameter("@qq", info.qq);
                 SqlParameter address = new SqlParameter("@address", info.address);
                 SqlParameter phone = new SqlParameter("@phone", info.phone);
@@ -103,7 +103,7 @@ namespace PersonInfoManage.DAL.PersonInfo
                 SqlParameter isdel = new SqlParameter("@isdel", info.isdel);
                 SqlParameter id = new SqlParameter("@id", info.id);
                 // 执行sql语句
-                res = SqlHelper.ExecuteNonQuery(conStr, CommandType.Text, sql, name, former_name, gender, identity_number, birth_date, city, province, marry_status, job_status, income, temper, family, person_type, qq, address, phone, belong_place, nation, input_time, user_id, isdel, id);
+                res = SqlHelper.ExecuteNonQuery(conStr, CommandType.Text, sql, name, former_name, gender, identity_number, birth_date, native_place, marry_status, job_status, income, temper, family, person_type, person_type_name, qq, address, phone, belong_place, nation, input_time, user_id, isdel, id);
                 Console.WriteLine("执行成功！");
             }
             catch (Exception e)
@@ -191,16 +191,16 @@ namespace PersonInfoManage.DAL.PersonInfo
                         sql += " and identity_number like @identity_number";
                         sqlPara.Add(new SqlParameter("@identity_number", "%" + info.identity_number + "%"));
                     }
-                    if (!string.IsNullOrEmpty(info.person_type)) // person_type
+                    if (!string.IsNullOrEmpty(info.person_type_name)) // person_type_name
                     {
-                        //sql += " and person_type like @person_type";
-                        //sqlPara.Add(new SqlParameter("@person_type", "%" + info.person_type + "%"));
+                        sql += " and person_type_name like @person_type_name";
+                        sqlPara.Add(new SqlParameter("@person_type_name", "%" + info.person_type_name + "%"));
                     }
-                    if (!string.IsNullOrEmpty(info.city)) // city
-                    {
-                        //sql += " and city like @city";
-                        //sqlPara.Add(new SqlParameter("@city", "%" + info.city + "%"));
-                    }
+                    //if (!string.IsNullOrEmpty(info.city)) // city
+                    //{
+                    //    sql += " and city like @city";
+                    //    sqlPara.Add(new SqlParameter("@city", "%" + info.city + "%"));
+                    //}
                 }
 
                 DataSet ds = new DataSet();
@@ -217,14 +217,14 @@ namespace PersonInfoManage.DAL.PersonInfo
                     pb.gender = dr[3].ToString();
                     pb.identity_number = dr[4].ToString();
                     pb.birth_date = DateTime.Parse(dr[5].ToString());
-                    pb.city = dr[6].ToString();
-                    pb.province = dr[7].ToString();
-                    pb.marry_status = bool.Parse(dr[8].ToString());
-                    pb.job_status = dr[9].ToString();
-                    pb.income = decimal.Parse(dr[10].ToString());
-                    pb.temper = dr[11].ToString();
-                    pb.family = dr[12].ToString();
-                    //pb.person_type = dr[13].ToString();
+                    pb.native_place = dr[6].ToString();
+                    pb.marry_status = bool.Parse(dr[7].ToString());
+                    pb.job_status = dr[8].ToString();
+                    pb.income = decimal.Parse(dr[9].ToString());
+                    pb.temper = dr[10].ToString();
+                    pb.family = dr[11].ToString();
+                    pb.person_type = int.Parse(dr[12].ToString());
+                    pb.person_type_name = dr[13].ToString();
                     pb.qq = dr[14].ToString();
                     pb.address = dr[15].ToString();
                     pb.phone = dr[16].ToString();

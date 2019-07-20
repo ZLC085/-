@@ -76,148 +76,55 @@ namespace PersonInfoManage.DAL.System
 
 
         /// <summary>
-        /// 查询所有用户
-        /// </summary>
-        /// <returns>所有用户</returns>
-        public Dictionary<sys_user, sys_group> Selectall()
-        {
-            Dictionary<sys_user, sys_group> user = new Dictionary<sys_user,sys_group>();
-            DataSet ds = new DataSet();
-            DataSet ds1 = new DataSet();
-            DataSet ds2 = new DataSet();
-            string sql = "select * from sys_user";
-            using (SqlConnection connection = new SqlConnection(ConStr))
-            {
-                SqlConnection conn = new SqlConnection(ConStr);
-                SqlCommand command = new SqlCommand();
-                SqlTransaction trans = null;
-                try
-                {
-                    conn.Open();
-                    trans = conn.BeginTransaction();
-                    ds = SqlHelper.ExecuteDataset(trans, CommandType.Text, sql);
-                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-                    {
-                        sys_user user1 = new sys_user();
-                        sys_group group = new sys_group();
-                        sys_u2g u2g = new sys_u2g();
-                        user1.id = (int)ds.Tables[0].Rows[i][nameof(sys_user.id)];
-                        user1.username = (string)ds.Tables[0].Rows[i][nameof(sys_user.username)];
-                        user1.name = (string)ds.Tables[0].Rows[i][nameof(sys_user.name)];
-                        user1.gender = (string)ds.Tables[0].Rows[i][nameof(sys_user.gender)];
-                        user1.phone = (string)ds.Tables[0].Rows[i][nameof(sys_user.phone)];
-                        user1.job = (string)ds.Tables[0].Rows[i][nameof(sys_user.job)];
-                        user1.status = (Boolean)ds.Tables[0].Rows[i][nameof(sys_user.status)];
-                        string sql1 = "select * from sys_u2g where user_id = '" + user1.id + "' ";
-                        ds1 = SqlHelper.ExecuteDataset(trans, CommandType.Text, sql1);
-                        u2g.group_id = (int)ds1.Tables[0].Rows[0][nameof(sys_u2g.group_id)];
-                        string sql2 = "select * from sys_group where id='" + u2g.group_id + "'";
-                        ds2 = SqlHelper.ExecuteDataset(trans, CommandType.Text, sql2);
-                        group.group_name = (string)ds2.Tables[0].Rows[0][nameof(sys_group.group_name)];
-                        user.Add(user1, group);
-                    }
-                    trans.Commit();
-                    return user;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    trans.Rollback();
-                    return null;
-                }
-            }
-            //return new DBOperationsSelect<sys_user>().SelectAll();
-        }
-
-
-        /// <summary>
         /// 通过输入条件查询用户
         /// </summary>
         /// <param name="conditions">查询条件</param>
         /// <returns>通过用户名查询到的用户</returns>
-        public List<sys_user> SelectBy(sys_user user)
+        public List<view_sys_u2g> Select(view_sys_u2g u2g)
         {
-            List<sys_user> user1 = new List<sys_user>();
-            string sql = "SELECT dbo.sys_user.create_time, dbo.sys_user.email, dbo.sys_user.gender, dbo.sys_user.id, dbo.sys_user.job,"
-                + "dbo.sys_user.modify_time, dbo.sys_user.name, dbo.sys_user.password,dbo.sys_user.phone,dbo.sys_user.status,"
-                + "dbo.sys_user.username,dbo.sys_group.id AS group_id,dbo.sys_group.remark,dbo.sys_group.group_name"
-                + "FROM dbo.sys_user INNER JOIN dbo.sys_u2g ON dbo.sys_u2g.user_id = dbo.sys_user.id INNER JOIN dbo.sys_group "
-                + "ON dbo.sys_u2g.group_id = dbo.sys_group.id  ";
+            List<view_sys_u2g> user = new List<view_sys_u2g>();
+            string sql = "SELECT * from view_sys_u2g";
             List<SqlParameter> sqlPara = new List<SqlParameter>();
-            if (!string.IsNullOrEmpty(user.username))
+            if (!string.IsNullOrEmpty(u2g.username))
             {
                 sql += " and username like @username";
-                sqlPara.Add(new SqlParameter("@username", "%" + user.username + "%"));
+                sqlPara.Add(new SqlParameter("@username", "%" + u2g.username + "%"));
             }
-            if (!string.IsNullOrEmpty(user.name))
+            if (!string.IsNullOrEmpty(u2g.name))
             {
                 sql += " and name like @name";
-                sqlPara.Add(new SqlParameter("@name", "%" + user.name + "%"));
+                sqlPara.Add(new SqlParameter("@name", "%" + u2g.name + "%"));
             }
 
-            if (!string.IsNullOrEmpty(user.gender))
+            if (!string.IsNullOrEmpty(u2g.gender))
             {
                 sql += " and gender like @gender";
-                sqlPara.Add(new SqlParameter("@gender", "%" + user.gender + "%"));
+                sqlPara.Add(new SqlParameter("@gender", "%" + u2g.gender + "%"));
             }
-            if (!string.IsNullOrEmpty(user.phone))
-            {
-                sql += " and phone like @phone";
-                sqlPara.Add(new SqlParameter("@phone", "%" + user.phone + "%"));
-            }
-            if (!string.IsNullOrEmpty(user.job))
+            if (!string.IsNullOrEmpty(u2g.job))
             {
                 sql += " and job like @job";
-                sqlPara.Add(new SqlParameter("@job", "%" + user.job + "%"));
+                sqlPara.Add(new SqlParameter("@job", "%" + u2g.job + "%"));
             }
-                    DataSet ds = new DataSet();
-                    ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql, sqlPara.ToArray());
-                    for (int i = 0; i < ds.Tables[0].Rows.Count; i ++)
-                    {
-                        sys_user user1 = new sys_user();
-                        sys_u2g u2g = new sys_u2g();
-                        sys_group group1 = new sys_group();
-                        user1.id = (int)ds.Tables[0].Rows[i][nameof(sys_user.id)];
-                        user1.name = (string)ds.Tables[0].Rows[i][nameof(sys_user.name)];
-                        user1.username = (string)ds.Tables[0].Rows[i][nameof(sys_user.username)];
-                        user1.gender = (string)ds.Tables[0].Rows[i][nameof(sys_user.gender)];
-                        user1.phone = (string)ds.Tables[0].Rows[i][nameof(sys_user.phone)];
-                        user1.job = (string)ds.Tables[0].Rows[i][nameof(sys_user.job)];
-                        string sql1 ="select * from sys_u2g where user_id = '" + user1.id + "' ";
-                        ds1 = SqlHelper.ExecuteDataset(connection, CommandType.Text, sql1);
-                        u2g.group_id= (int)ds1.Tables[0].Rows[0][nameof(sys_u2g.group_id)];
-                        string sql2 = "select * from sys_group where id= '" + u2g.group_id + "'";
-                        ds2 = SqlHelper.ExecuteDataset(connection, CommandType.Text, sql2);
-                        group1.group_name= (string)ds2.Tables[0].Rows[0][nameof(sys_group.group_name)];
-                        if (!string.IsNullOrEmpty(group.group_name))
-                        {
-                           if(group1.group_name == group.group_name)
-                            {
-                                Dic.Add(user1, group1);  
-                                                            
-                            }
-                            else
-                            {                               
-                            }
-                        }
-                        else
-                        {
-                            Dic.Add(user1, group1);
-                        }
-                    }
-                    trans.Commit();
-                    return Dic;   
+            DataSet ds = new DataSet();
+            ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql, sqlPara.ToArray());
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++) 
+            {
+                view_sys_u2g u2g1 = new view_sys_u2g();
+                u2g1.id = (int)ds.Tables[0].Rows[i][nameof(view_sys_u2g.id)];
+                u2g1.name = (string)ds.Tables[0].Rows[i][nameof(sys_user.name)];
+                u2g1.username = (string)ds.Tables[0].Rows[i][nameof(sys_user.username)];
+                u2g1.gender = (string)ds.Tables[0].Rows[i][nameof(sys_user.gender)];
+                u2g1.phone = (string)ds.Tables[0].Rows[i][nameof(sys_user.phone)];
+                u2g1.job = (string)ds.Tables[0].Rows[i][nameof(sys_user.job)];
+                u2g1.status = (bool)ds.Tables[0].Rows[i][nameof(view_sys_u2g.status)];
+                u2g1.group_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.group_name)];
+                user.Add(u2g1);               
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    trans.Rollback();
-                    return null;
-                }
-                //return new DBOperationsSelect<sys_user>().SelectByConditions(conditions);
-            }
+            return user;
+            //return new DBOperationsSelect<sys_user>().SelectByConditions(conditions);
+        }
         }
     }
-}
 
 
