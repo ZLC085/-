@@ -20,7 +20,7 @@ namespace PersonInfoManage.Model
         public byte[] file { get; set; }
 
         [Required]
-        [StringLength(5)]
+        [StringLength(50)]
         public string filetype { get; set; }
 
         public DateTime create_time { get; set; }

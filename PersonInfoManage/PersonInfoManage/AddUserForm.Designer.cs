@@ -53,6 +53,7 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.labelX32 = new DevComponents.DotNetBar.LabelX();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +61,7 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.labelX32);
             this.panelEx1.Controls.Add(this.buttonX2);
             this.panelEx1.Controls.Add(this.buttonX1);
             this.panelEx1.Controls.Add(this.textBoxDropDown2);
@@ -229,11 +231,11 @@
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX8.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX8.Location = new System.Drawing.Point(100, 320);
+            this.labelX8.Location = new System.Drawing.Point(81, 320);
             this.labelX8.Name = "labelX8";
-            this.labelX8.Size = new System.Drawing.Size(86, 23);
+            this.labelX8.Size = new System.Drawing.Size(94, 23);
             this.labelX8.TabIndex = 14;
-            this.labelX8.Text = "用户类型：";
+            this.labelX8.Text = "所属用户组：";
             // 
             // labelX7
             // 
@@ -413,7 +415,20 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "姓  名：";
             // 
-            // AddUser
+            // labelX32
+            // 
+            // 
+            // 
+            // 
+            this.labelX32.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX32.ForeColor = System.Drawing.Color.Red;
+            this.labelX32.Location = new System.Drawing.Point(100, 350);
+            this.labelX32.Name = "labelX32";
+            this.labelX32.Size = new System.Drawing.Size(108, 23);
+            this.labelX32.TabIndex = 67;
+            this.labelX32.Text = "请填写必填项！";
+            // 
+            // AddUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -421,7 +436,7 @@
             this.Controls.Add(this.panelEx1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddUser";
+            this.Name = "AddUserForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "添加用户";
@@ -458,5 +473,6 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
+        private DevComponents.DotNetBar.LabelX labelX32;
     }
 }

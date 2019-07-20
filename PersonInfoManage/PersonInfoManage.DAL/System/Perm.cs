@@ -34,12 +34,29 @@ namespace PersonInfoManage.DAL.System
 
 
         /// <summary>
+        /// 关联用户与用户组
+        /// </summary>
+        /// <param name="user_id">用户id</param>
+        /// <param name="group_id">用户组id</param>
+        /// <returns>返回添加条数</returns>
+        public int add(int user_id,int group_id)
+        {
+            int res;
+            string sql = "insert into sys_u2g (user_id,group_id) values(@p1,@p2)";
+            SqlParameter sqlparameter = new SqlParameter("@p1", user_id);
+            SqlParameter sqlparameter1 = new SqlParameter("@p2", group_id);
+            res=SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter, sqlparameter1);
+            return res;
+        }
+
+
+        /// <summary>
         /// 用户组权限修改
         /// </summary>
         /// <param name="id">id</param>
         /// <param name="newValues">需要修改的值</param>
         /// <returns>修改条数</returns>
-        public int Update(int group_id, List<string> grouplist)
+        public int Update(sys_group group, List<string> grouplist)
         {
             using (SqlConnection connection = new SqlConnection(ConStr))
             {
@@ -61,7 +78,7 @@ namespace PersonInfoManage.DAL.System
                         SqlParameter sqlParameter = new SqlParameter("@p1", name);
                         ds = SqlHelper.ExecuteDataset(connection, CommandType.Text, sql, sqlParameter);
                         menu.id = (int)ds.Tables[0].Rows[0][nameof(sys_menu.id)];
-                        SqlParameter sqlParameter1 = new SqlParameter("@p2", group_id);
+                        SqlParameter sqlParameter1 = new SqlParameter("@p2", group.id);
                         SqlParameter sqlParameter2 = new SqlParameter("@p3", menu.id);
                         SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql1, sqlParameter1, sqlParameter2);
                     }
@@ -79,45 +96,78 @@ namespace PersonInfoManage.DAL.System
 
 
         /// <summary>
+        /// 用户组关联修改
+        /// </summary>
+        /// <param name="user_id">用户id</param>
+        /// <param name="group_id">用户组id</param>
+        /// <returns>返回添加条数</returns>
+        public int Update(int user_id, int group_id)
+        {
+            int res;
+            string sql = "update sys_u2g SET group_id= '"+group_id+"' where user_id= '" + user_id + "'";
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            return res;
+        }
+
+
+        /// <summary>
         /// 删除用户组
         /// </summary>
         /// <param name="userId">用户id</param>
         /// <returns>删除失败与否</returns>
-        public int Del(int group_id)
+        public int DelG2t(int id)
         {
-
-            string sql1 = "Delete from sys_group where id=@p1";
-            string sql2 = "Delete from sys_g2m where group_id=@p1";
-            SqlParameter sqlparameter1 = new SqlParameter("@p1", group_id);
-
-
-            // return new DBOperationsDelete<sys_u2r, DBNull>().DeleteById(userId);
-
-            using (SqlConnection connection = new SqlConnection(ConStr))
-            {
-                SqlConnection conn = new SqlConnection(ConStr);
-                SqlCommand command = new SqlCommand();
-                SqlTransaction trans = null;
-                try
-                {
-                    conn.Open();
-                    trans = conn.BeginTransaction();
-                    command.Transaction = trans;
-                    command.Connection = conn;
-                    SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql2, sqlparameter1);
-                    SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql1, sqlparameter1);
-                    trans.Commit();
-                    return 1;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    trans.Rollback();
-                    return 0;
-                }
-            }
+            int res = 0;            
+            string sql= "Delete from sys_g2m where group_id=@p1";           
+            SqlParameter sqlparameter1 = new SqlParameter("@p1",id);  
+            res=SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter1);
+            return res;
+        }
+        public int Del(int id)
+        {
+            int res = 0;
+            string sql = "Delete from sys_group where id=@p1";
+            SqlParameter sqlparameter1 = new SqlParameter("@p1", id);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter1);
+            return res;
         }
 
+        /// <summary>
+        /// 用户组关联删除
+        /// </summary>
+        /// <param name="user_id">用户id</param>
+        /// <returns>删除条数</returns>
+        public int Delu2g(int user_id)
+        {
+            int res;
+            string sql = "delete from sys_u2g where user_id='" + user_id + "'";
+            res=SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            return res;
+        }
+
+        /// <summary>
+        /// 权限检索,所有
+        /// </summary>
+        /// <returns>所有权限信息</returns>
+        public List<sys_group> Selectall()
+        {
+            DataSet ds = new DataSet();
+            string sql = "Select * from sys_group ";
+            ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+            List<sys_group> group1 = new List<sys_group>();
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                sys_group group = new sys_group();
+                group.id = (int)ds.Tables[0].Rows[i][nameof(sys_group.id)];
+                group.group_name = (string)ds.Tables[0].Rows[i][nameof(sys_group.group_name)];
+                group.remark = (string)ds.Tables[0].Rows[i][nameof(sys_group.remark)];
+                group.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_group.create_time)];
+                group.modify_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_group.modify_time)];
+                group1.Add(group);
+            }
+            return group1;
+
+        }
 
         /// <summary>
         /// 通过输入条件进行权限检索
@@ -130,20 +180,20 @@ namespace PersonInfoManage.DAL.System
             string sql1 = "Select * from sys_group where group_name = @p1 ";
             SqlParameter sqlparameter1 = new SqlParameter("@p1", group.group_name);
             ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql1, sqlparameter1);
-            sys_group group1 = new sys_group();
             List<sys_group> group2 = new List<sys_group>();        
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
+                sys_group group1 = new sys_group();
                 group1.id = (int)ds.Tables[0].Rows[i][nameof(sys_group.id)];
                 group1.group_name= (string)ds.Tables[0].Rows[i][nameof(sys_group.group_name)];  
                 group1.remark = (string)ds.Tables[0].Rows[i][nameof(sys_group.remark)];
                 group1.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_group.create_time)];
                 group1.modify_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_group.modify_time)];
+                group2.Add(group1);
             }
-            group2.Add(group1);
             return group2;
 
-            //return new DBOperationsSelect<sys_u2r>().SelectByConditions(conditions);
+           
         }
     }
 }

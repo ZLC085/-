@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersonInfoManage.BLL.Cost
+namespace PersonInfoManage.BLL.logs
 {
-    public class CostApply
+    class LogUserBLL
     {
-
     }
 }

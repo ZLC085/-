@@ -18,6 +18,5 @@ namespace PersonInfoManage.Model
 
         public decimal money { get; set; }
 
-        
     }
 }
