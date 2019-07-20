@@ -141,11 +141,13 @@ namespace PersonInfoManage.DAL.Cost
                 //对比较特别的关键字做不同的处理方式
                 if (key.Equals("start_time"))
                 {
-                    sql += " apply_time>='" + conditions["start_time"] + "'";
+                    DateTime start_time =(DateTime) conditions["start_time"];
+                    sql += " apply_time>='" + new DateTime(start_time.Year,start_time.Month,start_time.Day,0,0,0) + "'";
                 }
                 else if (key.Equals("end_time"))
                 {
-                    sql += " apply_time<='" + conditions["end_time"] + "'";
+                    DateTime end_time = (DateTime)conditions["end_time"];
+                    sql += " apply_time<='" + new DateTime(end_time.Year,end_time.Month,end_time.Day,23,59,59) + "'";
                 }
                 else
                 {   //增加对中文的支持
