@@ -22,6 +22,5 @@ namespace PersonInfoManage.Model
 
         public DateTime end_time { get; set; }
 
-        public string cost_type_name { get; set; }
     }
 }
