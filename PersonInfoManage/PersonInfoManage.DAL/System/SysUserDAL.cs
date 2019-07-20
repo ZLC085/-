@@ -20,7 +20,7 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="user">用户信息</param>
         /// <returns>添加条数</returns>
-        public int add(sys_user user)
+        public int Add(sys_user user)
         {
             int res;
             string sql = "insert into sys_user (username,name,password,gender,job,phone,email,status,create_time,modify_time) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,getdate(),getdate())";
@@ -45,7 +45,7 @@ namespace PersonInfoManage.DAL.System
         public int Update(sys_user user)
         {
             int res;
-            string sql = "update sys_user SET username = @p1,name = @p2,password = @p3,gender = @p4,job = @p5,phone = @p6,email = @p7,status = @p8,modify_time=getdate() where id = '" + user.id + "'";
+            string sql = "Update sys_user SET username = @p1,name = @p2,password = @p3,gender = @p4,job = @p5,phone = @p6,email = @p7,status = @p8,modify_time=getdate() where id = '" + user.id + "'";
             SqlParameter sqlParameter = new SqlParameter("@p1", user.username);
             SqlParameter sqlParameter1 = new SqlParameter("@p2", user.name);
             SqlParameter sqlParameter2 = new SqlParameter("@p3", user.password);
@@ -65,10 +65,10 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="user_id">用户id</param>
         /// <returns>删除条数</returns>
-        public int Del(int user_id)
+        public int Del(int UserId)
         {
             int res;
-            string sql = "delete from sys_user where id= '" + user_id + "'";
+            string sql = "delete from sys_user where id= '" + UserId + "'";
             res=SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
             return res;
             //return new DBOperationsDelete<sys_user, DBNull>().DeleteById(userId);
@@ -80,34 +80,34 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="conditions">查询条件</param>
         /// <returns>通过用户名查询到的用户</returns>
-        public List<view_sys_u2g> Select(sys_user userinfo)
+        public List<view_sys_u2g> Select(sys_user UserInfo)
         {
             List<view_sys_u2g> user = new List<view_sys_u2g>();
             string sql = "SELECT * from view_sys_u2g";
-            List<SqlParameter> sqlPara = new List<SqlParameter>();
-            if (!string.IsNullOrEmpty(userinfo.username))
+            List<SqlParameter> SqlPara = new List<SqlParameter>();
+            if (!string.IsNullOrEmpty(UserInfo.username))
             {
                 sql += " and username like @username";
-                sqlPara.Add(new SqlParameter("@username", "%" + userinfo.username + "%"));
+                SqlPara.Add(new SqlParameter("@username", "%" + UserInfo.username + "%"));
             }
-            if (!string.IsNullOrEmpty(userinfo.name))
+            if (!string.IsNullOrEmpty(UserInfo.name))
             {
                 sql += " and name like @name";
-                sqlPara.Add(new SqlParameter("@name", "%" + userinfo.name + "%"));
+                SqlPara.Add(new SqlParameter("@name", "%" + UserInfo.name + "%"));
             }
 
-            if (!string.IsNullOrEmpty(userinfo.gender))
+            if (!string.IsNullOrEmpty(UserInfo.gender))
             {
                 sql += " and gender like @gender";
-                sqlPara.Add(new SqlParameter("@gender", "%" + userinfo.gender + "%"));
+                SqlPara.Add(new SqlParameter("@gender", "%" + UserInfo.gender + "%"));
             }
-            if (!string.IsNullOrEmpty(userinfo.job))
+            if (!string.IsNullOrEmpty(UserInfo.job))
             {
                 sql += " and job like @job";
-                sqlPara.Add(new SqlParameter("@job", "%" + userinfo.job + "%"));
+                SqlPara.Add(new SqlParameter("@job", "%" + UserInfo.job + "%"));
             }
             DataSet ds = new DataSet();
-            ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql, sqlPara.ToArray());
+            ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql, SqlPara.ToArray());
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++) 
             {
                 view_sys_u2g u2g = new view_sys_u2g();

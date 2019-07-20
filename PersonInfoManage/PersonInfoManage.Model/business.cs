@@ -29,7 +29,5 @@ namespace PersonInfoManage.Model
 
         [StringLength(200)]
         public string remark { get; set; }
-
-        public virtual person_basic person_basic { get; set; }
     }
 }

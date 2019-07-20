@@ -26,7 +26,5 @@ namespace PersonInfoManage.Model
         public DateTime create_time { get; set; }
 
         public DateTime modify_time { get; set; }
-
-        public virtual person_basic person_basic { get; set; }
     }
 }

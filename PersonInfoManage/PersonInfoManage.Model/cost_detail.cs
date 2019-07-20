@@ -19,7 +19,5 @@ namespace PersonInfoManage.Model
         public string cost_type_name { get; set; }
 
         public decimal money { get; set; }
-
-        public virtual cost_main cost_main { get; set; }
     }
 }
