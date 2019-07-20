@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PersonInfoManage.BLL.Utils;
 using PersonInfoManage.DAL.Cost;
 using PersonInfoManage.Model;
 
@@ -16,19 +17,22 @@ namespace PersonInfoManage.BLL.Cost
         /// <param name="costMain">费用单对象cost_main：applicant、apply_money、apply_time</param>
         /// <param name="detailList">费用类型明细列表cost_detail:cost_type、money</param>
         /// <returns>是否添加成功</returns>
-        public bool Add(cost_main main,List<cost_detail> listDeatil)
+        public Result Add(cost_main main,List<cost_detail> listDeatil)
         {
-            bool flag = false;
+            Result res = new Result();
             if (main == null || listDeatil == null || listDeatil.Count == 0)
             {
-                return flag;
+                res.Code = RES.ERROR;
+                res.Message = "添加失败";
+                return res;
             }            
             int rows = new CostApplyDAL().Add(main, listDeatil);
             if(rows == 1 + listDeatil.Count)
             {
-                flag = true;
+                res.Code = RES.OK;
+                res.Message="添加成功";
             }
-            return flag;
+            return res;
         }
         /// <summary>
         /// 更新费用单信息

@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace PersonInfoManage.BLL.Utils
 {
-    class Result
+    public class Result
     {
+        public string Message { get; set; }
+        public RES Code { get; set; }
+    }
+    public enum RES
+    {
+        OK,ERROR
     }
 }
