@@ -1,4 +1,5 @@
-﻿using PersonInfoManage.DAL.PersonInfo;
+﻿using PersonInfoManage.DAL.Logs;
+using PersonInfoManage.DAL.PersonInfo;
 using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
@@ -473,12 +474,12 @@ namespace PersonInfoManage.Test
             ////日志查询   测试
             //查询所有
             //测试结果：成功
-            LogUserDAL user = new LogUserDAL();
-            List<log_user> listuser = user.Query(18);
-            foreach (log_user loguser in listuser)
-            {
-                Console.WriteLine(loguser.id + "  " + loguser.user_id + "  " + loguser.username + "  " + loguser.operation + "  " + loguser.ip + "  " + loguser.create_time);
-            }
+            //LogUserDAL user = new LogUserDAL();
+            //List<log_user> listuser = user.Query(18);
+            //foreach (log_user loguser in listuser)
+            //{
+            //    Console.WriteLine(loguser.id + "  " + loguser.user_id + "  " + loguser.username + "  " + loguser.operation + "  " + loguser.ip + "  " + loguser.create_time);
+            //}
 
             //////系统日志查询，所有
             //LogSysDAL sys = new LogSysDAL();
