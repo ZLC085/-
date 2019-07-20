@@ -123,7 +123,6 @@ namespace PersonInfoManage.DAL.System
             res=SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter1);
             return res;
         }
-
         public int Del(int id)
         {
             int res = 0;

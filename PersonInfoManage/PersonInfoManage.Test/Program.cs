@@ -18,11 +18,11 @@ namespace PersonInfoManage.Test
         static void Main(string[] args)
         {
             //测试函数：login.Loginsever(user)  测试成功BLL
-            BLL.Login.LoginBLL login = new BLL.Login.LoginBLL();
-            sys_user user = new sys_user();
-            user.username = "lihua";
-            user.password = "456";
-            Console.WriteLine(login.Loginsever(user));
+            //BLL.Login.Login login = new BLL.Login.Login();
+            //sys_user user = new sys_user();
+            //user.username = "lihua";
+            //user.password = "456";
+            //Console.WriteLine(login.Loginsever(user));
 
             //测试函数：Login.SelectLogin(user)  测试成功DAL
             //Login Login = new Login();
