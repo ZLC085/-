@@ -99,7 +99,7 @@ namespace PersonInfoManage.DAL.Cost
                 {
                     id = (int)row["id"],
                     cost_id = (int)row["cost_id"],
-                    cost_type = (string)row["cost_type"],
+                    cost_type = (int)row["cost_type"],
                     money = (decimal)row["money"]
                 };
                 listDetail.Add(detail);
