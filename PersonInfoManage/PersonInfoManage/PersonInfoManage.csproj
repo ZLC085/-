@@ -279,7 +279,7 @@
       <Name>PersonInfoManage.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\PersonInfoManage.Model\PersonInfoManage.Model.csproj">
-      <Project>{4F1CE3DD-23C8-4F36-9988-A5EFDA72699D}</Project>
+      <Project>{57FD6832-9634-42B2-B901-E31DDF01F7C9}</Project>
       <Name>PersonInfoManage.Model</Name>
     </ProjectReference>
   </ItemGroup>
