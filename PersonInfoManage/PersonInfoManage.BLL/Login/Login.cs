@@ -8,12 +8,12 @@ using PersonInfoManage.Model;
 
 namespace PersonInfoManage.BLL.Login
 {
-    public class Login
+    public class LoginBLL
     {
         public int Loginsever(sys_user user)
         {
-            DAL.Login.Login login = new DAL.Login.Login();
-            string password = login.SelectLogin(user);
+            DAL.Login.LoginDAL login = new DAL.Login.LoginDAL();
+            string password = login.SelectLogin(user.username);
             if (password == user.password)
             {
                 return 1;
