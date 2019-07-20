@@ -179,7 +179,7 @@ namespace PersonInfoManage.DAL.PersonInfo
                     pb.income = decimal.Parse(dr[10].ToString());
                     pb.temper = dr[11].ToString();
                     pb.family = dr[12].ToString();
-                    pb.person_type = dr[13].ToString();
+                    pb.person_type = (int)dr[13];
                     pb.qq = dr[14].ToString();
                     pb.address = dr[15].ToString();
                     pb.phone = dr[16].ToString();
@@ -254,7 +254,7 @@ namespace PersonInfoManage.DAL.PersonInfo
                     pb.income = decimal.Parse(dr[10].ToString());
                     pb.temper = dr[11].ToString();
                     pb.family = dr[12].ToString();
-                    pb.person_type = dr[13].ToString();
+                    pb.person_type = (int)dr[13];
                     pb.qq = dr[14].ToString();
                     pb.address = dr[15].ToString();
                     pb.phone = dr[16].ToString();

@@ -46,7 +46,7 @@ namespace PersonInfoManage
             pb.income = 2000;
             pb.temper = "火辣";
             pb.family = "";
-            pb.person_type = "肇事";
+            pb.person_type = 1;
             pb.qq = "";
             pb.address = "双流区北二街1号";
             pb.phone = "12345678910";

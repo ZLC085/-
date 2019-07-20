@@ -34,7 +34,7 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlparameter5 = new SqlParameter("@p6", user.phone);
             SqlParameter sqlparameter6 = new SqlParameter("@p7", user.email);
             SqlParameter sqlparameter9 = new SqlParameter("@p10", user.status);
-            SqlParameter sqlparameter10 = new SqlParameter("@p11", user.isdel);
+            //SqlParameter sqlparameter10 = new SqlParameter("@p11", user.isdel);
             using (SqlConnection connection = new SqlConnection(ConStr))
             {
                 SqlConnection conn = new SqlConnection(ConStr);
@@ -46,7 +46,7 @@ namespace PersonInfoManage.DAL.System
                     trans = conn.BeginTransaction();
                     command.Transaction = trans;
                     command.Connection = conn;
-                    SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql, sqlparameter, sqlparameter1, sqlparameter2, sqlparameter3, sqlparameter4, sqlparameter5, sqlparameter6, sqlparameter9, sqlparameter10);
+                    SqlHelper.ExecuteNonQuery(connection, CommandType.Text, sql, sqlparameter, sqlparameter1, sqlparameter2, sqlparameter3, sqlparameter4, sqlparameter5, sqlparameter6, sqlparameter9);//, sqlparameter10);
                     ds = SqlHelper.ExecuteDataset(connection, CommandType.Text, SelectSql);
                     user.id = (int)ds.Tables[0].Rows[0][nameof(sys_user.id)];
                     SqlParameter sqlparameter7 = new SqlParameter("@p8", user.id);
