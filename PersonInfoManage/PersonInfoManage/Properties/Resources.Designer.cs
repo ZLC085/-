@@ -153,6 +153,16 @@ namespace PersonInfoManage.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap 用户组 {
+            get {
+                object obj = ResourceManager.GetObject("用户组", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 电源 {
             get {
                 object obj = ResourceManager.GetObject("电源", resourceCulture);
@@ -166,6 +176,16 @@ namespace PersonInfoManage.Properties {
         internal static System.Drawing.Bitmap 警徽01 {
             get {
                 object obj = ResourceManager.GetObject("警徽01", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 设置 {
+            get {
+                object obj = ResourceManager.GetObject("设置", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
