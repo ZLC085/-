@@ -142,7 +142,7 @@ namespace PersonInfoManage.DAL.System
                 + "dbo.sys_user.modify_time, dbo.sys_user.name, dbo.sys_user.password,dbo.sys_user.phone,dbo.sys_user.status,"
                 + "dbo.sys_user.username,dbo.sys_group.id AS group_id,dbo.sys_group.remark,dbo.sys_group.group_name"
                 + "FROM dbo.sys_user INNER JOIN dbo.sys_u2g ON dbo.sys_u2g.user_id = dbo.sys_user.id INNER JOIN dbo.sys_group "
-                +"ON dbo.sys_u2g.group_id = dbo.sys_group.id  ";
+                + "ON dbo.sys_u2g.group_id = dbo.sys_group.id  ";
             List<SqlParameter> sqlPara = new List<SqlParameter>();
             if (!string.IsNullOrEmpty(user.username))
             {
