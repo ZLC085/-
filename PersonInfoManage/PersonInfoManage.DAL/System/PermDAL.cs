@@ -132,7 +132,7 @@ namespace PersonInfoManage.DAL.System
         public List<sys_group> Selectgroup(sys_group group)
         {
             DataSet ds = new DataSet();
-            string sql= "Select * from sys_group";
+            string sql= "Select * from sys_group where";
             List<SqlParameter> sqlPara = new List<SqlParameter>();
             if (!string.IsNullOrEmpty(group.group_name))
             {
@@ -144,10 +144,10 @@ namespace PersonInfoManage.DAL.System
                 sql += " and remark like @remark";
                 sqlPara.Add(new SqlParameter("@remark", "%" + group.remark + "%"));
             }
-            sql += " and create_time like @createtime";
+            sql += " and create_time >= @createtime";
             sqlPara.Add(new SqlParameter("@createtime", "%" + group.create_time + "%"));
 
-            sql += " and modify_time like @modifytime";
+            sql += " and modify_time <= @modifytime";
             sqlPara.Add(new SqlParameter("@modifytime", "%" + group.modify_time + "%"));
 
             ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql, sqlPara.ToArray());
