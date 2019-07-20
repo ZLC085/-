@@ -32,10 +32,10 @@ namespace PersonInfoManage.Test
             //Console.WriteLine(Login.SelectLogin(user));
 
             //测试函数：perm.add(group)  测试成功
-            //Perm perm = new Perm();
+            //PermDAL perm = new PermDAL();
             //sys_group group = new sys_group();
             //group.group_name = "管理员";
-            //group.remark = "局长";
+            ////group.remark = "局长";
             //Console.WriteLine(perm.add(group));
 
             //测试函数:perm.Update(group_id,grouplist) 测试成功
@@ -56,9 +56,9 @@ namespace PersonInfoManage.Test
             //Console.WriteLine(perm.Selectall());
 
             //测试函数：perm.Selectgroup(group) 测试成功
-            //Perm perm = new Perm();
+            //PermDAL perm = new PermDAL();
             //sys_group group = new sys_group();
-            //group.group_name = "admin";
+            //group.group_name = "管理员";
             //Console.WriteLine(perm.Selectgroup(group));
 
             //测试函数：SysUser.add(sys_user user,int groupid)  测试成功
@@ -440,11 +440,11 @@ namespace PersonInfoManage.Test
 
             //更改文件名
 
-            PersonFileDAL files = new PersonFileDAL();
-            person_file A = new person_file();
-            A.id = 12;
-            A.filename = "zhao";
-            Console.WriteLine(files.Update(A));
+            //PersonFileDAL files = new PersonFileDAL();
+            //person_file A = new person_file();
+            //A.id = 12;
+            //A.filename = "zhao";
+            //Console.WriteLine(files.Update(A));
 
 
             ////删除文件

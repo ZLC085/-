@@ -10,17 +10,17 @@ namespace PersonInfoManage.BLL.Login
 {
     public class LoginBLL
     {
-        public int Loginsever(sys_user user)
+        public bool Login(string userName,string password)
         {
             LoginDAL login = new LoginDAL();
-            string password = login.SelectLogin(user.username);
-            if (password == user.password)
+            string password1 = login.SelectLogin(userName);
+            if (password.Equals(password))
             {
-                return 1;
+                return true;
             }
             else
             {
-                return 0;
+                return false;
             }
         }
     }
