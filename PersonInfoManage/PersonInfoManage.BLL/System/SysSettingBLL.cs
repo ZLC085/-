@@ -17,7 +17,7 @@ namespace PersonInfoManage.BLL.System
         /// <returns>成功与否</returns>
         public int Add(sys_dict sysDict)          
       {
-            DAL.System.SysSetting set = new DAL.System.SysSetting();
+            SysSettingDAL set = new SysSettingDAL();
             if (set.Add(sysDict) == 0)
             {
                 return 0;
@@ -35,7 +35,7 @@ namespace PersonInfoManage.BLL.System
         /// <returns>成功与否</returns>
         public int Del(int id)
         {
-            DAL.System.SysSetting set = new DAL.System.SysSetting();
+            SysSettingDAL set = new SysSettingDAL();
            
                 if (set.Del(id) == 0)
                 {
@@ -56,7 +56,7 @@ namespace PersonInfoManage.BLL.System
        /// <returns></returns>
         public int Update(sys_dict sysDict)
         {
-            DAL.System.SysSetting set = new DAL.System.SysSetting();
+            SysSettingDAL set = new SysSettingDAL();
             if (set.Update(sysDict) == 0)
             {
                 return 0;
@@ -69,7 +69,7 @@ namespace PersonInfoManage.BLL.System
 
         public List<sys_dict> SeleteAll()
         {
-            DAL.System.SysSetting set = new DAL.System.SysSetting();
+            SysSettingDAL set = new SysSettingDAL();
             return set.SelectAll();
         }
 

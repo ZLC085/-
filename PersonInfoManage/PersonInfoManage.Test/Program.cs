@@ -425,16 +425,16 @@ namespace PersonInfoManage.Test
 
 
 
-            /////添加文件
-            //PersonFile files = new PersonFile();
-            //person_file A = new person_file();
-            //A.id = 22;
-            //A.person_id = 1;
-            //A.filename = "张安的XXX";
-            //A.filetype = "222";
-            //A.create_time = new DateTime(2019, 4, 1);
-            //A.modify_time = new DateTime(2018, 1, 18);
-            //Console.WriteLine(files.Add(A));
+            ///添加文件
+            PersonFileDAL files = new PersonFileDAL();
+            person_file A = new person_file();
+            A.id = 22;
+            A.person_id = 1;
+            A.filename = "张安的XXX";
+            A.filetype = "222";
+            A.create_time = new DateTime(2019, 4, 1);
+            A.modify_time = new DateTime(2018, 1, 18);
+            Console.WriteLine(files.Add(A));
 
 
             //更改文件名
@@ -516,18 +516,18 @@ namespace PersonInfoManage.Test
             //}
 
 
-            //日志条件查询
-            //用户名，时间段查询
-            //测试结果：
-            Dictionary<string, object> conditions = new Dictionary<string, object>();
-            conditions.Add("start_time", new DateTime(2017,7,1));
-            conditions.Add("end_time", new DateTime(2019, 7, 20));
-            List<log_sys> sys = new LogSysDAL().GetByConditionns(conditions);
-            foreach (log_sys logsys in sys)
-            {
-                Console.WriteLine(logsys.id + " " + logsys.create_time + "  " + logsys.log_message);
+            ////日志条件查询
+            ////用户名，时间段查询
+            ////测试结果：
+            //Dictionary<string, object> conditions = new Dictionary<string, object>();
+            //conditions.Add("start_time", new DateTime(2017,7,1));
+            //conditions.Add("end_time", new DateTime(2019, 7, 20));
+            //List<log_sys> sys = new LogSysDAL().GetByConditionns(conditions);
+            //foreach (log_sys logsys in sys)
+            //{
+            //    Console.WriteLine(logsys.id + " " + logsys.create_time + "  " + logsys.log_message);
 
-            }
+            //}
             Console.ReadKey();
         }
     }
