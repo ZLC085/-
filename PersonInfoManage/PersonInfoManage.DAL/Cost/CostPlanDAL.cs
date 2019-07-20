@@ -56,23 +56,38 @@ namespace PersonInfoManage.DAL.Cost
             }
             return sqlArrayToTran.doTran(sqlPlan); 
         }
-     
+
         /// <summary>
         /// 费用规划删除，根据时间
         /// </summary>
         /// <param name="ListPlan"></param>
         /// <returns>删除条数</returns>
-        public int Del(List<cost_plan> ListPlan)
+        //public int Del(List<cost_plan> ListPlan)
+        public int Del(Dictionary<string,DateTime> period)
         {
-            string[] sqlPlan = new string[ListPlan.Count];
+            //string[] sqlPlan = new string[ListPlan.Count];
 
-            int count = 0;
-            foreach (cost_plan plan in ListPlan)
-            {
-                sqlPlan[count] = "delete from cost_plan where " + nameof(cost_plan.start_time) + "='" + plan.start_time + "' and " + nameof(cost_plan.end_time) + "='" + plan.end_time + "'";
-                count++;
-            }
-            return sqlArrayToTran.doTran(sqlPlan);
+            //int count = 0;
+            //foreach (cost_plan plan in ListPlan)
+            //{
+            //    sqlPlan[count] = "delete from cost_plan where " + nameof(cost_plan.start_time) + "='" + plan.start_time + "' and " + nameof(cost_plan.end_time) + "='" + plan.end_time + "'";
+            //    count++;
+            //}
+            //return sqlArrayToTran.doTran(sqlPlan);
+            DateTime start_time = period["start_time"];
+            DateTime end_time = period["end_time"];
+            int startYear = start_time.Year;
+            int startMonth = start_time.Month;
+            int startDay = start_time.Day;
+            int endYear = end_time.Year;
+            int endMonth = end_time.Month;
+            int endDay = end_time.Day;
+            string sql = "delete from cost_plan where " +
+                nameof(cost_plan.start_time) + ">='" + new DateTime(startYear, startMonth, startDay, 0, 0, 0) + "' and " +
+                nameof(cost_plan.start_time) + "<='" + new DateTime(startYear, startMonth, startDay, 23, 59, 59) + "' and " +
+                nameof(cost_plan.end_time) + ">='" + new DateTime(endYear, endMonth, endDay, 0, 0, 0) + "' and " +
+                nameof(cost_plan.end_time) + "<='" + new DateTime(endYear, endMonth, endDay, 23, 59, 59) + "'";
+            return SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
         }
       
         /// <summary>
@@ -82,7 +97,6 @@ namespace PersonInfoManage.DAL.Cost
         /// <returns>费用规划列表</returns>
         public List<cost_plan> Query(Dictionary<string, object> conditions)
         {
-            Console.WriteLine(1);
             string[] keys = new string[] { "start_time", "end_time", "cost_type", "id" };
             List<cost_plan> retList = new List<cost_plan>();
             List<string> listKey = new List<string>();
@@ -105,18 +119,19 @@ namespace PersonInfoManage.DAL.Cost
                 }
                 if (key.Equals("start_time"))
                 {
-                    sql += " start_time >='" + conditions[key] + "'";
+                    DateTime start_time =(DateTime) conditions[key];
+                    sql += " start_time >='" + new DateTime(start_time.Year,start_time.Month,start_time.Day,0,0,0) + "'";
                 }
                 else if (key.Equals("end_time"))
                 {
-                    sql += " end_time<='" + conditions[key] + "'";
+                    DateTime end_time = (DateTime)conditions[key];
+                    sql += " end_time<='" + new DateTime(end_time.Year,end_time.Month,end_time.Day,23,59,59) + "'";
                 }
                 else
                 {
                     sql += " " + key + " like N'%" + conditions[key] + "%'";
                 }
             }
-            Console.WriteLine(sql);
             DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
             DataTable dt = ds.Tables[0];
             for (int i = 0; i < dt.Rows.Count; i++)
