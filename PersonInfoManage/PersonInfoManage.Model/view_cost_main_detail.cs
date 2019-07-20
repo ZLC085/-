@@ -4,8 +4,9 @@ namespace PersonInfoManage.Model
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
-    public partial class View_CostMainDetail
+    public partial class view_cost_main_detail
     {
         [Key]
         [Column(Order = 0)]
@@ -41,16 +42,16 @@ namespace PersonInfoManage.Model
 
         [Key]
         [Column(Order = 5)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int detailId { get; set; }
+
+        [Key]
+        [Column(Order = 6)]
         [StringLength(50)]
         public string cost_type { get; set; }
 
         [Key]
-        [Column(Order = 6)]
-        public decimal money { get; set; }
-
-        [Key]
         [Column(Order = 7)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int detailId { get; set; }
+        public decimal money { get; set; }
     }
 }

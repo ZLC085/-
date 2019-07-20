@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4F1CE3DD-23C8-4F36-9988-A5EFDA72699D}</ProjectGuid>
+    <ProjectGuid>{57FD6832-9634-42B2-B901-E31DDF01F7C9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PersonInfoManage.Model</RootNamespace>
@@ -67,8 +67,8 @@
     <Compile Include="sys_menu.cs" />
     <Compile Include="sys_u2g.cs" />
     <Compile Include="sys_user.cs" />
-    <Compile Include="View_1.cs" />
-    <Compile Include="View_CostMainDetail.cs" />
+    <Compile Include="view_cost_main_detail.cs" />
+    <Compile Include="view_log_user.cs" />
     <Compile Include="view_sys_g2m.cs" />
     <Compile Include="view_sys_u2g.cs" />
   </ItemGroup>

@@ -30,7 +30,7 @@ namespace PersonInfoManage
                 string filePath= openFile.FileName;
                 string fileName = openFile.SafeFileName;
 
-
+                
                 int index = fileName.LastIndexOf('.');
                 string fileType = fileName.Substring(index);
 
