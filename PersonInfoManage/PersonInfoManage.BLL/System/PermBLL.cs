@@ -16,11 +16,18 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="group"></param>
         /// <returns>影响条数</returns>
-        public int add(sys_group group)
+        public bool add(sys_group group)
         {
             PermDAL perm = new PermDAL();
-            return perm.add(group);
-
+            try
+            {
+                perm.add(group);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -29,11 +36,18 @@ namespace PersonInfoManage.BLL.System
         /// <param name="user_id"></param>
         /// <param name="group_id"></param>
         /// <returns>影响条数</returns>
-        public int add(int user_id,int group_id)
+        public bool add(int user_id,int group_id)
         {
             PermDAL perm = new PermDAL();
-            return perm.add(user_id,group_id);
-
+            try
+            {
+                perm.add(user_id, group_id);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -42,10 +56,18 @@ namespace PersonInfoManage.BLL.System
         /// <param name="group_id">用户组id</param>
         /// <param name="menu_id">菜单id</param>
         /// <returns>修改条数</returns>
-        public int Updateg2m(int group_id,int menu_id)
+        public bool Updateg2m(int group_id,int menu_id)
         {
             PermDAL perm = new PermDAL();
-            return perm.Updateg2m(group_id,menu_id);
+            try
+            {
+                perm.Updateg2m(group_id, menu_id);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -54,10 +76,18 @@ namespace PersonInfoManage.BLL.System
         /// <param name="user_id">用户id</param>
         /// <param name="group_id">用户组id</param>
         /// <returns>修改条数</returns>
-        public int Updateu2g(int user_id, int group_id)
+        public bool Updateu2g(int user_id, int group_id)
         {
             PermDAL perm = new PermDAL();
-            return perm.Updateg2m(user_id, group_id);
+            try
+            {
+                perm.Updateg2m(user_id, group_id);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -66,10 +96,18 @@ namespace PersonInfoManage.BLL.System
         /// <param name="user_id">用户id</param>
         /// <param name="group_id">用户组id</param>
         /// <returns>修改条数</returns>
-        public int Update(sys_group group)
+        public bool Update(sys_group group)
         {
             PermDAL perm = new PermDAL();
-            return perm.Update(group);
+            try
+            {
+                perm.Update(group);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -77,10 +115,18 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="id"></param>
         /// <returns>影响条数</returns>
-        public int Del(int id)
+        public bool Del(int id)
         {
             PermDAL perm = new PermDAL();
-            return perm.Del(id);
+            try
+            {
+                perm.Del(id);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
 
         }
         /// <summary>
@@ -88,22 +134,36 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="id"></param>
         /// <returns>影响条数</returns>
-        public int DelG2m(int id)
+        public bool DelG2m(int id)
         {
             PermDAL perm = new PermDAL();
-            return perm.DelG2m(id);
-
+            try
+            {
+                perm.DelG2m(id);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         /// <summary>
         /// 删除用户组和用户关联
         /// </summary>
         /// <param name="id"></param>
         /// <returns>影响条数</returns>
-        public int Delu2g(int id)
+        public bool Delu2g(int id)
         {
             PermDAL perm = new PermDAL();
-            return perm.Delu2g(id);
-
+            try
+            {
+                perm.Delu2g(id);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
