@@ -1,10 +1,12 @@
-﻿using PersonInfoManage.DAL.PersonInfo;
+﻿using PersonInfoManage.DAL.Logs;
+using PersonInfoManage.DAL.PersonInfo;
 using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PersonInfoManage.DAL.Cost;
 
 namespace PersonInfoManage.Test
 {
@@ -135,9 +137,9 @@ namespace PersonInfoManage.Test
             //SysSetting set = new SysSetting();
             //Console.WriteLine(set.SelectAll());
 
-            // CostApply apply = new CostApply();
+             CostApplyDAL apply = new CostApplyDAL();
 
-            ///测试函数：costApply.Add(cost_main costMain, List<cost_detail> detailList)
+            ///测试函数：costApply.Add(cost cost)
             ///返回类型：int
             ///测试结果：成功
             ///参数中必需的属性:
@@ -153,12 +155,14 @@ namespace PersonInfoManage.Test
             //};
             //cost_detail detail = new cost_detail
             //{
-            //    cost_type = "餐饮",
+            //    cost_type_name = "餐饮",
+            //    cost_type=5,
             //    money = 200
             //};
             //cost_detail detail2 = new cost_detail
             //{
-            //    cost_type = "出行",
+            //    cost_type_name = "出行",
+            //    cost_type=8,
             //    money = 220
             //};
             //List<cost_detail> listDetail = new List<cost_detail>
@@ -166,7 +170,7 @@ namespace PersonInfoManage.Test
             //    detail,
             //    detail2
             //};
-            //Console.WriteLine(apply.Add(main, listDetail));
+            //Console.WriteLine(apply.Add(new cost { main = main, DetailList = listDetail }));
 
             ///测试函数：costApply.Update(cost_main costMain, List<cost_detail> detailList)
             ///返回类型：int
@@ -473,12 +477,12 @@ namespace PersonInfoManage.Test
             ////日志查询   测试
             //查询所有
             //测试结果：成功
-            LogUserDAL user = new LogUserDAL();
-            List<log_user> listuser = user.Query(18);
-            foreach (log_user loguser in listuser)
-            {
-                Console.WriteLine(loguser.id + "  " + loguser.user_id + "  " + loguser.username + "  " + loguser.operation + "  " + loguser.ip + "  " + loguser.create_time);
-            }
+            //LogUserDAL user = new LogUserDAL();
+            //List<log_user> listuser = user.Query(18);
+            //foreach (log_user loguser in listuser)
+            //{
+            //    Console.WriteLine(loguser.id + "  " + loguser.user_id + "  " + loguser.username + "  " + loguser.operation + "  " + loguser.ip + "  " + loguser.create_time);
+            //}
 
             //////系统日志查询，所有
             //LogSysDAL sys = new LogSysDAL();
