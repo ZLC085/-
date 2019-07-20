@@ -44,11 +44,7 @@
             this.textBoxX3 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.textBoxX5 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBoxDropDown1 = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
             this.textBoxDropDown2 = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
-            this.textBoxDropDown3 = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
-            this.textBoxDropDown4 = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
-            this.textBoxDropDown5 = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX4 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.textBoxX6 = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -64,8 +60,6 @@
             this.textBoxX12 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX19 = new DevComponents.DotNetBar.LabelX();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBoxDropDown6 = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
-            this.textBoxDropDown7 = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
@@ -83,7 +77,13 @@
             this.labelX30 = new DevComponents.DotNetBar.LabelX();
             this.labelX31 = new DevComponents.DotNetBar.LabelX();
             this.labelX32 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxDropDown8 = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // labelX2
@@ -300,22 +300,6 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(163, 21);
             this.dateTimePicker1.TabIndex = 22;
             // 
-            // textBoxDropDown1
-            // 
-            // 
-            // 
-            // 
-            this.textBoxDropDown1.BackgroundStyle.Class = "TextBoxBorder";
-            this.textBoxDropDown1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxDropDown1.ButtonDropDown.Visible = true;
-            this.textBoxDropDown1.Location = new System.Drawing.Point(107, 300);
-            this.textBoxDropDown1.Margin = new System.Windows.Forms.Padding(1);
-            this.textBoxDropDown1.Name = "textBoxDropDown1";
-            this.textBoxDropDown1.Size = new System.Drawing.Size(140, 21);
-            this.textBoxDropDown1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.textBoxDropDown1.TabIndex = 23;
-            this.textBoxDropDown1.Text = "";
-            // 
             // textBoxDropDown2
             // 
             // 
@@ -331,54 +315,6 @@
             this.textBoxDropDown2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.textBoxDropDown2.TabIndex = 24;
             this.textBoxDropDown2.Text = "";
-            // 
-            // textBoxDropDown3
-            // 
-            // 
-            // 
-            // 
-            this.textBoxDropDown3.BackgroundStyle.Class = "TextBoxBorder";
-            this.textBoxDropDown3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxDropDown3.ButtonDropDown.Visible = true;
-            this.textBoxDropDown3.Location = new System.Drawing.Point(260, 300);
-            this.textBoxDropDown3.Margin = new System.Windows.Forms.Padding(1);
-            this.textBoxDropDown3.Name = "textBoxDropDown3";
-            this.textBoxDropDown3.Size = new System.Drawing.Size(132, 21);
-            this.textBoxDropDown3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.textBoxDropDown3.TabIndex = 25;
-            this.textBoxDropDown3.Text = "";
-            // 
-            // textBoxDropDown4
-            // 
-            // 
-            // 
-            // 
-            this.textBoxDropDown4.BackgroundStyle.Class = "TextBoxBorder";
-            this.textBoxDropDown4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxDropDown4.ButtonDropDown.Visible = true;
-            this.textBoxDropDown4.Location = new System.Drawing.Point(107, 230);
-            this.textBoxDropDown4.Margin = new System.Windows.Forms.Padding(1);
-            this.textBoxDropDown4.Name = "textBoxDropDown4";
-            this.textBoxDropDown4.Size = new System.Drawing.Size(161, 21);
-            this.textBoxDropDown4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.textBoxDropDown4.TabIndex = 26;
-            this.textBoxDropDown4.Text = "";
-            // 
-            // textBoxDropDown5
-            // 
-            // 
-            // 
-            // 
-            this.textBoxDropDown5.BackgroundStyle.Class = "TextBoxBorder";
-            this.textBoxDropDown5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxDropDown5.ButtonDropDown.Visible = true;
-            this.textBoxDropDown5.Location = new System.Drawing.Point(107, 195);
-            this.textBoxDropDown5.Margin = new System.Windows.Forms.Padding(1);
-            this.textBoxDropDown5.Name = "textBoxDropDown5";
-            this.textBoxDropDown5.Size = new System.Drawing.Size(161, 21);
-            this.textBoxDropDown5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.textBoxDropDown5.TabIndex = 27;
-            this.textBoxDropDown5.Text = "";
             // 
             // labelX6
             // 
@@ -586,38 +522,6 @@
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
-            // 
-            // textBoxDropDown6
-            // 
-            // 
-            // 
-            // 
-            this.textBoxDropDown6.BackgroundStyle.Class = "TextBoxBorder";
-            this.textBoxDropDown6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxDropDown6.ButtonDropDown.Visible = true;
-            this.textBoxDropDown6.Location = new System.Drawing.Point(413, 125);
-            this.textBoxDropDown6.Margin = new System.Windows.Forms.Padding(1);
-            this.textBoxDropDown6.Name = "textBoxDropDown6";
-            this.textBoxDropDown6.Size = new System.Drawing.Size(161, 21);
-            this.textBoxDropDown6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.textBoxDropDown6.TabIndex = 48;
-            this.textBoxDropDown6.Text = "";
-            // 
-            // textBoxDropDown7
-            // 
-            // 
-            // 
-            // 
-            this.textBoxDropDown7.BackgroundStyle.Class = "TextBoxBorder";
-            this.textBoxDropDown7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxDropDown7.ButtonDropDown.Visible = true;
-            this.textBoxDropDown7.Location = new System.Drawing.Point(413, 195);
-            this.textBoxDropDown7.Margin = new System.Windows.Forms.Padding(1);
-            this.textBoxDropDown7.Name = "textBoxDropDown7";
-            this.textBoxDropDown7.Size = new System.Drawing.Size(161, 21);
-            this.textBoxDropDown7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.textBoxDropDown7.TabIndex = 49;
-            this.textBoxDropDown7.Text = "";
             // 
             // buttonX1
             // 
@@ -857,28 +761,74 @@
             this.labelX32.TabIndex = 66;
             this.labelX32.Text = "请填写必填项！";
             // 
-            // textBoxDropDown8
+            // comboBox1
             // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(107, 195);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(163, 20);
+            this.comboBox1.TabIndex = 68;
             // 
+            // comboBox2
             // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(107, 231);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(163, 20);
+            this.comboBox2.TabIndex = 69;
             // 
-            this.textBoxDropDown8.BackgroundStyle.Class = "TextBoxBorder";
-            this.textBoxDropDown8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxDropDown8.ButtonDropDown.Visible = true;
-            this.textBoxDropDown8.Location = new System.Drawing.Point(409, 300);
-            this.textBoxDropDown8.Margin = new System.Windows.Forms.Padding(1);
-            this.textBoxDropDown8.Name = "textBoxDropDown8";
-            this.textBoxDropDown8.Size = new System.Drawing.Size(165, 21);
-            this.textBoxDropDown8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.textBoxDropDown8.TabIndex = 67;
-            this.textBoxDropDown8.Text = "";
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(413, 126);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(163, 20);
+            this.comboBox3.TabIndex = 70;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(413, 193);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(163, 20);
+            this.comboBox4.TabIndex = 71;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(107, 300);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(150, 20);
+            this.comboBox5.TabIndex = 72;
+            // 
+            // comboBox6
+            // 
+            this.comboBox6.FormattingEnabled = true;
+            this.comboBox6.Location = new System.Drawing.Point(263, 300);
+            this.comboBox6.Name = "comboBox6";
+            this.comboBox6.Size = new System.Drawing.Size(144, 20);
+            this.comboBox6.TabIndex = 73;
+            // 
+            // comboBox7
+            // 
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Location = new System.Drawing.Point(413, 300);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(161, 20);
+            this.comboBox7.TabIndex = 74;
             // 
             // PersonBasicForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(624, 428);
-            this.Controls.Add(this.textBoxDropDown8);
+            this.Controls.Add(this.comboBox7);
+            this.Controls.Add(this.comboBox6);
+            this.Controls.Add(this.comboBox5);
+            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.labelX32);
             this.Controls.Add(this.labelX31);
             this.Controls.Add(this.labelX30);
@@ -896,8 +846,6 @@
             this.Controls.Add(this.labelX7);
             this.Controls.Add(this.buttonX2);
             this.Controls.Add(this.buttonX1);
-            this.Controls.Add(this.textBoxDropDown7);
-            this.Controls.Add(this.textBoxDropDown6);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelX17);
             this.Controls.Add(this.textBoxX11);
@@ -913,11 +861,7 @@
             this.Controls.Add(this.textBoxX6);
             this.Controls.Add(this.textBoxX4);
             this.Controls.Add(this.labelX6);
-            this.Controls.Add(this.textBoxDropDown5);
-            this.Controls.Add(this.textBoxDropDown4);
-            this.Controls.Add(this.textBoxDropDown3);
             this.Controls.Add(this.textBoxDropDown2);
-            this.Controls.Add(this.textBoxDropDown1);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBoxX5);
             this.Controls.Add(this.textBoxX3);
@@ -966,11 +910,7 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX3;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX5;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private DevComponents.DotNetBar.Controls.TextBoxDropDown textBoxDropDown1;
         private DevComponents.DotNetBar.Controls.TextBoxDropDown textBoxDropDown2;
-        private DevComponents.DotNetBar.Controls.TextBoxDropDown textBoxDropDown3;
-        private DevComponents.DotNetBar.Controls.TextBoxDropDown textBoxDropDown4;
-        private DevComponents.DotNetBar.Controls.TextBoxDropDown textBoxDropDown5;
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX4;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX6;
@@ -986,8 +926,6 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX12;
         private DevComponents.DotNetBar.LabelX labelX19;
         private System.Windows.Forms.GroupBox groupBox1;
-        private DevComponents.DotNetBar.Controls.TextBoxDropDown textBoxDropDown6;
-        private DevComponents.DotNetBar.Controls.TextBoxDropDown textBoxDropDown7;
         private DevComponents.DotNetBar.ButtonX buttonX1;
         private DevComponents.DotNetBar.ButtonX buttonX2;
         private DevComponents.DotNetBar.LabelX labelX7;
@@ -1005,6 +943,12 @@
         private DevComponents.DotNetBar.LabelX labelX30;
         private DevComponents.DotNetBar.LabelX labelX31;
         private DevComponents.DotNetBar.LabelX labelX32;
-        private DevComponents.DotNetBar.Controls.TextBoxDropDown textBoxDropDown8;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox comboBox7;
     }
 }
