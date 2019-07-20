@@ -544,32 +544,32 @@ namespace PersonInfoManage.Test
             pb.address = "成都市双流区养猪场";
             pb.phone = "123456789";
             pb.belong_place = 1;
-            //pb.belong_place_name = "成都市双流区公安局";
+            pb.belong_place_name = "成都市双流区公安局";
             pb.nation = "汉";
             pb.input_time = DateTime.Now;
-            pb.user_id = 123;
+            pb.user_id = 1001;
             pb.isdel = 1;
 
             // 插入
-            if (PB.Add(pb) > 0)
-            {
-                Console.WriteLine("插入成功！");
-            }
-            else
-            {
-                Console.WriteLine("插入失败！");
-            }
-
-            // 修改
-            //int id = 1006;
-            //if (PB.update(id, pb) > 0)
+            //if (PB.Add(pb) > 0)
             //{
-            //    Console.WriteLine("修改成功！");
+            //    Console.WriteLine("插入成功！");
             //}
             //else
             //{
-            //    Console.WriteLine("修改失败！");
+            //    Console.WriteLine("插入失败！");
             //}
+
+            // 修改
+            pb.id = 1001;
+            if (PB.Update(pb) > 0)
+            {
+                Console.WriteLine("修改成功！");
+            }
+            else
+            {
+                Console.WriteLine("修改失败！");
+            }
 
             // 删除
             //int id = 1005;

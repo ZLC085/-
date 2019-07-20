@@ -230,7 +230,7 @@ namespace PersonInfoManage.DAL.PersonInfo
                     pb.qq = dr[14].ToString();
                     pb.address = dr[15].ToString();
                     pb.phone = dr[16].ToString();
-                    pb.belong_place = dr[17].ToString();
+                    pb.belong_place = int.Parse(dr[17].ToString());
                     pb.belong_place_name = dr[18].ToString();
                     pb.nation = dr[19].ToString();
                     pb.input_time = DateTime.Parse(dr[20].ToString());
