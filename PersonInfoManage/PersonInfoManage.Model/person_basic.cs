@@ -67,9 +67,11 @@ namespace PersonInfoManage.Model
         [StringLength(15)]
         public string phone { get; set; }
 
+        public int belong_place { get; set; }
+
         [Required]
         [StringLength(50)]
-        public string belong_place { get; set; }
+        public string belong_place_name { get; set; }
 
         [Required]
         [StringLength(10)]
@@ -80,11 +82,5 @@ namespace PersonInfoManage.Model
         public int user_id { get; set; }
 
         public int isdel { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<business> businesses { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<person_file> person_file { get; set; }
     }
 }

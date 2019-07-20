@@ -25,7 +25,6 @@ namespace PersonInfoManage.Model
         public virtual DbSet<sys_menu> sys_menu { get; set; }
         public virtual DbSet<sys_u2g> sys_u2g { get; set; }
         public virtual DbSet<sys_user> sys_user { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<business> businesses { get; set; }
         public virtual DbSet<view_cost_main_detail> view_cost_main_detail { get; set; }
         public virtual DbSet<view_log_user> view_log_user { get; set; }
@@ -34,11 +33,7 @@ namespace PersonInfoManage.Model
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<cost_main>()
-                .HasMany(e => e.cost_detail)
-                .WithRequired(e => e.cost_main)
-                .HasForeignKey(e => e.cost_id)
-                .WillCascadeOnDelete(false);
+            
 
             modelBuilder.Entity<person_basic>()
                 .HasMany(e => e.businesses)

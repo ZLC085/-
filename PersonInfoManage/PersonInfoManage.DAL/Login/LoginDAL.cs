@@ -17,12 +17,12 @@ namespace PersonInfoManage.DAL.Login
         /// <summary>
         /// 登陆时，通过用户名查询用户信息
         /// </summary>
-        /// <param name="userName">用户名</param>
+        /// <param name="UserName">用户名</param>
         /// <returns>用户信息</returns>
-        public string SelectLogin(string username)
+        public string SelectLogin(string UserName)
         {
             sys_user user = new sys_user();
-            string sql = "select * from sys_user where username='" + username + "'";
+            string sql = "select * from sys_user where username='" + UserName + "'";
             DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
             user.password= (string)ds.Tables[0].Rows[0][nameof(sys_user.password)];  
             return user.password;
