@@ -60,7 +60,6 @@
     <Compile Include="person_basic.cs" />
     <Compile Include="person_file.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagram.cs" />
     <Compile Include="sys_dict.cs" />
     <Compile Include="sys_g2m.cs" />
     <Compile Include="sys_group.cs" />

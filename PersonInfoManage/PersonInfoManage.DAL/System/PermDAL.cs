@@ -65,6 +65,21 @@ namespace PersonInfoManage.DAL.System
             return res;
         }
 
+        /// <summary>
+        /// 用户组修改
+        /// </summary>
+        /// <param name="group">用户组信息</param>
+        /// <returns>返回修改条数</returns>
+        public int Update(sys_group groupinfo)
+        {
+            int res;
+            string sql = "update syss_group set group_name = @p1,remark = @p2,modify_time = @p3,";
+            SqlParameter sqlParameter = new SqlParameter("@p1", groupinfo.group_name);
+            SqlParameter sqlParameter1 = new SqlParameter("@p2", groupinfo.remark);
+            SqlParameter sqlParameter3 = new SqlParameter("@p4", groupinfo.modify_time);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            return res;
+        }
 
         /// <summary>
         /// 用户组关联修改
@@ -132,7 +147,7 @@ namespace PersonInfoManage.DAL.System
         public List<sys_group> Selectgroup(sys_group group)
         {
             DataSet ds = new DataSet();
-            string sql= "Select * from sys_group";
+            string sql= "Select * from sys_group where";
             List<SqlParameter> sqlPara = new List<SqlParameter>();
             if (!string.IsNullOrEmpty(group.group_name))
             {
@@ -144,10 +159,10 @@ namespace PersonInfoManage.DAL.System
                 sql += " and remark like @remark";
                 sqlPara.Add(new SqlParameter("@remark", "%" + group.remark + "%"));
             }
-            sql += " and create_time like @createtime";
+            sql += " and create_time >= @createtime";
             sqlPara.Add(new SqlParameter("@createtime", "%" + group.create_time + "%"));
 
-            sql += " and modify_time like @modifytime";
+            sql += " and modify_time <= @modifytime";
             sqlPara.Add(new SqlParameter("@modifytime", "%" + group.modify_time + "%"));
 
             ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql, sqlPara.ToArray());

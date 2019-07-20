@@ -80,46 +80,46 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="conditions">查询条件</param>
         /// <returns>通过用户名查询到的用户</returns>
-        public List<view_sys_u2g> Select(view_sys_u2g u2g)
+        public List<view_sys_u2g> Select(sys_user userinfo)
         {
             List<view_sys_u2g> user = new List<view_sys_u2g>();
             string sql = "SELECT * from view_sys_u2g";
             List<SqlParameter> sqlPara = new List<SqlParameter>();
-            if (!string.IsNullOrEmpty(u2g.username))
+            if (!string.IsNullOrEmpty(userinfo.username))
             {
                 sql += " and username like @username";
-                sqlPara.Add(new SqlParameter("@username", "%" + u2g.username + "%"));
+                sqlPara.Add(new SqlParameter("@username", "%" + userinfo.username + "%"));
             }
-            if (!string.IsNullOrEmpty(u2g.name))
+            if (!string.IsNullOrEmpty(userinfo.name))
             {
                 sql += " and name like @name";
-                sqlPara.Add(new SqlParameter("@name", "%" + u2g.name + "%"));
+                sqlPara.Add(new SqlParameter("@name", "%" + userinfo.name + "%"));
             }
 
-            if (!string.IsNullOrEmpty(u2g.gender))
+            if (!string.IsNullOrEmpty(userinfo.gender))
             {
                 sql += " and gender like @gender";
-                sqlPara.Add(new SqlParameter("@gender", "%" + u2g.gender + "%"));
+                sqlPara.Add(new SqlParameter("@gender", "%" + userinfo.gender + "%"));
             }
-            if (!string.IsNullOrEmpty(u2g.job))
+            if (!string.IsNullOrEmpty(userinfo.job))
             {
                 sql += " and job like @job";
-                sqlPara.Add(new SqlParameter("@job", "%" + u2g.job + "%"));
+                sqlPara.Add(new SqlParameter("@job", "%" + userinfo.job + "%"));
             }
             DataSet ds = new DataSet();
             ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql, sqlPara.ToArray());
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++) 
             {
-                view_sys_u2g u2g1 = new view_sys_u2g();
-                u2g1.id = (int)ds.Tables[0].Rows[i][nameof(view_sys_u2g.id)];
-                u2g1.name = (string)ds.Tables[0].Rows[i][nameof(sys_user.name)];
-                u2g1.username = (string)ds.Tables[0].Rows[i][nameof(sys_user.username)];
-                u2g1.gender = (string)ds.Tables[0].Rows[i][nameof(sys_user.gender)];
-                u2g1.phone = (string)ds.Tables[0].Rows[i][nameof(sys_user.phone)];
-                u2g1.job = (string)ds.Tables[0].Rows[i][nameof(sys_user.job)];
-                u2g1.status = (bool)ds.Tables[0].Rows[i][nameof(view_sys_u2g.status)];
-                u2g1.group_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.group_name)];
-                user.Add(u2g1);               
+                view_sys_u2g u2g = new view_sys_u2g();
+                u2g.id = (int)ds.Tables[0].Rows[i][nameof(view_sys_u2g.id)];
+                u2g.name = (string)ds.Tables[0].Rows[i][nameof(sys_user.name)];
+                u2g.username = (string)ds.Tables[0].Rows[i][nameof(sys_user.username)];
+                u2g.gender = (string)ds.Tables[0].Rows[i][nameof(sys_user.gender)];
+                u2g.phone = (string)ds.Tables[0].Rows[i][nameof(sys_user.phone)];
+                u2g.job = (string)ds.Tables[0].Rows[i][nameof(sys_user.job)];
+                u2g.status = (bool)ds.Tables[0].Rows[i][nameof(view_sys_u2g.status)];
+                u2g.group_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.group_name)];
+                user.Add(u2g);               
                 }
             return user;
             //return new DBOperationsSelect<sys_user>().SelectByConditions(conditions);
