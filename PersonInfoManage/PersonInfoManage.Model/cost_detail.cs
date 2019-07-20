@@ -19,6 +19,5 @@ namespace PersonInfoManage.Model
         public string cost_type_name { get; set; }
 
         public decimal money { get; set; }
-
     }
 }
