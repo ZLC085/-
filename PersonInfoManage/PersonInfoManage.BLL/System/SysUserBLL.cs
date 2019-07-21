@@ -3,10 +3,10 @@ using System.Linq;
 using PersonInfoManage.DAL.System;
 using PersonInfoManage.Model;
 using PersonInfoManage.BLL.Utils;
-
+using System;
 namespace PersonInfoManage.BLL.System
 {
-    class SysUserBLL
+    public class SysUserBLL
     {
         /// <summary>
         /// 添加用户
@@ -33,7 +33,7 @@ namespace PersonInfoManage.BLL.System
                 }
             }
             catch
-            {
+            { 
                 res.Code = RES.ERROR;
                 res.Message = "添加失败！";
                 return res;
@@ -86,14 +86,14 @@ namespace PersonInfoManage.BLL.System
             try
             {
                 if (group.Delu2g(UserId) == 0)
-                {
-                    Sysuser.Del(UserId);
+                {                    
                     res.Code = RES.ERROR;
                     res.Message = "删除失败！";
                     return res;
                 }
                 else
                 {
+                    Sysuser.Del(UserId);
                     res.Code = RES.OK;
                     res.Message = "删除成功！";
                     return res;
@@ -112,7 +112,7 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="UserInfo">查询条件</param>
         /// <returns>用户信息</returns>
-        public List<view_sys_u2g> Select(sys_user UserInfo)
+        public List<sys_user> Select(sys_user UserInfo)
         {
             SysUserDAL Sysuser = new SysUserDAL();
             return Sysuser.Select(UserInfo);
