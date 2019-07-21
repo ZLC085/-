@@ -32,7 +32,6 @@
             this.labelX32 = new DevComponents.DotNetBar.LabelX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.textBoxDropDown1 = new DevComponents.DotNetBar.Controls.TextBoxDropDown();
             this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
@@ -52,6 +51,7 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX6 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,10 +59,10 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.textBoxX6);
             this.panelEx1.Controls.Add(this.labelX32);
             this.panelEx1.Controls.Add(this.buttonX2);
             this.panelEx1.Controls.Add(this.buttonX1);
-            this.panelEx1.Controls.Add(this.textBoxDropDown1);
             this.panelEx1.Controls.Add(this.labelX13);
             this.panelEx1.Controls.Add(this.labelX12);
             this.panelEx1.Controls.Add(this.labelX11);
@@ -134,21 +134,6 @@
             this.buttonX1.SymbolColor = System.Drawing.Color.Green;
             this.buttonX1.TabIndex = 24;
             this.buttonX1.Text = "添加";
-            // 
-            // textBoxDropDown1
-            // 
-            // 
-            // 
-            // 
-            this.textBoxDropDown1.BackgroundStyle.Class = "TextBoxBorder";
-            this.textBoxDropDown1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxDropDown1.ButtonDropDown.Visible = true;
-            this.textBoxDropDown1.Location = new System.Drawing.Point(178, 280);
-            this.textBoxDropDown1.Name = "textBoxDropDown1";
-            this.textBoxDropDown1.Size = new System.Drawing.Size(181, 20);
-            this.textBoxDropDown1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.textBoxDropDown1.TabIndex = 22;
-            this.textBoxDropDown1.Text = "";
             // 
             // labelX13
             // 
@@ -396,6 +381,19 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "姓  名：";
             // 
+            // textBoxX6
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX6.Border.Class = "TextBoxBorder";
+            this.textBoxX6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX6.Location = new System.Drawing.Point(178, 282);
+            this.textBoxX6.Name = "textBoxX6";
+            this.textBoxX6.PreventEnterBeep = true;
+            this.textBoxX6.Size = new System.Drawing.Size(181, 21);
+            this.textBoxX6.TabIndex = 68;
+            // 
             // AddUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -422,7 +420,6 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.ButtonX buttonX2;
         private DevComponents.DotNetBar.ButtonX buttonX1;
-        private DevComponents.DotNetBar.Controls.TextBoxDropDown textBoxDropDown1;
         private DevComponents.DotNetBar.LabelX labelX13;
         private DevComponents.DotNetBar.LabelX labelX12;
         private DevComponents.DotNetBar.LabelX labelX11;
@@ -440,5 +437,6 @@
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
         private DevComponents.DotNetBar.LabelX labelX32;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX6;
     }
 }

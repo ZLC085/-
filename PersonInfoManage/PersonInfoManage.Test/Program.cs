@@ -174,59 +174,61 @@ namespace PersonInfoManage.Test
             ///测试函数：costApply.Add(cost cost)
             ///返回类型：int
             ///测试结果：成功
-            ///参数中必需的属性:
-            ///     costMain:applicant、apply_money、apply_time
-            ///     detailList：
-            ///         cost_detail：cost_type、money
 
             //cost_main main = new cost_main
             //{
-            //    applicant = "小红",
-            //    apply_money = 420,
-            //    apply_time = new DateTime(2019, 7, 19, 15, 0, 0)
+            //    applicant = "小陈",
+            //    apply_money = 951,
+            //    apply_time = DateTime.Now
             //};
             //cost_detail detail = new cost_detail
             //{
-            //    cost_type_name = "餐饮",
-            //    cost_type=5,
-            //    money = 200
+            //    cost_type_name = "住宿",
+            //    cost_type = 4,
+            //    money = 451
             //};
             //cost_detail detail2 = new cost_detail
             //{
+            //    cost_type_name = "餐饮",
+            //    cost_type = 5,
+            //    money = 160
+            //};
+            //cost_detail detail3 = new cost_detail
+            //{
             //    cost_type_name = "出行",
-            //    cost_type=8,
-            //    money = 220
+            //    cost_type = 8,
+            //    money = 340
             //};
             //List<cost_detail> listDetail = new List<cost_detail>
             //{
             //    detail,
-            //    detail2
+            //    detail2,
+            //    detail3
             //};
             //Console.WriteLine(apply.Add(new cost { main = main, DetailList = listDetail }));
 
-            ///测试函数：costApply.Update(cost_main costMain, List<cost_detail> detailList)
+            ///测试函数：costApply.Update(cost cost)
             ///返回类型：int
             ///测试结果：成功
-            ///参数中必需的属性:
-            ///     costMain:id、apply_money
-            ///     detailList：
-            ///         cost_detail：cost_type、money
+
 
             //cost_main main = new cost_main
             //{
-            //    id = 1563517332,
+            //    id = 1563613841,
             //    apply_money = 900
             //};
 
             //cost_detail detail = new cost_detail
             //{
-            //    cost_type = "测试类型1",
+            //    cost_type_name = "其他",
+            //    cost_type=7,
             //    money = 500
             //};
 
             //cost_detail detail2 = new cost_detail
             //{
-            //    cost_type = "住宿",
+            //    cost_type_name = "餐饮",
+            //    cost_type=5,
             //    money = 400
             //};
 
@@ -236,75 +238,32 @@ namespace PersonInfoManage.Test
             //    detail2
             //};
 
-            //Console.WriteLine(apply.Update(main, listDetail));
+            //Console.WriteLine(apply.Update(new cost { main=main,DetailList=listDetail}));
 
-            ///测试函数：costApply.Del(cost_main costMain)
-            ///返回类型：int
+
+
+            ///测试函数：costApply.QueryMain(Dictionary<string, object> conditions)
+            ///返回类型：
             ///测试结果：成功
             ///参数中必需的属性:
-            ///     costMain:id
 
-            //cost_main main = new cost_main
-            //{
-            //    id = 1563517150
-            //};
-            //Console.WriteLine(apply.Del(main));
 
-            ///测试函数：costApply.GetById(int id)
-            ///返回类型：Dictionary<cost_main, List<cost_detail>> 
-            ///测试结果：成功
-            ///参数中必需的属性:
-            ///     id:费用单编号
-
-            //Dictionary<cost_main, List<cost_detail>> dic = apply.GetById(1563517332);
-            //foreach (cost_main cm in dic.Keys)
-            //{
-            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
-            //    foreach (cost_detail cd in dic[cm])
-            //    {
-            //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
-            //    }
-            //}
-
-            ///测试函数：costApply.Query()
-            ///返回类型：Dictionary<cost_main, List<cost_detail>> 
-            ///测试结果：成功
-            ///参数中必需的属性:
-            ///     无
-
-            //Dictionary<cost_main, List<cost_detail>> dic = apply.Query();
-            //foreach (cost_main cm in dic.Keys)
-            //{
-            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
-            //    foreach (cost_detail cd in dic[cm])
-            //    {
-            //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
-            //    }
-            //}
-
-            ///测试函数：costApply.Query(Dictionary<string, object> conditions)
-            ///返回类型：Dictionary<cost_main, List<cost_detail>> 
-            ///测试结果：成功
-            ///参数中必需的属性:
-            ///     conditions:键值对 key建议是 "id", "applicant", "status", "start_time", "end_time"其中的，否则无效
-
-            //Dictionary<string, object> conditions = new Dictionary<string, object>
-            //{
-            //    { "id", 1563517332 },
-            //    { "applicant", "测试add" },
-            //    { "status", 1 },
-            //    { "start_time", new DateTime(2017, 1, 1) },
-            //    { "end_time", new DateTime(2017, 5, 5) }
-            //};
-            //Dictionary<cost_main, List<cost_detail>> dic = apply.Query(conditions);
-            //foreach (cost_main cm in dic.Keys)
-            //{
-            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
-            //    foreach (cost_detail cd in dic[cm])
-            //    {
-            //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
-            //    }
-            //}
+            Dictionary<string, object> conditions = new Dictionary<string, object>
+            {
+                //{ "id", 1563517332 },
+                //{ "applicant", "测试add" },
+                //{ "status", 1 },
+                //{ "start_time", new DateTime(2019, 7, 20,19,20,0) },
+                //{ "end_time", new DateTime(2017, 5, 5) }
+                //{"page",2 },
+                //{"limit",20 }
+            };
+            List<cost_main> list = apply.QueryMain(conditions);
+            foreach (cost_main cm in list)
+            {
+                Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
+                
+            }
 
             ///测试函数：costApproval.Update(cost_main main)
             ///返回类型：int
