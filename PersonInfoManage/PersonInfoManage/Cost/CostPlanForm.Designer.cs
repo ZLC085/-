@@ -119,7 +119,7 @@
             this.Column2.HeaderText = "金额";
             this.Column2.Name = "Column2";
             // 
-            // CostPlan
+            // CostPlanForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -127,7 +127,7 @@
             this.Controls.Add(this.panelEx1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CostPlan";
+            this.Name = "CostPlanForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "新增费用规划";

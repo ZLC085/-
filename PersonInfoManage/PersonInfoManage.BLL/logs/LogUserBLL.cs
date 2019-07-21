@@ -1,4 +1,5 @@
-﻿using PersonInfoManage.DAL.Logs;
+﻿using PersonInfoManage.BLL.Utils;
+using PersonInfoManage.DAL.Logs;
 using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
@@ -15,14 +16,20 @@ namespace PersonInfoManage.BLL.logs
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool Del(int id)
+        public Result Del(int id)
         {
-            bool a = false;
-            LogUserDAL loguser = new LogUserDAL();
-            List<log_user> userList = new List<log_user>();
-            if (loguser.Del(id) == userList.Count)         
-                a = true;        
-            return a;
+            Result r = new Result();
+            if (new DAL.Logs.LogUserDAL().Del(id)>0)
+            {
+                r.Code = RES.OK;
+                r.Message = "删除成功！";
+            }
+            else
+            {
+                r.Code = RES.ERROR;
+                r.Message = "删除失败！";
+            }
+            return r;
         }
         /// <summary>
         /// 用户日志，根据条件（用户名，时间）查询
@@ -30,20 +37,11 @@ namespace PersonInfoManage.BLL.logs
         /// <param name="username"></param>
         /// <param name="create_time"></param>
         /// <returns></returns>
-        //public bool GetByName(string username)
-        //{
-        //    bool a = false;
-        //    LogUserDAL loguser = new LogUserDAL();
-        //    List<log_user> userList = new List<log_user>();
-        //    if (loguser.)
-        //    {
-
-        //    }
-
-
-
-        //    return a;
-        //}
+        public List<log_user> Query(Dictionary<string, object> conditions)
+        {
+            List<log_user> userList = new DAL.Logs.LogUserDAL().GetByConditionns(conditions);
+            return userList;
+        }
 
     }
 }

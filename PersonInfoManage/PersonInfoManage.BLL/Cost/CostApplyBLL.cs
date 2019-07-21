@@ -20,18 +20,20 @@ namespace PersonInfoManage.BLL.Cost
         {
             cost_main main = cost.main;
             List<cost_detail> listDeatil = cost.DetailList;
-            Result res = new Result();
+            Result res = new Result()
+            {
+                Code = RES.ERROR,
+                Message = "添加失败！"
+            };
             if (main == null || listDeatil == null || listDeatil.Count == 0)
             {
-                res.Code = RES.ERROR;
-                res.Message = "添加失败";
                 return res;
             }            
             int rows = new CostApplyDAL().Add(cost);
             if(rows == 1 + listDeatil.Count)
             {
                 res.Code = RES.OK;
-                res.Message="添加成功";
+                res.Message="添加成功！";
             }
             return res;
         }
@@ -40,14 +42,18 @@ namespace PersonInfoManage.BLL.Cost
         /// </summary>
         /// <param name="cost">费用单对象main：applicant、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
         /// <returns>更新是否成功</returns>
-        public bool Update(cost cost)
+        public Result Update(cost cost)
         {
             cost_main main = cost.main;
             List<cost_detail> listDeatil = cost.DetailList;
-            bool flag = false;
+            Result res = new Result()
+            {
+                Code = RES.ERROR,
+                Message = "更新失败！"
+            };
             if (main == null || listDeatil == null || listDeatil.Count == 0)
             {
-                return flag;
+                return res;
             }
             CostApplyDAL apply = new CostApplyDAL();
             //获取该费用单的审批状态
@@ -58,7 +64,7 @@ namespace PersonInfoManage.BLL.Cost
             //如果费用单不是未审批状态，则更新信息失败
             if (status != 0)
             {
-                return flag;
+                return res;
             }
             //先获取未更新时费用详情记录数           
             int originDetailCount = apply.QueryDetail(main.id).Count;
@@ -66,18 +72,23 @@ namespace PersonInfoManage.BLL.Cost
             int rows = apply.Update(cost);
             if (rows == 1 + originDetailCount + listDeatil.Count)
             {
-                flag = true;
+                res.Code = RES.OK;
+                res.Message = "更新成功！";
             }
-            return flag;
+            return res;
         }
         /// <summary>
         /// 删除费用单信息
         /// </summary>
         /// <param name="id">费用单id</param>
         /// <returns><费用单信息是否删除成功/returns>
-        public bool Del(int id)
+        public Result Del(int id)
         {
-            bool flag = false;
+            Result res = new Result()
+            {
+                Code = RES.ERROR,
+                Message = "删除失败"
+            };
             CostApplyDAL apply = new CostApplyDAL();
             //获取该费用单的审批状态
             byte status = apply.QueryMain(new Dictionary<string, object>
@@ -87,15 +98,18 @@ namespace PersonInfoManage.BLL.Cost
             //如果费用单不是未审批状态，则删除失败
             if (status != 0)
             {
-                return flag;
+                return res;
             }
             List<cost_detail> listDetail = apply.QueryDetail(id);
             if (apply.Del(id) == listDetail.Count + 1)
-                flag = true;
-            return flag;
+            {
+                res.Code = RES.OK;
+                res.Message = "删除失败！";
+            }
+            return res;
         }
         /// <summary>
-        /// 费用类型列表属性
+        /// 费用类型列表
         /// </summary>
         public List<string> CostTypes
         {

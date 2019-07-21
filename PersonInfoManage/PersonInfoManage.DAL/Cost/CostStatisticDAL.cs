@@ -15,14 +15,27 @@ namespace PersonInfoManage.DAL.Cost
     public class CostStatisticDAL : DALBase
     {
         /// <summary>
-        /// 根据组合条件查询已审核通过的费用单
+        /// 根据组合条件查询已审核通过的费用信息
         /// </summary>
-        /// <param name="conditions">条件键值对key: "applicant","start_time", "end_time"</param>
-        /// <returns>费用单对象与费用详情对象列表构成的词典键值对</returns>
-        public List<cost_main> Query(Dictionary<string, object> conditions)
+        /// <param name="conditions">条件键值对key: "id", "applicant", "start_time", "end_time","page","limit"</param>
+        /// <returns>费用信息列表</returns>
+        public List<cost> Query(Dictionary<string, object> conditions)
         {
+            List<cost> costList = new List<cost>();
             conditions.Add("status", 1);
-            return new CostApplyDAL().QueryMain(conditions);
+            CostApplyDAL apply = new CostApplyDAL();
+            List<cost_main> listMain = apply.QueryMain(conditions);
+            foreach( cost_main main in listMain)
+            {
+                List<cost_detail> listDetail = apply.QueryDetail(main.id);
+                cost cost = new cost
+                {
+                    main = main,
+                    DetailList = listDetail
+                };
+                costList.Add(cost);
+            }
+            return costList;
         }
 
     }

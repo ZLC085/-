@@ -53,14 +53,12 @@ namespace PersonInfoManage.DAL.PersonInfo
         /// <param name="fileId">文件编号</param>
         /// <param name="newFileName">新文件名</param>
         /// <returns>修改条数</returns>
-        public int Update(person_file files)
+        public int Update(string filename,int id)
         {
             int res = 0;
-            String sql = "update person_file set filename = @filename  where id = @id";
-            SqlParameter sqlParameter = new SqlParameter("@filename", files.filename);
-            SqlParameter sqlParameter1 = new SqlParameter("@id", files.id);
+            String sql = "update person_file set filename ='"+ filename +"'  where id = '"+ id +"'";
 
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
 
             return res;
             //Dictionary<string, object> newValues = new Dictionary<string, object>
@@ -76,13 +74,12 @@ namespace PersonInfoManage.DAL.PersonInfo
         /// </summary>
         /// <param name="fileId">文件编号</param>
         /// <returns>删除条数</returns>
-        public int Del(person_file files)
+        public int Del(int id)
         {
             int res;
-            String sql = "delete from person_file where id = @id";
-            SqlParameter sqlParameter = new SqlParameter("@id", files.id);
+            String sql = "delete from person_file where id = '"+ id +"'";
 
-            res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, sqlParameter);
+            res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql);
 
             return res;
             //return new DBOperationsDelete<person_file, DBNull>().DeleteById(fileId);

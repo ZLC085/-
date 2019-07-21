@@ -8,7 +8,10 @@ namespace PersonInfoManage.Model
 
     public partial class cost_main
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public cost_main()
+        {
+
+        }
         public int id { get; set; }
 
         [Required]
