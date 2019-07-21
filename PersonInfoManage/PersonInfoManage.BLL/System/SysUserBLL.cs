@@ -6,7 +6,7 @@ using PersonInfoManage.BLL.Utils;
 
 namespace PersonInfoManage.BLL.System
 {
-    class SysUserBLL
+   public class SysUserBLL
     {
         /// <summary>
         /// 添加用户

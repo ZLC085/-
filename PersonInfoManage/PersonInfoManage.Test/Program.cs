@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PersonInfoManage.DAL.Cost;
+using PersonInfoManage.BLL.System;
 
 namespace PersonInfoManage.Test
 {
@@ -14,6 +15,37 @@ namespace PersonInfoManage.Test
     {
         static void Main(string[] args)
         {
+            //测试函数-数据字典bll set.Del(id)
+            //SysSettingBLL set = new SysSettingBLL();
+            //sys_dict SysDict = new sys_dict();
+            //SysDict.category_name="";
+            //SysDict.dict_name ="";
+            //Console.WriteLine(set.Add(SysDict));
+
+            //测试set.Update(SysDict)
+            //SysSettingBLL set = new SysSettingBLL();
+            //sys_dict SysDict = new sys_dict();
+            //SysDict.category_name = "";
+            //SysDict.dict_name = "";
+            //SysDict.id = 11;
+            //Console.WriteLine(set.Update(SysDict));
+
+            //测试set.Del(id)
+            //SysSettingBLL set = new SysSettingBLL();
+            //sys_dict SysDict = new sys_dict();         
+            //int id = 10;
+            //Console.WriteLine(set.Del(id));
+
+            //测试
+            //SysSettingBLL set = new SysSettingBLL();
+            //Console.WriteLine(set.SeleteAll());
+            //List<sys_dict> listuser = set.SeleteAll();
+            //foreach (sys_dict a in listuser)
+            //{
+            //    Console.WriteLine(a.category_name + "  " +a.dict_name + "  " +a.create_time + "  " + a.modify_time);
+            //}
+
+
             //测试函数：login.Loginsever(user)  测试成功BLL
             //LoginBLL login = new LoginBLL();
             //sys_user user = new sys_user();
@@ -137,7 +169,7 @@ namespace PersonInfoManage.Test
             //SysSetting set = new SysSetting();
             //Console.WriteLine(set.SelectAll());
 
-             CostApplyDAL apply = new CostApplyDAL();
+            //CostApplyDAL apply = new CostApplyDAL();
 
             ///测试函数：costApply.Add(cost cost)
             ///返回类型：int
@@ -615,7 +647,7 @@ namespace PersonInfoManage.Test
             //        + list[i].user_id + "\t" + list[i].isdel + "\t\n");
             //}
 
-            Console.WriteLine("END...");
+            //Console.WriteLine("END...");
 
             Console.ReadKey();
         }

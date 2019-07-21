@@ -9,7 +9,7 @@ using PersonInfoManage.BLL.Utils;
 
 namespace PersonInfoManage.BLL.System
 {
-    class PermBLL
+    public class PermBLL
     {
         /// <summary>
         /// 添加用户组
