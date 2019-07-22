@@ -15,5 +15,11 @@ namespace PersonInfoManage
             PersonBasicForm pbForm = new PersonBasicForm();
             pbForm.Show();
         }
+
+        private void BtnAddUser_Click(object sender, EventArgs e)
+        {
+            AddUserForm add = new AddUserForm();
+            add.ShowDialog();
+        }
     }
 }
