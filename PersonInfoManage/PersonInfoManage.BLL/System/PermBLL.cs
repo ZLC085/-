@@ -49,13 +49,13 @@ namespace PersonInfoManage.BLL.System
         /// <param name="userId"></param>
         /// <param name="groupId"></param>
         /// <returns>影响条数</returns>
-        public Result Addu2g(int groupId, int userId)
+        public Result AddU2g(int groupId, int userId)
         {
             Result res = new Result();
             PermDAL perm = new PermDAL();
             try
             {
-                if (perm.Addu2g(groupId, userId) == 0)
+                if (perm.AddU2g(groupId, userId) == 0)
                 {
                     res.Code = RES.ERROR;
                     res.Message = "添加失败！";
@@ -82,13 +82,13 @@ namespace PersonInfoManage.BLL.System
         /// <param name="groupId">用户组id</param>
         /// <param name="menuId">菜单id</param>
         /// <returns>修改条数</returns>
-        public Result Addg2m(int groupId,int menuId)
+        public Result AddG2m(int groupId,int menuId)
         {
             PermDAL perm = new PermDAL();
             Result res = new Result();
             try
             {
-                if (perm.Addg2m(groupId, menuId) == 0)
+                if (perm.AddG2m(groupId, menuId) == 0)
                 {
                     res.Code = RES.ERROR;
                     res.Message = "修改失败！";
@@ -115,13 +115,13 @@ namespace PersonInfoManage.BLL.System
         /// <param name="userId">用户id</param>
         /// <param name="groupId">用户组id</param>
         /// <returns>修改条数</returns>
-        public Result Updateu2g(int groupId, int userId)
+        public Result UpdateU2g(int groupId, int userId)
         {
             PermDAL perm = new PermDAL();
             Result res = new Result();
             try
             {
-                if (perm.Updateu2g(groupId , userId) == 0)
+                if (perm.UpdateU2g(groupId , userId) == 0)
                 {
                     res.Code = RES.ERROR;
                     res.Message = "修改失败！";
@@ -180,13 +180,13 @@ namespace PersonInfoManage.BLL.System
         /// <param name="mneuId">用户id</param>
         /// <param name="groupId">用户组id</param>
         /// <returns>修改条数</returns>
-        public Result Updateg2m(int groupId, int menuId)
+        public Result UpdateG2m(int groupId, int menuId)
         {
             PermDAL perm = new PermDAL();
             Result res = new Result();
             try
             {
-                if (perm.Updateg2m(groupId, menuId) == 0)
+                if (perm.UpdateG2m(groupId, menuId) == 0)
                 {
                     res.Code = RES.ERROR;
                     res.Message = "修改失败！";
@@ -208,70 +208,6 @@ namespace PersonInfoManage.BLL.System
         }
 
         /// <summary>
-        /// 删除用户组准备—清除用户关联
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>影响条数</returns>
-        public Result Delu(int id)
-        {
-            PermDAL perm = new PermDAL();
-            Result res = new Result();
-            try
-            {
-                if (perm.Delu(id) == 0)
-                {
-                    res.Code = RES.ERROR;
-                    res.Message = "删除失败！";
-                    return res;
-                }
-                else
-                {
-                    res.Code = RES.OK;
-                    res.Message = "删除成功！";
-                    return res;
-                }
-            }
-            catch
-            {
-                res.Code = RES.ERROR;
-                res.Message = "删除失败！";
-                return res;
-            }
-        }
-
-        /// <summary>
-        /// 删除用户组准备—清除权限关联
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>影响条数</returns>
-        public Result Delm(int id)
-        {
-            PermDAL perm = new PermDAL();
-            Result res = new Result();
-            try
-            {
-                if (perm.Delm(id) == 0)
-                {
-                    res.Code = RES.ERROR;
-                    res.Message = "删除失败！";
-                    return res;
-                }
-                else
-                {
-                    res.Code = RES.OK;
-                    res.Message = "删除成功！";
-                    return res;
-                }
-            }
-            catch
-            {
-                res.Code = RES.ERROR;
-                res.Message = "删除失败！";
-                return res;
-            }
-        }
-
-        /// <summary>
         /// 删除用户组
         /// </summary>
         /// <param name="id"></param>
@@ -282,18 +218,12 @@ namespace PersonInfoManage.BLL.System
             Result res = new Result();
             try
             {
-                if (perm.Del(id) == 0)
-                {
-                    res.Code = RES.ERROR;
-                    res.Message = "删除失败！";
-                    return res;
-                }
-                else
-                {
-                    res.Code = RES.OK;
-                    res.Message = "删除成功！";
-                    return res;
-                }
+                perm.Delu(id);
+                perm.Delm(id);
+                perm.Del(id);
+                res.Code = RES.OK;
+                res.Message = "删除成功！";
+                return res;
             }
             catch
             {
@@ -376,7 +306,7 @@ namespace PersonInfoManage.BLL.System
         public List<sys_group> SelectGroup(sys_group group)
         {
             PermDAL perm = new PermDAL();
-            return perm.Selectgroup(group);
+            return perm.SelectGroup(group);
         }
 
         /// <summary>
@@ -384,10 +314,10 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="groupId">用户组id</param>
         /// <returns>用户组信息</returns>
-        public List<view_sys_u2g> Selectu2g(int groupId)
+        public List<view_sys_u2g> SelectU2g(int groupId)
         {
             PermDAL perm = new PermDAL();
-            return perm.Selectu2g(groupId);
+            return perm.SelectU2g(groupId);
         }
 
         /// <summary>
@@ -395,10 +325,10 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="groupId">用户组id</param>
         /// <returns>用户组信息</returns>
-        public List<view_sys_g2m> Selectg2m(int groupId)
+        public List<view_sys_g2m> SelectG2m(int groupId)
         {
             PermDAL perm = new PermDAL();
-            return perm.Selectg2m(groupId);
+            return perm.SelectG2m(groupId);
         }
 
     }
