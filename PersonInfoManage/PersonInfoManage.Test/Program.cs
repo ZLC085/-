@@ -212,7 +212,7 @@ namespace PersonInfoManage.Test
             //    Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
             //}
 
-            //CostApplyDAL apply = new CostApplyDAL();
+            CostApplyDAL apply = new CostApplyDAL();
 
             ///测试函数：costApply.Add(cost cost)
             ///返回类型：int
@@ -220,15 +220,15 @@ namespace PersonInfoManage.Test
 
             //cost_main main = new cost_main
             //{
-            //    applicant = "小陈",
-            //    apply_money = 951,
+            //    applicant = "小蒋",
+            //    apply_money = 996,
             //    apply_time = DateTime.Now
             //};
             //cost_detail detail = new cost_detail
             //{
             //    cost_type_name = "住宿",
             //    cost_type = 4,
-            //    money = 451
+            //    money = 496
             //};
             //cost_detail detail2 = new cost_detail
             //{
