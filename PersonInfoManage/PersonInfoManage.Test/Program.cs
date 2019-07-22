@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PersonInfoManage.DAL.Cost;
 using PersonInfoManage.BLL.System;
+using PersonInfoManage.DAL.System;
 
 namespace PersonInfoManage.Test
 {
@@ -15,35 +16,35 @@ namespace PersonInfoManage.Test
     {
         static void Main(string[] args)
         {
-            //测试函数-数据字典bll set.Del(id)
+            //测试函数-数据字典bll 
             //SysSettingBLL set = new SysSettingBLL();
             //sys_dict SysDict = new sys_dict();
-            //SysDict.category_name="";
-            //SysDict.dict_name ="";
+            //SysDict.category_name = "其他4";
+            //SysDict.dict_name = "费用类别";
             //Console.WriteLine(set.Add(SysDict));
 
             //测试set.Update(SysDict)
             //SysSettingBLL set = new SysSettingBLL();
             //sys_dict SysDict = new sys_dict();
-            //SysDict.category_name = "";
-            //SysDict.dict_name = "";
-            //SysDict.id = 11;
+            //SysDict.category_name = "其他3";
+            //SysDict.dict_name = "费用类别";
+            //SysDict.id = 13;
             //Console.WriteLine(set.Update(SysDict));
 
             //测试set.Del(id)
             //SysSettingBLL set = new SysSettingBLL();
-            //sys_dict SysDict = new sys_dict();         
-            //int id = 10;
+            //sys_dict SysDict = new sys_dict();
+            //int id = 13;
             //Console.WriteLine(set.Del(id));
 
             //测试
-            //SysSettingBLL set = new SysSettingBLL();
-            //Console.WriteLine(set.SeleteAll());
-            //List<sys_dict> listuser = set.SeleteAll();
-            //foreach (sys_dict a in listuser)
-            //{
-            //    Console.WriteLine(a.category_name + "  " +a.dict_name + "  " +a.create_time + "  " + a.modify_time);
-            //}
+            SysSettingBLL set = new SysSettingBLL();
+            Console.WriteLine(set.SeleteAll());
+            List<sys_dict> list= set.SeleteAll();
+            foreach (sys_dict a in list)
+            {
+                Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
+            }
 
 
             //测试函数：login.Login(user)  测试成功BLL
@@ -183,29 +184,33 @@ namespace PersonInfoManage.Test
 
             //数据字典测试开始
             //测试函数：set.Add(dict)  测试成功 
-            //SysSetting set = new SysSetting();
+            //SysSettingDAL set = new SysSettingDAL();
             //sys_dict dict = new sys_dict();
             //dict.dict_name = "费用类别";
-            //dict.category_name = "其他2";
+            //dict.category_name = "其他3";
             //Console.WriteLine(set.Add(dict));
 
             //测试函数：set.Update(dict)  测试成功 
-            //SysSetting set = new SysSetting();
+            //SysSettingDAL set = new SysSettingDAL();
             //sys_dict dict = new sys_dict();
             //dict.category_name = "其他1";
             //dict.dict_name = "费用类别";
-            //dict.id = 6;
+            //dict.id = 12;
             //Console.WriteLine(set.Update(dict));
 
             //测试函数：set.Del(dict)  测试成功 
-            //SysSetting set = new SysSetting();
+            //SysSettingDAL set = new SysSettingDAL();
             //sys_dict dict = new sys_dict();
-            //dict.id = 6;
-            //Console.WriteLine(set.Del(dict));
+            //int id = 12;
+            //Console.WriteLine(set.Del(id));
 
             //测试函数：set.SelectAll()  测试成功
-            //SysSetting set = new SysSetting();
-            //Console.WriteLine(set.SelectAll());
+            //SysSettingDAL set = new SysSettingDAL();        
+            //List<sys_dict> list = set.SelectAll();
+            //foreach (sys_dict a in list)
+            //{
+            //    Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
+            //}
 
             //CostApplyDAL apply = new CostApplyDAL();
 
