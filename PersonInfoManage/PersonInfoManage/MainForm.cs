@@ -14,7 +14,7 @@ namespace PersonInfoManage
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lableTime.Text = DateTime.Now.ToString("yyy-");
+            lableTime.Text = DateTime.Now.ToString("yyyy年MM月dd日-HH:mm:ss");
         }
         private void BtnAddPerson_Click(object sender, EventArgs e)
         {
@@ -24,7 +24,10 @@ namespace PersonInfoManage
 
         private void btnEsc_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (MessageBox.Show("确定退出系统吗？", "提示", MessageBoxButtons.YesNo) == DialogResult.OK)
+            {
+                this.Close();
+            }
         }
     }
 }

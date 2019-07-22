@@ -79,6 +79,12 @@
     <Compile Include="Business\AddBusiness.Designer.cs">
       <DependentUpon>AddBusiness.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressForm.Designer.cs">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="System\AddCategoreTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </Compile>
     <EmbeddedResource Include="Business\AddBusiness.resx">
       <DependentUpon>AddBusiness.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressForm.resx">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="System\AddCategoreTypeForm.resx">
       <DependentUpon>AddCategoreTypeForm.cs</DependentUpon>
