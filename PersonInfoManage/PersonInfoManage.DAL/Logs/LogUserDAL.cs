@@ -35,7 +35,6 @@ namespace PersonInfoManage.DAL.Logs
         public List<log_user> Query()
         {
             List<log_user> loguser = new List<log_user>();
-            //string sql = "select * from View_1 ";
             string sql = "select * from log_user ";
             DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
@@ -107,6 +106,7 @@ namespace PersonInfoManage.DAL.Logs
             }
             return userList;
         }
+       
     }
 }
 

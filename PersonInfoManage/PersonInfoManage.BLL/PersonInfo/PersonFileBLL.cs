@@ -12,17 +12,15 @@ namespace PersonInfoManage.BLL.PersonInfo
 {
     public class PersonFileBLL
     {
-
-
         /// <summary>
         /// 文件添加
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-       public Result Add(person_file file)
+        public Result Add(person_file file)
         {
             Result r = new Result();
-            if(new DAL.PersonInfo.PersonFileDAL().Add(file) > 0)
+            if (new PersonFileDAL().Add(file) > 0)
             {
                 r.Code = RES.OK;
                 r.Message = "添加成功！";
@@ -42,10 +40,10 @@ namespace PersonInfoManage.BLL.PersonInfo
         /// <param name="filename"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Result Update(string filename,int id)
+        public Result Update(string filename, int id)
         {
             Result r = new Result();
-            if(new DAL.PersonInfo.PersonFileDAL().Update(filename,id) > 0)
+            if (new PersonFileDAL().Update(filename, id) > 0)
             {
                 r.Code = RES.OK;
                 r.Message = "修改成功！";
@@ -67,7 +65,7 @@ namespace PersonInfoManage.BLL.PersonInfo
         public Result Del(int id)
         {
             Result r = new Result();
-            if (new DAL.PersonInfo.PersonFileDAL().Del(id) > 0)
+            if (new PersonFileDAL().Del(id) > 0)
             {
                 r.Code = RES.OK;
                 r.Message = "删除成功！";
@@ -78,8 +76,6 @@ namespace PersonInfoManage.BLL.PersonInfo
                 r.Message = "删除失败！";
             }
             return r;
-
-
         }
 
 
@@ -89,11 +85,10 @@ namespace PersonInfoManage.BLL.PersonInfo
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-            public List<person_file> GetById(int id)
-            {
-                List<person_file> pf = new DAL.PersonInfo.PersonFileDAL().GetById(id);
-                return pf;
-            }
-
+        public person_file GetById(int id)
+        {
+            person_file pf = new PersonFileDAL().GetById(id);
+            return pf;
         }
     }
+}

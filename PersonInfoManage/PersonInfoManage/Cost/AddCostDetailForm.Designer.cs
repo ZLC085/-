@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX32 = new DevComponents.DotNetBar.LabelX();
             this.btn = new DevComponents.DotNetBar.ButtonX();
@@ -36,7 +37,6 @@
             this.texCostCount = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,13 +58,19 @@
             this.panelEx1.Name = "panelEx1";
             this.panelEx1.Size = new System.Drawing.Size(484, 306);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx1.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 0;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(195, 86);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(176, 20);
+            this.comboBox1.TabIndex = 69;
             // 
             // labelX4
             // 
@@ -156,14 +162,6 @@
             this.labelX1.Size = new System.Drawing.Size(91, 23);
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "费用类型：";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(195, 86);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(176, 20);
-            this.comboBox1.TabIndex = 69;
             // 
             // AddCostDetailForm
             // 
