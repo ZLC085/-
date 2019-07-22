@@ -19,7 +19,7 @@ namespace PersonInfoManage.BLL.logs
         public Result Del(int id)
         {
             Result r = new Result();
-            if (new DAL.Logs.LogSysDAL().Del(id) > 0)
+            if (new LogSysDAL().Del(id) > 0)
             {
                 r.Code = RES.OK;
                 r.Message = "删除成功！";
@@ -31,20 +31,34 @@ namespace PersonInfoManage.BLL.logs
             }
             return r;
         }
+
+
+        /// <summary>
+        /// 系统日志查询所有
+        /// </summary>
+        /// <returns></returns>
+    
+        public List<log_sys> Query()
+        {
+            List<log_sys> sysList = new LogSysDAL().Query();
+            return sysList;
+        }
+
+
         /// <summary>
         /// 系统日志查询
         /// 条件：时间段
         /// </summary>
-        /// <param name="conditions"></param>
+        /// <param name="create_time"></param>
         /// <returns></returns>
-        public List<log_sys> Query(Dictionary<string, object> conditions)
+        public List<log_sys> Query(DateTime create_time)
         {
-            List<log_sys> userList = new DAL.Logs.LogSysDAL().Query(new DateTime());
-            if (userList == null)
+            List<log_sys> sysList = new LogSysDAL().Query(create_time);
+            if (sysList == null)
             {
                 Console.WriteLine("没有查到相关信息！");
             }
-            return userList;
+            return sysList;
         }
 
 

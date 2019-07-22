@@ -117,7 +117,7 @@ namespace PersonInfoManage.DAL.PersonInfo
             return file;
         }
         /// <summary>
-        /// 通过personId查询问价
+        /// 通过personId查询文件
         /// </summary>
         /// <param name="personId">personId</param>
         /// <returns>文件信息</returns>
