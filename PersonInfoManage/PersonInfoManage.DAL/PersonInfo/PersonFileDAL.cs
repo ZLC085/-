@@ -53,12 +53,18 @@ namespace PersonInfoManage.DAL.PersonInfo
         /// <param name="fileId">文件编号</param>
         /// <param name="newFileName">新文件名</param>
         /// <returns>修改条数</returns>
-        public int Update(string filename,int id)
+        public int Update(string filename, int id)
         {
+            String sql = "update person_file set filename ='" + filename + "'  where id = '" + id + "'";
             int res = 0;
-            String sql = "update person_file set filename ='"+ filename +"'  where id = '"+ id +"'";
-
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            try
+            {
+                res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
             return res;
             //Dictionary<string, object> newValues = new Dictionary<string, object>
@@ -76,10 +82,16 @@ namespace PersonInfoManage.DAL.PersonInfo
         /// <returns>删除条数</returns>
         public int Del(int id)
         {
-            int res;
-            String sql = "delete from person_file where id = '"+ id +"'";
-
-            res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql);
+            int res = 0;
+            String sql = "delete from person_file where id = '" + id + "'";
+            try
+            {
+                res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
             return res;
             //return new DBOperationsDelete<person_file, DBNull>().DeleteById(fileId);
@@ -102,25 +114,29 @@ namespace PersonInfoManage.DAL.PersonInfo
         /// </summary>
         /// <param name="conditions"></param>id</param>
         /// <returns>通过输入id查询到的文件信息</returns>
-        public List<person_file> GetById(int id)
+        public person_file GetById(int id)
         {
-            List<person_file> Listfile = new List<person_file>();
-
-            String sql = "select * from person_file where id = '" + id + "'";
-
-            DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+            string sql = "select * from person_file where id = '" + id + "'";
             person_file file = new person_file();
-            file.id = (int)ds.Tables[0].Rows[0][nameof(person_file.id)];
-            file.person_id = (int)ds.Tables[0].Rows[0][nameof(person_file.person_id)];
-            file.filename = (string)ds.Tables[0].Rows[0][nameof(person_file.filename)];
-            file.file = (byte[])ds.Tables[0].Rows[0][nameof(person_file.file)];
-            file.filetype = (string)ds.Tables[0].Rows[0][nameof(person_file.filetype)];
-            file.create_time = (DateTime)ds.Tables[0].Rows[0][nameof(person_file.create_time)];
-            file.modify_time = (DateTime)ds.Tables[0].Rows[0][nameof(person_file.modify_time)];
-            Listfile.Add(file);
 
-            return Listfile;
+            try
+            {
+                DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+
+                file.id = (int)ds.Tables[0].Rows[0][nameof(person_file.id)];
+                file.person_id = (int)ds.Tables[0].Rows[0][nameof(person_file.person_id)];
+                file.filename = (string)ds.Tables[0].Rows[0][nameof(person_file.filename)];
+                file.file = (byte[])ds.Tables[0].Rows[0][nameof(person_file.file)];
+                file.filetype = (string)ds.Tables[0].Rows[0][nameof(person_file.filetype)];
+                file.create_time = (DateTime)ds.Tables[0].Rows[0][nameof(person_file.create_time)];
+                file.modify_time = (DateTime)ds.Tables[0].Rows[0][nameof(person_file.modify_time)];
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return file;
         }
-
     }
 }

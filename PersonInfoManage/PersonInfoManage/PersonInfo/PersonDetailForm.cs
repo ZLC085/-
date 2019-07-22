@@ -49,7 +49,15 @@ namespace PersonInfoManage
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string foldPath = dialog.SelectedPath;
-               
+
+                if (true)
+                {
+                    MessageBox.Show("已成功导出文件到" + foldPath,"文件导出");
+                }
+                else
+                {
+                    MessageBox.Show("文件导出失败！", "文件导出");
+                }
             }
         }
     }
