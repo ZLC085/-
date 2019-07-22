@@ -40,6 +40,10 @@ namespace PersonInfoManage.BLL.logs
         public List<log_user> Query(Dictionary<string, object> conditions)
         {
             List<log_user> userList = new DAL.Logs.LogUserDAL().GetByConditionns(conditions);
+            if (userList == null)
+            {
+                Console.WriteLine("没有查到相关信息！");
+            }
             return userList;
         }
 

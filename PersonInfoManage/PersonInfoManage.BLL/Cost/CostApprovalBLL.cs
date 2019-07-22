@@ -28,25 +28,6 @@ namespace PersonInfoManage.BLL.Cost
                 res.Message = "更新成功";
             }
             return res;
-        }
-        /// <summary>
-        /// 根据费用单id查询费用信息
-        /// </summary>
-        /// <param name="id">费用单id</param>
-        /// <returns>费用信息列表</returns>
-        public List<cost> GetCostById(int id)  
-        {
-            List<cost> listCost = new List<cost>
-            {
-                new cost
-                {
-                    main=new CostApplyDAL().QueryMain(new Dictionary<string, object>{ { "id", id } }).First(),
-                    DetailList=new CostApplyDAL().QueryDetail(id)
-                }
-            };
-            
-            return listCost;
-        }
-        
+        }  
     }
 }
