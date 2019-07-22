@@ -17,10 +17,12 @@ namespace PersonInfoManage.BLL.PersonInfo
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-        public Result Add(person_file file)
+        public Result Add(int personId, string fullFilePath)
         {
+            person_file person_File = new FileOperations().SetFile(personId, fullFilePath);
+
             Result r = new Result();
-            if (new PersonFileDAL().Add(file) > 0)
+            if (new PersonFileDAL().Add(person_File) > 0)
             {
                 r.Code = RES.OK;
                 r.Message = "添加成功！";

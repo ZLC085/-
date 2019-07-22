@@ -86,7 +86,7 @@ namespace PersonInfoManage.DAL.Utils
         /// <returns>文件是否导出成功</returns>
         public bool WriteFile(byte[] fileBytes, string path, string fileName, string fileType)
         {
-            string filePath = path + fileName + "." + fileType;
+            string filePath = path + "\\" + fileName + "." + fileType;
             FileStream fs= new FileStream(filePath, FileMode.Create, FileAccess.Write);
             try
             {

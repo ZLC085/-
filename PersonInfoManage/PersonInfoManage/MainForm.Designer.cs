@@ -1362,7 +1362,7 @@
             this.btnEsc.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.btnEsc.Name = "btnEsc";
             this.btnEsc.SubItemsExpandWidth = 14;
-            this.btnEsc.Click += new System.EventHandler(this.btnEsc_Click);
+            //this.btnEsc.Click += new System.EventHandler(this.btnEsc_Click);
             // 
             // lableTime
             // 

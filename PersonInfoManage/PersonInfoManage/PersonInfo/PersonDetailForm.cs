@@ -29,18 +29,23 @@ namespace PersonInfoManage
 
             if (openFile.ShowDialog() == DialogResult.OK)
             {
-                string filePath= openFile.FileName;
-                string fileName = openFile.SafeFileName;
+                string filePath = openFile.FileName;
 
-                
-                int index = filePath.LastIndexOf(".")+1;
-                string fileType = filePath.Substring(index);
 
-                int i = filePath.LastIndexOf(@"\")+1;
-                string f = filePath.Substring(i);
-                //return fileType;
+                PersonFileBLL personFileBLL = new PersonFileBLL();
+                //需要人员id
+                Result result = personFileBLL.Add(1001, filePath);
+
+                if (result.Code == RES.OK)
+                {
+                    MessageBox.Show(result.Message, "文件添加");
+                }
+                else if (result.Code == RES.ERROR)
+                {
+                    MessageBox.Show(result.Message, "文件添加");
+                }
             }
-           
+
         }
 
         private void BtnOutFile_Click(object sender, EventArgs e)
@@ -53,13 +58,15 @@ namespace PersonInfoManage
                 string foldPath = dialog.SelectedPath;
 
                 PersonFileBLL personFileBLL = new PersonFileBLL();
-                Result result= personFileBLL.OutFile(1, foldPath);
-               
-                if (result.Code==RES.OK)
+
+                //需要文件id
+                Result result = personFileBLL.OutFile(28, foldPath);
+
+                if (result.Code == RES.OK)
                 {
-                    MessageBox.Show(result.Message,"文件导出");
+                    MessageBox.Show(result.Message, "文件导出");
                 }
-                else if(result.Code==RES.ERROR)
+                else if (result.Code == RES.ERROR)
                 {
                     MessageBox.Show(result.Message, "文件导出");
                 }
