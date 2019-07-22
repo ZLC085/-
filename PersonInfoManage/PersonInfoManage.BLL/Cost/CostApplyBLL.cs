@@ -40,7 +40,7 @@ namespace PersonInfoManage.BLL.Cost
         /// <summary>
         /// 更新费用单信息
         /// </summary>
-        /// <param name="cost">费用单对象main：applicant、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
+        /// <param name="cost">费用单对象main：apply_money、id  费用单详情列表detailList:cost_type、money、cost_type_name</param>
         /// <returns>更新是否成功</returns>
         public Result Update(cost cost)
         {
@@ -81,7 +81,7 @@ namespace PersonInfoManage.BLL.Cost
         /// 删除费用单信息
         /// </summary>
         /// <param name="id">费用单id</param>
-        /// <returns><费用单信息是否删除成功/returns>
+        /// <returns>删除是否成功</returns>
         public Result Del(int id)
         {
             Result res = new Result()
@@ -107,6 +107,15 @@ namespace PersonInfoManage.BLL.Cost
                 res.Message = "删除失败！";
             }
             return res;
+        }
+        /// <summary>
+        /// 根据组合条件查询费用单（可分页）
+        /// </summary>
+        /// <param name="consitions">条件键值对key: "id", "applicant", "status", "start_time", "end_time","page","limit"</param>
+        /// <returns>费用单列表</returns>
+        public List<cost> Query(Dictionary<string,object> conditions)
+        {
+            return new CostApprovaDAL().Query(conditions);
         }
         /// <summary>
         /// 费用类型列表

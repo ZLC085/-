@@ -4,6 +4,8 @@ using PersonInfoManage.DAL.System;
 using PersonInfoManage.Model;
 using PersonInfoManage.BLL.Utils;
 using System;
+using PersonInfoManage.DAL.Logs;
+
 namespace PersonInfoManage.BLL.System
 {
     public class SysUserBLL
@@ -82,22 +84,17 @@ namespace PersonInfoManage.BLL.System
         {
             SysUserDAL Sysuser = new SysUserDAL();
             PermDAL group = new PermDAL();
+            LogUserDAL log = new LogUserDAL();
             Result res = new Result();
             try
             {
-                if (group.Delu2g(UserId) == 0)
-                {                    
-                    res.Code = RES.ERROR;
-                    res.Message = "删除失败！";
-                    return res;
-                }
-                else
-                {
-                    Sysuser.Del(UserId);
-                    res.Code = RES.OK;
-                    res.Message = "删除成功！";
-                    return res;
-                }
+                group.DelU2g(UserId);
+                log.DelUser(UserId);
+                Sysuser.Del(UserId);
+                res.Code = RES.OK;
+                res.Message = "删除成功！";
+                return res;
+
             }
             catch
             {

@@ -83,12 +83,24 @@ namespace PersonInfoManage.DAL.Utils
         /// <param name="path">文件路径</param>
         /// <param name="fileName">文件名</param>
         /// <param name="fileType">文件类型</param>
-        private void WriteFile(byte[] fileBytes, string path, string fileName, string fileType)
+        /// <returns>文件是否导出成功</returns>
+        public bool WriteFile(byte[] fileBytes, string path, string fileName, string fileType)
         {
-            string filePath = path + fileName + fileType;
-            FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write);
-            fs.Write(fileBytes, 0, fileBytes.Length);
-            fs.Close();
+            string filePath = path + fileName + "." + fileType;
+            FileStream fs= new FileStream(filePath, FileMode.Create, FileAccess.Write);
+            try
+            {
+                fs.Write(fileBytes, 0, fileBytes.Length);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                fs.Close();
+            }
         }
     }
 }

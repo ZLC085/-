@@ -139,6 +139,7 @@
             // 
             // loginTipLabel
             // 
+            this.loginTipLabel.AutoSize = true;
             // 
             // 
             // 
@@ -147,7 +148,7 @@
             this.loginTipLabel.Location = new System.Drawing.Point(200, 311);
             this.loginTipLabel.Margin = new System.Windows.Forms.Padding(1);
             this.loginTipLabel.Name = "loginTipLabel";
-            this.loginTipLabel.Size = new System.Drawing.Size(110, 17);
+            this.loginTipLabel.Size = new System.Drawing.Size(31, 18);
             this.loginTipLabel.TabIndex = 8;
             this.loginTipLabel.Text = "提示";
             // 
@@ -187,6 +188,7 @@
             this.Text = "登录";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
