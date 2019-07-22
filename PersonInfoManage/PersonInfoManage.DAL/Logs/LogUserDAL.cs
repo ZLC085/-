@@ -89,56 +89,7 @@ namespace PersonInfoManage.DAL.Logs
                 userlog.Add(user);
             }
             return userlog;
-        }
-        //public List<log_user> GetByConditionns(Dictionary<string, object> conditions)
-        //{
-        //    string[] keys = new string[] { "username", "create_time", "start_time", "end_time" };
-        //    List<log_user> userList = new List<log_user>();
-        //    List<string> listKey = new List<string>();
-        //    foreach (string key in conditions.Keys)
-        //    {
-        //        if (keys.Contains(key))
-        //        {
-        //            listKey.Add(key);
-        //        }
-        //    }
-        //    string sql = "select * from log_user where ";
-        //    foreach (string key in listKey)
-        //    {
-        //        if (!key.Equals(listKey.First()))
-        //        {
-        //            sql += " and ";
-        //        }
-        //        if (key.Equals("start_time"))
-        //        {
-        //            DateTime st = (DateTime)conditions["start_time"];
-        //            sql += " create_time >='" + new DateTime(st.Year,st.Month,st.Day,0,0,0) + "'";
-        //        }
-        //        else if (key.Equals("end_time"))
-        //        {
-        //            DateTime et = (DateTime)conditions["start_time"];
-        //            sql += " create_time <='" + new DateTime(et.Year, et.Month, et.Day, 23, 59, 59) + "'";
-        //        }
-        //        else
-        //        {
-        //            sql += " " + key + "=" + conditions[key];
-        //        }
-        //    }
-        //    //Console.WriteLine(sql);
-        //    DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
-        //    DataTable dt = ds.Tables[0];
-        //    for (int i = 0; i < dt.Rows.Count; i++)
-        //    {
-        //        log_user loguser = new log_user();
-        //        loguser.id = (int)dt.Rows[i]["id"];
-        //        loguser.user_id = (int)dt.Rows[i]["user_id"];
-        //        loguser.username = (string)dt.Rows[i]["username"];
-        //        loguser.operation = (string)dt.Rows[i]["operation"];
-        //        loguser.ip = (string)dt.Rows[i]["ip"];
-        //        loguser.create_time = (DateTime)dt.Rows[i]["create_time"];
-        //        userList.Add(loguser);
-        //    }
-        //    return userList;
+        }      
         }
        
     }
