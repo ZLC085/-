@@ -9,7 +9,7 @@ using PersonInfoManage.BLL.Utils;
 
 namespace PersonInfoManage.BLL.System
 {
-    class SysSettingBLL
+    public class SysSettingBLL
     {
         /// <summary>
         /// 添加数据字典

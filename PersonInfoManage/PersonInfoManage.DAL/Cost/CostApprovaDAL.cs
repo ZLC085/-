@@ -28,6 +28,26 @@ namespace PersonInfoManage.DAL.Cost
                 nameof(cost_main.status)+"='"+main.status+"',"+
                 nameof(cost_main.remark)+"=N'"+main.remark+"' where id='"+main.id+"'";
             return SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-        }        
+        }
+        /// <summary>
+        /// 根据条件查询费用信息
+        /// </summary>
+        /// <param name="conditions">条件键值对 "id", "applicant", "status", "start_time", "end_time","page","limit"</param>
+        /// <returns>费用信息列表</returns>
+        public List<cost> Query(Dictionary<string, object> conditions)
+        {
+            List<cost> listCost = new List<cost>();
+            List<cost_main> listMain = new CostApplyDAL().QueryMain(conditions);
+            foreach(cost_main main in listMain)
+            {
+                List<cost_detail> listDetail = new CostApplyDAL().QueryDetail(main.id);
+                listCost.Add(new cost
+                {
+                    main = main,
+                    DetailList = listDetail
+                });
+            }
+            return listCost;
+        }
     }
 }

@@ -79,6 +79,7 @@
     <Compile Include="Business\AddBusiness.Designer.cs">
       <DependentUpon>AddBusiness.cs</DependentUpon>
     </Compile>
+    
     <Compile Include="System\AddCategoreTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +235,9 @@
     <EmbeddedResource Include="System\UserGroupRoleForm.resx">
       <DependentUpon>UserGroupRoleForm.cs</DependentUpon>
     </EmbeddedResource>
+ 
+ 
+
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
