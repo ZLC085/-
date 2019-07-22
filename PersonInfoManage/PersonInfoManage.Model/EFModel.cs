@@ -35,47 +35,6 @@ namespace PersonInfoManage.Model
         {
             
 
-            modelBuilder.Entity<person_basic>()
-                .HasMany(e => e.businesses)
-                .WithRequired(e => e.person_basic)
-                .HasForeignKey(e => e.person_id)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<person_basic>()
-                .HasMany(e => e.person_file)
-                .WithRequired(e => e.person_basic)
-                .HasForeignKey(e => e.person_id)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<sys_group>()
-                .HasMany(e => e.sys_g2m)
-                .WithRequired(e => e.sys_group)
-                .HasForeignKey(e => e.group_id)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<sys_group>()
-                .HasMany(e => e.sys_u2g)
-                .WithRequired(e => e.sys_group)
-                .HasForeignKey(e => e.group_id)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<sys_menu>()
-                .HasMany(e => e.sys_g2m)
-                .WithRequired(e => e.sys_menu)
-                .HasForeignKey(e => e.menu_id)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<sys_user>()
-                .HasMany(e => e.log_user)
-                .WithRequired(e => e.sys_user)
-                .HasForeignKey(e => e.user_id)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<sys_user>()
-                .HasMany(e => e.sys_u2g)
-                .WithRequired(e => e.sys_user)
-                .HasForeignKey(e => e.user_id)
-                .WillCascadeOnDelete(false);
         }
     }
 }

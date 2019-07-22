@@ -2,27 +2,41 @@
 using System.Linq;
 using PersonInfoManage.DAL.System;
 using PersonInfoManage.Model;
-
+using PersonInfoManage.BLL.Utils;
+using System;
 namespace PersonInfoManage.BLL.System
 {
-    class SysUserBLL
+    public class SysUserBLL
     {
         /// <summary>
         /// 添加用户
         /// </summary>
         /// <param name="user">用户信息</param>
         /// <returns>影响行数</returns>
-        public bool add(sys_user user)
+        public Result add(sys_user user)
         {
             SysUserDAL Sysuser = new SysUserDAL();
+            Result res = new Result();
             try
             {
-                Sysuser.Add(user);
-                return true;
+                if (Sysuser.Add(user) == 0)
+                {
+                    res.Code = RES.ERROR;
+                    res.Message = "添加失败！";
+                    return res;
+                }
+                else
+                {
+                    res.Code = RES.OK;
+                    res.Message = "添加成功！";
+                    return res;
+                }
             }
             catch
-            {
-                return false;
+            { 
+                res.Code = RES.ERROR;
+                res.Message = "添加失败！";
+                return res;
             }
         }
 
@@ -31,17 +45,30 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="user">用户信息</param>
         /// <returns>影响行数</returns>
-        public bool Update(sys_user user)
+        public Result Update(sys_user user)
         {
             SysUserDAL Sysuser = new SysUserDAL();
+            Result res = new Result();
             try
             {
-                Sysuser.Update(user);
-                return true;
+                if (Sysuser.Update(user) == 0)
+                {
+                    res.Code = RES.ERROR;
+                    res.Message = "修改失败！";
+                    return res;
+                }
+                else
+                {
+                    res.Code = RES.OK;
+                    res.Message = "修改成功！";
+                    return res;
+                }
             }
             catch
             {
-                return false;
+                res.Code = RES.ERROR;
+                res.Message = "修改失败！";
+                return res;
             }
         }
 
@@ -51,19 +78,32 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="UserId">用户id</param>
         /// <returns>影响行数</returns>
-        public bool Del(int UserId)
+        public Result Del(int UserId)
         {
             SysUserDAL Sysuser = new SysUserDAL();
             PermDAL group = new PermDAL();
+            Result res = new Result();
             try
             {
-                group.Delu2g(UserId);
-                Sysuser.Del(UserId);
-                return true;
+                if (group.Delu2g(UserId) == 0)
+                {                    
+                    res.Code = RES.ERROR;
+                    res.Message = "删除失败！";
+                    return res;
+                }
+                else
+                {
+                    Sysuser.Del(UserId);
+                    res.Code = RES.OK;
+                    res.Message = "删除成功！";
+                    return res;
+                }
             }
             catch
             {
-                return false;
+                res.Code = RES.ERROR;
+                res.Message = "删除失败！";
+                return res;
             }
         }
          
@@ -72,7 +112,7 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="UserInfo">查询条件</param>
         /// <returns>用户信息</returns>
-        public List<view_sys_u2g> Select(sys_user UserInfo)
+        public List<sys_user> Select(sys_user UserInfo)
         {
             SysUserDAL Sysuser = new SysUserDAL();
             return Sysuser.Select(UserInfo);

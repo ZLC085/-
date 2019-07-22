@@ -27,7 +27,8 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlParameter = new SqlParameter("@p1", SysDict.category_name);
             SqlParameter sqlParameter2 = new SqlParameter("@p2", SysDict.dict_name);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter,sqlParameter2);
-            return res;            
+            return res;    
+                    
         }
 
         /// <summary>
@@ -43,7 +44,8 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlparameter3 = new SqlParameter("@p3", SysDict.dict_name);
             string sql = "update sys_dict set category_name = @p1,dict_name = @p3 where id = @p2";
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlparameter2,sqlparameter3);
-            return res;           
+            return res;      
+                 
         }
 
         /// <summary>

@@ -109,7 +109,7 @@
             // panelEx3
             // 
             this.panelEx3.AutoScroll = true;
-            this.panelEx3.AutoScrollMargin = new System.Drawing.Size(0, 50);
+            this.panelEx3.AutoScrollMargin = new System.Drawing.Size(0, 60);
             this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.panelEx3.Controls.Add(this.labelX21);
