@@ -1,4 +1,6 @@
-﻿using PersonInfoManage.Model;
+﻿using PersonInfoManage.BLL.PersonInfo;
+using PersonInfoManage.BLL.Utils;
+using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,13 +52,16 @@ namespace PersonInfoManage
             {
                 string foldPath = dialog.SelectedPath;
 
-                if (true)
+                PersonFileBLL personFileBLL = new PersonFileBLL();
+                Result result= personFileBLL.OutFile(1, foldPath);
+               
+                if (result.Code==RES.OK)
                 {
-                    MessageBox.Show("已成功导出文件到" + foldPath,"文件导出");
+                    MessageBox.Show(result.Message,"文件导出");
                 }
-                else
+                else if(result.Code==RES.ERROR)
                 {
-                    MessageBox.Show("文件导出失败！", "文件导出");
+                    MessageBox.Show(result.Message, "文件导出");
                 }
             }
         }
