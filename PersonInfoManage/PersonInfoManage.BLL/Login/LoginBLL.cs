@@ -14,7 +14,7 @@ namespace PersonInfoManage.BLL.Login
         {
             LoginDAL login = new LoginDAL();
             string password1 = login.SelectLogin(userName);
-            if (password.Equals(password))
+            if (password.Equals(password1))
             {
                 return true;
             }
