@@ -1,4 +1,5 @@
-﻿using PersonInfoManage.Model;
+﻿using PersonInfoManage.BLL.Utils;
+using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,16 +15,23 @@ namespace PersonInfoManage.BLL.PersonInfo
         /// </summary>
         /// <param name="info">人员信息</param>
         /// <returns>bool类型</returns>
-        public bool Add(person_basic info)
+        public Result Add(person_basic info)
         {
+            Result r = new Result();
             // 判断是否操作成功
             if (new DAL.PersonInfo.PersonBasicDAL().Add(info) > 0)
             {
                 // 成功
-                return true;
+                r.Code = RES.OK;
+                r.Message = "添加成功！";
             }
-            // 失败
-            return false;
+            else
+            {
+                // 失败
+                r.Code = RES.ERROR;
+                r.Message = "添加失败！";
+            }
+            return r;
         }
 
         /// <summary>
@@ -31,16 +39,23 @@ namespace PersonInfoManage.BLL.PersonInfo
         /// </summary>
         /// <param name="info">人员信息</param>
         /// <returns>bool类型</returns>
-        public bool Update(person_basic info)
+        public Result Update(person_basic info)
         {
+            Result r = new Result();
             // 判断是否操作成功
             if (new DAL.PersonInfo.PersonBasicDAL().Update(info) > 0)
             {
                 // 成功
-                return true;
+                r.Code = RES.OK;
+                r.Message = "添加成功！";
             }
-            // 失败
-            return false;
+            else
+            {
+                // 失败
+                r.Code = RES.ERROR;
+                r.Message = "添加失败！";
+            }
+            return r;
         }
 
         /// <summary>
@@ -48,16 +63,23 @@ namespace PersonInfoManage.BLL.PersonInfo
         /// </summary>
         /// <param name="id">人员id</param>
         /// <returns>bool类型</returns>
-        public bool Remove(int id)
+        public Result Remove(int id)
         {
+            Result r = new Result();
             // 判断是否操作成功
             if (new DAL.PersonInfo.PersonBasicDAL().Remove(id) > 0)
             {
                 // 成功
-                return true;
+                r.Code = RES.OK;
+                r.Message = "添加成功！";
             }
-            // 失败
-            return false;
+            else
+            {
+                // 失败
+                r.Code = RES.ERROR;
+                r.Message = "添加失败！";
+            }
+            return r;
         }
 
         /// <summary>
@@ -65,16 +87,23 @@ namespace PersonInfoManage.BLL.PersonInfo
         /// </summary>
         /// <param name="id">人员id</param>
         /// <returns>bool类型</returns>
-        public bool Del(int id)
+        public Result Del(int id)
         {
+            Result r = new Result();
             // 判断是否操作成功
             if (new DAL.PersonInfo.PersonBasicDAL().Del(id) > 0)
             {
                 // 成功
-                return true;
+                r.Code = RES.OK;
+                r.Message = "添加成功！";
             }
-            // 失败
-            return false;
+            else
+            {
+                // 失败
+                r.Code = RES.ERROR;
+                r.Message = "添加失败！";
+            }
+            return r;
         }
 
         /// <summary>

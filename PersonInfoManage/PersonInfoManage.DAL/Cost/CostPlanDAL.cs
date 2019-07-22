@@ -97,7 +97,7 @@ namespace PersonInfoManage.DAL.Cost
         /// <returns>费用规划列表</returns>
         public List<cost_plan> Query(Dictionary<string, object> conditions)
         {
-            string[] keys = new string[] { "start_time", "end_time", "cost_type", "id" };
+            string[] keys = new string[] { "start_time", "end_time", "cost_type","cost_type_name", "id" };
             List<cost_plan> retList = new List<cost_plan>();
             List<string> listKey = new List<string>();
             foreach (string key in conditions.Keys)

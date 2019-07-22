@@ -56,6 +56,7 @@
     <Compile Include="Login\LoginDAL.cs" />
     <Compile Include="Logs\LogSysDAL.cs" />
     <Compile Include="Logs\LogUserDAL.cs" />
+    <Compile Include="PersonInfo\NativePlaceDAL.cs" />
     <Compile Include="PersonInfo\PersonBasicDAL.cs" />
     <Compile Include="PersonInfo\PersonFileDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
