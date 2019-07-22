@@ -17,7 +17,7 @@ namespace PersonInfoManage
         {
             get
             {
-                FileStream fileStream = new FileStream("data.bin", FileMode.Open);
+                FileStream fileStream = new FileStream("data.bin", FileMode.OpenOrCreate);
                 User user = null;
 
                 try

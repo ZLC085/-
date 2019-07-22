@@ -88,7 +88,7 @@ namespace PersonInfoManage.BLL.System
             Result res = new Result();
             try
             {
-                group.Delu2g(UserId);
+                group.DelU2g(UserId);
                 log.DelUser(UserId);
                 Sysuser.Del(UserId);
                 res.Code = RES.OK;

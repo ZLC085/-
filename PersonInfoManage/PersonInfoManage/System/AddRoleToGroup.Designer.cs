@@ -62,12 +62,12 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(57)))), ((int)(((byte)(91)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.EnableHeadersVisualStyles = false;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(80, 111);
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dataGridViewX1.Location = new System.Drawing.Point(0, 93);
             this.dataGridViewX1.Name = "dataGridViewX1";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -78,7 +78,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(351, 210);
+            this.dataGridViewX1.Size = new System.Drawing.Size(484, 279);
             this.dataGridViewX1.TabIndex = 3;
             // 
             // Column1
@@ -100,7 +100,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(484, 397);
+            this.panelEx1.Size = new System.Drawing.Size(484, 448);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
             this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
@@ -116,11 +116,11 @@
             // 
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX3.Location = new System.Drawing.Point(80, 82);
+            this.labelX3.Location = new System.Drawing.Point(34, 64);
             this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(128, 23);
+            this.labelX3.Size = new System.Drawing.Size(151, 23);
             this.labelX3.TabIndex = 4;
-            this.labelX3.Text = "权限选择：";
+            this.labelX3.Text = "请选择添加的权限：";
             // 
             // labelX2
             // 
@@ -129,11 +129,11 @@
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX2.Location = new System.Drawing.Point(204, 40);
+            this.labelX2.Location = new System.Drawing.Point(137, 24);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(128, 23);
             this.labelX2.TabIndex = 3;
-            this.labelX2.Text = "显示用户组名称";
+            this.labelX2.Text = "加载内容";
             // 
             // labelX1
             // 
@@ -142,17 +142,17 @@
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX1.Location = new System.Drawing.Point(80, 40);
+            this.labelX1.Location = new System.Drawing.Point(34, 24);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(97, 23);
             this.labelX1.TabIndex = 2;
-            this.labelX1.Text = "用户组名称：";
+            this.labelX1.Text = "当前用户组：";
             // 
             // buttonX2
             // 
             this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(280, 349);
+            this.buttonX2.Location = new System.Drawing.Point(287, 388);
             this.buttonX2.Name = "buttonX2";
             this.buttonX2.Size = new System.Drawing.Size(80, 25);
             this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -165,28 +165,28 @@
             // 
             this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(120, 350);
+            this.buttonX1.Location = new System.Drawing.Point(98, 390);
             this.buttonX1.Name = "buttonX1";
             this.buttonX1.Size = new System.Drawing.Size(75, 23);
             this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonX1.Symbol = "";
             this.buttonX1.SymbolColor = System.Drawing.Color.Green;
             this.buttonX1.TabIndex = 0;
-            this.buttonX1.Text = "确定";
+            this.buttonX1.Text = "添加";
             this.buttonX1.TextAlignment = DevComponents.DotNetBar.eButtonTextAlignment.Left;
             // 
             // RoleSetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 397);
+            this.ClientSize = new System.Drawing.Size(484, 448);
             this.Controls.Add(this.panelEx1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "RoleSetForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "用户组权限设置";
+            this.Text = "添加权限";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.panelEx1.ResumeLayout(false);
             this.ResumeLayout(false);

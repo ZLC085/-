@@ -31,20 +31,34 @@ namespace PersonInfoManage.BLL.logs
             }
             return r;
         }
+
+
+        /// <summary>
+        /// 系统日志查询所有
+        /// </summary>
+        /// <returns></returns>
+    
+        public List<log_sys> Query()
+        {
+            List<log_sys> sysList = new DAL.Logs.LogSysDAL().Query();
+            return sysList;
+        }
+
+
         /// <summary>
         /// 系统日志查询
         /// 条件：时间段
         /// </summary>
-        /// <param name="conditions"></param>
+        /// <param name="create_time"></param>
         /// <returns></returns>
-        public List<log_sys> Query(Dictionary<string, object> conditions)
+        public List<log_sys> Query(DateTime create_time)
         {
-            List<log_sys> userList = new DAL.Logs.LogSysDAL().GetByConditionns(conditions);
-            if (userList == null)
+            List<log_sys> sysList = new DAL.Logs.LogSysDAL().Query(new DateTime());
+            if (sysList == null)
             {
                 Console.WriteLine("没有查到相关信息！");
             }
-            return userList;
+            return sysList;
         }
 
 
