@@ -38,13 +38,13 @@ namespace PersonInfoManage.Test
             //Console.WriteLine(set.Del(id));
 
             //测试
-            SysSettingBLL set = new SysSettingBLL();
-            Console.WriteLine(set.SeleteAll());
-            List<sys_dict> list= set.SeleteAll();
-            foreach (sys_dict a in list)
-            {
-                Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
-            }
+            //SysSettingBLL set = new SysSettingBLL();
+            //Console.WriteLine(set.SeleteAll());
+            //List<sys_dict> list = set.SeleteAll();
+            //foreach (sys_dict a in list)
+            //{
+            //    Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
+            //}
 
 
             //测试函数：login.Login(user)  测试成功BLL
@@ -135,13 +135,32 @@ namespace PersonInfoManage.Test
             //int groupId = 15;
             //Console.WriteLine(perm.Selectg2m(groupId));
 
+            //测试函数：per.
+            //PermBLL perm = new PermBLL();
+            //sys_group group = new sys_group();
+            //group.group_name = "普通用户";
+            //DateTime a = new DateTime(2011, 1, 1, 0, 0, 0);
+            //group.create_time = a;
+            //group.modify_time = new DateTime(2022, 1, 1, 1, 1, 1);
+            //List<sys_group> list1 = perm.SelectGroup(group);
+            //foreach (sys_group b in list1)
+            //{
+            //    Console.WriteLine(b.group_name + "" + b.remark + "" + b.create_time + "" + b.modify_time);
+            //}
+
+
             //PermDAL perm = new PermDAL();
             //sys_group group = new sys_group();
-            //group.group_name = "管理员";
-            //DateTime a = new DateTime(2011,1,1,0,0,0);
+            //group.group_name = "普通用户";
+            //DateTime a = new DateTime(2011, 1, 1, 0, 0, 0);
             //group.create_time = a;
-            //group.modify_time = new DateTime(2022,1,1,1,1,1);
-            //Console.WriteLine(perm.Selectgroup(group));
+            //group.modify_time = new DateTime(2022, 1, 1, 1, 1, 1);
+            //List<sys_group> list1 = perm.Selectgroup(group);
+            //foreach (sys_group b in list1)
+            //{
+            //    Console.WriteLine(b.group_name + "" + b.remark + "" + b.create_time + "" + b.modify_time);
+            //}
+            // Console.WriteLine(perm.Selectgroup(group));
 
 
             //测试函数：SysUser.add(sys_user user,int groupid)  测试成功BLL
