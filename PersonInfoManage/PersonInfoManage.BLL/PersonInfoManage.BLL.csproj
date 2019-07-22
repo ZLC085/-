@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Cost\CostApplyBLL.cs" />
     <Compile Include="Cost\CostApprovalBLL.cs" />
+    <Compile Include="Cost\CostPlanBLL.cs" />
+    <Compile Include="Cost\CostStatisticBLL.cs" />
     <Compile Include="Login\LoginBLL.cs" />
     <Compile Include="logs\LogSysBLL.cs" />
     <Compile Include="logs\LogUserBLL.cs" />
@@ -53,7 +55,7 @@
     <Compile Include="System\SysSettingBLL.cs" />
     <Compile Include="System\SysUserBLL.cs" />
     <Compile Include="Utils\FileOperations.cs" />
-<Compile Include="Utils\Result.cs" />
+    <Compile Include="Utils\Result.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PersonInfoManage.DAL\PersonInfoManage.DAL.csproj">
