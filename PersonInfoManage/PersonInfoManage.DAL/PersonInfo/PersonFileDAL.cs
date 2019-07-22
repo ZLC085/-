@@ -121,6 +121,28 @@ namespace PersonInfoManage.DAL.PersonInfo
 
             return Listfile;
         }
+        public List<person_file> Query(int person_id)
+        {
+            List<person_file> personFileList = new List<person_file>();
+            string sql = "select * from person_file where person_id=" + person_id;
+            DataTable dataTable = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0];
+            for(int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                DataRow row = dataTable.Rows[i];
+                person_file personFile = new person_file
+                {
+                    id=(int)row["id"],
+                    person_id=(int)row["person_id"],
+                    filename=(string)row["filename"],
+                    file=(byte[])row["file"],
+                    filetype=(string)row["filetype"],
+                    create_time=(DateTime)row["create_time"],
+                    modify_time=(DateTime)row["modify_time"]
+                };
+                personFileList.Add(personFile);
+            }
+            return personFileList;
+        }
 
     }
 }
