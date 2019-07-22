@@ -54,8 +54,9 @@ namespace PersonInfoManage.DAL.Utils
         /// <returns>文件名</returns>
         private string GetFileName(string fullFileName)
         {
-            int index = fullFileName.LastIndexOf(@"\") + 1;
-            string fileName = fullFileName.Substring(index);
+            int indexStart = fullFileName.LastIndexOf(@"\") + 1;
+            int indexEnd = fullFileName.LastIndexOf(".");
+            string fileName = fullFileName.Substring(indexStart, indexEnd - indexStart);
 
             return fileName;
         }
