@@ -40,5 +40,17 @@ namespace PersonInfoManage
             }
            
         }
+
+        private void BtnOutFile_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.Description = "请选择保存文件路径";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string foldPath = dialog.SelectedPath;
+               
+            }
+        }
     }
 }

@@ -38,7 +38,7 @@
             this.ribbonBar2 = new DevComponents.DotNetBar.RibbonBar();
             this.btnUpdateFile = new DevComponents.DotNetBar.ButtonItem();
             this.btnDelFile = new DevComponents.DotNetBar.ButtonItem();
-            this.buttonItem3 = new DevComponents.DotNetBar.ButtonItem();
+            this.btnOutFile = new DevComponents.DotNetBar.ButtonItem();
             this.ribbonBar1 = new DevComponents.DotNetBar.RibbonBar();
             this.btnAddFile = new DevComponents.DotNetBar.ButtonItem();
             this.superTabItem2 = new DevComponents.DotNetBar.SuperTabItem();
@@ -77,11 +77,12 @@
             this.superTabControl1.Controls.Add(this.superTabControlPanel1);
             this.superTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superTabControl1.Location = new System.Drawing.Point(0, 0);
+            this.superTabControl1.Margin = new System.Windows.Forms.Padding(7);
             this.superTabControl1.Name = "superTabControl1";
             this.superTabControl1.ReorderTabsEnabled = true;
             this.superTabControl1.SelectedTabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.superTabControl1.SelectedTabIndex = 0;
-            this.superTabControl1.Size = new System.Drawing.Size(484, 472);
+            this.superTabControl1.Size = new System.Drawing.Size(1129, 1062);
             this.superTabControl1.TabFont = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.superTabControl1.TabIndex = 0;
             this.superTabControl1.Tabs.AddRange(new DevComponents.DotNetBar.BaseItem[] {
@@ -94,9 +95,10 @@
             this.superTabControlPanel2.Controls.Add(this.dataGridViewX1);
             this.superTabControlPanel2.Controls.Add(this.panelEx1);
             this.superTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel2.Location = new System.Drawing.Point(0, 28);
+            this.superTabControlPanel2.Location = new System.Drawing.Point(0, 47);
+            this.superTabControlPanel2.Margin = new System.Windows.Forms.Padding(7);
             this.superTabControlPanel2.Name = "superTabControlPanel2";
-            this.superTabControlPanel2.Size = new System.Drawing.Size(484, 444);
+            this.superTabControlPanel2.Size = new System.Drawing.Size(1129, 1015);
             this.superTabControlPanel2.TabIndex = 0;
             this.superTabControlPanel2.TabItem = this.superTabItem2;
             // 
@@ -121,8 +123,9 @@
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.EnableHeadersVisualStyles = false;
-            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(0, 75);
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataGridViewX1.Location = new System.Drawing.Point(0, 169);
+            this.dataGridViewX1.Margin = new System.Windows.Forms.Padding(7);
             this.dataGridViewX1.Name = "dataGridViewX1";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -134,7 +137,7 @@
             this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewX1.RowHeadersWidth = 92;
             this.dataGridViewX1.RowTemplate.Height = 23;
-            this.dataGridViewX1.Size = new System.Drawing.Size(484, 369);
+            this.dataGridViewX1.Size = new System.Drawing.Size(1129, 846);
             this.dataGridViewX1.TabIndex = 4;
             // 
             // panelEx1
@@ -146,8 +149,9 @@
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
+            this.panelEx1.Margin = new System.Windows.Forms.Padding(7);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(484, 75);
+            this.panelEx1.Size = new System.Drawing.Size(1129, 169);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
             this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
@@ -172,11 +176,12 @@
             this.ribbonBar2.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.btnUpdateFile,
             this.btnDelFile,
-            this.buttonItem3});
+            this.btnOutFile});
             this.ribbonBar2.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
-            this.ribbonBar2.Location = new System.Drawing.Point(61, 0);
+            this.ribbonBar2.Location = new System.Drawing.Point(142, 0);
+            this.ribbonBar2.Margin = new System.Windows.Forms.Padding(7);
             this.ribbonBar2.Name = "ribbonBar2";
-            this.ribbonBar2.Size = new System.Drawing.Size(155, 75);
+            this.ribbonBar2.Size = new System.Drawing.Size(362, 169);
             this.ribbonBar2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar2.TabIndex = 1;
             // 
@@ -204,13 +209,14 @@
             this.btnDelFile.SubItemsExpandWidth = 14;
             this.btnDelFile.Text = "删除";
             // 
-            // buttonItem3
+            // btnOutFile
             // 
-            this.buttonItem3.Image = global::PersonInfoManage.Properties.Resources.导出;
-            this.buttonItem3.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.buttonItem3.Name = "buttonItem3";
-            this.buttonItem3.SubItemsExpandWidth = 14;
-            this.buttonItem3.Text = "导出";
+            this.btnOutFile.Image = global::PersonInfoManage.Properties.Resources.导出;
+            this.btnOutFile.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.btnOutFile.Name = "btnOutFile";
+            this.btnOutFile.SubItemsExpandWidth = 14;
+            this.btnOutFile.Text = "导出";
+            this.btnOutFile.Click += new System.EventHandler(this.BtnOutFile_Click);
             // 
             // ribbonBar1
             // 
@@ -230,8 +236,9 @@
             this.btnAddFile});
             this.ribbonBar1.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
             this.ribbonBar1.Location = new System.Drawing.Point(0, 0);
+            this.ribbonBar1.Margin = new System.Windows.Forms.Padding(7);
             this.ribbonBar1.Name = "ribbonBar1";
-            this.ribbonBar1.Size = new System.Drawing.Size(61, 75);
+            this.ribbonBar1.Size = new System.Drawing.Size(142, 169);
             this.ribbonBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.ribbonBar1.TabIndex = 0;
             // 
@@ -263,9 +270,10 @@
             // 
             this.superTabControlPanel1.Controls.Add(this.listPersonDetail);
             this.superTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel1.Location = new System.Drawing.Point(0, 28);
+            this.superTabControlPanel1.Location = new System.Drawing.Point(0, 47);
+            this.superTabControlPanel1.Margin = new System.Windows.Forms.Padding(7);
             this.superTabControlPanel1.Name = "superTabControlPanel1";
-            this.superTabControlPanel1.Size = new System.Drawing.Size(484, 444);
+            this.superTabControlPanel1.Size = new System.Drawing.Size(1129, 1015);
             this.superTabControlPanel1.TabIndex = 1;
             this.superTabControlPanel1.TabItem = this.superTabItem1;
             // 
@@ -286,8 +294,9 @@
             this.listPersonDetail.Items.Add(this.listBoxItem2);
             this.listPersonDetail.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
             this.listPersonDetail.Location = new System.Drawing.Point(0, 0);
+            this.listPersonDetail.Margin = new System.Windows.Forms.Padding(7);
             this.listPersonDetail.Name = "listPersonDetail";
-            this.listPersonDetail.Size = new System.Drawing.Size(484, 444);
+            this.listPersonDetail.Size = new System.Drawing.Size(1129, 1015);
             this.listPersonDetail.TabIndex = 0;
             this.listPersonDetail.Text = "listBoxAdv1";
             // 
@@ -316,11 +325,12 @@
             // 
             // PersonDetailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 472);
+            this.ClientSize = new System.Drawing.Size(1129, 1062);
             this.Controls.Add(this.superTabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(7);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PersonDetailForm";
@@ -349,7 +359,7 @@
         private DevComponents.DotNetBar.RibbonBar ribbonBar2;
         private DevComponents.DotNetBar.ButtonItem btnUpdateFile;
         private DevComponents.DotNetBar.ButtonItem btnDelFile;
-        private DevComponents.DotNetBar.ButtonItem buttonItem3;
+        private DevComponents.DotNetBar.ButtonItem btnOutFile;
         private DevComponents.DotNetBar.RibbonBar ribbonBar1;
         private DevComponents.DotNetBar.ButtonItem btnAddFile;
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
