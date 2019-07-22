@@ -14,15 +14,27 @@ namespace PersonInfoManage
         {
             InitializeComponent();
             LoadUserName();
+            loginTipLabel.Text = "";
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
             string userName = UserNameTextBox.Text;
             string psd = PsdTextBox.Text;
-            string md5psd = MD5Psd(psd);
+            string md5psd = psd;//MD5Psd(psd);
+            if (userName == "")
+            {
+                loginTipLabel.Text = "用户名不能为空！";
+                return;
+            }
+            else if(psd=="")
+            {
+                loginTipLabel.Text = "密码不能为空！";
+                return;
+            }
             LoginBLL loginBLL = new LoginBLL();
             bool res=loginBLL.Login(userName, md5psd);
+
             if (res == true)
             {
                 if (SaveUserInfoToLocal()) {

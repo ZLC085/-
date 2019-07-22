@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using PersonInfoManage.DAL.Cost;
 using PersonInfoManage.BLL.System;
-using PersonInfoManage.DAL.System;
 
 namespace PersonInfoManage.Test
 {
@@ -16,35 +15,35 @@ namespace PersonInfoManage.Test
     {
         static void Main(string[] args)
         {
-            //测试函数-数据字典bll 
+            //测试函数-数据字典bll set.Del(id)
             //SysSettingBLL set = new SysSettingBLL();
             //sys_dict SysDict = new sys_dict();
-            //SysDict.category_name = "其他4";
-            //SysDict.dict_name = "费用类别";
+            //SysDict.category_name="";
+            //SysDict.dict_name ="";
             //Console.WriteLine(set.Add(SysDict));
 
             //测试set.Update(SysDict)
             //SysSettingBLL set = new SysSettingBLL();
             //sys_dict SysDict = new sys_dict();
-            //SysDict.category_name = "其他3";
-            //SysDict.dict_name = "费用类别";
-            //SysDict.id = 13;
+            //SysDict.category_name = "";
+            //SysDict.dict_name = "";
+            //SysDict.id = 11;
             //Console.WriteLine(set.Update(SysDict));
 
             //测试set.Del(id)
             //SysSettingBLL set = new SysSettingBLL();
-            //sys_dict SysDict = new sys_dict();
-            //int id = 13;
+            //sys_dict SysDict = new sys_dict();         
+            //int id = 10;
             //Console.WriteLine(set.Del(id));
 
             //测试
-            SysSettingBLL set = new SysSettingBLL();
-            Console.WriteLine(set.SeleteAll());
-            List<sys_dict> list= set.SeleteAll();
-            foreach (sys_dict a in list)
-            {
-                Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
-            }
+            //SysSettingBLL set = new SysSettingBLL();
+            //Console.WriteLine(set.SeleteAll());
+            //List<sys_dict> listuser = set.SeleteAll();
+            //foreach (sys_dict a in listuser)
+            //{
+            //    Console.WriteLine(a.category_name + "  " +a.dict_name + "  " +a.create_time + "  " + a.modify_time);
+            //}
 
 
             //测试函数：login.Login(user)  测试成功BLL
@@ -184,35 +183,31 @@ namespace PersonInfoManage.Test
 
             //数据字典测试开始
             //测试函数：set.Add(dict)  测试成功 
-            //SysSettingDAL set = new SysSettingDAL();
+            //SysSetting set = new SysSetting();
             //sys_dict dict = new sys_dict();
             //dict.dict_name = "费用类别";
-            //dict.category_name = "其他3";
+            //dict.category_name = "其他2";
             //Console.WriteLine(set.Add(dict));
 
             //测试函数：set.Update(dict)  测试成功 
-            //SysSettingDAL set = new SysSettingDAL();
+            //SysSetting set = new SysSetting();
             //sys_dict dict = new sys_dict();
             //dict.category_name = "其他1";
             //dict.dict_name = "费用类别";
-            //dict.id = 12;
+            //dict.id = 6;
             //Console.WriteLine(set.Update(dict));
 
             //测试函数：set.Del(dict)  测试成功 
-            //SysSettingDAL set = new SysSettingDAL();
+            //SysSetting set = new SysSetting();
             //sys_dict dict = new sys_dict();
-            //int id = 12;
-            //Console.WriteLine(set.Del(id));
+            //dict.id = 6;
+            //Console.WriteLine(set.Del(dict));
 
             //测试函数：set.SelectAll()  测试成功
-            //SysSettingDAL set = new SysSettingDAL();        
-            //List<sys_dict> list = set.SelectAll();
-            //foreach (sys_dict a in list)
-            //{
-            //    Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
-            //}
+            //SysSetting set = new SysSetting();
+            //Console.WriteLine(set.SelectAll());
 
-            CostApplyDAL apply = new CostApplyDAL();
+            //CostApplyDAL apply = new CostApplyDAL();
 
             ///测试函数：costApply.Add(cost cost)
             ///返回类型：int
@@ -220,15 +215,15 @@ namespace PersonInfoManage.Test
 
             //cost_main main = new cost_main
             //{
-            //    applicant = "小蒋",
-            //    apply_money = 996,
+            //    applicant = "小陈",
+            //    apply_money = 951,
             //    apply_time = DateTime.Now
             //};
             //cost_detail detail = new cost_detail
             //{
             //    cost_type_name = "住宿",
             //    cost_type = 4,
-            //    money = 496
+            //    money = 451
             //};
             //cost_detail detail2 = new cost_detail
             //{
@@ -535,14 +530,13 @@ namespace PersonInfoManage.Test
             //    Console.WriteLine(loguser.id + "  " + loguser.user_id + "  " + loguser.username + "  " + loguser.operation + "  " + loguser.ip + "  " + loguser.create_time);
             //}
 
-            ////日志条件查询
-            ////用户名，时间段查询
-            ////测试结果：
-            //Dictionary<string, object> conditions = new Dictionary<string, object>();
-            //conditions.Add("username", "1");
-            //conditions.Add("start_time", new DateTime(2017, 1, 1));
-            //conditions.Add("end_time", new DateTime(2019, 7, 19));
-            //List<log_user> user = new LogUser().GetByConditionns(conditions);
+            //日志条件查询
+            //用户名，时间段查询
+            //测试结果：
+            //Dictionary<string, object> conditions = new Dictionary<string, object>();          
+            //conditions.Add("username", "2");
+            ////conditions.Add("create_time", new DateTime(2019, 7, 18));
+            //List<log_user> user = new LogUserDAL().GetByConditionns(conditions);
             //foreach (log_user loguser in user)
             //{
             //    Console.WriteLine(loguser.id + "  " + loguser.user_id + "  " + loguser.username + "  " + loguser.operation + "  " + loguser.ip + "  " + loguser.create_time);
@@ -553,105 +547,111 @@ namespace PersonInfoManage.Test
             ////日志条件查询
             ////用户名，时间段查询
             ////测试结果：
-            //Dictionary<string, object> conditions = new Dictionary<string, object>();
-            //conditions.Add("start_time", new DateTime(2017,7,1));
-            //conditions.Add("end_time", new DateTime(2019, 7, 20));
-            //List<log_sys> sys = new LogSysDAL().GetByConditionns(conditions);
-            //foreach (log_sys logsys in sys)
-            //{
-            //    Console.WriteLine(logsys.id + " " + logsys.create_time + "  " + logsys.log_message);
+            LogUserDAL lu = new LogUserDAL();
+            List<log_user> user = lu.Query("2",new DateTime(2019,7,18));
+            foreach (log_user loguser in user)
+            {
+                Console.WriteLine(loguser.id + "  " + loguser.user_id + "  " + loguser.username + "  " + loguser.operation + "  " + loguser.ip + "  " + loguser.create_time);
+            }
 
-            //}
+                //}
+                //LogSysDAL sys = new LogSysDAL();
+                // List<log_sys> sysList =sys.Query(new DateTime(2019,7,18));           
+                // foreach (log_sys logsys in sysList)
+                // {
+                //     Console.WriteLine(logsys.id + " " + logsys.create_time + "  " + logsys.log_message);
 
-            //PersonBasicDAL PB = new PersonBasicDAL();
-            //person_basic pb = new person_basic();
+                // }
 
-            //pb.name = "赵四";
-            //pb.former_name = "尼古拉斯";
-            //pb.gender = "男";
-            //pb.identity_number = "123456789";
-            //pb.birth_date = DateTime.Now;
-            //pb.native_place = "四川成都";
-            //pb.marry_status = true;
-            //pb.job_status = "养猪";
-            //pb.income = 2000;
-            //pb.temper = "未知";
-            //pb.family = "未知";
-            //pb.person_type = 1;
-            //pb.person_type_name = "未知";
-            //pb.qq = "123456789";
-            //pb.address = "成都市双流区养猪场";
-            //pb.phone = "123456789";
-            //pb.belong_place = 1;
-            //pb.belong_place_name = "成都市双流区公安局";
-            //pb.nation = "汉";
-            //pb.input_time = DateTime.Now;
-            //pb.user_id = 1001;
-            //pb.isdel = 1;
+                //PersonBasicDAL PB = new PersonBasicDAL();
+                //person_basic pb = new person_basic();
 
-            // 插入
-            //if (PB.Add(pb) > 0)
-            //{
-            //    Console.WriteLine("插入成功！");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("插入失败！");
-            //}
+                //pb.name = "赵四";
+                //pb.former_name = "尼古拉斯";
+                //pb.gender = "男";
+                //pb.identity_number = "123456789";
+                //pb.birth_date = DateTime.Now;
+                //pb.native_place = "四川成都";
+                //pb.marry_status = true;
+                //pb.job_status = "养猪";
+                //pb.income = 2000;
+                //pb.temper = "未知";
+                //pb.family = "未知";
+                //pb.person_type = 1;
+                //pb.person_type_name = "未知";
+                //pb.qq = "123456789";
+                //pb.address = "成都市双流区养猪场";
+                //pb.phone = "123456789";
+                //pb.belong_place = 1;
+                //pb.belong_place_name = "成都市双流区公安局";
+                //pb.nation = "汉";
+                //pb.input_time = DateTime.Now;
+                //pb.user_id = 1001;
+                //pb.isdel = 1;
 
-            // 修改
-            //pb.id = 1001;
-            //if (PB.Update(pb) > 0)
-            //{
-            //    Console.WriteLine("修改成功！");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("修改失败！");
-            //}
+                // 插入
+                //if (PB.Add(pb) > 0)
+                //{
+                //    Console.WriteLine("插入成功！");
+                //}
+                //else
+                //{
+                //    Console.WriteLine("插入失败！");
+                //}
 
-            // 移除
-            //int id = 1001;
-            //if (PB.Remove(id) > 0)
-            //{
-            //    Console.WriteLine("移除成功！");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("移除失败！");
-            //}
+                // 修改
+                //pb.id = 1001;
+                //if (PB.Update(pb) > 0)
+                //{
+                //    Console.WriteLine("修改成功！");
+                //}
+                //else
+                //{
+                //    Console.WriteLine("修改失败！");
+                //}
 
-            // 删除
-            //int id = 1002;
-            //if (PB.Del(id) > 0)
-            //{
-            //    Console.WriteLine("删除成功！");
-            //}
-            //else
-            //{
-            //    Console.WriteLine("删除失败！");
-            //}
+                // 移除
+                //int id = 1001;
+                //if (PB.Remove(id) > 0)
+                //{
+                //    Console.WriteLine("移除成功！");
+                //}
+                //else
+                //{
+                //    Console.WriteLine("移除失败！");
+                //}
 
-            //List<person_basic> list = new List<person_basic>();
-            //pb.name = "赵四";
-            //pb.identity_number = "123456789";
-            //pb.person_type_name = "未知";
-            //pb.native_place = "四川成都";
+                // 删除
+                //int id = 1002;
+                //if (PB.Del(id) > 0)
+                //{
+                //    Console.WriteLine("删除成功！");
+                //}
+                //else
+                //{
+                //    Console.WriteLine("删除失败！");
+                //}
 
-            // 查询
-            //list = PB.Query(pb);
-            //for (int i = 0; i < list.Count; i++)
-            //{
-            //    Console.WriteLine(list[i].id + "\t" + list[i].name + "\t" + list[i].former_name + "\t" + list[i].gender + "\t" + list[i].identity_number + "\t"
-            //        + list[i].birth_date + "\t" + list[i].native_place + "\t" + list[i].marry_status + "\t" + list[i].job_status + "\t"
-            //        + list[i].income + "\t" + list[i].temper + "\t" + list[i].family + "\t" + list[i].person_type + "\t" + list[i].person_type_name + "\t" + list[i].qq + "\t"
-            //        + list[i].address + "\t" + list[i].phone + "\t" + list[i].belong_place + "\t" + list[i].belong_place_name + "\t" + list[i].nation + "\t" + list[i].input_time + "\t"
-            //        + list[i].user_id + "\t" + list[i].isdel + "\t\n");
-            //}
+                //List<person_basic> list = new List<person_basic>();
+                //pb.name = "赵四";
+                //pb.identity_number = "123456789";
+                //pb.person_type_name = "未知";
+                //pb.native_place = "四川成都";
 
-            //Console.WriteLine("END...");
+                // 查询
+                //list = PB.Query(pb);
+                //for (int i = 0; i < list.Count; i++)
+                //{
+                //    Console.WriteLine(list[i].id + "\t" + list[i].name + "\t" + list[i].former_name + "\t" + list[i].gender + "\t" + list[i].identity_number + "\t"
+                //        + list[i].birth_date + "\t" + list[i].native_place + "\t" + list[i].marry_status + "\t" + list[i].job_status + "\t"
+                //        + list[i].income + "\t" + list[i].temper + "\t" + list[i].family + "\t" + list[i].person_type + "\t" + list[i].person_type_name + "\t" + list[i].qq + "\t"
+                //        + list[i].address + "\t" + list[i].phone + "\t" + list[i].belong_place + "\t" + list[i].belong_place_name + "\t" + list[i].nation + "\t" + list[i].input_time + "\t"
+                //        + list[i].user_id + "\t" + list[i].isdel + "\t\n");
+                //}
 
-            Console.ReadKey();
+                //Console.WriteLine("END...");
+
+                Console.ReadKey();
         }
     }
 }

@@ -62,18 +62,8 @@ namespace PersonInfoManage.DAL.Cost
         /// </summary>
         /// <param name="ListPlan"></param>
         /// <returns>删除条数</returns>
-        //public int Del(List<cost_plan> ListPlan)
         public int Del(Dictionary<string,DateTime> period)
         {
-            //string[] sqlPlan = new string[ListPlan.Count];
-
-            //int count = 0;
-            //foreach (cost_plan plan in ListPlan)
-            //{
-            //    sqlPlan[count] = "delete from cost_plan where " + nameof(cost_plan.start_time) + "='" + plan.start_time + "' and " + nameof(cost_plan.end_time) + "='" + plan.end_time + "'";
-            //    count++;
-            //}
-            //return sqlArrayToTran.doTran(sqlPlan);
             DateTime start_time = period["start_time"];
             DateTime end_time = period["end_time"];
             int startYear = start_time.Year;
@@ -97,7 +87,7 @@ namespace PersonInfoManage.DAL.Cost
         /// <returns>费用规划列表</returns>
         public List<cost_plan> Query(Dictionary<string, object> conditions)
         {
-            string[] keys = new string[] { "start_time", "end_time", "cost_type", "id" };
+            string[] keys = new string[] { "start_time", "end_time", "cost_type","cost_type_name", "id" };
             List<cost_plan> retList = new List<cost_plan>();
             List<string> listKey = new List<string>();
             foreach (string key in conditions.Keys)
@@ -146,5 +136,6 @@ namespace PersonInfoManage.DAL.Cost
             }
             return retList;
         }
+
     }
 }

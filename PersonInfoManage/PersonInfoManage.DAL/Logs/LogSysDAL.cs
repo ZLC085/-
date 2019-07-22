@@ -54,49 +54,21 @@ namespace PersonInfoManage.DAL.Logs
         /// </summary>
         /// <param name="conditions">输入条件</param>
         /// <returns>系统运行日志</returns>
-        public List<log_sys> GetByConditionns(Dictionary<string, object> conditions)
+        public List<log_sys> Query(DateTime create_time)
         {
-            string[] keys = new string[] { "create_time", "start_time", "end_time" };
-            List<log_sys> sysList = new List<log_sys>();
-            List<string> listKey = new List<string>();
-            foreach (string key in conditions.Keys)
-            {
-                if (keys.Contains(key))
-                {
-                    listKey.Add(key);
-                }
-            }
-            string sql = "select * from log_sys where ";
-            foreach (string key in listKey)
-            {
-                if (!key.Equals(listKey.First()))
-                {
-                    sql += " and ";
-                }
-                if (key.Equals("start_time"))
-                {
-                    sql += " create_time >='" + conditions[key] + "'";
-                }
-                else 
-                {
-                    sql += " create_time <='" + conditions[key] + "'";
-                }               
-            }
-            Console.WriteLine(sql);
+            List<log_sys> syslog = new List<log_sys>();                 
+            string sql = "select * from log_sys where create_time>='"+new DateTime(create_time.Year, create_time.Month, create_time.Day,0,0,0)+"'and create_time<='"+new DateTime(create_time.Year, create_time.Month, create_time.Day,23,59,59) +"'";
+           // Console.WriteLine(sql);
             DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
-            DataTable dt = ds.Tables[0];
-            for (int i = 0; i < dt.Rows.Count; i++)
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
-                log_sys logsys = new log_sys();
-                logsys.id = (int)dt.Rows[i]["id"];
-                logsys.create_time = (DateTime)dt.Rows[i]["create_time"];
-                logsys.log_message = (string)dt.Rows[i]["log_message"];
-                sysList.Add(logsys);
+                log_sys sys = new log_sys();
+                sys.id = (int)ds.Tables[0].Rows[i][nameof(log_sys.id)];
+                sys.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(log_sys.create_time)];
+                sys.log_message = (string)ds.Tables[0].Rows[i][nameof(log_sys.log_message)];
+                syslog.Add(sys);
             }
-            return sysList;
-            // return new DBOperationsSelect<log_sys>().SelectByConditions(conditions);
-        }
-
-
+            return syslog;
+        }     
     }
 }
