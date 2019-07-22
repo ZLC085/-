@@ -14,7 +14,7 @@ namespace PersonInfoManage
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lableTime.Text = DateTime.Now.ToString("yyy-");
+            lableTime.Text = DateTime.Now.ToString("yyyy-mm-dd hh:MM:ss");
         }
         private void BtnAddPerson_Click(object sender, EventArgs e)
         {
