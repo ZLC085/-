@@ -88,6 +88,16 @@ namespace PersonInfoManage.BLL.PersonInfo
         }
 
         /// <summary>
+        /// 通过personId查询问价
+        /// </summary>
+        /// <param name="personId"></param>
+        /// <returns></returns>
+        public List<person_file> GetByPersonId(int personId)
+        {
+            return new PersonFileDAL().GetByPersonId(personId);
+        }
+
+        /// <summary>
         /// 文件导出
         /// </summary>
         /// <param name="id">问价id</param>
