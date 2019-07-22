@@ -55,9 +55,8 @@
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
-            this.panelEx1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(645, 382);
+            this.panelEx1.Size = new System.Drawing.Size(484, 306);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
             this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
@@ -72,10 +71,9 @@
             "test1",
             "test2",
             "test3"});
-            this.comboBoxCostType.Location = new System.Drawing.Point(260, 108);
-            this.comboBoxCostType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxCostType.Location = new System.Drawing.Point(195, 86);
             this.comboBoxCostType.Name = "comboBoxCostType";
-            this.comboBoxCostType.Size = new System.Drawing.Size(233, 23);
+            this.comboBoxCostType.Size = new System.Drawing.Size(176, 20);
             this.comboBoxCostType.TabIndex = 69;
             // 
             // labelX4
@@ -85,10 +83,9 @@
             // 
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX4.ForeColor = System.Drawing.Color.Red;
-            this.labelX4.Location = new System.Drawing.Point(351, 238);
-            this.labelX4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX4.Location = new System.Drawing.Point(263, 190);
             this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(144, 29);
+            this.labelX4.Size = new System.Drawing.Size(108, 23);
             this.labelX4.TabIndex = 68;
             this.labelX4.Text = "请填写费用金额！";
             // 
@@ -99,10 +96,9 @@
             // 
             this.labelX32.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX32.ForeColor = System.Drawing.Color.Red;
-            this.labelX32.Location = new System.Drawing.Point(351, 140);
-            this.labelX32.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX32.Location = new System.Drawing.Point(263, 112);
             this.labelX32.Name = "labelX32";
-            this.labelX32.Size = new System.Drawing.Size(144, 29);
+            this.labelX32.Size = new System.Drawing.Size(108, 23);
             this.labelX32.TabIndex = 67;
             this.labelX32.Text = "请选择费用类型！";
             // 
@@ -110,10 +106,9 @@
             // 
             this.btn.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btn.Location = new System.Drawing.Point(373, 325);
-            this.btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn.Location = new System.Drawing.Point(280, 260);
             this.btn.Name = "btn";
-            this.btn.Size = new System.Drawing.Size(107, 31);
+            this.btn.Size = new System.Drawing.Size(80, 25);
             this.btn.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btn.Symbol = "";
             this.btn.SymbolColor = System.Drawing.Color.Red;
@@ -124,10 +119,9 @@
             // 
             this.btnAddCostKind.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddCostKind.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnAddCostKind.Location = new System.Drawing.Point(160, 325);
-            this.btnAddCostKind.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddCostKind.Location = new System.Drawing.Point(120, 260);
             this.btnAddCostKind.Name = "btnAddCostKind";
-            this.btnAddCostKind.Size = new System.Drawing.Size(107, 31);
+            this.btnAddCostKind.Size = new System.Drawing.Size(80, 25);
             this.btnAddCostKind.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnAddCostKind.Symbol = "";
             this.btnAddCostKind.SymbolColor = System.Drawing.Color.Green;
@@ -141,11 +135,10 @@
             // 
             this.texCostCount.Border.Class = "TextBoxBorder";
             this.texCostCount.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.texCostCount.Location = new System.Drawing.Point(260, 204);
-            this.texCostCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.texCostCount.Location = new System.Drawing.Point(195, 163);
             this.texCostCount.Name = "texCostCount";
             this.texCostCount.PreventEnterBeep = true;
-            this.texCostCount.Size = new System.Drawing.Size(235, 25);
+            this.texCostCount.Size = new System.Drawing.Size(176, 21);
             this.texCostCount.TabIndex = 3;
             // 
             // labelX2
@@ -155,10 +148,9 @@
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX2.Location = new System.Drawing.Point(137, 204);
-            this.labelX2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX2.Location = new System.Drawing.Point(103, 163);
             this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(121, 29);
+            this.labelX2.Size = new System.Drawing.Size(91, 23);
             this.labelX2.TabIndex = 1;
             this.labelX2.Text = "费用金额：";
             // 
@@ -169,25 +161,25 @@
             // 
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX1.Location = new System.Drawing.Point(137, 108);
-            this.labelX1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX1.Location = new System.Drawing.Point(103, 86);
             this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(121, 29);
+            this.labelX1.Size = new System.Drawing.Size(91, 23);
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "费用类型：";
             // 
             // AddCostDetailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 382);
+            this.ClientSize = new System.Drawing.Size(484, 306);
             this.Controls.Add(this.panelEx1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddCostDetailForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "添加费用明细";
             this.Load += new System.EventHandler(this.AddCostDetailForm_Load);
             this.panelEx1.ResumeLayout(false);

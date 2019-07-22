@@ -172,17 +172,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="System\AddRoleToGroup.cs">
+    <Compile Include="System\GroupRoleManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="System\AddRoleToGroup.Designer.cs">
-      <DependentUpon>AddRoleToGroup.cs</DependentUpon>
+    <Compile Include="System\GroupRoleManagerForm.Designer.cs">
+      <DependentUpon>GroupRoleManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="System\GroupRoleManager.cs">
+    <Compile Include="System\UserDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="System\GroupRoleManager.Designer.cs">
-      <DependentUpon>GroupRoleManager.cs</DependentUpon>
+    <Compile Include="System\UserDetailForm.Designer.cs">
+      <DependentUpon>UserDetailForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Business\AddBusiness.resx">
       <DependentUpon>AddBusiness.cs</DependentUpon>
@@ -237,11 +237,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="System\AddRoleToGroup.resx">
-      <DependentUpon>AddRoleToGroup.cs</DependentUpon>
+    <EmbeddedResource Include="System\GroupRoleManagerForm.resx">
+      <DependentUpon>GroupRoleManagerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="System\GroupRoleManager.resx">
-      <DependentUpon>GroupRoleManager.cs</DependentUpon>
+    <EmbeddedResource Include="System\UserDetailForm.resx">
+      <DependentUpon>UserDetailForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

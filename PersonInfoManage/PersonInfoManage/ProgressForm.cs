@@ -15,6 +15,7 @@ namespace PersonInfoManage
         public ProgressForm()
         {
             InitializeComponent();
+            circularProgress1.IsRunning = true;
         }
     }
 }
