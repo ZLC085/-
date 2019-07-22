@@ -38,13 +38,13 @@ namespace PersonInfoManage.Test
             //Console.WriteLine(set.Del(id));
 
             //测试
-            SysSettingBLL set = new SysSettingBLL();
-            Console.WriteLine(set.SeleteAll());
-            List<sys_dict> list= set.SeleteAll();
-            foreach (sys_dict a in list)
-            {
-                Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
-            }
+            //SysSettingBLL set = new SysSettingBLL();
+            //Console.WriteLine(set.SeleteAll());
+            //List<sys_dict> list= set.SeleteAll();
+            //foreach (sys_dict a in list)
+            //{
+            //    Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
+            //}
 
 
             //测试函数：login.Login(user)  测试成功BLL
@@ -649,6 +649,16 @@ namespace PersonInfoManage.Test
             //        + list[i].user_id + "\t" + list[i].isdel + "\t\n");
             //}
 
+            //NativePlaceDAL NP = new NativePlaceDAL();
+            //List<string> list = new List<string>();
+            //list = NP.Query("province", null);
+            //list = NP.Query("city", "");
+            //list = NP.Query("place", "");
+            //Console.WriteLine("START...");
+            //for (int i = 0; i < list.Count; i++)
+            //{
+            //    Console.WriteLine(list[i].ToString());
+            //}
             //Console.WriteLine("END...");
 
             Console.ReadKey();

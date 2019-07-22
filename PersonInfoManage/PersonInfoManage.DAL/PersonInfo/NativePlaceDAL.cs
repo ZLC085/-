@@ -67,26 +67,56 @@ namespace PersonInfoManage.DAL.PersonInfo
         //}
         #endregion
 
-        public List<string> Select(string info)
+        /// <summary>
+        /// 三级查询
+        /// </summary>
+        /// <param name="type">选项类型</param>
+        /// <param name="parent">父级类型</param>
+        /// <returns>list类型</returns>
+        public List<string> Query(string type, string parent)
         {
             // 用于返回的列表
             List<string> list = new List<string>();
-
             try
             {
+                // sql语句
                 string sql = "";
+                if (type.Equals("province"))
+                {
+                    sql = "select province from native_place group by province";
+                }
+                else if (type.Equals("city") && !string.IsNullOrEmpty(parent))
+                {
+                    sql = "select city from native_place where province = N'" + parent + "' group by city";
+                }
+                else if (type.Equals("place") && !string.IsNullOrEmpty(parent))
+                {
+                    sql = "select place from native_place where city = N'" + parent + "' group by place";
+                }
+                else
+                {
+                    // 返回空列表
+                    return list;
+                }
 
-                //if (info.Equals("province"))
-                //{
-                //    sql = "select province from native_place group by " + info;
-                //}
+                DataSet ds = new DataSet();
+                // 执行sql语句并返回数据集
+                ds = SqlHelper.ExecuteDataset(DALBase.ConStr, CommandType.Text, sql);
+                // 遍历表中的行
+                string str = "";
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    // 封装
+                    str = dr[0].ToString();
+                    list.Add(str);
+                }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 throw e;
             }
-
+            // 返回列表
             return list;
         }
     }
