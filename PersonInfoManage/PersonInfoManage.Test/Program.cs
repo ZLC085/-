@@ -40,7 +40,7 @@ namespace PersonInfoManage.Test
             //测试
             //SysSettingBLL set = new SysSettingBLL();
             //Console.WriteLine(set.SeleteAll());
-            //List<sys_dict> list= set.SeleteAll();
+            //List<sys_dict> list = set.SeleteAll();
             //foreach (sys_dict a in list)
             //{
             //    Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
@@ -135,13 +135,32 @@ namespace PersonInfoManage.Test
             //int groupId = 15;
             //Console.WriteLine(perm.Selectg2m(groupId));
 
+            //测试函数：per.
+            //PermBLL perm = new PermBLL();
+            //sys_group group = new sys_group();
+            //group.group_name = "普通用户";
+            //DateTime a = new DateTime(2011, 1, 1, 0, 0, 0);
+            //group.create_time = a;
+            //group.modify_time = new DateTime(2022, 1, 1, 1, 1, 1);
+            //List<sys_group> list1 = perm.SelectGroup(group);
+            //foreach (sys_group b in list1)
+            //{
+            //    Console.WriteLine(b.group_name + "" + b.remark + "" + b.create_time + "" + b.modify_time);
+            //}
+
+
             //PermDAL perm = new PermDAL();
             //sys_group group = new sys_group();
-            //group.group_name = "管理员";
-            //DateTime a = new DateTime(2011,1,1,0,0,0);
+            //group.group_name = "普通用户";
+            //DateTime a = new DateTime(2011, 1, 1, 0, 0, 0);
             //group.create_time = a;
-            //group.modify_time = new DateTime(2022,1,1,1,1,1);
-            //Console.WriteLine(perm.Selectgroup(group));
+            //group.modify_time = new DateTime(2022, 1, 1, 1, 1, 1);
+            //List<sys_group> list1 = perm.Selectgroup(group);
+            //foreach (sys_group b in list1)
+            //{
+            //    Console.WriteLine(b.group_name + "" + b.remark + "" + b.create_time + "" + b.modify_time);
+            //}
+            // Console.WriteLine(perm.Selectgroup(group));
 
 
             //测试函数：SysUser.add(sys_user user,int groupid)  测试成功BLL
@@ -257,21 +276,21 @@ namespace PersonInfoManage.Test
 
             //cost_main main = new cost_main
             //{
-            //    id = 1563758936,
+            //    id = 1563613841,
             //    apply_money = 900
             //};
 
             //cost_detail detail = new cost_detail
             //{
             //    cost_type_name = "其他",
-            //    cost_type = 7,
+            //    cost_type=7,
             //    money = 500
             //};
 
             //cost_detail detail2 = new cost_detail
             //{
             //    cost_type_name = "餐饮",
-            //    cost_type = 5,
+            //    cost_type=5,
             //    money = 400
             //};
 
@@ -281,7 +300,7 @@ namespace PersonInfoManage.Test
             //    detail2
             //};
 
-            //Console.WriteLine(apply.Update(new cost { main = main, DetailList = listDetail }));
+            //Console.WriteLine(apply.Update(new cost { main=main,DetailList=listDetail}));
 
 
 
@@ -298,7 +317,7 @@ namespace PersonInfoManage.Test
             //    //{ "status", 1 },
             //    //{ "start_time", new DateTime(2019, 7, 20,19,20,0) },
             //    //{ "end_time", new DateTime(2017, 5, 5) }
-            //    {"page",2 },
+            //    //{"page",2 },
             //    //{"limit",20 }
             //};
             //List<cost_main> list = apply.QueryMain(conditions);
@@ -316,33 +335,35 @@ namespace PersonInfoManage.Test
 
             //cost_main main = new cost_main
             //{
-            //    id = 1563621993,
+            //    id = 1563517332,
             //    approver = "小Abor",
-            //    approval_time = DateTime.Now,
-            //    approval_money = 951,
+            //    approval_time = new DateTime(2019, 7, 18),
+            //    approval_money = 950,
             //    status = 1
             //};
-            //Console.WriteLine(new CostApprovaDAL().Update(main));
+            //Console.WriteLine(new CostApproval().Update(main));
 
             ///测试函数：costPlan.Add(List<cost_plan> listPlan)
             ///返回类型：int
             ///测试结果：成功
             ///参数中必需的属性:
-            ///     plan:cost_type、money、start_time、end_time
+            ///     plan:cost_type、money、start_time、end_time、cost_type_name
 
-            // CostPlan costplan = new CostPlan();
+            //CostPlanDAL costplan = new CostPlanDAL();
             //cost_plan plan = new cost_plan();
-            //plan.cost_type = "出行";
+            //plan.cost_type = 3;
+            //plan.cost_type_name = "出行";
             //plan.money = 99;
-            //plan.start_time = new DateTime(2011, 1, 1);
-            //plan.end_time = new DateTime(2017, 1, 1);
+            //plan.start_time = new DateTime(2017, 1, 1);
+            //plan.end_time = new DateTime(2017, 2, 1);
 
 
             //cost_plan plan2 = new cost_plan();
-            //plan2.cost_type = "餐饮";
+            //plan2.cost_type = 3;
+            //plan2.cost_type_name = "交通";
             //plan2.money = 222;
-            //plan2.start_time = new DateTime(2013, 1, 1);
-            //plan2.end_time = new DateTime(2017, 1, 1);
+            //plan2.start_time = new DateTime(2017, 1, 1);
+            //plan2.end_time = new DateTime(2017, 3, 1);
 
             //List<cost_plan> ListPlan = new List<cost_plan>();
             //ListPlan.Add(plan);
@@ -354,20 +375,22 @@ namespace PersonInfoManage.Test
             ///返回类型：int
             ///测试结果：成功
             ///参数中必需的属性:
-            ///     plan:id、cost_type、money、start_time、end_time
+            ///     plan:id、cost_type、money、start_time、end_time、cost_type_name
 
-            //CostPlan costPlan = new CostPlan();
+            //CostPlanDAL costPlan = new CostPlanDAL();
             //cost_plan plan = new cost_plan();
-            //plan.cost_type = "出行";
+            //plan.cost_type = 3;
+            //plan.cost_type_name = "公交";
             //plan.money = 999;
-            //plan.start_time = new DateTime(2011, 1, 1);
-            //plan.end_time = new DateTime(2017, 1, 1);
+            //plan.start_time = new DateTime(2017, 1, 1);
+            //plan.end_time = new DateTime(2017, 2, 1);
 
             //cost_plan plan2 = new cost_plan();
-            //plan2.cost_type = "餐饮";
+            //plan2.cost_type = 3;
+            //plan2.cost_type_name = "交通";
             //plan2.money = 999;
-            //plan2.start_time = new DateTime(2011, 1, 1);
-            //plan2.end_time = new DateTime(2017, 1, 1);
+            //plan2.start_time = new DateTime(2017, 1, 1);
+            //plan2.end_time = new DateTime(2017, 3, 1);
 
             //List<cost_plan> ListPlan = new List<cost_plan>();
             //ListPlan.Add(plan);
@@ -375,91 +398,52 @@ namespace PersonInfoManage.Test
 
             //Console.WriteLine(costPlan.Update(ListPlan));
 
-            ///测试函数：costPlan.Del(List<cost_plan> ListPlan )
+            ///测试函数：costPlan.Del(Dictionary<string,DateTime> period )
             ///返回类型：int
             ///测试结果：成功
             ///参数中必需的属性:
             ///     plan:start_time,end_time
+            //CostPlanDAL costPlan = new CostPlanDAL();
+            //Dictionary<string, DateTime> dic = new Dictionary<string, DateTime>();
+            //dic.Add("start_time",new DateTime(2017,1,1));
+            //dic.Add("end_time",new DateTime(2017,3,1));
 
-            //CostPlan costplan = new CostPlan();
-            //cost_plan plan = new cost_plan();
-            //plan.start_time = (new DateTime(2011, 1, 1));
-            //plan.end_time = (new DateTime(2017, 1, 1));
-
-            //cost_plan plan2 = new cost_plan();
-            //plan2.start_time = (new DateTime(2011, 1, 9));
-            //plan2.end_time = (new DateTime(2017, 1, 1));
-
-            //List<cost_plan> ListPlan = new List<cost_plan>();
-            //ListPlan.Add(plan);
-            //ListPlan.Add(plan2);
-
-            //Console.WriteLine(costplan.Del(ListPlan));
-
-            ///测试函数：costPlan.GetById(int id)
-            ///返回类型：List<cost_plan> 
-            ///测试结果：成功
-            ///参数中必需的属性:
-            ///     id:费用规划id
-
-            //CostPlan costPlan = new CostPlan();
-            //List<cost_plan> listPlan = costPlan.GetById(15);
-            //foreach(cost_plan plan in listPlan)
-            //{
-            //    Console.WriteLine(plan.id+"  "+plan.cost_type+"  "+plan.start_time+"  "+plan.end_time+"  "+plan.money);
-            //}
-
-            ///测试函数：costPlan.Query()
-            ///返回类型：List<cost_plan> 
-            ///测试结果：成功
-            ///参数中必需的属性:
-            ///     无
-
-            //CostPlan costPlan = new CostPlan();
-            //List<cost_plan> listPlan = costPlan.Query();
-            //foreach (cost_plan plan in listPlan)
-            //{
-            //    Console.WriteLine(plan.id + "  " + plan.cost_type + "  " + plan.start_time + "  " + plan.end_time + "  " + plan.money);
-            //}
+            //Console.WriteLine(costPlan.Del(dic));
 
 
             ///测试函数：costPlan.Query(Dictionary<string, object> conditions)
             ///返回类型：List<cost_plan> 
             ///测试结果：成功
             ///参数中必需的属性:
-            ///     conditions：条件键值对词典  key建议是"start_time", "end_time", "cost_type", "id"其中的，否则无效
+            ///     conditions：条件键值对词典  key建议是"start_time", "end_time", "cost_type","cost_type_name", "id"其中的，否则无效
 
             //Dictionary<string, object> conditions = new Dictionary<string, object>();
-            //conditions.Add("cost_type","餐饮");
-            //List<cost_plan> listPlan = new CostPlan().Query(conditions);
-            //foreach(cost_plan plan in listPlan)
+            //conditions.Add("cost_type", "3");
+            //List<cost_plan> listPlan = new CostPlanDAL().Query(conditions);
+            //foreach (cost_plan plan in listPlan)
             //{
-            //Console.WriteLine(plan.id+" "+plan.cost_type+" "+plan.start_time+" "+plan.end_time+" "+plan.money);
+            //    Console.WriteLine(plan.id + " " + plan.cost_type + " " + plan.cost_type_name + " " + plan.start_time + " " + plan.end_time + " " + plan.money);
             //}
 
             ///测试函数：CostStastic.Query(Dictionary<string, object> conditions)
-            ///返回类型：Dictionary<cost_main, List<cost_detail>> 
+            ///返回类型：List<cost>
             ///测试结果：成功
             ///参数中必需的属性:
             ///     conditions：条件键值对词典  key建议是"start_time", "end_time", "applicant"其中的，否则无效
 
             //Dictionary<string, object> conditions = new Dictionary<string, object>();
             //conditions.Add("applicant", "小明");
-            //conditions.Add("start_time", new DateTime(2017, 1, 1));
-            //conditions.Add("end_time",new DateTime(2019,7,19));
-            //Dictionary<cost_main, List<cost_detail>> retDic = new CostStatistic().Query(conditions);
-            //foreach (cost_main cm in retDic.Keys)
+            //conditions.Add("start_time", new DateTime(2019, 7, 1));
+            //conditions.Add("end_time", new DateTime(2019, 8, 1));
+            //List<cost> costlist = new CostStatisticDAL().Query(conditions);
+            //foreach (cost cm in costlist)
             //{
-            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
-            //    foreach (cost_detail cd in retDic[cm])
+            //    Console.WriteLine(cm.main.id + "  " + cm.main.applicant + "  " + cm.main.approver + "  " + cm.main.apply_time + "  " + cm.main.approval_time + "  " + cm.main.apply_money + "  " + cm.main.approval_money + "  " + cm.main.status + "  " + cm.main.remark);
+            //    foreach (cost_detail cd in cm.DetailList)
             //    {
-            //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
+            //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + " " + cd.cost_type_name + " " + cd.money);
             //    }
             //}
-
-
-
-
 
             ///添加文件
             //PersonFileDAL files = new PersonFileDAL();
@@ -649,6 +633,16 @@ namespace PersonInfoManage.Test
             //        + list[i].user_id + "\t" + list[i].isdel + "\t\n");
             //}
 
+            //NativePlaceDAL NP = new NativePlaceDAL();
+            //List<string> list = new List<string>();
+            //list = NP.Query("province", null);
+            //list = NP.Query("city", "");
+            //list = NP.Query("place", "");
+            //Console.WriteLine("START...");
+            //for (int i = 0; i < list.Count; i++)
+            //{
+            //    Console.WriteLine(list[i].ToString());
+            //}
             //Console.WriteLine("END...");
 
             Console.ReadKey();

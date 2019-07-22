@@ -33,7 +33,6 @@ namespace PersonInfoManage.BLL.PersonInfo
             return r;
         }
 
-
         /// <summary>
         /// 文件修改
         /// </summary>
@@ -56,7 +55,6 @@ namespace PersonInfoManage.BLL.PersonInfo
             return r;
         }
 
-
         /// <summary>
         /// 文件删除
         /// </summary>
@@ -78,8 +76,6 @@ namespace PersonInfoManage.BLL.PersonInfo
             return r;
         }
 
-
-
         /// <summary>
         /// 文件查询
         /// </summary>
@@ -89,6 +85,43 @@ namespace PersonInfoManage.BLL.PersonInfo
         {
             person_file pf = new PersonFileDAL().GetById(id);
             return pf;
+        }
+
+        /// <summary>
+        /// 通过personId查询问价
+        /// </summary>
+        /// <param name="personId"></param>
+        /// <returns></returns>
+        public List<person_file> GetByPersonId(int personId)
+        {
+            return new PersonFileDAL().GetByPersonId(personId);
+        }
+
+        /// <summary>
+        /// 文件导出
+        /// </summary>
+        /// <param name="id">问价id</param>
+        /// <param name="path">导出路劲</param>
+        /// <returns>导出Result</returns>
+        public Result OutFile(int id,string path)
+        {
+            Result result = new Result();
+            person_file pf = new PersonFileDAL().GetById(id);
+
+            FileOperations operations = new FileOperations();
+            bool flag = operations.WriteFile(pf.file, path, pf.filename, pf.filetype);
+            if (flag)
+            {
+                result.Code = RES.OK;
+                result.Message = "文件成功导出到：" + path + "！";
+            }
+            else
+            {
+                result.Code = RES.ERROR;
+                result.Message = "文件导出失败！";
+            }
+
+            return result;
         }
     }
 }
