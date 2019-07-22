@@ -38,13 +38,13 @@ namespace PersonInfoManage.Test
             //Console.WriteLine(set.Del(id));
 
             //测试
-            SysSettingBLL set = new SysSettingBLL();
-            Console.WriteLine(set.SeleteAll());
-            List<sys_dict> list= set.SeleteAll();
-            foreach (sys_dict a in list)
-            {
-                Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
-            }
+            //SysSettingBLL set = new SysSettingBLL();
+            //Console.WriteLine(set.SeleteAll());
+            //List<sys_dict> list = set.SeleteAll();
+            //foreach (sys_dict a in list)
+            //{
+            //    Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
+            //}
 
 
             //测试函数：login.Login(user)  测试成功BLL
@@ -72,11 +72,6 @@ namespace PersonInfoManage.Test
             //int menuId = 4;
             //Console.WriteLine(perm.Addg2m(groupId, menuId));
 
-            //测试函数：perm.Updateu2g(groupId,userId)  测试成功BLL
-            //PermBLL perm = new PermBLL();
-            //int groupId = 23;
-            //int userId = 32;
-            //Console.WriteLine(perm.Updateu2g(groupId, userId));
 
             //测试函数:perm.Update(group) 测试成功BLL
             //PermBLL perm = new PermBLL();
@@ -86,25 +81,10 @@ namespace PersonInfoManage.Test
             //group.remark = "实习民警";
             //Console.WriteLine(perm.Update(group));
 
-            //测试函数：perm.Updateg2m(groupId,menuId)  测试成功BLL
-            //PermBLL perm = new PermBLL();
-            //int groupId = 23;
-            //int menuId = 5;
-            //Console.WriteLine(perm.Updateg2m(groupId, menuId));
-
-            //测试函数：perm.Delu(groupId) 测试成功BLL
-            //PermBLL perm = new PermBLL();
-            //int groupId = 21;
-            //Console.WriteLine(perm.Delu(groupId));
-
-            //测试函数：perm.Delm(groupId) 测试成功BLL
-            //PermBLL perm = new PermBLL();
-            //int groupid = 26;
-            //Console.WriteLine(perm.Delm(groupid));
 
             //测试函数：perm.Del(groupId) 测试成功BLL
             //PermBLL perm = new PermBLL();
-            //int groupId = 16;
+            //int groupId = 25;
             //Console.WriteLine(perm.Del(groupId));
 
             //测试函数：perm.DelG2m(groupId) 测试成功BLL
@@ -135,13 +115,32 @@ namespace PersonInfoManage.Test
             //int groupId = 15;
             //Console.WriteLine(perm.Selectg2m(groupId));
 
+            //测试函数：per.
+            //PermBLL perm = new PermBLL();
+            //sys_group group = new sys_group();
+            //group.group_name = "普通用户";
+            //DateTime a = new DateTime(2011, 1, 1, 0, 0, 0);
+            //group.create_time = a;
+            //group.modify_time = new DateTime(2022, 1, 1, 1, 1, 1);
+            //List<sys_group> list1 = perm.SelectGroup(group);
+            //foreach (sys_group b in list1)
+            //{
+            //    Console.WriteLine(b.group_name + "" + b.remark + "" + b.create_time + "" + b.modify_time);
+            //}
+
+
             //PermDAL perm = new PermDAL();
             //sys_group group = new sys_group();
-            //group.group_name = "管理员";
-            //DateTime a = new DateTime(2011,1,1,0,0,0);
+            //group.group_name = "普通用户";
+            //DateTime a = new DateTime(2011, 1, 1, 0, 0, 0);
             //group.create_time = a;
-            //group.modify_time = new DateTime(2022,1,1,1,1,1);
-            //Console.WriteLine(perm.Selectgroup(group));
+            //group.modify_time = new DateTime(2022, 1, 1, 1, 1, 1);
+            //List<sys_group> list1 = perm.Selectgroup(group);
+            //foreach (sys_group b in list1)
+            //{
+            //    Console.WriteLine(b.group_name + "" + b.remark + "" + b.create_time + "" + b.modify_time);
+            //}
+            // Console.WriteLine(perm.Selectgroup(group));
 
 
             //测试函数：SysUser.add(sys_user user,int groupid)  测试成功BLL
@@ -257,21 +256,21 @@ namespace PersonInfoManage.Test
 
             //cost_main main = new cost_main
             //{
-            //    id = 1563613841,
+            //    id = 1563758936,
             //    apply_money = 900
             //};
 
             //cost_detail detail = new cost_detail
             //{
             //    cost_type_name = "其他",
-            //    cost_type=7,
+            //    cost_type = 7,
             //    money = 500
             //};
 
             //cost_detail detail2 = new cost_detail
             //{
             //    cost_type_name = "餐饮",
-            //    cost_type=5,
+            //    cost_type = 5,
             //    money = 400
             //};
 
@@ -281,7 +280,7 @@ namespace PersonInfoManage.Test
             //    detail2
             //};
 
-            //Console.WriteLine(apply.Update(new cost { main=main,DetailList=listDetail}));
+            //Console.WriteLine(apply.Update(new cost { main = main, DetailList = listDetail }));
 
 
 
@@ -298,7 +297,7 @@ namespace PersonInfoManage.Test
             //    //{ "status", 1 },
             //    //{ "start_time", new DateTime(2019, 7, 20,19,20,0) },
             //    //{ "end_time", new DateTime(2017, 5, 5) }
-            //    //{"page",2 },
+            //    {"page",2 },
             //    //{"limit",20 }
             //};
             //List<cost_main> list = apply.QueryMain(conditions);
@@ -316,13 +315,14 @@ namespace PersonInfoManage.Test
 
             //cost_main main = new cost_main
             //{
-            //    id = 1563517332,
+            //    id = 1563621993,
             //    approver = "小Abor",
-            //    approval_time = new DateTime(2019, 7, 18),
-            //    approval_money = 950,
+            //    approval_time = DateTime.Now,
+            //    approval_money = 951,
             //    status = 1
             //};
-            //Console.WriteLine(new CostApproval().Update(main));
+            //Console.WriteLine(new CostApprovaDAL().Update(main));
+
 
             ///测试函数：costPlan.Add(List<cost_plan> listPlan)
             ///返回类型：int
@@ -614,6 +614,16 @@ namespace PersonInfoManage.Test
             //        + list[i].user_id + "\t" + list[i].isdel + "\t\n");
             //}
 
+            //NativePlaceDAL NP = new NativePlaceDAL();
+            //List<string> list = new List<string>();
+            //list = NP.Query("province", null);
+            //list = NP.Query("city", "");
+            //list = NP.Query("place", "");
+            //Console.WriteLine("START...");
+            //for (int i = 0; i < list.Count; i++)
+            //{
+            //    Console.WriteLine(list[i].ToString());
+            //}
             //Console.WriteLine("END...");
 
             Console.ReadKey();
