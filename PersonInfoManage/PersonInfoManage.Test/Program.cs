@@ -38,13 +38,13 @@ namespace PersonInfoManage.Test
             //Console.WriteLine(set.Del(id));
 
             //测试
-            SysSettingBLL set = new SysSettingBLL();
-            Console.WriteLine(set.SeleteAll());
-            List<sys_dict> list= set.SeleteAll();
-            foreach (sys_dict a in list)
-            {
-                Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
-            }
+            //SysSettingBLL set = new SysSettingBLL();
+            //Console.WriteLine(set.SeleteAll());
+            //List<sys_dict> list= set.SeleteAll();
+            //foreach (sys_dict a in list)
+            //{
+            //    Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
+            //}
 
 
             //测试函数：login.Login(user)  测试成功BLL
@@ -257,21 +257,21 @@ namespace PersonInfoManage.Test
 
             //cost_main main = new cost_main
             //{
-            //    id = 1563613841,
+            //    id = 1563758936,
             //    apply_money = 900
             //};
 
             //cost_detail detail = new cost_detail
             //{
             //    cost_type_name = "其他",
-            //    cost_type=7,
+            //    cost_type = 7,
             //    money = 500
             //};
 
             //cost_detail detail2 = new cost_detail
             //{
             //    cost_type_name = "餐饮",
-            //    cost_type=5,
+            //    cost_type = 5,
             //    money = 400
             //};
 
@@ -281,7 +281,7 @@ namespace PersonInfoManage.Test
             //    detail2
             //};
 
-            //Console.WriteLine(apply.Update(new cost { main=main,DetailList=listDetail}));
+            //Console.WriteLine(apply.Update(new cost { main = main, DetailList = listDetail }));
 
 
 
@@ -298,7 +298,7 @@ namespace PersonInfoManage.Test
             //    //{ "status", 1 },
             //    //{ "start_time", new DateTime(2019, 7, 20,19,20,0) },
             //    //{ "end_time", new DateTime(2017, 5, 5) }
-            //    //{"page",2 },
+            //    {"page",2 },
             //    //{"limit",20 }
             //};
             //List<cost_main> list = apply.QueryMain(conditions);
@@ -316,13 +316,13 @@ namespace PersonInfoManage.Test
 
             //cost_main main = new cost_main
             //{
-            //    id = 1563517332,
+            //    id = 1563621993,
             //    approver = "小Abor",
-            //    approval_time = new DateTime(2019, 7, 18),
-            //    approval_money = 950,
+            //    approval_time = DateTime.Now,
+            //    approval_money = 951,
             //    status = 1
             //};
-            //Console.WriteLine(new CostApproval().Update(main));
+            //Console.WriteLine(new CostApprovaDAL().Update(main));
 
             ///测试函数：costPlan.Add(List<cost_plan> listPlan)
             ///返回类型：int

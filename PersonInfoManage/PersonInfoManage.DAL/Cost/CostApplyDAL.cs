@@ -42,7 +42,7 @@ namespace PersonInfoManage.DAL.Cost
         /// <summary>
         /// 更新费用单信息
         /// </summary>
-        /// <param name="cost">费用单对象main：applicant、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
+        /// <param name="cost">费用单对象main：apply_money、id  费用单详情列表detailList:cost_type、money、cost_type_name</param>
         /// <returns>数据表受影响的行数</returns>
         public int Update(cost cost)
         {
@@ -69,9 +69,9 @@ namespace PersonInfoManage.DAL.Cost
             return sqlArrayToTran.doTran(sqlArray);            
         }
         /// <summary>
-        /// 撤销费用单
+        /// 删除费用信息
         /// </summary>
-        /// <param name="costMain">费用单对象cost_main：id</param>
+        /// <param name="id">费用单id</param>
         /// <returns>数据表受影响的行数</returns>
         public int Del(int id)
         {
@@ -110,10 +110,10 @@ namespace PersonInfoManage.DAL.Cost
             return listDetail;
         }        
         /// <summary>
-        /// 根据组合条件查询费用单
+        /// 根据组合条件查询费用单（可分页）
         /// </summary>
         /// <param name="consitions">条件键值对key: "id", "applicant", "status", "start_time", "end_time","page","limit"</param>
-        /// <returns>费用单对象与费用详情对象列表构成的词典键值对</returns>
+        /// <returns>费用单列表</returns>
         public List<cost_main> QueryMain(Dictionary<string, object> conditions)
         {
             //对组合条件参数进行合法性检验，获取合法的查询参数列表
