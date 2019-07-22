@@ -109,38 +109,6 @@ namespace PersonInfoManage.BLL.System
             }
         }
 
-        /// <summary>
-        /// 用户所在用户组修改
-        /// </summary>
-        /// <param name="userId">用户id</param>
-        /// <param name="groupId">用户组id</param>
-        /// <returns>修改条数</returns>
-        public Result UpdateU2g(int groupId, int userId)
-        {
-            PermDAL perm = new PermDAL();
-            Result res = new Result();
-            try
-            {
-                if (perm.UpdateU2g(groupId , userId) == 0)
-                {
-                    res.Code = RES.ERROR;
-                    res.Message = "修改失败！";
-                    return res;
-                }
-                else
-                {
-                    res.Code = RES.OK;
-                    res.Message = "修改成功！";
-                    return res;
-                }
-            }
-            catch
-            {
-                res.Code = RES.ERROR;
-                res.Message = "修改失败！";
-                return res;
-            }         
-        }
 
         /// <summary>
         /// 用户组信息修改
@@ -174,38 +142,6 @@ namespace PersonInfoManage.BLL.System
             }
         }
 
-        /// <summary>
-        /// 用户组权限修改
-        /// </summary>
-        /// <param name="mneuId">用户id</param>
-        /// <param name="groupId">用户组id</param>
-        /// <returns>修改条数</returns>
-        public Result UpdateG2m(int groupId, int menuId)
-        {
-            PermDAL perm = new PermDAL();
-            Result res = new Result();
-            try
-            {
-                if (perm.UpdateG2m(groupId, menuId) == 0)
-                {
-                    res.Code = RES.ERROR;
-                    res.Message = "修改失败！";
-                    return res;
-                }
-                else
-                {
-                    res.Code = RES.OK;
-                    res.Message = "修改成功！";
-                    return res;
-                }
-            }
-            catch
-            {
-                res.Code = RES.ERROR;
-                res.Message = "修改失败！";
-                return res;
-            }
-        }
 
         /// <summary>
         /// 删除用户组

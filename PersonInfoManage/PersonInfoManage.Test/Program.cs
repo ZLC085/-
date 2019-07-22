@@ -72,11 +72,6 @@ namespace PersonInfoManage.Test
             //int menuId = 4;
             //Console.WriteLine(perm.Addg2m(groupId, menuId));
 
-            //测试函数：perm.Updateu2g(groupId,userId)  测试成功BLL
-            //PermBLL perm = new PermBLL();
-            //int groupId = 23;
-            //int userId = 32;
-            //Console.WriteLine(perm.Updateu2g(groupId, userId));
 
             //测试函数:perm.Update(group) 测试成功BLL
             //PermBLL perm = new PermBLL();
@@ -86,11 +81,6 @@ namespace PersonInfoManage.Test
             //group.remark = "实习民警";
             //Console.WriteLine(perm.Update(group));
 
-            //测试函数：perm.Updateg2m(groupId,menuId)  测试成功BLL
-            //PermBLL perm = new PermBLL();
-            //int groupId = 23;
-            //int menuId = 5;
-            //Console.WriteLine(perm.Updateg2m(groupId, menuId));
 
             //测试函数：perm.Del(groupId) 测试成功BLL
             //PermBLL perm = new PermBLL();

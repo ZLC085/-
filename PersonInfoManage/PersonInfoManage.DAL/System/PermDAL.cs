@@ -81,33 +81,6 @@ namespace PersonInfoManage.DAL.System
             return res;
         }
 
-        /// <summary>
-        /// 用户组关联用户修改
-        /// </summary>
-        /// <param name="userId">用户id</param>
-        /// <param name="groupId">用户组id</param>
-        /// <returns>返回添加条数</returns>
-        public int UpdateU2g(int groupId, int userId)
-        {
-            int res;
-            string sql = "update sys_u2g SET group_id= '" + groupId + "' where user_id= '" + userId + "'";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-            return res;
-        }
-
-        /// <summary>
-        /// 用户组权限修改
-        /// </summary>
-        /// <param name="menuId">用户id</param>
-        /// <param name="groupId">用户组id</param>
-        /// <returns>返回添加条数</returns>
-        public int UpdateG2m(int groupId, int menuId)
-        {
-            int res;
-            string sql = "update sys_g2m SET menu_id= '" + menuId + "' where group_id= '" + groupId + "'";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-            return res;
-        }
 
         /// <summary>
         /// 删除用户组和权限关联
