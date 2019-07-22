@@ -180,7 +180,6 @@ namespace PersonInfoManage.DAL.Cost
                     approver = (string)row["approver"],
                     apply_time = (DateTime)row["apply_time"],
                     apply_money = (decimal)row["apply_money"],
-                    approval_money = (decimal)row["approval_money"],
                     status = (byte)row["status"],
                     remark = (string)row["remark"]
                 };
@@ -191,6 +190,14 @@ namespace PersonInfoManage.DAL.Cost
                 else
                 {
                     main.approval_time =(DateTime) row["approval_time"];
+                }
+                if (row["approval_money"] == DBNull.Value)
+                {
+                    main.approval_money = null;
+                }
+                else
+                {
+                    main.approval_money = (decimal)row["approval_money"];
                 }
                 listMain.Add(main);
             }
