@@ -23,7 +23,7 @@ namespace PersonInfoManage.DAL.System
         public int Add(sys_user user)
         {
             int res;
-            string sql = "insert into sys_user (username,name,password,gender,job,phone,email,status,create_time,modify_time) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,getdate(),getdate())";
+            string sql = "insert into sys_user (username,name,password,gender,job,phone,email,status,create_time,modify_time) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,getdate(),getdate())";
             SqlParameter sqlparameter = new SqlParameter("@p1", user.username);
             SqlParameter sqlparameter1 = new SqlParameter("@p2", user.name);
             SqlParameter sqlparameter2 = new SqlParameter("@p3", user.password);
@@ -80,10 +80,10 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="conditions">查询条件</param>
         /// <returns>通过用户名查询到的用户</returns>
-        public List<view_sys_u2g> Select(sys_user UserInfo)
+        public List<sys_user> Select(sys_user UserInfo)
         {
-            List<view_sys_u2g> user = new List<view_sys_u2g>();
-            string sql = "SELECT * from view_sys_u2g";
+            List<sys_user> user = new List<sys_user>();
+            string sql = "SELECT * from sys_user where 1=1  ";
             List<SqlParameter> SqlPara = new List<SqlParameter>();
             if (!string.IsNullOrEmpty(UserInfo.username))
             {
@@ -110,16 +110,15 @@ namespace PersonInfoManage.DAL.System
             ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql, SqlPara.ToArray());
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++) 
             {
-                view_sys_u2g u2g = new view_sys_u2g();
-                u2g.id = (int)ds.Tables[0].Rows[i][nameof(view_sys_u2g.id)];
-                u2g.name = (string)ds.Tables[0].Rows[i][nameof(sys_user.name)];
-                u2g.username = (string)ds.Tables[0].Rows[i][nameof(sys_user.username)];
-                u2g.gender = (string)ds.Tables[0].Rows[i][nameof(sys_user.gender)];
-                u2g.phone = (string)ds.Tables[0].Rows[i][nameof(sys_user.phone)];
-                u2g.job = (string)ds.Tables[0].Rows[i][nameof(sys_user.job)];
-                u2g.status = (bool)ds.Tables[0].Rows[i][nameof(view_sys_u2g.status)];
-                u2g.group_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.group_name)];
-                user.Add(u2g);               
+                sys_user user1 = new sys_user();
+                user1.id = (int)ds.Tables[0].Rows[i][nameof(sys_user.id)];
+                user1.name = (string)ds.Tables[0].Rows[i][nameof(sys_user.name)];
+                user1.username = (string)ds.Tables[0].Rows[i][nameof(sys_user.username)];
+                user1.gender = (string)ds.Tables[0].Rows[i][nameof(sys_user.gender)];
+                user1.phone = (string)ds.Tables[0].Rows[i][nameof(sys_user.phone)];
+                user1.job = (string)ds.Tables[0].Rows[i][nameof(sys_user.job)];
+                user1.status = (bool)ds.Tables[0].Rows[i][nameof(sys_user.status)];           
+                user.Add(user1);               
                 }
             return user;
             //return new DBOperationsSelect<sys_user>().SelectByConditions(conditions);

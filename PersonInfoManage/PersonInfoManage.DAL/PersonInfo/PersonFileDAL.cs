@@ -24,7 +24,6 @@ namespace PersonInfoManage.DAL.PersonInfo
         public int Add(person_file file)
         {
             int res = 0;
-            //byte[] file1 = new FileOperations().ReadFile("F:数据库设计说明书 V1.0.doc");
             String sql = "insert into person_file(person_id,[file],filename,filetype,create_time,modify_time) values(@p1,@p2,@p3,@p4,@p5,@p6)";
             SqlParameter sqlParameter1 = new SqlParameter("@p1", file.person_id);
             SqlParameter sqlParameter2 = new SqlParameter("@p2", file.file);
@@ -44,7 +43,6 @@ namespace PersonInfoManage.DAL.PersonInfo
             }
 
             return res;
-            //return new DBOperationsInsert<person_file, DBNull>().Insert(file);
         }
 
         /// <summary>
@@ -53,20 +51,20 @@ namespace PersonInfoManage.DAL.PersonInfo
         /// <param name="fileId">文件编号</param>
         /// <param name="newFileName">新文件名</param>
         /// <returns>修改条数</returns>
-        public int Update(string filename,int id)
+        public int Update(string filename, int id)
         {
             int res = 0;
-            String sql = "update person_file set filename ='"+ filename +"'  where id = '"+ id +"'";
-
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            string sql = "update person_file set filename ='" + filename + "'  where id = '" + id + "'";
+            try
+            {
+                res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
             return res;
-            //Dictionary<string, object> newValues = new Dictionary<string, object>
-            //{
-            //    { nameof(person_file.filename), newFileName }
-            //};
-
-            //return new DBOperationsUpdate<person_file>().UpdateById(fileId, newValues);
         }
 
         /// <summary>
@@ -76,51 +74,83 @@ namespace PersonInfoManage.DAL.PersonInfo
         /// <returns>删除条数</returns>
         public int Del(int id)
         {
-            int res;
-            String sql = "delete from person_file where id = '"+ id +"'";
+            int res = 0;
+            string sql = "delete from person_file where id = '" + id + "'";
 
-            res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql);
-
+            try
+            {
+                res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
             return res;
-            //return new DBOperationsDelete<person_file, DBNull>().DeleteById(fileId);
         }
-
-        /// <summary>
-        /// 文件查询
-        /// </summary>
-        /// <param name="conditions">条件</param>
-        /// <returns>通过输入条件查询到的文件信息</returns>
-        //public List<person_file> SelectPersonFilesByconditions(Dictionary<string,object> conditions)
-        //{
-
-        //    return new DBOperationsSelect<person_file>().SelectByConditions(conditions);
-        //}
-
 
         /// <summary>
         /// 文件查询
         /// </summary>
         /// <param name="conditions"></param>id</param>
         /// <returns>通过输入id查询到的文件信息</returns>
-        public List<person_file> GetById(int id)
+        public person_file GetById(int id)
         {
-            List<person_file> Listfile = new List<person_file>();
-
-            String sql = "select * from person_file where id = '" + id + "'";
-
-            DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+            string sql = "select * from person_file where id = '" + id + "'";
             person_file file = new person_file();
-            file.id = (int)ds.Tables[0].Rows[0][nameof(person_file.id)];
-            file.person_id = (int)ds.Tables[0].Rows[0][nameof(person_file.person_id)];
-            file.filename = (string)ds.Tables[0].Rows[0][nameof(person_file.filename)];
-            file.file = (byte[])ds.Tables[0].Rows[0][nameof(person_file.file)];
-            file.filetype = (string)ds.Tables[0].Rows[0][nameof(person_file.filetype)];
-            file.create_time = (DateTime)ds.Tables[0].Rows[0][nameof(person_file.create_time)];
-            file.modify_time = (DateTime)ds.Tables[0].Rows[0][nameof(person_file.modify_time)];
-            Listfile.Add(file);
+            try
+            {
+                DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
 
-            return Listfile;
+                file.id = (int)ds.Tables[0].Rows[0][nameof(person_file.id)];
+                file.person_id = (int)ds.Tables[0].Rows[0][nameof(person_file.person_id)];
+                file.filename = (string)ds.Tables[0].Rows[0][nameof(person_file.filename)];
+                file.file = (byte[])ds.Tables[0].Rows[0][nameof(person_file.file)];
+                file.filetype = (string)ds.Tables[0].Rows[0][nameof(person_file.filetype)];
+                file.create_time = (DateTime)ds.Tables[0].Rows[0][nameof(person_file.create_time)];
+                file.modify_time = (DateTime)ds.Tables[0].Rows[0][nameof(person_file.modify_time)];
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return file;
         }
+        /// <summary>
+        /// 通过personId查询问价
+        /// </summary>
+        /// <param name="personId">personId</param>
+        /// <returns>文件信息</returns>
+        public List<person_file> GetByPersonId(int personId)
+        {
+            List<person_file> personFileList = new List<person_file>();
+            string sql = "select id,person_id,filename,filename,create_time,modify_time from person_file where person_id=" + personId;
 
+            try
+            {
+                DataTable dataTable = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0];
+
+                for (int i = 0; i < dataTable.Rows.Count; i++)
+                {
+                    DataRow row = dataTable.Rows[i];
+                    person_file personFile = new person_file
+                    {
+                        id = (int)row["id"],
+                        person_id = (int)row["person_id"],
+                        filename = (string)row["filename"],
+                        filetype = (string)row["filename"],
+                        create_time = (DateTime)row["create_time"],
+                        modify_time = (DateTime)row["modify_time"]
+                    };
+                    personFileList.Add(personFile);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+            return personFileList;
+        }
     }
 }

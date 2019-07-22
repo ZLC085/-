@@ -1,4 +1,6 @@
-﻿using PersonInfoManage.Model;
+﻿using PersonInfoManage.BLL.PersonInfo;
+using PersonInfoManage.BLL.Utils;
+using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,6 +41,29 @@ namespace PersonInfoManage
                 //return fileType;
             }
            
+        }
+
+        private void BtnOutFile_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.Description = "请选择保存文件路径";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string foldPath = dialog.SelectedPath;
+
+                PersonFileBLL personFileBLL = new PersonFileBLL();
+                Result result= personFileBLL.OutFile(1, foldPath);
+               
+                if (result.Code==RES.OK)
+                {
+                    MessageBox.Show(result.Message,"文件导出");
+                }
+                else if(result.Code==RES.ERROR)
+                {
+                    MessageBox.Show(result.Message, "文件导出");
+                }
+            }
         }
     }
 }

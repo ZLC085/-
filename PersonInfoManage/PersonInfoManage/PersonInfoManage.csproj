@@ -79,11 +79,6 @@
     <Compile Include="Business\AddBusiness.Designer.cs">
       <DependentUpon>AddBusiness.cs</DependentUpon>
     </Compile>
-    <Compile Include="person_infoDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>person_infoDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="System\AddCategoreTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,17 +234,6 @@
     <EmbeddedResource Include="System\UserGroupRoleForm.resx">
       <DependentUpon>UserGroupRoleForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="person_infoDataSet.xsc">
-      <DependentUpon>person_infoDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="person_infoDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>person_infoDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="person_infoDataSet.xss">
-      <DependentUpon>person_infoDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
