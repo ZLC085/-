@@ -100,8 +100,8 @@ namespace PersonInfoManage.BLL.PersonInfo
         /// <summary>
         /// 文件导出
         /// </summary>
-        /// <param name="id">问价id</param>
-        /// <param name="path">导出路劲</param>
+        /// <param name="id">文件id</param>
+        /// <param name="path">导出路径</param>
         /// <returns>导出Result</returns>
         public Result OutFile(int id,string path)
         {
