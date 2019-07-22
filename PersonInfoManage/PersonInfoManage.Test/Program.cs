@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PersonInfoManage.DAL.Cost;
+using PersonInfoManage.BLL.System;
+using PersonInfoManage.DAL.System;
 
 namespace PersonInfoManage.Test
 {
@@ -14,42 +16,124 @@ namespace PersonInfoManage.Test
     {
         static void Main(string[] args)
         {
-            //测试函数：login.Loginsever(user)  测试成功BLL
+            //测试函数-数据字典bll 
+            //SysSettingBLL set = new SysSettingBLL();
+            //sys_dict SysDict = new sys_dict();
+            //SysDict.category_name = "其他4";
+            //SysDict.dict_name = "费用类别";
+            //Console.WriteLine(set.Add(SysDict));
+
+            //测试set.Update(SysDict)
+            //SysSettingBLL set = new SysSettingBLL();
+            //sys_dict SysDict = new sys_dict();
+            //SysDict.category_name = "其他3";
+            //SysDict.dict_name = "费用类别";
+            //SysDict.id = 13;
+            //Console.WriteLine(set.Update(SysDict));
+
+            //测试set.Del(id)
+            //SysSettingBLL set = new SysSettingBLL();
+            //sys_dict SysDict = new sys_dict();
+            //int id = 13;
+            //Console.WriteLine(set.Del(id));
+
+            //测试
+            SysSettingBLL set = new SysSettingBLL();
+            Console.WriteLine(set.SeleteAll());
+            List<sys_dict> list= set.SeleteAll();
+            foreach (sys_dict a in list)
+            {
+                Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
+            }
+
+
+            //测试函数：login.Login(user)  测试成功BLL
             //LoginBLL login = new LoginBLL();
-            //sys_user user = new sys_user();
-            //user.username = "lihua";
-            //user.password = "456";
-            //Console.WriteLine(login.Loginsever(user));
+            //string userName = "lihua";
+            //string password = "456";
+            //Console.WriteLine(login.Login(userName,password));
 
-            //测试函数：Login.SelectLogin(user)  测试成功DAL
-            //Login Login = new Login();
-            //sys_user user = new sys_user();
-            //user.username = "lihua";
-            //Console.WriteLine(Login.SelectLogin(user));
-
-            //测试函数：perm.add(group)  测试成功
-            //PermDAL perm = new PermDAL();
+            //测试函数：perm.Add(group)  测试成功BLL
+            //PermBLL perm = new PermBLL();
             //sys_group group = new sys_group();
-            //group.group_name = "管理员";
-            ////group.remark = "局长";
-            //Console.WriteLine(perm.add(group));
+            //group.group_name = "员工";
+            //group.remark = "民警";
+            //Console.WriteLine(perm.Add(group));
 
-            //测试函数:perm.Update(group_id,grouplist) 测试成功
-            //Perm perm = new Perm();
+            //测试函数：perm.Addu2g(groupId,userId)  测试成功BLL
+            //PermBLL perm = new PermBLL();
+            //int groupId = 26;
+            //int userId = 32;
+            //Console.WriteLine(perm.Addu2g(groupId,userId));
+
+            //测试函数：perm.Addg2m(groupId,menuId)  测试成功BLL
+            //PermBLL perm = new PermBLL();
+            //int groupId = 26;
+            //int menuId = 4;
+            //Console.WriteLine(perm.Addg2m(groupId, menuId));
+
+            //测试函数：perm.Updateu2g(groupId,userId)  测试成功BLL
+            //PermBLL perm = new PermBLL();
+            //int groupId = 23;
+            //int userId = 32;
+            //Console.WriteLine(perm.Updateu2g(groupId, userId));
+
+            //测试函数:perm.Update(group) 测试成功BLL
+            //PermBLL perm = new PermBLL();
             //sys_group group = new sys_group();
-            //group.id = 20;
-            //string[] temp = { "人员信息管理", "费用管理", "日志管理", "系统管理" };
-            //List<string> grouplist = new List<string>(temp);
-            //Console.WriteLine(perm.Update(group, grouplist));
+            //group.id = 26;
+            //group.group_name = "普通用户";
+            //group.remark = "实习民警";
+            //Console.WriteLine(perm.Update(group));
 
-            //测试函数：perm.Del(group_id) 测试成功
-            //Perm perm = new Perm();
-            //int group_id = 17;
-            //Console.WriteLine(perm.Del(group_id));
+            //测试函数：perm.Updateg2m(groupId,menuId)  测试成功BLL
+            //PermBLL perm = new PermBLL();
+            //int groupId = 23;
+            //int menuId = 5;
+            //Console.WriteLine(perm.Updateg2m(groupId, menuId));
+
+            //测试函数：perm.Delu(groupId) 测试成功BLL
+            //PermBLL perm = new PermBLL();
+            //int groupId = 21;
+            //Console.WriteLine(perm.Delu(groupId));
+
+            //测试函数：perm.Delm(groupId) 测试成功BLL
+            //PermBLL perm = new PermBLL();
+            //int groupid = 26;
+            //Console.WriteLine(perm.Delm(groupid));
+
+            //测试函数：perm.Del(groupId) 测试成功BLL
+            //PermBLL perm = new PermBLL();
+            //int groupId = 16;
+            //Console.WriteLine(perm.Del(groupId));
+
+            //测试函数：perm.DelG2m(groupId) 测试成功BLL
+            //PermBLL perm = new PermBLL();
+            //int groupId = 23;
+            //int menuId = 6;
+            //Console.WriteLine(perm.DelG2m(groupId,menuId));
+
+            //测试函数：perm.DelG2u(groupId) 测试成功BLL
+            //PermBLL perm = new PermBLL();
+            //int groupId = 23;
+            //int userId = 32;
+            //Console.WriteLine(perm.DelG2u(groupId, userId));
 
             //测试函数：perm.Selectall() 测试成功
-            //Perm perm = new Perm();
-            //Console.WriteLine(perm.Selectall());
+            //PermBLL perm = new PermBLL();
+            //sys_group group = new sys_group();
+            //group.group_name = "admin";
+            //Console.WriteLine(perm.SelectGroup(group));
+
+            //测试函数：perm.Selectu2g() 测试成功
+            //PermBLL perm = new PermBLL();
+            //int groupId = 15;
+            //Console.WriteLine(perm.Selectu2g(groupId));
+
+            //测试函数：perm.Selectg2m() 测试成功
+            //PermBLL perm = new PermBLL();
+            //int groupId = 15;
+            //Console.WriteLine(perm.Selectg2m(groupId));
 
             //PermDAL perm = new PermDAL();
             //sys_group group = new sys_group();
@@ -60,8 +144,8 @@ namespace PersonInfoManage.Test
             //Console.WriteLine(perm.Selectgroup(group));
 
 
-            //测试函数：SysUser.add(sys_user user,int groupid)  测试成功
-            //SysUser sysuser = new SysUser();
+            //测试函数：SysUser.add(sys_user user,int groupid)  测试成功BLL
+            //SysUserBLL userbll = new SysUserBLL();
             //sys_user user = new sys_user();
             //user.username = "xiaoming";
             //user.name = "小明";
@@ -71,130 +155,123 @@ namespace PersonInfoManage.Test
             //user.phone = "17396226172";
             //user.email = "1258323278@qq.com";
             //user.status = false;
-            //user.isdel = 0;
-            //sys_group group = new sys_group();
-            //group.id = 15;
-            //Console.WriteLine(sysuser.add(user, group));
+            //Console.WriteLine(userbll.add(user));
 
-            //测试函数：SysUser.Update(sys_user user,int groupid)  测试成功
-            //SysUser sysuser = new SysUser();
+            //测试函数：SysUser.Update(sys_user user,int groupid)  测试成功BLL
+            //SysUserBLL userbll = new SysUserBLL();
             //sys_user user = new sys_user();
             //user.id = 27;
             //user.username = "lihua";
             //user.name = "李华";
             //user.password = "456";
-            //user.gender = "男";
+            //user.gender = "女";
             //user.job = "领导";
             //user.phone = "17396226172";
             //user.email = "873257742@qq.com";
             //user.status = false;
-            //user.isdel = 0;
-            //sys_group group = new sys_group();
-            //group.id = 15;
-            //Console.WriteLine(sysuser.Update(user,group));
+            //Console.WriteLine(userbll.Update(user));
 
-            //测试函数：SysUser.Del(id)  测试成功
+            //测试函数：SysUser.Del(id)  测试成功BLL
+            //SysUserBLL userbll = new SysUserBLL();
+            //int userId = 39;
+            //Console.WriteLine(userbll.Del(userId));
+
+            //测试函数：Sysuser.Select(user, group） 测试成功BLL 
+            //SysUserBLL userbll = new SysUserBLL();
             //sys_user user = new sys_user();
-            //user.id = 35;
-            //SysUser sysuser = new SysUser();
-            //Console.WriteLine(sysuser.Del(user));
-
-            //测试函数：SysUser.Selectall()  测试成功
-            //SysUser sysuser = new SysUser();
-            //Console.WriteLine(sysuser.Selectall());
-
-            //测试函数：sysuser.SelectBy(user, group） 测试成功 
-            //SysUser sysuser = new SysUser();
-            //sys_user user = new sys_user();
-            //sys_group group = new sys_group();
             //user.name = "李华";
-            //group.group_name = "admin";
-            //Console.WriteLine(sysuser.SelectBy(user, group));
+            //Console.WriteLine(userbll.Select(user));
 
             //数据字典测试开始
             //测试函数：set.Add(dict)  测试成功 
-            //SysSetting set = new SysSetting();
+            //SysSettingDAL set = new SysSettingDAL();
             //sys_dict dict = new sys_dict();
             //dict.dict_name = "费用类别";
-            //dict.category_name = "其他2";
+            //dict.category_name = "其他3";
             //Console.WriteLine(set.Add(dict));
 
             //测试函数：set.Update(dict)  测试成功 
-            //SysSetting set = new SysSetting();
+            //SysSettingDAL set = new SysSettingDAL();
             //sys_dict dict = new sys_dict();
             //dict.category_name = "其他1";
             //dict.dict_name = "费用类别";
-            //dict.id = 6;
+            //dict.id = 12;
             //Console.WriteLine(set.Update(dict));
 
             //测试函数：set.Del(dict)  测试成功 
-            //SysSetting set = new SysSetting();
+            //SysSettingDAL set = new SysSettingDAL();
             //sys_dict dict = new sys_dict();
-            //dict.id = 6;
-            //Console.WriteLine(set.Del(dict));
+            //int id = 12;
+            //Console.WriteLine(set.Del(id));
 
             //测试函数：set.SelectAll()  测试成功
-            //SysSetting set = new SysSetting();
-            //Console.WriteLine(set.SelectAll());
+            //SysSettingDAL set = new SysSettingDAL();        
+            //List<sys_dict> list = set.SelectAll();
+            //foreach (sys_dict a in list)
+            //{
+            //    Console.WriteLine(a.category_name + "  " + a.dict_name + "  " + a.create_time + "  " + a.modify_time);
+            //}
 
-             CostApplyDAL apply = new CostApplyDAL();
+            //CostApplyDAL apply = new CostApplyDAL();
 
             ///测试函数：costApply.Add(cost cost)
             ///返回类型：int
             ///测试结果：成功
-            ///参数中必需的属性:
-            ///     costMain:applicant、apply_money、apply_time
-            ///     detailList：
-            ///         cost_detail：cost_type、money
 
             //cost_main main = new cost_main
             //{
-            //    applicant = "小红",
-            //    apply_money = 420,
-            //    apply_time = new DateTime(2019, 7, 19, 15, 0, 0)
+            //    applicant = "小陈",
+            //    apply_money = 951,
+            //    apply_time = DateTime.Now
             //};
             //cost_detail detail = new cost_detail
             //{
-            //    cost_type_name = "餐饮",
-            //    cost_type=5,
-            //    money = 200
+            //    cost_type_name = "住宿",
+            //    cost_type = 4,
+            //    money = 451
             //};
             //cost_detail detail2 = new cost_detail
             //{
+            //    cost_type_name = "餐饮",
+            //    cost_type = 5,
+            //    money = 160
+            //};
+            //cost_detail detail3 = new cost_detail
+            //{
             //    cost_type_name = "出行",
-            //    cost_type=8,
-            //    money = 220
+            //    cost_type = 8,
+            //    money = 340
             //};
             //List<cost_detail> listDetail = new List<cost_detail>
             //{
             //    detail,
-            //    detail2
+            //    detail2,
+            //    detail3
             //};
             //Console.WriteLine(apply.Add(new cost { main = main, DetailList = listDetail }));
 
-            ///测试函数：costApply.Update(cost_main costMain, List<cost_detail> detailList)
+            ///测试函数：costApply.Update(cost cost)
             ///返回类型：int
             ///测试结果：成功
-            ///参数中必需的属性:
-            ///     costMain:id、apply_money
-            ///     detailList：
-            ///         cost_detail：cost_type、money
+
 
             //cost_main main = new cost_main
             //{
-            //    id = 1563517332,
+            //    id = 1563613841,
             //    apply_money = 900
             //};
 
             //cost_detail detail = new cost_detail
             //{
-            //    cost_type = "测试类型1",
+            //    cost_type_name = "其他",
+            //    cost_type=7,
             //    money = 500
             //};
 
             //cost_detail detail2 = new cost_detail
             //{
-            //    cost_type = "住宿",
+            //    cost_type_name = "餐饮",
+            //    cost_type=5,
             //    money = 400
             //};
 
@@ -204,74 +281,31 @@ namespace PersonInfoManage.Test
             //    detail2
             //};
 
-            //Console.WriteLine(apply.Update(main, listDetail));
+            //Console.WriteLine(apply.Update(new cost { main=main,DetailList=listDetail}));
 
-            ///测试函数：costApply.Del(cost_main costMain)
-            ///返回类型：int
+
+
+            ///测试函数：costApply.QueryMain(Dictionary<string, object> conditions)
+            ///返回类型：
             ///测试结果：成功
             ///参数中必需的属性:
-            ///     costMain:id
 
-            //cost_main main = new cost_main
-            //{
-            //    id = 1563517150
-            //};
-            //Console.WriteLine(apply.Del(main));
-
-            ///测试函数：costApply.GetById(int id)
-            ///返回类型：Dictionary<cost_main, List<cost_detail>> 
-            ///测试结果：成功
-            ///参数中必需的属性:
-            ///     id:费用单编号
-
-            //Dictionary<cost_main, List<cost_detail>> dic = apply.GetById(1563517332);
-            //foreach (cost_main cm in dic.Keys)
-            //{
-            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
-            //    foreach (cost_detail cd in dic[cm])
-            //    {
-            //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
-            //    }
-            //}
-
-            ///测试函数：costApply.Query()
-            ///返回类型：Dictionary<cost_main, List<cost_detail>> 
-            ///测试结果：成功
-            ///参数中必需的属性:
-            ///     无
-
-            //Dictionary<cost_main, List<cost_detail>> dic = apply.Query();
-            //foreach (cost_main cm in dic.Keys)
-            //{
-            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
-            //    foreach (cost_detail cd in dic[cm])
-            //    {
-            //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
-            //    }
-            //}
-
-            ///测试函数：costApply.Query(Dictionary<string, object> conditions)
-            ///返回类型：Dictionary<cost_main, List<cost_detail>> 
-            ///测试结果：成功
-            ///参数中必需的属性:
-            ///     conditions:键值对 key建议是 "id", "applicant", "status", "start_time", "end_time"其中的，否则无效
 
             //Dictionary<string, object> conditions = new Dictionary<string, object>
             //{
-            //    { "id", 1563517332 },
-            //    { "applicant", "测试add" },
-            //    { "status", 1 },
-            //    { "start_time", new DateTime(2017, 1, 1) },
-            //    { "end_time", new DateTime(2017, 5, 5) }
+            //    //{ "id", 1563517332 },
+            //    //{ "applicant", "测试add" },
+            //    //{ "status", 1 },
+            //    //{ "start_time", new DateTime(2019, 7, 20,19,20,0) },
+            //    //{ "end_time", new DateTime(2017, 5, 5) }
+            //    //{"page",2 },
+            //    //{"limit",20 }
             //};
-            //Dictionary<cost_main, List<cost_detail>> dic = apply.Query(conditions);
-            //foreach (cost_main cm in dic.Keys)
+            //List<cost_main> list = apply.QueryMain(conditions);
+            //foreach (cost_main cm in list)
             //{
             //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
-            //    foreach (cost_detail cd in dic[cm])
-            //    {
-            //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
-            //    }
+
             //}
 
             ///测试函数：costApproval.Update(cost_main main)
@@ -615,7 +649,7 @@ namespace PersonInfoManage.Test
             //        + list[i].user_id + "\t" + list[i].isdel + "\t\n");
             //}
 
-            Console.WriteLine("END...");
+            //Console.WriteLine("END...");
 
             Console.ReadKey();
         }
