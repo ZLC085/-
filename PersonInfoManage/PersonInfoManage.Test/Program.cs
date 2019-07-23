@@ -32,7 +32,7 @@ namespace PersonInfoManage.Test
             //SysDict.dict_name = "";
             //SysDict.id = 11;
             //Console.WriteLine(set.Update(SysDict));
-        
+
             //测试set.Del(id)
             //SysSettingBLL set = new SysSettingBLL();
             //sys_dict SysDict = new sys_dict();         
@@ -274,7 +274,7 @@ namespace PersonInfoManage.Test
             //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
 
             //}
-
+            new CostApplyDAL().GetApprovalInfo(8);
             ///测试函数：costApproval.Update(cost_main main)
             ///返回类型：int
             ///测试结果：成功

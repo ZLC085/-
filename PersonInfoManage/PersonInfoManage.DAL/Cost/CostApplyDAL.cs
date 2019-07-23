@@ -171,37 +171,37 @@ namespace PersonInfoManage.DAL.Cost
             //执行查询获取数据并封装返回
             List<cost_main> listMain = new List<cost_main>();
             DataTable dataTable = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0];
-            for (int i = 0; i < dataTable.Rows.Count; i++)
-            {
-                DataRow row = dataTable.Rows[i];
-                cost_main main = new cost_main
-                {
-                    id = (int)row["id"],
-                    apply_id = (int)row["apply_id"],
-                    approval_id = (int)row["approval_id"],
-                    apply_money = (decimal)row["apply_money"],
-                    status = (byte)row["status"],
-                    apply_time = (DateTime)row["apply_time"],
-                    remark = (string)row["remark"]
-                };
-                if(row["approval_time"] == DBNull.Value)
-                {
-                    main.approval_time = null;
-                }
-                else
-                {
-                    main.approval_time =(DateTime) row["approval_time"];
-                }
-                if (row["approval_money"] == DBNull.Value)
-                {
-                    main.approval_money = null;
-                }
-                else
-                {
-                    main.approval_money = (decimal)row["approval_money"];
-                }
-                listMain.Add(main);
-            }
+            //for (int i = 0; i < dataTable.Rows.Count; i++)
+            //{
+            //    DataRow row = dataTable.Rows[i];
+            //    cost_main main = new cost_main
+            //    {
+            //        id = (int)row["id"],
+            //        apply_id = (int)row["apply_id"],
+            //        approval_id = (int)row["approval_id"],
+            //        apply_money = (decimal)row["apply_money"],
+            //        status = (byte)row["status"],
+            //        apply_time = (DateTime)row["apply_time"],
+            //        remark = (string)row["remark"]
+            //    };
+            //    if(row["approval_time"] == DBNull.Value)
+            //    {
+            //        main.approval_time = null;
+            //    }
+            //    else
+            //    {
+            //        main.approval_time =(DateTime) row["approval_time"];
+            //    }
+            //    if (row["approval_money"] == DBNull.Value)
+            //    {
+            //        main.approval_money = null;
+            //    }
+            //    else
+            //    {
+            //        main.approval_money = (decimal)row["approval_money"];
+            //    }
+            //    listMain.Add(main);
+            //}
             return listMain;
         }
         /// <summary>
@@ -224,31 +224,32 @@ namespace PersonInfoManage.DAL.Cost
         {
             List<string> approvalList = new List<string>();
             string sql = "select org_id from sys_user where id="+apply_id;
-            string org_id = (string)SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0].Rows[0]["org_id"];
+            string org_id = ((int)SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0].Rows[0]["org_id"]).ToString();
             string sql2 = "select parent_id from sys_org where id="+org_id;
-            string parent_id = (string)SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql2).Tables[0].Rows[0]["parent_id"];
+            string parent_id = ((int)SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql2).Tables[0].Rows[0]["parent_id"]).ToString();
             string sql3 = "select parent_id from sys_org where id=" + parent_id;
-            string parent_id2 = (string)SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql3).Tables[0].Rows[0]["parent_id"];
-            string sql4 = "select id from sys_org where parent_id="+ parent_id2;
+            string parent_id2 = ((int)SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql3).Tables[0].Rows[0]["parent_id"]).ToString();
+            string sql4 = "select id,org_name from sys_org where parent_id="+ parent_id2;
             DataTable dataTable = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql4).Tables[0];
-            List<string> listOrgId = new List<string>();
+            List<string> listOrg = new List<string>();
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
-                string tempOrgId = (string)dataTable.Rows[i]["id"];
-                listOrgId.Add(tempOrgId);
+                string tempOrg = ((int)dataTable.Rows[i]["id"]).ToString()+"."+ (string)dataTable.Rows[i]["org_name"];
+                listOrg.Add(tempOrg);
             }
-            foreach(string orgId in listOrgId)
+            foreach(string org in listOrg)
             {
+                string orgId = org.Split('.')[0];
                 string TempSql = "select id,name,job from sys_user where org_id="+orgId;
                 DataTable dataTable2 = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, TempSql).Tables[0];
                 for (int j= 0;j < dataTable2.Rows.Count; j++)
                 {
                     DataRow row = dataTable2.Rows[j];
-                    string tId = (string)row["id"];
+                    string tId = ((int)row["id"]).ToString();
                     string tName = (string)row["name"];
                     string tJob = (string)row["job"];
-                    string approval = tId + "." + tJob + "." + tName;
-                    Console.WriteLine(approval);
+                    string approval = tId + "."+org.Split('.')[1]+"." + tJob + "." + tName;
+                    //Console.WriteLine(approval);
                     approvalList.Add(approval);
                 }
             }
