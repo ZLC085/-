@@ -19,7 +19,7 @@ namespace PersonInfoManage.BLL.logs
         public Result Del(int id)
         {
             Result r = new Result();
-            if (new DAL.Logs.LogSysDAL().Del(id) > 0)
+            if (new LogSysDAL().Del(id) > 0)
             {
                 r.Code = RES.OK;
                 r.Message = "删除成功！";
@@ -40,7 +40,7 @@ namespace PersonInfoManage.BLL.logs
     
         public List<log_sys> Query()
         {
-            List<log_sys> sysList = new DAL.Logs.LogSysDAL().Query();
+            List<log_sys> sysList = new LogSysDAL().Query();
             return sysList;
         }
 
@@ -53,7 +53,7 @@ namespace PersonInfoManage.BLL.logs
         /// <returns></returns>
         public List<log_sys> Query(DateTime create_time)
         {
-            List<log_sys> sysList = new DAL.Logs.LogSysDAL().Query(new DateTime());
+            List<log_sys> sysList = new LogSysDAL().Query(create_time);
             if (sysList == null)
             {
                 Console.WriteLine("没有查到相关信息！");

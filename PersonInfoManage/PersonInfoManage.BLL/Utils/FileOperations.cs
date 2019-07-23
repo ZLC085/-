@@ -54,8 +54,9 @@ namespace PersonInfoManage.DAL.Utils
         /// <returns>文件名</returns>
         private string GetFileName(string fullFileName)
         {
-            int index = fullFileName.LastIndexOf(@"\") + 1;
-            string fileName = fullFileName.Substring(index);
+            int indexStart = fullFileName.LastIndexOf(@"\") + 1;
+            int indexEnd = fullFileName.LastIndexOf(".");
+            string fileName = fullFileName.Substring(indexStart, indexEnd - indexStart);
 
             return fileName;
         }
@@ -86,7 +87,7 @@ namespace PersonInfoManage.DAL.Utils
         /// <returns>文件是否导出成功</returns>
         public bool WriteFile(byte[] fileBytes, string path, string fileName, string fileType)
         {
-            string filePath = path + fileName + "." + fileType;
+            string filePath = path + "\\" + fileName + "." + fileType;
             FileStream fs= new FileStream(filePath, FileMode.Create, FileAccess.Write);
             try
             {

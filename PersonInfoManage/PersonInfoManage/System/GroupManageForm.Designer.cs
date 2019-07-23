@@ -259,11 +259,13 @@
             this.ClientSize = new System.Drawing.Size(484, 418);
             this.Controls.Add(this.panelEx2);
             this.Controls.Add(this.panelEx1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "GroupManageForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "用户组管理";
             this.panelEx1.ResumeLayout(false);
             this.panelEx2.ResumeLayout(false);
