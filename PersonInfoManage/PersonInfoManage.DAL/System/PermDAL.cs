@@ -98,8 +98,6 @@ namespace PersonInfoManage.DAL.System
             return res;
         }
 
-       
-
         /// <summary>
         /// 删除用户组
         /// </summary>
@@ -148,12 +146,7 @@ namespace PersonInfoManage.DAL.System
                     tx.Dispose();
                     conn.Dispose();
                 }
-            }
-     
-          
-         
-         
-            
+            }           
         }
 
         /// <summary>
@@ -166,19 +159,6 @@ namespace PersonInfoManage.DAL.System
         {
             int res;
             string sql = "delete from sys_u2g where user_id='" + userId + "' and group_id= '" + groupId + "' ";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-            return res;
-        }
-
-        /// <summary>
-        /// 删除用户关联用户组
-        /// </summary>
-        /// <param name="userId">用户id</param>
-        /// <returns>删除条数</returns>
-        public int DelU2g(int userId)
-        {
-            int res;
-            string sql = "delete from sys_u2g where user_id='" + userId + "' ";
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
             return res;
         }

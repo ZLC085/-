@@ -16,7 +16,7 @@ namespace PersonInfoManage.DAL.Logs
     public class LogUserDAL : DALBase
     {
         /// <summary>
-        /// 用户日志删除根据日志ID
+        /// 用户日志删除
         /// </summary>
         /// <param name="id">用户日志id</param>
         /// <returns>删除条数</returns>
@@ -24,19 +24,6 @@ namespace PersonInfoManage.DAL.Logs
         {
             int res;
             string sql = "delete from log_user where id='" + id + "'";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-            return res;
-        }
-
-        /// <summary>
-        /// 用户日志删除根据用户ID
-        /// </summary>
-        /// <param name="UserId">用户id</param>
-        /// <returns>删除条数</returns>
-        public int DelUser(int UserId)
-        {
-            int res;
-            string sql = "delete from log_user where user_id='" + UserId + "'";
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
             return res;
         }
