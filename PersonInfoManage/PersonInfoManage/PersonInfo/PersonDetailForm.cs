@@ -1,14 +1,7 @@
-﻿using PersonInfoManage.BLL.PersonInfo;
+﻿using Loading;
+using PersonInfoManage.BLL.PersonInfo;
 using PersonInfoManage.BLL.Utils;
-using PersonInfoManage.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PersonInfoManage
@@ -30,24 +23,18 @@ namespace PersonInfoManage
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 string filePath = openFile.FileName;
-
-
-                PersonFileBLL personFileBLL = new PersonFileBLL();
-                //需要人员id
-                Result result = personFileBLL.Add(1001, filePath);
-
-                if (result.Code == RES.OK)
+                Result result = null;
+                LoadingHelper.ShowLoading("文件上传中...", this, o =>
                 {
-                    MessageBox.Show(result.Message, "文件添加");
-                }
-                else if (result.Code == RES.ERROR)
-                {
-                    MessageBox.Show(result.Message, "文件添加");
-                }
+                    //这里写处理耗时的代码，代码处理完成则自动关闭该窗口
+                    PersonFileBLL personFileBLL = new PersonFileBLL();
+                    result = personFileBLL.Add(1001, filePath);
+                });
+
+                FileStatus(result, "文件添加");
             }
-
         }
-
+        
         private void BtnOutFile_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
@@ -56,20 +43,28 @@ namespace PersonInfoManage
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string foldPath = dialog.SelectedPath;
-
-                PersonFileBLL personFileBLL = new PersonFileBLL();
-
-                //需要文件id
-                Result result = personFileBLL.OutFile(28, foldPath);
-
-                if (result.Code == RES.OK)
+                Result result = null;
+                LoadingHelper.ShowLoading("文件导出中...", this, o => 
                 {
-                    MessageBox.Show(result.Message, "文件导出");
-                }
-                else if (result.Code == RES.ERROR)
-                {
-                    MessageBox.Show(result.Message, "文件导出");
-                }
+                    PersonFileBLL personFileBLL = new PersonFileBLL();
+
+                    //需要文件id
+                    result = personFileBLL.OutFile(28, foldPath);
+                });
+
+                FileStatus(result, "文件导出");
+            }
+        }
+
+        private void FileStatus(Result result, string title)
+        {
+            if (result?.Code == RES.OK)
+            {
+                MessageBoxCustom.Show(result.Message, title, this);
+            }
+            else if (result?.Code == RES.ERROR)
+            {
+                MessageBoxCustom.Show(result.Message, title, this);
             }
         }
 

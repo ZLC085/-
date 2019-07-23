@@ -16,6 +16,22 @@ namespace PersonInfoManage.DAL.Logs
     public class LogSysDAL : DALBase
     {
 
+
+	/// <summary>
+        /// 系统运行日志添加
+        /// </summary>
+        /// <param name></param>
+        /// <returns></returns>
+        public  int Add(log_sys sys)
+        {
+            int res = 0;
+            string sql = "insert  into log_user(log_message,create_time) values (@log_message,@create_time)";
+            SqlParameter log_message = new SqlParameter("@log_message", sys.log_message);          
+            SqlParameter create_time = new SqlParameter("@create_time", DateTime.Now);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, log_message, create_time);
+            return res;
+        }
+
         /// <summary>
         /// 系统运行日志删除
         /// </summary>

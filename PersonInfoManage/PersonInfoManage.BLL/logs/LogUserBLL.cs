@@ -51,9 +51,9 @@ namespace PersonInfoManage.BLL.logs
         /// <param name="username"></param>
         /// <param name="create_time"></param>
         /// <returns></returns>
-        public List<log_user> Query(string username,DateTime create_time)
+        public List<log_user> Query(string username, string operation,DateTime start_time,DateTime end_time)
         {
-            List<log_user> userList = new LogUserDAL().Query(username,create_time);
+            List<log_user> userList = new LogUserDAL().Query(username, operation,start_time,end_time);
             if (userList == null)
             {
                 Console.WriteLine("没有查到相关信息！");
