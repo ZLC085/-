@@ -67,13 +67,50 @@ namespace PersonInfoManage.DAL.System
         /// <returns>删除条数</returns>
         public int Del(int UserId)
         {
-            int res;
-            string sql = "delete from sys_user where id= '" + UserId + "'";
-            res=SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-            return res;
-            //return new DBOperationsDelete<sys_user, DBNull>().DeleteById(userId);
+            string sql1 = "delete from sys_u2g where user_id='" + UserId + "'";
+            string sql2 = "delete from log_user where user_id='" + UserId + "'";
+            string sql3 = "delete from sys_user where id= '" + UserId + "'";
+            List<String> SQLStringList = new List<string>();
+            SQLStringList.Add(sql1);
+            SQLStringList.Add(sql2);
+            SQLStringList.Add(sql3);
+            using (SqlConnection conn = new SqlConnection(ConStr))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                SqlTransaction trans = conn.BeginTransaction();
+                cmd.Transaction = trans;
+                try
+                {
+                    int count = 0;
+                    for (int n = 0; n < SQLStringList.Count; n++)
+                    {
+                        string strsql = SQLStringList[n];
+                        if (strsql.Trim().Length > 1)
+                        {
+                            cmd.CommandText = strsql;
+                            count += cmd.ExecuteNonQuery();
+                        }
+                    }
+                    trans.Commit();
+                    return count;
+                }
+                catch (Exception e)
+                {
+                    trans.Rollback();
+                    Console.WriteLine(e.Message);
+                    return 0;
+                }
+                finally
+                {
+                    conn.Close();
+                    trans.Dispose();
+                    conn.Dispose();
+                }
+                //return new DBOperationsDelete<sys_user, DBNull>().DeleteById(userId);
+            }
         }
-
 
         /// <summary>
         /// 通过输入条件查询用户

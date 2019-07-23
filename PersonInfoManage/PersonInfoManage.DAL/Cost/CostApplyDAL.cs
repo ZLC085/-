@@ -215,7 +215,7 @@ namespace PersonInfoManage.DAL.Cost
             for(int i = 0; i < db.Rows.Count; i++)
             {
                 DataRow row = db.Rows[i];
-                list.Add((string)row["category_name"]);
+                list.Add((int)row["id"]+"."+(string)row["category_name"]);
             }
             return list;
         }
