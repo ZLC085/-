@@ -67,5 +67,17 @@ namespace PersonInfoManage
                 MessageBoxCustom.Show(result.Message, title, this);
             }
         }
+
+        private void BtnUpdateFile_Click(object sender, EventArgs e)
+        {
+            PersonDetailForm pdForm = new PersonDetailForm();
+            pdForm.Text = "修改文件名";
+            pdForm.ShowDialog();
+        }
+
+        private void BtnDelFile_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
