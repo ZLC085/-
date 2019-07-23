@@ -68,12 +68,6 @@ namespace PersonInfoManage.Test
             //int userId = 32;
             //Console.WriteLine(perm.AddU2g(groupId, userId));
 
-            //测试函数：perm.Addg2m(groupId,menuId)  测试成功BLL
-            //PermBLL perm = new PermBLL();
-            //int groupId = 26;
-            //int menuId = 4;
-            //Console.WriteLine(perm.AddG2m(groupId, menuId));
-
             //测试函数:perm.Update(group) 测试成功BLL
             //PermBLL perm = new PermBLL();
             //sys_group group = new sys_group();
@@ -87,11 +81,12 @@ namespace PersonInfoManage.Test
             //int groupId = 19;
             //Console.WriteLine(perm.Del(groupId));
 
-            //测试函数：perm.DelG2m(groupId) 测试成功BLL
+            //测试函数：perm.perm(groupId) 测试成功BLL
             //PermBLL perm = new PermBLL();
-            //int groupId = 23;
-            //int menuId = 6;
-            //Console.WriteLine(perm.DelG2m(groupId, menuId));
+            //int groupId = 26;
+            //int[] menu_id = { 4, 5, 6 };     
+            //List<int> menuId = new List<int>(menu_id);
+            //Console.WriteLine(perm.Perm(groupId, menuId));
 
             //测试函数：perm.DelG2u(groupId) 测试成功BLL
             //PermBLL perm = new PermBLL();

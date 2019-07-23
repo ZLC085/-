@@ -33,7 +33,7 @@ namespace PersonInfoManage.DAL.System
 
 
         /// <summary>
-        /// 关联用户与用户组
+        /// 添加用户进用户组
         /// </summary>
         /// <param name="userId">用户id</param>
         /// <param name="groupId">用户组id</param>
@@ -85,20 +85,17 @@ namespace PersonInfoManage.DAL.System
 
 
         /// <summary>
-        /// 删除用户组和权限关联
+        /// 删除用户组的权限
         /// </summary>
         /// <param name="groupId">用户组id</param>
-        /// <param name="menuId">权限id</param>
         /// <returns>删除条数</returns>
-        public int DelG2m(int groupId,int menuId)
+        public int DelG2m(int groupId)
         {
             int res = 0;
-            string sql = "Delete from sys_g2m where group_id='" + groupId + "' and menu_id='" + menuId + "'";
+            string sql = "Delete from sys_g2m where group_id='" + groupId + "'";
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
             return res;
         }
-
-       
 
         /// <summary>
         /// 删除用户组
@@ -148,16 +145,11 @@ namespace PersonInfoManage.DAL.System
                     tx.Dispose();
                     conn.Dispose();
                 }
-            }
-     
-          
-         
-         
-            
+            }           
         }
 
         /// <summary>
-        /// 删除用户组和用户关联
+        /// 删除用户中的用户
         /// </summary>
         /// <param name="userId">用户id</param>
         /// <param name="groupId">用户id</param>
@@ -166,19 +158,6 @@ namespace PersonInfoManage.DAL.System
         {
             int res;
             string sql = "delete from sys_u2g where user_id='" + userId + "' and group_id= '" + groupId + "' ";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-            return res;
-        }
-
-        /// <summary>
-        /// 删除用户关联用户组
-        /// </summary>
-        /// <param name="userId">用户id</param>
-        /// <returns>删除条数</returns>
-        public int DelU2g(int userId)
-        {
-            int res;
-            string sql = "delete from sys_u2g where user_id='" + userId + "' ";
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
             return res;
         }

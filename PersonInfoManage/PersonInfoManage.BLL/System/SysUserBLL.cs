@@ -83,18 +83,21 @@ namespace PersonInfoManage.BLL.System
         public Result Del(int UserId)
         {
             SysUserDAL Sysuser = new SysUserDAL();
-            PermDAL group = new PermDAL();
-            LogUserDAL log = new LogUserDAL();
             Result res = new Result();
             try
             {
-                group.DelU2g(UserId);
-                log.DelUser(UserId);
-                Sysuser.Del(UserId);
-                res.Code = RES.OK;
-                res.Message = "删除成功！";
-                return res;
-
+                if (Sysuser.Del(UserId) == 0)
+                {
+                    res.Code = RES.ERROR;
+                    res.Message = "修改失败！";
+                    return res;
+                }
+                else
+                {
+                    res.Code = RES.OK;
+                    res.Message = "删除成功！";
+                    return res;
+                }
             }
             catch
             {
