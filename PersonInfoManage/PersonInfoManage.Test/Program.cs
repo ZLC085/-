@@ -408,6 +408,14 @@ namespace PersonInfoManage.Test
             //Console.WriteLine(plan.id+" "+plan.cost_type+" "+plan.start_time+" "+plan.end_time+" "+plan.money);
             //}
 
+            ///测试函数：costPlan.QuerySum(DateTime SrartTime, DateTime EndTime)
+            ///返回类型：decimal 
+            ///测试结果：成功
+            ///参数中必需的属性:
+            /// plan:start_time,end_time,money
+            //CostPlanDAL costPlan = new CostPlanDAL();
+            //Console.WriteLine(costPlan.QuerySum(new DateTime(2017,1,1),new DateTime (2017,2,1)));
+
             ///测试函数：CostStastic.Query(Dictionary<string, object> conditions)
             ///返回类型：Dictionary<cost_main, List<cost_detail>> 
             ///测试结果：成功
