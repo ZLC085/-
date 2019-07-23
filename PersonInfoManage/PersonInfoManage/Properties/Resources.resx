@@ -124,6 +124,9 @@
   <data name="修改" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\修改.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="projects2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\projects2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="重置密码" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\重置密码.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -135,6 +138,9 @@
   </data>
   <data name="详情" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\详情.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="用户组" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\用户组.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="首页11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\首页11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,10 +169,10 @@
   <data name="人员信息" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\人员信息.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="用户组" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\用户组.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="设置" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\设置.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="h6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\h6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
