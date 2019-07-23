@@ -49,6 +49,13 @@ namespace PersonInfoManage
             return button;
         }
 
+        /// <summary>
+        /// 只有确认按钮的弹窗
+        /// </summary>
+        /// <param name="text">弹窗内容文本</param>
+        /// <param name="caption">弹窗标题</param>
+        /// <param name="ownerForm">所属父窗口</param>
+        /// <returns>DialogResult</returns>
         public static DialogResult Show(string text, string caption, Form ownerForm)
         {
             Form form = FormContent(text, caption, ownerForm);
@@ -64,6 +71,14 @@ namespace PersonInfoManage
             return form.ShowDialog();
         }
 
+        /// <summary>
+        /// 包含确认和取消按钮的弹窗
+        /// </summary>
+        /// <param name="text">弹窗内容文本</param>
+        /// <param name="caption">弹窗标题</param>
+        /// <param name="buttons">MessageBoxButtons 按钮类型</param>
+        /// <param name="ownerForm">所属父窗口</param>
+        /// <returns>DialogResult</returns>
         public static DialogResult Show(string text, string caption, MessageBoxButtons buttons, Form ownerForm)
         {
             Form form = FormContent(text, caption, ownerForm);
