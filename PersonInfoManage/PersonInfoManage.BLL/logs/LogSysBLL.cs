@@ -51,9 +51,9 @@ namespace PersonInfoManage.BLL.logs
         /// </summary>
         /// <param name="create_time"></param>
         /// <returns></returns>
-        public List<log_sys> Query(DateTime create_time)
+        public List<log_sys> Query(DateTime start_time,DateTime end_time)
         {
-            List<log_sys> sysList = new LogSysDAL().Query(create_time);
+            List<log_sys> sysList = new LogSysDAL().Query(start_time, end_time);
             if (sysList == null)
             {
                 Console.WriteLine("没有查到相关信息！");
