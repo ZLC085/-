@@ -55,6 +55,7 @@ namespace PersonInfoManage.DAL.Cost
             //更新费用金额信息和状态
             sqlArray[0]= "update cost_main set " +
                 nameof(cost_main.apply_money) + "=" + costMain.apply_money +
+                nameof(cost_main.approval_id) + "=" +costMain.approval_id+
                 " where id='" + costMain.id + "'";
             //再删除cost_detail表数据
             sqlArray[1] = "delete from cost_detail where "+nameof(cost_detail.cost_id)+"='"+costMain.id+"'";
@@ -171,37 +172,37 @@ namespace PersonInfoManage.DAL.Cost
             //执行查询获取数据并封装返回
             List<cost_main> listMain = new List<cost_main>();
             DataTable dataTable = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0];
-            //for (int i = 0; i < dataTable.Rows.Count; i++)
-            //{
-            //    DataRow row = dataTable.Rows[i];
-            //    cost_main main = new cost_main
-            //    {
-            //        id = (int)row["id"],
-            //        apply_id = (int)row["apply_id"],
-            //        approval_id = (int)row["approval_id"],
-            //        apply_money = (decimal)row["apply_money"],
-            //        status = (byte)row["status"],
-            //        apply_time = (DateTime)row["apply_time"],
-            //        remark = (string)row["remark"]
-            //    };
-            //    if(row["approval_time"] == DBNull.Value)
-            //    {
-            //        main.approval_time = null;
-            //    }
-            //    else
-            //    {
-            //        main.approval_time =(DateTime) row["approval_time"];
-            //    }
-            //    if (row["approval_money"] == DBNull.Value)
-            //    {
-            //        main.approval_money = null;
-            //    }
-            //    else
-            //    {
-            //        main.approval_money = (decimal)row["approval_money"];
-            //    }
-            //    listMain.Add(main);
-            //}
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                DataRow row = dataTable.Rows[i];
+                cost_main main = new cost_main
+                {
+                    id = (int)row["id"],
+                    apply_id = (int)row["apply_id"],
+                    approval_id = (int)row["approval_id"],
+                    apply_money = (decimal)row["apply_money"],
+                    status = (byte)row["status"],
+                    apply_time = (DateTime)row["apply_time"],
+                    remark = (string)row["remark"]
+                };
+                if (row["approval_time"] == DBNull.Value)
+                {
+                    main.approval_time = null;
+                }
+                else
+                {
+                    main.approval_time = (DateTime)row["approval_time"];
+                }
+                if (row["approval_money"] == DBNull.Value)
+                {
+                    main.approval_money = null;
+                }
+                else
+                {
+                    main.approval_money = (decimal)row["approval_money"];
+                }
+                listMain.Add(main);
+            }
             return listMain;
         }
         /// <summary>

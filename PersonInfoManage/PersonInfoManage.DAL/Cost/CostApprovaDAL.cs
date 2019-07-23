@@ -25,6 +25,7 @@ namespace PersonInfoManage.DAL.Cost
             string sql = "update cost_main set "+
                 nameof(cost_main.approval_time)+"='"+main.approval_time+"',"+
                 nameof(cost_main.approval_money)+"='"+main.approval_money+"',"+
+                nameof(cost_main.approval_id)+"="+main.approval_id+","+
                 nameof(cost_main.status)+"='"+main.status+"',"+
                 nameof(cost_main.remark)+"=N'"+main.remark+"' where id='"+main.id+"'";
             return SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
