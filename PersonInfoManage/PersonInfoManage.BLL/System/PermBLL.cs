@@ -144,8 +144,7 @@ namespace PersonInfoManage.BLL.System
             Result res = new Result();
             try
             {
-                perm.Delu(id);
-                perm.Delm(id);
+
                 perm.Del(id);
                 res.Code = RES.OK;
                 res.Message = "删除成功！";
