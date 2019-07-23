@@ -10,6 +10,7 @@ using PersonInfoManage.DAL.Cost;
 using PersonInfoManage.BLL.System;
 using PersonInfoManage.BLL.Login;
 using PersonInfoManage.DAL.System;
+using PersonInfoManage.BLL.PersonInfo;
 
 namespace PersonInfoManage.Test
 {
@@ -31,7 +32,7 @@ namespace PersonInfoManage.Test
             //SysDict.dict_name = "";
             //SysDict.id = 11;
             //Console.WriteLine(set.Update(SysDict));
-
+        
             //测试set.Del(id)
             //SysSettingBLL set = new SysSettingBLL();
             //sys_dict SysDict = new sys_dict();         
@@ -368,6 +369,7 @@ namespace PersonInfoManage.Test
             ///参数中必需的属性:
             ///     id:费用规划id
 
+
             //CostPlan costPlan = new CostPlan();
             //List<cost_plan> listPlan = costPlan.GetById(15);
             //foreach(cost_plan plan in listPlan)
@@ -451,7 +453,7 @@ namespace PersonInfoManage.Test
 
             //PersonFileDAL files = new PersonFileDAL();
             //person_file A = new person_file();
-            //A.id = 12;
+            //A.id = 28;
             //A.filename = "zhao";
             //Console.WriteLine(files.Update(A));
 
@@ -629,6 +631,38 @@ namespace PersonInfoManage.Test
             //}
 
             //Console.WriteLine("END...");
+
+
+
+
+
+
+            ///PersonFileBLL测试
+            ///
+            ///修改文件名
+            ///
+            ///测试结果：
+            ///
+            //PersonFileDAL personFile = new PersonFileDAL();
+            //person_file A = new person_file();
+            //List<person_file> ListFile = new List<person_file>();
+            //ListFile.Add(A);
+            //Console.WriteLine(personFile.Update("123",28));
+
+
+
+            ///PersonFileBLL测试
+            ///
+            ///通过personId查询文件
+            ///
+            ///测试结果：
+            ///
+            //PersonFileDAL personFileDAL = new PersonFileDAL();
+            //List<person_file> listFile = personFileDAL.GetByPersonId(1001);
+            //foreach (person_file A in listFile)
+            //{
+            //    Console.WriteLine(A.person_id + " " + A.id + "  " + A.filename + " " + A.filetype + " " + A.create_time + " " + A.modify_time);
+            //}
 
             Console.ReadKey();
         }
