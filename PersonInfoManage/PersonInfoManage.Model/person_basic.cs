@@ -6,7 +6,7 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class person_basic
+    public class person_basic
     {
         public int id { get; set; }
 

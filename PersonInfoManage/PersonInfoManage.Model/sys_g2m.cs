@@ -6,7 +6,7 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class sys_g2m
+    public class sys_g2m
     {
         public int id { get; set; }
 

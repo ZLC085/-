@@ -6,19 +6,17 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public class cost_plan
+    public class sys_org
     {
         public int id { get; set; }
 
-        public int cost_type { get; set; }
+        public int parent_id { get; set; }
 
         [StringLength(50)]
-        public string cost_type_name { get; set; }
+        public string org_name { get; set; }
 
-        public decimal money { get; set; }
+        public DateTime? create_time { get; set; }
 
-        public DateTime start_time { get; set; }
-
-        public DateTime end_time { get; set; }
+        public DateTime? modify_time { get; set; }
     }
 }

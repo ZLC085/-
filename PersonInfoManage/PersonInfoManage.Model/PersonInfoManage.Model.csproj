@@ -55,7 +55,6 @@
     <Compile Include="cost_detail.cs" />
     <Compile Include="cost_main.cs" />
     <Compile Include="cost_plan.cs" />
-    <Compile Include="EFModel.cs" />
     <Compile Include="log_sys.cs" />
     <Compile Include="log_user.cs" />
     <Compile Include="person_basic.cs" />
@@ -65,6 +64,7 @@
     <Compile Include="sys_g2m.cs" />
     <Compile Include="sys_group.cs" />
     <Compile Include="sys_menu.cs" />
+    <Compile Include="sys_org.cs" />
     <Compile Include="sys_u2g.cs" />
     <Compile Include="sys_user.cs" />
     <Compile Include="view_cost_main_detail.cs" />
