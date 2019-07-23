@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxCostType = new System.Windows.Forms.ComboBox();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.labelX32 = new DevComponents.DotNetBar.LabelX();
             this.btn = new DevComponents.DotNetBar.ButtonX();
@@ -44,7 +44,7 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx1.Controls.Add(this.comboBox1);
+            this.panelEx1.Controls.Add(this.comboBoxCostType);
             this.panelEx1.Controls.Add(this.labelX4);
             this.panelEx1.Controls.Add(this.labelX32);
             this.panelEx1.Controls.Add(this.btn);
@@ -64,13 +64,17 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 0;
             // 
-            // comboBox1
+            // comboBoxCostType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(195, 86);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(176, 20);
-            this.comboBox1.TabIndex = 69;
+            this.comboBoxCostType.FormattingEnabled = true;
+            this.comboBoxCostType.Items.AddRange(new object[] {
+            "test1",
+            "test2",
+            "test3"});
+            this.comboBoxCostType.Location = new System.Drawing.Point(195, 86);
+            this.comboBoxCostType.Name = "comboBoxCostType";
+            this.comboBoxCostType.Size = new System.Drawing.Size(176, 20);
+            this.comboBoxCostType.TabIndex = 69;
             // 
             // labelX4
             // 
@@ -169,12 +173,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 306);
             this.Controls.Add(this.panelEx1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddCostDetailForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "添加费用明细";
+            this.Load += new System.EventHandler(this.AddCostDetailForm_Load);
             this.panelEx1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -190,6 +197,6 @@
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.LabelX labelX32;
         private DevComponents.DotNetBar.LabelX labelX4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxCostType;
     }
 }

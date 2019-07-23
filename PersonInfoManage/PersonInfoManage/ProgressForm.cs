@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace PersonInfoManage
 {
-    public partial class RoleSetForm : Form
+    public partial class ProgressForm : Form
     {
-        public RoleSetForm()
+        public ProgressForm()
         {
             InitializeComponent();
+            circularProgress1.IsRunning = true;
         }
     }
 }

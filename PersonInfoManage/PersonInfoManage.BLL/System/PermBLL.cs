@@ -49,24 +49,19 @@ namespace PersonInfoManage.BLL.System
         /// <param name="userId"></param>
         /// <param name="groupId"></param>
         /// <returns>影响条数</returns>
-        public Result AddU2g(int groupId, int userId)
+        public Result AddU2g(int groupId,List<int> user_id)
         {
             Result res = new Result();
             PermDAL perm = new PermDAL();
             try
             {
-                if (perm.AddU2g(groupId, userId) == 0)
+                foreach (var userId in user_id)
                 {
-                    res.Code = RES.ERROR;
-                    res.Message = "添加失败！";
-                    return res;
+                    perm.AddU2g(groupId, userId);                 
                 }
-                else
-                {
-                    res.Code = RES.OK;
-                    res.Message = "添加成功！";
-                    return res;
-                }
+                res.Code = RES.OK;
+                res.Message = "添加成功！";
+                return res;
             }
             catch
             {
@@ -82,24 +77,19 @@ namespace PersonInfoManage.BLL.System
         /// <param name="groupId">用户组id</param>
         /// <param name="menuId">菜单id</param>
         /// <returns>修改条数</returns>
-        public Result AddG2m(int groupId,int menuId)
+        public Result AddG2m(int groupId, List<int> menu_id)
         {
             PermDAL perm = new PermDAL();
             Result res = new Result();
             try
             {
-                if (perm.AddG2m(groupId, menuId) == 0)
+                foreach (var menuId in menu_id)
                 {
-                    res.Code = RES.ERROR;
-                    res.Message = "修改失败！";
-                    return res;
+                    perm.AddG2m(groupId, menuId);                    
                 }
-                else
-                {
-                    res.Code = RES.OK;
-                    res.Message = "修改成功！";
-                    return res;
-                }
+                res.Code = RES.OK;
+                res.Message = "修改成功！";
+                return res;
             }
             catch
             {
@@ -154,8 +144,7 @@ namespace PersonInfoManage.BLL.System
             Result res = new Result();
             try
             {
-                perm.Delu(id);
-                perm.Delm(id);
+
                 perm.Del(id);
                 res.Code = RES.OK;
                 res.Message = "删除成功！";
@@ -174,24 +163,19 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="id"></param>
         /// <returns>影响条数</returns>
-        public Result DelG2m(int groupId,int menuId )
+        public Result DelG2m(int groupId, List<int> menu_id)
         {
             PermDAL perm = new PermDAL();
             Result res = new Result();
             try
             {
-                if (perm.DelG2m(groupId,menuId) == 0)
+                foreach (var menuId in menu_id)
                 {
-                    res.Code = RES.ERROR;
-                    res.Message = "删除失败！";
-                    return res;
+                    perm.DelG2m(groupId, menuId);
                 }
-                else
-                {
                     res.Code = RES.OK;
                     res.Message = "删除成功！";
-                    return res;
-                }
+                    return res;               
             }
             catch
             {
@@ -206,24 +190,19 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="id"></param>
         /// <returns>影响条数</returns>
-        public Result DelG2u(int groupId,int userId)
+        public Result DelG2u(int groupId, List<int> user_id)
         {
             PermDAL perm = new PermDAL();
             Result res = new Result();
             try
             {
-                if (perm.DelG2u(groupId,userId) == 0)
+                foreach (var userId in user_id)
                 {
-                    res.Code = RES.ERROR;
-                    res.Message = "删除失败！";
-                    return res;
-                }
-                else
-                {
+                    perm.DelG2u(groupId, userId);
+                }             
                     res.Code = RES.OK;
                     res.Message = "删除成功！";
-                    return res;
-                }
+                    return res;                
             }
             catch
             {

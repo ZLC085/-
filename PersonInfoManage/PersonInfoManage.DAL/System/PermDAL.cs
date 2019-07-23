@@ -19,7 +19,7 @@ namespace PersonInfoManage.DAL.System
         ///添加用户组
         /// </summary>
         /// <param name="group">用户组信息</param>
-        /// <returns>返回添加条数</returns>
+        /// <returns>添加条数</returns>
         public int Add(sys_group group)
         {
             int res;
@@ -28,6 +28,7 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlparameter2 = new SqlParameter("@p2", group.remark);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql1, sqlparameter1, sqlparameter2);
             return res;
+
         }
 
 
@@ -69,7 +70,7 @@ namespace PersonInfoManage.DAL.System
         /// 用户组信息修改
         /// </summary>
         /// <param name="group">用户组信息</param>
-        /// <returns>修改条数</returns>
+        /// <returns>返回修改条数</returns>
         public int Update(sys_group group)
         {
             int res;
@@ -79,6 +80,7 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlParameter3 = new SqlParameter("@p3", group.remark);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter1, sqlParameter2,sqlParameter3);
             return res;
+
         }
 
 
@@ -96,31 +98,7 @@ namespace PersonInfoManage.DAL.System
             return res;
         }
 
-        /// <summary>
-        /// 删除用户组准备—清除权限关联
-        /// </summary>
-        /// <param name="groupId">用户组id</param>
-        /// <returns>删除条数</returns>
-        public int Delm(int groupId)
-        {
-            int res = 0;
-            string sql = "Delete from sys_g2m where group_id='" + groupId + "'";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-            return res;
-        }
-
-        /// <summary>
-        /// 删除用户组准备—清除用户关联
-        /// </summary>
-        /// <param name="groupId">用户组id</param>
-        /// <returns>删除条数</returns>
-        public int Delu(int groupId)
-        {
-            int res;
-            string sql = "delete from sys_u2g where group_id='" + groupId + "'";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-            return res;
-        }
+       
 
         /// <summary>
         /// 删除用户组
@@ -129,10 +107,53 @@ namespace PersonInfoManage.DAL.System
         /// <returns>删除条数</returns>
         public int Del(int id)
         {
-            int res = 0;
-            string sql = "Delete from sys_group where id='" + id + "'";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-            return res;
+            string sql1 = "delete from sys_g2m where group_id='" + id + "'";
+            string sql2 = "delete from sys_u2g where group_id='" + id + "'";
+            string sql3 = "delete from sys_group where id='" + id + "'";
+            List<String> SQLStringList = new List<string>();
+            SQLStringList.Add(sql1);
+            SQLStringList.Add(sql2);
+            SQLStringList.Add(sql3);
+            using (SqlConnection conn = new SqlConnection(ConStr))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                SqlTransaction tx = conn.BeginTransaction();
+                cmd.Transaction = tx;
+                try
+                {
+                    int count = 0;
+                    for (int n = 0; n < SQLStringList.Count; n++)
+                    {
+                        string strsql = SQLStringList[n];
+                        if (strsql.Trim().Length > 1)
+                        {
+                            cmd.CommandText = strsql;
+                            count += cmd.ExecuteNonQuery();
+                        }
+                    }
+                    tx.Commit();
+                    return count;
+                }
+                catch (Exception e)
+                {
+                    tx.Rollback();
+                    Console.WriteLine(e.Message);
+                    return 0;
+                }
+                finally
+                {
+                    conn.Close();
+                    tx.Dispose();
+                    conn.Dispose();
+                }
+            }
+     
+          
+         
+         
+            
         }
 
         /// <summary>
