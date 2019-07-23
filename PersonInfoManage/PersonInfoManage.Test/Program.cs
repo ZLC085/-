@@ -82,9 +82,9 @@ namespace PersonInfoManage.Test
             //Console.WriteLine(perm.Update(group));
 
             //测试函数：perm.Del(groupId) 测试成功BLL
-            PermBLL perm = new PermBLL();
-            int groupId = 19;
-            Console.WriteLine(perm.Del(groupId));
+            //PermBLL perm = new PermBLL();
+            //int groupId = 19;
+            //Console.WriteLine(perm.Del(groupId));
 
             //测试函数：perm.DelG2m(groupId) 测试成功BLL
             //PermBLL perm = new PermBLL();
