@@ -332,25 +332,25 @@ namespace PersonInfoManage.Test
 
             //CostPlanDAL costplan = new CostPlanDAL();
             //cost_plan plan = new cost_plan();
-            //plan.cost_type = 3;
-            //plan.cost_type_name = "出行";
-            //plan.money = 99;
-            //plan.start_time = new DateTime(2017, 1, 1);
-            //plan.end_time = new DateTime(2017, 2, 1);
+            //plan.cost_type = 5;
+            //plan.cost_type_name = "餐饮";
+            //plan.money = 858;
+            //plan.start_time = new DateTime(2019, 3, 1);
+            //plan.end_time = new DateTime(2019, 5, 1);
 
 
             //cost_plan plan2 = new cost_plan();
-            //plan2.cost_type = 3;
-            //plan2.cost_type_name = "交通";
-            //plan2.money = 222;
-            //plan2.start_time = new DateTime(2017, 1, 1);
-            //plan2.end_time = new DateTime(2017, 3, 1);
+            //plan2.cost_type = 4;
+            //plan2.cost_type_name = "住宿";
+            //plan2.money = 943;
+            //plan2.start_time = new DateTime(2019, 2, 1);
+            //plan2.end_time = new DateTime(2019, 4, 1);
 
-            //List<cost_plan> ListPlan = new List<cost_plan>();
-            //ListPlan.Add(plan);
-            //ListPlan.Add(plan2);
+            //List<cost_plan> listplan = new List<cost_plan>();
+            //listplan.Add(plan);
+            //listplan.Add(plan2);
 
-            //Console.WriteLine(costplan.Add(ListPlan));
+            //Console.WriteLine(costplan.Add(listplan));
 
             ///测试函数：costPlan.Update(List<cost_plan> ListPlan)
             ///返回类型：int
@@ -405,6 +405,15 @@ namespace PersonInfoManage.Test
             //{
             //    Console.WriteLine(plan.id + " " + plan.cost_type + " " + plan.cost_type_name + " " + plan.start_time + " " + plan.end_time + " " + plan.money);
             //}
+
+
+            ///测试函数：costPlan.QuerySum(DateTime SrartTime, DateTime EndTime)
+            ///返回类型：decimal 
+            ///测试结果：成功
+            ///参数中必需的属性:
+            /// plan:start_time,end_time,money
+            //CostPlanDAL costPlan = new CostPlanDAL();
+            //Console.WriteLine(costPlan.QuerySum(new DateTime(2017,1,1),new DateTime (2017,2,1)));
 
             ///测试函数：CostStastic.Query(Dictionary<string, object> conditions)
             ///返回类型：List<cost>
