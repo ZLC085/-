@@ -6,7 +6,7 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class view_sys_g2m
+    public class view_sys_g2m
     {
         [Key]
         [Column(Order = 0)]

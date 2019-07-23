@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace PersonInfoManage.Model
 {
-    public class cost
+    public enum sys_dict_type
     {
-        public cost_main main { get; set; }
-        public List<cost_detail> DetailList { get; set; }
+        Cost,
+        Person,
+        NativePlace
     }
 }
