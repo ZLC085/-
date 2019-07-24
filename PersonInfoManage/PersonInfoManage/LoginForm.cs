@@ -82,15 +82,19 @@ namespace PersonInfoManage
                     SysUserBLL userbll = new SysUserBLL();
                     user1.username = UserNameTextBox.Text;
                     userinfo = userbll.Select(user1);
-                    string idcode = userinfo[0].ToString();
-                    User user = new User()
+                    int id;
+                    foreach (var user2 in userinfo)
                     {
-                        UserName = UserNameTextBox.Text,
-                        UserId = int.Parse(idcode),
-                        IsChecked = true,
-                    };
-                    LoginInfo = user;    //尚未测试
-                    
+                        id = user2.id;
+                        string idcode = userinfo[0].ToString();
+                        User user = new User()
+                        {
+                            UserName = UserNameTextBox.Text,
+                            UserId = id,
+                            IsChecked = true,
+                        };
+                        LoginInfo = user;    //尚未测试
+                    } 
                 }
             }
             else
