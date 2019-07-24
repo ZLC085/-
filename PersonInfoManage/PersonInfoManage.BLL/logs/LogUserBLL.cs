@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersonInfoManage.BLL.logs
+namespace PersonInfoManage.BLL.Logs
 {
     class LogUserBLL
     {
@@ -19,7 +19,7 @@ namespace PersonInfoManage.BLL.logs
         public Result Del(int id)
         {
             Result r = new Result();
-            if (new LogUserDAL().Del(id)>0)
+            if (new LogUserDAL().Del(id) > 0)
             {
                 r.Code = RES.OK;
                 r.Message = "删除成功！";
@@ -51,9 +51,9 @@ namespace PersonInfoManage.BLL.logs
         /// <param name="username"></param>
         /// <param name="create_time"></param>
         /// <returns></returns>
-        public List<log_user> Query(string username, string operation,DateTime start_time,DateTime end_time)
+        public List<log_user> Query(string username, string operation, DateTime start_time, DateTime end_time)
         {
-            List<log_user> userList = new LogUserDAL().Query(username, operation,start_time,end_time);
+            List<log_user> userList = new LogUserDAL().Query(username, operation, start_time, end_time);
             if (userList == null)
             {
                 Console.WriteLine("没有查到相关信息！");

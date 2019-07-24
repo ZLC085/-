@@ -90,6 +90,12 @@
     </Compile>
     <Compile Include="Loading\LoadingHelper.cs" />
     <Compile Include="MessageBoxCustom.cs" />
+    <Compile Include="PersonInfo\DelFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonInfo\DelFile.Designer.cs">
+      <DependentUpon>DelFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="PersonInfo\UpdateFileName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Loading\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonInfo\DelFile.resx">
+      <DependentUpon>DelFile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PersonInfo\UpdateFileName.resx">
       <DependentUpon>UpdateFileName.cs</DependentUpon>
