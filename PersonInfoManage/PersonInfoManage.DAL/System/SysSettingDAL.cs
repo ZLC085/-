@@ -12,7 +12,7 @@ namespace PersonInfoManage.DAL.System
 {
     public class SysSettingDAL : DALBase
     {
-       
+
         /// <summary>
         /// 添加数据字典
         /// </summary>
@@ -23,12 +23,12 @@ namespace PersonInfoManage.DAL.System
         public int Add(sys_dict SysDict)
         {
             int res = 0;
-            string sql = "insert into sys_dict (dict_name,category_name,create_time,modify_time) values(@p2,@p1,getdate(),getdate())";
+            string sql = "insert into sys_dict (category_name,create_time,modify_time) values(@p1,getdate(),getdate()) where dict_name = @p2";
             SqlParameter sqlParameter = new SqlParameter("@p1", SysDict.category_name);
             SqlParameter sqlParameter2 = new SqlParameter("@p2", SysDict.dict_name);
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter,sqlParameter2);
-            return res;    
-                    
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter2);
+            return res;
+
         }
 
         /// <summary>
@@ -41,13 +41,12 @@ namespace PersonInfoManage.DAL.System
             int res = 0;
             SqlParameter sqlParameter = new SqlParameter("@p1", SysDict.category_name);
             SqlParameter sqlparameter2 = new SqlParameter("@p2", SysDict.id);
-            SqlParameter sqlparameter3 = new SqlParameter("@p3", SysDict.dict_name);
-            string sql = "update sys_dict set category_name = @p1,dict_name = @p3 where id = @p2";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlparameter2,sqlparameter3);
-            return res;      
-                 
-        }
 
+            string sql = "update sys_dict set category_name = @p1,modify_time = getdate() where id = @p2";
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlparameter2);
+            return res;
+
+        }
         /// <summary>
         /// 通过Id删除数据字典
         /// </summary>
