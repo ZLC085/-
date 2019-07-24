@@ -90,12 +90,6 @@
     </Compile>
     <Compile Include="Loading\LoadingHelper.cs" />
     <Compile Include="MessageBoxCustom.cs" />
-    <Compile Include="PersonInfo\UpdateFileName.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PersonInfo\UpdateFileName.Designer.cs">
-      <DependentUpon>UpdateFileName.cs</DependentUpon>
-    </Compile>
     <Compile Include="System\AddCategoreTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,9 +194,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Loading\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PersonInfo\UpdateFileName.resx">
-      <DependentUpon>UpdateFileName.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="System\AddCategoreTypeForm.resx">
       <DependentUpon>AddCategoreTypeForm.cs</DependentUpon>
