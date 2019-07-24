@@ -134,9 +134,9 @@ namespace PersonInfoManage
 
         private void BtnUpdateUser_Click(object sender, EventArgs e)
         {
-            CostPlanForm costPlanForm = new CostPlanForm();
-            costPlanForm.Text = "用户信息修改";
-            costPlanForm.ShowDialog();
+            AddUserForm addUserForm = new AddUserForm();
+            addUserForm.Text = "用户信息修改";
+            addUserForm.ShowDialog();
         }
 
         private void BtnGroupManage_Click(object sender, EventArgs e)

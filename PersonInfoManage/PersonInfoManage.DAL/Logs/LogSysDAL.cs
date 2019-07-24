@@ -70,10 +70,18 @@ namespace PersonInfoManage.DAL.Logs
         /// </summary>
         /// <param name="conditions">输入条件</param>
         /// <returns>系统运行日志</returns>
-        public List<log_sys> Query(DateTime create_time)
+        public List<log_sys> Query(DateTime start_time,DateTime end_time)
         {
-            List<log_sys> syslog = new List<log_sys>();                 
-            string sql = "select * from log_sys where create_time>='"+new DateTime(create_time.Year, create_time.Month, create_time.Day,0,0,0)+"'and create_time<='"+new DateTime(create_time.Year, create_time.Month, create_time.Day,23,59,59) +"'";
+            List<log_sys> syslog = new List<log_sys>();
+            if (start_time.CompareTo(new DateTime(1, 1, 1)) == 0)//如果输入起始时间为空，则默认起始时间为2000年1月1日
+            {
+                start_time = new DateTime(2000, 1, 1);
+            }
+            if (end_time.CompareTo(new DateTime(1, 1, 1)) == 0)//如果输入终止时间为空，则默认起始时间为6000年12月31日
+            {
+                end_time = new DateTime(6000, 12, 31);
+            }
+            string sql = "select * from log_sys where create_time>='"+new DateTime(start_time.Year, start_time.Month, start_time.Day,0,0,0)+"'and create_time<='"+new DateTime(end_time.Year, end_time.Month, end_time.Day,23,59,59) +"'";
            // Console.WriteLine(sql);
             DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)

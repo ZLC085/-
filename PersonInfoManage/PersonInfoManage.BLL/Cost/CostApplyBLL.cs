@@ -14,7 +14,7 @@ namespace PersonInfoManage.BLL.Cost
         /// <summary>
         /// 添加费用单
         /// </summary>
-        /// <param name="cost">费用单对象main：applicant、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
+        /// <param name="cost">费用单对象main：apply_id、approval_id、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
         /// <returns>添加是否成功</returns>
         public Result Add(cost cost)
         {
@@ -40,7 +40,7 @@ namespace PersonInfoManage.BLL.Cost
         /// <summary>
         /// 更新费用单信息
         /// </summary>
-        /// <param name="cost">费用单对象main：apply_money、id  费用单详情列表detailList:cost_type、money、cost_type_name</param>
+        /// <param name="cost">费用单对象main：approval_id、apply_money、id  费用单详情列表detailList:cost_type、money、cost_type_name</param>
         /// <returns>更新是否成功</returns>
         public Result Update(cost cost)
         {
@@ -111,7 +111,7 @@ namespace PersonInfoManage.BLL.Cost
         /// <summary>
         /// 根据组合条件查询费用单（可分页）
         /// </summary>
-        /// <param name="consitions">条件键值对key: "id", "applicant", "status", "start_time", "end_time","page","limit"</param>
+        /// <param name="consitions">条件键值对key: "id", "apply_id", "status", "start_time", "end_time","page","limit"</param>
         /// <returns>费用单列表</returns>
         public List<cost> Query(Dictionary<string,object> conditions)
         {
@@ -127,6 +127,14 @@ namespace PersonInfoManage.BLL.Cost
                 return new CostApplyDAL().GetCostTypes();
             }
         }
-        
+        /// <summary>
+        /// 获取审批人列表
+        /// </summary>
+        /// <param name="apply_id"></param>
+        /// <returns></returns>
+        public List<string> ApproverInfo(int apply_id)
+        {
+            return new CostApplyDAL().GetApprovalInfo(apply_id);
+        }
     }
 }
