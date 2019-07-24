@@ -73,21 +73,24 @@ namespace PersonInfoManage
                 if (UserNameTextBox.Text == "")
                 {
                     loginTipLabel.Text = "用户名不能为空！";
-                    flag= false;
+                    flag = false;
                 }
                 else
                 {
-                    //List<view_sys_u2g> userinfo = new List<view_sys_u2g>();
-                    //sys_user user1 = new sys_user();
-                    //SysUserBLL userbll = new SysUserBLL();
-                    //user1.username = UserNameTextBox.Text;
-                    //userinfo = userbll.Select(user1);
-                    //user1.id = userinfo;
-                    User user = new User();
-                    user.UserName = UserNameTextBox.Text;
-                    user.UserId = 111;
-                    user.IsChecked = true;                  
-                    LoginInfo = user;
+                    List<view_sys_u2g> userinfo = new List<view_sys_u2g>();
+                    sys_user user1 = new sys_user();
+                    SysUserBLL userbll = new SysUserBLL();
+                    user1.username = UserNameTextBox.Text;
+                    userinfo = userbll.Select(user1);
+                    string idcode = userinfo[0].ToString();
+                    User user = new User()
+                    {
+                        UserName = UserNameTextBox.Text,
+                        UserId = int.Parse(idcode),
+                        IsChecked = true,
+                    };
+                    LoginInfo = user;    //尚未测试
+                    
                 }
             }
             else
