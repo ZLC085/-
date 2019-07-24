@@ -1,4 +1,7 @@
-﻿using System;
+﻿using PersonInfoManage.BLL.Cost;
+using PersonInfoManage.Model;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace PersonInfoManage
@@ -17,6 +20,15 @@ namespace PersonInfoManage
             Timer1.Tick += new EventHandler(Timer1_Tick);
             Timer1.Start();
             metroShell1.SelectedTab = MenuHome;
+            //List<cost> costs = ShowMessage();
+            //if (costs.Count == 0)
+            //{
+            //    this.PnlMessage.Visible = false;
+            //}
+            //else
+            //{
+            //    this.LblMessageCount.Text = costs.Count.ToString();
+            //}
         }
 
         //<王继能_1>
@@ -68,6 +80,42 @@ namespace PersonInfoManage
             }
         }
 
+        //private List<cost> ShowMessage()
+        //{
+        //    String localUser = LocalUserInfo.LoginInfo.UserName;
+        //    CostApprovalBLL costApprovalBLL = new CostApprovalBLL();
+        //    Dictionary<string, object> conditions = new Dictionary<string, object>();
+        //    conditions.Add(nameof(cost_main.approver), localUser);
+        //    conditions.Add(nameof(cost_main.status), 0);
+        //    return costApprovalBLL.Query(conditions);
+        //}
+
+
+        private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.PnlMessage.Visible = false;
+        }
+
+
+        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            metroShell1.SelectedTab = MenuCost;
+            TabControlCost.SelectedTab = TabCostAudit;
+        }
+
+
+        private void MenuHome_CheckedChanged(object sender, EventArgs e)
+        {
+            //List<cost> costs = ShowMessage();
+            //if (costs.Count == 0)
+            //{
+            //    this.PnlMessage.Visible = false;
+            //}
+            //else
+            //{
+            //    this.LblMessageCount.Text = costs.Count.ToString();
+            //}
+        }
         //</苏文杰_2>
 
         //<王尔沛_2>
@@ -86,9 +134,9 @@ namespace PersonInfoManage
 
         private void BtnUpdateUser_Click(object sender, EventArgs e)
         {
-            CostPlanForm costPlanForm = new CostPlanForm();
-            costPlanForm.Text = "用户信息修改";
-            costPlanForm.ShowDialog();
+            AddUserForm addUserForm = new AddUserForm();
+            addUserForm.Text = "用户信息修改";
+            addUserForm.ShowDialog();
         }
 
         private void BtnGroupManage_Click(object sender, EventArgs e)
@@ -188,7 +236,9 @@ namespace PersonInfoManage
             CostPlanForm costPlanForm = new CostPlanForm();
             costPlanForm.ShowDialog();
         }
-        
+
+
+
         //</蒋媛_3>
     }
 }

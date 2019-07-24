@@ -50,12 +50,14 @@
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar.Charts, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.TreeGX, Version=14.1.0.0, Culture=neutral, PublicKeyToken=055db68f670cfeab, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
@@ -295,10 +297,6 @@
       <Project>{92ef8815-c7f7-46a6-b212-b5aea0d3cbe3}</Project>
       <Name>PersonInfoManage.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PersonInfoManage.DAL\PersonInfoManage.DAL.csproj">
-      <Project>{d2a0eb50-afd7-4b21-895f-c317bcad96ff}</Project>
-      <Name>PersonInfoManage.DAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PersonInfoManage.Model\PersonInfoManage.Model.csproj">
       <Project>{57FD6832-9634-42B2-B901-E31DDF01F7C9}</Project>
       <Name>PersonInfoManage.Model</Name>
@@ -351,6 +349,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projects2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

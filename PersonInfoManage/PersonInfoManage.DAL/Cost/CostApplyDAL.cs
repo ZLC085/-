@@ -15,7 +15,7 @@ namespace PersonInfoManage.DAL.Cost
         /// <summary>
         /// 添加费用单
         /// </summary>
-        /// <param name="cost">费用单对象main：applicant、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
+        /// <param name="cost">费用单对象main：apply_id、approval_id、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
         /// <returns>数据表受影响的行数</returns>
         public int Add(cost cost)
         {
@@ -43,7 +43,7 @@ namespace PersonInfoManage.DAL.Cost
         /// <summary>
         /// 更新费用单信息
         /// </summary>
-        /// <param name="cost">费用单对象main：apply_money、id  费用单详情列表detailList:cost_type、money、cost_type_name</param>
+        /// <param name="cost">费用单对象main：approval_id、apply_money、id  费用单详情列表detailList:cost_type、money、cost_type_name</param>
         /// <returns>数据表受影响的行数</returns>
         public int Update(cost cost)
         {
@@ -110,16 +110,16 @@ namespace PersonInfoManage.DAL.Cost
                 listDetail.Add(detail);
             }
             return listDetail;
-        }        
+        }
         /// <summary>
         /// 根据组合条件查询费用单（可分页）
         /// </summary>
-        /// <param name="consitions">条件键值对key: "id", "applicant", "status", "start_time", "end_time","page","limit"</param>
+        /// <param name="conditions">条件键值对key: "id", "apply_id", "status", "start_time", "end_time","page","limit"</param>
         /// <returns>费用单列表</returns>
         public List<cost_main> QueryMain(Dictionary<string, object> conditions)
         {
             //对组合条件参数进行合法性检验，获取合法的查询参数列表
-            string[] keys = new string[] {"id", "applicant", "status", "start_time", "end_time" };
+            string[] keys = new string[] {"id", "apply_id", "status", "start_time", "end_time" };
             List<string> keyList = new List<string>();            
             foreach (string key in conditions.Keys)
             {   

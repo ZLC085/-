@@ -23,16 +23,17 @@ namespace PersonInfoManage.DAL.System
         public int Add(sys_user user)
         {
             int res;
-            string sql = "insert into sys_user (username,name,password,gender,job,phone,email,status,create_time,modify_time) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,getdate(),getdate())";
+            string sql = "insert into sys_user (username,name,password,gender,job,org_id,phone,email,status,create_time,modify_time) values(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,getdate(),getdate())";
             SqlParameter sqlparameter = new SqlParameter("@p1", user.username);
             SqlParameter sqlparameter1 = new SqlParameter("@p2", user.name);
             SqlParameter sqlparameter2 = new SqlParameter("@p3", user.password);
             SqlParameter sqlparameter3 = new SqlParameter("@p4", user.gender);
             SqlParameter sqlparameter4 = new SqlParameter("@p5", user.job);
-            SqlParameter sqlparameter5 = new SqlParameter("@p6", user.phone);
-            SqlParameter sqlparameter6 = new SqlParameter("@p7", user.email);
-            SqlParameter sqlparameter7 = new SqlParameter("@p8", user.status);
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter, sqlparameter1, sqlparameter2, sqlparameter3, sqlparameter4, sqlparameter5, sqlparameter6, sqlparameter7);
+            SqlParameter sqlparameter5 = new SqlParameter("@p6", user.org_id);
+            SqlParameter sqlparameter6 = new SqlParameter("@p7", user.phone);
+            SqlParameter sqlparameter7 = new SqlParameter("@p8", user.email);
+            SqlParameter sqlparameter8 = new SqlParameter("@p9", user.status);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter, sqlparameter1, sqlparameter2, sqlparameter3, sqlparameter4, sqlparameter5, sqlparameter6, sqlparameter7, sqlparameter8);
             return res;
         }
             //return new DBOperationsInsert<sys_user, DBNull>().Insert(user);    
@@ -45,16 +46,17 @@ namespace PersonInfoManage.DAL.System
         public int Update(sys_user user)
         {
             int res;
-            string sql = "Update sys_user SET username = @p1,name = @p2,password = @p3,gender = @p4,job = @p5,phone = @p6,email = @p7,status = @p8,modify_time=getdate() where id = '" + user.id + "'";
+            string sql = "Update sys_user SET username = @p1,name = @p2,password = @p3,gender = @p4,org_id = @p5,job = @p6,phone = @p7,email = @p8,status = @p9,modify_time=getdate() where id = '" + user.id + "'";
             SqlParameter sqlParameter = new SqlParameter("@p1", user.username);
             SqlParameter sqlParameter1 = new SqlParameter("@p2", user.name);
             SqlParameter sqlParameter2 = new SqlParameter("@p3", user.password);
             SqlParameter sqlParameter3 = new SqlParameter("@p4", user.gender);
             SqlParameter sqlParameter4 = new SqlParameter("@p5", user.job);
-            SqlParameter sqlParameter5 = new SqlParameter("@p6", user.phone);
-            SqlParameter sqlParameter6 = new SqlParameter("@p7", user.email);
-            SqlParameter sqlParameter7 = new SqlParameter("@p8", user.status);
-            res =SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1, sqlParameter2, sqlParameter3, sqlParameter4, sqlParameter5, sqlParameter6, sqlParameter7);
+            SqlParameter sqlParameter5 = new SqlParameter("@p6", user.org_id);
+            SqlParameter sqlParameter6 = new SqlParameter("@p6", user.phone);
+            SqlParameter sqlParameter7 = new SqlParameter("@p7", user.email);
+            SqlParameter sqlParameter8 = new SqlParameter("@p8", user.status);
+            res =SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1, sqlParameter2, sqlParameter3, sqlParameter4, sqlParameter5, sqlParameter6, sqlParameter7, sqlParameter8);
             return res;
             //return new DBOperationsUpdate<sys_dict>().UpdateById(id, newValues);
         }
@@ -115,11 +117,11 @@ namespace PersonInfoManage.DAL.System
         /// <summary>
         /// 通过输入条件查询用户
         /// </summary>
-        /// <param name="conditions">查询条件</param>
-        /// <returns>通过用户名查询到的用户</returns>
-        public List<sys_user> Select(sys_user UserInfo)
+        /// <param name="UserInfo">查询条件</param>
+        /// <returns>查询到的用户信息</returns>
+        public List<view_sys_u2g> Select(sys_user UserInfo)
         {
-            List<sys_user> user = new List<sys_user>();
+            List<view_sys_u2g> user = new List<view_sys_u2g>();
             string sql = "SELECT * from sys_user where 1=1  ";
             List<SqlParameter> SqlPara = new List<SqlParameter>();
             if (!string.IsNullOrEmpty(UserInfo.username))
@@ -147,20 +149,48 @@ namespace PersonInfoManage.DAL.System
             ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql, SqlPara.ToArray());
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++) 
             {
-                sys_user user1 = new sys_user();
-                user1.id = (int)ds.Tables[0].Rows[i][nameof(sys_user.id)];
-                user1.name = (string)ds.Tables[0].Rows[i][nameof(sys_user.name)];
-                user1.username = (string)ds.Tables[0].Rows[i][nameof(sys_user.username)];
-                user1.gender = (string)ds.Tables[0].Rows[i][nameof(sys_user.gender)];
-                user1.phone = (string)ds.Tables[0].Rows[i][nameof(sys_user.phone)];
-                user1.job = (string)ds.Tables[0].Rows[i][nameof(sys_user.job)];
-                user1.status = (bool)ds.Tables[0].Rows[i][nameof(sys_user.status)];           
-                user.Add(user1);               
+                view_sys_u2g user1 = new view_sys_u2g();
+                user1.id = (int)ds.Tables[0].Rows[i][nameof(view_sys_u2g.id)];
+                user1.name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.name)];
+                user1.username = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.username)];
+                user1.gender = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.gender)];
+                user1.phone = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.phone)];
+                user1.job = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.job)];
+                user1.status = (bool)ds.Tables[0].Rows[i][nameof(view_sys_u2g.status)];
+                user1.org_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.org_name)];
+                user.Add(user1);                             
                 }
             return user;
             //return new DBOperationsSelect<sys_user>().SelectByConditions(conditions);
         }
+
+        /// <summary>
+        /// 通过id查询用户
+        /// </summary>
+        /// <param name="id">用户id</param>
+        /// <returns>查询到的用户信息</returns>
+        public List<view_sys_u2g> SelectById(int id)
+        {
+            List<view_sys_u2g> user = new List<view_sys_u2g>();
+            string sql = "SELECT * from sys_user where id = '"+id+"'  ";
+            DataSet ds = new DataSet();
+            ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                view_sys_u2g user1 = new view_sys_u2g();
+                user1.id = (int)ds.Tables[0].Rows[i][nameof(view_sys_u2g.id)];
+                user1.name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.name)];
+                user1.username = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.username)];
+                user1.gender = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.gender)];
+                user1.phone = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.phone)];
+                user1.job = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.job)];
+                user1.status = (bool)ds.Tables[0].Rows[i][nameof(view_sys_u2g.status)];
+                user1.org_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.org_name)];
+                user.Add(user1);
+            }
+            return user;
         }
     }
+}
 
 

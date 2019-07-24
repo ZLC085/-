@@ -18,7 +18,7 @@ namespace PersonInfoManage.DAL.Cost
         /// <summary>
         /// 费用审批添加/修改 添加/修改审批金额、审批状态（待审批，通过，驳回）以及审批意见
         /// </summary>
-        /// <param name="main">费用单对象cost_main:approver、approval_time、approval_money、status、id</param>
+        /// <param name="main">费用单对象cost_main:approval_id、approval_time、approval_money、status、id</param>
         /// <returns>数据表受影响的行数</returns>
         public int Update(cost_main main)
         {
@@ -33,7 +33,7 @@ namespace PersonInfoManage.DAL.Cost
         /// <summary>
         /// 根据条件查询费用信息
         /// </summary>
-        /// <param name="conditions">条件键值对 "id", "applicant", "status", "start_time", "end_time","page","limit"</param>
+        /// <param name="conditions">条件键值对 "id", "apply_id", "status", "start_time", "end_time","page","limit"</param>
         /// <returns>费用信息列表</returns>
         public List<cost> Query(Dictionary<string, object> conditions)
         {
