@@ -15,10 +15,12 @@ namespace PersonInfoManage
 
         private void BtnAddFile_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Multiselect = false;
-            openFile.Title = "请选择文件";
-            openFile.Filter = "所有文件(*.*)|*.*";
+            OpenFileDialog openFile = new OpenFileDialog
+            {
+                Multiselect = false,
+                Title = "请选择文件",
+                Filter = "所有文件(*.*)|*.*"
+            };
 
             if (openFile.ShowDialog() == DialogResult.OK)
             {
