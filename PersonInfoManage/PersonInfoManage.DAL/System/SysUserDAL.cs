@@ -122,7 +122,7 @@ namespace PersonInfoManage.DAL.System
         public List<view_sys_u2g> Select(sys_user UserInfo)
         {
             List<view_sys_u2g> user = new List<view_sys_u2g>();
-            string sql = "SELECT * from sys_user where 1=1  ";
+            string sql = "SELECT * from view_sys_u2g where 1=1  ";
             List<SqlParameter> SqlPara = new List<SqlParameter>();
             if (!string.IsNullOrEmpty(UserInfo.username))
             {
@@ -172,7 +172,7 @@ namespace PersonInfoManage.DAL.System
         public List<view_sys_u2g> SelectById(int id)
         {
             List<view_sys_u2g> user = new List<view_sys_u2g>();
-            string sql = "SELECT * from sys_user where id = '"+id+"'  ";
+            string sql = "SELECT * from view_sys_u2g where id = '"+id+"'  ";
             DataSet ds = new DataSet();
             ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)

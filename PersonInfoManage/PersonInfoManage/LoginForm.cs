@@ -1,10 +1,13 @@
 ﻿using PersonInfoManage.BLL.Login;
 using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using static PersonInfoManage.LocalUserInfo;
+using PersonInfoManage.Model;
+using PersonInfoManage.BLL.System;
 
 namespace PersonInfoManage
 {
@@ -74,12 +77,16 @@ namespace PersonInfoManage
                 }
                 else
                 {
-                    User user = new User
-                    {
-                        UserName = UserNameTextBox.Text,
-                        UserId=111,//查询得到
-                        IsChecked = true
-                    };
+                    //List<view_sys_u2g> userinfo = new List<view_sys_u2g>();
+                    //sys_user user1 = new sys_user();
+                    //SysUserBLL userbll = new SysUserBLL();
+                    //user1.username = UserNameTextBox.Text;
+                    //userinfo = userbll.Select(user1);
+                    //user1.id = userinfo;
+                    User user = new User();
+                    user.UserName = UserNameTextBox.Text;
+                    user.UserId = 111;
+                    user.IsChecked = true;                  
                     LoginInfo = user;
                 }
             }
