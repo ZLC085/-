@@ -90,18 +90,6 @@
     </Compile>
     <Compile Include="Loading\LoadingHelper.cs" />
     <Compile Include="MessageBoxCustom.cs" />
-    <Compile Include="PersonInfo\DelFile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PersonInfo\DelFile.Designer.cs">
-      <DependentUpon>DelFile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PersonInfo\UpdateFileName.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PersonInfo\UpdateFileName.Designer.cs">
-      <DependentUpon>UpdateFileName.cs</DependentUpon>
-    </Compile>
     <Compile Include="System\AddCategoreTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,17 +189,26 @@
     <Compile Include="System\UserDetailForm.Designer.cs">
       <DependentUpon>UserDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PersonInfo\UpdateFileNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonInfo\UpdateFileNameForm.Designer.cs">
+      <DependentUpon>UpdateFileNameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateUserForm.Designer.cs">
+      <DependentUpon>UpdateUserForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Business\AddBusiness.resx">
       <DependentUpon>AddBusiness.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Loading\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PersonInfo\DelFile.resx">
-      <DependentUpon>DelFile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PersonInfo\UpdateFileName.resx">
-      <DependentUpon>UpdateFileName.cs</DependentUpon>
+    <EmbeddedResource Include="PersonInfo\UpdateFileNameForm.resx">
+      <DependentUpon>UpdateFileNameForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="System\AddCategoreTypeForm.resx">
       <DependentUpon>AddCategoreTypeForm.cs</DependentUpon>
@@ -265,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="System\UserDetailForm.resx">
       <DependentUpon>UserDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateUserForm.resx">
+      <DependentUpon>UpdateUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

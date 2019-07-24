@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PersonInfoManage.PersonInfo
+namespace PersonInfoManage
 {
-    public partial class DelFile : Form
+    public partial class UpdateUserForm : Form
     {
-        public DelFile()
+        public UpdateUserForm()
         {
             InitializeComponent();
         }

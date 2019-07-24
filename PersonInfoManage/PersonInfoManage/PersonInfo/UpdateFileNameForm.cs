@@ -7,9 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
-namespace PersonInfoManage.PersonInfo
+namespace PersonInfoManage
 {
     public partial class UpdateFileName : Form
     {
