@@ -35,8 +35,8 @@ namespace PersonInfoManage
             LblCostId.Text = main.id.ToString();
             view_sys_u2g applicant = new SysUserDAL().SelectById(main.apply_id).First();
             LblApplicant.Text = applicant.name;
-            LblApplicant.Text = applicant.org_name;
-            LblApplyTime.Text = main.apply_money.ToString();
+            LblApplicantOrg.Text = applicant.org_name;
+            LblApplyTime.Text = main.apply_time.ToString("yyyy-MM-dd HH:mm:ss");
             LblApplyMoney.Text = main.apply_money.ToString();
             foreach(cost_detail detail in cost.DetailList)
             {
@@ -54,7 +54,7 @@ namespace PersonInfoManage
             LblApprover.Text = approver.name;
             LblApproverOrg.Text = approver.org_name;
             LblApprovalMoney.Text = main.approval_money.ToString();
-            LblRemark.Text = main.remark;           
+            LblRemark.Text = string.IsNullOrEmpty(main.remark) ?"无": main.remark;           
         }
     }
 }
