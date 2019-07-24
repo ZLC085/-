@@ -112,7 +112,7 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="UserInfo">查询条件</param>
         /// <returns>用户信息</returns>
-        public List<sys_user> Select(sys_user UserInfo)
+        public List<view_sys_u2g> Select(sys_user UserInfo)
         {
             SysUserDAL Sysuser = new SysUserDAL();
             return Sysuser.Select(UserInfo);
