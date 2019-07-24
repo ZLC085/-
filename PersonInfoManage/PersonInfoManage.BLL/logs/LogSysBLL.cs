@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PersonInfoManage.BLL.logs
+namespace PersonInfoManage.BLL.Logs
 {
     class LogSysBLL
     {
@@ -37,7 +37,7 @@ namespace PersonInfoManage.BLL.logs
         /// 系统日志查询所有
         /// </summary>
         /// <returns></returns>
-    
+
         public List<log_sys> Query()
         {
             List<log_sys> sysList = new LogSysDAL().Query();
@@ -51,7 +51,7 @@ namespace PersonInfoManage.BLL.logs
         /// </summary>
         /// <param name="create_time"></param>
         /// <returns></returns>
-        public List<log_sys> Query(DateTime start_time,DateTime end_time)
+        public List<log_sys> Query(DateTime start_time, DateTime end_time)
         {
             List<log_sys> sysList = new LogSysDAL().Query(start_time, end_time);
             if (sysList == null)
