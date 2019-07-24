@@ -28,6 +28,7 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlParameter2 = new SqlParameter("@p2", SysDict.dict_name);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter2);
             return res;
+           
 
         }
 
@@ -97,6 +98,41 @@ namespace PersonInfoManage.DAL.System
             }
 
             return dict;
+        }
+        /// <summary>
+        /// 返回数据字典
+        /// </summary>
+        /// <param name="info">字典名</param>
+        /// <returns>List类型</returns>
+        public List<sys_dict> GetTheType(string info)
+        {
+            // 用于返回的列表
+            List<sys_dict> list = new List<sys_dict>();
+            try
+            {
+                // sql语句
+                string sql = "select id, category_name from sys_dict where dict_name = N'" + info + "'";
+
+                DataSet ds = new DataSet();
+                // 执行sql语句并返回数据集
+                ds = SqlHelper.ExecuteDataset(DALBase.ConStr, CommandType.Text, sql);
+                // 遍历表中的行
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    // 封装
+                    sys_dict sd = new sys_dict();
+                    sd.id = int.Parse(dr[0].ToString());
+                    sd.category_name = dr[1].ToString();
+                    list.Add(sd);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                throw e;
+            }
+            // 返回列表
+            return list;
         }
     }
 }
