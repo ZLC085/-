@@ -110,11 +110,11 @@ namespace PersonInfoManage.DAL.Cost
                 listDetail.Add(detail);
             }
             return listDetail;
-        }        
+        }
         /// <summary>
         /// 根据组合条件查询费用单（可分页）
         /// </summary>
-        /// <param name="consitions">条件键值对key: "id", "applicant", "status", "start_time", "end_time","page","limit"</param>
+        /// <param name="conditions">条件键值对key: "id", "apply_id", "status", "start_time", "end_time","page","limit"</param>
         /// <returns>费用单列表</returns>
         public List<cost_main> QueryMain(Dictionary<string, object> conditions)
         {
