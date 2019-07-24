@@ -73,6 +73,26 @@ namespace PersonInfoManage.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap h6 {
+            get {
+                object obj = ResourceManager.GetObject("h6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap projects2 {
+            get {
+                object obj = ResourceManager.GetObject("projects2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap 人员信息 {
             get {
                 object obj = ResourceManager.GetObject("人员信息", resourceCulture);
