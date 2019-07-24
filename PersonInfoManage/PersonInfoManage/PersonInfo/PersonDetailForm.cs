@@ -73,14 +73,16 @@ namespace PersonInfoManage
 
         private void BtnUpdateFile_Click(object sender, EventArgs e)
         {
-            var update= new UpdateFileName();
-            update.ShowDialog();
+            
         }
 
         private void BtnDelFile_Click(object sender, EventArgs e)
         {
-            var del= new DelFile();
-            del.ShowDialog();
+            DialogResult res = MessageBoxCustom.Show("确认删除", "提示", MessageBoxButtons.YesNo, this);
+            if (res == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }

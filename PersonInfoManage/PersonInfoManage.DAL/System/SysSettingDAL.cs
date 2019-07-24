@@ -99,40 +99,40 @@ namespace PersonInfoManage.DAL.System
 
             return dict;
         }
+        
         /// <summary>
-        /// 返回数据字典
+        /// 返回数据字典类别
         /// </summary>
-        /// <param name="info">字典名</param>
-        /// <returns>List类型</returns>
-        public List<sys_dict> GetTheType(string info)
+        /// <param name="dictName"></param>
+        /// <returns>category_name和id</returns>
+        public List<sys_dict> SelectByDictName(sys_dict_type dictName)
         {
-            // 用于返回的列表
             List<sys_dict> list = new List<sys_dict>();
-            try
+            string sql = "select * from sys dict where dict_ name = '";
+            switch (dictName)
             {
-                // sql语句
-                string sql = "select id, category_name from sys_dict where dict_name = N'" + info + "'";
-
-                DataSet ds = new DataSet();
-                // 执行sql语句并返回数据集
-                ds = SqlHelper.ExecuteDataset(DALBase.ConStr, CommandType.Text, sql);
-                // 遍历表中的行
-                foreach (DataRow dr in ds.Tables[0].Rows)
-                {
-                    // 封装
-                    sys_dict sd = new sys_dict();
-                    sd.id = int.Parse(dr[0].ToString());
-                    sd.category_name = dr[1].ToString();
-                    list.Add(sd);
-                }
+                case sys_dict_type.Cost:
+                    sql += sys_dict_type. Cost.ToString() + "' ";
+                    break;
+                case sys_dict_type.NativePlace:
+                    sql += sys_dict_type. NativePlace.ToString() + "'";
+                    break;
+                case sys_dict_type.Person:
+                    sql += sys_dict_type.Person.ToString() + " ' ";
+                    break;
+                default:
+                    break;
             }
-            catch (Exception e)
+            DataSet ds = new DataSet();           
+            ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
-                Console.WriteLine(e.Message);
-                throw e;
+                sys_dict dict1 = new sys_dict();
+                dict1.id = (int)ds.Tables[0].Rows[i][nameof(sys_dict.id)];
+                dict1.category_name = (string)ds.Tables[0].Rows[i][nameof(sys_dict.category_name)];
+                list.Add(dict1);
             }
-            // 返回列表
-            return list;
+                return list;
         }
     }
 }

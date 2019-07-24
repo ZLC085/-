@@ -128,15 +128,13 @@ namespace PersonInfoManage.BLL.System
 
         }
 
-        
-       
-            public List<sys_dict> GetTheType(string info)
-            {
-                // 接收列表
-                List<sys_dict> list = new SysSettingDAL().GetTheType(info);
-                // 返回列表
-                return list;
-            }
-        
-    }
+
+
+        public List<sys_dict> SelectByDictName(sys_dict_type dictName)
+        {
+            SysSettingDAL set = new SysSettingDAL();
+            return set.SelectByDictName(dictName);
+        }
+
+        }
 }
