@@ -6,7 +6,7 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class log_sys
+    public class log_sys
     {
         public int id { get; set; }
 

@@ -10,6 +10,7 @@ using PersonInfoManage.DAL.Cost;
 using PersonInfoManage.BLL.System;
 using PersonInfoManage.BLL.Login;
 using PersonInfoManage.DAL.System;
+using PersonInfoManage.BLL.PersonInfo;
 
 namespace PersonInfoManage.Test
 {
@@ -67,12 +68,6 @@ namespace PersonInfoManage.Test
             //int userId = 32;
             //Console.WriteLine(perm.AddU2g(groupId, userId));
 
-            //测试函数：perm.Addg2m(groupId,menuId)  测试成功BLL
-            //PermBLL perm = new PermBLL();
-            //int groupId = 26;
-            //int menuId = 4;
-            //Console.WriteLine(perm.AddG2m(groupId, menuId));
-
             //测试函数:perm.Update(group) 测试成功BLL
             //PermBLL perm = new PermBLL();
             //sys_group group = new sys_group();
@@ -83,14 +78,15 @@ namespace PersonInfoManage.Test
 
             //测试函数：perm.Del(groupId) 测试成功BLL
             //PermBLL perm = new PermBLL();
-            //int groupId = 16;
+            //int groupId = 19;
             //Console.WriteLine(perm.Del(groupId));
 
-            //测试函数：perm.DelG2m(groupId) 测试成功BLL
+            //测试函数：perm.perm(groupId) 测试成功BLL
             //PermBLL perm = new PermBLL();
-            //int groupId = 23;
-            //int menuId = 6;
-            //Console.WriteLine(perm.DelG2m(groupId, menuId));
+            //int groupId = 26;
+            //int[] menu_id = { 4, 5, 6 };     
+            //List<int> menuId = new List<int>(menu_id);
+            //Console.WriteLine(perm.Perm(groupId, menuId));
 
             //测试函数：perm.DelG2u(groupId) 测试成功BLL
             //PermBLL perm = new PermBLL();
@@ -278,7 +274,7 @@ namespace PersonInfoManage.Test
             //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
 
             //}
-
+            new CostApplyDAL().GetApprovalInfo(8);
             ///测试函数：costApproval.Update(cost_main main)
             ///返回类型：int
             ///测试结果：成功
@@ -373,6 +369,7 @@ namespace PersonInfoManage.Test
             ///参数中必需的属性:
             ///     id:费用规划id
 
+
             //CostPlan costPlan = new CostPlan();
             //List<cost_plan> listPlan = costPlan.GetById(15);
             //foreach(cost_plan plan in listPlan)
@@ -407,6 +404,14 @@ namespace PersonInfoManage.Test
             //{
             //Console.WriteLine(plan.id+" "+plan.cost_type+" "+plan.start_time+" "+plan.end_time+" "+plan.money);
             //}
+
+            ///测试函数：costPlan.QuerySum(DateTime SrartTime, DateTime EndTime)
+            ///返回类型：decimal 
+            ///测试结果：成功
+            ///参数中必需的属性:
+            /// plan:start_time,end_time,money
+            //CostPlanDAL costPlan = new CostPlanDAL();
+            //Console.WriteLine(costPlan.QuerySum(new DateTime(2017,1,1),new DateTime (2017,2,1)));
 
             ///测试函数：CostStastic.Query(Dictionary<string, object> conditions)
             ///返回类型：Dictionary<cost_main, List<cost_detail>> 
@@ -448,7 +453,7 @@ namespace PersonInfoManage.Test
 
             //PersonFileDAL files = new PersonFileDAL();
             //person_file A = new person_file();
-            //A.id = 12;
+            //A.id = 28;
             //A.filename = "zhao";
             //Console.WriteLine(files.Update(A));
 
@@ -626,6 +631,38 @@ namespace PersonInfoManage.Test
             //}
 
             //Console.WriteLine("END...");
+
+
+
+
+
+
+            ///PersonFileBLL测试
+            ///
+            ///修改文件名
+            ///
+            ///测试结果：
+            ///
+            //PersonFileDAL personFile = new PersonFileDAL();
+            //person_file A = new person_file();
+            //List<person_file> ListFile = new List<person_file>();
+            //ListFile.Add(A);
+            //Console.WriteLine(personFile.Update("123",28));
+
+
+
+            ///PersonFileBLL测试
+            ///
+            ///通过personId查询文件
+            ///
+            ///测试结果：
+            ///
+            //PersonFileDAL personFileDAL = new PersonFileDAL();
+            //List<person_file> listFile = personFileDAL.GetByPersonId(1001);
+            //foreach (person_file A in listFile)
+            //{
+            //    Console.WriteLine(A.person_id + " " + A.id + "  " + A.filename + " " + A.filetype + " " + A.create_time + " " + A.modify_time);
+            //}
 
             Console.ReadKey();
         }

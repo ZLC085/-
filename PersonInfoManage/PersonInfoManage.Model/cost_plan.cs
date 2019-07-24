@@ -6,13 +6,12 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class cost_plan
+    public class cost_plan
     {
         public int id { get; set; }
 
         public int cost_type { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string cost_type_name { get; set; }
 

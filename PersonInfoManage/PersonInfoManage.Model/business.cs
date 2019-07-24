@@ -7,7 +7,7 @@ namespace PersonInfoManage.Model
     using System.Data.Entity.Spatial;
 
     [Table("business")]
-    public partial class business
+    public class business
     {
         [Key]
         [Column(Order = 0)]

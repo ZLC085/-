@@ -84,5 +84,20 @@ namespace PersonInfoManage.DAL.System
             }
             return dict;
         }
+        public List<string> SelectAllDictName()
+        {
+            DataSet ds = new DataSet();
+            List<string> dict = new List<string>();
+            string sql = "select dict_name from sys_dict group by dict_name";
+            ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                string name;
+                name = (string)ds.Tables[0].Rows[i][nameof(sys_dict.dict_name)];
+                dict.Add(name);
+            }
+
+            return dict;
+        }
     }
 }

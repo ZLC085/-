@@ -81,12 +81,15 @@
     <Compile Include="Business\AddBusiness.Designer.cs">
       <DependentUpon>AddBusiness.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProgressForm.cs">
+    <Compile Include="Loading\LoadingDot.cs" />
+    <Compile Include="Loading\LoadingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProgressForm.Designer.cs">
-      <DependentUpon>ProgressForm.cs</DependentUpon>
+    <Compile Include="Loading\LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Loading\LoadingHelper.cs" />
+    <Compile Include="MessageBoxCustom.cs" />
     <Compile Include="System\AddCategoreTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,8 +192,8 @@
     <EmbeddedResource Include="Business\AddBusiness.resx">
       <DependentUpon>AddBusiness.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProgressForm.resx">
-      <DependentUpon>ProgressForm.cs</DependentUpon>
+    <EmbeddedResource Include="Loading\LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="System\AddCategoreTypeForm.resx">
       <DependentUpon>AddCategoreTypeForm.cs</DependentUpon>

@@ -118,7 +118,7 @@ namespace PersonInfoManage
         }
         //</苏文杰_2>
 
-        //<王耳沛_2>
+        //<王尔沛_2>
 
         private void BtnAddUser_Click(object sender, EventArgs e)
         {
@@ -151,7 +151,7 @@ namespace PersonInfoManage
             groupRoleManageForm.ShowDialog();
         }
 
-        //</王耳沛_2>
+        //</王尔沛_2>
 
         //<曾丽川_2>
 

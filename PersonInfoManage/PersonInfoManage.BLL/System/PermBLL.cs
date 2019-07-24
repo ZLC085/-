@@ -15,7 +15,7 @@ namespace PersonInfoManage.BLL.System
         /// 添加用户组
         /// </summary>
         /// <param name="group"></param>
-        /// <returns>影响条数</returns>
+        /// <returns>执行结果</returns>
         public Result Add(sys_group group)
         {
             Result res = new Result();
@@ -44,11 +44,11 @@ namespace PersonInfoManage.BLL.System
         }
 
         /// <summary>
-        /// 关联用户和用户组
+        /// 添加用户进用户组
         /// </summary>
         /// <param name="userId"></param>
         /// <param name="groupId"></param>
-        /// <returns>影响条数</returns>
+        /// <returns>执行结果</returns>
         public Result AddU2g(int groupId,List<int> user_id)
         {
             Result res = new Result();
@@ -72,39 +72,10 @@ namespace PersonInfoManage.BLL.System
         }
 
         /// <summary>
-        /// 用户组权限添加
-        /// </summary>
-        /// <param name="groupId">用户组id</param>
-        /// <param name="menuId">菜单id</param>
-        /// <returns>修改条数</returns>
-        public Result AddG2m(int groupId, List<int> menu_id)
-        {
-            PermDAL perm = new PermDAL();
-            Result res = new Result();
-            try
-            {
-                foreach (var menuId in menu_id)
-                {
-                    perm.AddG2m(groupId, menuId);                    
-                }
-                res.Code = RES.OK;
-                res.Message = "修改成功！";
-                return res;
-            }
-            catch
-            {
-                res.Code = RES.ERROR;
-                res.Message = "修改失败！";
-                return res;
-            }
-        }
-
-
-        /// <summary>
         /// 用户组信息修改
         /// </summary>
         /// <param name="group">用户组信息</param>
-        /// <returns>修改条数</returns>
+        /// <returns>执行结果</returns>
         public Result Update(sys_group group)
         {
             PermDAL perm = new PermDAL();
@@ -137,15 +108,14 @@ namespace PersonInfoManage.BLL.System
         /// 删除用户组
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>影响条数</returns>
+        /// <returns>执行结果</returns>
         public Result Del(int id)
         {
             PermDAL perm = new PermDAL();
             Result res = new Result();
             try
             {
-                perm.Delu(id);
-                perm.Delm(id);
+
                 perm.Del(id);
                 res.Code = RES.OK;
                 res.Message = "删除成功！";
@@ -160,37 +130,10 @@ namespace PersonInfoManage.BLL.System
         }
 
         /// <summary>
-        /// 删除用户组和权限关联
+        /// 删除用户组中的用户
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>影响条数</returns>
-        public Result DelG2m(int groupId, List<int> menu_id)
-        {
-            PermDAL perm = new PermDAL();
-            Result res = new Result();
-            try
-            {
-                foreach (var menuId in menu_id)
-                {
-                    perm.DelG2m(groupId, menuId);
-                }
-                    res.Code = RES.OK;
-                    res.Message = "删除成功！";
-                    return res;               
-            }
-            catch
-            {
-                res.Code = RES.ERROR;
-                res.Message = "删除失败！";
-                return res;
-            }
-        }
-
-        /// <summary>
-        /// 删除用户组和用户关联
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>影响条数</returns>
+        /// <returns>执行结果</returns>
         public Result DelG2u(int groupId, List<int> user_id)
         {
             PermDAL perm = new PermDAL();
@@ -213,6 +156,33 @@ namespace PersonInfoManage.BLL.System
             }
         }
 
+        /// <summary>
+        /// 用户组权限管理
+        /// </summary>
+        /// <param name="groupId">用户组ID</param>
+        /// <param name="menu_id">权限ID列表</param>
+        /// <returns>执行结果</returns>
+        public Result Perm(int groupId, List<int> menu_id)
+        {
+            PermDAL perm = new PermDAL();
+            Result res = new Result();
+            try { 
+                perm.DelG2m(groupId);
+                foreach (var menuId in menu_id)
+                {
+                    perm.AddG2m(groupId, menuId);
+                }
+                res.Code = RES.OK;
+                res.Message = "修改成功！";
+                return res;
+            }
+            catch
+            {
+                res.Code = RES.ERROR;
+                res.Message = "修改失败！";
+                return res;
+            }
+        }
 
         /// <summary>
         /// 查询用户组

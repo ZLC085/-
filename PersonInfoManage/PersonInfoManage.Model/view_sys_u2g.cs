@@ -6,7 +6,7 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class view_sys_u2g
+    public class view_sys_u2g
     {
         [Key]
         [Column(Order = 0)]
@@ -70,5 +70,8 @@ namespace PersonInfoManage.Model
         [Column(Order = 11)]
         [StringLength(50)]
         public string group_name { get; set; }
+
+        [StringLength(50)]
+        public string org_name { get; set; }
     }
 }

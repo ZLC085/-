@@ -6,7 +6,7 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class view_cost_main_detail
+    public class view_cost_main_detail
     {
         [Key]
         [Column(Order = 0)]

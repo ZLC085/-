@@ -22,9 +22,10 @@ namespace PersonInfoManage.DAL.Cost
         /// <returns>数据表受影响的行数</returns>
         public int Update(cost_main main)
         {
-            string sql = "update cost_main set "+nameof(cost_main.approver)+"=N'"+main.approver+"',"+
+            string sql = "update cost_main set "+
                 nameof(cost_main.approval_time)+"='"+main.approval_time+"',"+
                 nameof(cost_main.approval_money)+"='"+main.approval_money+"',"+
+                nameof(cost_main.approval_id)+"="+main.approval_id+","+
                 nameof(cost_main.status)+"='"+main.status+"',"+
                 nameof(cost_main.remark)+"=N'"+main.remark+"' where id='"+main.id+"'";
             return SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);

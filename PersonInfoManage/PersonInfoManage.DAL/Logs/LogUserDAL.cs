@@ -15,6 +15,29 @@ namespace PersonInfoManage.DAL.Logs
     /// </summary 
     public class LogUserDAL : DALBase
     {
+
+        /// <summary>
+        /// 日志添加
+        /// 字段：id，user_id,username,operation,ip,create_time
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        /// 
+
+        public int Add(log_user user)
+        {
+   
+            int res = 0;
+            string sql = "insert  into log_user(user_id,username,operation,ip,create_time) values (@user_id,@username,@operation,@ip,@create_time)";
+            SqlParameter user_id = new SqlParameter("@user_id", user.user_id);
+            SqlParameter username = new SqlParameter("@username", user.username);
+            SqlParameter operation = new SqlParameter("@operation", user.operation);
+            SqlParameter ip = new SqlParameter("@ip", user.ip);
+            SqlParameter create_time = new SqlParameter("@create_time", DateTime.Now);
+            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, user_id, username, operation, ip, create_time);
+            return res;
+
+        }
         /// <summary>
         /// 用户日志删除根据日志ID
         /// </summary>
@@ -70,11 +93,20 @@ namespace PersonInfoManage.DAL.Logs
         /// </summary>
         /// <param name="conditions">输 入条件</param>
         /// <returns>通过输入条件查询到的用户日志</returns>
-        /// 
-        public  List<log_user> Query(string username,DateTime create_time)
+        ///    用户名，操作（模糊查询），起始时间，终止时间
+        public List<log_user> Query(string username, string operation, DateTime start_time,DateTime end_time)
         {
             List<log_user> userlog = new List<log_user>();
-            string sql = "select * from log_user where username='"+username+ "'and create_time>='" + new DateTime(create_time.Year, create_time.Month, create_time.Day, 0, 0, 0) + "'and create_time<='" + new DateTime(create_time.Year, create_time.Month, create_time.Day, 23, 59, 59) + "'";
+            if (start_time.CompareTo(new DateTime(1, 1, 1)) == 0)//如果输入起始时间为空，则默认起始时间为2000年1月1日
+            { 
+               start_time = new DateTime(2000, 1, 1);
+            }
+            if (end_time.CompareTo(new DateTime(1, 1, 1)) == 0)//如果输入终止时间为空，则默认起始时间为6000年12月31日
+            {
+                end_time = new DateTime(6000, 12, 31);
+            }
+            string sql = "select * from log_user where username like N'%" + username + "%'and operation like N'%" + operation + "%' and create_time>='" + new DateTime(start_time.Year, start_time.Month, start_time.Day, 0, 0, 0) + "'and create_time<='" + new DateTime(end_time.Year, end_time.Month, end_time.Day, 23, 59, 59) + "'";
+           
             Console.WriteLine(sql);
             DataSet ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
@@ -88,11 +120,21 @@ namespace PersonInfoManage.DAL.Logs
                 user.ip = (string)ds.Tables[0].Rows[i][nameof(log_user.ip)];
                 userlog.Add(user);
             }
+            
             return userlog;
         }      
-        }
-       
+
     }
+       
+ }
+
+
+
+
+
+
+
+
 
 
 

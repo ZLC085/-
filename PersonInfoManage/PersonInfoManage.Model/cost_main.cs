@@ -15,12 +15,8 @@ namespace PersonInfoManage.Model
         public int id { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string applicant { get; set; }
-
-        [StringLength(50)]
-        public string approver { get; set; }
-
+        public int apply_id { get; set; }
+        public int approval_id { get; set; }
         public DateTime apply_time { get; set; }
 
         public DateTime? approval_time { get; set; }
