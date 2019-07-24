@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="business.cs" />
     <Compile Include="cost.cs" />
+    <Compile Include="cost_approval.cs" />
     <Compile Include="cost_detail.cs" />
     <Compile Include="cost_main.cs" />
     <Compile Include="cost_plan.cs" />
