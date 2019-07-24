@@ -28,98 +28,142 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LblUpdateFileName = new System.Windows.Forms.Label();
-            this.LblFileName = new System.Windows.Forms.Label();
-            this.TxtUpdateFileName = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.BtnDelFile = new DevComponents.DotNetBar.ButtonX();
+            this.BtnCancel = new DevComponents.DotNetBar.ButtonX();
+            this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // LblUpdateFileName
+            // textBoxX1
             // 
-            this.LblUpdateFileName.AutoSize = true;
-            this.LblUpdateFileName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblUpdateFileName.Location = new System.Drawing.Point(26, 103);
-            this.LblUpdateFileName.Name = "LblUpdateFileName";
-            this.LblUpdateFileName.Size = new System.Drawing.Size(63, 14);
-            this.LblUpdateFileName.TabIndex = 0;
-            this.LblUpdateFileName.Text = "新文件名";
             // 
-            // LblFileName
             // 
-            this.LblFileName.AutoSize = true;
-            this.LblFileName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblFileName.Location = new System.Drawing.Point(26, 56);
-            this.LblFileName.Name = "LblFileName";
-            this.LblFileName.Size = new System.Drawing.Size(63, 14);
-            this.LblFileName.TabIndex = 1;
-            this.LblFileName.Text = "原文件名";
-            this.LblFileName.Click += new System.EventHandler(this.LblFileName_Click);
             // 
-            // TxtUpdateFileName
+            this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX1.Location = new System.Drawing.Point(186, 102);
+            this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.PreventEnterBeep = true;
+            this.textBoxX1.Size = new System.Drawing.Size(192, 21);
+            this.textBoxX1.TabIndex = 3;
             // 
-            this.TxtUpdateFileName.Location = new System.Drawing.Point(95, 96);
-            this.TxtUpdateFileName.Name = "TxtUpdateFileName";
-            this.TxtUpdateFileName.Size = new System.Drawing.Size(119, 21);
-            this.TxtUpdateFileName.TabIndex = 2;
+            // BtnDelFile
             // 
-            // button1
+            this.BtnDelFile.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnDelFile.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.BtnDelFile.Location = new System.Drawing.Point(115, 159);
+            this.BtnDelFile.Name = "BtnDelFile";
+            this.BtnDelFile.Size = new System.Drawing.Size(80, 25);
+            this.BtnDelFile.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnDelFile.Symbol = "";
+            this.BtnDelFile.SymbolColor = System.Drawing.Color.Green;
+            this.BtnDelFile.TabIndex = 5;
+            this.BtnDelFile.Text = "修改";
             // 
-            this.button1.Location = new System.Drawing.Point(29, 157);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // BtnCancel
             // 
-            // button2
+            this.BtnCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.BtnCancel.Location = new System.Drawing.Point(268, 159);
+            this.BtnCancel.Name = "BtnCancel";
+            this.BtnCancel.Size = new System.Drawing.Size(75, 23);
+            this.BtnCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnCancel.Symbol = "";
+            this.BtnCancel.SymbolColor = System.Drawing.Color.Red;
+            this.BtnCancel.TabIndex = 6;
+            this.BtnCancel.Text = "取消";
             // 
-            this.button2.Location = new System.Drawing.Point(167, 157);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            // panelEx1
             // 
-            // dataGridView1
+            this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.labelX3);
+            this.panelEx1.Controls.Add(this.labelX2);
+            this.panelEx1.Controls.Add(this.labelX1);
+            this.panelEx1.Controls.Add(this.textBoxX1);
+            this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelEx1.Location = new System.Drawing.Point(0, 0);
+            this.panelEx1.Name = "panelEx1";
+            this.panelEx1.Size = new System.Drawing.Size(484, 214);
+            this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.panelEx1.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
+            this.panelEx1.Style.GradientAngle = 90;
+            this.panelEx1.TabIndex = 7;
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(95, 46);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(108, 24);
-            this.dataGridView1.TabIndex = 6;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
+            // labelX1
+            // 
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX1.Location = new System.Drawing.Point(95, 37);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(88, 23);
+            this.labelX1.TabIndex = 4;
+            this.labelX1.Text = "原文件名：";
+            // 
+            // labelX2
+            // 
+            // 
+            // 
+            // 
+            this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX2.Location = new System.Drawing.Point(200, 37);
+            this.labelX2.Name = "labelX2";
+            this.labelX2.Size = new System.Drawing.Size(88, 23);
+            this.labelX2.TabIndex = 5;
+            this.labelX2.Text = "加载内容";
+            // 
+            // labelX3
+            // 
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX3.Location = new System.Drawing.Point(95, 100);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(88, 23);
+            this.labelX3.TabIndex = 6;
+            this.labelX3.Text = "修 改 为：";
             // 
             // UpdateFileName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 192);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.TxtUpdateFileName);
-            this.Controls.Add(this.LblFileName);
-            this.Controls.Add(this.LblUpdateFileName);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(484, 214);
+            this.Controls.Add(this.BtnCancel);
+            this.Controls.Add(this.BtnDelFile);
+            this.Controls.Add(this.panelEx1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "UpdateFileName";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "修改文件名";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panelEx1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label LblUpdateFileName;
-        private System.Windows.Forms.Label LblFileName;
-        private System.Windows.Forms.TextBox TxtUpdateFileName;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
+        private DevComponents.DotNetBar.ButtonX BtnDelFile;
+        private DevComponents.DotNetBar.ButtonX BtnCancel;
+        private DevComponents.DotNetBar.PanelEx panelEx1;
+        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.LabelX labelX2;
+        private DevComponents.DotNetBar.LabelX labelX1;
     }
 }
