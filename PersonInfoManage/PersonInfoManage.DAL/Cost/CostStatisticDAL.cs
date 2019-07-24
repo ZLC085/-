@@ -17,12 +17,12 @@ namespace PersonInfoManage.DAL.Cost
         /// <summary>
         /// 根据组合条件查询已审核通过的费用信息
         /// </summary>
-        /// <param name="conditions">条件键值对key: "id", "applicant", "start_time", "end_time","page","limit"</param>
+        /// <param name="conditions">条件键值对key: "id", "apply_id", "start_time", "end_time","page","limit"</param>
         /// <returns>费用信息列表</returns>
         public List<cost> Query(Dictionary<string, object> conditions)
         {
             List<cost> costList = new List<cost>();
-            conditions.Add("status", 1);
+            conditions.Add("status", 2);
             CostApplyDAL apply = new CostApplyDAL();
             List<cost_main> listMain = apply.QueryMain(conditions);
             foreach( cost_main main in listMain)

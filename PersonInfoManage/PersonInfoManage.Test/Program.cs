@@ -363,20 +363,6 @@ namespace PersonInfoManage.Test
 
             //Console.WriteLine(costplan.Del(ListPlan));
 
-            ///测试函数：costPlan.GetById(int id)
-            ///返回类型：List<cost_plan> 
-            ///测试结果：成功
-            ///参数中必需的属性:
-            ///     id:费用规划id
-
-
-            //CostPlan costPlan = new CostPlan();
-            //List<cost_plan> listPlan = costPlan.GetById(15);
-            //foreach(cost_plan plan in listPlan)
-            //{
-            //    Console.WriteLine(plan.id+"  "+plan.cost_type+"  "+plan.start_time+"  "+plan.end_time+"  "+plan.money);
-            //}
-
             ///测试函数：costPlan.Query()
             ///返回类型：List<cost_plan> 
             ///测试结果：成功
@@ -417,19 +403,20 @@ namespace PersonInfoManage.Test
             ///返回类型：Dictionary<cost_main, List<cost_detail>> 
             ///测试结果：成功
             ///参数中必需的属性:
-            ///     conditions：条件键值对词典  key建议是"start_time", "end_time", "applicant"其中的，否则无效
+            ///     conditions：条件键值对词典  key建议是"start_time", "end_time", "apply_id"其中的，否则无效
 
             //Dictionary<string, object> conditions = new Dictionary<string, object>();
-            //conditions.Add("applicant", "小明");
-            //conditions.Add("start_time", new DateTime(2017, 1, 1));
-            //conditions.Add("end_time",new DateTime(2019,7,19));
-            //Dictionary<cost_main, List<cost_detail>> retDic = new CostStatistic().Query(conditions);
-            //foreach (cost_main cm in retDic.Keys)
+            //conditions.Add("apply_id", 27);
+            //conditions.Add("start_time", new DateTime(2019, 7, 1));
+            //conditions.Add("end_time", new DateTime(2019, 8, 1));
+            //List<cost> ListCost = new CostStatisticDAL().Query(conditions);
+            //foreach (cost  C in ListCost)
             //{
-            //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
-            //    foreach (cost_detail cd in retDic[cm])
+            //    cost_main cm = C.main; 
+            //    Console.WriteLine(cm.id + "  " + cm.apply_id + "  " + cm.approval_id + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
+            //    foreach (cost_detail cd in C.DetailList)
             //    {
-            //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + "  " + cd.money);
+            //        Console.WriteLine("\t" + cd.id + "  " + cd.cost_id + "  " + cd.cost_type + " "+cd.cost_type_name+" " + cd.money);
             //    }
             //}
 
