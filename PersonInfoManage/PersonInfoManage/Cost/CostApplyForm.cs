@@ -40,6 +40,11 @@ namespace PersonInfoManage
 
         private void BtnCostApply_Click(object sender, EventArgs e)
         {
+            if (CmbApprover.SelectedItem == null)
+            {
+                MessageBox.Show("请选择一个审批人负责您的费用申请","信息提示",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
             CostApplyBLL costApplyBLL = new CostApplyBLL();
             List<cost_detail> listDetail = new List<cost_detail>();
             decimal applyMoney = 0;
@@ -65,7 +70,7 @@ namespace PersonInfoManage
                 apply_money = applyMoney,
                 apply_time = DateTime.Now,
                 apply_id=1,
-                approval_id=2,
+                approval_id=int.Parse(CmbApprover.SelectedItem.ToString().Split('.')[0])
 
             };
             cost cost = new cost
@@ -73,13 +78,16 @@ namespace PersonInfoManage
                 main = main,
                 DetailList = listDetail
             };
-            //MessageBox.Show(cost.main.applicant + " " + cost.main.apply_money + " " + cost.main.apply_time);
-            //foreach(cost_detail detail in cost.DetailList)
-            //{
-            //    MessageBox.Show(detail.cost_type + " " + detail.cost_type_name + " " + detail.money);
-            //}
             Result res = costApplyBLL.Add(cost);
-            MessageBox.Show(res.Message, "添加费用申请单状态提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DialogResult dialogResult= MessageBox.Show(res.Message, "添加费用申请单状态提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if(dialogResult == DialogResult.OK)
+            {
+                if (res.Code == RES.OK)
+                {
+                    this.DgvCostDetail.Rows.Clear();
+                    this.Close();
+                }
+            }
         }
         public void addDetail(string costType,string count)
         {
@@ -117,6 +125,13 @@ namespace PersonInfoManage
         private void BtnCancelCostApply_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CostApplyForm_Load(object sender, EventArgs e)
+        {
+            List<string> listApprover = new CostApplyBLL().ApproverInfo(8);
+            CmbApprover.Items.Clear();
+            CmbApprover.Items.AddRange(listApprover.ToArray());
         }
     }
 }
