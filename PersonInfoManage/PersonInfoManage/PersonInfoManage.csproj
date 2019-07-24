@@ -90,6 +90,12 @@
     </Compile>
     <Compile Include="Loading\LoadingHelper.cs" />
     <Compile Include="MessageBoxCustom.cs" />
+    <Compile Include="PersonInfo\DelFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonInfo\DelFile.Designer.cs">
+      <DependentUpon>DelFile.cs</DependentUpon>
+    </Compile>
     <Compile Include="PersonInfo\UpdateFileName.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,6 +207,9 @@
     <EmbeddedResource Include="Loading\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PersonInfo\DelFile.resx">
+      <DependentUpon>DelFile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PersonInfo\UpdateFileName.resx">
       <DependentUpon>UpdateFileName.cs</DependentUpon>
     </EmbeddedResource>
@@ -296,6 +305,10 @@
     <ProjectReference Include="..\PersonInfoManage.BLL\PersonInfoManage.BLL.csproj">
       <Project>{92ef8815-c7f7-46a6-b212-b5aea0d3cbe3}</Project>
       <Name>PersonInfoManage.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersonInfoManage.DAL\PersonInfoManage.DAL.csproj">
+      <Project>{d2a0eb50-afd7-4b21-895f-c317bcad96ff}</Project>
+      <Name>PersonInfoManage.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\PersonInfoManage.Model\PersonInfoManage.Model.csproj">
       <Project>{57FD6832-9634-42B2-B901-E31DDF01F7C9}</Project>

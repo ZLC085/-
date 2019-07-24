@@ -54,6 +54,7 @@ namespace PersonInfoManage
             pbForm.Text = "人员信息修改";
             pbForm.ShowDialog();
         }
+
         //</毛宇航_1>
 
         //<李鸽鸽_1>
@@ -79,7 +80,7 @@ namespace PersonInfoManage
                 this.Close();
             }
         }
-
+        
         //private List<cost> ShowMessage()
         //{
         //    String localUser = LocalUserInfo.LoginInfo.UserName;
@@ -236,8 +237,6 @@ namespace PersonInfoManage
             CostPlanForm costPlanForm = new CostPlanForm();
             costPlanForm.ShowDialog();
         }
-
-
 
         //</蒋媛_3>
     }
