@@ -117,12 +117,12 @@ namespace PersonInfoManage.DAL.System
         /// <summary>
         /// 通过输入条件查询用户
         /// </summary>
-        /// <param name="conditions">查询条件</param>
-        /// <returns>通过用户名查询到的用户</returns>
+        /// <param name="UserInfo">查询条件</param>
+        /// <returns>查询到的用户信息</returns>
         public List<view_sys_u2g> Select(sys_user UserInfo)
         {
             List<view_sys_u2g> user = new List<view_sys_u2g>();
-            string sql = "SELECT * from sys_user where 1=1  ";
+            string sql = "SELECT * from view_sys_u2g where 1=1  ";
             List<SqlParameter> SqlPara = new List<SqlParameter>();
             if (!string.IsNullOrEmpty(UserInfo.username))
             {
@@ -158,12 +158,39 @@ namespace PersonInfoManage.DAL.System
                 user1.job = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.job)];
                 user1.status = (bool)ds.Tables[0].Rows[i][nameof(view_sys_u2g.status)];
                 user1.org_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.org_name)];
-                user.Add(user1);               
+                user.Add(user1);                             
                 }
             return user;
             //return new DBOperationsSelect<sys_user>().SelectByConditions(conditions);
         }
+
+        /// <summary>
+        /// 通过id查询用户
+        /// </summary>
+        /// <param name="id">用户id</param>
+        /// <returns>查询到的用户信息</returns>
+        public List<view_sys_u2g> SelectById(int id)
+        {
+            List<view_sys_u2g> user = new List<view_sys_u2g>();
+            string sql = "SELECT * from view_sys_u2g where id = '"+id+"'  ";
+            DataSet ds = new DataSet();
+            ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                view_sys_u2g user1 = new view_sys_u2g();
+                user1.id = (int)ds.Tables[0].Rows[i][nameof(view_sys_u2g.id)];
+                user1.name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.name)];
+                user1.username = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.username)];
+                user1.gender = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.gender)];
+                user1.phone = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.phone)];
+                user1.job = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.job)];
+                user1.status = (bool)ds.Tables[0].Rows[i][nameof(view_sys_u2g.status)];
+                user1.org_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.org_name)];
+                user.Add(user1);
+            }
+            return user;
         }
     }
+}
 
 

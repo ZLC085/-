@@ -1,6 +1,7 @@
 ﻿using Loading;
 using PersonInfoManage.BLL.PersonInfo;
 using PersonInfoManage.BLL.Utils;
+using PersonInfoManage.PersonInfo;
 using System;
 using System.Windows.Forms;
 
@@ -15,10 +16,12 @@ namespace PersonInfoManage
 
         private void BtnAddFile_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Multiselect = false;
-            openFile.Title = "请选择文件";
-            openFile.Filter = "所有文件(*.*)|*.*";
+            OpenFileDialog openFile = new OpenFileDialog
+            {
+                Multiselect = false,
+                Title = "请选择文件",
+                Filter = "所有文件(*.*)|*.*"
+            };
 
             if (openFile.ShowDialog() == DialogResult.OK)
             {
@@ -70,14 +73,14 @@ namespace PersonInfoManage
 
         private void BtnUpdateFile_Click(object sender, EventArgs e)
         {
-            PersonDetailForm pdForm = new PersonDetailForm();
-            pdForm.Text = "修改文件名";
-            pdForm.ShowDialog();
+            var update= new UpdateFileName();
+            update.ShowDialog();
         }
 
         private void BtnDelFile_Click(object sender, EventArgs e)
         {
-           
+            var del= new DelFile();
+            del.ShowDialog();
         }
     }
 }

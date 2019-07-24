@@ -22,7 +22,12 @@ namespace PersonInfoManage.BLL.PersonInfo
             person_file person_File = new FileOperations().SetFile(personId, fullFilePath);
 
             Result r = new Result();
-            if (new PersonFileDAL().Add(person_File) > 0)
+            if (person_File == null)
+            {
+                r.Code = RES.ERROR;
+                r.Message = "文件体积太大！";
+            }
+            else if (new PersonFileDAL().Add(person_File) == 1)
             {
                 r.Code = RES.OK;
                 r.Message = "添加成功！";

@@ -14,10 +14,10 @@ namespace PersonInfoManage.BLL.Cost
         /// <summary>
         /// 费用单更新
         /// </summary>
-        /// <param name="main">费用单对象cost_main:approver、approval_time、approval_money、status、id</param>
+        /// <param name="main">费用单对象cost_main:approval_id、status、approval_time、approval_money、id</param>
         /// <returns>更新是否成功</returns>
         public Result Update(cost_main main)
-        {
+        {            
             Result res = new Result()
             {
                 Code = RES.ERROR,
@@ -27,6 +27,7 @@ namespace PersonInfoManage.BLL.Cost
             {
                 return res;
             }
+
             if(new CostApprovaDAL().Update(main) == 1)
             {
                 res.Code = RES.OK;
@@ -62,7 +63,7 @@ namespace PersonInfoManage.BLL.Cost
         /// <summary>
         /// 根据条件查询费用信息(可分页)
         /// </summary>
-        /// <param name="conditions">条件键值对 "id", "applicant", "status", "start_time", "end_time","page","limit"</param>
+        /// <param name="conditions">条件键值对 "id", "apply_id", "status", "start_time", "end_time","page","limit"</param>
         /// <returns>费用信息列表</returns>
         public List<cost> Query(Dictionary<string, object> conditions)
         {
