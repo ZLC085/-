@@ -238,16 +238,6 @@ namespace PersonInfoManage
             costPlanForm.ShowDialog();
         }
 
-        private void MenuSys_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnDelPerson_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         //</蒋媛_3>
     }
 }
