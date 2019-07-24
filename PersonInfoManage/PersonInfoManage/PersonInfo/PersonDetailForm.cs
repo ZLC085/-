@@ -1,6 +1,7 @@
 ﻿using Loading;
 using PersonInfoManage.BLL.PersonInfo;
 using PersonInfoManage.BLL.Utils;
+using PersonInfoManage.PersonInfo;
 using System;
 using System.Windows.Forms;
 
@@ -72,14 +73,14 @@ namespace PersonInfoManage
 
         private void BtnUpdateFile_Click(object sender, EventArgs e)
         {
-            PersonDetailForm pdForm = new PersonDetailForm();
-            pdForm.Text = "修改文件名";
-            pdForm.ShowDialog();
+            var update= new UpdateFileName();
+            update.ShowDialog();
         }
 
         private void BtnDelFile_Click(object sender, EventArgs e)
         {
-           
+            var del= new DelFile();
+            del.ShowDialog();
         }
     }
 }

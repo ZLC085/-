@@ -33,8 +33,6 @@
             this.TxtUpdateFileName = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // LblUpdateFileName
@@ -64,6 +62,7 @@
             this.TxtUpdateFileName.Name = "TxtUpdateFileName";
             this.TxtUpdateFileName.Size = new System.Drawing.Size(119, 21);
             this.TxtUpdateFileName.TabIndex = 2;
+            this.TxtUpdateFileName.TextChanged += new System.EventHandler(this.TxtUpdateFileName_TextChanged);
             // 
             // button1
             // 
@@ -84,16 +83,6 @@
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(95, 46);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(108, 24);
-            this.dataGridView1.TabIndex = 6;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
-            // 
             // UpdateFileName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -104,10 +93,8 @@
             this.Controls.Add(this.TxtUpdateFileName);
             this.Controls.Add(this.LblFileName);
             this.Controls.Add(this.LblUpdateFileName);
-            this.Controls.Add(this.dataGridView1);
             this.Name = "UpdateFileName";
             this.Text = "修改文件名";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -120,6 +107,5 @@
         private System.Windows.Forms.TextBox TxtUpdateFileName;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

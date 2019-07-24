@@ -30,15 +30,12 @@ namespace PersonInfoManage.PersonInfo
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            SqlConnection con;
-            con = new SqlConnection("server = (47.106.235.197); database = localhost; uid = SA; pwd = qwer-123456");
-            con.Open();
+            
 
-            String find = "select * from person_file where filename = ' " + filename + " '";
-            SqlDataAdapter myDa = new SqlDataAdapter(find, con);
-            DataSet Ds = new DataSet();
-            myDa.Fill(Ds, "name");
-            DataGridView1_CellContentClick.DataSourse = Ds.Tables["name"];
+        }
+
+        private void TxtUpdateFileName_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
