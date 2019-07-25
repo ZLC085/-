@@ -81,7 +81,19 @@ namespace PersonInfoManage
                 if (list[0].gender.Equals("女")) RdoFemale.Checked = true;
                 TxtIdentityNumber.Text = list[0].identity_number;
                 TimeBirthDate.Value = list[0].birth_date;
-                //CmbBelongPlace.Text = list[0].belong_place_id;
+
+                ////////////////////////////////////////////////////
+                string id = list[0].belong_place_id.ToString();
+                PersonType = new SysSettingBLL().SelectByDictName(sys_dict_type.Person);
+                foreach (var item in PersonType)
+                {
+                    if (item.id.Equals(id))
+                    {
+                        CmbBelongPlace.Text = item.category_name;
+                    }
+                }
+
+
                 CmbNation.Text = list[0].nation;
                 TxtAddress.Text = list[0].address;
                 LblOldPlace2.Text = list[0].native_place;
