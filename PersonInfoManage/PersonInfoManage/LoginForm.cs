@@ -41,10 +41,10 @@ namespace PersonInfoManage
 
             if (res == true)
             {
-                if (SaveUserInfoToLocal()) {
+                //if (SaveUserInfoToLocal()) {
                     new Thread(() => Application.Run(new MainForm())).Start();
                     Close();
-                }
+                //}
             }
             else
             {

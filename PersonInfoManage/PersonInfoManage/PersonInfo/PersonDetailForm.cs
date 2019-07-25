@@ -9,9 +9,11 @@ namespace PersonInfoManage
 {
     public partial class PersonDetailForm : Form
     {
-        public PersonDetailForm()
+        private readonly int PersonId;
+        public PersonDetailForm(int personId)
         {
             InitializeComponent();
+            PersonId = personId;
         }
 
         private void BtnAddFile_Click(object sender, EventArgs e)
@@ -31,7 +33,7 @@ namespace PersonInfoManage
                 {
                     //这里写处理耗时的代码，代码处理完成则自动关闭该窗口
                     PersonFileBLL personFileBLL = new PersonFileBLL();
-                    result = personFileBLL.Add(1001, filePath);
+                    result = personFileBLL.Add(PersonId, filePath);
                 });
 
                 FileStatus(result, "文件添加");

@@ -57,6 +57,7 @@
     <Compile Include="System\SysUserBLL.cs" />
     <Compile Include="Utils\FileOperations.cs" />
     <Compile Include="Utils\Result.cs" />
+    <Compile Include="Utils\UserInfoBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PersonInfoManage.DAL\PersonInfoManage.DAL.csproj">

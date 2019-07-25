@@ -1,4 +1,5 @@
-﻿using PersonInfoManage.DAL.Utils;
+﻿using PersonInfoManage.DAL.Logs;
+using PersonInfoManage.DAL.Utils;
 using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
@@ -28,8 +29,8 @@ namespace PersonInfoManage.DAL.PersonInfo
             try
             {
                 // sql语句
-                string sql = "insert into person_basic (name, former_name, gender, identity_number, birth_date, native_place, marry_status, job_status, income, temper, family, person_type, person_type_name, qq, address, phone, belong_place, belong_place_name, nation, input_time, user_id, isdel) "
-                    + "values(@name, @former_name, @gender, @identity_number, @birth_date, @native_place, @marry_status, @job_status, @income, @temper, @family, @person_type, @person_type_name, @qq, @address, @phone, @belong_place, @belong_place_name, @nation, @input_time, @user_id, @isdel)";
+                string sql = "insert into person_basic (name, former_name, gender, identity_number, birth_date, native_place, marry_status, job_status, income, temper, family, person_type_id, qq, address, phone, belong_place_id, nation, input_time, user_id, isdel) "
+                    + "values(@name, @former_name, @gender, @identity_number, @birth_date, @native_place, @marry_status, @job_status, @income, @temper, @family, @person_type_id, @qq, @address, @phone, @belong_place_id, @nation, @input_time, @user_id, @isdel)";
                 // 参数赋值
                 SqlParameter name = new SqlParameter("@name", info.name);
                 SqlParameter former_name = new SqlParameter("@former_name", info.former_name);
@@ -42,24 +43,24 @@ namespace PersonInfoManage.DAL.PersonInfo
                 SqlParameter income = new SqlParameter("@income", info.income);
                 SqlParameter temper = new SqlParameter("@temper", info.temper);
                 SqlParameter family = new SqlParameter("@family", info.family);
-                SqlParameter person_type = new SqlParameter("@person_type", info.person_type);
-                SqlParameter person_type_name = new SqlParameter("@person_type_name", info.person_type_name);
+                SqlParameter person_type_id = new SqlParameter("@person_type_id", info.person_type_id);
                 SqlParameter qq = new SqlParameter("@qq", info.qq);
                 SqlParameter address = new SqlParameter("@address", info.address);
                 SqlParameter phone = new SqlParameter("@phone", info.phone);
-                SqlParameter belong_place = new SqlParameter("@belong_place", info.belong_place);
-                SqlParameter belong_place_name = new SqlParameter("@belong_place_name", info.belong_place_name);
+                SqlParameter belong_place_id = new SqlParameter("@belong_place_id", info.belong_place_id);
                 SqlParameter nation = new SqlParameter("@nation", info.nation);
                 SqlParameter input_time = new SqlParameter("@input_time", info.input_time);
                 SqlParameter user_id = new SqlParameter("@user_id", info.user_id);
                 SqlParameter isdel = new SqlParameter("@isdel", info.isdel);
                 // 执行sql语句
-                res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, name, former_name, gender, identity_number, birth_date, native_place, marry_status, job_status, income, temper, family, person_type, person_type_name, qq, address, phone, belong_place, belong_place_name, nation, input_time, user_id, isdel);
-                Console.WriteLine("执行成功！");
+                res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, name, former_name, gender, identity_number, birth_date, native_place, marry_status, job_status, income, temper, family, person_type_id, qq, address, phone, belong_place_id, nation, input_time, user_id, isdel);
+                // 添加用户日志
+                new LogUserDAL().Add(LogOperations.LogUser("人员信息录入"));
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                // 添加系统日志
+                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
                 return 0;
             }
             // 返回执行成功条数
@@ -77,7 +78,7 @@ namespace PersonInfoManage.DAL.PersonInfo
             {
                 // sql语句
                 string sql = "update person_basic set "
-                + "name = @name, former_name = @former_name, gender = @gender, identity_number = @identity_number, birth_date = @birth_date, native_place = @native_place, marry_status = @marry_status, job_status = @job_status, income = @income, temper = @temper, family = @family, person_type = @person_type, person_type_name = @person_type_name, qq = @qq, address = @address, phone = @phone, belong_place = @belong_place, belong_place_name = @belong_place_name, nation = @nation, input_time = @input_time, user_id = @user_id, isdel = @isdel "
+                + "name = @name, former_name = @former_name, gender = @gender, identity_number = @identity_number, birth_date = @birth_date, native_place = @native_place, marry_status = @marry_status, job_status = @job_status, income = @income, temper = @temper, family = @family, person_type_id = @person_type_id, qq = @qq, address = @address, phone = @phone, belong_place_id = @belong_place_id, nation = @nation, input_time = @input_time, user_id = @user_id, isdel = @isdel "
                 + "where id = @id";
                 // 参数赋值
                 SqlParameter name = new SqlParameter("@name", info.name);
@@ -91,25 +92,25 @@ namespace PersonInfoManage.DAL.PersonInfo
                 SqlParameter income = new SqlParameter("@income", info.income);
                 SqlParameter temper = new SqlParameter("@temper", info.temper);
                 SqlParameter family = new SqlParameter("@family", info.family);
-                SqlParameter person_type = new SqlParameter("@person_type", info.person_type);
-                SqlParameter person_type_name = new SqlParameter("@person_type_name", info.person_type_name);
+                SqlParameter person_type_id = new SqlParameter("@person_type_id", info.person_type_id);
                 SqlParameter qq = new SqlParameter("@qq", info.qq);
                 SqlParameter address = new SqlParameter("@address", info.address);
                 SqlParameter phone = new SqlParameter("@phone", info.phone);
-                SqlParameter belong_place = new SqlParameter("@belong_place", info.belong_place);
-                SqlParameter belong_place_name = new SqlParameter("@belong_place_name", info.belong_place_name);
+                SqlParameter belong_place_id = new SqlParameter("@belong_place_id", info.belong_place_id);
                 SqlParameter nation = new SqlParameter("@nation", info.nation);
                 SqlParameter input_time = new SqlParameter("@input_time", info.input_time);
                 SqlParameter user_id = new SqlParameter("@user_id", info.user_id);
                 SqlParameter isdel = new SqlParameter("@isdel", info.isdel);
                 SqlParameter id = new SqlParameter("@id", info.id);
                 // 执行sql语句
-                res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, name, former_name, gender, identity_number, birth_date, native_place, marry_status, job_status, income, temper, family, person_type, person_type_name, qq, address, phone, belong_place, belong_place_name, nation, input_time, user_id, isdel, id);
-                Console.WriteLine("执行成功！");
+                res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, name, former_name, gender, identity_number, birth_date, native_place, marry_status, job_status, income, temper, family, person_type_id, qq, address, phone, belong_place_id, nation, input_time, user_id, isdel, id);
+                // 添加用户日志
+                new LogUserDAL().Add(LogOperations.LogUser("人员信息修改"));
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                // 添加系统日志
+                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
                 return 0;
             }
             // 返回执行成功条数
@@ -131,12 +132,16 @@ namespace PersonInfoManage.DAL.PersonInfo
                 SqlParameter sp_id = new SqlParameter("@id", id);
                 // 执行sql语句
                 res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, sp_id);
+                // 添加用户日志
+                new LogUserDAL().Add(LogOperations.LogUser("人员信息移除"));
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                // 添加系统日志
+                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
                 return 0;
             }
-            //返回成功条数
+            // 返回成功条数
             return res;
         }
 
@@ -155,12 +160,16 @@ namespace PersonInfoManage.DAL.PersonInfo
                 SqlParameter sp_id = new SqlParameter("@id", id);
                 // 执行sql语句
                 res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, sp_id);
+                // 添加用户日志
+                new LogUserDAL().Add(LogOperations.LogUser("人员信息删除"));
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                // 添加系统日志
+                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
                 return 0;
             }
-            //返回成功条数
+            // 返回成功条数
             return res;
         }
 
@@ -173,13 +182,14 @@ namespace PersonInfoManage.DAL.PersonInfo
         {
             // 用于返回的列表
             List<person_basic> list = new List<person_basic>();
+            if (info.Equals(null)) return list;
             try
             {
                 // sql语句
                 string sql = "select * from person_basic where isdel = 1 ";
                 // 用于拼接查询
                 List<SqlParameter> sqlPara = new List<SqlParameter>();
-                // 判断参数(可优化)
+                // 判断参数
                 if (!string.IsNullOrEmpty(info.name)) // name
                 {
                     sql += " and name like @name";
@@ -190,10 +200,9 @@ namespace PersonInfoManage.DAL.PersonInfo
                     sql += " and identity_number like @identity_number";
                     sqlPara.Add(new SqlParameter("@identity_number", "%" + info.identity_number + "%"));
                 }
-                if (!string.IsNullOrEmpty(info.person_type_name)) // person_type_name
+                if (info.person_type_id > -999) // person_type_id
                 {
-                    sql += " and person_type_name like @person_type_name";
-                    sqlPara.Add(new SqlParameter("@person_type_name", "%" + info.person_type_name + "%"));
+                    sql += " and person_type_id = @person_type_id";
                 }
                 if (!string.IsNullOrEmpty(info.native_place)) // native_place
                 {
@@ -221,23 +230,24 @@ namespace PersonInfoManage.DAL.PersonInfo
                     pb.income = decimal.Parse(dr[9].ToString());
                     pb.temper = dr[10].ToString();
                     pb.family = dr[11].ToString();
-                    pb.person_type = int.Parse(dr[12].ToString());
-                    pb.person_type_name = dr[13].ToString();
-                    pb.qq = dr[14].ToString();
-                    pb.address = dr[15].ToString();
-                    pb.phone = dr[16].ToString();
-                    pb.belong_place = int.Parse(dr[17].ToString());
-                    pb.belong_place_name = dr[18].ToString();
-                    pb.nation = dr[19].ToString();
-                    pb.input_time = DateTime.Parse(dr[20].ToString());
-                    pb.user_id = int.Parse(dr[21].ToString());
-                    pb.isdel = int.Parse(dr[22].ToString());
+                    pb.person_type_id = int.Parse(dr[12].ToString());
+                    pb.qq = dr[13].ToString();
+                    pb.address = dr[14].ToString();
+                    pb.phone = dr[15].ToString();
+                    pb.belong_place_id = int.Parse(dr[16].ToString());
+                    pb.nation = dr[17].ToString();
+                    pb.input_time = DateTime.Parse(dr[18].ToString());
+                    pb.user_id = int.Parse(dr[19].ToString());
+                    pb.isdel = int.Parse(dr[20].ToString());
                     list.Add(pb);
                 }
+                // 添加用户日志
+                new LogUserDAL().Add(LogOperations.LogUser("人员信息检索"));
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                // 添加系统日志
+                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
                 throw e;
             }
             // 返回列表

@@ -58,7 +58,7 @@
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
-            this.panelEx1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelEx1.Margin = new System.Windows.Forms.Padding(4);
             this.panelEx1.Name = "panelEx1";
             this.panelEx1.Size = new System.Drawing.Size(645, 551);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -79,7 +79,7 @@
             this.PnlAddPlan.DisabledBackColor = System.Drawing.Color.Empty;
             this.PnlAddPlan.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlAddPlan.Location = new System.Drawing.Point(0, 0);
-            this.PnlAddPlan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PnlAddPlan.Margin = new System.Windows.Forms.Padding(4);
             this.PnlAddPlan.Name = "PnlAddPlan";
             this.PnlAddPlan.Size = new System.Drawing.Size(645, 78);
             this.PnlAddPlan.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -96,7 +96,7 @@
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Location = new System.Drawing.Point(344, 30);
-            this.labelX2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX2.Margin = new System.Windows.Forms.Padding(4);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(45, 29);
             this.labelX2.TabIndex = 3;
@@ -105,7 +105,7 @@
             // TimeEndPlan
             // 
             this.TimeEndPlan.Location = new System.Drawing.Point(397, 30);
-            this.TimeEndPlan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TimeEndPlan.Margin = new System.Windows.Forms.Padding(4);
             this.TimeEndPlan.Name = "TimeEndPlan";
             this.TimeEndPlan.Size = new System.Drawing.Size(161, 25);
             this.TimeEndPlan.TabIndex = 2;
@@ -113,7 +113,7 @@
             // TimeStartPlan
             // 
             this.TimeStartPlan.Location = new System.Drawing.Point(172, 30);
-            this.TimeStartPlan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TimeStartPlan.Margin = new System.Windows.Forms.Padding(4);
             this.TimeStartPlan.Name = "TimeStartPlan";
             this.TimeStartPlan.Size = new System.Drawing.Size(161, 25);
             this.TimeStartPlan.TabIndex = 1;
@@ -125,7 +125,7 @@
             // 
             this.LblTimePlan.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.LblTimePlan.Location = new System.Drawing.Point(16, 30);
-            this.LblTimePlan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LblTimePlan.Margin = new System.Windows.Forms.Padding(4);
             this.LblTimePlan.Name = "LblTimePlan";
             this.LblTimePlan.Size = new System.Drawing.Size(160, 29);
             this.LblTimePlan.TabIndex = 0;
@@ -136,7 +136,7 @@
             this.BtnAddCancel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnAddCancel.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.BtnAddCancel.Location = new System.Drawing.Point(373, 500);
-            this.BtnAddCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnAddCancel.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAddCancel.Name = "BtnAddCancel";
             this.BtnAddCancel.Size = new System.Drawing.Size(107, 31);
             this.BtnAddCancel.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -144,13 +144,14 @@
             this.BtnAddCancel.SymbolColor = System.Drawing.Color.Red;
             this.BtnAddCancel.TabIndex = 2;
             this.BtnAddCancel.Text = "取消";
+            this.BtnAddCancel.Click += new System.EventHandler(this.BtnAddCancel_Click);
             // 
             // BtnAddTure
             // 
             this.BtnAddTure.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.BtnAddTure.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.BtnAddTure.Location = new System.Drawing.Point(160, 500);
-            this.BtnAddTure.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnAddTure.Margin = new System.Windows.Forms.Padding(4);
             this.BtnAddTure.Name = "BtnAddTure";
             this.BtnAddTure.Size = new System.Drawing.Size(107, 31);
             this.BtnAddTure.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -158,10 +159,14 @@
             this.BtnAddTure.SymbolColor = System.Drawing.Color.Green;
             this.BtnAddTure.TabIndex = 1;
             this.BtnAddTure.Text = "确定";
+            this.BtnAddTure.Click += new System.EventHandler(this.BtnAddTure_Click);
             // 
             // DgvAddPlan
             // 
+            this.DgvAddPlan.AllowUserToAddRows = false;
             this.DgvAddPlan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvAddPlan.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.DgvAddPlan.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -185,7 +190,7 @@
             this.DgvAddPlan.EnableHeadersVisualStyles = false;
             this.DgvAddPlan.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.DgvAddPlan.Location = new System.Drawing.Point(0, 78);
-            this.DgvAddPlan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DgvAddPlan.Margin = new System.Windows.Forms.Padding(4);
             this.DgvAddPlan.Name = "DgvAddPlan";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -220,7 +225,7 @@
             this.ClientSize = new System.Drawing.Size(645, 551);
             this.Controls.Add(this.panelEx1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CostPlanForm";
@@ -228,6 +233,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "新增费用规划";
+            this.Load += new System.EventHandler(this.CostPlanForm_Load);
             this.panelEx1.ResumeLayout(false);
             this.PnlAddPlan.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvAddPlan)).EndInit();

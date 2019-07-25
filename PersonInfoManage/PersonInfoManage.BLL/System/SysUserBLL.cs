@@ -80,13 +80,18 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="UserId">用户id</param>
         /// <returns>影响行数</returns>
-        public Result Del(int UserId)
+        public Result Del(List<int> user_id)
         {
             SysUserDAL Sysuser = new SysUserDAL();
             Result res = new Result();
+            int re = 0;
             try
             {
-                if (Sysuser.Del(UserId) == 0)
+                foreach (var userId in user_id)
+                {
+                    re += Sysuser.Del(userId);
+                }
+                if (re == 0)
                 {
                     res.Code = RES.ERROR;
                     res.Message = "修改失败！";
@@ -116,6 +121,17 @@ namespace PersonInfoManage.BLL.System
         {
             SysUserDAL Sysuser = new SysUserDAL();
             return Sysuser.Select(UserInfo);
+        }
+
+        /// <summary>
+        /// 通过用户id查询用户
+        /// </summary>
+        /// <param name="UserId">用户id</param>
+        /// <returns>用户信息</returns>
+        public List<view_sys_u2g> SelectById(int UserId)
+        {
+            SysUserDAL Sysuser = new SysUserDAL();
+            return Sysuser.SelectById(UserId);
         }
     }
 }

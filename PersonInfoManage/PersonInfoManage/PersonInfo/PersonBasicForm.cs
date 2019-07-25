@@ -1,4 +1,5 @@
 ﻿using PersonInfoManage.BLL.PersonInfo;
+using PersonInfoManage.BLL.System;
 using PersonInfoManage.BLL.Utils;
 using PersonInfoManage.Model;
 using PersonInfoManage.Utils;
@@ -32,73 +33,83 @@ namespace PersonInfoManage
         {
             InitializeComponent();
 
-            #region 初始选项
-            // 省
-            Provinces = new List<string> { province };
-            CmbProvince.DataSource = Provinces;
-            // 市
-            Cities = new List<string> { city };
-            CmbCity.DataSource = Cities;
-            // 县/区
-            Places = new List<string> { place };
-            CmbPlace.DataSource = Places;
-            // 初始查询（优化卡顿）
-            Provinces = new NativePlaceBLL().QueryProvince();
-            // 婚姻状况
-            Marry = new List<string>
+            if (this.Text.Equals("人员信息录入"))
             {
-                "未婚",
-                "已婚"
-            };
-            CmbMarry.DataSource = Marry;
-            // 名族
-            Nation = new List<string>
+                #region 初始选项
+                // 省
+                Provinces = new List<string> { province };
+                CmbProvince.DataSource = Provinces;
+                // 市
+                Cities = new List<string> { city };
+                CmbCity.DataSource = Cities;
+                // 县/区
+                Places = new List<string> { place };
+                CmbPlace.DataSource = Places;
+                // 初始查询（优化卡顿）
+                Provinces = new NativePlaceBLL().QueryProvince();
+
+                // 婚姻状况
+                Marry = new List<string> { "未婚" };
+                CmbMarry.DataSource = Marry;
+
+                // 民族
+                Nation = new List<string> { "汉族" };
+                CmbNation.DataSource = Nation;
+
+                // 人员类别
+                PersonType = new SysSettingBLL().SelectByDictName(sys_dict_type.Person);
+                CmbPersonType.DataSource = PersonType[0].category_name;
+
+                // 归属地
+                BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
+                CmbBelongPlace.DataSource = BelongPlace[0].category_name;
+
+                LblOldPlace1.Hide();
+                LblOldPlace2.Hide();
+                #endregion
+            }
+            if (this.Text.Equals("人员信息修改"))
             {
-                "汉族","蒙古族","满族","朝鲜族","赫哲族",
-                "达斡尔族","鄂温克族","鄂伦春族","回族","东乡族",
-                "土族","撒拉族","保安族","裕固族","维吾尔族",
-                "哈萨克族","柯尔克孜族","锡伯族","塔吉克族","乌孜别克族",
-                "俄罗斯族","塔塔尔族","藏族","门巴族","珞巴族",
-                "羌族","彝族","白族","哈尼族","傣族",
-                "僳僳族","佤族","拉祜族","纳西族","景颇族",
-                "布朗族","阿昌族","普米族","怒族","德昂族",
-                "独龙族","基诺族","苗族","布依族","侗族",
-                "水族","仡佬族","壮族","瑶族","仫佬族",
-                "毛南族","京族","土家族","黎族","畲族",
-                "高山族"
-            };
-            CmbNation.DataSource = Nation;
-            //// 人员类别
-            //PersonType = new TypeBLL().GetTheType("重点人员类别");
-            //List<string> ptList = new List<string>();
-            //foreach(var item in PersonType)
-            //{
-            //    ptList.Add(item.category_name);
-            //}
-            //CmbPersonType.DataSource = ptList;
-            //// 归属地
-            //BelongPlace = new TypeBLL().GetTheType("归属地");
-            //List<string> bpList = new List<string>();
-            //foreach (var item in BelongPlace)
-            //{
-            //    bpList.Add(item.category_name);
-            //}
-            //CmbBelongPlace.DataSource = bpList;
+                #region 初始选项
+                person_basic pb = new person_basic();
+                //pb.id = "要修改的人员id";
+                List<person_basic> list = new PersonBasicBLL().Query(pb);
 
-            //string cc = "ss";
+                TxtName.Text = list[0].name.ToString();
+                TxtFormerName.Text = list[0].former_name.ToString();
+                if (list[0].gender.Equals("男")) RdoMale.Checked = true;
+                if (list[0].gender.Equals("女")) RdoFemale.Checked = true;
+                TxtIdentityNumber.Text = list[0].identity_number;
+                TimeBirthDate.Value = list[0].birth_date;
 
-            //foreach (var item in PersonType)
-            //{
-            //    if (item.category_name.Equals(cc))
-            //    {
-            //        item.id;
-            //    }
-            //}
+                ////////////////////////////////////////////////////
+                string id = list[0].belong_place_id.ToString();
+                PersonType = new SysSettingBLL().SelectByDictName(sys_dict_type.Person);
+                foreach (var item in PersonType)
+                {
+                    if (item.id.Equals(id))
+                    {
+                        CmbBelongPlace.Text = item.category_name;
+                    }
+                }
 
 
-            //
-            #endregion
+                CmbNation.Text = list[0].nation;
+                TxtAddress.Text = list[0].address;
+                LblOldPlace2.Text = list[0].native_place;
+                TxtIncome.Text = list[0].income.ToString();
+                TxtTemper.Text = list[0].temper;
+                TxtJob.Text = list[0].job_status;
+                if (list[0].marry_status) CmbMarry.Text = "已婚";
+                if (!list[0].marry_status) CmbMarry.Text = "未婚";
+                TxtFamily.Text = list[0].family;
+                //CmbPersonType.Text = list[0].person_type_id;
+                TxtQQ.Text = list[0].qq;
+                TxtPhone.Text = list[0].phone;
+                #endregion
+            }
 
+            #region 错误提示
             LblName.Hide();
             LblFormerName.Hide();
             LblIdentityNumber.Hide();
@@ -106,12 +117,10 @@ namespace PersonInfoManage
             LblNativePlace.Hide();
             LblIncome.Hide();
             LblPhone.Hide();
-
-
-
+            #endregion
         }
 
-        #region 籍贯相关控件
+        #region 相关控件
         /// <summary>
         /// 点击下拉并查询省
         /// </summary>
@@ -166,6 +175,68 @@ namespace PersonInfoManage
         {
             Places = new List<string>();
             CmbPlace.DataSource = Places;
+        }
+
+        /// <summary>
+        /// 民族
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CmbNation_DragDrop(object sender, DragEventArgs e)
+        {
+            Nation = new List<string>
+            {
+                "汉族","蒙古族","满族","朝鲜族","赫哲族",
+                "达斡尔族","鄂温克族","鄂伦春族","回族","东乡族",
+                "土族","撒拉族","保安族","裕固族","维吾尔族",
+                "哈萨克族","柯尔克孜族","锡伯族","塔吉克族","乌孜别克族",
+                "俄罗斯族","塔塔尔族","藏族","门巴族","珞巴族",
+                "羌族","彝族","白族","哈尼族","傣族",
+                "僳僳族","佤族","拉祜族","纳西族","景颇族",
+                "布朗族","阿昌族","普米族","怒族","德昂族",
+                "独龙族","基诺族","苗族","布依族","侗族",
+                "水族","仡佬族","壮族","瑶族","仫佬族",
+                "毛南族","京族","土家族","黎族","畲族",
+                "高山族"
+            };
+            CmbNation.DataSource = Nation;
+        }
+
+        /// <summary>
+        /// 婚姻状况
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CmbMarry_DropDown(object sender, EventArgs e)
+        {
+            Marry = new List<string>
+            {
+                "未婚",
+                "已婚"
+            };
+            CmbMarry.DataSource = Marry;
+        }
+
+        /// <summary>
+        /// 重点人员类别
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CmbPersonType_DropDown(object sender, EventArgs e)
+        {
+            PersonType = new SysSettingBLL().SelectByDictName(sys_dict_type.Person);
+            CmbPersonType.DataSource = PersonType[0].category_name;
+        }
+
+        /// <summary>
+        /// 归属地
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CmbBelongPlace_DropDown(object sender, EventArgs e)
+        {
+            BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
+            CmbBelongPlace.DataSource = BelongPlace[0].category_name;
         }
         #endregion
 
@@ -279,10 +350,8 @@ namespace PersonInfoManage
             pb.family = TxtFamily.Text;
             #endregion
 
-            //pb.person_type = 1;
-            //pb.person_type_name = "未知";
             #region 人员类型
-            
+            //pb.person_type_id = CmbPersonType;
             #endregion
 
             #region QQ
@@ -323,8 +392,9 @@ namespace PersonInfoManage
             }
             #endregion
 
-            //pb.belong_place = 1;
-            //pb.belong_place_name = "成都市双流区公安局";
+            #region 归属地
+            //pb.belong_place_id = CmbBelongPlace;
+            #endregion
 
             #region 民族
             pb.nation = CmbNation.Text;
@@ -334,71 +404,37 @@ namespace PersonInfoManage
             pb.input_time = DateTime.Now;
             #endregion
 
-            //pb.user_id = 1001;
+            #region 用户id
+            pb.user_id = UserInfoBLL.UserId;
+            #endregion
 
             #region 删除标记
             pb.isdel = 1;
             #endregion
 
-            // 判断结果
-            Result r = new PersonBasicBLL().Add(pb);
-            if (r.Code == RES.OK)
+            #region 判断结果
+            Result r;
+            if (this.Text.Equals("人员信息录入"))
             {
-                MessageBox.Show(r.Message);
-                this.Close();
+                r = new PersonBasicBLL().Add(pb);
             }
             else
             {
-                MessageBox.Show(r.Message);
+                r = new PersonBasicBLL().Update(pb);
             }
+
+            if (r.Code == RES.OK)
+            {
+                MessageBoxCustom.Show(r.Message, "", this);
+            }
+            else
+            {
+                //MessageBox.Show(r.Message);
+                MessageBoxCustom.Show(r.Message, "", this);
+            }
+            #endregion
+
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //private bool IsRightNum(string content, int len, NumType type)
-        //{
-        //    switch (type)
-        //    {
-        //        case NumType.ID:
-        //            if (len != 18) return false;
-
-        //            foreach(char c in content)
-        //            {
-        //                if (c < '0' || c > '9') return false;
-        //            }
-        //            return true;
-        //            break;
-        //        case NumType.Income:
-        //            return false;
-        //            break;
-        //        case NumType.Phone:
-        //            return false;
-        //            break;
-        //        case NumType.QQ:
-        //            return false;
-        //            break;
-        //        default:
-        //            return false;
-        //            break;
-        //    }
-        //}
-
-        //private enum NumType
-        //{
-        //    ID,Phone,QQ,Income
-        //}
 
         /// <summary>
         /// 关闭窗口
@@ -410,5 +446,6 @@ namespace PersonInfoManage
             this.Close();
         }
 
+        
     }
 }

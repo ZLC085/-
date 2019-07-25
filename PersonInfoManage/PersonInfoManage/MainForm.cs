@@ -1,8 +1,11 @@
 ﻿using PersonInfoManage.BLL.Cost;
+using PersonInfoManage.BLL.Logs;
 using PersonInfoManage.DAL.PersonInfo;
 using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace PersonInfoManage
@@ -40,21 +43,27 @@ namespace PersonInfoManage
         //<毛宇航_1>
         private void BtnAddPerson_Click(object sender, EventArgs e)
         {
-            PersonBasicForm pbForm = new PersonBasicForm();
-            pbForm.ShowDialog();
+            PersonBasicForm personBasicForm = new PersonBasicForm();
+            personBasicForm.Text = "人员信息录入";
+            personBasicForm.ShowDialog();
         }
 
         private void BtnQueryPerson_Click(object sender, EventArgs e)
         {
-            PersonDetailForm personDetailForm = new PersonDetailForm();
-            personDetailForm.ShowDialog();
+            //PersonDetailForm personDetailForm = new PersonDetailForm();
+            //personDetailForm.ShowDialog();
         }
 
         private void BtnUpdatePerson_Click(object sender, EventArgs e)
         {
-            PersonBasicForm pbForm = new PersonBasicForm();
-            pbForm.Text = "人员信息修改";
-            pbForm.ShowDialog();
+            PersonBasicForm personBasicForm = new PersonBasicForm();
+            personBasicForm.Text = "人员信息修改";
+            personBasicForm.ShowDialog();
+        }
+
+        private void BtnDelPerson_Click(object sender, EventArgs e)
+        {
+
         }
 
         //</毛宇航_1>
@@ -64,7 +73,58 @@ namespace PersonInfoManage
         //</李鸽鸽_1>
 
         //<坤吉心_1>
-        //
+        private void DgvUserLog_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            
+               // SolidBrush v_SoliBrush = new SolidBrush();
+            
+        }
+
+        private void BtnSearchUserlog_Click(object sender, EventArgs e)
+        {
+            
+             this.DgvUserLog.AutoGenerateColumns = false;//禁止生成不需要的列
+             DgvUserLog.DataSource = new LogUserBLL().Query();
+           
+            
+        }
+
+        private void BtnDelUserlog_Click(object sender, EventArgs e)
+        {
+            //if (this.DgvUserLog.RowCount==0)//判断是否有删除对象
+            //{
+            //    MessageBox.Show("没有选择要删除的信息！","提示");
+            //    return;
+            //}
+            DialogResult res = MessageBoxCustom.Show("是否确认删除？","提示",MessageBoxButtons.YesNo,this);
+            if (res==DialogResult.Yes)
+            {
+           
+            }
+        }
+
+        private void BtnDelSyslog_Click(object sender, EventArgs e)
+        {
+
+            DialogResult res = MessageBoxCustom.Show("是否确认删除？", "提示", MessageBoxButtons.YesNo, this);
+            if (res == DialogResult.Yes)
+            {
+               
+            }
+        }
+
+        private void BtnSearchSyslog_Click(object sender, EventArgs e)
+        {
+            this.DgvSysLog.AutoGenerateColumns = false;//禁止生成不需要的列
+            DgvSysLog.DataSource = new LogSysBLL().Query();
+        }
+
+        private void DgvSysLog_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         //</坤吉心_1>
 
         //<苏文杰_2>
@@ -258,6 +318,10 @@ namespace PersonInfoManage
             CostPlanForm costPlanForm = new CostPlanForm();
             costPlanForm.ShowDialog();
         }
+
+       
+
+
 
 
         //</蒋媛_3>
