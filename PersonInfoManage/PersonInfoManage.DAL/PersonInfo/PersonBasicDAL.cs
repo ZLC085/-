@@ -127,7 +127,7 @@ namespace PersonInfoManage.DAL.PersonInfo
             try
             {
                 // sql语句
-                string sql = "update person_basic set isdel = 0 where id = @id";
+                string sql = "update person_basic set isdel = 1 where id = @id";
                 // 参数赋值
                 SqlParameter sp_id = new SqlParameter("@id", id);
                 // 执行sql语句
@@ -186,7 +186,7 @@ namespace PersonInfoManage.DAL.PersonInfo
             try
             {
                 // sql语句
-                string sql = "select * from person_basic where isdel = 1 ";
+                string sql = "select * from person_basic where isdel = 0 ";
                 // 用于拼接查询
                 List<SqlParameter> sqlPara = new List<SqlParameter>();
                 // 判断参数
@@ -200,7 +200,7 @@ namespace PersonInfoManage.DAL.PersonInfo
                     sql += " and identity_number like @identity_number";
                     sqlPara.Add(new SqlParameter("@identity_number", "%" + info.identity_number + "%"));
                 }
-                if (info.person_type_id > -999) // person_type_id
+                if (info.person_type_id > 0) // person_type_id
                 {
                     sql += " and person_type_id = @person_type_id";
                 }

@@ -1,6 +1,7 @@
 ﻿using PersonInfoManage.BLL.Cost;
 using PersonInfoManage.BLL.Logs;
 using PersonInfoManage.BLL.System;
+using PersonInfoManage.BLL.Utils;
 using PersonInfoManage.DAL.PersonInfo;
 using PersonInfoManage.Model;
 using System;
@@ -159,7 +160,8 @@ namespace PersonInfoManage
         }
 
         //主页切换事件
-        private void MenuHome_CheckedChanged(object sender, EventArgs e)
+
+        private void MenuHome_Click(object sender, EventArgs e)
         {
             //List<cost> costs = ShowMessage();
             //if (costs.Count == 0)
@@ -176,14 +178,16 @@ namespace PersonInfoManage
         private void TabPersonBasic_Click(object sender, EventArgs e)
         {
             dgvPerson.AutoGenerateColumns = false;
-            dgvPerson.DataSource = new PersonBasicDAL().Query(new person_basic());
+            int localUserid = UserInfoBLL.UserId;
+            dgvPerson.DataSource = new PersonBasicDAL().Query(new person_basic { user_id = localUserid,isdel=1});
         }
         //人员信息管理菜单Tab页切换事件（一级）
-        private void MenuPersoninfo_CheckedChanged(object sender, EventArgs e)
+        private void MenuPersoninfo_Click(object sender, EventArgs e)
         {
             TabControlPerson.SelectedTab = TabPersonBasic;
             dgvPerson.AutoGenerateColumns = false;
-            dgvPerson.DataSource = new PersonBasicDAL().Query(new person_basic());
+            int localUserid = UserInfoBLL.UserId;
+            dgvPerson.DataSource = new PersonBasicDAL().Query(new person_basic { user_id = localUserid,isdel=0 });
         }
 
         //回收站Tab页点击事件（二级）
@@ -196,7 +200,8 @@ namespace PersonInfoManage
         }
 
         //日志管理菜单Tab页切换事件（一级）
-        private void MenuLog_CheckedChanged(object sender, EventArgs e)
+        
+        private void MenuLog_Click(object sender, EventArgs e)
         {
             TabControlLog.SelectedTab = TabUserLog;
             DgvUserLog.AutoGenerateColumns = false;
@@ -218,13 +223,14 @@ namespace PersonInfoManage
         }
 
         //费用管理菜单Tab页切换事件（一级）
-        private void MenuCost_CheckedChanged(object sender, EventArgs e)
+        private void MenuCost_Click(object sender, EventArgs e)
         {
             TabControlCost.SelectedTab = TabCostApply;
             DgvCostApply.AutoGenerateColumns = false;
-            //int localUserId = LocalUserInfo.LoginInfo.UserId;
+            //获取本地用户id
+            int localUserId = UserInfoBLL.UserId;
             Dictionary<string,object> dic = new Dictionary<string, object>();
-            dic.Add(nameof(cost_main.apply_id), 1);
+            dic.Add(nameof(cost_main.apply_id), localUserId);
             DgvCostApply.DataSource = new CostApplyBLL().Query(dic);
         }
 
@@ -232,9 +238,10 @@ namespace PersonInfoManage
         private void TabCostApply_Click(object sender, EventArgs e)
         {
             DgvCostApply.AutoGenerateColumns = false;
-            //int localUserId = LocalUserInfo.LoginInfo.UserId;
+            //获取本地用户id
+            int localUserId = UserInfoBLL.UserId;
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic.Add(nameof(cost_main.apply_id), 1);
+            dic.Add(nameof(cost_main.apply_id), localUserId);
             DgvCostApply.DataSource = new CostApplyBLL().Query(dic);
         }
 
@@ -242,9 +249,10 @@ namespace PersonInfoManage
         private void TabCostAudit_Click(object sender, EventArgs e)
         {
             DgvCostApprove.AutoGenerateColumns = false;
-            //int localUserId = LocalUserInfo.LoginInfo.UserId;
+            //获取本地用户id
+            int localUserId = UserInfoBLL.UserId;
             Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic.Add(nameof(cost_approval.approval_id), 1);
+            dic.Add(nameof(cost_approval.approval_id), localUserId);
             DgvCostApprove.DataSource = new CostApprovalBLL().Query(dic);
         }
 
@@ -257,25 +265,25 @@ namespace PersonInfoManage
         }
         
         //系统设置菜单Tab页切换事件（一级）
-        private void MenuSys_CheckedChanged(object sender, EventArgs e)
+        private void MenuSys_Click(object sender, EventArgs e)
         {
             TabControlSys.SelectedTab = TabUserMan;
             DgvUserMan.AutoGenerateColumns = false;
-            //DgvUserMan.DataSource = new SysUserBLL().Select(null);
+            DgvUserMan.DataSource = new SysUserBLL().Select(new sys_user());
         }
 
         //用户管理Tab页点击事件(二级)
         private void TabUserMan_Click(object sender, EventArgs e)
         {
             DgvUserMan.AutoGenerateColumns = false;
-            //DgvUserMan.DataSource = new SysUserBLL().Select(null);
+            DgvUserMan.DataSource = new SysUserBLL().Select(new sys_user());
         }
 
         //用户组管理Tab页点击事件（二级）
         private void TabGroupMan_Click(object sender, EventArgs e)
         {
             DgvGroupMan.AutoGenerateColumns = false;
-            //DgvGroupMan.DataSource = new PermBLL().SelectGroup(null);
+            //DgvGroupMan.DataSource = new PermBLL().SelectGroup(new sys_group());
         }
 
         //系统设置Tab页点击事件（二级）
@@ -301,6 +309,11 @@ namespace PersonInfoManage
             DgvSysSet.DataSource = ds;
         }
 
+
+        private void MenuOperation_Click(object sender, EventArgs e)
+        {
+
+        }
         //</苏文杰_2>
 
         //<王尔沛_2>
@@ -496,12 +509,7 @@ namespace PersonInfoManage
         {
 
         }
-
-
-
-
-
-
+        
 
         //</蒋媛_3>
     }
