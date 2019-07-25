@@ -86,10 +86,10 @@
             this.LblName = new DevComponents.DotNetBar.LabelX();
             this.LblFormerName = new DevComponents.DotNetBar.LabelX();
             this.LblIncome = new DevComponents.DotNetBar.LabelX();
-            this.labelX30 = new DevComponents.DotNetBar.LabelX();
+            this.LblOldPlace1 = new DevComponents.DotNetBar.LabelX();
             this.LblNativePlace = new DevComponents.DotNetBar.LabelX();
             this.LblAddress = new DevComponents.DotNetBar.LabelX();
-            this.labelX31 = new DevComponents.DotNetBar.LabelX();
+            this.LblOldPlace2 = new DevComponents.DotNetBar.LabelX();
             this.SuspendLayout();
             // 
             // labelX2
@@ -907,19 +907,19 @@
             this.LblIncome.Text = "请输入正确的数字";
             this.LblIncome.TextAlignment = System.Drawing.StringAlignment.Far;
             // 
-            // labelX30
+            // LblOldPlace1
             // 
             // 
             // 
             // 
-            this.labelX30.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX30.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX30.Location = new System.Drawing.Point(30, 435);
-            this.labelX30.Margin = new System.Windows.Forms.Padding(1);
-            this.labelX30.Name = "labelX30";
-            this.labelX30.Size = new System.Drawing.Size(140, 25);
-            this.labelX30.TabIndex = 75;
-            this.labelX30.Text = "原   籍   贯：";
+            this.LblOldPlace1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblOldPlace1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblOldPlace1.Location = new System.Drawing.Point(30, 435);
+            this.LblOldPlace1.Margin = new System.Windows.Forms.Padding(1);
+            this.LblOldPlace1.Name = "LblOldPlace1";
+            this.LblOldPlace1.Size = new System.Drawing.Size(140, 25);
+            this.LblOldPlace1.TabIndex = 75;
+            this.LblOldPlace1.Text = "原   籍   贯：";
             // 
             // LblNativePlace
             // 
@@ -955,32 +955,31 @@
             this.LblAddress.Text = "请输入住址";
             this.LblAddress.TextAlignment = System.Drawing.StringAlignment.Far;
             // 
-            // labelX31
+            // LblOldPlace2
             // 
             // 
             // 
             // 
-            this.labelX31.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX31.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX31.Location = new System.Drawing.Point(170, 435);
-            this.labelX31.Margin = new System.Windows.Forms.Padding(1);
-            this.labelX31.Name = "labelX31";
-            this.labelX31.Size = new System.Drawing.Size(400, 25);
-            this.labelX31.TabIndex = 84;
-            this.labelX31.Text = "四川省成都市双流区";
+            this.LblOldPlace2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblOldPlace2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblOldPlace2.Location = new System.Drawing.Point(170, 435);
+            this.LblOldPlace2.Margin = new System.Windows.Forms.Padding(1);
+            this.LblOldPlace2.Name = "LblOldPlace2";
+            this.LblOldPlace2.Size = new System.Drawing.Size(400, 25);
+            this.LblOldPlace2.TabIndex = 84;
             // 
             // PersonBasicForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(942, 583);
-            this.Controls.Add(this.labelX31);
+            this.Controls.Add(this.LblOldPlace2);
             this.Controls.Add(this.LblAddress);
             this.Controls.Add(this.LblNativePlace);
             this.Controls.Add(this.LblIncome);
             this.Controls.Add(this.LblFormerName);
             this.Controls.Add(this.LblName);
-            this.Controls.Add(this.labelX30);
+            this.Controls.Add(this.LblOldPlace1);
             this.Controls.Add(this.CmbPlace);
             this.Controls.Add(this.CmbCity);
             this.Controls.Add(this.CmbProvince);
@@ -1044,7 +1043,6 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "人员信息录入";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1111,8 +1109,8 @@
         private DevComponents.DotNetBar.LabelX LblFormerName;
         private DevComponents.DotNetBar.LabelX LblIncome;
         private DevComponents.DotNetBar.LabelX LblNativePlace;
-        private DevComponents.DotNetBar.LabelX labelX30;
+        private DevComponents.DotNetBar.LabelX LblOldPlace1;
         private DevComponents.DotNetBar.LabelX LblAddress;
-        private DevComponents.DotNetBar.LabelX labelX31;
+        private DevComponents.DotNetBar.LabelX LblOldPlace2;
     }
 }
