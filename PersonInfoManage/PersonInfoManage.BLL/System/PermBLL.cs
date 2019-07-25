@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using PersonInfoManage.DAL.System;
 using PersonInfoManage.Model;
 using PersonInfoManage.BLL.Utils;
+using PersonInfoManage.DAL.Logs;
+using PersonInfoManage.DAL.Utils;
 
 namespace PersonInfoManage.BLL.System
 {
@@ -34,34 +36,6 @@ namespace PersonInfoManage.BLL.System
                     res.Message = "添加成功！";
                     return res;
                 }
-            }
-            catch
-            {
-                res.Code = RES.ERROR;
-                res.Message = "添加失败！";
-                return res;
-            }
-        }
-
-        /// <summary>
-        /// 添加用户进用户组
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="groupId"></param>
-        /// <returns>执行结果</returns>
-        public Result AddU2g(int groupId,List<int> user_id)
-        {
-            Result res = new Result();
-            PermDAL perm = new PermDAL();
-            try
-            {
-                foreach (var userId in user_id)
-                {
-                    perm.AddU2g(groupId, userId);                 
-                }
-                res.Code = RES.OK;
-                res.Message = "添加成功！";
-                return res;
             }
             catch
             {
@@ -103,7 +77,6 @@ namespace PersonInfoManage.BLL.System
             }
         }
 
-
         /// <summary>
         /// 删除用户组
         /// </summary>
@@ -130,6 +103,48 @@ namespace PersonInfoManage.BLL.System
         }
 
         /// <summary>
+        /// 查询用户组
+        /// </summary>
+        /// <param name="group">查询条件</param>
+        /// <returns>用户组信息</returns>
+        public List<sys_group> SelectGroup(sys_group group)
+        {
+            PermDAL perm = new PermDAL();
+            return perm.SelectGroup(group);
+        }
+
+
+
+
+        /// <summary>
+        /// 添加用户进用户组
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="groupId"></param>
+        /// <returns>执行结果</returns>
+        public Result AddU2g(int groupId, List<int> user_id)
+        {
+            Result res = new Result();
+            PermDAL perm = new PermDAL();
+            try
+            {
+                foreach (var userId in user_id)
+                {
+                    perm.AddU2g(groupId, userId);
+                }
+                res.Code = RES.OK;
+                res.Message = "添加成功！";
+                return res;
+            }
+            catch
+            {
+                res.Code = RES.ERROR;
+                res.Message = "添加失败！";
+                return res;
+            }
+        }
+
+        /// <summary>
         /// 删除用户组中的用户
         /// </summary>
         /// <param name="id"></param>
@@ -143,10 +158,10 @@ namespace PersonInfoManage.BLL.System
                 foreach (var userId in user_id)
                 {
                     perm.DelG2u(groupId, userId);
-                }             
-                    res.Code = RES.OK;
-                    res.Message = "删除成功！";
-                    return res;                
+                }
+                res.Code = RES.OK;
+                res.Message = "删除成功！";
+                return res;
             }
             catch
             {
@@ -166,7 +181,8 @@ namespace PersonInfoManage.BLL.System
         {
             PermDAL perm = new PermDAL();
             Result res = new Result();
-            try { 
+            try
+            {
                 perm.DelG2m(groupId);
                 foreach (var menuId in menu_id)
                 {
@@ -174,6 +190,7 @@ namespace PersonInfoManage.BLL.System
                 }
                 res.Code = RES.OK;
                 res.Message = "修改成功！";
+                new LogUserDAL().Add(LogOperations.LogUser("用户组权限修改"));
                 return res;
             }
             catch
@@ -182,17 +199,6 @@ namespace PersonInfoManage.BLL.System
                 res.Message = "修改失败！";
                 return res;
             }
-        }
-
-        /// <summary>
-        /// 查询用户组
-        /// </summary>
-        /// <param name="group">查询条件</param>
-        /// <returns>用户组信息</returns>
-        public List<sys_group> SelectGroup(sys_group group)
-        {
-            PermDAL perm = new PermDAL();
-            return perm.SelectGroup(group);
         }
 
         /// <summary>

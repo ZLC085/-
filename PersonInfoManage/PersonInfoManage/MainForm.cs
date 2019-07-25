@@ -1,4 +1,5 @@
 ﻿using PersonInfoManage.BLL.Cost;
+using PersonInfoManage.DAL.PersonInfo;
 using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace PersonInfoManage
             //{
             //    this.LblMessageCount.Text = costs.Count.ToString();
             //}
+
         }
 
         //<王继能_1>
@@ -117,6 +119,25 @@ namespace PersonInfoManage
             //    this.LblMessageCount.Text = costs.Count.ToString();
             //}
         }
+
+
+        private void TabPersonBasic_Click(object sender, EventArgs e)
+        {
+            dgvPerson.AutoGenerateColumns = false;
+            dgvPerson.DataSource = new PersonBasicDAL().Query(null);
+        }
+
+        private void MenuPersoninfo_CheckedChanged(object sender, EventArgs e)
+        {
+            TabControlPerson.SelectedTab = TabPersonBasic;
+        }
+
+
+        private void TabPersonBasic_EnabledChanged(object sender, EventArgs e)
+        {
+
+        }
+
         //</苏文杰_2>
 
         //<王尔沛_2>
@@ -237,6 +258,7 @@ namespace PersonInfoManage
             CostPlanForm costPlanForm = new CostPlanForm();
             costPlanForm.ShowDialog();
         }
+
 
         //</蒋媛_3>
     }

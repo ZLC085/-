@@ -50,6 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bns_event.cs" />
+    <Compile Include="bns_person.cs" />
+    <Compile Include="bns_t2p.cs" />
+    <Compile Include="bns_task.cs" />
     <Compile Include="business.cs" />
     <Compile Include="cost.cs" />
     <Compile Include="cost_approval.cs" />

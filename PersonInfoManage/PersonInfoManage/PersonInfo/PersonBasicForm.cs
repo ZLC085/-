@@ -1,4 +1,5 @@
 ﻿using PersonInfoManage.BLL.PersonInfo;
+using PersonInfoManage.BLL.System;
 using PersonInfoManage.BLL.Utils;
 using PersonInfoManage.Model;
 using PersonInfoManage.Utils;
@@ -42,8 +43,10 @@ namespace PersonInfoManage
             // 县/区
             Places = new List<string> { place };
             CmbPlace.DataSource = Places;
+
             // 初始查询（优化卡顿）
             Provinces = new NativePlaceBLL().QueryProvince();
+
             // 婚姻状况
             Marry = new List<string>
             {
@@ -51,6 +54,7 @@ namespace PersonInfoManage
                 "已婚"
             };
             CmbMarry.DataSource = Marry;
+
             // 名族
             Nation = new List<string>
             {
@@ -68,7 +72,16 @@ namespace PersonInfoManage
                 "高山族"
             };
             CmbNation.DataSource = Nation;
-            //// 人员类别
+
+            // 人员类别
+            PersonType = new SysSettingBLL().SelectByDictName(sys_dict_type.Person);
+            CmbPersonType.DataSource = PersonType;
+
+            // 归属地
+            BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
+            CmbBelongPlace.DataSource = BelongPlace;
+
+
             //PersonType = new TypeBLL().GetTheType("重点人员类别");
             //List<string> ptList = new List<string>();
             //foreach(var item in PersonType)
@@ -94,9 +107,6 @@ namespace PersonInfoManage
             //        item.id;
             //    }
             //}
-
-
-            //
             #endregion
 
             LblName.Hide();
@@ -279,10 +289,8 @@ namespace PersonInfoManage
             pb.family = TxtFamily.Text;
             #endregion
 
-            //pb.person_type = 1;
-            //pb.person_type_name = "未知";
             #region 人员类型
-            
+            //pb.person_type = CmbPersonType.Text;
             #endregion
 
             #region QQ
@@ -324,7 +332,6 @@ namespace PersonInfoManage
             #endregion
 
             //pb.belong_place = 1;
-            //pb.belong_place_name = "成都市双流区公安局";
 
             #region 民族
             pb.nation = CmbNation.Text;
