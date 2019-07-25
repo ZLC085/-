@@ -155,7 +155,7 @@ namespace PersonInfoManage.DAL.System
         {
             try { 
             List<sys_dict> list = new List<sys_dict>();
-            string sql = "select * from sys dict where dict_ name = '";
+            string sql = "select * from sys_dict where dict_name = '";
             switch (dictName)
             {
                 case sys_dict_type.Cost:
