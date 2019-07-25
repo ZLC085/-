@@ -1,4 +1,6 @@
 ﻿using PersonInfoManage.BLL.Cost;
+using PersonInfoManage.BLL.Logs;
+using PersonInfoManage.BLL.System;
 using PersonInfoManage.DAL.PersonInfo;
 using PersonInfoManage.Model;
 using System;
@@ -48,6 +50,16 @@ namespace PersonInfoManage
         {
             PersonDetailForm personDetailForm = new PersonDetailForm();
             personDetailForm.ShowDialog();
+            for (int i = 0; i < dgvPerson.Rows.Count; i++)
+            {
+                DataGridViewCheckBoxCell check = (DataGridViewCheckBoxCell)dgvPerson.Rows[i].Cells[0];
+                Boolean flag = Convert.ToBoolean(check.Value);
+                if (flag == true)
+                {
+                    string indentity = this.dgvPerson.Rows[i].Cells[2].Value.ToString();
+                }
+            }
+           
         }
 
         private void BtnUpdatePerson_Click(object sender, EventArgs e)
@@ -56,7 +68,23 @@ namespace PersonInfoManage
             pbForm.Text = "人员信息修改";
             pbForm.ShowDialog();
         }
+        
+        private void btnSearchPerson_Click(object sender, EventArgs e)
+        {
 
+        }
+
+
+        private void BtnDelPerson_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void BtnRecycle_Click(object sender, EventArgs e)
+        {
+
+        }
         //</毛宇航_1>
 
         //<李鸽鸽_1>
@@ -64,16 +92,37 @@ namespace PersonInfoManage
         //</李鸽鸽_1>
 
         //<坤吉心_1>
-        //
+        
+        private void BtnDelUserlog_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void BtnSearchUserlog_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDelSyslog_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void BtnSearchSyslog_Click(object sender, EventArgs e)
+        {
+
+        }
         //</坤吉心_1>
 
         //<苏文杰_2>
 
+        //首页timer控件tick事件
         private void Timer1_Tick(object sender, EventArgs e)
         {
             lableTime.Text = DateTime.Now.ToString("yyyy年MM月dd日-HH:mm:ss");
         }
 
+        //首页退出按钮点击事件
         private void BtnEsc_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("确定退出系统吗？", "退出", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -82,7 +131,11 @@ namespace PersonInfoManage
                 this.Close();
             }
         }
-        
+
+        /// <summary>
+        /// 消息提示方法
+        /// </summary>
+        /// <returns></returns>
         //private List<cost> ShowMessage()
         //{
         //    String localUser = LocalUserInfo.LoginInfo.UserName;
@@ -93,20 +146,20 @@ namespace PersonInfoManage
         //    return costApprovalBLL.Query(conditions);
         //}
 
-
+        //消息框"下次再说"linklable
         private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.PnlMessage.Visible = false;
         }
 
-
+        //消息框"点击查看"linklable
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             metroShell1.SelectedTab = MenuCost;
             TabControlCost.SelectedTab = TabCostAudit;
         }
 
-
+        //主页切换事件
         private void MenuHome_CheckedChanged(object sender, EventArgs e)
         {
             //List<cost> costs = ShowMessage();
@@ -120,22 +173,133 @@ namespace PersonInfoManage
             //}
         }
 
-
+        //基本信息管理Tab页点击事件（二级）
         private void TabPersonBasic_Click(object sender, EventArgs e)
         {
             dgvPerson.AutoGenerateColumns = false;
-            dgvPerson.DataSource = new PersonBasicDAL().Query(null);
+            dgvPerson.DataSource = new PersonBasicDAL().Query(new person_basic());
         }
-
+        //人员信息管理菜单Tab页切换事件（一级）
         private void MenuPersoninfo_CheckedChanged(object sender, EventArgs e)
         {
             TabControlPerson.SelectedTab = TabPersonBasic;
+            dgvPerson.AutoGenerateColumns = false;
+            dgvPerson.DataSource = new PersonBasicDAL().Query(new person_basic());
         }
 
-
-        private void TabPersonBasic_EnabledChanged(object sender, EventArgs e)
+        //回收站Tab页点击事件（二级）
+        private void TabPersonRecycle_Click(object sender, EventArgs e)
         {
+            DgvRecycle.AutoGenerateColumns = false;
+            person_basic person = new person_basic();
+            person.isdel = 1;
+            DgvRecycle.DataSource = new PersonBasicDAL().Query(person);
+        }
 
+        //日志管理菜单Tab页切换事件（一级）
+        private void MenuLog_CheckedChanged(object sender, EventArgs e)
+        {
+            TabControlLog.SelectedTab = TabUserLog;
+            DgvUserLog.AutoGenerateColumns = false;
+            DgvUserLog.DataSource = new LogUserBLL().Query();
+        }
+
+        //用户日志Tab页点击事件（二级）
+        private void TabUserLog_Click(object sender, EventArgs e)
+        {
+            DgvUserLog.AutoGenerateColumns = false;
+            DgvUserLog.DataSource = new LogUserBLL().Query();
+        }
+
+        //系统日志Tab页点击事件（二级）
+        private void TabSysLog_Click(object sender, EventArgs e)
+        {
+            DgvSysLog.AutoGenerateColumns = false;
+            DgvSysLog.DataSource = new LogSysBLL().Query();
+        }
+
+        //费用管理菜单Tab页切换事件（一级）
+        private void MenuCost_CheckedChanged(object sender, EventArgs e)
+        {
+            TabControlCost.SelectedTab = TabCostApply;
+            DgvCostApply.AutoGenerateColumns = false;
+            //int localUserId = LocalUserInfo.LoginInfo.UserId;
+            Dictionary<string,object> dic = new Dictionary<string, object>();
+            dic.Add(nameof(cost_main.apply_id), 1);
+            DgvCostApply.DataSource = new CostApplyBLL().Query(dic);
+        }
+
+        //费用申请Tab页点击事件（二级）
+        private void TabCostApply_Click(object sender, EventArgs e)
+        {
+            DgvCostApply.AutoGenerateColumns = false;
+            //int localUserId = LocalUserInfo.LoginInfo.UserId;
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add(nameof(cost_main.apply_id), 1);
+            DgvCostApply.DataSource = new CostApplyBLL().Query(dic);
+        }
+
+        //费用审批Tab页点击事件（二级）
+        private void TabCostAudit_Click(object sender, EventArgs e)
+        {
+            DgvCostApprove.AutoGenerateColumns = false;
+            //int localUserId = LocalUserInfo.LoginInfo.UserId;
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add(nameof(cost_approval.approval_id), 1);
+            DgvCostApprove.DataSource = new CostApprovalBLL().Query(dic);
+        }
+
+        //费用规划Tab页点击事件（二级）
+        private void TabCostPlan_Click(object sender, EventArgs e)
+        {
+            DgvCostPlan.AutoGenerateColumns = false;
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            DgvCostPlan.DataSource = new CostPlanBLL().Query(dic);
+        }
+        
+        //系统设置菜单Tab页切换事件（一级）
+        private void MenuSys_CheckedChanged(object sender, EventArgs e)
+        {
+            TabControlSys.SelectedTab = TabUserMan;
+            DgvUserMan.AutoGenerateColumns = false;
+            //DgvUserMan.DataSource = new SysUserBLL().Select(null);
+        }
+
+        //用户管理Tab页点击事件(二级)
+        private void TabUserMan_Click(object sender, EventArgs e)
+        {
+            DgvUserMan.AutoGenerateColumns = false;
+            //DgvUserMan.DataSource = new SysUserBLL().Select(null);
+        }
+
+        //用户组管理Tab页点击事件（二级）
+        private void TabGroupMan_Click(object sender, EventArgs e)
+        {
+            DgvGroupMan.AutoGenerateColumns = false;
+            //DgvGroupMan.DataSource = new PermBLL().SelectGroup(null);
+        }
+
+        //系统设置Tab页点击事件（二级）
+        private void TabSysSet_Click(object sender, EventArgs e)
+        {
+            DgvSysSet.AutoGenerateColumns = false;
+            var ds = new SysSettingBLL().SeleteAll();
+            foreach (var item in ds)
+            {
+                if (item.dict_name.Equals(sys_dict_type.Cost.ToString()))
+                {
+                    item.dict_name = "费用类别";
+                }
+                else if (item.dict_name.Equals(sys_dict_type.Person.ToString()))
+                {
+                    item.dict_name = "重点人员类别";
+                }
+                else if (item.dict_name.Equals(sys_dict_type.NativePlace.ToString()))
+                {
+                    item.dict_name = "归属地";
+                }
+            }
+            DgvSysSet.DataSource = ds;
         }
 
         //</苏文杰_2>
@@ -258,6 +422,15 @@ namespace PersonInfoManage
             CostPlanForm costPlanForm = new CostPlanForm();
             costPlanForm.ShowDialog();
         }
+
+
+
+
+
+
+
+
+
 
 
         //</蒋媛_3>

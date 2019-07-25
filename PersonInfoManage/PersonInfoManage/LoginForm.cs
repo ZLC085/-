@@ -78,24 +78,12 @@ namespace PersonInfoManage
                 }
                 else
                 {
-                    List<view_sys_u2g> userinfo = new List<view_sys_u2g>();
-                    sys_user user1 = new sys_user();
-                    SysUserBLL userbll = new SysUserBLL();
-                    user1.username = UserNameTextBox.Text;
-                    userinfo = userbll.Select(user1);
-                    int id;
-                    foreach (var user2 in userinfo)
+                    User user = new User()
                     {
-                        id = user2.id;
-                        string idcode = userinfo[0].ToString();
-                        User user = new User()
-                        {
-                            UserName = UserNameTextBox.Text,
-                            UserId = id,
-                            IsChecked = true,
-                        };
-                        LoginInfo = user;    //尚未测试
-                    } 
+                        UserName = UserNameTextBox.Text,
+                        IsChecked = true,
+                    };
+                    LoginInfo = user;   
                 }
             }
             else
