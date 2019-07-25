@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PersonInfoManage.BLL.PersonInfo
 {
-    class PersonBasicBLL
+    public class PersonBasicBLL
     {
         /// <summary>
         /// 人员信息录入

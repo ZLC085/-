@@ -17,10 +17,9 @@ namespace PersonInfoManage.Model
 
         public byte status { get; set; }
 
-        
+        public DateTime apply_time { get; set; }
 
         [StringLength(200)]
         public string remark { get; set; }
-        public DateTime apply_time { get; set; }
     }
 }

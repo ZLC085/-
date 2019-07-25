@@ -12,68 +12,13 @@ namespace PersonInfoManage.DAL.PersonInfo
 {
     public class NativePlaceDAL
     {
-        #region test1
-        //public List<native_place> Select(native_place info)
-        //{
-        //    // 用于返回的列表
-        //    List<native_place> list = new List<native_place>();
-        //    try
-        //    {
-        //        string sql = "";
-        //        //sql语句
-        //        if (!string.IsNullOrEmpty(info.province))
-        //        {
-        //            sql = "select province from native_place group by " + info.province;
-        //            if (!string.IsNullOrEmpty(info.city))
-        //            {
-        //                sql = "select city from native_place where province = " + info.province + " group by city";
-        //                if (!string.IsNullOrEmpty(info.place))
-        //                {
-        //                    sql = "select place from native_place where city = " + info.city + " group by place";
-        //                }
-        //            }
-        //        }
-
-
-        //        DataSet ds = new DataSet();
-        //        // 执行sql语句并返回数据集
-        //        ds = SqlHelper.ExecuteDataset(DALBase.ConStr, CommandType.Text, sql);
-        //        // 遍历表中的行
-        //        foreach (DataRow dr in ds.Tables[0].Rows)
-        //        {
-        //            native_place np = new native_place();
-        //            if (!string.IsNullOrEmpty(info.province))
-        //            {
-        //                np.province = dr[0].ToString();
-        //                if (!string.IsNullOrEmpty(info.city))
-        //                {
-        //                    np.city = dr[1].ToString();
-        //                    if (!string.IsNullOrEmpty(info.place))
-        //                    {
-        //                        np.place = dr[2].ToString();
-        //                    }
-        //                }
-        //            }
-        //            list.Add(np);
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Console.WriteLine(e.Message);
-        //        throw e;
-        //    }
-        //    // 返回列表
-        //    return list;
-        //}
-        #endregion
-
         /// <summary>
         /// 三级查询
         /// </summary>
         /// <param name="type">选项类型</param>
         /// <param name="parent">父级类型</param>
         /// <returns>list类型</returns>
-        public List<string> Query(string type, string parent)
+        public List<string> Query(PlaceType type, string parent)
         {
             // 用于返回的列表
             List<string> list = new List<string>();
@@ -81,17 +26,17 @@ namespace PersonInfoManage.DAL.PersonInfo
             {
                 // sql语句
                 string sql = "";
-                if (type.Equals("province"))
+                if (type.Equals(PlaceType.Province))
                 {
-                    sql = "select province from native_place group by province";
+                    sql = "select province from native_place group by province order by province collate Chinese_PRC_CS_AS_KS_WS";
                 }
-                else if (type.Equals("city") && !string.IsNullOrEmpty(parent))
+                else if (type.Equals(PlaceType.City) && !string.IsNullOrEmpty(parent))
                 {
-                    sql = "select city from native_place where province = N'" + parent + "' group by city";
+                    sql = "select city from native_place where province = N'" + parent + "' group by city order by city collate Chinese_PRC_CS_AS_KS_WS";
                 }
-                else if (type.Equals("place") && !string.IsNullOrEmpty(parent))
+                else if (type.Equals(PlaceType.Place) && !string.IsNullOrEmpty(parent))
                 {
-                    sql = "select place from native_place where city = N'" + parent + "' group by place";
+                    sql = "select place from native_place where city = N'" + parent + "' group by place  order by place collate Chinese_PRC_CS_AS_KS_WS";
                 }
                 else
                 {
@@ -119,5 +64,10 @@ namespace PersonInfoManage.DAL.PersonInfo
             // 返回列表
             return list;
         }
+    }
+
+    public enum PlaceType
+    {
+        Province, City, Place
     }
 }

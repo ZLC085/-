@@ -8,8 +8,9 @@ namespace PersonInfoManage.Model
 
     public class cost_approval
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]      
-             
+        public int id { get; set; }
+
+        public int cost_id { get; set; }
 
         public int approval_id { get; set; }
 
@@ -19,7 +20,5 @@ namespace PersonInfoManage.Model
 
         [StringLength(200)]
         public string opinion { get; set; }
-        public int id { get; set; }
-        public int cost_id { get; set; }
     }
 }
