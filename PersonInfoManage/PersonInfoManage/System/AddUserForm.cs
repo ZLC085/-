@@ -19,6 +19,13 @@ namespace PersonInfoManage
         {
             InitializeComponent();
         }
+        private void AddUserForm_Load(object sender, EventArgs e)
+        {
+            List<sys_org> orginfo = new List<sys_org>();
+            //orginfo =
+            comboBox1.DataSource = orginfo;
+            comboBox1.DisplayMember = "org_name";
+        }
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
@@ -62,14 +69,6 @@ namespace PersonInfoManage
             {
                 MessageBoxCustom.Show("添加失败", "提示", MessageBoxButtons.OK, this);
             }
-        }
-
-        private void AddUserForm_Load(object sender, EventArgs e)
-        {
-            List<sys_org> orginfo = new List<sys_org>();
-            //orginfo =
-            comboBox1.DataSource = orginfo;
-            comboBox1.DisplayMember = "org_name";
         }
     }
 }

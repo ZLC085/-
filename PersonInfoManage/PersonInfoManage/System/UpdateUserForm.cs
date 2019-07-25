@@ -52,19 +52,26 @@ namespace PersonInfoManage
             {
                 sys_User.org_id = id.id;
             }
+            if (radioButton3.Checked)
+            {
+                sys_User.status = false;
+            }
+            else
+            {
+                sys_User.status = true;
+            }
             SysUserBLL sysUserBLL = new SysUserBLL();
             Result result = sysUserBLL.add(sys_User);
 
             if (result.Code == RES.OK)
             {
-                MessageBoxCustom.Show("添加成功", "提示", MessageBoxButtons.OK, this);
+                MessageBoxCustom.Show("修改成功", "提示", MessageBoxButtons.OK, this);
                 Close();
             }
             else if (result.Code == RES.ERROR)
             {
-                MessageBoxCustom.Show("添加失败", "提示", MessageBoxButtons.OK, this);
+                MessageBoxCustom.Show("修改失败", "提示", MessageBoxButtons.OK, this);
             }
         }
     }
     }
-
