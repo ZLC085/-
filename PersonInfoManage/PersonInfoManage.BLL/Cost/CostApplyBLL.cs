@@ -14,23 +14,25 @@ namespace PersonInfoManage.BLL.Cost
         /// <summary>
         /// 添加费用单
         /// </summary>
-        /// <param name="cost">费用单对象main：apply_id、approval_id、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
+        /// <param name="cost">费用单主表对象 Main：apply_id、apply_money、status、apply_time、remark 
+        /// 费用单审批详情列表 ApprovalList:approval_id
+        /// 费用详情列表 DetailList：cost_type、cost_type_name、money</param> 
         /// <returns>添加是否成功</returns>
         public Result Add(cost cost)
         {
-            //cost_main main = cost.main;
-            List<cost_detail> listDeatil = cost.DetailList;
+            cost_main Main = cost.Main;
+            List<cost_detail> DetailList = cost.DetailList;
             Result res = new Result()
             {
                 Code = RES.ERROR,
                 Message = "添加失败！"
             };
-            //if (main == null || listDeatil == null || listDeatil.Count == 0)
-            //{
-            //    return res;
-            //}            
+            if (Main == null || DetailList == null || DetailList.Count == 0)
+            {
+                return res;
+            }
             int rows = new CostApplyDAL().Add(cost);
-            if(rows == 1 + listDeatil.Count)
+            if(rows == 2 + DetailList.Count)
             {
                 res.Code = RES.OK;
                 res.Message="添加成功！";
@@ -40,7 +42,9 @@ namespace PersonInfoManage.BLL.Cost
         /// <summary>
         /// 更新费用单信息
         /// </summary>
-        /// <param name="cost">费用单对象main：approval_id、apply_money、id  费用单详情列表detailList:cost_type、money、cost_type_name</param>
+        /// <param name="cost">费用单主表对象 Main：id、apply_money、remark 
+        /// 费用单审批详情列表 ApprovalList:
+        /// 费用详情列表 DetailList：cost_type、cost_type_name、money</param>
         /// <returns>更新是否成功</returns>
         public Result Update(cost cost)
         {
@@ -101,7 +105,8 @@ namespace PersonInfoManage.BLL.Cost
                 return res;
             }
             List<cost_detail> listDetail = apply.QueryDetail(id);
-            if (apply.Del(id) == listDetail.Count + 1)
+            List<cost_approval> ListApproval = apply.QueryApproval(id);
+            if (apply.Del(id) ==ListApproval.Count+ listDetail.Count + 1)
             {
                 res.Code = RES.OK;
                 res.Message = "删除失败！";

@@ -12,23 +12,24 @@ namespace PersonInfoManage.BLL.Cost
     public class CostApprovalBLL
     {
         /// <summary>
-        /// 费用单更新
+        /// 费用审批添加/修改 、审批状态（待审批，通过，驳回）以及审批意见
         /// </summary>
-        /// <param name="main">费用单对象cost_main:approval_id、status、approval_time、approval_money、id</param>
-        /// <returns>更新是否成功</returns>
-        public Result Update(cost_main main)
+        /// <param name="cost">费用单主表对象Main:id、status 
+        /// DetailList 费用详情列表：
+        /// ApprovalList 费用审批表列表：详见方法体注释</param>
+        public Result Update(cost Cost)
         {            
             Result res = new Result()
             {
                 Code = RES.ERROR,
                 Message = "更新失败"
             };
-            if(main == null)
+            if(Cost == null)
             {
                 return res;
             }
 
-            if(new CostApprovaDAL().Update(main) == 1)
+            if(new CostApprovaDAL().Update(Cost) == 1+Cost.ApprovalList.Count)
             {
                 res.Code = RES.OK;
                 res.Message = "更新成功";
@@ -48,10 +49,11 @@ namespace PersonInfoManage.BLL.Cost
                 Message = "删除失败"
             };
             int rows = new CostApplyDAL().Del(id);
-            int rightRows = new CostApprovaDAL().Query(new Dictionary<string, object>
+            cost cost = new CostApprovaDAL().Query(new Dictionary<string, object>
             {
                 {"id",id }
-            }).First().DetailList.Count+1;
+            }).First();
+            int rightRows = cost.DetailList.Count+cost.ApprovalList.Count+1;
 
             if (rows == rightRows)
             {
