@@ -43,21 +43,25 @@ namespace PersonInfoManage
         //<毛宇航_1>
         private void BtnAddPerson_Click(object sender, EventArgs e)
         {
-            PersonBasicForm personBasicForm = new PersonBasicForm();
-            personBasicForm.Text = "人员信息录入";
+            PersonBasicForm personBasicForm = new PersonBasicForm
+            {
+                Text = "人员信息录入"
+            };
             personBasicForm.ShowDialog();
         }
 
         private void BtnQueryPerson_Click(object sender, EventArgs e)
         {
-            //PersonDetailForm personDetailForm = new PersonDetailForm();
-            //personDetailForm.ShowDialog();
+            PersonDetailForm personDetailForm = new PersonDetailForm(1001);
+            personDetailForm.ShowDialog();
         }
 
         private void BtnUpdatePerson_Click(object sender, EventArgs e)
         {
-            PersonBasicForm personBasicForm = new PersonBasicForm();
-            personBasicForm.Text = "人员信息修改";
+            PersonBasicForm personBasicForm = new PersonBasicForm
+            {
+                Text = "人员信息修改"
+            };
             personBasicForm.ShowDialog();
         }
 
