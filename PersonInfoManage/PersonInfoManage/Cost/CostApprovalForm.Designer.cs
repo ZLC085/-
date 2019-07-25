@@ -28,11 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
-            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.DgvApproval = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.approver = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.result = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
+            this.CmbNextApprover = new System.Windows.Forms.ComboBox();
+            this.LblNextApprover = new DevComponents.DotNetBar.LabelX();
+            this.BtnFailed = new DevComponents.DotNetBar.ButtonX();
+            this.BtnPass = new DevComponents.DotNetBar.ButtonX();
             this.TexOpinion = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.DgvCostDetail = new DevComponents.DotNetBar.Controls.DataGridViewX();
@@ -41,17 +49,9 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.TexApplicant = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.CmbNextApprover = new System.Windows.Forms.ComboBox();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.DgvApproval = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.approver = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.result = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEx1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvCostDetail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvApproval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvCostDetail)).BeginInit();
             this.SuspendLayout();
             // 
             // panelEx1
@@ -61,9 +61,9 @@
             this.panelEx1.Controls.Add(this.DgvApproval);
             this.panelEx1.Controls.Add(this.labelX5);
             this.panelEx1.Controls.Add(this.CmbNextApprover);
-            this.panelEx1.Controls.Add(this.labelX3);
-            this.panelEx1.Controls.Add(this.buttonX2);
-            this.panelEx1.Controls.Add(this.buttonX1);
+            this.panelEx1.Controls.Add(this.LblNextApprover);
+            this.panelEx1.Controls.Add(this.BtnFailed);
+            this.panelEx1.Controls.Add(this.BtnPass);
             this.panelEx1.Controls.Add(this.TexOpinion);
             this.panelEx1.Controls.Add(this.labelX4);
             this.panelEx1.Controls.Add(this.DgvCostDetail);
@@ -83,33 +83,138 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 0;
             // 
-            // buttonX2
+            // DgvApproval
             // 
-            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(373, 738);
-            this.buttonX2.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonX2.Name = "buttonX2";
-            this.buttonX2.Size = new System.Drawing.Size(107, 31);
-            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX2.Symbol = "";
-            this.buttonX2.SymbolColor = System.Drawing.Color.Red;
-            this.buttonX2.TabIndex = 9;
-            this.buttonX2.Text = "驳回";
+            this.DgvApproval.AllowUserToAddRows = false;
+            this.DgvApproval.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.DgvApproval.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DgvApproval.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvApproval.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.approver,
+            this.result,
+            this.time,
+            this.remark});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvApproval.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DgvApproval.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.DgvApproval.Location = new System.Drawing.Point(207, 300);
+            this.DgvApproval.Name = "DgvApproval";
+            this.DgvApproval.ReadOnly = true;
+            this.DgvApproval.RowHeadersVisible = false;
+            this.DgvApproval.RowHeadersWidth = 51;
+            this.DgvApproval.RowTemplate.Height = 27;
+            this.DgvApproval.Size = new System.Drawing.Size(436, 230);
+            this.DgvApproval.TabIndex = 72;
             // 
-            // buttonX1
+            // approver
             // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(160, 738);
-            this.buttonX1.Margin = new System.Windows.Forms.Padding(4);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(107, 31);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.Symbol = "";
-            this.buttonX1.SymbolColor = System.Drawing.Color.Green;
-            this.buttonX1.TabIndex = 8;
-            this.buttonX1.Text = "通过";
+            this.approver.HeaderText = "审核人";
+            this.approver.MinimumWidth = 6;
+            this.approver.Name = "approver";
+            this.approver.ReadOnly = true;
+            this.approver.Width = 80;
+            // 
+            // result
+            // 
+            this.result.HeaderText = "审核结果";
+            this.result.MinimumWidth = 6;
+            this.result.Name = "result";
+            this.result.ReadOnly = true;
+            this.result.Width = 125;
+            // 
+            // time
+            // 
+            this.time.HeaderText = "审批时间";
+            this.time.MinimumWidth = 6;
+            this.time.Name = "time";
+            this.time.ReadOnly = true;
+            this.time.Width = 125;
+            // 
+            // remark
+            // 
+            this.remark.HeaderText = "审批意见";
+            this.remark.MinimumWidth = 6;
+            this.remark.Name = "remark";
+            this.remark.ReadOnly = true;
+            this.remark.Width = 125;
+            // 
+            // labelX5
+            // 
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX5.Location = new System.Drawing.Point(59, 296);
+            this.labelX5.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(141, 29);
+            this.labelX5.TabIndex = 71;
+            this.labelX5.Text = "审 批 记 录：";
+            // 
+            // CmbNextApprover
+            // 
+            this.CmbNextApprover.FormattingEnabled = true;
+            this.CmbNextApprover.Items.AddRange(new object[] {
+            "test1",
+            "test2",
+            "test3"});
+            this.CmbNextApprover.Location = new System.Drawing.Point(207, 683);
+            this.CmbNextApprover.Margin = new System.Windows.Forms.Padding(4);
+            this.CmbNextApprover.Name = "CmbNextApprover";
+            this.CmbNextApprover.Size = new System.Drawing.Size(315, 23);
+            this.CmbNextApprover.TabIndex = 70;
+            this.CmbNextApprover.Text = "请选择一个上级审批人...";
+            // 
+            // LblNextApprover
+            // 
+            // 
+            // 
+            // 
+            this.LblNextApprover.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblNextApprover.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblNextApprover.Location = new System.Drawing.Point(57, 683);
+            this.LblNextApprover.Margin = new System.Windows.Forms.Padding(4);
+            this.LblNextApprover.Name = "LblNextApprover";
+            this.LblNextApprover.Size = new System.Drawing.Size(141, 29);
+            this.LblNextApprover.TabIndex = 10;
+            this.LblNextApprover.Text = "上级 审批人：";
+            // 
+            // BtnFailed
+            // 
+            this.BtnFailed.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnFailed.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.BtnFailed.Location = new System.Drawing.Point(373, 738);
+            this.BtnFailed.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnFailed.Name = "BtnFailed";
+            this.BtnFailed.Size = new System.Drawing.Size(107, 31);
+            this.BtnFailed.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnFailed.Symbol = "";
+            this.BtnFailed.SymbolColor = System.Drawing.Color.Red;
+            this.BtnFailed.TabIndex = 9;
+            this.BtnFailed.Text = "驳回";
+            this.BtnFailed.Click += new System.EventHandler(this.BtnFailed_Click);
+            // 
+            // BtnPass
+            // 
+            this.BtnPass.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnPass.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.BtnPass.Location = new System.Drawing.Point(160, 738);
+            this.BtnPass.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnPass.Name = "BtnPass";
+            this.BtnPass.Size = new System.Drawing.Size(107, 31);
+            this.BtnPass.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnPass.Symbol = "";
+            this.BtnPass.SymbolColor = System.Drawing.Color.Green;
+            this.BtnPass.TabIndex = 8;
+            this.BtnPass.Text = "通过";
+            this.BtnPass.Click += new System.EventHandler(this.BtnPass_Click);
             // 
             // TexOpinion
             // 
@@ -230,109 +335,6 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "申   请   人：";
             // 
-            // labelX3
-            // 
-            // 
-            // 
-            // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX3.Location = new System.Drawing.Point(57, 683);
-            this.labelX3.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(141, 29);
-            this.labelX3.TabIndex = 10;
-            this.labelX3.Text = "上级 审批人：";
-            // 
-            // CmbNextApprover
-            // 
-            this.CmbNextApprover.FormattingEnabled = true;
-            this.CmbNextApprover.Items.AddRange(new object[] {
-            "test1",
-            "test2",
-            "test3"});
-            this.CmbNextApprover.Location = new System.Drawing.Point(207, 683);
-            this.CmbNextApprover.Margin = new System.Windows.Forms.Padding(4);
-            this.CmbNextApprover.Name = "CmbNextApprover";
-            this.CmbNextApprover.Size = new System.Drawing.Size(315, 23);
-            this.CmbNextApprover.TabIndex = 70;
-            this.CmbNextApprover.Text = "请选择一个上级审批人...";
-            // 
-            // labelX5
-            // 
-            // 
-            // 
-            // 
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX5.Location = new System.Drawing.Point(59, 296);
-            this.labelX5.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(141, 29);
-            this.labelX5.TabIndex = 71;
-            this.labelX5.Text = "审 批 记 录：";
-            // 
-            // DgvApproval
-            // 
-            this.DgvApproval.AllowUserToAddRows = false;
-            this.DgvApproval.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.DgvApproval.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DgvApproval.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvApproval.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.approver,
-            this.result,
-            this.time,
-            this.remark});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvApproval.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DgvApproval.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.DgvApproval.Location = new System.Drawing.Point(207, 300);
-            this.DgvApproval.Name = "DgvApproval";
-            this.DgvApproval.ReadOnly = true;
-            this.DgvApproval.RowHeadersVisible = false;
-            this.DgvApproval.RowHeadersWidth = 51;
-            this.DgvApproval.RowTemplate.Height = 27;
-            this.DgvApproval.Size = new System.Drawing.Size(436, 230);
-            this.DgvApproval.TabIndex = 72;
-            // 
-            // approver
-            // 
-            this.approver.HeaderText = "审核人";
-            this.approver.MinimumWidth = 6;
-            this.approver.Name = "approver";
-            this.approver.ReadOnly = true;
-            this.approver.Width = 80;
-            // 
-            // result
-            // 
-            this.result.HeaderText = "审核结果";
-            this.result.MinimumWidth = 6;
-            this.result.Name = "result";
-            this.result.ReadOnly = true;
-            this.result.Width = 125;
-            // 
-            // time
-            // 
-            this.time.HeaderText = "审批时间";
-            this.time.MinimumWidth = 6;
-            this.time.Name = "time";
-            this.time.ReadOnly = true;
-            this.time.Width = 125;
-            // 
-            // remark
-            // 
-            this.remark.HeaderText = "审批意见";
-            this.remark.MinimumWidth = 6;
-            this.remark.Name = "remark";
-            this.remark.ReadOnly = true;
-            this.remark.Width = 125;
-            // 
             // CostApprovalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -350,8 +352,8 @@
             this.Text = "审批费用";
             this.Load += new System.EventHandler(this.CostApprovalForm_Load);
             this.panelEx1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DgvCostDetail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvApproval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvCostDetail)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -359,8 +361,8 @@
         #endregion
 
         private DevComponents.DotNetBar.PanelEx panelEx1;
-        private DevComponents.DotNetBar.ButtonX buttonX2;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.ButtonX BtnFailed;
+        private DevComponents.DotNetBar.ButtonX BtnPass;
         private DevComponents.DotNetBar.Controls.TextBoxX TexOpinion;
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.DotNetBar.Controls.DataGridViewX DgvCostDetail;
@@ -369,7 +371,7 @@
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.Controls.TextBoxX TexApplicant;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.LabelX LblNextApprover;
         private System.Windows.Forms.ComboBox CmbNextApprover;
         private DevComponents.DotNetBar.LabelX labelX5;
         private DevComponents.DotNetBar.Controls.DataGridViewX DgvApproval;
