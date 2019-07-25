@@ -48,9 +48,10 @@
     <Compile Include="Login\LoginBLL.cs" />
     <Compile Include="logs\LogSysBLL.cs" />
     <Compile Include="logs\LogUserBLL.cs" />
-    <Compile Include="PersonInfo\NativePlace.cs" />
+    <Compile Include="PersonInfo\NativePlaceBLL.cs" />
     <Compile Include="PersonInfo\PersonBasicBLL.cs" />
     <Compile Include="PersonInfo\PersonFileBLL.cs" />
+    <Compile Include="PersonInfo\TypeBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\PermBLL.cs" />
     <Compile Include="System\SysSettingBLL.cs" />

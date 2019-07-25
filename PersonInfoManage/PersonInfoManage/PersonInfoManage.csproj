@@ -178,6 +178,7 @@
     <Compile Include="System\UserGroupRoleForm.Designer.cs">
       <DependentUpon>UserGroupRoleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\RegexComm.cs" />
     <EmbeddedResource Include="Business\AddBusiness.resx">
       <DependentUpon>AddBusiness.cs</DependentUpon>
     </EmbeddedResource>
