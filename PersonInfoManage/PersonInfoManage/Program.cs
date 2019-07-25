@@ -26,7 +26,7 @@ namespace PersonInfoManage
             //Application.Run(new CostApplyForm());
             //Application.Run(new AddCostDetailForm());
             //Application.Run(new ProgressForm());
-            Application.Run(new CostApprovalForm());
+            //Application.Run(new CostApprovalForm());
         }
     }
 }

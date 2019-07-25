@@ -49,7 +49,7 @@ namespace PersonInfoManage
 
         private void BtnQueryPerson_Click(object sender, EventArgs e)
         {
-            PersonDetailForm personDetailForm = new PersonDetailForm();
+            PersonDetailForm personDetailForm = new PersonDetailForm(1);
             personDetailForm.ShowDialog();
             for (int i = 0; i < dgvPerson.Rows.Count; i++)
             {
@@ -79,13 +79,6 @@ namespace PersonInfoManage
         {
 
         }
-
-
-        private void BtnDelPerson_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void BtnRecycle_Click(object sender, EventArgs e)
         {
@@ -343,6 +336,22 @@ namespace PersonInfoManage
             groupRoleManageForm.ShowDialog();
         }
 
+
+        private void BtnResetPsw_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDelUser_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void BtnSearchUser_Click(object sender, EventArgs e)
+        {
+
+        }
         //</王尔沛_2>
 
         //<曾丽川_2>
@@ -373,6 +382,22 @@ namespace PersonInfoManage
             addCategoreTypeForm.ShowDialog();
         }
 
+
+        private void BtnDelGroup_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnsearchGroup_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void BtnDelType_Click(object sender, EventArgs e)
+        {
+
+        }
         //</曾丽川_2>
 
         //<张乐_3>
@@ -412,6 +437,30 @@ namespace PersonInfoManage
             costApprovalForm.ShowDialog();
         }
 
+
+        private void BtnRepealCost_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void BtnSearchCostApply_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void BtnDelApprove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void BtnSearchApprove_Click(object sender, EventArgs e)
+        {
+
+        }
+
         //</陈波_3>
 
         //<蒋媛_3>
@@ -425,15 +474,28 @@ namespace PersonInfoManage
 
         private void BtnPlanCost_Click(object sender, EventArgs e)
         {
-            CostPlanForm costPlanForm = new CostPlanForm();
-            costPlanForm.ShowDialog();
+            
         }
 
-        
+        private void BtnCheckStats_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void BtnDelCostPlan_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void BtnAddCostPlan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnUpdateCostPlan_Click(object sender, EventArgs e)
+        {
+
+        }
 
 
 
