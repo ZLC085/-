@@ -113,9 +113,6 @@ namespace PersonInfoManage.BLL.System
             return perm.SelectGroup(group);
         }
 
-
-
-
         /// <summary>
         /// 添加用户进用户组
         /// </summary>
@@ -153,15 +150,24 @@ namespace PersonInfoManage.BLL.System
         {
             PermDAL perm = new PermDAL();
             Result res = new Result();
+            int re = 0;
             try
             {
                 foreach (var userId in user_id)
                 {
-                    perm.DelG2u(groupId, userId);
+                    re += perm.DelG2u(groupId, userId);
                 }
-                res.Code = RES.OK;
-                res.Message = "删除成功！";
-                return res;
+                if (re == 0)
+                {
+                    res.Code = RES.ERROR;
+                    res.Message = "删除失败！";
+                    return res;
+                }else
+                {
+                    res.Code = RES.OK;
+                    res.Message = "删除成功！";
+                    return res;
+                }
             }
             catch
             {
@@ -181,17 +187,27 @@ namespace PersonInfoManage.BLL.System
         {
             PermDAL perm = new PermDAL();
             Result res = new Result();
+            int re = 0;
             try
             {
-                perm.DelG2m(groupId);
+                re +=perm.DelG2m(groupId);
                 foreach (var menuId in menu_id)
                 {
-                    perm.AddG2m(groupId, menuId);
+                    re +=perm.AddG2m(groupId, menuId);
                 }
-                res.Code = RES.OK;
-                res.Message = "修改成功！";
-                new LogUserDAL().Add(LogOperations.LogUser("用户组权限修改"));
-                return res;
+                if (re == 0)
+                {
+                    res.Code = RES.ERROR;
+                    res.Message = "修改失败！";
+                    return res;
+                }
+                else
+                {
+                    res.Code = RES.OK;
+                    res.Message = "修改成功！";
+                    new LogUserDAL().Add(LogOperations.LogUser("用户组权限修改"));
+                    return res;
+                }
             }
             catch
             {
