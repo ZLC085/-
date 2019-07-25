@@ -71,6 +71,7 @@
     <Compile Include="Utils\sqlArrayToTran.cs" />
     <Compile Include="Utils\SqlHelper.cs" />
     <Compile Include="Utils\TimeTools.cs" />
+    <Compile Include="Utils\UserInfoDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

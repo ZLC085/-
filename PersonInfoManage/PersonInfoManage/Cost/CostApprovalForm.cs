@@ -24,6 +24,11 @@ namespace PersonInfoManage
         }
         private void CostApprovalForm_Load(object sender, EventArgs e)
         {
+            
+        }
+
+        private void TextBoxX2_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

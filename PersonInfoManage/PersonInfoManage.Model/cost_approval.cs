@@ -8,6 +8,8 @@ namespace PersonInfoManage.Model
 
     public class cost_approval
     {
+       
+
         public bool? result { get; set; }
 
         public DateTime? time { get; set; }
@@ -19,7 +21,5 @@ namespace PersonInfoManage.Model
         public int cost_id { get; set; }
 
         public int approval_id { get; set; }
-
-        
     }
 }

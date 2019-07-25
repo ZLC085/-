@@ -41,10 +41,10 @@ namespace PersonInfoManage
 
             if (res == true)
             {
-                if (SaveUserInfoToLocal()) {
+                //if (SaveUserInfoToLocal()) {
                     new Thread(() => Application.Run(new MainForm())).Start();
                     Close();
-                }
+                //}
             }
             else
             {
@@ -65,48 +65,48 @@ namespace PersonInfoManage
             }
         }
 
-        private bool SaveUserInfoToLocal()
-        {
-            bool flag = true;
+        //private bool SaveUserInfoToLocal()
+        //{
+        //    bool flag = true;
 
-            if (remUserNamecheckBox.Checked)
-            {
-                if (UserNameTextBox.Text == "")
-                {
-                    loginTipLabel.Text = "用户名不能为空！";
-                    flag = false;
-                }
-                else
-                {
-                    List<view_sys_u2g> userinfo = new List<view_sys_u2g>();
-                    sys_user user1 = new sys_user();
-                    SysUserBLL userbll = new SysUserBLL();
-                    user1.username = UserNameTextBox.Text;
-                    userinfo = userbll.Select(user1);
-                    int id;
-                    foreach (var user2 in userinfo)
-                    {
-                        id = user2.id;
-                        string idcode = userinfo[0].ToString();
-                        User user = new User()
-                        {
-                            UserName = UserNameTextBox.Text,
-                            UserId = id,
-                            IsChecked = true,
-                        };
-                        LoginInfo = user;    //尚未测试
-                    } 
-                }
-            }
-            else
-            {
-                if (loginTipLabel.Text != "") loginTipLabel.Text = "";
+        //    if (remUserNamecheckBox.Checked)
+        //    {
+        //        if (UserNameTextBox.Text == "")
+        //        {
+        //            loginTipLabel.Text = "用户名不能为空！";
+        //            flag = false;
+        //        }
+        //        else
+        //        {
+        //            List<view_sys_u2g> userinfo = new List<view_sys_u2g>();
+        //            sys_user user1 = new sys_user();
+        //            SysUserBLL userbll = new SysUserBLL();
+        //            user1.username = UserNameTextBox.Text;
+        //            userinfo = userbll.Select(user1);
+        //            int id;
+        //            foreach (var user2 in userinfo)
+        //            {
+        //                id = user2.id;
+        //                string idcode = userinfo[0].ToString();
+        //                User user = new User()
+        //                {
+        //                    UserName = UserNameTextBox.Text,
+        //                    UserId = id,
+        //                    IsChecked = true,
+        //                };
+        //                LoginInfo = user;    //尚未测试
+        //            } 
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (loginTipLabel.Text != "") loginTipLabel.Text = "";
 
-                LoginInfo = new User { IsChecked = false };
-            }
+        //        LoginInfo = new User { IsChecked = false };
+        //    }
 
-            return flag;
-        }
+        //    return flag;
+        //}
 
         private string MD5Psd(string psd)
         {
