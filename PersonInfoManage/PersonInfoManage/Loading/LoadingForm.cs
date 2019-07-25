@@ -99,7 +99,7 @@ namespace Loading
         public PointF CircleCenter => new PointF(PnlImage.Width / 2f, PnlImage.Height / 2f);
 
         [Browsable(false), Description("半径")]
-        public float CircleRadius => PnlImage.Width / 2f - _dotSize;
+        public float CircleRadius => PnlImage.Width / 2f - _dotSize-20;
 
         [Browsable(true), Category("Appearance"), Description("设置\"点\"的前景色")]
         public Color Color { get; set; }
