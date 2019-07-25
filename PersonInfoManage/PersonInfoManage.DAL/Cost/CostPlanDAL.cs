@@ -25,11 +25,11 @@ namespace PersonInfoManage.DAL.Cost
         public int Add(List<cost_plan> ListPlan)
         {
             string[] sqlPlan = new string[ListPlan.Count];
-
+            
             int count = 0;
             foreach (cost_plan plan in ListPlan)
             {
-                //sqlPlan[count] = "insert into cost_plan(cost_type,cost_type_name,money,start_time,end_time) values(N'"+plan .cost_type+ "',N'"+plan.cost_type_name+"','" + plan.money+"','"+plan.start_time+"','"+plan.end_time+"')";
+                sqlPlan[count] = "insert into cost_plan(cost_type_id,money,start_time,end_time) values('"+plan .cost_type_id+ "','" + plan.money+"','"+plan.start_time+"','"+plan.end_time+"')";
                 count++;
             }
             return sqlArrayToTran.doTran(sqlPlan);
@@ -47,10 +47,10 @@ namespace PersonInfoManage.DAL.Cost
             int count = 0;
             foreach (cost_plan plan in ListPlan)
             {
-                //sqlPlan[count] = "update cost_plan set  "+nameof(cost_plan.money)+"= '"+plan.money+ "' where " +
-                //    "" + nameof(cost_plan.cost_type) + " =N'" + plan.cost_type + "' and " + 
-                //    nameof(cost_plan.start_time) + "='" + plan.start_time + "' and " + 
-                //    nameof(cost_plan.end_time) + "='" + plan.end_time + "' and "+nameof(cost_plan.cost_type_name)+"=N'"+plan.cost_type_name+"'";
+                sqlPlan[count] = "update cost_plan set  "+nameof(cost_plan.money)+"= '"+plan.money+ "' where " +
+                    "" + nameof(cost_plan.cost_type_id) + " ='" + plan.cost_type_id + "' and " + 
+                    nameof(cost_plan.start_time) + "='" + plan.start_time + "' and " + 
+                    nameof(cost_plan.end_time) + "='" + plan.end_time + "'";
                 //Console.WriteLine(sqlPlan[count]);
                 count++;
             }
@@ -87,7 +87,7 @@ namespace PersonInfoManage.DAL.Cost
         /// <returns>费用规划列表</returns>
         public List<cost_plan> Query(Dictionary<string, object> conditions)
         {
-            string[] keys = new string[] { "start_time", "end_time", "cost_type","cost_type_name", "id" };
+            string[] keys = new string[] { "start_time", "end_time" };
             List<cost_plan> retList = new List<cost_plan>();
             List<string> listKey = new List<string>();
             foreach (string key in conditions.Keys)
@@ -127,11 +127,10 @@ namespace PersonInfoManage.DAL.Cost
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 cost_plan plan = new cost_plan();
-                plan.id = (int)dt.Rows[i]["id"];
-                //plan.cost_type = (int)dt.Rows[i]["cost_type"];
+                plan.cost_type_id = (int)dt.Rows[i]["cost_type_id"];
                 plan.start_time = (DateTime)dt.Rows[i]["start_time"];
                 plan.end_time = (DateTime)dt.Rows[i]["end_time"];
-                //plan.cost_type_name = (string)dt.Rows[i]["cost_type_name"];
+                plan.money = (decimal)dt.Rows[i]["money"];
                 retList.Add(plan);
             }
             return retList;

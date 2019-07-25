@@ -182,6 +182,7 @@ namespace PersonInfoManage.DAL.PersonInfo
         {
             // 用于返回的列表
             List<person_basic> list = new List<person_basic>();
+            if (info.Equals(null)) return list;
             try
             {
                 // sql语句

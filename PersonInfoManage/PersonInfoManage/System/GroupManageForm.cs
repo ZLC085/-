@@ -1,4 +1,7 @@
-﻿using System;
+﻿using PersonInfoManage.BLL.System;
+using PersonInfoManage.BLL.Utils;
+using PersonInfoManage.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +19,53 @@ namespace PersonInfoManage
         {
             InitializeComponent();
         }
+
+        private void GroupManageForm_Load(object sender, EventArgs e)
+        {
+            //等datagridview方法
+        }
+
+        private void buttonItem1_Click(object sender, EventArgs e)
+        {
+            AddUserToGroupForm AddForm = new AddUserToGroupForm();
+            AddForm.ShowDialog();
+        }
+
+        private void buttonItem2_Click(object sender, EventArgs e)
+        {
+            int groupid = 0;//待定
+            sys_user user = new sys_user();
+            user.username = "test";
+            user.name = "test";
+            List<view_sys_u2g> userinfo = new List<view_sys_u2g>();
+            userinfo = new SysUserBLL().Select(user);
+            List<int> userid = new List<int>();
+            foreach(var user1 in userinfo)
+            {
+                
+                userid.Add(user1.id);
+            }
+            Result result = new PermBLL().DelG2u(groupid,userid);
+            if (result.Code == RES.OK)
+            {
+                MessageBoxCustom.Show("删除成功", "提示", MessageBoxButtons.OK, this);
+                Close();
+            }
+            else if (result.Code == RES.ERROR)
+            {
+                MessageBoxCustom.Show("删除失败", "提示", MessageBoxButtons.OK, this);
+            }
+        }
+
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void buttonX2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
-}
+    }
+

@@ -25,9 +25,9 @@ namespace PersonInfoManage.DAL.Logs
         public  int Add(log_sys sys)
         {
             int res = 0;
-            string sql = "insert  into log_user(log_message,create_time) values (@log_message,@create_time)";
+            string sql = "insert  into log_sys(log_message,create_time) values (@log_message,@create_time)";
             SqlParameter log_message = new SqlParameter("@log_message", sys.log_message);          
-            SqlParameter create_time = new SqlParameter("@create_time", DateTime.Now);
+            SqlParameter create_time = new SqlParameter("@create_time", sys.create_time);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, log_message, create_time);
             return res;
         }
