@@ -113,11 +113,7 @@ namespace PersonInfoManage.DAL.Cost
                     cost_id = (int)row["cost_id"],
                     approval_id = (int)row["approval_id"]
                 };
-                object result = ConvertTools.DbNullConvert(row["result"]);
-                if (result != null)
-                {
-                    approval.result = ConvertTools.Bit2Bool((int)result);
-                }
+                approval.result = (bool?)ConvertTools.DbNullConvert(row["result"]);
                 approval.time = (DateTime?)ConvertTools.DbNullConvert(row["time"]);
                 approval.opinion = (string)ConvertTools.DbNullConvert(row["opinion"]);
                 ListApproval.Add(approval);
@@ -232,7 +228,7 @@ namespace PersonInfoManage.DAL.Cost
         public List<string> GetCostTypes()
         {
             List<string> list = new List<string>();
-            string sql = "select * from sys_dict where dict_name=N'费用类别'";
+            string sql = "select * from sys_dict where dict_name=N'Cost'";
             DataTable db = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0];
             for(int i = 0; i < db.Rows.Count; i++)
             {
@@ -253,6 +249,11 @@ namespace PersonInfoManage.DAL.Cost
             string org_id = ((int)SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0].Rows[0]["org_id"]).ToString();
             string sql2 = "select parent_id from sys_org where id="+org_id;
             string parent_id = ((int)SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql2).Tables[0].Rows[0]["parent_id"]).ToString();
+            if (int.Parse(parent_id) == 0)
+            {
+                //此时表明apply_id本人是支部领导，不需要继续查询上级领导了
+                return approvalList;
+            }
             string sql3 = "select parent_id from sys_org where id=" + parent_id;
             string parent_id2 = ((int)SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql3).Tables[0].Rows[0]["parent_id"]).ToString();
             string sql4 = "select id,org_name from sys_org where parent_id="+ parent_id2;
