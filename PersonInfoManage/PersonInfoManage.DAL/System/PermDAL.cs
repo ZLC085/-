@@ -35,7 +35,7 @@ namespace PersonInfoManage.DAL.System
             }
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("添加用户组"+e.Message));
                 return 0;
             }
 
@@ -61,7 +61,7 @@ namespace PersonInfoManage.DAL.System
             }
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("修改用户组"+e.Message));
                 return 0;
             }
 
@@ -107,7 +107,7 @@ namespace PersonInfoManage.DAL.System
                 catch (Exception e)
                 {
                     tx.Rollback();
-                    new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                    new LogSysDAL().Add(LogOperations.LogSys("删除用户组"+e.Message));
                     return 0;
                 }
                 finally
@@ -151,7 +151,7 @@ namespace PersonInfoManage.DAL.System
             }
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("查询用户组"+e.Message));
             }
             return group2;
         }
