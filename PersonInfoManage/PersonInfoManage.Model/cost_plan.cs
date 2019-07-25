@@ -10,10 +10,7 @@ namespace PersonInfoManage.Model
     {
         public int id { get; set; }
 
-        public int cost_type { get; set; }
-
-        [StringLength(50)]
-        public string cost_type_name { get; set; }
+        public int cost_type_id { get; set; }
 
         public decimal money { get; set; }
 

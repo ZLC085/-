@@ -28,34 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
-            this.LblApproverOrg = new DevComponents.DotNetBar.LabelX();
+            this.DgvApproval = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.LblStatus = new DevComponents.DotNetBar.LabelX();
+            this.labelX11 = new DevComponents.DotNetBar.LabelX();
+            this.line1 = new DevComponents.DotNetBar.Controls.Line();
+            this.LblApplyMoney = new DevComponents.DotNetBar.LabelX();
+            this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.LblApplicantOrg = new DevComponents.DotNetBar.LabelX();
-            this.labelX25 = new DevComponents.DotNetBar.LabelX();
             this.labelX24 = new DevComponents.DotNetBar.LabelX();
             this.LblCostId = new DevComponents.DotNetBar.LabelX();
             this.labelX22 = new DevComponents.DotNetBar.LabelX();
-            this.LblRemark = new DevComponents.DotNetBar.LabelX();
-            this.labelX20 = new DevComponents.DotNetBar.LabelX();
-            this.LblApprovalMoney = new DevComponents.DotNetBar.LabelX();
-            this.LblApprover = new DevComponents.DotNetBar.LabelX();
-            this.labelX17 = new DevComponents.DotNetBar.LabelX();
-            this.labelX16 = new DevComponents.DotNetBar.LabelX();
-            this.LblStatus = new DevComponents.DotNetBar.LabelX();
-            this.labelX14 = new DevComponents.DotNetBar.LabelX();
-            this.LblApplyMoney = new DevComponents.DotNetBar.LabelX();
             this.LblApplyTime = new DevComponents.DotNetBar.LabelX();
             this.DgvCostDetail = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LblApplicant = new DevComponents.DotNetBar.LabelX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
@@ -64,9 +59,14 @@
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.approver = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.result = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.panelEx3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvApproval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCostDetail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,7 +83,7 @@
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Margin = new System.Windows.Forms.Padding(4);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(645, 496);
+            this.panelEx1.Size = new System.Drawing.Size(645, 670);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -106,7 +106,7 @@
             this.panelEx2.Location = new System.Drawing.Point(0, 0);
             this.panelEx2.Margin = new System.Windows.Forms.Padding(4);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(645, 496);
+            this.panelEx2.Size = new System.Drawing.Size(645, 670);
             this.panelEx2.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx2.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx2.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -122,26 +122,20 @@
             this.panelEx3.AutoScrollMargin = new System.Drawing.Size(0, 80);
             this.panelEx3.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx3.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx3.Controls.Add(this.LblApproverOrg);
+            this.panelEx3.Controls.Add(this.DgvApproval);
+            this.panelEx3.Controls.Add(this.LblStatus);
+            this.panelEx3.Controls.Add(this.labelX11);
+            this.panelEx3.Controls.Add(this.line1);
+            this.panelEx3.Controls.Add(this.LblApplyMoney);
+            this.panelEx3.Controls.Add(this.labelX7);
             this.panelEx3.Controls.Add(this.LblApplicantOrg);
-            this.panelEx3.Controls.Add(this.labelX25);
             this.panelEx3.Controls.Add(this.labelX24);
             this.panelEx3.Controls.Add(this.LblCostId);
             this.panelEx3.Controls.Add(this.labelX22);
-            this.panelEx3.Controls.Add(this.LblRemark);
-            this.panelEx3.Controls.Add(this.labelX20);
-            this.panelEx3.Controls.Add(this.LblApprovalMoney);
-            this.panelEx3.Controls.Add(this.LblApprover);
-            this.panelEx3.Controls.Add(this.labelX17);
-            this.panelEx3.Controls.Add(this.labelX16);
-            this.panelEx3.Controls.Add(this.LblStatus);
-            this.panelEx3.Controls.Add(this.labelX14);
-            this.panelEx3.Controls.Add(this.LblApplyMoney);
             this.panelEx3.Controls.Add(this.LblApplyTime);
             this.panelEx3.Controls.Add(this.DgvCostDetail);
             this.panelEx3.Controls.Add(this.LblApplicant);
             this.panelEx3.Controls.Add(this.labelX10);
-            this.panelEx3.Controls.Add(this.labelX7);
             this.panelEx3.Controls.Add(this.labelX8);
             this.panelEx3.Controls.Add(this.labelX9);
             this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
@@ -149,7 +143,7 @@
             this.panelEx3.Location = new System.Drawing.Point(0, 0);
             this.panelEx3.Margin = new System.Windows.Forms.Padding(4);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(645, 496);
+            this.panelEx3.Size = new System.Drawing.Size(645, 670);
             this.panelEx3.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx3.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
             this.panelEx3.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
@@ -157,19 +151,94 @@
             this.panelEx3.Style.GradientAngle = 90;
             this.panelEx3.TabIndex = 6;
             // 
-            // LblApproverOrg
+            // DgvApproval
+            // 
+            this.DgvApproval.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvApproval.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.approver,
+            this.result,
+            this.time,
+            this.remark});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvApproval.DefaultCellStyle = dataGridViewCellStyle5;
+            this.DgvApproval.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.DgvApproval.Location = new System.Drawing.Point(107, 554);
+            this.DgvApproval.Name = "DgvApproval";
+            this.DgvApproval.RowHeadersWidth = 51;
+            this.DgvApproval.RowTemplate.Height = 27;
+            this.DgvApproval.Size = new System.Drawing.Size(436, 230);
+            this.DgvApproval.TabIndex = 27;
+            // 
+            // LblStatus
             // 
             // 
             // 
             // 
-            this.LblApproverOrg.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.LblApproverOrg.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblApproverOrg.Location = new System.Drawing.Point(256, 588);
-            this.LblApproverOrg.Margin = new System.Windows.Forms.Padding(4);
-            this.LblApproverOrg.Name = "LblApproverOrg";
-            this.LblApproverOrg.Size = new System.Drawing.Size(119, 29);
-            this.LblApproverOrg.TabIndex = 21;
-            this.LblApproverOrg.Text = "加载内容";
+            this.LblStatus.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblStatus.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblStatus.Location = new System.Drawing.Point(256, 518);
+            this.LblStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.LblStatus.Name = "LblStatus";
+            this.LblStatus.Size = new System.Drawing.Size(200, 29);
+            this.LblStatus.TabIndex = 26;
+            this.LblStatus.Text = "加载内容";
+            // 
+            // labelX11
+            // 
+            // 
+            // 
+            // 
+            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX11.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX11.Location = new System.Drawing.Point(107, 518);
+            this.labelX11.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX11.Name = "labelX11";
+            this.labelX11.Size = new System.Drawing.Size(107, 29);
+            this.labelX11.TabIndex = 25;
+            this.labelX11.Text = "审批状态：";
+            // 
+            // line1
+            // 
+            this.line1.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.line1.Location = new System.Drawing.Point(107, 488);
+            this.line1.Name = "line1";
+            this.line1.Size = new System.Drawing.Size(436, 23);
+            this.line1.TabIndex = 24;
+            this.line1.Text = "line1";
+            // 
+            // LblApplyMoney
+            // 
+            // 
+            // 
+            // 
+            this.LblApplyMoney.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblApplyMoney.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblApplyMoney.Location = new System.Drawing.Point(256, 157);
+            this.LblApplyMoney.Margin = new System.Windows.Forms.Padding(4);
+            this.LblApplyMoney.Name = "LblApplyMoney";
+            this.LblApplyMoney.Size = new System.Drawing.Size(119, 29);
+            this.LblApplyMoney.TabIndex = 23;
+            this.LblApplyMoney.Text = "加载内容";
+            // 
+            // labelX7
+            // 
+            // 
+            // 
+            // 
+            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX7.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX7.Location = new System.Drawing.Point(107, 157);
+            this.labelX7.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX7.Name = "labelX7";
+            this.labelX7.Size = new System.Drawing.Size(119, 29);
+            this.labelX7.TabIndex = 22;
+            this.labelX7.Text = "申请金额：";
             // 
             // LblApplicantOrg
             // 
@@ -185,20 +254,6 @@
             this.LblApplicantOrg.TabIndex = 20;
             this.LblApplicantOrg.Text = "加载内容";
             // 
-            // labelX25
-            // 
-            // 
-            // 
-            // 
-            this.labelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX25.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX25.Location = new System.Drawing.Point(107, 588);
-            this.labelX25.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX25.Name = "labelX25";
-            this.labelX25.Size = new System.Drawing.Size(119, 29);
-            this.labelX25.TabIndex = 19;
-            this.labelX25.Text = "所属部门：";
-            // 
             // labelX24
             // 
             // 
@@ -211,7 +266,7 @@
             this.labelX24.Name = "labelX24";
             this.labelX24.Size = new System.Drawing.Size(119, 29);
             this.labelX24.TabIndex = 18;
-            this.labelX24.Text = "所属部门：";
+            this.labelX24.Text = "所属机构：";
             // 
             // LblCostId
             // 
@@ -243,132 +298,6 @@
             this.labelX22.TabIndex = 16;
             this.labelX22.Text = "申请单编号：";
             // 
-            // LblRemark
-            // 
-            // 
-            // 
-            // 
-            this.LblRemark.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.LblRemark.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblRemark.Location = new System.Drawing.Point(256, 675);
-            this.LblRemark.Margin = new System.Windows.Forms.Padding(4);
-            this.LblRemark.Name = "LblRemark";
-            this.LblRemark.Size = new System.Drawing.Size(119, 29);
-            this.LblRemark.TabIndex = 15;
-            this.LblRemark.Text = "加载内容";
-            // 
-            // labelX20
-            // 
-            // 
-            // 
-            // 
-            this.labelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX20.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX20.Location = new System.Drawing.Point(107, 675);
-            this.labelX20.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX20.Name = "labelX20";
-            this.labelX20.Size = new System.Drawing.Size(119, 29);
-            this.labelX20.TabIndex = 14;
-            this.labelX20.Text = "审批备注：";
-            // 
-            // LblApprovalMoney
-            // 
-            // 
-            // 
-            // 
-            this.LblApprovalMoney.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.LblApprovalMoney.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblApprovalMoney.Location = new System.Drawing.Point(256, 631);
-            this.LblApprovalMoney.Margin = new System.Windows.Forms.Padding(4);
-            this.LblApprovalMoney.Name = "LblApprovalMoney";
-            this.LblApprovalMoney.Size = new System.Drawing.Size(119, 29);
-            this.LblApprovalMoney.TabIndex = 13;
-            this.LblApprovalMoney.Text = "加载内容";
-            // 
-            // LblApprover
-            // 
-            // 
-            // 
-            // 
-            this.LblApprover.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.LblApprover.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblApprover.Location = new System.Drawing.Point(256, 544);
-            this.LblApprover.Margin = new System.Windows.Forms.Padding(4);
-            this.LblApprover.Name = "LblApprover";
-            this.LblApprover.Size = new System.Drawing.Size(119, 29);
-            this.LblApprover.TabIndex = 12;
-            this.LblApprover.Text = "加载内容";
-            // 
-            // labelX17
-            // 
-            // 
-            // 
-            // 
-            this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX17.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX17.Location = new System.Drawing.Point(107, 631);
-            this.labelX17.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX17.Name = "labelX17";
-            this.labelX17.Size = new System.Drawing.Size(119, 29);
-            this.labelX17.TabIndex = 11;
-            this.labelX17.Text = "审批金额：";
-            // 
-            // labelX16
-            // 
-            // 
-            // 
-            // 
-            this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX16.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX16.Location = new System.Drawing.Point(107, 544);
-            this.labelX16.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX16.Name = "labelX16";
-            this.labelX16.Size = new System.Drawing.Size(119, 29);
-            this.labelX16.TabIndex = 10;
-            this.labelX16.Text = "审 批 人：";
-            // 
-            // LblStatus
-            // 
-            // 
-            // 
-            // 
-            this.LblStatus.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.LblStatus.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblStatus.Location = new System.Drawing.Point(256, 500);
-            this.LblStatus.Margin = new System.Windows.Forms.Padding(4);
-            this.LblStatus.Name = "LblStatus";
-            this.LblStatus.Size = new System.Drawing.Size(119, 29);
-            this.LblStatus.TabIndex = 9;
-            this.LblStatus.Text = "加载内容";
-            // 
-            // labelX14
-            // 
-            // 
-            // 
-            // 
-            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX14.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX14.Location = new System.Drawing.Point(107, 500);
-            this.labelX14.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX14.Name = "labelX14";
-            this.labelX14.Size = new System.Drawing.Size(119, 29);
-            this.labelX14.TabIndex = 8;
-            this.labelX14.Text = "审批状态：";
-            // 
-            // LblApplyMoney
-            // 
-            // 
-            // 
-            // 
-            this.LblApplyMoney.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.LblApplyMoney.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblApplyMoney.Location = new System.Drawing.Point(256, 200);
-            this.LblApplyMoney.Margin = new System.Windows.Forms.Padding(4);
-            this.LblApplyMoney.Name = "LblApplyMoney";
-            this.LblApplyMoney.Size = new System.Drawing.Size(119, 29);
-            this.LblApplyMoney.TabIndex = 7;
-            this.LblApplyMoney.Text = "加载内容";
-            // 
             // LblApplyTime
             // 
             // 
@@ -376,7 +305,7 @@
             // 
             this.LblApplyTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.LblApplyTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LblApplyTime.Location = new System.Drawing.Point(256, 156);
+            this.LblApplyTime.Location = new System.Drawing.Point(256, 203);
             this.LblApplyTime.Margin = new System.Windows.Forms.Padding(4);
             this.LblApplyTime.Name = "LblApplyTime";
             this.LblApplyTime.Size = new System.Drawing.Size(200, 29);
@@ -386,39 +315,39 @@
             // DgvCostDetail
             // 
             this.DgvCostDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvCostDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvCostDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.DgvCostDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvCostDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvCostDetail.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvCostDetail.DefaultCellStyle = dataGridViewCellStyle7;
             this.DgvCostDetail.EnableHeadersVisualStyles = false;
-            this.DgvCostDetail.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.DgvCostDetail.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.DgvCostDetail.Location = new System.Drawing.Point(107, 280);
             this.DgvCostDetail.Margin = new System.Windows.Forms.Padding(4);
             this.DgvCostDetail.Name = "DgvCostDetail";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvCostDetail.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvCostDetail.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.DgvCostDetail.RowHeadersVisible = false;
             this.DgvCostDetail.RowHeadersWidth = 51;
             this.DgvCostDetail.RowTemplate.Height = 23;
@@ -461,23 +390,9 @@
             this.labelX10.Location = new System.Drawing.Point(107, 244);
             this.labelX10.Margin = new System.Windows.Forms.Padding(4);
             this.labelX10.Name = "labelX10";
-            this.labelX10.Size = new System.Drawing.Size(119, 29);
+            this.labelX10.Size = new System.Drawing.Size(164, 29);
             this.labelX10.TabIndex = 3;
-            this.labelX10.Text = "费用明细：";
-            // 
-            // labelX7
-            // 
-            // 
-            // 
-            // 
-            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX7.Location = new System.Drawing.Point(107, 200);
-            this.labelX7.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(119, 29);
-            this.labelX7.TabIndex = 2;
-            this.labelX7.Text = "申请金额：";
+            this.labelX10.Text = "费用申请明细表：";
             // 
             // labelX8
             // 
@@ -486,7 +401,7 @@
             // 
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX8.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX8.Location = new System.Drawing.Point(107, 156);
+            this.labelX8.Location = new System.Drawing.Point(107, 203);
             this.labelX8.Margin = new System.Windows.Forms.Padding(4);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(119, 29);
@@ -591,11 +506,38 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "申请人：";
             // 
+            // approver
+            // 
+            this.approver.HeaderText = "审核人";
+            this.approver.MinimumWidth = 6;
+            this.approver.Name = "approver";
+            this.approver.Width = 80;
+            // 
+            // result
+            // 
+            this.result.HeaderText = "审核结果";
+            this.result.MinimumWidth = 6;
+            this.result.Name = "result";
+            // 
+            // time
+            // 
+            this.time.HeaderText = "审批时间";
+            this.time.MinimumWidth = 6;
+            this.time.Name = "time";
+            this.time.Width = 125;
+            // 
+            // remark
+            // 
+            this.remark.HeaderText = "审批意见";
+            this.remark.MinimumWidth = 6;
+            this.remark.Name = "remark";
+            this.remark.Width = 125;
+            // 
             // CostApplyDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(645, 496);
+            this.ClientSize = new System.Drawing.Size(645, 670);
             this.Controls.Add(this.panelEx1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -611,6 +553,7 @@
             this.panelEx2.ResumeLayout(false);
             this.panelEx3.ResumeLayout(false);
             this.panelEx3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvApproval)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCostDetail)).EndInit();
             this.ResumeLayout(false);
 
@@ -623,7 +566,6 @@
         private DevComponents.DotNetBar.PanelEx panelEx3;
         private DevComponents.DotNetBar.LabelX LblApplicant;
         private DevComponents.DotNetBar.LabelX labelX10;
-        private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.LabelX labelX8;
         private DevComponents.DotNetBar.LabelX labelX9;
         private DevComponents.DotNetBar.LabelX labelX4;
@@ -632,24 +574,23 @@
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.LabelX LblRemark;
-        private DevComponents.DotNetBar.LabelX labelX20;
-        private DevComponents.DotNetBar.LabelX LblApprovalMoney;
-        private DevComponents.DotNetBar.LabelX LblApprover;
-        private DevComponents.DotNetBar.LabelX labelX17;
-        private DevComponents.DotNetBar.LabelX labelX16;
-        private DevComponents.DotNetBar.LabelX LblStatus;
-        private DevComponents.DotNetBar.LabelX labelX14;
-        private DevComponents.DotNetBar.LabelX LblApplyMoney;
         private DevComponents.DotNetBar.LabelX LblApplyTime;
         private DevComponents.DotNetBar.Controls.DataGridViewX DgvCostDetail;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private DevComponents.DotNetBar.LabelX LblApproverOrg;
         private DevComponents.DotNetBar.LabelX LblApplicantOrg;
-        private DevComponents.DotNetBar.LabelX labelX25;
         private DevComponents.DotNetBar.LabelX labelX24;
         private DevComponents.DotNetBar.LabelX LblCostId;
         private DevComponents.DotNetBar.LabelX labelX22;
+        private DevComponents.DotNetBar.Controls.DataGridViewX DgvApproval;
+        private DevComponents.DotNetBar.LabelX LblStatus;
+        private DevComponents.DotNetBar.LabelX labelX11;
+        private DevComponents.DotNetBar.Controls.Line line1;
+        private DevComponents.DotNetBar.LabelX LblApplyMoney;
+        private DevComponents.DotNetBar.LabelX labelX7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn approver;
+        private System.Windows.Forms.DataGridViewTextBoxColumn result;
+        private System.Windows.Forms.DataGridViewTextBoxColumn time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn remark;
     }
 }
