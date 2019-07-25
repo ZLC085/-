@@ -121,6 +121,20 @@ namespace PersonInfoManage.BLL.System
             return set.SelectAll();
 
         }
+        public List<string> SelectAllDictName()
+        {
+            SysSettingDAL set = new SysSettingDAL();
+            return set.SelectAllDictName();
 
-    }
+        }
+
+
+
+        public List<sys_dict> SelectByDictName(sys_dict_type dictName)
+        {
+            SysSettingDAL set = new SysSettingDAL();
+            return set.SelectByDictName(dictName);
+        }
+
+        }
 }

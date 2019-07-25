@@ -12,9 +12,19 @@ namespace PersonInfoManage
 {
     public partial class CostApprovalForm : Form
     {
+        private int costId;
         public CostApprovalForm()
         {
             InitializeComponent();
+        }
+        public CostApprovalForm(int costId)
+        {
+            this.costId = costId;
+            InitializeComponent();
+        }
+        private void CostApprovalForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

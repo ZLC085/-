@@ -62,18 +62,8 @@ namespace PersonInfoManage.DAL.Cost
         /// </summary>
         /// <param name="ListPlan"></param>
         /// <returns>删除条数</returns>
-        //public int Del(List<cost_plan> ListPlan)
         public int Del(Dictionary<string,DateTime> period)
         {
-            //string[] sqlPlan = new string[ListPlan.Count];
-
-            //int count = 0;
-            //foreach (cost_plan plan in ListPlan)
-            //{
-            //    sqlPlan[count] = "delete from cost_plan where " + nameof(cost_plan.start_time) + "='" + plan.start_time + "' and " + nameof(cost_plan.end_time) + "='" + plan.end_time + "'";
-            //    count++;
-            //}
-            //return sqlArrayToTran.doTran(sqlPlan);
             DateTime start_time = period["start_time"];
             DateTime end_time = period["end_time"];
             int startYear = start_time.Year;
@@ -145,6 +135,31 @@ namespace PersonInfoManage.DAL.Cost
                 retList.Add(plan);
             }
             return retList;
+        }
+        /// <summary>
+        /// 费用规划，根据时间段求和
+        /// </summary>
+        /// <param name="SrartTime"></param>
+        /// <param name="EndTime"></param>
+        /// <returns>费用规划列表中费用“总计”</returns>
+        public decimal QuerySum(DateTime SrartTime,DateTime EndTime)
+        {
+            decimal money = 0;
+            string sql = "SELECT start_time,end_time,SUM(money) as money from cost_plan WHERE start_time>='"+new DateTime(SrartTime.Year,SrartTime.Month,SrartTime.Day,0,0,0)+ "' and start_time<='" 
+                + new DateTime(SrartTime.Year, SrartTime.Month, SrartTime.Day, 23, 59, 59) + "' and end_time >= '" 
+                + new DateTime(EndTime.Year, EndTime.Month, EndTime.Day, 0, 0, 0) + "' and end_time <= '" 
+                + new DateTime(EndTime.Year, EndTime.Month, EndTime.Day, 23, 59, 59) + "' GROUP BY start_time,end_time";
+            try
+            {
+                DataRow row = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0].Rows[0];
+
+                money = (decimal)row["money"];
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return money;
         }
     }
 }

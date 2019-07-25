@@ -50,12 +50,14 @@
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar.Charts, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar2, Version=14.1.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.TreeGX, Version=14.1.0.0, Culture=neutral, PublicKeyToken=055db68f670cfeab, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Runtime.Serialization" />
@@ -79,6 +81,15 @@
     <Compile Include="Business\AddBusiness.Designer.cs">
       <DependentUpon>AddBusiness.cs</DependentUpon>
     </Compile>
+    <Compile Include="Loading\LoadingDot.cs" />
+    <Compile Include="Loading\LoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loading\LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loading\LoadingHelper.cs" />
+    <Compile Include="MessageBoxCustom.cs" />
     <Compile Include="System\AddCategoreTypeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,21 +177,38 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="System\RoleSetForm.cs">
+    <Compile Include="System\GroupRoleManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="System\RoleSetForm.Designer.cs">
-      <DependentUpon>RoleSetForm.cs</DependentUpon>
+    <Compile Include="System\GroupRoleManagerForm.Designer.cs">
+      <DependentUpon>GroupRoleManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="System\UserGroupRoleForm.cs">
+    <Compile Include="System\UserDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="System\UserGroupRoleForm.Designer.cs">
-      <DependentUpon>UserGroupRoleForm.cs</DependentUpon>
+    <Compile Include="System\UserDetailForm.Designer.cs">
+      <DependentUpon>UserDetailForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\RegexComm.cs" />
+    <Compile Include="PersonInfo\UpdateFileNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonInfo\UpdateFileNameForm.Designer.cs">
+      <DependentUpon>UpdateFileNameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="System\UpdateUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="System\UpdateUserForm.Designer.cs">
+      <DependentUpon>UpdateUserForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Business\AddBusiness.resx">
       <DependentUpon>AddBusiness.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loading\LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonInfo\UpdateFileNameForm.resx">
+      <DependentUpon>UpdateFileNameForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="System\AddCategoreTypeForm.resx">
       <DependentUpon>AddCategoreTypeForm.cs</DependentUpon>
@@ -229,11 +257,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="System\RoleSetForm.resx">
-      <DependentUpon>RoleSetForm.cs</DependentUpon>
+    <EmbeddedResource Include="System\GroupRoleManagerForm.resx">
+      <DependentUpon>GroupRoleManagerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="System\UserGroupRoleForm.resx">
-      <DependentUpon>UserGroupRoleForm.cs</DependentUpon>
+    <EmbeddedResource Include="System\UserDetailForm.resx">
+      <DependentUpon>UserDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="System\UpdateUserForm.resx">
+      <DependentUpon>UpdateUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -331,6 +362,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\projects2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

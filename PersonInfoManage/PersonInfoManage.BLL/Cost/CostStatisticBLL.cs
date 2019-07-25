@@ -1,12 +1,19 @@
-﻿using System;
+﻿using PersonInfoManage.Model;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using PersonInfoManage.DAL.Cost;
 
 namespace PersonInfoManage.BLL.Cost
 {
-    class CostStatisticBLL
+    public class CostStatisticBLL
     {
+        /// <summary>
+        /// 费用统计
+        /// </summary>
+        /// <param name="conditions"></param>
+        /// <returns></returns>
+        public List<cost> Query(Dictionary<string, object> conditions)
+        {
+            return new CostStatisticDAL().Query(conditions);
+        }
     }
 }

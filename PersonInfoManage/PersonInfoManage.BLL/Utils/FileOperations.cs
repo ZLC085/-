@@ -21,10 +21,14 @@ namespace PersonInfoManage.DAL.Utils
         /// <returns>person_file</returns>
         public person_file SetFile(int pesonId, string fullFileName)
         {
+            byte[] fileContent = ReadFile(fullFileName);
+
+            if (fileContent == null) return null;
+
             person_file file = new person_file
             {
                 filename = GetFileName(fullFileName),
-                file = ReadFile(fullFileName),
+                file = fileContent,
                 filetype = GetFileType(fullFileName),
                 person_id = pesonId,
                 create_time = DateTime.Now,
@@ -54,8 +58,9 @@ namespace PersonInfoManage.DAL.Utils
         /// <returns>文件名</returns>
         private string GetFileName(string fullFileName)
         {
-            int index = fullFileName.LastIndexOf(@"\") + 1;
-            string fileName = fullFileName.Substring(index);
+            int indexStart = fullFileName.LastIndexOf(@"\") + 1;
+            int indexEnd = fullFileName.LastIndexOf(".");
+            string fileName = fullFileName.Substring(indexStart, indexEnd - indexStart);
 
             return fileName;
         }
@@ -69,9 +74,16 @@ namespace PersonInfoManage.DAL.Utils
         {
             FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
 
-            byte[] fileBytes = new byte[fileStream.Length];
-            fileStream.Read(fileBytes, 0, (int)fileStream.Length);
-            fileStream.Close();
+            if (fileStream.Length > 2000000000) return null;
+
+            byte[] fileBytes = default;
+            try
+            {
+                fileBytes = new byte[fileStream.Length];
+                fileStream.Read(fileBytes, 0, (int)fileStream.Length);
+            }
+            catch { }
+            finally { fileStream.Close(); }
 
             return fileBytes;
         }
@@ -86,7 +98,7 @@ namespace PersonInfoManage.DAL.Utils
         /// <returns>文件是否导出成功</returns>
         public bool WriteFile(byte[] fileBytes, string path, string fileName, string fileType)
         {
-            string filePath = path + fileName + "." + fileType;
+            string filePath = path + "\\" + fileName + "." + fileType;
             FileStream fs= new FileStream(filePath, FileMode.Create, FileAccess.Write);
             try
             {

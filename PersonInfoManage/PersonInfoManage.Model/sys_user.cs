@@ -6,7 +6,7 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class sys_user
+    public class sys_user
     {
         public int id { get; set; }
 
@@ -29,6 +29,8 @@ namespace PersonInfoManage.Model
         [Required]
         [StringLength(20)]
         public string job { get; set; }
+
+        public int? org_id { get; set; }
 
         [Required]
         [StringLength(15)]

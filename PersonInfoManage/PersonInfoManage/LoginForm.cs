@@ -1,10 +1,13 @@
 ﻿using PersonInfoManage.BLL.Login;
 using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using static PersonInfoManage.LocalUserInfo;
+using PersonInfoManage.Model;
+using PersonInfoManage.BLL.System;
 
 namespace PersonInfoManage
 {
@@ -14,15 +17,27 @@ namespace PersonInfoManage
         {
             InitializeComponent();
             LoadUserName();
+            loginTipLabel.Text = "";
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
             string userName = UserNameTextBox.Text;
             string psd = PsdTextBox.Text;
-            string md5psd = MD5Psd(psd);
+            string md5psd = psd;//MD5Psd(psd);
+            if (userName == "")
+            {
+                loginTipLabel.Text = "用户名不能为空！";
+                return;
+            }
+            else if(psd=="")
+            {
+                loginTipLabel.Text = "密码不能为空！";
+                return;
+            }
             LoginBLL loginBLL = new LoginBLL();
             bool res=loginBLL.Login(userName, md5psd);
+
             if (res == true)
             {
                 if (SaveUserInfoToLocal()) {
@@ -58,17 +73,28 @@ namespace PersonInfoManage
                 if (UserNameTextBox.Text == "")
                 {
                     loginTipLabel.Text = "用户名不能为空！";
-                    flag= false;
+                    flag = false;
                 }
                 else
                 {
-                    User user = new User
+                    List<view_sys_u2g> userinfo = new List<view_sys_u2g>();
+                    sys_user user1 = new sys_user();
+                    SysUserBLL userbll = new SysUserBLL();
+                    user1.username = UserNameTextBox.Text;
+                    userinfo = userbll.Select(user1);
+                    int id;
+                    foreach (var user2 in userinfo)
                     {
-                        UserName = UserNameTextBox.Text,
-                        UserId=111,//查询得到
-                        IsChecked = true
-                    };
-                    LoginInfo = user;
+                        id = user2.id;
+                        string idcode = userinfo[0].ToString();
+                        User user = new User()
+                        {
+                            UserName = UserNameTextBox.Text,
+                            UserId = id,
+                            IsChecked = true,
+                        };
+                        LoginInfo = user;    //尚未测试
+                    } 
                 }
             }
             else

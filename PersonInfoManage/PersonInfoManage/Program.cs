@@ -17,14 +17,15 @@ namespace PersonInfoManage
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MainForm());
-            //Application.Run(new LoginForm());
+            Application.Run(new LoginForm());
             //Application.Run(new PersonDetailForm());
             //Application.Run(new UpdatFileNameForm());
-            //Application.Run(new CostApplyDetailForm());
+            //Application.Run(new CostApplyDetailForm(1563613841));
             //Application.Run(new CostPlanForm());
             //Application.Run(new PersonBasicForm());
             //Application.Run(new CostApplyForm());
-            Application.Run(new PersonBasicForm());
+            //Application.Run(new AddCostDetailForm());
+            //Application.Run(new ProgressForm());
         }
     }
 }

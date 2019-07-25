@@ -1,14 +1,7 @@
-﻿using PersonInfoManage.BLL.PersonInfo;
+﻿using Loading;
+using PersonInfoManage.BLL.PersonInfo;
 using PersonInfoManage.BLL.Utils;
-using PersonInfoManage.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PersonInfoManage
@@ -22,27 +15,28 @@ namespace PersonInfoManage
 
         private void BtnAddFile_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Multiselect = false;
-            openFile.Title = "请选择文件";
-            openFile.Filter = "所有文件(*.*)|*.*";
+            OpenFileDialog openFile = new OpenFileDialog
+            {
+                Multiselect = false,
+                Title = "请选择文件",
+                Filter = "所有文件(*.*)|*.*"
+            };
 
             if (openFile.ShowDialog() == DialogResult.OK)
             {
-                string filePath= openFile.FileName;
-                string fileName = openFile.SafeFileName;
+                string filePath = openFile.FileName;
+                Result result = null;
+                LoadingHelper.ShowLoading("文件上传中...", this, o =>
+                {
+                    //这里写处理耗时的代码，代码处理完成则自动关闭该窗口
+                    PersonFileBLL personFileBLL = new PersonFileBLL();
+                    result = personFileBLL.Add(1001, filePath);
+                });
 
-                
-                int index = filePath.LastIndexOf(".")+1;
-                string fileType = filePath.Substring(index);
-
-                int i = filePath.LastIndexOf(@"\")+1;
-                string f = filePath.Substring(i);
-                //return fileType;
+                FileStatus(result, "文件添加");
             }
-           
         }
-
+        
         private void BtnOutFile_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
@@ -51,18 +45,42 @@ namespace PersonInfoManage
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 string foldPath = dialog.SelectedPath;
+                Result result = null;
+                LoadingHelper.ShowLoading("文件导出中...", this, o => 
+                {
+                    PersonFileBLL personFileBLL = new PersonFileBLL();
 
-                PersonFileBLL personFileBLL = new PersonFileBLL();
-                Result result= personFileBLL.OutFile(1, foldPath);
-               
-                if (result.Code==RES.OK)
-                {
-                    MessageBox.Show(result.Message,"文件导出");
-                }
-                else if(result.Code==RES.ERROR)
-                {
-                    MessageBox.Show(result.Message, "文件导出");
-                }
+                    //需要文件id
+                    result = personFileBLL.OutFile(28, foldPath);
+                });
+
+                FileStatus(result, "文件导出");
+            }
+        }
+
+        private void FileStatus(Result result, string title)
+        {
+            if (result?.Code == RES.OK)
+            {
+                MessageBoxCustom.Show(result.Message, title, this);
+            }
+            else if (result?.Code == RES.ERROR)
+            {
+                MessageBoxCustom.Show(result.Message, title, this);
+            }
+        }
+
+        private void BtnUpdateFile_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void BtnDelFile_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBoxCustom.Show("确认删除", "提示", MessageBoxButtons.YesNo, this);
+            if (res == DialogResult.Yes)
+            {
+                this.Close();
             }
         }
     }

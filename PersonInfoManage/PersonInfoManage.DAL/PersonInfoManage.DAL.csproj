@@ -65,11 +65,9 @@
     <Compile Include="System\SysSettingDAL.cs" />
     <Compile Include="System\SysUserDAL.cs" />
     <Compile Include="Utils\ConditionsToSql.cs" />
+    <Compile Include="Utils\ConvertTools.cs" />
     <Compile Include="Utils\DALBase.cs" />
-    <Compile Include="Utils\DBOperationsDelete.cs" />
-    <Compile Include="Utils\DBOperationsInsert.cs" />
-    <Compile Include="Utils\DBOperationsSelect.cs" />
-    <Compile Include="Utils\DBOperationsUpdate.cs" />
+    <Compile Include="Utils\LogOperations.cs" />
     <Compile Include="Utils\sqlArrayToTran.cs" />
     <Compile Include="Utils\SqlHelper.cs" />
     <Compile Include="Utils\TimeTools.cs" />

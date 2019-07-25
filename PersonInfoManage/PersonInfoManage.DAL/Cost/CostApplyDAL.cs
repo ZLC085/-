@@ -15,22 +15,27 @@ namespace PersonInfoManage.DAL.Cost
         /// <summary>
         /// 添加费用单
         /// </summary>
-        /// <param name="cost">费用单对象main：applicant、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
+        /// <param name="cost">费用单主表对象 Main：apply_id、apply_money、status、apply_time、remark 
+        /// 费用单审批详情列表 ApprovalList:approval_id
+        /// 费用详情列表 DetailList：cost_type、cost_type_name、money</param>
         /// <returns>数据表受影响的行数</returns>
         public int Add(cost cost)
         {
-            cost_main costMain = cost.main;
-            List<cost_detail> detailList = cost.DetailList;
+            cost_main Main = cost.Main;
+            List<cost_detail> DetailList = cost.DetailList;
             //先构造所有的sql语句
-            string[] sqlArray = new string[1 + detailList.Count];
-            //先构造插入cost_main表的语句
+            string[] sqlArray = new string[2 + DetailList.Count];
+            //构造插入cost_main、cost_approval表的语句
             int timeStamp = TimeTools.Timestamp();
-            costMain.id = timeStamp;//主键(费用单id)是时间戳
-            costMain.approval_money = 0;
-            sqlArray[0] = ConditionsToSql<cost_main>.InsertSql(costMain);
-            //再构造插入cost_detail表语句
-            int count = 0;
-            foreach(cost_detail detail in detailList)
+            Main.id = timeStamp;//主键(费用单id)是时间戳
+            sqlArray[0] = ConditionsToSql<cost_main>.InsertSql(Main);
+            //插入cost_approval表时，鉴于审核逻辑的关系，最多一次插入一个
+            cost_approval Approval = cost.ApprovalList.First();
+            Approval.cost_id = timeStamp;
+            sqlArray[1] = ConditionsToSql<cost_approval>.InsertSql(Approval);
+            //构造插入cost_detail表语句
+            int count = 1;
+            foreach(cost_detail detail in DetailList)
             {
                 detail.cost_id = timeStamp;
                 sqlArray[count + 1] = ConditionsToSql<cost_detail>.InsertSql(detail);
@@ -42,26 +47,29 @@ namespace PersonInfoManage.DAL.Cost
         /// <summary>
         /// 更新费用单信息
         /// </summary>
-        /// <param name="cost">费用单对象main：applicant、apply_money、apply_time  费用单详情列表detailList:cost_type、money、cost_type_name</param>
+        /// <param name="cost">费用单主表对象 Main：id、apply_money、remark 
+        /// 费用单审批详情列表 ApprovalList:
+        /// 费用详情列表 DetailList：cost_type、cost_type_name、money</param>
         /// <returns>数据表受影响的行数</returns>
         public int Update(cost cost)
         {
-            cost_main costMain = cost.main;
-            List<cost_detail> detailList = cost.DetailList;
+            cost_main Main = cost.Main;
+            List<cost_detail> DetailList = cost.DetailList;
             //构造sql语句数组
-            string[] sqlArray = new string[2+detailList.Count];
+            string[] sqlArray = new string[2+DetailList.Count];
             //先更新cost_main表
             //更新费用金额信息和状态
             sqlArray[0]= "update cost_main set " +
-                nameof(cost_main.apply_money) + "=" + costMain.apply_money +
-                " where id='" + costMain.id + "'";
+                nameof(cost_main.apply_money) + "=" + Main.apply_money +
+                nameof(cost_main.remark) + "='" +Main.remark+
+                "' where id='" + Main.id + "'";
             //再删除cost_detail表数据
-            sqlArray[1] = "delete from cost_detail where "+nameof(cost_detail.cost_id)+"='"+costMain.id+"'";
+            sqlArray[1] = "delete from cost_detail where "+nameof(cost_detail.cost_id)+"='"+Main.id+"'";
             //再插入cost_detail表数据
             int count = 1;
-            foreach(cost_detail detail in detailList)
+            foreach(cost_detail detail in DetailList)
             {
-                detail.cost_id = costMain.id;
+                detail.cost_id = Main.id;
                 sqlArray[count + 1] = ConditionsToSql<cost_detail>.InsertSql(detail);
                 count++;
             }
@@ -69,21 +77,53 @@ namespace PersonInfoManage.DAL.Cost
             return sqlArrayToTran.doTran(sqlArray);            
         }
         /// <summary>
-        /// 撤销费用单
+        /// 删除费用信息
         /// </summary>
-        /// <param name="costMain">费用单对象cost_main：id</param>
+        /// <param name="id">费用单id</param>
         /// <returns>数据表受影响的行数</returns>
         public int Del(int id)
         {
             //构造sql语句数组
-            string[] sqlArray = new string[2];
-            //先删除费用类型表记录
-            sqlArray[0] = "delete from cost_detail where "+nameof(cost_detail.cost_id)+"="+id;
+            string[] sqlArray = new string[3];
+            //删除费用类型表记录
+            sqlArray[0] = "delete from cost_detail where cost_id = "+id;
+            //删除费用审批详情表记录
+            sqlArray[1] = "delete from cost_approval where cost_id = "+id;
             //再删除费用单表记录
-            sqlArray[1] = "delete from cost_main where id='" + id + "'";
+            sqlArray[2] = "delete from cost_main where id='" + id + "'";
             //调用方法以事务方式执行sql数组里的语句
             return sqlArrayToTran.doTran(sqlArray);            
-        }        
+        }
+        /// <summary>
+        /// 根据费用单id查询审批详情列表
+        /// </summary>
+        /// <param name="costId"></param>
+        /// <returns></returns>
+        public List<cost_approval> QueryApproval(int costId)
+        {
+            List<cost_approval> ListApproval = new List<cost_approval>();
+            string sql = "select * from cost_approval where cost_id=" + costId;
+            DataTable dataTable = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0];
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                DataRow row = dataTable.Rows[i];
+                cost_approval approval = new cost_approval
+                {
+                    id = (int)row["id"],
+                    cost_id = (int)row["cost_id"],
+                    approval_id = (int)row["approval_id"]
+                };
+                object result = ConvertTools.DbNullConvert(row["result"]);
+                if (result != null)
+                {
+                    approval.result = ConvertTools.Bit2Bool((int)result);
+                }
+                approval.time = (DateTime)ConvertTools.DbNullConvert(row["time"]);
+                approval.opinion = (string)ConvertTools.DbNullConvert(row["opinion"]);
+                ListApproval.Add(approval);
+            }
+            return ListApproval;
+        }
         /// <summary>
         /// 根据费用单id查询费用详情列表
         /// </summary>
@@ -108,16 +148,16 @@ namespace PersonInfoManage.DAL.Cost
                 listDetail.Add(detail);
             }
             return listDetail;
-        }        
+        }
         /// <summary>
-        /// 根据组合条件查询费用单
+        /// 根据组合条件查询费用单（可分页）
         /// </summary>
-        /// <param name="consitions">条件键值对key: "id", "applicant", "status", "start_time", "end_time","page","limit"</param>
-        /// <returns>费用单对象与费用详情对象列表构成的词典键值对</returns>
+        /// <param name="conditions">条件键值对key: "id", "apply_id", "status", "start_time", "end_time","page","limit"</param>
+        /// <returns>费用单列表</returns>
         public List<cost_main> QueryMain(Dictionary<string, object> conditions)
         {
             //对组合条件参数进行合法性检验，获取合法的查询参数列表
-            string[] keys = new string[] {"id", "applicant", "status", "start_time", "end_time" };
+            string[] keys = new string[] {"id", "apply_id", "status", "start_time", "end_time" };
             List<string> keyList = new List<string>();            
             foreach (string key in conditions.Keys)
             {   
@@ -176,29 +216,12 @@ namespace PersonInfoManage.DAL.Cost
                 cost_main main = new cost_main
                 {
                     id = (int)row["id"],
-                    applicant = (string)row["applicant"],
-                    approver = (string)row["approver"],
-                    apply_time = (DateTime)row["apply_time"],
+                    apply_id = (int)row["apply_id"],
                     apply_money = (decimal)row["apply_money"],
                     status = (byte)row["status"],
-                    remark = (string)row["remark"]
-                };
-                if(row["approval_time"] == DBNull.Value)
-                {
-                    main.approval_time = null;
-                }
-                else
-                {
-                    main.approval_time =(DateTime) row["approval_time"];
-                }
-                if (row["approval_money"] == DBNull.Value)
-                {
-                    main.approval_money = null;
-                }
-                else
-                {
-                    main.approval_money = (decimal)row["approval_money"];
-                }
+                    apply_time = (DateTime)row["apply_time"],
+                    remark = (string)row["remark"]                    
+                };                
                 listMain.Add(main);
             }
             return listMain;
@@ -215,9 +238,49 @@ namespace PersonInfoManage.DAL.Cost
             for(int i = 0; i < db.Rows.Count; i++)
             {
                 DataRow row = db.Rows[i];
-                list.Add((string)row["category_name"]);
+                list.Add((int)row["id"]+"."+(string)row["category_name"]);
             }
             return list;
+        }
+        /// <summary>
+        /// 获取用户的上级审核人列表
+        /// </summary>
+        /// <param name="apply_id"></param>
+        /// <returns></returns>
+        public List<string> GetApprovalInfo(int apply_id)
+        {
+            List<string> approvalList = new List<string>();
+            string sql = "select org_id from sys_user where id="+apply_id;
+            string org_id = ((int)SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql).Tables[0].Rows[0]["org_id"]).ToString();
+            string sql2 = "select parent_id from sys_org where id="+org_id;
+            string parent_id = ((int)SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql2).Tables[0].Rows[0]["parent_id"]).ToString();
+            string sql3 = "select parent_id from sys_org where id=" + parent_id;
+            string parent_id2 = ((int)SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql3).Tables[0].Rows[0]["parent_id"]).ToString();
+            string sql4 = "select id,org_name from sys_org where parent_id="+ parent_id2;
+            DataTable dataTable = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql4).Tables[0];
+            List<string> listOrg = new List<string>();
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                string tempOrg = ((int)dataTable.Rows[i]["id"]).ToString()+"."+ (string)dataTable.Rows[i]["org_name"];
+                listOrg.Add(tempOrg);
+            }
+            foreach(string org in listOrg)
+            {
+                string orgId = org.Split('.')[0];
+                string TempSql = "select id,name,job from sys_user where org_id="+orgId;
+                DataTable dataTable2 = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, TempSql).Tables[0];
+                for (int j= 0;j < dataTable2.Rows.Count; j++)
+                {
+                    DataRow row = dataTable2.Rows[j];
+                    string tId = ((int)row["id"]).ToString();
+                    string tName = (string)row["name"];
+                    string tJob = (string)row["job"];
+                    string approval = tId + "."+org.Split('.')[1]+"." + tJob + "." + tName;
+                    //Console.WriteLine(approval);
+                    approvalList.Add(approval);
+                }
+            }
+            return approvalList;
         }
     }
 }

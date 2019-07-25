@@ -29,9 +29,13 @@
         private void InitializeComponent()
         {
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.labelX14 = new DevComponents.DotNetBar.LabelX();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.labelX8 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX6 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX32 = new DevComponents.DotNetBar.LabelX();
-            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.btnClose = new DevComponents.DotNetBar.ButtonX();
+            this.btnAddUser = new DevComponents.DotNetBar.ButtonX();
             this.labelX13 = new DevComponents.DotNetBar.LabelX();
             this.labelX12 = new DevComponents.DotNetBar.LabelX();
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
@@ -51,7 +55,6 @@
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX6 = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,10 +62,13 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.labelX14);
+            this.panelEx1.Controls.Add(this.comboBox1);
+            this.panelEx1.Controls.Add(this.labelX8);
             this.panelEx1.Controls.Add(this.textBoxX6);
             this.panelEx1.Controls.Add(this.labelX32);
-            this.panelEx1.Controls.Add(this.buttonX2);
-            this.panelEx1.Controls.Add(this.buttonX1);
+            this.panelEx1.Controls.Add(this.btnClose);
+            this.panelEx1.Controls.Add(this.btnAddUser);
             this.panelEx1.Controls.Add(this.labelX13);
             this.panelEx1.Controls.Add(this.labelX12);
             this.panelEx1.Controls.Add(this.labelX11);
@@ -86,7 +92,7 @@
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(484, 420);
+            this.panelEx1.Size = new System.Drawing.Size(484, 454);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
@@ -96,6 +102,56 @@
             this.panelEx1.Style.GradientAngle = 90;
             this.panelEx1.TabIndex = 0;
             // 
+            // labelX14
+            // 
+            // 
+            // 
+            // 
+            this.labelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX14.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX14.ForeColor = System.Drawing.Color.Red;
+            this.labelX14.Location = new System.Drawing.Point(365, 320);
+            this.labelX14.Name = "labelX14";
+            this.labelX14.Size = new System.Drawing.Size(16, 23);
+            this.labelX14.TabIndex = 71;
+            this.labelX14.Text = "*";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(178, 320);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(182, 20);
+            this.comboBox1.TabIndex = 70;
+            // 
+            // labelX8
+            // 
+            this.labelX8.AutoSize = true;
+            // 
+            // 
+            // 
+            this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX8.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX8.Location = new System.Drawing.Point(100, 320);
+            this.labelX8.Name = "labelX8";
+            this.labelX8.Size = new System.Drawing.Size(79, 20);
+            this.labelX8.TabIndex = 69;
+            this.labelX8.Text = "所属部门：";
+            // 
+            // textBoxX6
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX6.Border.Class = "TextBoxBorder";
+            this.textBoxX6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX6.Location = new System.Drawing.Point(178, 282);
+            this.textBoxX6.Name = "textBoxX6";
+            this.textBoxX6.PreventEnterBeep = true;
+            this.textBoxX6.Size = new System.Drawing.Size(181, 21);
+            this.textBoxX6.TabIndex = 68;
+            // 
             // labelX32
             // 
             // 
@@ -103,37 +159,39 @@
             // 
             this.labelX32.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX32.ForeColor = System.Drawing.Color.Red;
-            this.labelX32.Location = new System.Drawing.Point(121, 310);
+            this.labelX32.Location = new System.Drawing.Point(124, 358);
             this.labelX32.Name = "labelX32";
             this.labelX32.Size = new System.Drawing.Size(108, 23);
             this.labelX32.TabIndex = 67;
             this.labelX32.Text = "请填写必填项！";
             // 
-            // buttonX2
+            // btnClose
             // 
-            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Location = new System.Drawing.Point(279, 359);
-            this.buttonX2.Name = "buttonX2";
-            this.buttonX2.Size = new System.Drawing.Size(80, 25);
-            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX2.Symbol = "";
-            this.buttonX2.SymbolColor = System.Drawing.Color.Red;
-            this.buttonX2.TabIndex = 25;
-            this.buttonX2.Text = "取消";
+            this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnClose.Location = new System.Drawing.Point(282, 399);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(80, 24);
+            this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClose.Symbol = "";
+            this.btnClose.SymbolColor = System.Drawing.Color.Red;
+            this.btnClose.TabIndex = 25;
+            this.btnClose.Text = "取消";
+            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
             // 
-            // buttonX1
+            // btnAddUser
             // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(121, 359);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(80, 25);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.Symbol = "";
-            this.buttonX1.SymbolColor = System.Drawing.Color.Green;
-            this.buttonX1.TabIndex = 24;
-            this.buttonX1.Text = "添加";
+            this.btnAddUser.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnAddUser.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnAddUser.Location = new System.Drawing.Point(124, 399);
+            this.btnAddUser.Name = "btnAddUser";
+            this.btnAddUser.Size = new System.Drawing.Size(80, 24);
+            this.btnAddUser.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnAddUser.Symbol = "";
+            this.btnAddUser.SymbolColor = System.Drawing.Color.Green;
+            this.btnAddUser.TabIndex = 24;
+            this.btnAddUser.Text = "添加";
+            this.btnAddUser.Click += new System.EventHandler(this.BtnAddUser_Click);
             // 
             // labelX13
             // 
@@ -185,7 +243,7 @@
             this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX10.ForeColor = System.Drawing.Color.Red;
-            this.labelX10.Location = new System.Drawing.Point(268, 310);
+            this.labelX10.Location = new System.Drawing.Point(271, 358);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(16, 23);
             this.labelX10.TabIndex = 18;
@@ -197,7 +255,7 @@
             // 
             // 
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(243, 310);
+            this.labelX9.Location = new System.Drawing.Point(246, 358);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(135, 23);
             this.labelX9.TabIndex = 17;
@@ -308,6 +366,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(182, 120);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(35, 16);
@@ -353,7 +412,7 @@
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(75, 23);
             this.labelX2.TabIndex = 2;
-            this.labelX2.Text = "曾用名:";
+            this.labelX2.Text = "用户名:";
             // 
             // textBoxX1
             // 
@@ -381,30 +440,19 @@
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "姓  名：";
             // 
-            // textBoxX6
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX6.Border.Class = "TextBoxBorder";
-            this.textBoxX6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX6.Location = new System.Drawing.Point(178, 282);
-            this.textBoxX6.Name = "textBoxX6";
-            this.textBoxX6.PreventEnterBeep = true;
-            this.textBoxX6.Size = new System.Drawing.Size(181, 21);
-            this.textBoxX6.TabIndex = 68;
-            // 
             // AddUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 420);
+            this.ClientSize = new System.Drawing.Size(484, 454);
             this.Controls.Add(this.panelEx1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddUserForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "添加用户";
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
@@ -418,8 +466,8 @@
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.ButtonX buttonX2;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.ButtonX btnClose;
+        private DevComponents.DotNetBar.ButtonX btnAddUser;
         private DevComponents.DotNetBar.LabelX labelX13;
         private DevComponents.DotNetBar.LabelX labelX12;
         private DevComponents.DotNetBar.LabelX labelX11;
@@ -438,5 +486,8 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
         private DevComponents.DotNetBar.LabelX labelX32;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX6;
+        private DevComponents.DotNetBar.LabelX labelX14;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private DevComponents.DotNetBar.LabelX labelX8;
     }
 }

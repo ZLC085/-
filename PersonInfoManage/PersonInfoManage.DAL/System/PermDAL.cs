@@ -19,7 +19,7 @@ namespace PersonInfoManage.DAL.System
         ///添加用户组
         /// </summary>
         /// <param name="group">用户组信息</param>
-        /// <returns>返回添加条数</returns>
+        /// <returns>添加条数</returns>
         public int Add(sys_group group)
         {
             int res;
@@ -28,16 +28,17 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlparameter2 = new SqlParameter("@p2", group.remark);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql1, sqlparameter1, sqlparameter2);
             return res;
+
         }
 
 
         /// <summary>
-        /// 关联用户与用户组
+        /// 添加用户进用户组
         /// </summary>
         /// <param name="userId">用户id</param>
         /// <param name="groupId">用户组id</param>
         /// <returns>返回添加条数</returns>
-        public int Addu2g(int groupId, int userId)
+        public int AddU2g(int groupId, int userId)
         {
             int res;
             string sql = "insert into sys_u2g (user_id,group_id) values(@p1,@p2)";
@@ -54,7 +55,7 @@ namespace PersonInfoManage.DAL.System
         /// <param name="groupId">用户组id</param>
         /// <param name="menuId">权限id</param>
         /// <returns>添加条数</returns>
-        public int Addg2m(int groupId, int menuId)
+        public int AddG2m(int groupId, int menuId)
         {
 
             int res;
@@ -69,7 +70,7 @@ namespace PersonInfoManage.DAL.System
         /// 用户组信息修改
         /// </summary>
         /// <param name="group">用户组信息</param>
-        /// <returns>修改条数</returns>
+        /// <returns>返回修改条数</returns>
         public int Update(sys_group group)
         {
             int res;
@@ -79,72 +80,19 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlParameter3 = new SqlParameter("@p3", group.remark);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter1, sqlParameter2,sqlParameter3);
             return res;
+
         }
 
-        /// <summary>
-        /// 用户组关联用户修改
-        /// </summary>
-        /// <param name="userId">用户id</param>
-        /// <param name="groupId">用户组id</param>
-        /// <returns>返回添加条数</returns>
-        public int Updateu2g(int groupId, int userId)
-        {
-            int res;
-            string sql = "update sys_u2g SET group_id= '" + groupId + "' where user_id= '" + userId + "'";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-            return res;
-        }
 
         /// <summary>
-        /// 用户组权限修改
-        /// </summary>
-        /// <param name="menuId">用户id</param>
-        /// <param name="groupId">用户组id</param>
-        /// <returns>返回添加条数</returns>
-        public int Updateg2m(int groupId, int menuId)
-        {
-            int res;
-            string sql = "update sys_g2m SET menu_id= '" + menuId + "' where group_id= '" + groupId + "'";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-            return res;
-        }
-
-        /// <summary>
-        /// 删除用户组和权限关联
-        /// </summary>
-        /// <param name="groupId">用户组id</param>
-        /// <param name="menuId">权限id</param>
-        /// <returns>删除条数</returns>
-        public int DelG2m(int groupId,int menuId)
-        {
-            int res = 0;
-            string sql = "Delete from sys_g2m where group_id='" + groupId + "' and menu_id='" + menuId + "'";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-            return res;
-        }
-
-        /// <summary>
-        /// 删除用户组准备—清除权限关联
+        /// 删除用户组的权限
         /// </summary>
         /// <param name="groupId">用户组id</param>
         /// <returns>删除条数</returns>
-        public int Delm(int groupId)
+        public int DelG2m(int groupId)
         {
             int res = 0;
             string sql = "Delete from sys_g2m where group_id='" + groupId + "'";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-            return res;
-        }
-
-        /// <summary>
-        /// 删除用户组准备—清除用户关联
-        /// </summary>
-        /// <param name="groupId">用户组id</param>
-        /// <returns>删除条数</returns>
-        public int Delu(int groupId)
-        {
-            int res;
-            string sql = "delete from sys_u2g where group_id='" + groupId + "'";
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
             return res;
         }
@@ -156,14 +104,52 @@ namespace PersonInfoManage.DAL.System
         /// <returns>删除条数</returns>
         public int Del(int id)
         {
-            int res = 0;
-            string sql = "Delete from sys_group where id='" + id + "'";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-            return res;
+            string sql1 = "delete from sys_g2m where group_id='" + id + "'";
+            string sql2 = "delete from sys_u2g where group_id='" + id + "'";
+            string sql3 = "delete from sys_group where id='" + id + "'";
+            List<String> SQLStringList = new List<string>();
+            SQLStringList.Add(sql1);
+            SQLStringList.Add(sql2);
+            SQLStringList.Add(sql3);
+            using (SqlConnection conn = new SqlConnection(ConStr))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                SqlTransaction tx = conn.BeginTransaction();
+                cmd.Transaction = tx;
+                try
+                {
+                    int count = 0;
+                    for (int n = 0; n < SQLStringList.Count; n++)
+                    {
+                        string strsql = SQLStringList[n];
+                        if (strsql.Trim().Length > 1)
+                        {
+                            cmd.CommandText = strsql;
+                            count += cmd.ExecuteNonQuery();
+                        }
+                    }
+                    tx.Commit();
+                    return count;
+                }
+                catch (Exception e)
+                {
+                    tx.Rollback();
+                    Console.WriteLine(e.Message);
+                    return 0;
+                }
+                finally
+                {
+                    conn.Close();
+                    tx.Dispose();
+                    conn.Dispose();
+                }
+            }           
         }
 
         /// <summary>
-        /// 删除用户组和用户关联
+        /// 删除用户中的用户
         /// </summary>
         /// <param name="userId">用户id</param>
         /// <param name="groupId">用户id</param>
@@ -176,26 +162,13 @@ namespace PersonInfoManage.DAL.System
             return res;
         }
 
-        /// <summary>
-        /// 删除用户关联用户组
-        /// </summary>
-        /// <param name="userId">用户id</param>
-        /// <returns>删除条数</returns>
-        public int Delu2g(int userId)
-        {
-            int res;
-            string sql = "delete from sys_u2g where user_id='" + userId + "' ";
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
-            return res;
-        }
-
 
         /// <summary>
         /// 查询用户组基本信息
         /// </summary>
         /// <param name="group">查询条件</param>
         /// <returns>用户组信息</returns>
-        public List<sys_group> Selectgroup(sys_group group)
+        public List<sys_group> SelectGroup(sys_group group)
         {
             DataSet ds = new DataSet();
             string sql = "Select * from sys_group where group_name=@group_name";
@@ -232,7 +205,7 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="groupId">用户组id</param>
         /// <returns>用户组信息</returns>
-        public List<view_sys_u2g> Selectu2g(int groupId)
+        public List<view_sys_u2g> SelectU2g(int groupId)
         {
             DataSet ds = new DataSet();
             string sql = "Select * from view_sys_u2g where group_id= '"+groupId+"'";
@@ -253,7 +226,7 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="groupId">用户组id</param>
         /// <returns>用户组信息</returns>
-        public List<view_sys_g2m> Selectg2m(int groupId)
+        public List<view_sys_g2m> SelectG2m(int groupId)
         {
             DataSet ds = new DataSet();
             string sql = "Select * from view_sys_g2m where id= '" + groupId + "'";

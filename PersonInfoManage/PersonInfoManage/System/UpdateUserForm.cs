@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PersonInfoManage
 {
-    public partial class RoleSetForm : Form
+    public partial class UpdateUserForm : Form
     {
-        public RoleSetForm()
+        public UpdateUserForm()
         {
             InitializeComponent();
         }
