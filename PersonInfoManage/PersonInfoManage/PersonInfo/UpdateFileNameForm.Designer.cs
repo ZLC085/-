@@ -74,6 +74,7 @@
             this.BtnCancel.SymbolColor = System.Drawing.Color.Red;
             this.BtnCancel.TabIndex = 5;
             this.BtnCancel.Text = "取消";
+            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // BtnUpdateFile
             // 
@@ -87,6 +88,7 @@
             this.BtnUpdateFile.SymbolColor = System.Drawing.Color.Green;
             this.BtnUpdateFile.TabIndex = 4;
             this.BtnUpdateFile.Text = "确定";
+            this.BtnUpdateFile.Click += new System.EventHandler(this.BtnUpdateFile_Click);
             // 
             // TxtNewFileName
             // 
@@ -100,6 +102,7 @@
             this.TxtNewFileName.PreventEnterBeep = true;
             this.TxtNewFileName.Size = new System.Drawing.Size(194, 21);
             this.TxtNewFileName.TabIndex = 3;
+            this.TxtNewFileName.TextChanged += new System.EventHandler(this.TxtNewFileName_TextChanged);
             // 
             // labelX3
             // 
