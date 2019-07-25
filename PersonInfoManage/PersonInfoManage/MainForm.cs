@@ -47,8 +47,8 @@ namespace PersonInfoManage
 
         private void BtnQueryPerson_Click(object sender, EventArgs e)
         {
-            PersonDetailForm personDetailForm = new PersonDetailForm();
-            personDetailForm.ShowDialog();
+            //PersonDetailForm personDetailForm = new PersonDetailForm();
+            //personDetailForm.ShowDialog();
         }
 
         private void BtnUpdatePerson_Click(object sender, EventArgs e)
