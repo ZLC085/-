@@ -56,7 +56,7 @@ namespace PersonInfoManage.DAL.Utils
         {
             get
             {
-                string ip = default;
+                string ip = "";
                 foreach (var i in Dns.GetHostAddresses(Dns.GetHostName()))
                 {
                     if (i.AddressFamily == AddressFamily.InterNetwork)
