@@ -13,19 +13,22 @@ using System.Windows.Forms;
 
 namespace PersonInfoManage
 {
-    public partial class AddUserForm : Form
+    public partial class UpdateUserForm : Form
     {
-        public AddUserForm()
+        public UpdateUserForm()
         {
             InitializeComponent();
         }
 
-        private void BtnClose_Click(object sender, EventArgs e)
+        private void UpdateUserForm_Load(object sender, EventArgs e)
         {
-            Close();
+            List<sys_org> orginfo = new List<sys_org>();
+            //orginfo =
+            comboBox1.DataSource = orginfo;
+            comboBox1.DisplayMember = "org_name";
         }
 
-        private void BtnAddUser_Click(object sender, EventArgs e)
+        private void btnAddUser_Click(object sender, EventArgs e)
         {
             sys_org org = new sys_org();
             org.org_name = comboBox1.SelectedItem.ToString();
@@ -42,7 +45,6 @@ namespace PersonInfoManage
             {
                 sys_User.gender = "女";
             }
-            sys_User.password = textBoxX3.Text;
             sys_User.phone = textBoxX4.Text;
             sys_User.email = textBoxX5.Text;
             sys_User.job = textBoxX6.Text;
@@ -63,14 +65,6 @@ namespace PersonInfoManage
                 MessageBoxCustom.Show("添加失败", "提示", MessageBoxButtons.OK, this);
             }
         }
-
-        private void AddUserForm_Load(object sender, EventArgs e)
-        {
-            List<sys_org> orginfo = new List<sys_org>();
-            //orginfo =
-            comboBox1.DataSource = orginfo;
-            comboBox1.DisplayMember = "org_name";
-        }
+    }
     }
 }
-

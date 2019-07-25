@@ -60,11 +60,14 @@
     <Compile Include="PersonInfo\PersonBasicDAL.cs" />
     <Compile Include="PersonInfo\PersonFileDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\OrganizationDAL.cs" />
     <Compile Include="System\PermDAL.cs" />
     <Compile Include="System\SysSettingDAL.cs" />
     <Compile Include="System\SysUserDAL.cs" />
     <Compile Include="Utils\ConditionsToSql.cs" />
+    <Compile Include="Utils\ConvertTools.cs" />
     <Compile Include="Utils\DALBase.cs" />
+    <Compile Include="Utils\LogOperations.cs" />
     <Compile Include="Utils\sqlArrayToTran.cs" />
     <Compile Include="Utils\SqlHelper.cs" />
     <Compile Include="Utils\TimeTools.cs" />

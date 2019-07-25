@@ -195,12 +195,13 @@
     <Compile Include="PersonInfo\UpdateFileNameForm.Designer.cs">
       <DependentUpon>UpdateFileNameForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateUserForm.cs">
+    <Compile Include="System\UpdateUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateUserForm.Designer.cs">
+    <Compile Include="System\UpdateUserForm.Designer.cs">
       <DependentUpon>UpdateUserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\RegexComm.cs" />
     <EmbeddedResource Include="Business\AddBusiness.resx">
       <DependentUpon>AddBusiness.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,7 +264,7 @@
     <EmbeddedResource Include="System\UserDetailForm.resx">
       <DependentUpon>UserDetailForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateUserForm.resx">
+    <EmbeddedResource Include="System\UpdateUserForm.resx">
       <DependentUpon>UpdateUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
