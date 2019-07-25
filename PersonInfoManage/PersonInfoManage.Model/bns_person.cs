@@ -6,7 +6,7 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public class person_basic
+    public class bns_person
     {
         public int id { get; set; }
 
@@ -20,6 +20,12 @@ namespace PersonInfoManage.Model
         [Required]
         [StringLength(1)]
         public string gender { get; set; }
+
+        [Required]
+        [StringLength(10)]
+        public string nation { get; set; }
+
+        public int user_id { get; set; }
 
         [Required]
         [StringLength(18)]
@@ -59,13 +65,7 @@ namespace PersonInfoManage.Model
 
         public int belong_place_id { get; set; }
 
-        [Required]
-        [StringLength(10)]
-        public string nation { get; set; }
-
         public DateTime input_time { get; set; }
-
-        public int user_id { get; set; }
 
         public int isdel { get; set; }
     }
