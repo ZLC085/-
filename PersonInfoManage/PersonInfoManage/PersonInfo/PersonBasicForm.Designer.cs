@@ -768,6 +768,7 @@
             this.CmbBelongPlace.Name = "CmbBelongPlace";
             this.CmbBelongPlace.Size = new System.Drawing.Size(200, 23);
             this.CmbBelongPlace.TabIndex = 7;
+            this.CmbBelongPlace.DropDown += new System.EventHandler(this.CmbBelongPlace_DropDown);
             // 
             // CmbNation
             // 
@@ -778,6 +779,7 @@
             this.CmbNation.Name = "CmbNation";
             this.CmbNation.Size = new System.Drawing.Size(200, 23);
             this.CmbNation.TabIndex = 8;
+            this.CmbNation.DragDrop += new System.Windows.Forms.DragEventHandler(this.CmbNation_DragDrop);
             // 
             // CmbMarry
             // 
@@ -789,6 +791,7 @@
             this.CmbMarry.Name = "CmbMarry";
             this.CmbMarry.Size = new System.Drawing.Size(200, 23);
             this.CmbMarry.TabIndex = 70;
+            this.CmbMarry.DropDown += new System.EventHandler(this.CmbMarry_DropDown);
             // 
             // CmbPersonType
             // 
@@ -800,6 +803,7 @@
             this.CmbPersonType.Name = "CmbPersonType";
             this.CmbPersonType.Size = new System.Drawing.Size(200, 23);
             this.CmbPersonType.TabIndex = 71;
+            this.CmbPersonType.DropDown += new System.EventHandler(this.CmbPersonType_DropDown);
             // 
             // CmbProvince
             // 
