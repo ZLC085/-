@@ -21,5 +21,20 @@ namespace PersonInfoManage
         {
             //MessageBox.Show();
         }
+
+        private void TxtNewFileName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BtnUpdateFile_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
