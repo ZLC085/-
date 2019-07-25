@@ -30,8 +30,11 @@ namespace PersonInfoManage.DAL.Login
                 user.password = (string)ds.Tables[0].Rows[0][nameof(sys_user.password)];
                 string username = (string)ds.Tables[0].Rows[0][nameof(sys_user.username)];
                 int id = (int)ds.Tables[0].Rows[0][nameof(sys_user.id)];
-                LogOperations.UserId = id;
-                LogOperations.UserName = username;
+
+                //保存用户信息
+                UserInfoDAL.UserId = id;
+                UserInfoDAL.UserName = username;
+
                 new LogUserDAL().Add(LogOperations.LogUser("登录"));
                 return user.password;
             }

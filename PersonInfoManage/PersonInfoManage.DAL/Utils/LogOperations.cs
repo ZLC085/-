@@ -39,8 +39,8 @@ namespace PersonInfoManage.DAL.Utils
         {
             log_user logUser = new log_user
             {
-                username = UserName,
-                user_id = UserId,
+                username = UserInfoDAL.UserName,
+                user_id = UserInfoDAL.UserId,
                 operation = operation,
                 create_time = DateTime.Now,
                 ip = IpAddress
@@ -48,9 +48,6 @@ namespace PersonInfoManage.DAL.Utils
 
             return logUser;
         }
-
-        public static int UserId { get; set; }
-        public static string UserName { get; set; }
 
         private static string IpAddress
         {
