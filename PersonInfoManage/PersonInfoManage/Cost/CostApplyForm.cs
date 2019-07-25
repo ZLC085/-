@@ -70,12 +70,11 @@ namespace PersonInfoManage
                 apply_money = applyMoney,
                 apply_time = DateTime.Now,
                 apply_id=1,
-                approval_id=int.Parse(CmbApprover.SelectedItem.ToString().Split('.')[0])
 
             };
             cost cost = new cost
             {
-                main = main,
+                Main = main,
                 DetailList = listDetail
             };
             Result res = costApplyBLL.Add(cost);
