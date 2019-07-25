@@ -553,7 +553,7 @@
             // 
             // 
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(740, 435);
+            this.labelX7.Location = new System.Drawing.Point(740, 450);
             this.labelX7.Margin = new System.Windows.Forms.Padding(4);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(160, 25);
@@ -568,7 +568,7 @@
             this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX16.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX16.ForeColor = System.Drawing.Color.Red;
-            this.labelX16.Location = new System.Drawing.Point(780, 435);
+            this.labelX16.Location = new System.Drawing.Point(780, 450);
             this.labelX16.Margin = new System.Windows.Forms.Padding(4);
             this.labelX16.Name = "labelX16";
             this.labelX16.Size = new System.Drawing.Size(15, 25);

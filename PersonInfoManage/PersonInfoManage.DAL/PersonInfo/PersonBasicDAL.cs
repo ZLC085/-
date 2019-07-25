@@ -1,4 +1,5 @@
-﻿using PersonInfoManage.DAL.Utils;
+﻿using PersonInfoManage.DAL.Logs;
+using PersonInfoManage.DAL.Utils;
 using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
@@ -55,11 +56,13 @@ namespace PersonInfoManage.DAL.PersonInfo
                 SqlParameter isdel = new SqlParameter("@isdel", info.isdel);
                 // 执行sql语句
                 res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, name, former_name, gender, identity_number, birth_date, native_place, marry_status, job_status, income, temper, family, person_type, person_type_name, qq, address, phone, belong_place, belong_place_name, nation, input_time, user_id, isdel);
-                Console.WriteLine("执行成功！");
+                // 添加用户日志
+                new LogUserDAL().Add(LogOperations.LogUser("人员信息录入"));
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                // 添加系统日志
+                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
                 return 0;
             }
             // 返回执行成功条数
@@ -105,11 +108,13 @@ namespace PersonInfoManage.DAL.PersonInfo
                 SqlParameter id = new SqlParameter("@id", info.id);
                 // 执行sql语句
                 res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, name, former_name, gender, identity_number, birth_date, native_place, marry_status, job_status, income, temper, family, person_type, person_type_name, qq, address, phone, belong_place, belong_place_name, nation, input_time, user_id, isdel, id);
-                Console.WriteLine("执行成功！");
+                // 添加用户日志
+                new LogUserDAL().Add(LogOperations.LogUser("人员信息修改"));
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                // 添加系统日志
+                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
                 return 0;
             }
             // 返回执行成功条数
@@ -131,12 +136,16 @@ namespace PersonInfoManage.DAL.PersonInfo
                 SqlParameter sp_id = new SqlParameter("@id", id);
                 // 执行sql语句
                 res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, sp_id);
+                // 添加用户日志
+                new LogUserDAL().Add(LogOperations.LogUser("人员信息移除"));
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                // 添加系统日志
+                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
                 return 0;
             }
-            //返回成功条数
+            // 返回成功条数
             return res;
         }
 
@@ -155,12 +164,16 @@ namespace PersonInfoManage.DAL.PersonInfo
                 SqlParameter sp_id = new SqlParameter("@id", id);
                 // 执行sql语句
                 res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, sp_id);
+                // 添加用户日志
+                new LogUserDAL().Add(LogOperations.LogUser("人员信息删除"));
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                // 添加系统日志
+                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
                 return 0;
             }
-            //返回成功条数
+            // 返回成功条数
             return res;
         }
 
@@ -234,10 +247,13 @@ namespace PersonInfoManage.DAL.PersonInfo
                     pb.isdel = int.Parse(dr[22].ToString());
                     list.Add(pb);
                 }
+                // 添加用户日志
+                new LogUserDAL().Add(LogOperations.LogUser("人员信息检索"));
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                // 添加系统日志
+                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
                 throw e;
             }
             // 返回列表
