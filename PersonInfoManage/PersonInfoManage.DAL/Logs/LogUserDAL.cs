@@ -33,7 +33,7 @@ namespace PersonInfoManage.DAL.Logs
             SqlParameter username = new SqlParameter("@username", user.username);
             SqlParameter operation = new SqlParameter("@operation", user.operation);
             SqlParameter ip = new SqlParameter("@ip", user.ip);
-            SqlParameter create_time = new SqlParameter("@create_time", DateTime.Now);
+            SqlParameter create_time = new SqlParameter("@create_time",user.create_time);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, user_id, username, operation, ip, create_time);
             return res;
 
