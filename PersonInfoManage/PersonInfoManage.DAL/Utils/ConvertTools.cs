@@ -30,7 +30,7 @@ namespace PersonInfoManage.DAL.Utils
                 return 1;
             }
         }
-        public static bool Bit2Bool(int flag)
+        public static bool? Bit2Bool(int flag)
         {
             if (flag == 0)
             {
