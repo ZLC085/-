@@ -179,43 +179,52 @@ namespace PersonInfoManage.Test
             //SysSetting set = new SysSetting();
             //Console.WriteLine(set.SelectAll());
 
-            //CostApplyDAL apply = new CostApplyDAL();
+            CostApplyDAL apply = new CostApplyDAL();
 
             ///测试函数：costApply.Add(cost cost)
             ///返回类型：int
             ///测试结果：成功
 
-            //cost_main main = new cost_main
-            //{
-            //    applicant = "小陈",
-            //    apply_money = 951,
-            //    apply_time = DateTime.Now
-            //};
-            //cost_detail detail = new cost_detail
-            //{
-            //    cost_type_name = "住宿",
-            //    cost_type = 4,
-            //    money = 451
-            //};
-            //cost_detail detail2 = new cost_detail
-            //{
-            //    cost_type_name = "餐饮",
-            //    cost_type = 5,
-            //    money = 160
-            //};
-            //cost_detail detail3 = new cost_detail
-            //{
-            //    cost_type_name = "出行",
-            //    cost_type = 8,
-            //    money = 340
-            //};
-            //List<cost_detail> listDetail = new List<cost_detail>
-            //{
-            //    detail,
-            //    detail2,
-            //    detail3
-            //};
-            //Console.WriteLine(apply.Add(new cost { main = main, DetailList = listDetail }));
+            cost_main main = new cost_main
+            {
+                apply_id=8,
+                remark="费用申请描述",
+                status=0,
+                apply_money = 951,
+                apply_time = DateTime.Now
+            };
+            cost_detail detail = new cost_detail
+            {
+                cost_type_name = "住宿",
+                cost_type = 4,
+                money = 451
+            };
+            cost_detail detail2 = new cost_detail
+            {
+                cost_type_name = "餐饮",
+                cost_type = 5,
+                money = 160
+            };
+            cost_detail detail3 = new cost_detail
+            {
+                cost_type_name = "出行",
+                cost_type = 8,
+                money = 340
+            };
+            List<cost_detail> listDetail = new List<cost_detail>
+            {
+                detail,
+                detail2,
+                detail3
+            };
+            List<cost_approval> ListApproval = new List<cost_approval>
+            {
+                new cost_approval
+                {
+                    approval_id=29                    
+                }
+            };
+            Console.WriteLine(apply.Add(new cost { Main = main, DetailList = listDetail,ApprovalList=ListApproval }));
 
             ///测试函数：costApply.Update(cost cost)
             ///返回类型：int

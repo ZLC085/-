@@ -16,19 +16,31 @@ namespace PersonInfoManage.DAL.Cost
     public class CostApprovaDAL:DALBase
     {
         /// <summary>
-        /// 费用审批添加/修改 添加/修改审批金额、审批状态（待审批，通过，驳回）以及审批意见
+        /// 费用审批添加/修改 、审批状态（待审批，通过，驳回）以及审批意见
         /// </summary>
-        /// <param name="main">费用单对象cost_main:approval_id、approval_time、approval_money、status、id</param>
-        /// <returns>数据表受影响的行数</returns>
-        public int Update(cost_main main)
+        /// <param name="cost">费用单主表对象Main:id、status 
+        /// DetailList 费用详情列表：
+        /// ApprovalList 费用审批表列表：详见方法体注释</param>
+        /// <returns></returns>
+        public int Update(cost cost)
         {
-            string sql = "update cost_main set "+
-                nameof(cost_main.approval_time)+"='"+main.approval_time+"',"+
-                nameof(cost_main.approval_money)+"='"+main.approval_money+"',"+
-                nameof(cost_main.approval_id)+"="+main.approval_id+","+
-                nameof(cost_main.status)+"='"+main.status+"',"+
-                nameof(cost_main.remark)+"=N'"+main.remark+"' where id='"+main.id+"'";
-            return SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+            /*
+             * ApprovalList最多只有两个元素（前端并不会将已审核通过的cost_approval对象封装到此列表）
+             * 第一个元素是正在审批的cost_approval对象：
+             * 第二个元素是需要再提交到上级进行审批的cost_approval对象
+             */
+            string[] sqlArray = new string[1+cost.ApprovalList.Count];
+            sqlArray[0] = "update cost_main set "+
+                nameof(cost_main.status)+"='"+cost.Main.status+"' where id='"+ cost.Main.id+"'";
+            cost_approval approvalFirst = cost.ApprovalList.First();
+            sqlArray[1] = "update cost_approval set result="+ ((bool)approvalFirst.result?1:0)+
+                ",time='"+ approvalFirst.time + "',opinion=N'"+ approvalFirst.opinion
+                + "' where cost_id='"+ approvalFirst.cost_id + "' and approval_id='"+ approvalFirst.approval_id + "'";
+            if (sqlArray.Length > 2)
+            {
+                sqlArray[2] = ConditionsToSql<cost_approval>.InsertSql(cost.ApprovalList[1]);
+            }
+            return sqlArrayToTran.doTran(sqlArray);
         }
         /// <summary>
         /// 根据条件查询费用信息
@@ -37,18 +49,21 @@ namespace PersonInfoManage.DAL.Cost
         /// <returns>费用信息列表</returns>
         public List<cost> Query(Dictionary<string, object> conditions)
         {
-            List<cost> listCost = new List<cost>();
-            List<cost_main> listMain = new CostApplyDAL().QueryMain(conditions);
-            foreach(cost_main main in listMain)
+            List<cost> CostList = new List<cost>();
+            CostApplyDAL costApplyDAL = new CostApplyDAL();
+            List<cost_main> MainList = costApplyDAL.QueryMain(conditions);
+            foreach(cost_main Main in MainList)
             {
-                List<cost_detail> listDetail = new CostApplyDAL().QueryDetail(main.id);
-                listCost.Add(new cost
+                List<cost_detail> DetailList = costApplyDAL.QueryDetail(Main.id);
+                List<cost_approval> ApprovalList = costApplyDAL.QueryApproval(Main.id);
+                CostList.Add(new cost
                 {
-                    main = main,
-                    DetailList = listDetail
-                });
+                    Main = Main,
+                    DetailList = DetailList,
+                    ApprovalList = ApprovalList
+                }) ;
             }
-            return listCost;
+            return CostList;
         }
     }
 }

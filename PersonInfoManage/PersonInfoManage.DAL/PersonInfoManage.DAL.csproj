@@ -65,6 +65,7 @@
     <Compile Include="System\SysSettingDAL.cs" />
     <Compile Include="System\SysUserDAL.cs" />
     <Compile Include="Utils\ConditionsToSql.cs" />
+    <Compile Include="Utils\ConvertTools.cs" />
     <Compile Include="Utils\DALBase.cs" />
     <Compile Include="Utils\LogOperations.cs" />
     <Compile Include="Utils\sqlArrayToTran.cs" />
