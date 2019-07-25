@@ -16,7 +16,7 @@ namespace PersonInfoManage.BLL.Cost
         /// </summary>
         /// <param name="cost">费用单主表对象 Main：apply_id、apply_money、status、apply_time、remark 
         /// 费用单审批详情列表 ApprovalList:approval_id
-        /// 费用详情列表 DetailList：cost_type、cost_type_name、money</param> 
+        /// 费用详情列表 DetailList：cost_type、money</param> 
         /// <returns>添加是否成功</returns>
         public Result Add(cost cost)
         {

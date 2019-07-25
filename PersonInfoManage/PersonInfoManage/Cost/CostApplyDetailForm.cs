@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using PersonInfoManage.Model;
 using PersonInfoManage.BLL.Cost;
 using PersonInfoManage.DAL.System;
+using PersonInfoManage.DAL.Cost;
 
 namespace PersonInfoManage
 {
@@ -26,7 +27,7 @@ namespace PersonInfoManage
             InitializeComponent();
         }
         private void CostApplyDetailForm_Load(object sender, EventArgs e)
-        {
+        {            
             cost cost = new CostApplyBLL().Query(new Dictionary<string, object>
             {
                 {"id",costId }
@@ -41,7 +42,7 @@ namespace PersonInfoManage
             foreach (cost_detail detail in cost.DetailList)
             {
                 int index = this.DgvCostDetail.Rows.Add();
-                this.DgvCostDetail.Rows[index].SetValues(detail.cost_type_name, detail.money);
+                this.DgvCostDetail.Rows[index].SetValues(new CostApplyDAL().GetCostTypeById(detail.cost_type_id), detail.money);
             }
             switch (main.status)
             {
@@ -49,7 +50,13 @@ namespace PersonInfoManage
                 case 1: LblStatus.Text = "正在审核"; break;
                 case 2: LblStatus.Text = "审核通过"; break;
                 case 3: LblStatus.Text = "审核驳回"; break;
-            }           
+            }
+            foreach(cost_approval approval in cost.ApprovalList)
+            {
+                int index = this.DgvApproval.Rows.Add();
+                string approver = approval.approval_id+"."+ new SysUserDAL().SelectById(approval.approval_id).First().name;
+                this.DgvApproval.Rows[index].SetValues(approver, approval.result, approval.time, approval.opinion);
+            }
             
         }
 

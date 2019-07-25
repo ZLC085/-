@@ -159,10 +159,10 @@ namespace PersonInfoManage.DAL.System
             switch (dictName)
             {
                 case sys_dict_type.Cost:
-                    sql += sys_dict_type. Cost.ToString() + "' ";
+                    sql += sys_dict_type.Cost.ToString() + "' ";
                     break;
                 case sys_dict_type.NativePlace:
-                    sql += sys_dict_type. NativePlace.ToString() + "'";
+                    sql += sys_dict_type.NativePlace.ToString() + "'";
                     break;
                 case sys_dict_type.Person:
                     sql += sys_dict_type.Person.ToString() + " ' ";
