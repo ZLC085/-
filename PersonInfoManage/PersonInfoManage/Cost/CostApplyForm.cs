@@ -54,22 +54,20 @@ namespace PersonInfoManage
                 {
                     continue;
                 }
-                string type_name = ((string)row.Cells[0].Value).Split('.')[1];
                 int type = int.Parse((((string)row.Cells[0].Value).Split('.')[0]));
                 decimal money = decimal.Parse((string)row.Cells[1].Value);
                 listDetail.Add(new cost_detail
                 {
-                    cost_type = type,
-                    cost_type_name = type_name,
+                    cost_type_id = type,
                     money = money
-                });
+                }) ;
                 applyMoney += money;
             }
             cost_main main = new cost_main
             {
                 apply_money = applyMoney,
                 apply_time = DateTime.Now,
-                apply_id=1,
+                apply_id=8,
                 status=0,
                 remark=TexRemark.Text
             };
