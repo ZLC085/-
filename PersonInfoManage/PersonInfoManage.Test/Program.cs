@@ -11,6 +11,7 @@ using PersonInfoManage.BLL.System;
 using PersonInfoManage.BLL.Login;
 using PersonInfoManage.DAL.System;
 using PersonInfoManage.BLL.PersonInfo;
+using PersonInfoManage.DAL.Utils;
 
 namespace PersonInfoManage.Test
 {
