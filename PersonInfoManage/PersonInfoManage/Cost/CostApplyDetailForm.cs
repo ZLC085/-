@@ -38,23 +38,20 @@ namespace PersonInfoManage
             LblApplicantOrg.Text = applicant.org_name;
             LblApplyTime.Text = main.apply_time.ToString("yyyy-MM-dd HH:mm:ss");
             LblApplyMoney.Text = main.apply_money.ToString();
-            foreach(cost_detail detail in cost.DetailList)
+            foreach (cost_detail detail in cost.DetailList)
             {
                 int index = this.DgvCostDetail.Rows.Add();
                 this.DgvCostDetail.Rows[index].SetValues(detail.cost_type_name, detail.money);
             }
             switch (main.status)
             {
-                case 0:LblStatus.Text = "未审核";break;
+                case 0: LblStatus.Text = "未审核"; break;
                 case 1: LblStatus.Text = "正在审核"; break;
                 case 2: LblStatus.Text = "审核通过"; break;
                 case 3: LblStatus.Text = "审核驳回"; break;
-            }
-            //view_sys_u2g approver = new SysUserDAL().SelectById(main.approval_id).First();
-            //LblApprover.Text = approver.name;
-            //LblApproverOrg.Text = approver.org_name;
-            //LblApprovalMoney.Text = main.approval_money.ToString();
-            LblRemark.Text = string.IsNullOrEmpty(main.remark) ?"无": main.remark;           
+            }           
+            
         }
+
     }
 }

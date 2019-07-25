@@ -70,12 +70,21 @@ namespace PersonInfoManage
                 apply_money = applyMoney,
                 apply_time = DateTime.Now,
                 apply_id=1,
-
+                status=0,
+                remark=TexRemark.Text
+            };
+            List<cost_approval> ListApproval = new List<cost_approval>
+            {
+                new cost_approval
+                {
+                    approval_id=int.Parse(CmbApprover.SelectedItem.ToString().Split('.')[0])
+                }
             };
             cost cost = new cost
             {
                 Main = main,
-                DetailList = listDetail
+                DetailList = listDetail,
+                ApprovalList=ListApproval
             };
             Result res = costApplyBLL.Add(cost);
             DialogResult dialogResult= MessageBox.Show(res.Message, "添加费用申请单状态提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
