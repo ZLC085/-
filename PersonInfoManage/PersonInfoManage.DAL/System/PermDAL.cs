@@ -23,12 +23,22 @@ namespace PersonInfoManage.DAL.System
         /// <returns>添加条数</returns>
         public int Add(sys_group group)
         {
-            int res;
-            string sql1 = "Insert into sys_group(group_name,remark,create_time,modify_time) values(@p1,@p2,getdate(),getdate())";
-            SqlParameter sqlparameter1 = new SqlParameter("@p1", group.group_name);
-            SqlParameter sqlparameter2 = new SqlParameter("@p2", group.remark);
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql1, sqlparameter1, sqlparameter2);
-            return res;
+            try
+            {
+                int res;
+                string sql1 = "Insert into sys_group(group_name,remark,create_time,modify_time) values(@p1,@p2,getdate(),getdate())";
+                SqlParameter sqlparameter1 = new SqlParameter("@p1", group.group_name);
+                SqlParameter sqlparameter2 = new SqlParameter("@p2", group.remark);
+                res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql1, sqlparameter1, sqlparameter2);
+                new LogUserDAL().Add(LogOperations.LogUser("添加用户组"));
+                return res;
+            }
+            catch (Exception e)
+            {
+                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                return 0;
+            }
+
 
         }
 
@@ -39,13 +49,21 @@ namespace PersonInfoManage.DAL.System
         /// <returns>返回修改条数</returns>
         public int Update(sys_group group)
         {
-            int res;
-            string sql = "update sys_group set group_name = @p2,remark = @p3,modify_time = getdate() where id= @p1";
-            SqlParameter sqlParameter1 = new SqlParameter("@p1", group.id);
-            SqlParameter sqlParameter2 = new SqlParameter("@p2", group.group_name);
-            SqlParameter sqlParameter3 = new SqlParameter("@p3", group.remark);
-            res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter1, sqlParameter2,sqlParameter3);
-            return res;
+            try {
+                int res;
+                string sql = "update sys_group set group_name = @p2,remark = @p3,modify_time = getdate() where id= @p1";
+                SqlParameter sqlParameter1 = new SqlParameter("@p1", group.id);
+                SqlParameter sqlParameter2 = new SqlParameter("@p2", group.group_name);
+                SqlParameter sqlParameter3 = new SqlParameter("@p3", group.remark);
+                res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter1, sqlParameter2, sqlParameter3);
+                new LogUserDAL().Add(LogOperations.LogUser("修改用户组"));
+                return res;
+            }
+            catch (Exception e)
+            {
+                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                return 0;
+            }
 
         }
 
@@ -83,12 +101,13 @@ namespace PersonInfoManage.DAL.System
                         }
                     }
                     tx.Commit();
+                    new LogUserDAL().Add(LogOperations.LogUser("删除用户组"));
                     return count;
                 }
                 catch (Exception e)
                 {
                     tx.Rollback();
-                    Console.WriteLine(e.Message);
+                    new LogSysDAL().Add(LogOperations.LogSys(e.Message));
                     return 0;
                 }
                 finally
@@ -132,7 +151,7 @@ namespace PersonInfoManage.DAL.System
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
             }
             return group2;
         }

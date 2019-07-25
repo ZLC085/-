@@ -6,17 +6,11 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("business")]
-    public class business
+    public class bns_event
     {
-        [Key]
-        [Column(Order = 0)]
         public int id { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int person_id { get; set; }
+        public int? t2p_id { get; set; }
 
         [Column("event")]
         [StringLength(50)]

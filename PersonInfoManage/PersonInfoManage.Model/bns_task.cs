@@ -6,20 +6,20 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public class cost_main
+    public class bns_task
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
-        public int apply_id { get; set; }
+        [StringLength(100)]
+        public string task_name { get; set; }
 
-        public decimal apply_money { get; set; }
+        public int? user_id { get; set; }
 
-        public byte status { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime? create_time { get; set; }
 
-        public DateTime apply_time { get; set; }
-
-        [StringLength(200)]
-        public string remark { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime? modify_time { get; set; }
     }
 }

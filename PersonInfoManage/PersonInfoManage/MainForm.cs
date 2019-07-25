@@ -40,21 +40,27 @@ namespace PersonInfoManage
         //<毛宇航_1>
         private void BtnAddPerson_Click(object sender, EventArgs e)
         {
-            PersonBasicForm pbForm = new PersonBasicForm();
-            pbForm.ShowDialog();
+            PersonBasicForm personBasicForm = new PersonBasicForm();
+            personBasicForm.Text = "人员信息录入";
+            personBasicForm.ShowDialog();
         }
 
         private void BtnQueryPerson_Click(object sender, EventArgs e)
         {
-            PersonDetailForm personDetailForm = new PersonDetailForm();
-            personDetailForm.ShowDialog();
+            //PersonDetailForm personDetailForm = new PersonDetailForm();
+            //personDetailForm.ShowDialog();
         }
 
         private void BtnUpdatePerson_Click(object sender, EventArgs e)
         {
-            PersonBasicForm pbForm = new PersonBasicForm();
-            pbForm.Text = "人员信息修改";
-            pbForm.ShowDialog();
+            PersonBasicForm personBasicForm = new PersonBasicForm();
+            personBasicForm.Text = "人员信息修改";
+            personBasicForm.ShowDialog();
+        }
+
+        private void BtnDelPerson_Click(object sender, EventArgs e)
+        {
+
         }
 
         //</毛宇航_1>
@@ -258,6 +264,9 @@ namespace PersonInfoManage
             CostPlanForm costPlanForm = new CostPlanForm();
             costPlanForm.ShowDialog();
         }
+
+
+
 
 
         //</蒋媛_3>

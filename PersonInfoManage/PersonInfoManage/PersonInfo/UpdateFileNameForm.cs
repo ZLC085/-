@@ -16,5 +16,10 @@ namespace PersonInfoManage
         {
             InitializeComponent();
         }
+
+        private void LblFileName_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show();
+        }
     }
 }
