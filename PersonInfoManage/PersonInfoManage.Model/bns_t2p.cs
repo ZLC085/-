@@ -6,14 +6,13 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public class cost_detail
+    public class bns_t2p
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
-        public int cost_id { get; set; }
+        public int task_id { get; set; }
 
-        public int cost_type_id { get; set; }
-
-        public decimal money { get; set; }
+        public int person_id { get; set; }
     }
 }

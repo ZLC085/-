@@ -17,7 +17,7 @@ namespace PersonInfoManage.DAL.Cost
         /// </summary>
         /// <param name="cost">费用单主表对象 Main：apply_id、apply_money、status、apply_time、remark 
         /// 费用单审批详情列表 ApprovalList:approval_id
-        /// 费用详情列表 DetailList：cost_type、cost_type_name、money</param>
+        /// 费用详情列表 DetailList：cost_type、money</param>
         /// <returns>数据表受影响的行数</returns>
         public int Add(cost cost)
         {
@@ -49,7 +49,7 @@ namespace PersonInfoManage.DAL.Cost
         /// </summary>
         /// <param name="cost">费用单主表对象 Main：id、apply_money、remark 
         /// 费用单审批详情列表 ApprovalList:
-        /// 费用详情列表 DetailList：cost_type、cost_type_name、money</param>
+        /// 费用详情列表 DetailList：cost_type、money</param>
         /// <returns>数据表受影响的行数</returns>
         public int Update(cost cost)
         {
@@ -118,7 +118,7 @@ namespace PersonInfoManage.DAL.Cost
                 {
                     approval.result = ConvertTools.Bit2Bool((int)result);
                 }
-                approval.time = (DateTime)ConvertTools.DbNullConvert(row["time"]);
+                approval.time = (DateTime?)ConvertTools.DbNullConvert(row["time"]);
                 approval.opinion = (string)ConvertTools.DbNullConvert(row["opinion"]);
                 ListApproval.Add(approval);
             }
@@ -141,8 +141,7 @@ namespace PersonInfoManage.DAL.Cost
                 {
                     id = (int)row["id"],
                     cost_id = (int)row["cost_id"],
-                    cost_type = (int)row["cost_type"],
-                    cost_type_name=(string)row["cost_type_name"],
+                    cost_type_id = (int)row["cost_type_id"],
                     money = (decimal)row["money"]
                 };
                 listDetail.Add(detail);
@@ -281,6 +280,11 @@ namespace PersonInfoManage.DAL.Cost
                 }
             }
             return approvalList;
+        }
+        public string GetCostTypeById(int dict_id)
+        {
+            string sql = "select category_name from sys_dict where id=" + dict_id;
+            return (string)SqlHelper.ExecuteDataset(ConStr,CommandType.Text,sql).Tables[0].Rows[0]["category_name"];
         }
     }
 }

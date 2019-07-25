@@ -10,32 +10,63 @@ namespace PersonInfoManage.BLL.PersonInfo
     public class NativePlaceBLL
     {
         /// <summary>
-        /// 三级查询
+        /// 查询省
         /// </summary>
-        /// <param name="type">选项类型</param>
-        /// <param name="parent">父级类型</param>
-        /// <returns>list类型</returns>
+        /// <returns>List类型</returns>
         public List<string> QueryProvince()
         {
-            // 接收列表
-            List<string> list = new NativePlaceDAL().Query(PlaceType.Province, null);
+            List<string> list;
+            try
+            {
+                // 接收列表
+                list = new NativePlaceDAL().Query(PlaceType.Province, null);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
             // 返回列表
             return list;
         }
 
-
+        /// <summary>
+        /// 查询市
+        /// </summary>
+        /// <param name="province">父级</param>
+        /// <returns>List类型</returns>
         public List<string> QueryCity(string province)
         {
-            // 接收列表
-            List<string> list = new NativePlaceDAL().Query(PlaceType.City, province);
+            List<string> list;
+            try
+            {
+                // 接收列表
+                list = new NativePlaceDAL().Query(PlaceType.City, province);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
             // 返回列表
             return list;
         }
 
+        /// <summary>
+        /// 查询县/区
+        /// </summary>
+        /// <param name="city">父级</param>
+        /// <returns>List类型</returns>
         public List<string> QueryPlace(string city)
         {
-            // 接收列表
-            List<string> list = new NativePlaceDAL().Query(PlaceType.Place, city);
+            List<string> list;
+            try
+            {
+                // 接收列表
+                list = new NativePlaceDAL().Query(PlaceType.Place, city);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
             // 返回列表
             return list;
         }
