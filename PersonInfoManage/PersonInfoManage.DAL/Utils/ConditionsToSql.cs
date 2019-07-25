@@ -91,11 +91,11 @@ namespace PersonInfoManage.DAL.Utils
                 {   //id是自增(除了cost_main表)，不需要加在sql语句里面
                     continue;
                 }
-                if (info.Name.Equals("approval_time") || info.Name.Equals("approval_money"))
+                
+                if(new string[] { "result", "time", "opinion" }.Contains(info.Name))
                 {
                     continue;
                 }
-
                 sql = sql.Insert(sql.Length, info.Name);
                 if (!info.Equals(properties.Last()))
                 {   //最后一个数据的处理
@@ -113,7 +113,7 @@ namespace PersonInfoManage.DAL.Utils
                 {   //id是自增(除了cost_main表)，不需要加在sql语句里面
                     continue;
                 }
-                if (info.Name.Equals("approval_time") || info.Name.Equals("approval_money"))
+                if (new string[] { "result", "time", "opinion" }.Contains(info.Name))
                 {
                     continue;
                 }

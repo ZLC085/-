@@ -6,20 +6,19 @@ namespace PersonInfoManage.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public class cost_main
+    public class cost_approval
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int id { get; set; }
 
-        public int apply_id { get; set; }
+        public int cost_id { get; set; }
 
-        public decimal apply_money { get; set; }
+        public int approval_id { get; set; }
 
-        public byte status { get; set; }
+        public bool? result { get; set; }
 
-        public DateTime apply_time { get; set; }
+        public DateTime? time { get; set; }
 
         [StringLength(200)]
-        public string remark { get; set; }
+        public string opinion { get; set; }
     }
 }

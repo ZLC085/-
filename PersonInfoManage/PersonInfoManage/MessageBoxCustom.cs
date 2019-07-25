@@ -91,7 +91,7 @@ namespace PersonInfoManage
 
                     buttonCancel.Click += (sender, e) =>
                     {
-                        form.DialogResult = DialogResult.Cancel;
+                        form.DialogResult = DialogResult.No;
                         form.Close();
                     };
                     form.Controls.Add(buttonCancel);
@@ -101,7 +101,7 @@ namespace PersonInfoManage
                     y = form.Bottom - 80;
                     Button buttonOK = CreateButton("确定", x, y);
 
-                    buttonOK.Click += (sender, e) => form.DialogResult = DialogResult.OK;
+                    buttonOK.Click += (sender, e) => form.DialogResult = DialogResult.Yes;
                     form.Controls.Add(buttonOK);
 
                     break;

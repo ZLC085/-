@@ -129,5 +129,12 @@ namespace PersonInfoManage.BLL.System
         }
 
 
-    }
+
+        public List<sys_dict> SelectByDictName(sys_dict_type dictName)
+        {
+            SysSettingDAL set = new SysSettingDAL();
+            return set.SelectByDictName(dictName);
+        }
+
+        }
 }

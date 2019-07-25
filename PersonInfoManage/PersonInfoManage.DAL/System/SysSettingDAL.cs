@@ -28,6 +28,7 @@ namespace PersonInfoManage.DAL.System
             SqlParameter sqlParameter2 = new SqlParameter("@p2", SysDict.dict_name);
             res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter2);
             return res;
+           
 
         }
 
@@ -97,6 +98,41 @@ namespace PersonInfoManage.DAL.System
             }
 
             return dict;
+        }
+        
+        /// <summary>
+        /// 返回数据字典类别
+        /// </summary>
+        /// <param name="dictName"></param>
+        /// <returns>category_name和id</returns>
+        public List<sys_dict> SelectByDictName(sys_dict_type dictName)
+        {
+            List<sys_dict> list = new List<sys_dict>();
+            string sql = "select * from sys dict where dict_ name = '";
+            switch (dictName)
+            {
+                case sys_dict_type.Cost:
+                    sql += sys_dict_type. Cost.ToString() + "' ";
+                    break;
+                case sys_dict_type.NativePlace:
+                    sql += sys_dict_type. NativePlace.ToString() + "'";
+                    break;
+                case sys_dict_type.Person:
+                    sql += sys_dict_type.Person.ToString() + " ' ";
+                    break;
+                default:
+                    break;
+            }
+            DataSet ds = new DataSet();           
+            ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                sys_dict dict1 = new sys_dict();
+                dict1.id = (int)ds.Tables[0].Rows[i][nameof(sys_dict.id)];
+                dict1.category_name = (string)ds.Tables[0].Rows[i][nameof(sys_dict.category_name)];
+                list.Add(dict1);
+            }
+                return list;
         }
     }
 }

@@ -18,17 +18,17 @@ namespace PersonInfoManage.BLL.Cost
         /// <returns>添加是否成功</returns>
         public Result Add(cost cost)
         {
-            cost_main main = cost.main;
+            //cost_main main = cost.main;
             List<cost_detail> listDeatil = cost.DetailList;
             Result res = new Result()
             {
                 Code = RES.ERROR,
                 Message = "添加失败！"
             };
-            if (main == null || listDeatil == null || listDeatil.Count == 0)
-            {
-                return res;
-            }            
+            //if (main == null || listDeatil == null || listDeatil.Count == 0)
+            //{
+            //    return res;
+            //}            
             int rows = new CostApplyDAL().Add(cost);
             if(rows == 1 + listDeatil.Count)
             {
@@ -44,7 +44,7 @@ namespace PersonInfoManage.BLL.Cost
         /// <returns>更新是否成功</returns>
         public Result Update(cost cost)
         {
-            cost_main main = cost.main;
+            cost_main main = cost.Main;
             List<cost_detail> listDeatil = cost.DetailList;
             Result res = new Result()
             {
