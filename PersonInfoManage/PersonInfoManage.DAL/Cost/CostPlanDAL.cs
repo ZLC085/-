@@ -29,7 +29,7 @@ namespace PersonInfoManage.DAL.Cost
             int count = 0;
             foreach (cost_plan plan in ListPlan)
             {
-                sqlPlan[count] = "insert into cost_plan(cost_type,cost_type_name,money,start_time,end_time) values(N'"+plan .cost_type+ "',N'"+plan.cost_type_name+"','" + plan.money+"','"+plan.start_time+"','"+plan.end_time+"')";
+                //sqlPlan[count] = "insert into cost_plan(cost_type,cost_type_name,money,start_time,end_time) values(N'"+plan .cost_type+ "',N'"+plan.cost_type_name+"','" + plan.money+"','"+plan.start_time+"','"+plan.end_time+"')";
                 count++;
             }
             return sqlArrayToTran.doTran(sqlPlan);
@@ -47,10 +47,10 @@ namespace PersonInfoManage.DAL.Cost
             int count = 0;
             foreach (cost_plan plan in ListPlan)
             {
-                sqlPlan[count] = "update cost_plan set  "+nameof(cost_plan.money)+"= '"+plan.money+ "' where " +
-                    "" + nameof(cost_plan.cost_type) + " =N'" + plan.cost_type + "' and " + 
-                    nameof(cost_plan.start_time) + "='" + plan.start_time + "' and " + 
-                    nameof(cost_plan.end_time) + "='" + plan.end_time + "' and "+nameof(cost_plan.cost_type_name)+"=N'"+plan.cost_type_name+"'";
+                //sqlPlan[count] = "update cost_plan set  "+nameof(cost_plan.money)+"= '"+plan.money+ "' where " +
+                //    "" + nameof(cost_plan.cost_type) + " =N'" + plan.cost_type + "' and " + 
+                //    nameof(cost_plan.start_time) + "='" + plan.start_time + "' and " + 
+                //    nameof(cost_plan.end_time) + "='" + plan.end_time + "' and "+nameof(cost_plan.cost_type_name)+"=N'"+plan.cost_type_name+"'";
                 //Console.WriteLine(sqlPlan[count]);
                 count++;
             }
@@ -128,10 +128,10 @@ namespace PersonInfoManage.DAL.Cost
             {
                 cost_plan plan = new cost_plan();
                 plan.id = (int)dt.Rows[i]["id"];
-                plan.cost_type = (int)dt.Rows[i]["cost_type"];
+                //plan.cost_type = (int)dt.Rows[i]["cost_type"];
                 plan.start_time = (DateTime)dt.Rows[i]["start_time"];
                 plan.end_time = (DateTime)dt.Rows[i]["end_time"];
-                plan.cost_type_name = (string)dt.Rows[i]["cost_type_name"];
+                //plan.cost_type_name = (string)dt.Rows[i]["cost_type_name"];
                 retList.Add(plan);
             }
             return retList;
