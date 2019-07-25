@@ -154,6 +154,8 @@
             // DgvApproval
             // 
             this.DgvApproval.AllowUserToAddRows = false;
+            this.DgvApproval.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.DgvApproval.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DgvApproval.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvApproval.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.approver,
@@ -351,6 +353,8 @@
             // 
             this.DgvCostDetail.AllowUserToAddRows = false;
             this.DgvCostDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvCostDetail.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.DgvCostDetail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));

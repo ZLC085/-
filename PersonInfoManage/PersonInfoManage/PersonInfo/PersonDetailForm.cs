@@ -82,15 +82,11 @@ namespace PersonInfoManage
 
         private void BtnUpdateFile_Click(object sender, EventArgs e)
         {
-            //DialogResult res = UpdateFileNameForm.Show("确认修改", "提示" ,UpdateFileNameForm.YesNo, this);
-            //if (res == DialogResult.Yes)
-            //{
+            //var frm = new UpdateFileName();
+            //frm.ShowDialog();
+            UpdateFileName updateFileNameForm = new UpdateFileName();
+            updateFileNameForm.ShowDialog();
 
-            //}
-            //else
-            //{
-            //    this.Close();
-            //}
         }
 
         private void BtnDelFile_Click(object sender, EventArgs e)
@@ -98,8 +94,10 @@ namespace PersonInfoManage
             DialogResult res = MessageBoxCustom.Show("确认删除", "提示", MessageBoxButtons.YesNo, this);
             if (res == DialogResult.Yes)
             {
+                //PersonFileBLL a = new PersonFileBLL();
+                //a.Del(id);
                 //PersonFileBLL file = new PersonFileBLL();
-                // file.Del(id);
+                //file.Del(id);
                 String file = " PersonFileBLL ";
                 String del = " Del ";
 
@@ -117,8 +115,6 @@ namespace PersonInfoManage
                 method = type.GetMethod(del, new Type[] { typeof(string) });
                 parameters = new[] { "id" };
                 method.Invoke(obj, parameters);
-                
-               
 
             }
             else

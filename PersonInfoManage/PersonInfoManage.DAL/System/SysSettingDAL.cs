@@ -37,7 +37,7 @@ namespace PersonInfoManage.DAL.System
             }
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("添加数据字典："+e.Message));
                 return 0;
             }
 
@@ -63,7 +63,7 @@ namespace PersonInfoManage.DAL.System
               }
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("修改数据字典"+e.Message));
                 return 0;
             }
 
@@ -86,7 +86,7 @@ namespace PersonInfoManage.DAL.System
              }
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("删除数据字典"+e.Message));
                 return 0;
             }
         }
@@ -118,7 +118,7 @@ namespace PersonInfoManage.DAL.System
                
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("查询数据字典"+e.Message));
                 return null;
             }
 }
@@ -140,7 +140,7 @@ namespace PersonInfoManage.DAL.System
 
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("查询所有数据字典"+e.Message));
                 return null;
             }
 
@@ -155,7 +155,7 @@ namespace PersonInfoManage.DAL.System
         {
             try { 
             List<sys_dict> list = new List<sys_dict>();
-            string sql = "select * from sys dict where dict_ name = '";
+            string sql = "select * from sys_dict where dict_name = '";
             switch (dictName)
             {
                 case sys_dict_type.Cost:
@@ -185,7 +185,7 @@ namespace PersonInfoManage.DAL.System
 
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("根据数据字典查询"+e.Message));
                 return null;
             }
         }
