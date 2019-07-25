@@ -46,9 +46,9 @@
     <Compile Include="Cost\CostPlanBLL.cs" />
     <Compile Include="Cost\CostStatisticBLL.cs" />
     <Compile Include="Login\LoginBLL.cs" />
-    <Compile Include="Logs\LogSysBLL.cs" />
-    <Compile Include="Logs\LogUserBLL.cs" />
-    <Compile Include="PersonInfo\NativePlace.cs" />
+    <Compile Include="logs\LogSysBLL.cs" />
+    <Compile Include="logs\LogUserBLL.cs" />
+    <Compile Include="PersonInfo\NativePlaceBLL.cs" />
     <Compile Include="PersonInfo\PersonBasicBLL.cs" />
     <Compile Include="PersonInfo\PersonFileBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +68,5 @@
       <Name>PersonInfoManage.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

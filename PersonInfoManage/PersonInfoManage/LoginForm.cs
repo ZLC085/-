@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using static PersonInfoManage.LocalUserInfo;
 using PersonInfoManage.Model;
 using PersonInfoManage.BLL.System;
+using Loading;
 
 namespace PersonInfoManage
 {

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PersonInfoManage.BLL.Logs
 {
-    class LogSysBLL
+    public class LogSysBLL
     {
         /// <summary>
         /// 系统日志删除

@@ -31,7 +31,7 @@ namespace PersonInfoManage
             {
                 {"id",costId }
             }).First();
-            cost_main main = cost.main;
+            cost_main main = cost.Main;
             LblCostId.Text = main.id.ToString();
             view_sys_u2g applicant = new SysUserDAL().SelectById(main.apply_id).First();
             LblApplicant.Text = applicant.name;
@@ -50,10 +50,10 @@ namespace PersonInfoManage
                 case 2: LblStatus.Text = "审核通过"; break;
                 case 3: LblStatus.Text = "审核驳回"; break;
             }
-            view_sys_u2g approver = new SysUserDAL().SelectById(main.approval_id).First();
-            LblApprover.Text = approver.name;
-            LblApproverOrg.Text = approver.org_name;
-            LblApprovalMoney.Text = main.approval_money.ToString();
+            //view_sys_u2g approver = new SysUserDAL().SelectById(main.approval_id).First();
+            //LblApprover.Text = approver.name;
+            //LblApproverOrg.Text = approver.org_name;
+            //LblApprovalMoney.Text = main.approval_money.ToString();
             LblRemark.Text = string.IsNullOrEmpty(main.remark) ?"无": main.remark;           
         }
     }

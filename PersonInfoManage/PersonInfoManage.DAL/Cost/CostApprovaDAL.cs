@@ -16,10 +16,12 @@ namespace PersonInfoManage.DAL.Cost
     public class CostApprovaDAL:DALBase
     {
         /// <summary>
-        /// 费用审批添加/修改 添加/修改审批金额、审批状态（待审批，通过，驳回）以及审批意见
+        /// 费用审批添加/修改 、审批状态（待审批，通过，驳回）以及审批意见
         /// </summary>
-        /// <param name="main">费用单对象cost_main:approval_id、approval_time、approval_money、status、id</param>
-        /// <returns>数据表受影响的行数</returns>
+        /// <param name="cost">费用单主表对象Main:id、status 
+        /// DetailList 费用详情列表：
+        /// ApprovalList 费用审批表列表：详见方法体注释</param>
+        /// <returns></returns>
         public int Update(cost cost)
         {
             /*

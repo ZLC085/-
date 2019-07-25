@@ -76,7 +76,7 @@ namespace PersonInfoManage.DAL.Utils
 
             if (fileStream.Length > 2000000000) return null;
 
-            byte[] fileBytes = default;
+            byte[] fileBytes = new byte[] { };
             try
             {
                 fileBytes = new byte[fileStream.Length];

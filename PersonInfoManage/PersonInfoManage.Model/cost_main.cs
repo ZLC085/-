@@ -9,18 +9,14 @@ namespace PersonInfoManage.Model
     public class cost_main
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [StringLength(200)]
+        public string remark { get; set; }
         public int id { get; set; }
-
         public int apply_id { get; set; }
-
         public decimal apply_money { get; set; }
 
         public byte status { get; set; }
 
-        
-
-        [StringLength(200)]
-        public string remark { get; set; }
         public DateTime apply_time { get; set; }
     }
 }
