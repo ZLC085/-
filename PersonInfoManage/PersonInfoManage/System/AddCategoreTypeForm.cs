@@ -17,13 +17,12 @@ namespace PersonInfoManage
     public partial class AddCategoreTypeForm : Form
     {
         private string value;
-        public AddCategoreTypeForm()
+        public AddCategoreTypeForm(string selectStr)
         {
             InitializeComponent();
-            //labelX3.Text = selectStr.ToString();
+            labelX3.Text = selectStr.ToString();
         }
-       
-       
+
         private void textBoxX1_TextChanged(object sender, EventArgs e)
         {
 
