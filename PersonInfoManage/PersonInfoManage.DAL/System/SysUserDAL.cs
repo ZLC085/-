@@ -56,21 +56,21 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="user">用户信息</param>
         /// <returns>修改条数</returns>
-        public int Update(sys_user user)
+        public int Update(sys_user user,int userid)
         {
             try
             {
                 int res;
-                string sql = "Update sys_user SET username = @p1,name = @p2,password = @p3,gender = @p4,org_id = @p5,job = @p6,phone = @p7,email = @p8,status = @p9,modify_time=getdate() where id = '" + user.id + "'";
+                string sql = "Update sys_user SET username = @p1,name = @p2,password = @p3,gender = @p4,org_id = @p6,job = @p5,phone = @p7,email = @p8,status = @p9,modify_time=getdate() where id = '" + userid + "'";
                 SqlParameter sqlParameter = new SqlParameter("@p1", user.username);
                 SqlParameter sqlParameter1 = new SqlParameter("@p2", user.name);
                 SqlParameter sqlParameter2 = new SqlParameter("@p3", user.password);
                 SqlParameter sqlParameter3 = new SqlParameter("@p4", user.gender);
                 SqlParameter sqlParameter4 = new SqlParameter("@p5", user.job);
                 SqlParameter sqlParameter5 = new SqlParameter("@p6", user.org_id);
-                SqlParameter sqlParameter6 = new SqlParameter("@p6", user.phone);
-                SqlParameter sqlParameter7 = new SqlParameter("@p7", user.email);
-                SqlParameter sqlParameter8 = new SqlParameter("@p8", user.status);
+                SqlParameter sqlParameter6 = new SqlParameter("@p7", user.phone);
+                SqlParameter sqlParameter7 = new SqlParameter("@p8", user.email);
+                SqlParameter sqlParameter8 = new SqlParameter("@p9", user.status);
                 res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter1, sqlParameter2, sqlParameter3, sqlParameter4, sqlParameter5, sqlParameter6, sqlParameter7, sqlParameter8);
                 new LogUserDAL().Add(LogOperations.LogUser("修改用户信息"));
                 return res;
@@ -81,6 +81,30 @@ namespace PersonInfoManage.DAL.System
                 return 0;
             }
             //return new DBOperationsUpdate<sys_dict>().UpdateById(id, newValues);
+        }
+        #endregion
+
+        #region 重置用户密码
+        /// <summary>
+        /// 重置用户密码
+        /// </summary>
+        /// <param name="uesrid">用户id</param>
+        /// <returns>修改条数</returns>
+        public int RePassword(int userid)
+        {
+            try
+            {
+                int res;
+                string sql = "Update sys_user SET password = '"+123456+"' modify_time=getdate() where id = '" + userid + "'";
+                res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql);
+                new LogUserDAL().Add(LogOperations.LogUser("重置密码"));
+                return res;
+            }
+            catch (Exception e)
+            {
+                new LogSysDAL().Add(LogOperations.LogSys("重置密码" + e.Message));
+                return 0;
+            }
         }
         #endregion
 
@@ -136,6 +160,43 @@ namespace PersonInfoManage.DAL.System
                 }
                 //return new DBOperationsDelete<sys_user, DBNull>().DeleteById(userId);
             }
+        }
+        #endregion
+
+        #region  查询所有用户
+        /// <summary>
+        /// 查询用户
+        /// </summary>
+        /// <returns>查询到的用户信息</returns>
+        public List<view_sys_u2g> SelectAll()
+        {
+            try
+            {
+                List<view_sys_u2g> user = new List<view_sys_u2g>();
+                string sql = "SELECT * from view_sys_u2g";
+                DataSet ds = new DataSet();
+                ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    view_sys_u2g user1 = new view_sys_u2g();
+                    user1.id = (int)ds.Tables[0].Rows[i][nameof(view_sys_u2g.id)];
+                    user1.name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.name)];
+                    user1.username = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.username)];
+                    user1.gender = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.gender)];
+                    user1.phone = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.phone)];
+                    user1.job = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.job)];
+                    user1.status = (bool)ds.Tables[0].Rows[i][nameof(view_sys_u2g.status)];
+                    user1.org_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.org_name)];
+                    user.Add(user1);
+                }
+                return user;
+            }
+            catch (Exception e)
+            {
+                new LogSysDAL().Add(LogOperations.LogSys("查询用户信息" + e.Message));
+                return null;
+            }
+            //return new DBOperationsSelect<sys_user>().SelectByConditions(conditions);
         }
         #endregion
 
@@ -219,8 +280,10 @@ namespace PersonInfoManage.DAL.System
                     user1.id = (int)ds.Tables[0].Rows[i][nameof(view_sys_u2g.id)];
                     user1.name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.name)];
                     user1.username = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.username)];
+                    user1.password = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.password)];
                     user1.gender = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.gender)];
                     user1.phone = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.phone)];
+                    user1.email = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.email)];
                     user1.job = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.job)];
                     user1.status = (bool)ds.Tables[0].Rows[i][nameof(view_sys_u2g.status)];
                     user1.org_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.org_name)];

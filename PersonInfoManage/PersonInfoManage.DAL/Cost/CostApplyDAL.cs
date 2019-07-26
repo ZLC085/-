@@ -60,7 +60,7 @@ namespace PersonInfoManage.DAL.Cost
             //先更新cost_main表
             //更新费用金额信息和状态
             sqlArray[0]= "update cost_main set " +
-                nameof(cost_main.apply_money) + "=" + Main.apply_money +
+                nameof(cost_main.apply_money) + "=" + Main.apply_money +","+
                 nameof(cost_main.remark) + "='" +Main.remark+
                 "' where id='" + Main.id + "'";
             //再删除cost_detail表数据

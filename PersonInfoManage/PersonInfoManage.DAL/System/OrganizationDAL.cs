@@ -122,6 +122,35 @@ namespace PersonInfoManage.DAL.System
                 new LogSysDAL().Add(LogOperations.LogSys("查询组织机构" + e.Message));
                 return null;
             }
+        }
+            /// <summary>
+            /// 查询组织机构
+            /// </summary>
+            /// <returns>List<sys_org></returns>
+        public List<sys_org> SelectByName(string orgname)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                string sql = "Select * from sys_org where org_name='"+orgname+"'";
+                List<sys_org> org = new List<sys_org>();
+                ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    sys_org org1 = new sys_org();
+                    org1.id = (int)ds.Tables[0].Rows[i][nameof(sys_org.id)];
+                    org1.org_name = (string)ds.Tables[0].Rows[i][nameof(sys_org.org_name)];
+                    org1.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_org.create_time)];
+                    org1.modify_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_org.modify_time)];
+                    org.Add(org1);
+                }
+                return org;
+            }
+            catch (Exception e)
+            {
+                new LogSysDAL().Add(LogOperations.LogSys("查询组织机构" + e.Message));
+                return null;
+            }
 
         }
     }

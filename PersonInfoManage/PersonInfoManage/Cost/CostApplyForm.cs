@@ -10,16 +10,34 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PersonInfoManage.BLL.Cost;
 using PersonInfoManage.BLL.Utils;
+using PersonInfoManage.DAL.Cost;
 using PersonInfoManage.Model;
 
 namespace PersonInfoManage
 {
     public partial class CostApplyForm : Form
     {
-        DataTable dataTable = new DataTable();
+        public int costId=0;
         public CostApplyForm()
         {
             InitializeComponent();
+            btnCostApply.Click += new EventHandler(BtnCostApply_Click);
+        }
+        public CostApplyForm(int costId)
+        {
+            this.costId = costId;            
+            InitializeComponent();
+            btnCostApply.Click += new EventHandler(BtnCostApplyUpdate_Click);
+            List<cost_detail> listDetail = new CostApplyDAL().QueryDetail(costId);
+            foreach(cost_detail detail in listDetail)
+            {
+                string type = new CostApplyDAL().GetCostTypeById(detail.cost_type_id);
+                addDetail(detail.cost_type_id+"." +type, detail.money.ToString());
+            }
+            CmbApprover.Visible = false;
+            LblApprover.Visible = false;
+            btnCostApply.Text = "修改";
+
         }
         public CostApplyForm(string costType, string count)
         {
@@ -67,7 +85,7 @@ namespace PersonInfoManage
             {
                 apply_money = applyMoney,
                 apply_time = DateTime.Now,
-                apply_id=8,
+                apply_id=UserInfoBLL.UserId,
                 status=0,
                 remark=TexRemark.Text
             };
@@ -87,6 +105,45 @@ namespace PersonInfoManage
             Result res = costApplyBLL.Add(cost);
             DialogResult dialogResult= MessageBox.Show(res.Message, "添加费用申请单状态提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if(dialogResult == DialogResult.OK)
+            {
+                if (res.Code == RES.OK)
+                {
+                    this.DgvCostDetail.Rows.Clear();
+                    this.Close();
+                }
+            }
+        }
+        private void BtnCostApplyUpdate_Click(object sender,EventArgs e)
+        {
+            List<cost_detail> listDetail = new List<cost_detail>();
+            decimal applyMoney = 0;
+            foreach (DataGridViewRow row in this.DgvCostDetail.Rows)
+            {
+                if (row.Cells[0].Value == null)
+                {
+                    continue;
+                }
+                int type = int.Parse((((string)row.Cells[0].Value).Split('.')[0]));
+                decimal money = decimal.Parse((string)row.Cells[1].Value);
+                listDetail.Add(new cost_detail
+                {
+                    cost_type_id = type,
+                    money = money
+                });
+                applyMoney += money;
+            }
+            Result res =new CostApplyBLL().Update(new cost
+            {
+                Main=new cost_main
+                {
+                    id=costId,
+                    apply_money=applyMoney,
+                    remark=TexRemark.Text
+                },
+                DetailList=listDetail
+            });
+            DialogResult dialogResult = MessageBox.Show(res.Message, "修改费用申请单状态提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (dialogResult == DialogResult.OK)
             {
                 if (res.Code == RES.OK)
                 {
@@ -135,7 +192,7 @@ namespace PersonInfoManage
 
         private void CostApplyForm_Load(object sender, EventArgs e)
         {
-            List<string> listApprover = new CostApplyBLL().ApproverInfo(8);
+            List<string> listApprover = new CostApplyBLL().ApproverInfo(UserInfoBLL.UserId);
             CmbApprover.Items.Clear();
             CmbApprover.Items.AddRange(listApprover.ToArray());
         }

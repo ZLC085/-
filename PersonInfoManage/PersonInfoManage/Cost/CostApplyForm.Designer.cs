@@ -27,7 +27,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
-        {
+        {            
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -229,7 +229,6 @@
             this.btnCostApply.SymbolColor = System.Drawing.Color.Green;
             this.btnCostApply.TabIndex = 0;
             this.btnCostApply.Text = "申请";
-            this.btnCostApply.Click += new System.EventHandler(this.BtnCostApply_Click);
             // 
             // Column2
             // 
@@ -245,6 +244,7 @@
             // 
             // DgvCostDetail
             // 
+            this.DgvCostDetail.AllowUserToAddRows = false;
             this.DgvCostDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvCostDetail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -268,7 +268,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DgvCostDetail.DefaultCellStyle = dataGridViewCellStyle2;
             this.DgvCostDetail.EnableHeadersVisualStyles = false;
-            this.DgvCostDetail.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.DgvCostDetail.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.DgvCostDetail.Location = new System.Drawing.Point(0, 91);
             this.DgvCostDetail.Margin = new System.Windows.Forms.Padding(4);
             this.DgvCostDetail.Name = "DgvCostDetail";

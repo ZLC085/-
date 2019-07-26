@@ -48,13 +48,12 @@ namespace PersonInfoManage.BLL.Cost
                 Code = RES.ERROR,
                 Message = "删除失败"
             };
-            int rows = new CostApplyDAL().Del(id);
             cost cost = new CostApprovaDAL().Query(new Dictionary<string, object>
             {
                 {"id",id }
             }).First();
             int rightRows = cost.DetailList.Count+cost.ApprovalList.Count+1;
-
+            int rows = new CostApplyDAL().Del(id);
             if (rows == rightRows)
             {
                 res.Code = RES.OK;

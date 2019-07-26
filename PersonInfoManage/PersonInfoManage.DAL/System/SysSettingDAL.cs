@@ -176,8 +176,13 @@ namespace PersonInfoManage.DAL.System
             {
                 sys_dict dict1 = new sys_dict();
                 dict1.id = (int)ds.Tables[0].Rows[i][nameof(sys_dict.id)];
-                dict1.category_name = (string)ds.Tables[0].Rows[i][nameof(sys_dict.category_name)];
-                list.Add(dict1);
+              
+                   
+                    dict1.dict_name = (string)ds.Tables[0].Rows[i][nameof(sys_dict.dict_name)];
+                    dict1.category_name = (string)ds.Tables[0].Rows[i][nameof(sys_dict.category_name)];
+                    dict1.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_dict.create_time)];
+                    dict1.modify_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_dict.modify_time)];
+                    list.Add(dict1);
             }
                 
                 return list;

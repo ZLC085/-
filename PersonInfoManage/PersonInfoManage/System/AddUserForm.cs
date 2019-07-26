@@ -21,8 +21,7 @@ namespace PersonInfoManage
         }
         private void AddUserForm_Load(object sender, EventArgs e)
         {
-            List<sys_org> orginfo = new List<sys_org>();
-            //orginfo =
+            List<view_sys_u2g> orginfo = new SysUserBLL().SelectAll();
             CmbOrg.DataSource = orginfo;
             CmbOrg.DisplayMember = "org_name";
         }

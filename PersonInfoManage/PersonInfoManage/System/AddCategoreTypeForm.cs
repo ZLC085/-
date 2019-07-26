@@ -22,8 +22,7 @@ namespace PersonInfoManage
             InitializeComponent();
             labelX3.Text = selectStr.ToString();
         }
-       
-       
+
         private void textBoxX1_TextChanged(object sender, EventArgs e)
         {
 

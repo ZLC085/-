@@ -15,17 +15,50 @@ namespace PersonInfoManage
 {
     public partial class UpdateUserForm : Form
     {
-        public UpdateUserForm()
+        private int Id;
+        public UpdateUserForm(List<int> idlist)
         {
+            foreach (var userid in idlist)
+            {
+                Id = userid;
+            }
             InitializeComponent();
         }
 
         private void UpdateUserForm_Load(object sender, EventArgs e)
         {
-            List<sys_org> orginfo = new List<sys_org>();
-            //orginfo =
-            comboBox1.DataSource = orginfo;
-            comboBox1.DisplayMember = "org_name";
+            //List<sys_org> orginfo = new List<sys_org>();
+            ////orginfo =
+            //comboBox1.DataSource = orginfo;
+            //comboBox1.DisplayMember = "org_name";
+            SysUserBLL sysUserBLL = new SysUserBLL();
+            List<view_sys_u2g> userinfo = new List<view_sys_u2g>();
+            userinfo = sysUserBLL.SelectById(Id);
+            foreach(var user in userinfo)
+            {
+                textBoxX1.Text = user.name;
+                textBoxX2.Text = user.username;
+                if (user.gender == "男")
+                {
+                    radioButton1.Checked = true;
+                }
+                else
+                {
+                    radioButton2.Checked = true;
+                }
+                textBoxX4.Text = user.phone;
+                textBoxX5.Text = user.email;
+                textBoxX6.Text = user.job;
+                //职位
+                if (user.status)
+                {
+                    radioButton4.Checked = true;
+                }
+                else
+                {
+                    radioButton3.Checked = true;
+                }
+            }           
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -72,6 +105,11 @@ namespace PersonInfoManage
             {
                 MessageBoxCustom.Show("修改失败", "提示", MessageBoxButtons.OK, this);
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
     }
