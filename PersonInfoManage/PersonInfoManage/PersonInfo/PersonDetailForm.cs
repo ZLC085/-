@@ -1,5 +1,6 @@
 ﻿using Loading;
 using PersonInfoManage.BLL.PersonInfo;
+using PersonInfoManage.BLL.System;
 using PersonInfoManage.BLL.Utils;
 using PersonInfoManage.Model;
 using System;
@@ -27,9 +28,42 @@ namespace PersonInfoManage
             List<person_basic> list = new PersonBasicBLL().Query(pb);
             LblName.Text = list[0].name;
             LblFormerName.Text = list[0].former_name;
-            ///
-            /// ...
-            ///
+            LblGender.Text = list[0].gender;
+            LblID.Text = list[0].identity_number;
+            LblBirthDate.Text = list[0].birth_date.ToString();
+            LblNation.Text = list[0].nation;
+            LblNativePlace.Text = list[0].native_place;
+            LblAddress.Text = list[0].address;
+            LblPhone.Text = list[0].phone;
+            LblQQ.Text = list[0].qq;
+            foreach (var item in new SysSettingBLL().SelectByDictName(sys_dict_type.Person))
+            {
+                if (item.id.Equals(list[0].person_type_id))
+                {
+                    LblPersonType.Text = item.category_name;
+                }
+            }
+            foreach (var item in new SysSettingBLL().SelectByDictName(sys_dict_type.BelongPlace))
+            {
+                if (item.id.Equals(list[0].belong_place_id))
+                {
+                    LblBelongPlace.Text = item.category_name;
+                }
+            }
+            if (list[0].marry_status)
+            {
+                LblMarry.Text = "已婚";
+            }
+            else
+            {
+                LblMarry.Text = "未婚";
+            }
+            LblJob.Text = list[0].job_status;
+            LblIncome.Text = list[0].income.ToString();
+            LblTemper.Text = list[0].temper;
+            LblFamily.Text = list[0].family;
+            LblInputTime.Text = list[0].input_time.ToString();
+            LblUserId.Text = list[0].user_id.ToString();
         }
 
         private void BtnAddFile_Click(object sender, EventArgs e)
