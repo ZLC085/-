@@ -22,6 +22,6 @@ namespace PersonInfoManage.Model
         /// <summary>
         /// 归属地
         /// </summary>
-        NativePlace
+        BelongPlace
     }
 }

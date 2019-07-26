@@ -315,7 +315,7 @@ namespace PersonInfoManage
                 {
                     item.dict_name = "重点人员类别";
                 }
-                else if (item.dict_name.Equals(sys_dict_type.NativePlace.ToString()))
+                else if (item.dict_name.Equals(sys_dict_type.BelongPlace.ToString()))
                 {
                     item.dict_name = "归属地";
                 }

@@ -161,8 +161,8 @@ namespace PersonInfoManage.DAL.System
                 case sys_dict_type.Cost:
                     sql += sys_dict_type.Cost.ToString() + "' ";
                     break;
-                case sys_dict_type.NativePlace:
-                    sql += sys_dict_type.NativePlace.ToString() + "'";
+                case sys_dict_type.BelongPlace:
+                    sql += sys_dict_type.BelongPlace.ToString() + "'";
                     break;
                 case sys_dict_type.Person:
                     sql += sys_dict_type.Person.ToString() + " ' ";

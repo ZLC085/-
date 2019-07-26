@@ -477,7 +477,7 @@ namespace PersonInfoManage
             #endregion
 
             #region 归属地
-            BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
+            BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.BelongPlace);
             foreach (var item in BelongPlace)
             {
                 if (item.category_name.Equals(CmbBelongPlace.Text))
