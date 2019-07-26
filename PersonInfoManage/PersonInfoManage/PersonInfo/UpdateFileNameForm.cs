@@ -35,10 +35,17 @@ namespace PersonInfoManage
             this.Close();
         }
 
+        private void UpdateFileName_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
         private void BtnUpdateFile_Click(object sender, EventArgs e)
         {
             person_file A = new person_file();
             A.filename = LblFileName.Text;
+            A.filename = TxtNewFileName.Text;
             PersonFileBLL set = new PersonFileBLL();
             Result res = new Result();
             res = set.Update(A.filename, A.id);
@@ -52,5 +59,7 @@ namespace PersonInfoManage
             }
 
         }
+
+       
     }
 }

@@ -20,6 +20,7 @@ namespace PersonInfoManage
         public MainForm()
         {
             InitializeComponent();
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -41,8 +42,10 @@ namespace PersonInfoManage
         //<毛宇航_1>
         private void BtnAddPerson_Click(object sender, EventArgs e)
         {
-            PersonBasicForm personBasicForm = new PersonBasicForm();
-            personBasicForm.Text = "人员信息录入";
+            PersonBasicForm personBasicForm = new PersonBasicForm
+            {
+                Text = "人员信息录入"
+            };
             personBasicForm.ShowDialog();
         }
 
@@ -56,8 +59,9 @@ namespace PersonInfoManage
 
         private void BtnQueryPerson_Click(object sender, EventArgs e)
         {
-            List<string> vs = DGVOperations.SelectPersonBasic(dgvPerson);
-            if (vs.Count > 1)
+            PersonDetailForm personDetailForm = new PersonDetailForm(1);
+            personDetailForm.ShowDialog();
+            for (int i = 0; i < dgvPerson.Rows.Count; i++)
             {
                 MessageBoxCustom.Show("只能选择一条记录！", "提示", this);
                 return;
@@ -78,8 +82,10 @@ namespace PersonInfoManage
 
         private void BtnUpdatePerson_Click(object sender, EventArgs e)
         {
-            PersonBasicForm personBasicForm = new PersonBasicForm();
-            personBasicForm.Text = "人员信息修改";
+            PersonBasicForm personBasicForm = new PersonBasicForm
+            {
+                Text = "人员信息修改"
+            };
             personBasicForm.ShowDialog();
         }
 
@@ -87,10 +93,36 @@ namespace PersonInfoManage
         {
 
         }
-        
+
+        private void CmbPersonType_DropDown(object sender, EventArgs e)
+        {
+            List<string> personTypeList = new List<string>();
+            foreach (var item in new SysSettingBLL().SelectByDictName(sys_dict_type.Person))
+            {
+                personTypeList.Add(item.category_name);
+            }
+            CmbPersonType.DataSource = personTypeList;
+        }
+
         private void btnSearchPerson_Click(object sender, EventArgs e)
         {
-
+            dgvPerson.AutoGenerateColumns = false;
+            person_basic pb = new person_basic()
+            {
+                user_id = UserInfoBLL.UserId,
+                isdel = 0,
+                name = TxtPersonName.Text,
+                identity_number = TxtIdentityNum.Text,
+                native_place = TxtPersonNation.Text
+            };
+            foreach (var item in new SysSettingBLL().SelectByDictName(sys_dict_type.Person))
+            {
+                if (item.category_name.Equals(CmbPersonType.Text))
+                {
+                    pb.person_type_id = item.id;
+                }
+            }
+            dgvPerson.DataSource = new PersonBasicDAL().Query(pb);
         }
 
         private void BtnRecycle_Click(object sender, EventArgs e)
@@ -199,20 +231,26 @@ namespace PersonInfoManage
         //基本信息管理Tab页点击事件（二级）
         private void TabPersonBasic_Click(object sender, EventArgs e)
         {
-            DGVOperations.DGVPersonBasicNotDelDataSource(dgvPerson);
+            dgvPerson.AutoGenerateColumns = false;
+            int localUserid = UserInfoBLL.UserId;
+            dgvPerson.DataSource = new PersonBasicDAL().Query(new person_basic { user_id = localUserid,isdel=1});
         }
         //人员信息管理菜单Tab页切换事件（一级）
         private void MenuPersoninfo_Click(object sender, EventArgs e)
         {
             TabControlPerson.SelectedTab = TabPersonBasic;
-
-            DGVOperations.DGVPersonBasicNotDelDataSource(dgvPerson);
+            dgvPerson.AutoGenerateColumns = false;
+            int localUserid = UserInfoBLL.UserId;
+            dgvPerson.DataSource = new PersonBasicDAL().Query(new person_basic { user_id = localUserid,isdel=0 });
         }
 
         //回收站Tab页点击事件（二级）
         private void TabPersonRecycle_Click(object sender, EventArgs e)
         {
-            DGVOperations.DGVPersonBasicDelDataSource(DgvRecycle);
+            DgvRecycle.AutoGenerateColumns = false;
+            person_basic person = new person_basic();
+            person.isdel = 1;
+            DgvRecycle.DataSource = new PersonBasicDAL().Query(person);
         }
 
         //日志管理菜单Tab页切换事件（一级）
@@ -387,7 +425,7 @@ namespace PersonInfoManage
         #region 曾丽川
         //<曾丽川_2>
         private void BtnAddRole_Click(object sender, EventArgs e)
-        {                       
+        {
             AddUserGroupForm addUserGroupForm = new AddUserGroupForm();
             addUserGroupForm.ShowDialog();
         }
@@ -401,18 +439,13 @@ namespace PersonInfoManage
 
         private void BtnAddKind_Click(object sender, EventArgs e)
         {
-            string selectStr = CmbDictType.SelectedText;
-
-          
-          
-            AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm(selectStr);        
+            AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm();
             addCategoreTypeForm.ShowDialog();
         }
 
         private void BtnUpdateKind_Click(object sender, EventArgs e)
         {
-            string selectStr = CmbDictType.SelectedValue.ToString();
-            AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm(selectStr);
+            AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm();
             addCategoreTypeForm.Text = "修改数据字典";
             addCategoreTypeForm.ShowDialog();
         }
@@ -434,8 +467,8 @@ namespace PersonInfoManage
 
         }
 
-
-        private void CmbDictType_SelectedValueChanged(object sender, EventArgs e)
+        //数据字典下拉框选择事件
+        private void CmbDictType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
@@ -577,5 +610,6 @@ namespace PersonInfoManage
         //</蒋媛_3>
         #endregion
 
+        
     }
 }
