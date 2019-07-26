@@ -1,7 +1,9 @@
 ﻿using Loading;
 using PersonInfoManage.BLL.PersonInfo;
 using PersonInfoManage.BLL.Utils;
+using PersonInfoManage.Model;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -10,10 +12,22 @@ namespace PersonInfoManage
     public partial class PersonDetailForm : Form
     {
         private readonly int PersonId;
+        private int FileId = -1;
         public PersonDetailForm(int personId)
         {
             InitializeComponent();
             PersonId = personId;
+        }
+
+        // 页面加载
+        private void PersonDetailForm_Load(object sender, EventArgs e)
+        {
+            person_basic pb = new person_basic { id = PersonId };
+            List<person_basic> list = new PersonBasicBLL().Query(pb);
+            LblName.Text = list[0].name;
+            ///
+            /// ...
+            ///
         }
 
         private void BtnAddFile_Click(object sender, EventArgs e)
@@ -42,6 +56,12 @@ namespace PersonInfoManage
         
         private void BtnOutFile_Click(object sender, EventArgs e)
         {
+            if (FileId == -1)
+            {
+                MessageBoxCustom.Show("请选择需要导出的文件！", "提示", this);
+                return;
+            }
+
             FolderBrowserDialog dialog = new FolderBrowserDialog();
             dialog.Description = "请选择保存文件路径";
 
@@ -53,8 +73,8 @@ namespace PersonInfoManage
                 {
                     PersonFileBLL personFileBLL = new PersonFileBLL();
 
-                    //需要文件id
-                    result = personFileBLL.OutFile(28, foldPath);
+                    result = personFileBLL.OutFile(FileId, foldPath);
+                    FileId = -1;
                 });
 
                 FileStatus(result, "文件导出");
@@ -75,15 +95,11 @@ namespace PersonInfoManage
 
         private void BtnUpdateFile_Click(object sender, EventArgs e)
         {
-            //DialogResult res = UpdateFileNameForm.Show("确认修改", "提示" ,UpdateFileNameForm.YesNo, this);
-            //if (res == DialogResult.Yes)
-            //{
+            //var frm = new UpdateFileName();
+            //frm.ShowDialog();
+            UpdateFileName updateFileNameForm = new UpdateFileName();
+            updateFileNameForm.ShowDialog();
 
-            //}
-            //else
-            //{
-            //    this.Close();
-            //}
         }
 
         private void BtnDelFile_Click(object sender, EventArgs e)
@@ -91,8 +107,10 @@ namespace PersonInfoManage
             DialogResult res = MessageBoxCustom.Show("确认删除", "提示", MessageBoxButtons.YesNo, this);
             if (res == DialogResult.Yes)
             {
+                //PersonFileBLL a = new PersonFileBLL();
+                //a.Del(id);
                 //PersonFileBLL file = new PersonFileBLL();
-                // file.Del(id);
+                //file.Del(id);
                 String file = " PersonFileBLL ";
                 String del = " Del ";
 
@@ -110,8 +128,6 @@ namespace PersonInfoManage
                 method = type.GetMethod(del, new Type[] { typeof(string) });
                 parameters = new[] { "id" };
                 method.Invoke(obj, parameters);
-                
-               
 
             }
             else
@@ -119,5 +135,7 @@ namespace PersonInfoManage
                 this.Close();
             }
         }
+
+        
     }
 }
