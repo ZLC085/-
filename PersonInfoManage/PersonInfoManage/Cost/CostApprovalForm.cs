@@ -67,11 +67,17 @@ namespace PersonInfoManage
 
         private void BtnPass_Click(object sender, EventArgs e)
         {
+            if(CmbNextApprover.Visible && CmbNextApprover.SelectedItem == null)
+            {
+                MessageBox.Show("请选择一个上级审批人！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             cost_main Main = new cost_main
             {
                 id = costId,
                 status = (byte)(CmbNextApprover.Visible ? 1 : 2)
             };
+            
             List<cost_approval> ListApproval = new List<cost_approval>();
             cost_approval approval = new cost_approval
             {
@@ -110,8 +116,7 @@ namespace PersonInfoManage
             cost_approval approval = new cost_approval
             {
                 cost_id = costId,
-                approval_id = 29,
-                //approval_id = UserInfoBLL.UserId,
+                approval_id = UserInfoBLL.UserId,
                 result = false,
                 time = DateTime.Now,
                 opinion = TexOpinion.Text

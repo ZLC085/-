@@ -201,6 +201,7 @@
     <Compile Include="System\UpdateUserForm.Designer.cs">
       <DependentUpon>UpdateUserForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\DGVOperations.cs" />
     <Compile Include="Utils\RegexComm.cs" />
     <Compile Include="Utils\SysDictTypeConvert.cs" />
     <EmbeddedResource Include="Business\AddBusiness.resx">
