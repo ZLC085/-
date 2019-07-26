@@ -73,7 +73,7 @@ namespace PersonInfoManage
                 }
                 CmbPersonType.DataSource = personTypeList;
                 // 归属地
-                BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
+                BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.BelongPlace);
                 List<string> belongPlaceList = new List<string>();
                 foreach (var item in BelongPlace)
                 {
@@ -102,7 +102,7 @@ namespace PersonInfoManage
                 // 出生日期
                 TimeBirthDate.Value = list[0].birth_date;
                 // 归属地
-                BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
+                BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.BelongPlace);
                 foreach (var item in BelongPlace)
                 {
                     if (item.id.Equals(list[0].belong_place_id))
@@ -290,7 +290,7 @@ namespace PersonInfoManage
         /// <param name="e"></param>
         private void CmbBelongPlace_DropDown(object sender, EventArgs e)
         {
-            BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
+            BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.BelongPlace);
             List<string> belongPlaceList = new List<string>();
             foreach (var item in BelongPlace)
             {
@@ -460,7 +460,7 @@ namespace PersonInfoManage
             #endregion
 
             #region 归属地
-            BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
+            BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.BelongPlace);
             foreach (var item in BelongPlace)
             {
                 if (item.category_name.Equals(CmbBelongPlace.Text))

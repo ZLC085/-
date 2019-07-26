@@ -12,6 +12,10 @@ namespace PersonInfoManage.Model
     public enum sys_dict_type
     {
         /// <summary>
+        /// 空
+        /// </summary>
+        None,
+        /// <summary>
         /// 费用类型
         /// </summary>
         Cost,
@@ -22,6 +26,6 @@ namespace PersonInfoManage.Model
         /// <summary>
         /// 归属地
         /// </summary>
-        NativePlace
+        BelongPlace
     }
 }
