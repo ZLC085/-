@@ -297,7 +297,7 @@ namespace PersonInfoManage
         private void TabGroupMan_Click(object sender, EventArgs e)
         {
             DgvGroupMan.AutoGenerateColumns = false;
-            //DgvGroupMan.DataSource = new PermBLL().SelectGroup(new sys_group());
+            DgvGroupMan.DataSource = new PermBLL().SelectGroup(new sys_group());
         }
 
         //系统设置Tab页点击事件（二级）

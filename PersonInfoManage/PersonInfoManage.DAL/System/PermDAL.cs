@@ -124,7 +124,7 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="group">查询条件</param>
         /// <returns>用户组信息</returns>
-        public List<sys_group> SelectGroup(sys_group group)
+        public List<sys_group> SelectGroupBy(sys_group group)
         {
             DataSet ds = new DataSet();
             string sql = "Select * from sys_group where group_name=@group_name";
@@ -152,6 +152,32 @@ namespace PersonInfoManage.DAL.System
             catch (Exception e)
             {
                 new LogSysDAL().Add(LogOperations.LogSys("查询用户组"+e.Message));
+            }
+            return group2;
+        }
+        public List<sys_group> SelectGroup(sys_group group)
+        {
+            DataSet ds = new DataSet();
+            string sql = "Select * from sys_group";
+            List<sys_group> group2 = new List<sys_group>();
+            ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+            try
+            {
+                
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    sys_group group1 = new sys_group();
+                    group1.id = (int)ds.Tables[0].Rows[i][nameof(sys_group.id)];
+                    group1.group_name = (string)ds.Tables[0].Rows[i][nameof(sys_group.group_name)];
+                    group1.remark = (string)ds.Tables[0].Rows[i][nameof(sys_group.remark)];
+                    group1.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_group.create_time)];
+                    group1.modify_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_group.modify_time)];
+                    group2.Add(group1);
+                }
+            }
+            catch (Exception e)
+            {
+                new LogSysDAL().Add(LogOperations.LogSys("查询用户组" + e.Message));
             }
             return group2;
         }
