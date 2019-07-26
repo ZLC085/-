@@ -924,7 +924,7 @@
             this.CmbDictType.Name = "CmbDictType";
             this.CmbDictType.Size = new System.Drawing.Size(192, 23);
             this.CmbDictType.TabIndex = 9;
-            this.CmbDictType.SelectedIndexChanged += new System.EventHandler(this.CmbDictType_SelectedIndexChanged);
+            //this.CmbDictType.SelectedIndexChanged += new System.EventHandler(this.CmbDictType_SelectedIndexChanged);
             // 
             // labelX29
             // 
