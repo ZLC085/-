@@ -12,6 +12,8 @@ namespace PersonInfoManage
 {
     public partial class MainForm : Form
     {
+        private List<view_sys_u2g> UserInfo;
+        private List<sys_group> GroupInfo;
         public MainForm()
         {
             InitializeComponent();
@@ -345,9 +347,8 @@ namespace PersonInfoManage
 
         private void BtnUpdateUser_Click(object sender, EventArgs e)
         {
-            AddUserForm addUserForm = new AddUserForm();
-            addUserForm.Text = "用户信息修改";
-            addUserForm.ShowDialog();
+            UpdateUserForm UpdateUserForm = new UpdateUserForm();
+            UpdateUserForm.ShowDialog();
         }
 
         private void BtnGroupManage_Click(object sender, EventArgs e)

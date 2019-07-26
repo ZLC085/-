@@ -239,5 +239,15 @@ namespace PersonInfoManage.BLL.System
             return perm.SelectG2m(groupId);
         }
 
+        /// <summary>
+        /// 查询所有权限
+        /// </summary>
+        /// <param name="groupId">用户组id</param>
+        /// <returns>用户组信息</returns>
+        public List<view_sys_g2m> SelectAllG2m()
+        {
+            PermDAL perm = new PermDAL();
+            return perm.SelectAllG2m();
+        }
     }
 }

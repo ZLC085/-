@@ -23,7 +23,9 @@ namespace PersonInfoManage
         private void AddUserToGroupForm_Load(object sender, EventArgs e)
         {
             //labelX3.Text = group_name;
-            //dataGridViewX1
+            dataGridViewX1.AutoGenerateColumns = false;
+            sys_user user = new sys_user();
+            dataGridViewX1.DataSource = new SysUserBLL().Select(user);
         }
 
         private void buttonX1_Click(object sender, EventArgs e)
