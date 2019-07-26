@@ -2,7 +2,9 @@
 using PersonInfoManage.BLL.Logs;
 using PersonInfoManage.BLL.System;
 using PersonInfoManage.BLL.Utils;
+using PersonInfoManage.DAL.Cost;
 using PersonInfoManage.DAL.PersonInfo;
+using PersonInfoManage.DAL.System;
 using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
@@ -236,36 +238,31 @@ namespace PersonInfoManage
 
         //费用管理菜单Tab页切换事件（一级）
         private void MenuCost_Click(object sender, EventArgs e)
-        {
+        {                    
             TabControlCost.SelectedTab = TabCostApply;
+            //设置时间为截至目前10天
+            TimeApplyStart.Value = DateTime.Now.AddDays(-10);
+            TimeApplyEnd.Value = DateTime.Now;
             DgvCostApply.AutoGenerateColumns = false;
-            //获取本地用户id
-            int localUserId = UserInfoBLL.UserId;
-            Dictionary<string,object> dic = new Dictionary<string, object>();
-            dic.Add(nameof(cost_main.apply_id), localUserId);
-            DgvCostApply.DataSource = new CostApplyBLL().Query(dic);
+            BtnSearchCostApply_Click(null, null);
         }
 
         //费用申请Tab页点击事件（二级）
         private void TabCostApply_Click(object sender, EventArgs e)
         {
             DgvCostApply.AutoGenerateColumns = false;
-            //获取本地用户id
-            int localUserId = UserInfoBLL.UserId;
-            Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic.Add(nameof(cost_main.apply_id), localUserId);
-            DgvCostApply.DataSource = new CostApplyBLL().Query(dic);
+            TimeApplyStart.Value = DateTime.Now.AddDays(-10);
+            TimeApplyEnd.Value = DateTime.Now;
+            BtnSearchCostApply_Click(null, null);
         }
 
         //费用审批Tab页点击事件（二级）
         private void TabCostAudit_Click(object sender, EventArgs e)
         {
             DgvCostApprove.AutoGenerateColumns = false;
-            //获取本地用户id
-            int localUserId = UserInfoBLL.UserId;
-            Dictionary<string, object> dic = new Dictionary<string, object>();
-            dic.Add(nameof(cost_approval.approval_id), localUserId);
-            DgvCostApprove.DataSource = new CostApprovalBLL().Query(dic);
+            TimeApproveStart.Value = DateTime.Now.AddDays(-10);
+            TimeApproveEnd.Value = DateTime.Now;
+            BtnSearchApprove_Click(null, null);
         }
 
         //费用规划Tab页点击事件（二级）
@@ -274,6 +271,7 @@ namespace PersonInfoManage
             DgvCostPlan.AutoGenerateColumns = false;
             Dictionary<string, object> dic = new Dictionary<string, object>();
             DgvCostPlan.DataSource = new CostPlanBLL().Query(dic);
+            
         }
         
         //系统设置菜单Tab页切换事件（一级）
@@ -470,55 +468,229 @@ namespace PersonInfoManage
         {
             CostApplyForm costApplyForm = new CostApplyForm();
             costApplyForm.ShowDialog();
+            BtnSearchCostApply_Click(null, null);
         }
 
         private void BtnQueryCost_Click(object sender, EventArgs e)
         {
-            CostApplyDetailForm costApplyDetailForm = new CostApplyDetailForm();
+            if (DgvCostApply.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("请选择一行记录进行查看");
+                return;
+            }
+            int costId =(int) DgvCostApply.SelectedRows[0].Cells["cost_id"].Value;
+            CostApplyDetailForm costApplyDetailForm = new CostApplyDetailForm(costId);
             costApplyDetailForm.ShowDialog();
         }
 
         private void BtnUpdateCost_Click(object sender, EventArgs e)
         {
-            CostApplyForm costApplyForm = new CostApplyForm();
+            if (DgvCostApply.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("请仅选择一个费用单进行修改！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int costId = (int)DgvCostApply.SelectedRows[0].Cells["cost_id"].Value;
+            List<cost> costList = new CostApplyBLL().Query(new Dictionary<string, object> { { "id", costId } });
+            if (costList.Count != 0)
+            {
+                if (costList[0].Main.status != 0)
+                {
+                    MessageBox.Show("该费用单已审核，不可修改", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+            CostApplyForm costApplyForm = new CostApplyForm(costId);
             costApplyForm.Text = "费用单修改";
             costApplyForm.ShowDialog();
+            BtnSearchCostApply_Click(null, null);
         }
 
         private void BtnQueryAudit_Click(object sender, EventArgs e)
         {
-            CostApplyDetailForm costApplyDetailForm = new CostApplyDetailForm();
+            if (DgvCostApprove.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("请仅选择一个费用单查看详情！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int costId = (int)DgvCostApprove.SelectedRows[0].Cells["ApprCostId"].Value;
+            CostApplyDetailForm costApplyDetailForm = new CostApplyDetailForm(costId);
             costApplyDetailForm.ShowDialog();
         }
 
         private void BtnAudit_Click(object sender, EventArgs e)
         {
-            CostApprovalForm costApprovalForm = new CostApprovalForm();
+            if (DgvCostApprove.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("请仅选择一个费用单进行审批！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int costId = (int)DgvCostApprove.SelectedRows[0].Cells["ApprCostId"].Value;
+            cost cost = new CostApplyBLL().Query(new Dictionary<string, object>
+            {
+                {"id",costId }
+            })[0];
+            foreach(cost_approval approval in cost.ApprovalList)
+            {
+                if (approval.result != null && approval.approval_id==UserInfoBLL.UserId)
+                {
+                    MessageBox.Show("该费用单已审批！不可再次审批", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }            
+            CostApprovalForm costApprovalForm = new CostApprovalForm(costId);
             costApprovalForm.ShowDialog();
+            BtnSearchCostApply_Click(null, null);
         }
 
 
         private void BtnRepealCost_Click(object sender, EventArgs e)
         {
+            if (DgvCostApply.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("请仅选择一个费用单进行撤销！", "信息意识", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int costId = (int)DgvCostApply.SelectedRows[0].Cells["cost_id"].Value;
+            List<cost> costList = new CostApplyBLL().Query(new Dictionary<string, object> { { "id", costId } });
+            if (costList.Count != 0)
+            {
+                if (costList[0].Main.status != 0)
+                {
+                    MessageBox.Show("该费用单已审核，不可撤销", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+            }
+            DialogResult dialogResult = MessageBox.Show("您确定要撤销费用单" + costId + "吗？", "撤销提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(dialogResult == DialogResult.Yes)
+            {
+                Result res = new CostApplyBLL().Del(costId);
+                MessageBox.Show(res.Message, "撤销结果提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+            }
+            BtnSearchCostApply_Click(null, null);
 
         }
 
 
         private void BtnSearchCostApply_Click(object sender, EventArgs e)
         {
+            Dictionary<string, object> conditions = new Dictionary<string, object>();
+            conditions.Add("apply_id", UserInfoBLL.UserId);
+            int status = -1;
+            if (CmbApplyStatus.SelectedItem != null)
+            {
+                if(!CmbApplyStatus.SelectedItem.ToString().Trim().Equals(" "))
+                {
+                    switch (CmbApplyStatus.SelectedItem.ToString())
+                    {
+                        case "未审核": status = 0; break;
+                        case "正在审核": status = 1; break;
+                        case "审核通过": status = 2; break;
+                        case "审核驳回": status = 3; break;
+
+                    }
+                }
+                
+            }
+            if (status >= 0)
+            {
+                conditions.Add("status", status);
+            }
+            conditions.Add("start_time", TimeApplyStart.Value);
+            conditions.Add("end_time", TimeApplyEnd.Value);
+            List<cost> ListCost = new CostApplyBLL().Query(conditions);
+            List<CostApplyData> DataList = new List<CostApplyData>();
+            foreach (cost cost in ListCost)
+            {
+                string applicant = new SysUserDAL().SelectById(cost.Main.apply_id)[0].name;
+                string statusStr = null;
+                switch (cost.Main.status)
+                {
+                    case 0: statusStr = "未审核"; break;
+                    case 1: statusStr = "正在审核"; break;
+                    case 2: statusStr = "审核通过"; break;
+                    case 3: statusStr = "审核驳回"; break;
+                }
+                DataList.Add(new CostApplyData
+                {
+                    Number = 1,
+                    cost_id = cost.Main.id,
+                    applicant = applicant,
+                    apply_money = cost.Main.apply_money,
+                    apply_time = cost.Main.apply_time,
+                    status = statusStr
+                });
+            }
+            DgvCostApply.DataSource = DataList;
 
         }
 
 
         private void BtnDelApprove_Click(object sender, EventArgs e)
         {
+            if (DgvCostApprove.SelectedRows.Count != 1)
+            {
+                MessageBox.Show("请仅选择一个费用单进行撤销！", "信息提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int costId = (int)DgvCostApprove.SelectedRows[0].Cells["ApprCostId"].Value;
+            DialogResult dialogResult = MessageBox.Show("您确定要撤销费用单" + costId + "吗？", "撤销提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Result res = new CostApprovalBLL().Del(costId);
+                MessageBox.Show(res.Message, "撤销结果提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            }
+            BtnSearchCostApply_Click(null, null);
         }
 
 
         private void BtnSearchApprove_Click(object sender, EventArgs e)
         {
+            Dictionary<string, object> conditions = new Dictionary<string, object>();
+            conditions.Add("start_time", TimeApproveStart.Value);
+            conditions.Add("end_time", TimeApproveEnd.Value);
+            int result = -1;
+            switch (CmbApporveStatus.Text.ToString().Trim())
+            {
+                case "通过":result = 0;break;
+                case "驳回":result = 1;break;
+                case "未审核":result = 2;break;
+            }
+            List<CostApprovalData> ListData = new List<CostApprovalData>();
+            List<cost> CostList = new CostApplyBLL().Query(conditions);
+            foreach(cost cost in CostList)
+            {
+                foreach(cost_approval approval in cost.ApprovalList)
+                {
+                    if (result == 0 &&( approval==null || approval.result==false)) { continue; }
+                    if(result == 1&&(approval==null || approval.result == true)) { continue; }
+                    if (result == 2 && (approval != null)) { continue; }
+                    if (approval.approval_id != UserInfoBLL.UserId) { continue; }
+                    CostApprovalData data = new CostApprovalData
+                    {
+                        ApprNumber = 1,
+                        ApprCostId=cost.Main.id,
+                        ApprApplicant = new SysUserDAL().SelectById(cost.Main.apply_id)[0].name,
+                        ApprApplyMoney = cost.Main.apply_money,
+                        ApprApplyTime = cost.Main.apply_time,
+                        ApprApprovalTime = approval.time,
+                        ApprOpinion = approval.opinion
 
+                    };
+                    if (approval.result == null)
+                    {
+                        data.ApprResult = "未审批";
+                    }
+                    else
+                    {
+                        data.ApprResult = (bool)approval.result ? "通过" : "驳回";
+                    }
+                    ListData.Add(data);
+                }
+            }
+            DgvCostApprove.DataSource = ListData;
         }
         
         private void BtnSearchBus1_Click(object sender, EventArgs e)
@@ -568,5 +740,7 @@ namespace PersonInfoManage
         }
         //</蒋媛_3>
         #endregion
+
+        
     }
 }

@@ -55,10 +55,12 @@
     <Compile Include="bns_t2p.cs" />
     <Compile Include="bns_task.cs" />
     <Compile Include="cost.cs" />
+    <Compile Include="CostApprovalData.cs" />
     <Compile Include="cost_approval.cs" />
     <Compile Include="cost_detail.cs" />
     <Compile Include="cost_main.cs" />
     <Compile Include="cost_plan.cs" />
+    <Compile Include="CostApplyData.cs" />
     <Compile Include="log_sys.cs" />
     <Compile Include="log_user.cs" />
     <Compile Include="person_basic.cs" />
