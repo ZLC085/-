@@ -49,8 +49,7 @@ namespace PersonInfoManage
                 this.DgvApproval.Rows[index].SetValues(approver, approval.result, approval.time, approval.opinion);
             }
             int userId = UserInfoBLL.UserId;
-            //List<string> approverList = new CostApplyDAL().GetApprovalInfo(userId);
-            List<string> approverList = new CostApplyDAL().GetApprovalInfo(32);
+            List<string> approverList = new CostApplyDAL().GetApprovalInfo(userId);
             if (approverList.Count == 0)
             {
                 LblNextApprover.Visible = false;
@@ -77,8 +76,7 @@ namespace PersonInfoManage
             cost_approval approval = new cost_approval
             {
                 cost_id = costId,
-                approval_id=32,
-                //approval_id = UserInfoBLL.UserId,
+                approval_id = UserInfoBLL.UserId,
                 result = true,
                 time = DateTime.Now,
                 opinion = TexOpinion.Text

@@ -22,7 +22,8 @@ namespace PersonInfoManage
 
         private void GroupManageForm_Load(object sender, EventArgs e)
         {
-            //等datagridview方法
+            dataGridViewX1.AutoGenerateColumns = false;
+            dataGridViewX1.DataSource = new PermBLL().SelectU2g(21); 
         }
 
         private void buttonItem1_Click(object sender, EventArgs e)
@@ -33,27 +34,31 @@ namespace PersonInfoManage
 
         private void buttonItem2_Click(object sender, EventArgs e)
         {
-            int groupid = 0;//待定
-            sys_user user = new sys_user();
-            user.username = "test";
-            user.name = "test";
-            List<view_sys_u2g> userinfo = new List<view_sys_u2g>();
-            userinfo = new SysUserBLL().Select(user);
-            List<int> userid = new List<int>();
-            foreach(var user1 in userinfo)
+            DialogResult res = MessageBoxCustom.Show("是否确认删除？", "提示", MessageBoxButtons.YesNo, this);
+            if (res == DialogResult.Yes)
             {
-                
-                userid.Add(user1.id);
-            }
-            Result result = new PermBLL().DelG2u(groupid,userid);
-            if (result.Code == RES.OK)
-            {
-                MessageBoxCustom.Show("删除成功", "提示", MessageBoxButtons.OK, this);
-                Close();
-            }
-            else if (result.Code == RES.ERROR)
-            {
-                MessageBoxCustom.Show("删除失败", "提示", MessageBoxButtons.OK, this);
+                int groupid = 0;//待定
+                sys_user user = new sys_user();
+                user.username = "test";
+                user.name = "test";
+                List<view_sys_u2g> userinfo = new List<view_sys_u2g>();
+                userinfo = new SysUserBLL().Select(user);
+                List<int> userid = new List<int>();
+                foreach (var user1 in userinfo)
+                {
+
+                    userid.Add(user1.id);
+                }
+                Result result = new PermBLL().DelG2u(groupid, userid);
+                if (result.Code == RES.OK)
+                {
+                    MessageBoxCustom.Show("删除成功", "提示", MessageBoxButtons.OK, this);
+                    Close();
+                }
+                else if (result.Code == RES.ERROR)
+                {
+                    MessageBoxCustom.Show("删除失败", "提示", MessageBoxButtons.OK, this);
+                }
             }
         }
 

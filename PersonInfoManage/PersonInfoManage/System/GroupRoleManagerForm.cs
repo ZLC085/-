@@ -22,7 +22,8 @@ namespace PersonInfoManage
         private void GroupRoleManageForm_Load(object sender, EventArgs e)
         {
             //labelX5.Text = groupname;
-
+            dataGridViewX1.AutoGenerateColumns = false;
+            dataGridViewX1.DataSource = new PermBLL().SelectAllG2m();
         }
 
         private void buttonX1_Click(object sender, EventArgs e)
