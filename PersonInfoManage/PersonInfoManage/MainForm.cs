@@ -15,7 +15,7 @@ namespace PersonInfoManage
         public MainForm()
         {
             InitializeComponent();
-            
+            //dgvPerson.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -35,11 +35,13 @@ namespace PersonInfoManage
             //}
 
         }
-
+        #region 王继能
         //<王继能_1>
         //
         //</王继能_1>
+        #endregion
 
+        #region 毛宇航
         //<毛宇航_1>
         private void BtnAddPerson_Click(object sender, EventArgs e)
         {
@@ -85,14 +87,23 @@ namespace PersonInfoManage
         {
 
         }
-        //</毛宇航_1>
 
+
+        private void BtnComdelPerson_Click(object sender, EventArgs e)
+        {
+
+        }
+        //</毛宇航_1>
+        #endregion 毛宇航
+
+        #region 李鸽鸽
         //<李鸽鸽_1>
         //
         //</李鸽鸽_1>
+        #endregion
 
+        #region 坤吉心
         //<坤吉心_1>
-        
         private void BtnDelUserlog_Click(object sender, EventArgs e)
         {
 
@@ -113,9 +124,10 @@ namespace PersonInfoManage
 
         }
         //</坤吉心_1>
+        #endregion
 
+        #region 苏文杰
         //<苏文杰_2>
-
         //首页timer控件tick事件
         private void Timer1_Tick(object sender, EventArgs e)
         {
@@ -315,9 +327,10 @@ namespace PersonInfoManage
 
         }
         //</苏文杰_2>
+        #endregion
 
+        #region 王尔沛
         //<王尔沛_2>
-
         private void BtnAddUser_Click(object sender, EventArgs e)
         {
             AddUserForm addUserForm = new AddUserForm();
@@ -366,9 +379,10 @@ namespace PersonInfoManage
 
         }
         //</王尔沛_2>
+        #endregion
 
+        #region 曾丽川
         //<曾丽川_2>
-
         private void BtnAddRole_Click(object sender, EventArgs e)
         {
             AddUserGroupForm addUserGroupForm = new AddUserGroupForm();
@@ -411,12 +425,45 @@ namespace PersonInfoManage
         {
 
         }
+
+        //数据字典下拉框选择事件
+        private void CmbDictType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
         //</曾丽川_2>
+        #endregion
 
+        #region 张乐
         //<张乐_3>
-        //
-        //</张乐_3>
+        private void BtnAddBusiness_Click(object sender, EventArgs e)
+        {
 
+        }
+
+
+        private void BtnBusinessDetail_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnUpdateBusiness_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDelBusiness_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void BtnApproveBus_Click(object sender, EventArgs e)
+        {
+
+        }
+        //</张乐_3>
+        #endregion
+
+        #region 陈波
         //<陈波_3>
         //
         private void BtnAddCost_Click(object sender, EventArgs e)
@@ -473,11 +520,21 @@ namespace PersonInfoManage
         {
 
         }
+        
+        private void BtnSearchBus1_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void BtnSearchBus2_Click(object sender, EventArgs e)
+        {
+
+        }
         //</陈波_3>
+        #endregion
 
+        #region 蒋媛
         //<蒋媛_3>
-
         private void BtnUpdatePlan_Click(object sender, EventArgs e)
         {
             CostPlanForm costPlanForm = new CostPlanForm();
@@ -509,8 +566,7 @@ namespace PersonInfoManage
         {
 
         }
-        
-
         //</蒋媛_3>
+        #endregion
     }
 }
