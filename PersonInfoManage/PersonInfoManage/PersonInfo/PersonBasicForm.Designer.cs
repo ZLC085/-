@@ -779,7 +779,7 @@
             this.CmbNation.Name = "CmbNation";
             this.CmbNation.Size = new System.Drawing.Size(200, 23);
             this.CmbNation.TabIndex = 8;
-            this.CmbNation.DragDrop += new System.Windows.Forms.DragEventHandler(this.CmbNation_DragDrop);
+            this.CmbNation.DropDown += new System.EventHandler(this.CmbNation_DropDown);
             // 
             // CmbMarry
             // 
@@ -808,7 +808,7 @@
             // CmbProvince
             // 
             this.CmbProvince.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbProvince.DropDownWidth = 227;
+            this.CmbProvince.DropDownWidth = 175;
             this.CmbProvince.FormattingEnabled = true;
             this.CmbProvince.ItemHeight = 15;
             this.CmbProvince.Location = new System.Drawing.Point(170, 390);
@@ -822,7 +822,7 @@
             // CmbCity
             // 
             this.CmbCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbCity.DropDownWidth = 227;
+            this.CmbCity.DropDownWidth = 175;
             this.CmbCity.FormattingEnabled = true;
             this.CmbCity.ItemHeight = 15;
             this.CmbCity.Location = new System.Drawing.Point(397, 390);
@@ -836,7 +836,7 @@
             // CmbPlace
             // 
             this.CmbPlace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbPlace.DropDownWidth = 226;
+            this.CmbPlace.DropDownWidth = 175;
             this.CmbPlace.FormattingEnabled = true;
             this.CmbPlace.ItemHeight = 15;
             this.CmbPlace.Location = new System.Drawing.Point(624, 390);
@@ -934,7 +934,7 @@
             this.LblNativePlace.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.LblNativePlace.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.LblNativePlace.ForeColor = System.Drawing.Color.Red;
-            this.LblNativePlace.Location = new System.Drawing.Point(620, 420);
+            this.LblNativePlace.Location = new System.Drawing.Point(698, 420);
             this.LblNativePlace.Margin = new System.Windows.Forms.Padding(4);
             this.LblNativePlace.Name = "LblNativePlace";
             this.LblNativePlace.Size = new System.Drawing.Size(150, 15);
@@ -1047,6 +1047,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.PersonBasicForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

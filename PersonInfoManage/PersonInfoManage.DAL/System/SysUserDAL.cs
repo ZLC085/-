@@ -43,7 +43,7 @@ namespace PersonInfoManage.DAL.System
             }
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("添加用户"+e.Message));
                 return 0;
             }
         }
@@ -77,7 +77,7 @@ namespace PersonInfoManage.DAL.System
             }
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("修改用户信息"+e.Message));
                 return 0;
             }
             //return new DBOperationsUpdate<sys_dict>().UpdateById(id, newValues);
@@ -125,7 +125,7 @@ namespace PersonInfoManage.DAL.System
                 catch (Exception e)
                 {
                     trans.Rollback();
-                    new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                    new LogSysDAL().Add(LogOperations.LogSys("删除用户"+e.Message));
                     return 0;
                 }
                 finally
@@ -192,7 +192,7 @@ namespace PersonInfoManage.DAL.System
             }
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("查询用户信息"+e.Message));
                 return null;
             }
             //return new DBOperationsSelect<sys_user>().SelectByConditions(conditions);
@@ -210,7 +210,7 @@ namespace PersonInfoManage.DAL.System
             try
             {
                 List<view_sys_u2g> user = new List<view_sys_u2g>();
-                string sql = "SELECT * from view_sys_u2g where id = '" + id + "'  ";
+                string sql = "SELECT * from view_sys_u2g where id ='"+id+"'";
                 DataSet ds = new DataSet();
                 ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
                 for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
@@ -230,7 +230,7 @@ namespace PersonInfoManage.DAL.System
             }
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("查询用户信息"+e.Message));
                 return null;
             }
         }

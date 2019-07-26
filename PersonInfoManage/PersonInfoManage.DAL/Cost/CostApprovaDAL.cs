@@ -21,7 +21,7 @@ namespace PersonInfoManage.DAL.Cost
         /// <param name="cost">费用单主表对象Main:id、status 
         /// DetailList 费用详情列表：
         /// ApprovalList 费用审批表列表：详见方法体注释</param>
-        /// <returns></returns>
+        /// <returns>数据表受影响行数</returns>
         public int Update(cost cost)
         {
             /*
