@@ -23,8 +23,10 @@ namespace PersonInfoManage
         private void PersonDetailForm_Load(object sender, EventArgs e)
         {
             person_basic pb = new person_basic { id = PersonId };
+            pb.user_id = UserInfoBLL.UserId;
             List<person_basic> list = new PersonBasicBLL().Query(pb);
             LblName.Text = list[0].name;
+            LblFormerName.Text = list[0].former_name;
             ///
             /// ...
             ///
