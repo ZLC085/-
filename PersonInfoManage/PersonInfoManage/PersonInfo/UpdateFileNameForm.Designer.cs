@@ -158,6 +158,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "修改文件名";
+            this.Load += new System.EventHandler(this.UpdateFileName_Load);
             this.panelEx1.ResumeLayout(false);
             this.ResumeLayout(false);
 

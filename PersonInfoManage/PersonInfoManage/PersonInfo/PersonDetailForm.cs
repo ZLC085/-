@@ -1,5 +1,6 @@
 ﻿using Loading;
 using PersonInfoManage.BLL.PersonInfo;
+using PersonInfoManage.BLL.System;
 using PersonInfoManage.BLL.Utils;
 using PersonInfoManage.Model;
 using System;
@@ -27,9 +28,42 @@ namespace PersonInfoManage
             List<person_basic> list = new PersonBasicBLL().Query(pb);
             LblName.Text = list[0].name;
             LblFormerName.Text = list[0].former_name;
-            ///
-            /// ...
-            ///
+            LblGender.Text = list[0].gender;
+            LblID.Text = list[0].identity_number;
+            LblBirthDate.Text = list[0].birth_date.ToString();
+            LblNation.Text = list[0].nation;
+            LblNativePlace.Text = list[0].native_place;
+            LblAddress.Text = list[0].address;
+            LblPhone.Text = list[0].phone;
+            LblQQ.Text = list[0].qq;
+            foreach (var item in new SysSettingBLL().SelectByDictName(sys_dict_type.Person))
+            {
+                if (item.id.Equals(list[0].person_type_id))
+                {
+                    LblPersonType.Text = item.category_name;
+                }
+            }
+            foreach (var item in new SysSettingBLL().SelectByDictName(sys_dict_type.BelongPlace))
+            {
+                if (item.id.Equals(list[0].belong_place_id))
+                {
+                    LblBelongPlace.Text = item.category_name;
+                }
+            }
+            if (list[0].marry_status)
+            {
+                LblMarry.Text = "已婚";
+            }
+            else
+            {
+                LblMarry.Text = "未婚";
+            }
+            LblJob.Text = list[0].job_status;
+            LblIncome.Text = list[0].income.ToString();
+            LblTemper.Text = list[0].temper;
+            LblFamily.Text = list[0].family;
+            LblInputTime.Text = list[0].input_time.ToString();
+            LblUserId.Text = list[0].user_id.ToString();
         }
 
         private void BtnAddFile_Click(object sender, EventArgs e)
@@ -109,35 +143,30 @@ namespace PersonInfoManage
             DialogResult res = MessageBoxCustom.Show("确认删除", "提示", MessageBoxButtons.YesNo, this);
             if (res == DialogResult.Yes)
             {
-                //PersonFileBLL a = new PersonFileBLL();
-                //a.Del(id);
-                //PersonFileBLL file = new PersonFileBLL();
-                //file.Del(id);
-                String file = " PersonFileBLL ";
-                String del = " Del ";
+                int id = 0;
+                person_file file= new person_file();
+                /*file.id = 0*/;
+                file.person_id = 0;
+                List<person_file> pf = new List<person_file>();
+                pf = new PersonFileBLL().GetByPersonId(PersonId);
+                List<int> file1 = new List<int>();
 
-                Type type;
-                Object obj;
-
-                type = Type.GetType(file);
-                obj = System.Activator.CreateInstance(type);
-
-                MethodInfo method = type.GetMethod(del, new Type[] { });
-                object[] parameters = null;
-                //method.Invoke(obj, parameters);
-
-
-                method = type.GetMethod(del, new Type[] { typeof(string) });
-                parameters = new[] { "id" };
-                method.Invoke(obj, parameters);
-
-            }
-            else
-            {
-                this.Close();
+                foreach (var file2 in pf)
+                {
+                    file1.Add(file2.id);
+                }
+                Result result = new PersonFileBLL().Del(id);
+                if (result.Code == RES.OK)
+                {
+                    MessageBoxCustom.Show("删除成功", "提示", MessageBoxButtons.OK, this);
+                    Close();
+                }
+                else if (result.Code == RES.ERROR)
+                {
+                    MessageBoxCustom.Show("删除失败", "提示", MessageBoxButtons.OK, this);
+                }
             }
         }
-
         
     }
 }

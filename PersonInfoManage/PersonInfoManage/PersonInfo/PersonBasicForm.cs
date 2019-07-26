@@ -87,13 +87,32 @@ namespace PersonInfoManage
             {
                 #region 初始选项
                 person_basic pb = new person_basic();
-                //pb.id = "要修改的人员id";
+
+                pb.id = 1027;
+                pb.user_id = UserInfoBLL.UserId;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 List<person_basic> list = new PersonBasicBLL().Query(pb);
 
                 // 姓名
-                TxtName.Text = list[0].name.ToString();
+                TxtName.Text = list[0].name;
                 // 曾用名
-                TxtFormerName.Text = list[0].former_name.ToString();
+                TxtFormerName.Text = list[0].former_name;
                 // 性别
                 if (list[0].gender.Equals("男")) RdoMale.Checked = true;
                 if (list[0].gender.Equals("女")) RdoFemale.Checked = true;
@@ -306,6 +325,13 @@ namespace PersonInfoManage
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
             person_basic pb = new person_basic();
+            pb.user_id = pb.id = 1027;
+            pb.user_id = UserInfoBLL.UserId;
+
+
+
+
+
 
             #region 姓名
             string name = TxtName.Text.Replace(" ", "");
