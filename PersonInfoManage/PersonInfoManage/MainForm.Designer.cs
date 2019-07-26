@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,9 +41,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -76,6 +76,32 @@
             this.metroShell1 = new DevComponents.DotNetBar.Metro.MetroShell();
             this.metroTabPanel5 = new DevComponents.DotNetBar.Metro.MetroTabPanel();
             this.TabControlCost = new DevComponents.DotNetBar.SuperTabControl();
+            this.superTabControlPanel5 = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.DgvCostApprove = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.Column27 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ApprNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApprCostId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApprApplicant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApprApplyMoney = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApprApplyTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApprApprovalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApprResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApprOpinion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelEx29 = new DevComponents.DotNetBar.PanelEx();
+            this.panelEx15 = new DevComponents.DotNetBar.PanelEx();
+            this.line4 = new DevComponents.DotNetBar.Controls.Line();
+            this.TimeApproveEnd = new System.Windows.Forms.DateTimePicker();
+            this.CmbApporveStatus = new System.Windows.Forms.ComboBox();
+            this.TimeApproveStart = new System.Windows.Forms.DateTimePicker();
+            this.BtnSearchApprove = new DevComponents.DotNetBar.ButtonX();
+            this.labelX7 = new DevComponents.DotNetBar.LabelX();
+            this.labelX9 = new DevComponents.DotNetBar.LabelX();
+            this.panelEx14 = new DevComponents.DotNetBar.PanelEx();
+            this.ribbonBar8 = new DevComponents.DotNetBar.RibbonBar();
+            this.BtnQueryApprove = new DevComponents.DotNetBar.ButtonItem();
+            this.BtnApprove = new DevComponents.DotNetBar.ButtonItem();
+            this.BtnDelApprove = new DevComponents.DotNetBar.ButtonItem();
+            this.TabCostAudit = new DevComponents.DotNetBar.SuperTabItem();
             this.superTabControlPanel4 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.DgvCostApply = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.Column20 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -133,23 +159,6 @@
             this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.TabCostStats = new DevComponents.DotNetBar.SuperTabItem();
-            this.superTabControlPanel5 = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.DgvCostApprove = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.panelEx29 = new DevComponents.DotNetBar.PanelEx();
-            this.panelEx15 = new DevComponents.DotNetBar.PanelEx();
-            this.line4 = new DevComponents.DotNetBar.Controls.Line();
-            this.TimeApproveEnd = new System.Windows.Forms.DateTimePicker();
-            this.CmbApporveStatus = new System.Windows.Forms.ComboBox();
-            this.TimeApproveStart = new System.Windows.Forms.DateTimePicker();
-            this.BtnSearchApprove = new DevComponents.DotNetBar.ButtonX();
-            this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            this.labelX9 = new DevComponents.DotNetBar.LabelX();
-            this.panelEx14 = new DevComponents.DotNetBar.PanelEx();
-            this.ribbonBar8 = new DevComponents.DotNetBar.RibbonBar();
-            this.BtnQueryApprove = new DevComponents.DotNetBar.ButtonItem();
-            this.BtnApprove = new DevComponents.DotNetBar.ButtonItem();
-            this.BtnDelApprove = new DevComponents.DotNetBar.ButtonItem();
-            this.TabCostAudit = new DevComponents.DotNetBar.SuperTabItem();
             this.metroTabPanel6 = new DevComponents.DotNetBar.Metro.MetroTabPanel();
             this.TabControlSys = new DevComponents.DotNetBar.SuperTabControl();
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
@@ -385,19 +394,14 @@
             this.MenuSys = new DevComponents.DotNetBar.Metro.MetroTabItem();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.Timer1 = new System.Windows.Forms.Timer(this.components);
-            this.Column27 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ApprNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApprCostId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApprApplicant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApprApplyMoney = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApprApplyTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApprApprovalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApprResult = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApprOpinion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroShell1.SuspendLayout();
             this.metroTabPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TabControlCost)).BeginInit();
             this.TabControlCost.SuspendLayout();
+            this.superTabControlPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvCostApprove)).BeginInit();
+            this.panelEx15.SuspendLayout();
+            this.panelEx14.SuspendLayout();
             this.superTabControlPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCostApply)).BeginInit();
             this.panelEx13.SuspendLayout();
@@ -409,10 +413,6 @@
             this.panelEx17.SuspendLayout();
             this.superTabControlPanel6.SuspendLayout();
             this.panelEx16.SuspendLayout();
-            this.superTabControlPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvCostApprove)).BeginInit();
-            this.panelEx15.SuspendLayout();
-            this.panelEx14.SuspendLayout();
             this.metroTabPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TabControlSys)).BeginInit();
             this.TabControlSys.SuspendLayout();
@@ -588,6 +588,360 @@
             this.TabCostStats,
             this.TabCostPlan});
             this.TabControlCost.Text = "TabControlCost";
+            // 
+            // superTabControlPanel5
+            // 
+            this.superTabControlPanel5.Controls.Add(this.DgvCostApprove);
+            this.superTabControlPanel5.Controls.Add(this.panelEx29);
+            this.superTabControlPanel5.Controls.Add(this.panelEx15);
+            this.superTabControlPanel5.Controls.Add(this.panelEx14);
+            this.superTabControlPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superTabControlPanel5.Location = new System.Drawing.Point(0, 36);
+            this.superTabControlPanel5.Margin = new System.Windows.Forms.Padding(4);
+            this.superTabControlPanel5.Name = "superTabControlPanel5";
+            this.superTabControlPanel5.Size = new System.Drawing.Size(1242, 593);
+            this.superTabControlPanel5.TabIndex = 0;
+            this.superTabControlPanel5.TabItem = this.TabCostAudit;
+            // 
+            // DgvCostApprove
+            // 
+            this.DgvCostApprove.AllowUserToAddRows = false;
+            this.DgvCostApprove.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvCostApprove.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DgvCostApprove.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvCostApprove.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column27,
+            this.ApprNumber,
+            this.ApprCostId,
+            this.ApprApplicant,
+            this.ApprApplyMoney,
+            this.ApprApplyTime,
+            this.ApprApprovalTime,
+            this.ApprResult,
+            this.ApprOpinion});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvCostApprove.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DgvCostApprove.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DgvCostApprove.EnableHeadersVisualStyles = false;
+            this.DgvCostApprove.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.DgvCostApprove.Location = new System.Drawing.Point(0, 161);
+            this.DgvCostApprove.Margin = new System.Windows.Forms.Padding(4);
+            this.DgvCostApprove.Name = "DgvCostApprove";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvCostApprove.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.DgvCostApprove.RowHeadersWidth = 51;
+            this.DgvCostApprove.RowTemplate.Height = 23;
+            this.DgvCostApprove.Size = new System.Drawing.Size(1242, 394);
+            this.DgvCostApprove.TabIndex = 15;
+            // 
+            // Column27
+            // 
+            this.Column27.FillWeight = 8F;
+            this.Column27.HeaderText = "选择";
+            this.Column27.MinimumWidth = 6;
+            this.Column27.Name = "Column27";
+            this.Column27.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // ApprNumber
+            // 
+            this.ApprNumber.DataPropertyName = "ApprNumber";
+            this.ApprNumber.FillWeight = 7F;
+            this.ApprNumber.HeaderText = "序号";
+            this.ApprNumber.MinimumWidth = 6;
+            this.ApprNumber.Name = "ApprNumber";
+            this.ApprNumber.ReadOnly = true;
+            // 
+            // ApprCostId
+            // 
+            this.ApprCostId.DataPropertyName = "ApprCostId";
+            this.ApprCostId.FillWeight = 10F;
+            this.ApprCostId.HeaderText = "费用单编号";
+            this.ApprCostId.MinimumWidth = 6;
+            this.ApprCostId.Name = "ApprCostId";
+            this.ApprCostId.ReadOnly = true;
+            // 
+            // ApprApplicant
+            // 
+            this.ApprApplicant.DataPropertyName = "ApprApplicant";
+            this.ApprApplicant.FillWeight = 10F;
+            this.ApprApplicant.HeaderText = "申请人";
+            this.ApprApplicant.MinimumWidth = 6;
+            this.ApprApplicant.Name = "ApprApplicant";
+            this.ApprApplicant.ReadOnly = true;
+            // 
+            // ApprApplyMoney
+            // 
+            this.ApprApplyMoney.DataPropertyName = "ApprApplyMoney";
+            this.ApprApplyMoney.FillWeight = 10F;
+            this.ApprApplyMoney.HeaderText = "申请金额";
+            this.ApprApplyMoney.MinimumWidth = 6;
+            this.ApprApplyMoney.Name = "ApprApplyMoney";
+            this.ApprApplyMoney.ReadOnly = true;
+            // 
+            // ApprApplyTime
+            // 
+            this.ApprApplyTime.DataPropertyName = "ApprApplyTime";
+            this.ApprApplyTime.FillWeight = 10F;
+            this.ApprApplyTime.HeaderText = "申请时间";
+            this.ApprApplyTime.MinimumWidth = 6;
+            this.ApprApplyTime.Name = "ApprApplyTime";
+            this.ApprApplyTime.ReadOnly = true;
+            // 
+            // ApprApprovalTime
+            // 
+            this.ApprApprovalTime.DataPropertyName = "ApprApprovalTime";
+            this.ApprApprovalTime.FillWeight = 10F;
+            this.ApprApprovalTime.HeaderText = "审批时间";
+            this.ApprApprovalTime.MinimumWidth = 6;
+            this.ApprApprovalTime.Name = "ApprApprovalTime";
+            this.ApprApprovalTime.ReadOnly = true;
+            // 
+            // ApprResult
+            // 
+            this.ApprResult.DataPropertyName = "ApprResult";
+            this.ApprResult.FillWeight = 8F;
+            this.ApprResult.HeaderText = "审批结果";
+            this.ApprResult.MinimumWidth = 6;
+            this.ApprResult.Name = "ApprResult";
+            this.ApprResult.ReadOnly = true;
+            // 
+            // ApprOpinion
+            // 
+            this.ApprOpinion.DataPropertyName = "ApprOpinion";
+            this.ApprOpinion.FillWeight = 27F;
+            this.ApprOpinion.HeaderText = "审批意见";
+            this.ApprOpinion.MinimumWidth = 6;
+            this.ApprOpinion.Name = "ApprOpinion";
+            this.ApprOpinion.ReadOnly = true;
+            // 
+            // panelEx29
+            // 
+            this.panelEx29.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx29.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx29.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx29.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelEx29.Location = new System.Drawing.Point(0, 555);
+            this.panelEx29.Margin = new System.Windows.Forms.Padding(4);
+            this.panelEx29.Name = "panelEx29";
+            this.panelEx29.Size = new System.Drawing.Size(1242, 38);
+            this.panelEx29.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx29.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx29.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx29.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx29.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx29.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx29.Style.GradientAngle = 90;
+            this.panelEx29.TabIndex = 11;
+            // 
+            // panelEx15
+            // 
+            this.panelEx15.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx15.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx15.Controls.Add(this.line4);
+            this.panelEx15.Controls.Add(this.TimeApproveEnd);
+            this.panelEx15.Controls.Add(this.CmbApporveStatus);
+            this.panelEx15.Controls.Add(this.TimeApproveStart);
+            this.panelEx15.Controls.Add(this.BtnSearchApprove);
+            this.panelEx15.Controls.Add(this.labelX7);
+            this.panelEx15.Controls.Add(this.labelX9);
+            this.panelEx15.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx15.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelEx15.Location = new System.Drawing.Point(0, 92);
+            this.panelEx15.Margin = new System.Windows.Forms.Padding(4);
+            this.panelEx15.Name = "panelEx15";
+            this.panelEx15.Size = new System.Drawing.Size(1242, 69);
+            this.panelEx15.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx15.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.panelEx15.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.panelEx15.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.panelEx15.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.panelEx15.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.panelEx15.Style.GradientAngle = 90;
+            this.panelEx15.TabIndex = 4;
+            // 
+            // line4
+            // 
+            this.line4.Location = new System.Drawing.Point(384, 19);
+            this.line4.Margin = new System.Windows.Forms.Padding(4);
+            this.line4.Name = "line4";
+            this.line4.Size = new System.Drawing.Size(38, 31);
+            this.line4.TabIndex = 25;
+            this.line4.Text = "line4";
+            // 
+            // TimeApproveEnd
+            // 
+            this.TimeApproveEnd.Location = new System.Drawing.Point(429, 21);
+            this.TimeApproveEnd.Margin = new System.Windows.Forms.Padding(4);
+            this.TimeApproveEnd.Name = "TimeApproveEnd";
+            this.TimeApproveEnd.Size = new System.Drawing.Size(162, 25);
+            this.TimeApproveEnd.TabIndex = 24;
+            // 
+            // CmbApporveStatus
+            // 
+            this.CmbApporveStatus.FormattingEnabled = true;
+            this.CmbApporveStatus.Items.AddRange(new object[] {
+            " ",
+            "通过",
+            "驳回",
+            "未审核"});
+            this.CmbApporveStatus.Location = new System.Drawing.Point(745, 21);
+            this.CmbApporveStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.CmbApporveStatus.Name = "CmbApporveStatus";
+            this.CmbApporveStatus.Size = new System.Drawing.Size(110, 23);
+            this.CmbApporveStatus.TabIndex = 23;
+            // 
+            // TimeApproveStart
+            // 
+            this.TimeApproveStart.Location = new System.Drawing.Point(220, 21);
+            this.TimeApproveStart.Margin = new System.Windows.Forms.Padding(4);
+            this.TimeApproveStart.Name = "TimeApproveStart";
+            this.TimeApproveStart.Size = new System.Drawing.Size(162, 25);
+            this.TimeApproveStart.TabIndex = 22;
+            // 
+            // BtnSearchApprove
+            // 
+            this.BtnSearchApprove.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.BtnSearchApprove.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.BtnSearchApprove.Location = new System.Drawing.Point(906, 20);
+            this.BtnSearchApprove.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnSearchApprove.Name = "BtnSearchApprove";
+            this.BtnSearchApprove.Size = new System.Drawing.Size(94, 29);
+            this.BtnSearchApprove.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.BtnSearchApprove.TabIndex = 21;
+            this.BtnSearchApprove.Text = "搜索";
+            this.BtnSearchApprove.Click += new System.EventHandler(this.BtnSearchApprove_Click);
+            // 
+            // labelX7
+            // 
+            // 
+            // 
+            // 
+            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX7.Location = new System.Drawing.Point(657, 21);
+            this.labelX7.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX7.Name = "labelX7";
+            this.labelX7.Size = new System.Drawing.Size(85, 29);
+            this.labelX7.TabIndex = 20;
+            this.labelX7.Text = "审批状态：";
+            // 
+            // labelX9
+            // 
+            // 
+            // 
+            // 
+            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX9.Location = new System.Drawing.Point(104, 21);
+            this.labelX9.Margin = new System.Windows.Forms.Padding(4);
+            this.labelX9.Name = "labelX9";
+            this.labelX9.Size = new System.Drawing.Size(109, 29);
+            this.labelX9.TabIndex = 19;
+            this.labelX9.Text = "申请时间段：";
+            // 
+            // panelEx14
+            // 
+            this.panelEx14.CanvasColor = System.Drawing.SystemColors.Control;
+            this.panelEx14.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx14.Controls.Add(this.ribbonBar8);
+            this.panelEx14.DisabledBackColor = System.Drawing.Color.Empty;
+            this.panelEx14.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelEx14.Location = new System.Drawing.Point(0, 0);
+            this.panelEx14.Margin = new System.Windows.Forms.Padding(4);
+            this.panelEx14.Name = "panelEx14";
+            this.panelEx14.Size = new System.Drawing.Size(1242, 92);
+            this.panelEx14.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.panelEx14.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.panelEx14.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.panelEx14.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
+            this.panelEx14.Style.GradientAngle = 90;
+            this.panelEx14.TabIndex = 0;
+            // 
+            // ribbonBar8
+            // 
+            this.ribbonBar8.AutoOverflowEnabled = true;
+            // 
+            // 
+            // 
+            this.ribbonBar8.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.ribbonBar8.ContainerControlProcessDialogKey = true;
+            this.ribbonBar8.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ribbonBar8.DragDropSupport = true;
+            this.ribbonBar8.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.BtnQueryApprove,
+            this.BtnApprove,
+            this.BtnDelApprove});
+            this.ribbonBar8.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
+            this.ribbonBar8.Location = new System.Drawing.Point(0, 0);
+            this.ribbonBar8.Margin = new System.Windows.Forms.Padding(4);
+            this.ribbonBar8.Name = "ribbonBar8";
+            this.ribbonBar8.Size = new System.Drawing.Size(198, 92);
+            this.ribbonBar8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.ribbonBar8.TabIndex = 0;
+            // 
+            // 
+            // 
+            this.ribbonBar8.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.ribbonBar8.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // BtnQueryApprove
+            // 
+            this.BtnQueryApprove.Image = global::PersonInfoManage.Properties.Resources.详情;
+            this.BtnQueryApprove.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.BtnQueryApprove.Name = "BtnQueryApprove";
+            this.BtnQueryApprove.SubItemsExpandWidth = 14;
+            this.BtnQueryApprove.Text = "详情";
+            this.BtnQueryApprove.Click += new System.EventHandler(this.BtnQueryAudit_Click);
+            // 
+            // BtnApprove
+            // 
+            this.BtnApprove.Image = global::PersonInfoManage.Properties.Resources.审批;
+            this.BtnApprove.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.BtnApprove.Name = "BtnApprove";
+            this.BtnApprove.SubItemsExpandWidth = 14;
+            this.BtnApprove.Text = "审批";
+            this.BtnApprove.Click += new System.EventHandler(this.BtnAudit_Click);
+            // 
+            // BtnDelApprove
+            // 
+            this.BtnDelApprove.Image = global::PersonInfoManage.Properties.Resources.删除;
+            this.BtnDelApprove.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
+            this.BtnDelApprove.Name = "BtnDelApprove";
+            this.BtnDelApprove.SubItemsExpandWidth = 14;
+            this.BtnDelApprove.Text = "删除";
+            this.BtnDelApprove.Click += new System.EventHandler(this.BtnDelApprove_Click);
+            // 
+            // TabCostAudit
+            // 
+            this.TabCostAudit.AttachedControl = this.superTabControlPanel5;
+            this.TabCostAudit.GlobalItem = false;
+            this.TabCostAudit.Name = "TabCostAudit";
+            this.TabCostAudit.Text = "费用审批";
+            this.TabCostAudit.Click += new System.EventHandler(this.TabCostAudit_Click);
             // 
             // superTabControlPanel4
             // 
@@ -1445,279 +1799,6 @@
             this.TabCostStats.Name = "TabCostStats";
             this.TabCostStats.Text = "费用统计";
             // 
-            // superTabControlPanel5
-            // 
-            this.superTabControlPanel5.Controls.Add(this.DgvCostApprove);
-            this.superTabControlPanel5.Controls.Add(this.panelEx29);
-            this.superTabControlPanel5.Controls.Add(this.panelEx15);
-            this.superTabControlPanel5.Controls.Add(this.panelEx14);
-            this.superTabControlPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.superTabControlPanel5.Location = new System.Drawing.Point(0, 36);
-            this.superTabControlPanel5.Margin = new System.Windows.Forms.Padding(4);
-            this.superTabControlPanel5.Name = "superTabControlPanel5";
-            this.superTabControlPanel5.Size = new System.Drawing.Size(1242, 593);
-            this.superTabControlPanel5.TabIndex = 0;
-            this.superTabControlPanel5.TabItem = this.TabCostAudit;
-            // 
-            // DgvCostApprove
-            // 
-            this.DgvCostApprove.AllowUserToAddRows = false;
-            this.DgvCostApprove.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvCostApprove.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.DgvCostApprove.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvCostApprove.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column27,
-            this.ApprNumber,
-            this.ApprCostId,
-            this.ApprApplicant,
-            this.ApprApplyMoney,
-            this.ApprApplyTime,
-            this.ApprApprovalTime,
-            this.ApprResult,
-            this.ApprOpinion});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DgvCostApprove.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DgvCostApprove.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DgvCostApprove.EnableHeadersVisualStyles = false;
-            this.DgvCostApprove.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.DgvCostApprove.Location = new System.Drawing.Point(0, 161);
-            this.DgvCostApprove.Margin = new System.Windows.Forms.Padding(4);
-            this.DgvCostApprove.Name = "DgvCostApprove";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvCostApprove.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.DgvCostApprove.RowHeadersWidth = 51;
-            this.DgvCostApprove.RowTemplate.Height = 23;
-            this.DgvCostApprove.Size = new System.Drawing.Size(1242, 394);
-            this.DgvCostApprove.TabIndex = 15;
-            // 
-            // panelEx29
-            // 
-            this.panelEx29.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx29.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx29.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx29.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx29.Location = new System.Drawing.Point(0, 555);
-            this.panelEx29.Margin = new System.Windows.Forms.Padding(4);
-            this.panelEx29.Name = "panelEx29";
-            this.panelEx29.Size = new System.Drawing.Size(1242, 38);
-            this.panelEx29.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx29.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx29.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx29.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx29.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx29.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx29.Style.GradientAngle = 90;
-            this.panelEx29.TabIndex = 11;
-            // 
-            // panelEx15
-            // 
-            this.panelEx15.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx15.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx15.Controls.Add(this.line4);
-            this.panelEx15.Controls.Add(this.TimeApproveEnd);
-            this.panelEx15.Controls.Add(this.CmbApporveStatus);
-            this.panelEx15.Controls.Add(this.TimeApproveStart);
-            this.panelEx15.Controls.Add(this.BtnSearchApprove);
-            this.panelEx15.Controls.Add(this.labelX7);
-            this.panelEx15.Controls.Add(this.labelX9);
-            this.panelEx15.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx15.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelEx15.Location = new System.Drawing.Point(0, 92);
-            this.panelEx15.Margin = new System.Windows.Forms.Padding(4);
-            this.panelEx15.Name = "panelEx15";
-            this.panelEx15.Size = new System.Drawing.Size(1242, 69);
-            this.panelEx15.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx15.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.panelEx15.Style.BackColor2.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.panelEx15.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.panelEx15.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.panelEx15.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.panelEx15.Style.GradientAngle = 90;
-            this.panelEx15.TabIndex = 4;
-            // 
-            // line4
-            // 
-            this.line4.Location = new System.Drawing.Point(384, 19);
-            this.line4.Margin = new System.Windows.Forms.Padding(4);
-            this.line4.Name = "line4";
-            this.line4.Size = new System.Drawing.Size(38, 31);
-            this.line4.TabIndex = 25;
-            this.line4.Text = "line4";
-            // 
-            // TimeApproveEnd
-            // 
-            this.TimeApproveEnd.Location = new System.Drawing.Point(429, 21);
-            this.TimeApproveEnd.Margin = new System.Windows.Forms.Padding(4);
-            this.TimeApproveEnd.Name = "TimeApproveEnd";
-            this.TimeApproveEnd.Size = new System.Drawing.Size(162, 25);
-            this.TimeApproveEnd.TabIndex = 24;
-            // 
-            // CmbApporveStatus
-            // 
-            this.CmbApporveStatus.FormattingEnabled = true;
-            this.CmbApporveStatus.Items.AddRange(new object[] {
-            " ",
-            "通过",
-            "驳回"});
-            this.CmbApporveStatus.Location = new System.Drawing.Point(745, 21);
-            this.CmbApporveStatus.Margin = new System.Windows.Forms.Padding(4);
-            this.CmbApporveStatus.Name = "CmbApporveStatus";
-            this.CmbApporveStatus.Size = new System.Drawing.Size(110, 23);
-            this.CmbApporveStatus.TabIndex = 23;
-            // 
-            // TimeApproveStart
-            // 
-            this.TimeApproveStart.Location = new System.Drawing.Point(220, 21);
-            this.TimeApproveStart.Margin = new System.Windows.Forms.Padding(4);
-            this.TimeApproveStart.Name = "TimeApproveStart";
-            this.TimeApproveStart.Size = new System.Drawing.Size(162, 25);
-            this.TimeApproveStart.TabIndex = 22;
-            // 
-            // BtnSearchApprove
-            // 
-            this.BtnSearchApprove.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.BtnSearchApprove.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.BtnSearchApprove.Location = new System.Drawing.Point(906, 20);
-            this.BtnSearchApprove.Margin = new System.Windows.Forms.Padding(4);
-            this.BtnSearchApprove.Name = "BtnSearchApprove";
-            this.BtnSearchApprove.Size = new System.Drawing.Size(94, 29);
-            this.BtnSearchApprove.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.BtnSearchApprove.TabIndex = 21;
-            this.BtnSearchApprove.Text = "搜索";
-            this.BtnSearchApprove.Click += new System.EventHandler(this.BtnSearchApprove_Click);
-            // 
-            // labelX7
-            // 
-            // 
-            // 
-            // 
-            this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(657, 21);
-            this.labelX7.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX7.Name = "labelX7";
-            this.labelX7.Size = new System.Drawing.Size(85, 29);
-            this.labelX7.TabIndex = 20;
-            this.labelX7.Text = "审批状态：";
-            // 
-            // labelX9
-            // 
-            // 
-            // 
-            // 
-            this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(104, 21);
-            this.labelX9.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX9.Name = "labelX9";
-            this.labelX9.Size = new System.Drawing.Size(109, 29);
-            this.labelX9.TabIndex = 19;
-            this.labelX9.Text = "申请时间段：";
-            // 
-            // panelEx14
-            // 
-            this.panelEx14.CanvasColor = System.Drawing.SystemColors.Control;
-            this.panelEx14.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx14.Controls.Add(this.ribbonBar8);
-            this.panelEx14.DisabledBackColor = System.Drawing.Color.Empty;
-            this.panelEx14.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelEx14.Location = new System.Drawing.Point(0, 0);
-            this.panelEx14.Margin = new System.Windows.Forms.Padding(4);
-            this.panelEx14.Name = "panelEx14";
-            this.panelEx14.Size = new System.Drawing.Size(1242, 92);
-            this.panelEx14.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.panelEx14.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.panelEx14.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.panelEx14.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.ItemText;
-            this.panelEx14.Style.GradientAngle = 90;
-            this.panelEx14.TabIndex = 0;
-            // 
-            // ribbonBar8
-            // 
-            this.ribbonBar8.AutoOverflowEnabled = true;
-            // 
-            // 
-            // 
-            this.ribbonBar8.BackgroundMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.ribbonBar8.ContainerControlProcessDialogKey = true;
-            this.ribbonBar8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.ribbonBar8.DragDropSupport = true;
-            this.ribbonBar8.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
-            this.BtnQueryApprove,
-            this.BtnApprove,
-            this.BtnDelApprove});
-            this.ribbonBar8.LicenseKey = "F962CEC7-CD8F-4911-A9E9-CAB39962FC1F";
-            this.ribbonBar8.Location = new System.Drawing.Point(0, 0);
-            this.ribbonBar8.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonBar8.Name = "ribbonBar8";
-            this.ribbonBar8.Size = new System.Drawing.Size(198, 92);
-            this.ribbonBar8.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.ribbonBar8.TabIndex = 0;
-            // 
-            // 
-            // 
-            this.ribbonBar8.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // 
-            // 
-            this.ribbonBar8.TitleStyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            // 
-            // BtnQueryApprove
-            // 
-            this.BtnQueryApprove.Image = global::PersonInfoManage.Properties.Resources.详情;
-            this.BtnQueryApprove.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnQueryApprove.Name = "BtnQueryApprove";
-            this.BtnQueryApprove.SubItemsExpandWidth = 14;
-            this.BtnQueryApprove.Text = "详情";
-            this.BtnQueryApprove.Click += new System.EventHandler(this.BtnQueryAudit_Click);
-            // 
-            // BtnApprove
-            // 
-            this.BtnApprove.Image = global::PersonInfoManage.Properties.Resources.审批;
-            this.BtnApprove.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnApprove.Name = "BtnApprove";
-            this.BtnApprove.SubItemsExpandWidth = 14;
-            this.BtnApprove.Text = "审批";
-            this.BtnApprove.Click += new System.EventHandler(this.BtnAudit_Click);
-            // 
-            // BtnDelApprove
-            // 
-            this.BtnDelApprove.Image = global::PersonInfoManage.Properties.Resources.删除;
-            this.BtnDelApprove.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.BtnDelApprove.Name = "BtnDelApprove";
-            this.BtnDelApprove.SubItemsExpandWidth = 14;
-            this.BtnDelApprove.Text = "删除";
-            this.BtnDelApprove.Click += new System.EventHandler(this.BtnDelApprove_Click);
-            // 
-            // TabCostAudit
-            // 
-            this.TabCostAudit.AttachedControl = this.superTabControlPanel5;
-            this.TabCostAudit.GlobalItem = false;
-            this.TabCostAudit.Name = "TabCostAudit";
-            this.TabCostAudit.Text = "费用审批";
-            this.TabCostAudit.Click += new System.EventHandler(this.TabCostAudit_Click);
-            // 
             // metroTabPanel6
             // 
             this.metroTabPanel6.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -2569,7 +2650,6 @@
             this.CmbDictType.Name = "CmbDictType";
             this.CmbDictType.Size = new System.Drawing.Size(192, 23);
             this.CmbDictType.TabIndex = 9;
-            this.CmbDictType.SelectedIndexChanged += new System.EventHandler(this.CmbDictType_SelectedIndexChanged);
             // 
             // labelX29
             // 
@@ -5418,86 +5498,6 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2010Blue;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
             // 
-            // Column27
-            // 
-            this.Column27.FillWeight = 8F;
-            this.Column27.HeaderText = "选择";
-            this.Column27.MinimumWidth = 6;
-            this.Column27.Name = "Column27";
-            this.Column27.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // ApprNumber
-            // 
-            this.ApprNumber.DataPropertyName = "ApprNumber";
-            this.ApprNumber.FillWeight = 7F;
-            this.ApprNumber.HeaderText = "序号";
-            this.ApprNumber.MinimumWidth = 6;
-            this.ApprNumber.Name = "ApprNumber";
-            this.ApprNumber.ReadOnly = true;
-            // 
-            // ApprCostId
-            // 
-            this.ApprCostId.DataPropertyName = "ApprCostId";
-            this.ApprCostId.FillWeight = 10F;
-            this.ApprCostId.HeaderText = "费用单编号";
-            this.ApprCostId.MinimumWidth = 6;
-            this.ApprCostId.Name = "ApprCostId";
-            this.ApprCostId.ReadOnly = true;
-            // 
-            // ApprApplicant
-            // 
-            this.ApprApplicant.DataPropertyName = "ApprApplicant";
-            this.ApprApplicant.FillWeight = 10F;
-            this.ApprApplicant.HeaderText = "申请人";
-            this.ApprApplicant.MinimumWidth = 6;
-            this.ApprApplicant.Name = "ApprApplicant";
-            this.ApprApplicant.ReadOnly = true;
-            // 
-            // ApprApplyMoney
-            // 
-            this.ApprApplyMoney.DataPropertyName = "ApprApplyMoney";
-            this.ApprApplyMoney.FillWeight = 10F;
-            this.ApprApplyMoney.HeaderText = "申请金额";
-            this.ApprApplyMoney.MinimumWidth = 6;
-            this.ApprApplyMoney.Name = "ApprApplyMoney";
-            this.ApprApplyMoney.ReadOnly = true;
-            // 
-            // ApprApplyTime
-            // 
-            this.ApprApplyTime.DataPropertyName = "ApprApplyTime";
-            this.ApprApplyTime.FillWeight = 10F;
-            this.ApprApplyTime.HeaderText = "申请时间";
-            this.ApprApplyTime.MinimumWidth = 6;
-            this.ApprApplyTime.Name = "ApprApplyTime";
-            this.ApprApplyTime.ReadOnly = true;
-            // 
-            // ApprApprovalTime
-            // 
-            this.ApprApprovalTime.DataPropertyName = "ApprApprovalTime";
-            this.ApprApprovalTime.FillWeight = 10F;
-            this.ApprApprovalTime.HeaderText = "审批时间";
-            this.ApprApprovalTime.MinimumWidth = 6;
-            this.ApprApprovalTime.Name = "ApprApprovalTime";
-            this.ApprApprovalTime.ReadOnly = true;
-            // 
-            // ApprResult
-            // 
-            this.ApprResult.DataPropertyName = "ApprResult";
-            this.ApprResult.FillWeight = 8F;
-            this.ApprResult.HeaderText = "审批结果";
-            this.ApprResult.MinimumWidth = 6;
-            this.ApprResult.Name = "ApprResult";
-            this.ApprResult.ReadOnly = true;
-            // 
-            // ApprOpinion
-            // 
-            this.ApprOpinion.DataPropertyName = "ApprOpinion";
-            this.ApprOpinion.FillWeight = 27F;
-            this.ApprOpinion.HeaderText = "审批意见";
-            this.ApprOpinion.MinimumWidth = 6;
-            this.ApprOpinion.Name = "ApprOpinion";
-            this.ApprOpinion.ReadOnly = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -5519,6 +5519,10 @@
             this.metroTabPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TabControlCost)).EndInit();
             this.TabControlCost.ResumeLayout(false);
+            this.superTabControlPanel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgvCostApprove)).EndInit();
+            this.panelEx15.ResumeLayout(false);
+            this.panelEx14.ResumeLayout(false);
             this.superTabControlPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvCostApply)).EndInit();
             this.panelEx13.ResumeLayout(false);
@@ -5530,10 +5534,6 @@
             this.panelEx17.ResumeLayout(false);
             this.superTabControlPanel6.ResumeLayout(false);
             this.panelEx16.ResumeLayout(false);
-            this.superTabControlPanel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DgvCostApprove)).EndInit();
-            this.panelEx15.ResumeLayout(false);
-            this.panelEx14.ResumeLayout(false);
             this.metroTabPanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TabControlSys)).EndInit();
             this.TabControlSys.ResumeLayout(false);

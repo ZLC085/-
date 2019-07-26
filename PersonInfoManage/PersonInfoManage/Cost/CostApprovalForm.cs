@@ -116,8 +116,7 @@ namespace PersonInfoManage
             cost_approval approval = new cost_approval
             {
                 cost_id = costId,
-                approval_id = 29,
-                //approval_id = UserInfoBLL.UserId,
+                approval_id = UserInfoBLL.UserId,
                 result = false,
                 time = DateTime.Now,
                 opinion = TexOpinion.Text
