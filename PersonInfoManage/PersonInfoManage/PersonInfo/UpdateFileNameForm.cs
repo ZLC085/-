@@ -1,4 +1,7 @@
-﻿using System;
+﻿using PersonInfoManage.BLL.PersonInfo;
+using PersonInfoManage.BLL.Utils;
+using PersonInfoManage.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +22,7 @@ namespace PersonInfoManage
 
         private void LblFileName_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show();
+            
         }
 
         private void TxtNewFileName_TextChanged(object sender, EventArgs e)
@@ -32,9 +35,31 @@ namespace PersonInfoManage
             this.Close();
         }
 
+        private void UpdateFileName_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
         private void BtnUpdateFile_Click(object sender, EventArgs e)
         {
-           
+            person_file A = new person_file();
+            A.filename = LblFileName.Text;
+            A.filename = TxtNewFileName.Text;
+            PersonFileBLL set = new PersonFileBLL();
+            Result res = new Result();
+            res = set.Update(A.filename, A.id);
+            if (res.Message == "修改成功!")
+            {
+                MessageBoxCustom.Show("修改成功", "提示", this);
+            }
+            else
+            {
+                MessageBoxCustom.Show("修改失败", "提示", this);
+            }
+
         }
+
+       
     }
 }

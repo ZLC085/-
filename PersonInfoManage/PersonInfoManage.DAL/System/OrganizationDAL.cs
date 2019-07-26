@@ -20,13 +20,13 @@ namespace PersonInfoManage.DAL.System
         /// 添加组织机构
         /// </summary>
         /// <param name="org"></param>
-        /// <returns></returns>
+        /// <returns>添加条数</returns>
         public int Add(sys_org org)
         {
             try
             {
                 int res = 0;
-                string sql = "insert into sys_menu(parent_id,org_name,creat_time,modify_time) values(@p1,@p2,@p3,@p4)";
+                string sql = "insert into sys_menu(parent_id,org_name,creat_time,modify_time) values(@p1,@p2,@p3,@p4) where parent_id = @id";
                 SqlParameter sqlParameter1 = new SqlParameter("@p1", org.parent_id);
                 SqlParameter sqlParameter2 = new SqlParameter("@p2", org.org_name);
                 SqlParameter sqlParameter3 = new SqlParameter("@p3", org.create_time);
@@ -47,7 +47,7 @@ namespace PersonInfoManage.DAL.System
         /// 修改组织机构
         /// </summary>
         /// <param name="org"></param>
-        /// <returns></returns>
+        /// <returns>修改条数</returns>
         public int Update(sys_org org)
         {
             try
@@ -69,42 +69,89 @@ namespace PersonInfoManage.DAL.System
             }
         }
 
-        //public int Del(int orgid)
-        //{
-        //    string sql = "delete from sys_org where id='" + orgid + "'";
-        //}
-
         /// <summary>
-        /// 通过id查询组织机构
+        /// 删除组织机构
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public List<sys_org> SelectById(int id)
+        /// <param name="orgid"></param>
+        /// <returns>删除条数</returns>
+        public int Del(int orgid)
         {
             try
             {
-                List<sys_org> org = new List<sys_org>();
-                string sql = "SELECT * from sys_org where id = '" + id + "'";
+                int res = 0;
+                string sql = "delete from sys_org where id=@p1";
+                SqlParameter sqlparameter1 = new SqlParameter("@p", orgid);
+                res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter1);
+                new LogUserDAL().Add(LogOperations.LogUser("删除组织机构"));
+                return res;
+            }
+            catch (Exception e)
+            {
+                new LogSysDAL().Add(LogOperations.LogSys("删除组织机构" + e.Message));
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// 通过parent_id查询组织机构
+        /// </summary>
+        /// <param name="pid"></param>
+        /// <returns>List<sys_org></returns>
+        public List<sys_org> SelectByparentid(int pid)
+        {
+            try
+            {
                 DataSet ds = new DataSet();
+                string sql = "Select * from sys_org where parent_id= '" + pid + "'";
+                List<sys_org> org = new List<sys_org>();
                 ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
                 for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                 {
-                    sys_org orgs = new sys_org();
-                    orgs.id = (int)ds.Tables[0].Rows[i][nameof(sys_org.id)];
-                    orgs.parent_id = (int)ds.Tables[0].Rows[i][nameof(sys_org.parent_id)];
-                    orgs.org_name = (string)ds.Tables[0].Rows[i][nameof(sys_org.org_name)];
-                    orgs.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_org.create_time)];
-                    orgs.modify_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_org.modify_time)];
-                    org.Add(orgs);
+                    sys_org org1 = new sys_org();
+                    org1.id = (int)ds.Tables[0].Rows[i][nameof(sys_org.id)];
+                    org1.org_name = (string)ds.Tables[0].Rows[i][nameof(sys_org.org_name)];
+                    org1.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_org.create_time)];
+                    org1.modify_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_org.modify_time)];
+                    org.Add(org1);
                 }
                 new LogUserDAL().Add(LogOperations.LogUser("查询组织机构"));
                 return org;
             }
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("查询组织机构" + e.Message));
                 return null;
             }
+        }
+            /// <summary>
+            /// 查询组织机构
+            /// </summary>
+            /// <returns>List<sys_org></returns>
+        public List<sys_org> SelectByName(string orgname)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                string sql = "Select * from sys_org where org_name='"+orgname+"'";
+                List<sys_org> org = new List<sys_org>();
+                ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    sys_org org1 = new sys_org();
+                    org1.id = (int)ds.Tables[0].Rows[i][nameof(sys_org.id)];
+                    org1.org_name = (string)ds.Tables[0].Rows[i][nameof(sys_org.org_name)];
+                    org1.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_org.create_time)];
+                    org1.modify_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_org.modify_time)];
+                    org.Add(org1);
+                }
+                return org;
+            }
+            catch (Exception e)
+            {
+                new LogSysDAL().Add(LogOperations.LogSys("查询组织机构" + e.Message));
+                return null;
+            }
+
         }
     }
 }

@@ -93,7 +93,7 @@
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(0, 0);
-            this.panelEx1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelEx1.Margin = new System.Windows.Forms.Padding(4);
             this.panelEx1.Name = "panelEx1";
             this.panelEx1.Size = new System.Drawing.Size(645, 588);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
@@ -110,9 +110,9 @@
             this.groupBox2.Controls.Add(this.radioButton4);
             this.groupBox2.Controls.Add(this.radioButton3);
             this.groupBox2.Location = new System.Drawing.Point(237, 388);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(245, 42);
             this.groupBox2.TabIndex = 100;
             this.groupBox2.TabStop = false;
@@ -121,7 +121,7 @@
             // 
             this.radioButton4.AutoSize = true;
             this.radioButton4.Location = new System.Drawing.Point(91, 15);
-            this.radioButton4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton4.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(58, 19);
             this.radioButton4.TabIndex = 1;
@@ -133,7 +133,7 @@
             this.radioButton3.AutoSize = true;
             this.radioButton3.Checked = true;
             this.radioButton3.Location = new System.Drawing.Point(19, 15);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(58, 19);
             this.radioButton3.TabIndex = 0;
@@ -146,9 +146,9 @@
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Location = new System.Drawing.Point(237, 141);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(245, 42);
             this.groupBox1.TabIndex = 99;
             this.groupBox1.TabStop = false;
@@ -157,7 +157,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(91, 15);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(43, 19);
             this.radioButton2.TabIndex = 1;
@@ -169,7 +169,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(9, 15);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(43, 19);
             this.radioButton1.TabIndex = 0;
@@ -186,7 +186,7 @@
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX4.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX4.Location = new System.Drawing.Point(133, 405);
-            this.labelX4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX4.Margin = new System.Windows.Forms.Padding(4);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(98, 25);
             this.labelX4.TabIndex = 98;
@@ -201,7 +201,7 @@
             this.labelX14.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX14.ForeColor = System.Drawing.Color.Red;
             this.labelX14.Location = new System.Drawing.Point(487, 355);
-            this.labelX14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX14.Margin = new System.Windows.Forms.Padding(4);
             this.labelX14.Name = "labelX14";
             this.labelX14.Size = new System.Drawing.Size(21, 29);
             this.labelX14.TabIndex = 97;
@@ -225,7 +225,7 @@
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX8.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX8.Location = new System.Drawing.Point(133, 355);
-            this.labelX8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX8.Margin = new System.Windows.Forms.Padding(4);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(98, 25);
             this.labelX8.TabIndex = 95;
@@ -239,7 +239,7 @@
             this.textBoxX6.Border.Class = "TextBoxBorder";
             this.textBoxX6.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX6.Location = new System.Drawing.Point(237, 308);
-            this.textBoxX6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxX6.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxX6.Name = "textBoxX6";
             this.textBoxX6.PreventEnterBeep = true;
             this.textBoxX6.Size = new System.Drawing.Size(241, 25);
@@ -253,7 +253,7 @@
             this.labelX32.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX32.ForeColor = System.Drawing.Color.Red;
             this.labelX32.Location = new System.Drawing.Point(165, 452);
-            this.labelX32.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX32.Margin = new System.Windows.Forms.Padding(4);
             this.labelX32.Name = "labelX32";
             this.labelX32.Size = new System.Drawing.Size(144, 29);
             this.labelX32.TabIndex = 93;
@@ -264,7 +264,7 @@
             this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnClose.Location = new System.Drawing.Point(376, 504);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(107, 30);
             this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -272,13 +272,14 @@
             this.btnClose.SymbolColor = System.Drawing.Color.Red;
             this.btnClose.TabIndex = 92;
             this.btnClose.Text = "取消";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnAddUser
             // 
             this.btnAddUser.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnAddUser.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnAddUser.Location = new System.Drawing.Point(165, 504);
-            this.btnAddUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddUser.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(107, 30);
             this.btnAddUser.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -297,7 +298,7 @@
             this.labelX12.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX12.ForeColor = System.Drawing.Color.Red;
             this.labelX12.Location = new System.Drawing.Point(487, 105);
-            this.labelX12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX12.Margin = new System.Windows.Forms.Padding(4);
             this.labelX12.Name = "labelX12";
             this.labelX12.Size = new System.Drawing.Size(21, 29);
             this.labelX12.TabIndex = 89;
@@ -312,7 +313,7 @@
             this.labelX11.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX11.ForeColor = System.Drawing.Color.Red;
             this.labelX11.Location = new System.Drawing.Point(487, 56);
-            this.labelX11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX11.Margin = new System.Windows.Forms.Padding(4);
             this.labelX11.Name = "labelX11";
             this.labelX11.Size = new System.Drawing.Size(21, 29);
             this.labelX11.TabIndex = 88;
@@ -327,7 +328,7 @@
             this.labelX10.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX10.ForeColor = System.Drawing.Color.Red;
             this.labelX10.Location = new System.Drawing.Point(361, 452);
-            this.labelX10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX10.Margin = new System.Windows.Forms.Padding(4);
             this.labelX10.Name = "labelX10";
             this.labelX10.Size = new System.Drawing.Size(21, 29);
             this.labelX10.TabIndex = 87;
@@ -340,7 +341,7 @@
             // 
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX9.Location = new System.Drawing.Point(328, 452);
-            this.labelX9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX9.Margin = new System.Windows.Forms.Padding(4);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(180, 29);
             this.labelX9.TabIndex = 86;
@@ -354,7 +355,7 @@
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX7.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX7.Location = new System.Drawing.Point(133, 305);
-            this.labelX7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX7.Margin = new System.Windows.Forms.Padding(4);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(105, 29);
             this.labelX7.TabIndex = 85;
@@ -368,7 +369,7 @@
             this.textBoxX5.Border.Class = "TextBoxBorder";
             this.textBoxX5.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX5.Location = new System.Drawing.Point(237, 255);
-            this.textBoxX5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxX5.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxX5.Name = "textBoxX5";
             this.textBoxX5.PreventEnterBeep = true;
             this.textBoxX5.Size = new System.Drawing.Size(241, 25);
@@ -382,7 +383,7 @@
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX6.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX6.Location = new System.Drawing.Point(133, 255);
-            this.labelX6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX6.Margin = new System.Windows.Forms.Padding(4);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(105, 29);
             this.labelX6.TabIndex = 83;
@@ -396,7 +397,7 @@
             this.textBoxX4.Border.Class = "TextBoxBorder";
             this.textBoxX4.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX4.Location = new System.Drawing.Point(237, 205);
-            this.textBoxX4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxX4.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxX4.Name = "textBoxX4";
             this.textBoxX4.PreventEnterBeep = true;
             this.textBoxX4.Size = new System.Drawing.Size(241, 25);
@@ -410,7 +411,7 @@
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX5.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX5.Location = new System.Drawing.Point(133, 205);
-            this.labelX5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX5.Margin = new System.Windows.Forms.Padding(4);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(105, 29);
             this.labelX5.TabIndex = 81;
@@ -424,7 +425,7 @@
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX3.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX3.Location = new System.Drawing.Point(133, 155);
-            this.labelX3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX3.Margin = new System.Windows.Forms.Padding(4);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(105, 29);
             this.labelX3.TabIndex = 76;
@@ -438,7 +439,7 @@
             this.textBoxX2.Border.Class = "TextBoxBorder";
             this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX2.Location = new System.Drawing.Point(237, 105);
-            this.textBoxX2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxX2.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxX2.Name = "textBoxX2";
             this.textBoxX2.PreventEnterBeep = true;
             this.textBoxX2.Size = new System.Drawing.Size(241, 25);
@@ -452,7 +453,7 @@
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX2.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX2.Location = new System.Drawing.Point(133, 105);
-            this.labelX2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX2.Margin = new System.Windows.Forms.Padding(4);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(100, 29);
             this.labelX2.TabIndex = 74;
@@ -466,7 +467,7 @@
             this.textBoxX1.Border.Class = "TextBoxBorder";
             this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxX1.Location = new System.Drawing.Point(237, 56);
-            this.textBoxX1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxX1.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxX1.Name = "textBoxX1";
             this.textBoxX1.PreventEnterBeep = true;
             this.textBoxX1.Size = new System.Drawing.Size(241, 25);
@@ -480,7 +481,7 @@
             this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.labelX1.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelX1.Location = new System.Drawing.Point(133, 55);
-            this.labelX1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.labelX1.Margin = new System.Windows.Forms.Padding(4);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(105, 29);
             this.labelX1.TabIndex = 72;
@@ -493,7 +494,7 @@
             this.ClientSize = new System.Drawing.Size(645, 588);
             this.Controls.Add(this.panelEx1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UpdateUserForm";
