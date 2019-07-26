@@ -190,6 +190,10 @@ namespace PersonInfoManage.DAL.PersonInfo
                 // 用于拼接查询
                 List<SqlParameter> sqlPara = new List<SqlParameter>();
                 // 判断参数
+                if (info.id != 0) // id
+                {
+                    sql += " and id = " + info.id;
+                }
                 if (!string.IsNullOrEmpty(info.name)) // name
                 {
                     sql += " and name like @name";
@@ -202,7 +206,7 @@ namespace PersonInfoManage.DAL.PersonInfo
                 }
                 if (info.person_type_id > 0) // person_type_id
                 {
-                    sql += " and person_type_id = @person_type_id";
+                    sql += " and person_type_id = " + info.person_type_id;
                 }
                 if (!string.IsNullOrEmpty(info.native_place)) // native_place
                 {

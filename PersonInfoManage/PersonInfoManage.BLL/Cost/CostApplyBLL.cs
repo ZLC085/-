@@ -109,7 +109,7 @@ namespace PersonInfoManage.BLL.Cost
             if (apply.Del(id) ==ListApproval.Count+ listDetail.Count + 1)
             {
                 res.Code = RES.OK;
-                res.Message = "删除失败！";
+                res.Message = "删除成功！";
             }
             return res;
         }

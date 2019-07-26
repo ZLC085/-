@@ -61,5 +61,26 @@ namespace PersonInfoManage.Utils
 
             return res.ToString();
         }
+
+
+        public  static sys_dict_type Change(string type)
+        {
+            sys_dict_type res = sys_dict_type.None;
+            switch (type)
+            {
+                case "费用类别":
+                    res = sys_dict_type.Cost;
+                    break;
+                case "重点人员类别":
+                    res = sys_dict_type.Person;
+                    break;
+                case "归属地":
+                    res = sys_dict_type.BelongPlace;
+                    break;
+                default: break;
+            }
+
+            return res;
+        }
     }
 }

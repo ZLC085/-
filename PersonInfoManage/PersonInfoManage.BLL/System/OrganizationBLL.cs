@@ -122,5 +122,15 @@ namespace PersonInfoManage.BLL
             OrganizationDAL orgDAL = new OrganizationDAL();
             return orgDAL.SelectByparentid(pid);
         }
+
+        /// <summary>
+        /// 查询组织机构
+        /// </summary>
+        /// <returns>List</returns>
+        public List<sys_org> SelectAll(string orgname)
+        {
+            OrganizationDAL orgDAL = new OrganizationDAL();
+            return orgDAL.SelectByName(orgname);
+        }
     }
 }

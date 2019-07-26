@@ -43,17 +43,54 @@ namespace PersonInfoManage.BLL.System
         }
 
         /// <summary>
-        /// 修改用户信息
+        /// 添加用户
         /// </summary>
         /// <param name="user">用户信息</param>
         /// <returns>影响行数</returns>
-        public Result Update(sys_user user)
+        public Result Update(sys_user user,int userid)
         {
             SysUserDAL Sysuser = new SysUserDAL();
             Result res = new Result();
             try
             {
-                if (Sysuser.Update(user) == 0)
+                if (Sysuser.Update(user,userid) == 0)
+                {
+                    res.Code = RES.ERROR;
+                    res.Message = "添加失败！";
+                    return res;
+                }
+                else
+                {
+                    res.Code = RES.OK;
+                    res.Message = "添加成功！";
+                    return res;
+                }
+            }
+            catch
+            {
+                res.Code = RES.ERROR;
+                res.Message = "添加失败！";
+                return res;
+            }
+        }
+
+        /// <summary>
+        /// 重置用户密码
+        /// </summary>
+        /// <param name="user">用户信息</param>
+        /// <returns>影响行数</returns>
+        public Result RePassword(List<int> userid)
+        {
+            SysUserDAL Sysuser = new SysUserDAL();
+            Result res = new Result();
+            int re = 0;
+            try
+            {
+                foreach (var userId in userid)
+                {
+                    re += Sysuser.RePassword(userId);
+                }
+                if (re == 0)
                 {
                     res.Code = RES.ERROR;
                     res.Message = "修改失败！";
@@ -73,7 +110,6 @@ namespace PersonInfoManage.BLL.System
                 return res;
             }
         }
-
 
         /// <summary>
         /// 删除用户
@@ -111,9 +147,20 @@ namespace PersonInfoManage.BLL.System
                 return res;
             }
         }
-         
+
+
         /// <summary>
-        /// 查询用户
+        /// 查询所有用户
+        /// </summary>
+        /// <returns>用户信息</returns>
+        public List<view_sys_u2g> SelectAll()
+        {
+            SysUserDAL Sysuser = new SysUserDAL();
+            return Sysuser.SelectAll();
+        }
+
+        /// <summary>
+        /// 条件查询用户
         /// </summary>
         /// <param name="UserInfo">查询条件</param>
         /// <returns>用户信息</returns>
