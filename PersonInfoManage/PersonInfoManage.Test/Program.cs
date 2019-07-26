@@ -555,19 +555,17 @@ namespace PersonInfoManage.Test
             //pb.income = 2000;
             //pb.temper = "未知";
             //pb.family = "未知";
-            //pb.person_type = 1;
-            //pb.person_type_name = "未知";
+            //pb.person_type_id = 1;
             //pb.qq = "123456789";
             //pb.address = "成都市双流区养猪场";
             //pb.phone = "123456789";
-            //pb.belong_place = 1;
-            //pb.belong_place_name = "成都市双流区公安局";
+            //pb.belong_place_id = 1;
             //pb.nation = "汉";
             //pb.input_time = DateTime.Now;
-            //pb.user_id = 1001;
-            //pb.isdel = 1;
+            //pb.user_id = 81;
+            //pb.isdel = 0;
 
-            // 插入
+            //插入
             //if (PB.Add(pb) > 0)
             //{
             //    Console.WriteLine("插入成功！");
@@ -589,7 +587,7 @@ namespace PersonInfoManage.Test
             //}
 
             // 移除
-            //int id = 1001;
+            //int id = 1013;
             //if (PB.Remove(id) > 0)
             //{
             //    Console.WriteLine("移除成功！");
@@ -600,7 +598,7 @@ namespace PersonInfoManage.Test
             //}
 
             // 删除
-            //int id = 1002;
+            //int id = 1020;
             //if (PB.Del(id) > 0)
             //{
             //    Console.WriteLine("删除成功！");
@@ -618,12 +616,13 @@ namespace PersonInfoManage.Test
 
             // 查询
             //list = PB.Query(pb);
+            //list = PB.Query();
             //for (int i = 0; i < list.Count; i++)
             //{
             //    Console.WriteLine(list[i].id + "\t" + list[i].name + "\t" + list[i].former_name + "\t" + list[i].gender + "\t" + list[i].identity_number + "\t"
             //        + list[i].birth_date + "\t" + list[i].native_place + "\t" + list[i].marry_status + "\t" + list[i].job_status + "\t"
-            //        + list[i].income + "\t" + list[i].temper + "\t" + list[i].family + "\t" + list[i].person_type + "\t" + list[i].person_type_name + "\t" + list[i].qq + "\t"
-            //        + list[i].address + "\t" + list[i].phone + "\t" + list[i].belong_place + "\t" + list[i].belong_place_name + "\t" + list[i].nation + "\t" + list[i].input_time + "\t"
+            //        + list[i].income + "\t" + list[i].temper + "\t" + list[i].family + "\t" + list[i].person_type_id + "\t" + list[i].qq + "\t"
+            //        + list[i].address + "\t" + list[i].phone + "\t" + list[i].belong_place_id + "\t" + list[i].nation + "\t" + list[i].input_time + "\t"
             //        + list[i].user_id + "\t" + list[i].isdel + "\t\n");
             //}
 
@@ -660,7 +659,7 @@ namespace PersonInfoManage.Test
             //{
             //    Console.WriteLine(A.person_id + " " + A.id + "  " + A.filename + " " + A.filetype + " " + A.create_time + " " + A.modify_time);
             //}
-            
+
             Console.ReadKey();
         }
     }

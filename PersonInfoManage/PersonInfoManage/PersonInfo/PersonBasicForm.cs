@@ -32,9 +32,20 @@ namespace PersonInfoManage
         public PersonBasicForm()
         {
             InitializeComponent();
+        }
 
-            if (this.Text.Equals("人员信息录入"))
+        /// <summary>
+        /// 页面加载
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PersonBasicForm_Load(object sender, EventArgs e)
+        {
+            if (Text.Equals("人员信息录入"))
             {
+                LblOldPlace1.Hide();
+                LblOldPlace2.Hide();
+
                 #region 初始选项
                 // 省
                 Provinces = new List<string> { province };
@@ -45,66 +56,105 @@ namespace PersonInfoManage
                 // 县/区
                 Places = new List<string> { place };
                 CmbPlace.DataSource = Places;
-                // 初始查询（优化卡顿）
+                // 初始省（优化卡顿）
                 Provinces = new NativePlaceBLL().QueryProvince();
-
                 // 婚姻状况
                 Marry = new List<string> { "未婚" };
                 CmbMarry.DataSource = Marry;
-
                 // 民族
                 Nation = new List<string> { "汉族" };
                 CmbNation.DataSource = Nation;
-
                 // 人员类别
                 PersonType = new SysSettingBLL().SelectByDictName(sys_dict_type.Person);
-                CmbPersonType.DataSource = PersonType[0].category_name;
-
+                List<string> personTypeList = new List<string>();
+                foreach (var item in PersonType)
+                {
+                    personTypeList.Add(item.category_name);
+                }
+                CmbPersonType.DataSource = personTypeList;
                 // 归属地
                 BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
-                CmbBelongPlace.DataSource = BelongPlace[0].category_name;
-
-                LblOldPlace1.Hide();
-                LblOldPlace2.Hide();
+                List<string> belongPlaceList = new List<string>();
+                foreach (var item in BelongPlace)
+                {
+                    belongPlaceList.Add(item.category_name);
+                }
+                CmbBelongPlace.DataSource = belongPlaceList;
                 #endregion
             }
-            if (this.Text.Equals("人员信息修改"))
+
+            if (Text.Equals("人员信息修改"))
             {
                 #region 初始选项
                 person_basic pb = new person_basic();
                 //pb.id = "要修改的人员id";
                 List<person_basic> list = new PersonBasicBLL().Query(pb);
 
+                // 姓名
                 TxtName.Text = list[0].name.ToString();
+                // 曾用名
                 TxtFormerName.Text = list[0].former_name.ToString();
+                // 性别
                 if (list[0].gender.Equals("男")) RdoMale.Checked = true;
                 if (list[0].gender.Equals("女")) RdoFemale.Checked = true;
+                // 身份证
                 TxtIdentityNumber.Text = list[0].identity_number;
+                // 出生日期
                 TimeBirthDate.Value = list[0].birth_date;
-
-                ////////////////////////////////////////////////////
-                string id = list[0].belong_place_id.ToString();
+                // 归属地
+                BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
+                foreach (var item in BelongPlace)
+                {
+                    if (item.id.Equals(list[0].belong_place_id))
+                    {
+                        CmbBelongPlace.DataSource = new List<string>() { item.category_name };
+                    }
+                }
+                // 民族
+                Nation = new List<string> { "汉族" };
+                CmbNation.DataSource = Nation;
+                // 地址
+                TxtAddress.Text = list[0].address;
+                // 籍贯
+                //CmbProvince.DataSource = province;
+                //CmbCity.DataSource = city;
+                //CmbProvince.DataSource = place;
+                // 省
+                Provinces = new List<string> { province };
+                CmbProvince.DataSource = Provinces;
+                // 市
+                Cities = new List<string> { city };
+                CmbCity.DataSource = Cities;
+                // 县/区
+                Places = new List<string> { place };
+                CmbPlace.DataSource = Places;
+                // 初始省（优化卡顿）
+                Provinces = new NativePlaceBLL().QueryProvince();
+                // 原籍贯
+                LblOldPlace2.Text = list[0].native_place;
+                // 收入状况
+                TxtIncome.Text = list[0].income.ToString();
+                // 性格特征
+                TxtTemper.Text = list[0].temper;
+                // 就业状况
+                TxtJob.Text = list[0].job_status;
+                // 婚姻状况
+                if (list[0].marry_status) CmbMarry.DataSource = new List<string>() { "已婚" };
+                if (!list[0].marry_status) CmbMarry.DataSource = new List<string>() { "未婚" };
+                // 家庭状况
+                TxtFamily.Text = list[0].family;
+                // 重点人员类别
                 PersonType = new SysSettingBLL().SelectByDictName(sys_dict_type.Person);
                 foreach (var item in PersonType)
                 {
-                    if (item.id.Equals(id))
+                    if (item.id.Equals(list[0].person_type_id))
                     {
-                        CmbBelongPlace.Text = item.category_name;
+                        CmbPersonType.DataSource = new List<string>() { item.category_name };
                     }
                 }
-
-
-                CmbNation.Text = list[0].nation;
-                TxtAddress.Text = list[0].address;
-                LblOldPlace2.Text = list[0].native_place;
-                TxtIncome.Text = list[0].income.ToString();
-                TxtTemper.Text = list[0].temper;
-                TxtJob.Text = list[0].job_status;
-                if (list[0].marry_status) CmbMarry.Text = "已婚";
-                if (!list[0].marry_status) CmbMarry.Text = "未婚";
-                TxtFamily.Text = list[0].family;
-                //CmbPersonType.Text = list[0].person_type_id;
+                // qq
                 TxtQQ.Text = list[0].qq;
+                // 电话
                 TxtPhone.Text = list[0].phone;
                 #endregion
             }
@@ -182,7 +232,7 @@ namespace PersonInfoManage
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CmbNation_DragDrop(object sender, DragEventArgs e)
+        private void CmbNation_DropDown(object sender, EventArgs e)
         {
             Nation = new List<string>
             {
@@ -225,7 +275,12 @@ namespace PersonInfoManage
         private void CmbPersonType_DropDown(object sender, EventArgs e)
         {
             PersonType = new SysSettingBLL().SelectByDictName(sys_dict_type.Person);
-            CmbPersonType.DataSource = PersonType[0].category_name;
+            List<string> personTypeList = new List<string>();
+            foreach (var item in PersonType)
+            {
+                personTypeList.Add(item.category_name);
+            }
+            CmbPersonType.DataSource = personTypeList;
         }
 
         /// <summary>
@@ -236,7 +291,12 @@ namespace PersonInfoManage
         private void CmbBelongPlace_DropDown(object sender, EventArgs e)
         {
             BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
-            CmbBelongPlace.DataSource = BelongPlace[0].category_name;
+            List<string> belongPlaceList = new List<string>();
+            foreach (var item in BelongPlace)
+            {
+                belongPlaceList.Add(item.category_name);
+            }
+            CmbBelongPlace.DataSource = belongPlaceList;
         }
         #endregion
 
@@ -264,17 +324,17 @@ namespace PersonInfoManage
             #endregion
 
             #region 曾用名
-            if (!string.IsNullOrWhiteSpace(TxtFormerName.Text))
+            if (!string.IsNullOrEmpty(TxtFormerName.Text))
             {
-                string formerName = TxtName.Text.Replace(" ", "");
+                string formerName = TxtFormerName.Text.Replace(" ", "");
                 if (RegexComm.IsValidName(formerName))
                 {
-                    LblName.Hide();
+                    LblFormerName.Hide();
                     pb.former_name = formerName;
                 }
                 else
                 {
-                    LblName.Show();
+                    LblFormerName.Show();
                     return;
                 }
             }
@@ -351,7 +411,14 @@ namespace PersonInfoManage
             #endregion
 
             #region 人员类型
-            //pb.person_type_id = CmbPersonType;
+            PersonType = new SysSettingBLL().SelectByDictName(sys_dict_type.Person);
+            foreach (var item in PersonType)
+            {
+                if (item.category_name.Equals(CmbPersonType.Text))
+                {
+                    pb.person_type_id = item.id;
+                }
+            }
             #endregion
 
             #region QQ
@@ -393,7 +460,14 @@ namespace PersonInfoManage
             #endregion
 
             #region 归属地
-            //pb.belong_place_id = CmbBelongPlace;
+            BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
+            foreach (var item in BelongPlace)
+            {
+                if (item.category_name.Equals(CmbBelongPlace.Text))
+                {
+                    pb.belong_place_id = item.id;
+                }
+            }
             #endregion
 
             #region 民族
@@ -414,7 +488,7 @@ namespace PersonInfoManage
 
             #region 判断结果
             Result r;
-            if (this.Text.Equals("人员信息录入"))
+            if (Text.Equals("人员信息录入"))
             {
                 r = new PersonBasicBLL().Add(pb);
             }
@@ -423,15 +497,15 @@ namespace PersonInfoManage
                 r = new PersonBasicBLL().Update(pb);
             }
 
-            if (r.Code == RES.OK)
-            {
-                MessageBoxCustom.Show(r.Message, "", this);
-            }
-            else
-            {
-                //MessageBox.Show(r.Message);
-                MessageBoxCustom.Show(r.Message, "", this);
-            }
+            //if (r.Code == RES.OK)
+            //{
+            //    MessageBoxCustom.Show(r.Message, "", this);
+            //}
+            //else
+            //{
+            //    MessageBoxCustom.Show(r.Message, "", this);
+            //}
+            MessageBoxCustom.Show(r.Message, "提示", this);
             #endregion
 
         }
@@ -446,6 +520,6 @@ namespace PersonInfoManage
             this.Close();
         }
 
-        
+
     }
 }

@@ -1,11 +1,11 @@
 ﻿using PersonInfoManage.BLL.Cost;
 using PersonInfoManage.BLL.Logs;
+using PersonInfoManage.BLL.System;
+using PersonInfoManage.BLL.Utils;
 using PersonInfoManage.DAL.PersonInfo;
 using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace PersonInfoManage
@@ -15,7 +15,7 @@ namespace PersonInfoManage
         public MainForm()
         {
             InitializeComponent();
-            
+            //dgvPerson.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -35,11 +35,13 @@ namespace PersonInfoManage
             //}
 
         }
-
+        #region 王继能
         //<王继能_1>
         //
         //</王继能_1>
+        #endregion
 
+        #region 毛宇航
         //<毛宇航_1>
         private void BtnAddPerson_Click(object sender, EventArgs e)
         {
@@ -50,8 +52,18 @@ namespace PersonInfoManage
 
         private void BtnQueryPerson_Click(object sender, EventArgs e)
         {
-            //PersonDetailForm personDetailForm = new PersonDetailForm();
-            //personDetailForm.ShowDialog();
+            PersonDetailForm personDetailForm = new PersonDetailForm(1);
+            personDetailForm.ShowDialog();
+            for (int i = 0; i < dgvPerson.Rows.Count; i++)
+            {
+                DataGridViewCheckBoxCell check = (DataGridViewCheckBoxCell)dgvPerson.Rows[i].Cells[0];
+                Boolean flag = Convert.ToBoolean(check.Value);
+                if (flag == true)
+                {
+                    string indentity = this.dgvPerson.Rows[i].Cells[2].Value.ToString();
+                }
+            }
+           
         }
 
         private void BtnUpdatePerson_Click(object sender, EventArgs e)
@@ -65,75 +77,64 @@ namespace PersonInfoManage
         {
 
         }
+        
+        private void btnSearchPerson_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void BtnRecycle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void BtnComdelPerson_Click(object sender, EventArgs e)
+        {
+
+        }
         //</毛宇航_1>
+        #endregion 毛宇航
 
+        #region 李鸽鸽
         //<李鸽鸽_1>
         //
         //</李鸽鸽_1>
+        #endregion
 
+        #region 坤吉心
         //<坤吉心_1>
-        private void DgvUserLog_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            
-               // SolidBrush v_SoliBrush = new SolidBrush();
-            
-        }
-
-        private void BtnSearchUserlog_Click(object sender, EventArgs e)
-        {
-            
-             this.DgvUserLog.AutoGenerateColumns = false;//禁止生成不需要的列
-             DgvUserLog.DataSource = new LogUserBLL().Query();
-           
-            
-        }
-
         private void BtnDelUserlog_Click(object sender, EventArgs e)
         {
-            //if (this.DgvUserLog.RowCount==0)//判断是否有删除对象
-            //{
-            //    MessageBox.Show("没有选择要删除的信息！","提示");
-            //    return;
-            //}
-            DialogResult res = MessageBoxCustom.Show("是否确认删除？","提示",MessageBoxButtons.YesNo,this);
-            if (res==DialogResult.Yes)
-            {
-           
-            }
+
+        }
+        
+        private void BtnSearchUserlog_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void BtnDelSyslog_Click(object sender, EventArgs e)
         {
 
-            DialogResult res = MessageBoxCustom.Show("是否确认删除？", "提示", MessageBoxButtons.YesNo, this);
-            if (res == DialogResult.Yes)
-            {
-               
-            }
         }
-
+        
         private void BtnSearchSyslog_Click(object sender, EventArgs e)
         {
-            this.DgvSysLog.AutoGenerateColumns = false;//禁止生成不需要的列
-            DgvSysLog.DataSource = new LogSysBLL().Query();
-        }
-
-        private void DgvSysLog_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
         }
-
         //</坤吉心_1>
+        #endregion
 
+        #region 苏文杰
         //<苏文杰_2>
-
+        //首页timer控件tick事件
         private void Timer1_Tick(object sender, EventArgs e)
         {
             lableTime.Text = DateTime.Now.ToString("yyyy年MM月dd日-HH:mm:ss");
         }
 
+        //首页退出按钮点击事件
         private void BtnEsc_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("确定退出系统吗？", "退出", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -142,7 +143,11 @@ namespace PersonInfoManage
                 this.Close();
             }
         }
-        
+
+        /// <summary>
+        /// 消息提示方法
+        /// </summary>
+        /// <returns></returns>
         //private List<cost> ShowMessage()
         //{
         //    String localUser = LocalUserInfo.LoginInfo.UserName;
@@ -153,21 +158,22 @@ namespace PersonInfoManage
         //    return costApprovalBLL.Query(conditions);
         //}
 
-
+        //消息框"下次再说"linklable
         private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.PnlMessage.Visible = false;
         }
 
-
+        //消息框"点击查看"linklable
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             metroShell1.SelectedTab = MenuCost;
             TabControlCost.SelectedTab = TabCostAudit;
         }
 
+        //主页切换事件
 
-        private void MenuHome_CheckedChanged(object sender, EventArgs e)
+        private void MenuHome_Click(object sender, EventArgs e)
         {
             //List<cost> costs = ShowMessage();
             //if (costs.Count == 0)
@@ -180,28 +186,151 @@ namespace PersonInfoManage
             //}
         }
 
-
+        //基本信息管理Tab页点击事件（二级）
         private void TabPersonBasic_Click(object sender, EventArgs e)
         {
             dgvPerson.AutoGenerateColumns = false;
-            dgvPerson.DataSource = new PersonBasicDAL().Query(null);
+            int localUserid = UserInfoBLL.UserId;
+            dgvPerson.DataSource = new PersonBasicDAL().Query(new person_basic { user_id = localUserid,isdel=1});
         }
-
-        private void MenuPersoninfo_CheckedChanged(object sender, EventArgs e)
+        //人员信息管理菜单Tab页切换事件（一级）
+        private void MenuPersoninfo_Click(object sender, EventArgs e)
         {
             TabControlPerson.SelectedTab = TabPersonBasic;
+            dgvPerson.AutoGenerateColumns = false;
+            int localUserid = UserInfoBLL.UserId;
+            dgvPerson.DataSource = new PersonBasicDAL().Query(new person_basic { user_id = localUserid,isdel=0 });
+        }
+
+        //回收站Tab页点击事件（二级）
+        private void TabPersonRecycle_Click(object sender, EventArgs e)
+        {
+            DgvRecycle.AutoGenerateColumns = false;
+            person_basic person = new person_basic();
+            person.isdel = 1;
+            DgvRecycle.DataSource = new PersonBasicDAL().Query(person);
+        }
+
+        //日志管理菜单Tab页切换事件（一级）
+        
+        private void MenuLog_Click(object sender, EventArgs e)
+        {
+            TabControlLog.SelectedTab = TabUserLog;
+            DgvUserLog.AutoGenerateColumns = false;
+            DgvUserLog.DataSource = new LogUserBLL().Query();
+        }
+
+        //用户日志Tab页点击事件（二级）
+        private void TabUserLog_Click(object sender, EventArgs e)
+        {
+            DgvUserLog.AutoGenerateColumns = false;
+            DgvUserLog.DataSource = new LogUserBLL().Query();
+        }
+
+        //系统日志Tab页点击事件（二级）
+        private void TabSysLog_Click(object sender, EventArgs e)
+        {
+            DgvSysLog.AutoGenerateColumns = false;
+            DgvSysLog.DataSource = new LogSysBLL().Query();
+        }
+
+        //费用管理菜单Tab页切换事件（一级）
+        private void MenuCost_Click(object sender, EventArgs e)
+        {
+            TabControlCost.SelectedTab = TabCostApply;
+            DgvCostApply.AutoGenerateColumns = false;
+            //获取本地用户id
+            int localUserId = UserInfoBLL.UserId;
+            Dictionary<string,object> dic = new Dictionary<string, object>();
+            dic.Add(nameof(cost_main.apply_id), localUserId);
+            DgvCostApply.DataSource = new CostApplyBLL().Query(dic);
+        }
+
+        //费用申请Tab页点击事件（二级）
+        private void TabCostApply_Click(object sender, EventArgs e)
+        {
+            DgvCostApply.AutoGenerateColumns = false;
+            //获取本地用户id
+            int localUserId = UserInfoBLL.UserId;
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add(nameof(cost_main.apply_id), localUserId);
+            DgvCostApply.DataSource = new CostApplyBLL().Query(dic);
+        }
+
+        //费用审批Tab页点击事件（二级）
+        private void TabCostAudit_Click(object sender, EventArgs e)
+        {
+            DgvCostApprove.AutoGenerateColumns = false;
+            //获取本地用户id
+            int localUserId = UserInfoBLL.UserId;
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add(nameof(cost_approval.approval_id), localUserId);
+            DgvCostApprove.DataSource = new CostApprovalBLL().Query(dic);
+        }
+
+        //费用规划Tab页点击事件（二级）
+        private void TabCostPlan_Click(object sender, EventArgs e)
+        {
+            DgvCostPlan.AutoGenerateColumns = false;
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            DgvCostPlan.DataSource = new CostPlanBLL().Query(dic);
+        }
+        
+        //系统设置菜单Tab页切换事件（一级）
+        private void MenuSys_Click(object sender, EventArgs e)
+        {
+            TabControlSys.SelectedTab = TabUserMan;
+            DgvUserMan.AutoGenerateColumns = false;
+            DgvUserMan.DataSource = new SysUserBLL().Select(new sys_user());
+        }
+
+        //用户管理Tab页点击事件(二级)
+        private void TabUserMan_Click(object sender, EventArgs e)
+        {
+            DgvUserMan.AutoGenerateColumns = false;
+            DgvUserMan.DataSource = new SysUserBLL().Select(new sys_user());
+        }
+
+        //用户组管理Tab页点击事件（二级）
+        private void TabGroupMan_Click(object sender, EventArgs e)
+        {
+            DgvGroupMan.AutoGenerateColumns = false;
+            //DgvGroupMan.DataSource = new PermBLL().SelectGroup(new sys_group());
+        }
+
+        //系统设置Tab页点击事件（二级）
+        private void TabSysSet_Click(object sender, EventArgs e)
+        {
+            DgvSysSet.AutoGenerateColumns = false;
+            var ds = new SysSettingBLL().SeleteAll();
+            foreach (var item in ds)
+            {
+                if (item.dict_name.Equals(sys_dict_type.Cost.ToString()))
+                {
+                    item.dict_name = "费用类别";
+                }
+                else if (item.dict_name.Equals(sys_dict_type.Person.ToString()))
+                {
+                    item.dict_name = "重点人员类别";
+                }
+                else if (item.dict_name.Equals(sys_dict_type.NativePlace.ToString()))
+                {
+                    item.dict_name = "归属地";
+                }
+            }
+            DgvSysSet.DataSource = ds;
         }
 
 
-        private void TabPersonBasic_EnabledChanged(object sender, EventArgs e)
+        private void MenuOperation_Click(object sender, EventArgs e)
         {
 
         }
-
         //</苏文杰_2>
+        #endregion
 
+        #region 王尔沛
         //<王尔沛_2>
-
         private void BtnAddUser_Click(object sender, EventArgs e)
         {
             AddUserForm addUserForm = new AddUserForm();
@@ -233,10 +362,27 @@ namespace PersonInfoManage
             groupRoleManageForm.ShowDialog();
         }
 
+
+        private void BtnResetPsw_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDelUser_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void BtnSearchUser_Click(object sender, EventArgs e)
+        {
+
+        }
         //</王尔沛_2>
+        #endregion
 
+        #region 曾丽川
         //<曾丽川_2>
-
         private void BtnAddRole_Click(object sender, EventArgs e)
         {
             AddUserGroupForm addUserGroupForm = new AddUserGroupForm();
@@ -263,12 +409,61 @@ namespace PersonInfoManage
             addCategoreTypeForm.ShowDialog();
         }
 
+
+        private void BtnDelGroup_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnsearchGroup_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void BtnDelType_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //数据字典下拉框选择事件
+        private void CmbDictType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
         //</曾丽川_2>
+        #endregion
 
+        #region 张乐
         //<张乐_3>
-        //
-        //</张乐_3>
+        private void BtnAddBusiness_Click(object sender, EventArgs e)
+        {
 
+        }
+
+
+        private void BtnBusinessDetail_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnUpdateBusiness_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDelBusiness_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void BtnApproveBus_Click(object sender, EventArgs e)
+        {
+
+        }
+        //</张乐_3>
+        #endregion
+
+        #region 陈波
         //<陈波_3>
         //
         private void BtnAddCost_Click(object sender, EventArgs e)
@@ -302,10 +497,44 @@ namespace PersonInfoManage
             costApprovalForm.ShowDialog();
         }
 
+
+        private void BtnRepealCost_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void BtnSearchCostApply_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void BtnDelApprove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void BtnSearchApprove_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void BtnSearchBus1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnSearchBus2_Click(object sender, EventArgs e)
+        {
+
+        }
         //</陈波_3>
+        #endregion
 
+        #region 蒋媛
         //<蒋媛_3>
-
         private void BtnUpdatePlan_Click(object sender, EventArgs e)
         {
             CostPlanForm costPlanForm = new CostPlanForm();
@@ -315,15 +544,29 @@ namespace PersonInfoManage
 
         private void BtnPlanCost_Click(object sender, EventArgs e)
         {
-            CostPlanForm costPlanForm = new CostPlanForm();
-            costPlanForm.ShowDialog();
+            
         }
 
-       
+        private void BtnCheckStats_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void BtnDelCostPlan_Click(object sender, EventArgs e)
+        {
 
+        }
 
+        private void BtnAddCostPlan_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnUpdateCostPlan_Click(object sender, EventArgs e)
+        {
+
+        }
         //</蒋媛_3>
+        #endregion
     }
 }
