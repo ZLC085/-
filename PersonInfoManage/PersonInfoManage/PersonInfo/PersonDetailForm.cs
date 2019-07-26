@@ -11,25 +11,22 @@ namespace PersonInfoManage
 {
     public partial class PersonDetailForm : Form
     {
-        private readonly int PersonId;
+        private readonly person_basic PersonBasic;
         private int FileId = -1;
-        public PersonDetailForm(int personId)
+        public PersonDetailForm(person_basic personBasic)
         {
             InitializeComponent();
-            PersonId = personId;
+            PersonBasic = personBasic;
         }
 
         // 页面加载
         private void PersonDetailForm_Load(object sender, EventArgs e)
         {
-            person_basic pb = new person_basic { id = PersonId };
-            pb.user_id = UserInfoBLL.UserId;
-            List<person_basic> list = new PersonBasicBLL().Query(pb);
-            LblName.Text = list[0].name;
-            LblFormerName.Text = list[0].former_name;
-            ///
-            /// ...
-            ///
+            LblName.Text = PersonBasic.name;
+            LblFormerName.Text = PersonBasic.former_name;
+
+            DGVFile.AutoGenerateColumns = false;
+            DGVFile.DataSource = new PersonFileBLL().GetByPersonId(PersonBasic.id);
         }
 
         private void BtnAddFile_Click(object sender, EventArgs e)
@@ -49,7 +46,7 @@ namespace PersonInfoManage
                 {
                     //这里写处理耗时的代码，代码处理完成则自动关闭该窗口
                     PersonFileBLL personFileBLL = new PersonFileBLL();
-                    result = personFileBLL.Add(PersonId, filePath);
+                    result = personFileBLL.Add(PersonBasic.id, filePath);
                 });
 
                 FileStatus(result, "文件添加");
