@@ -1,6 +1,7 @@
 ﻿using PersonInfoManage.BLL.System;
 using PersonInfoManage.BLL.Utils;
 using PersonInfoManage.Model;
+using PersonInfoManage.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,17 +16,33 @@ namespace PersonInfoManage
 {
     public partial class AddCategoreTypeForm : Form
     {
-        public AddCategoreTypeForm()
+        private string value;
+        public AddCategoreTypeForm(string selectStr)
         {
             InitializeComponent();
+            labelX3.Text = selectStr.ToString();
         }
-        private void buttonX1_Click(object sender, EventArgs e)
+       
+       
+        private void textBoxX1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonX2_Click_1(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void buttonX1_Click_1(object sender, EventArgs e)
         {
             if (Text.Equals("添加类别名称"))
             {
                 sys_dict dict = new sys_dict();
+               
+             
                 dict.category_name = textBoxX1.Text;
-                dict.dict_name = labelX3.Text;
+                dict.dict_name = SysDictTypeConvert.CToE(labelX3.Text);
                 SysSettingBLL set = new SysSettingBLL();
                 Result result = new Result();
                 result = set.Add(dict);
@@ -55,14 +72,6 @@ namespace PersonInfoManage
                     MessageBoxCustom.Show("修改失败", "提示", this);
                 }
             }
-        }
-        private void buttonX2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        private void textBoxX1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

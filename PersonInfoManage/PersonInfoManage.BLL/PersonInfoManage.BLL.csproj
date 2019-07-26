@@ -48,6 +48,7 @@
     <Compile Include="Login\LoginBLL.cs" />
     <Compile Include="logs\LogSysBLL.cs" />
     <Compile Include="logs\LogUserBLL.cs" />
+    <Compile Include="System\OrganizationBLL.cs" />
     <Compile Include="PersonInfo\NativePlaceBLL.cs" />
     <Compile Include="PersonInfo\PersonBasicBLL.cs" />
     <Compile Include="PersonInfo\PersonFileBLL.cs" />

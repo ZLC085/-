@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.superTabControl1 = new DevComponents.DotNetBar.SuperTabControl();
             this.superTabControlPanel1 = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
-            this.labelX38 = new DevComponents.DotNetBar.LabelX();
-            this.labelX37 = new DevComponents.DotNetBar.LabelX();
-            this.labelX36 = new DevComponents.DotNetBar.LabelX();
-            this.labelX35 = new DevComponents.DotNetBar.LabelX();
-            this.labelX34 = new DevComponents.DotNetBar.LabelX();
-            this.labelX33 = new DevComponents.DotNetBar.LabelX();
-            this.labelX32 = new DevComponents.DotNetBar.LabelX();
-            this.labelX31 = new DevComponents.DotNetBar.LabelX();
-            this.labelX30 = new DevComponents.DotNetBar.LabelX();
-            this.labelX29 = new DevComponents.DotNetBar.LabelX();
-            this.labelX28 = new DevComponents.DotNetBar.LabelX();
-            this.labelX27 = new DevComponents.DotNetBar.LabelX();
-            this.labelX26 = new DevComponents.DotNetBar.LabelX();
-            this.labelX25 = new DevComponents.DotNetBar.LabelX();
-            this.labelX24 = new DevComponents.DotNetBar.LabelX();
-            this.labelX23 = new DevComponents.DotNetBar.LabelX();
-            this.labelX22 = new DevComponents.DotNetBar.LabelX();
-            this.labelX21 = new DevComponents.DotNetBar.LabelX();
+            this.LblUserId = new DevComponents.DotNetBar.LabelX();
+            this.LblInputTime = new DevComponents.DotNetBar.LabelX();
+            this.LblFamily = new DevComponents.DotNetBar.LabelX();
+            this.LblTemper = new DevComponents.DotNetBar.LabelX();
+            this.LblIncome = new DevComponents.DotNetBar.LabelX();
+            this.LblJob = new DevComponents.DotNetBar.LabelX();
+            this.LblMarry = new DevComponents.DotNetBar.LabelX();
+            this.LblBelongPlace = new DevComponents.DotNetBar.LabelX();
+            this.LblPersonType = new DevComponents.DotNetBar.LabelX();
+            this.LblQQ = new DevComponents.DotNetBar.LabelX();
+            this.LblPhone = new DevComponents.DotNetBar.LabelX();
+            this.LblAddress = new DevComponents.DotNetBar.LabelX();
+            this.LblNativePlace = new DevComponents.DotNetBar.LabelX();
+            this.LblNation = new DevComponents.DotNetBar.LabelX();
+            this.LblBirthDate = new DevComponents.DotNetBar.LabelX();
+            this.LblID = new DevComponents.DotNetBar.LabelX();
+            this.LblGender = new DevComponents.DotNetBar.LabelX();
+            this.LblFormerName = new DevComponents.DotNetBar.LabelX();
             this.LblName = new DevComponents.DotNetBar.LabelX();
             this.labelX19 = new DevComponents.DotNetBar.LabelX();
             this.labelX18 = new DevComponents.DotNetBar.LabelX();
@@ -144,24 +144,24 @@
             this.panelEx2.AutoScrollMargin = new System.Drawing.Size(0, 70);
             this.panelEx2.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.panelEx2.Controls.Add(this.labelX38);
-            this.panelEx2.Controls.Add(this.labelX37);
-            this.panelEx2.Controls.Add(this.labelX36);
-            this.panelEx2.Controls.Add(this.labelX35);
-            this.panelEx2.Controls.Add(this.labelX34);
-            this.panelEx2.Controls.Add(this.labelX33);
-            this.panelEx2.Controls.Add(this.labelX32);
-            this.panelEx2.Controls.Add(this.labelX31);
-            this.panelEx2.Controls.Add(this.labelX30);
-            this.panelEx2.Controls.Add(this.labelX29);
-            this.panelEx2.Controls.Add(this.labelX28);
-            this.panelEx2.Controls.Add(this.labelX27);
-            this.panelEx2.Controls.Add(this.labelX26);
-            this.panelEx2.Controls.Add(this.labelX25);
-            this.panelEx2.Controls.Add(this.labelX24);
-            this.panelEx2.Controls.Add(this.labelX23);
-            this.panelEx2.Controls.Add(this.labelX22);
-            this.panelEx2.Controls.Add(this.labelX21);
+            this.panelEx2.Controls.Add(this.LblUserId);
+            this.panelEx2.Controls.Add(this.LblInputTime);
+            this.panelEx2.Controls.Add(this.LblFamily);
+            this.panelEx2.Controls.Add(this.LblTemper);
+            this.panelEx2.Controls.Add(this.LblIncome);
+            this.panelEx2.Controls.Add(this.LblJob);
+            this.panelEx2.Controls.Add(this.LblMarry);
+            this.panelEx2.Controls.Add(this.LblBelongPlace);
+            this.panelEx2.Controls.Add(this.LblPersonType);
+            this.panelEx2.Controls.Add(this.LblQQ);
+            this.panelEx2.Controls.Add(this.LblPhone);
+            this.panelEx2.Controls.Add(this.LblAddress);
+            this.panelEx2.Controls.Add(this.LblNativePlace);
+            this.panelEx2.Controls.Add(this.LblNation);
+            this.panelEx2.Controls.Add(this.LblBirthDate);
+            this.panelEx2.Controls.Add(this.LblID);
+            this.panelEx2.Controls.Add(this.LblGender);
+            this.panelEx2.Controls.Add(this.LblFormerName);
             this.panelEx2.Controls.Add(this.LblName);
             this.panelEx2.Controls.Add(this.labelX19);
             this.panelEx2.Controls.Add(this.labelX18);
@@ -195,257 +195,257 @@
             this.panelEx2.Style.GradientAngle = 90;
             this.panelEx2.TabIndex = 0;
             // 
-            // labelX38
+            // LblUserId
             // 
             // 
             // 
             // 
-            this.labelX38.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX38.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX38.Location = new System.Drawing.Point(275, 938);
-            this.labelX38.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX38.Name = "labelX38";
-            this.labelX38.Size = new System.Drawing.Size(104, 29);
-            this.labelX38.TabIndex = 37;
-            this.labelX38.Text = "加载内容";
+            this.LblUserId.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblUserId.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblUserId.Location = new System.Drawing.Point(275, 938);
+            this.LblUserId.Margin = new System.Windows.Forms.Padding(4);
+            this.LblUserId.Name = "LblUserId";
+            this.LblUserId.Size = new System.Drawing.Size(200, 29);
+            this.LblUserId.TabIndex = 37;
+            this.LblUserId.Text = "加载内容";
             // 
-            // labelX37
+            // LblInputTime
             // 
             // 
             // 
             // 
-            this.labelX37.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX37.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX37.Location = new System.Drawing.Point(275, 888);
-            this.labelX37.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX37.Name = "labelX37";
-            this.labelX37.Size = new System.Drawing.Size(104, 29);
-            this.labelX37.TabIndex = 36;
-            this.labelX37.Text = "加载内容";
+            this.LblInputTime.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblInputTime.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblInputTime.Location = new System.Drawing.Point(275, 888);
+            this.LblInputTime.Margin = new System.Windows.Forms.Padding(4);
+            this.LblInputTime.Name = "LblInputTime";
+            this.LblInputTime.Size = new System.Drawing.Size(200, 29);
+            this.LblInputTime.TabIndex = 36;
+            this.LblInputTime.Text = "加载内容";
             // 
-            // labelX36
+            // LblFamily
             // 
             // 
             // 
             // 
-            this.labelX36.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX36.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX36.Location = new System.Drawing.Point(275, 838);
-            this.labelX36.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX36.Name = "labelX36";
-            this.labelX36.Size = new System.Drawing.Size(104, 29);
-            this.labelX36.TabIndex = 35;
-            this.labelX36.Text = "加载内容";
+            this.LblFamily.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblFamily.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblFamily.Location = new System.Drawing.Point(275, 838);
+            this.LblFamily.Margin = new System.Windows.Forms.Padding(4);
+            this.LblFamily.Name = "LblFamily";
+            this.LblFamily.Size = new System.Drawing.Size(200, 29);
+            this.LblFamily.TabIndex = 35;
+            this.LblFamily.Text = "加载内容";
             // 
-            // labelX35
+            // LblTemper
             // 
             // 
             // 
             // 
-            this.labelX35.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX35.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX35.Location = new System.Drawing.Point(275, 788);
-            this.labelX35.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX35.Name = "labelX35";
-            this.labelX35.Size = new System.Drawing.Size(104, 29);
-            this.labelX35.TabIndex = 34;
-            this.labelX35.Text = "加载内容";
+            this.LblTemper.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblTemper.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblTemper.Location = new System.Drawing.Point(275, 788);
+            this.LblTemper.Margin = new System.Windows.Forms.Padding(4);
+            this.LblTemper.Name = "LblTemper";
+            this.LblTemper.Size = new System.Drawing.Size(200, 29);
+            this.LblTemper.TabIndex = 34;
+            this.LblTemper.Text = "加载内容";
             // 
-            // labelX34
+            // LblIncome
             // 
             // 
             // 
             // 
-            this.labelX34.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX34.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX34.Location = new System.Drawing.Point(275, 738);
-            this.labelX34.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX34.Name = "labelX34";
-            this.labelX34.Size = new System.Drawing.Size(104, 29);
-            this.labelX34.TabIndex = 33;
-            this.labelX34.Text = "加载内容";
+            this.LblIncome.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblIncome.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblIncome.Location = new System.Drawing.Point(275, 738);
+            this.LblIncome.Margin = new System.Windows.Forms.Padding(4);
+            this.LblIncome.Name = "LblIncome";
+            this.LblIncome.Size = new System.Drawing.Size(200, 29);
+            this.LblIncome.TabIndex = 33;
+            this.LblIncome.Text = "加载内容";
             // 
-            // labelX33
+            // LblJob
             // 
             // 
             // 
             // 
-            this.labelX33.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX33.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX33.Location = new System.Drawing.Point(275, 688);
-            this.labelX33.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX33.Name = "labelX33";
-            this.labelX33.Size = new System.Drawing.Size(104, 29);
-            this.labelX33.TabIndex = 32;
-            this.labelX33.Text = "加载内容";
+            this.LblJob.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblJob.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblJob.Location = new System.Drawing.Point(275, 688);
+            this.LblJob.Margin = new System.Windows.Forms.Padding(4);
+            this.LblJob.Name = "LblJob";
+            this.LblJob.Size = new System.Drawing.Size(200, 29);
+            this.LblJob.TabIndex = 32;
+            this.LblJob.Text = "加载内容";
             // 
-            // labelX32
+            // LblMarry
             // 
             // 
             // 
             // 
-            this.labelX32.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX32.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX32.Location = new System.Drawing.Point(275, 638);
-            this.labelX32.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX32.Name = "labelX32";
-            this.labelX32.Size = new System.Drawing.Size(104, 29);
-            this.labelX32.TabIndex = 31;
-            this.labelX32.Text = "加载内容";
+            this.LblMarry.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblMarry.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblMarry.Location = new System.Drawing.Point(275, 638);
+            this.LblMarry.Margin = new System.Windows.Forms.Padding(4);
+            this.LblMarry.Name = "LblMarry";
+            this.LblMarry.Size = new System.Drawing.Size(200, 29);
+            this.LblMarry.TabIndex = 31;
+            this.LblMarry.Text = "加载内容";
             // 
-            // labelX31
+            // LblBelongPlace
             // 
             // 
             // 
             // 
-            this.labelX31.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX31.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX31.Location = new System.Drawing.Point(275, 588);
-            this.labelX31.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX31.Name = "labelX31";
-            this.labelX31.Size = new System.Drawing.Size(104, 29);
-            this.labelX31.TabIndex = 30;
-            this.labelX31.Text = "加载内容";
+            this.LblBelongPlace.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblBelongPlace.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblBelongPlace.Location = new System.Drawing.Point(275, 588);
+            this.LblBelongPlace.Margin = new System.Windows.Forms.Padding(4);
+            this.LblBelongPlace.Name = "LblBelongPlace";
+            this.LblBelongPlace.Size = new System.Drawing.Size(200, 29);
+            this.LblBelongPlace.TabIndex = 30;
+            this.LblBelongPlace.Text = "加载内容";
             // 
-            // labelX30
+            // LblPersonType
             // 
             // 
             // 
             // 
-            this.labelX30.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX30.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX30.Location = new System.Drawing.Point(275, 538);
-            this.labelX30.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX30.Name = "labelX30";
-            this.labelX30.Size = new System.Drawing.Size(104, 29);
-            this.labelX30.TabIndex = 29;
-            this.labelX30.Text = "加载内容";
+            this.LblPersonType.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblPersonType.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblPersonType.Location = new System.Drawing.Point(275, 538);
+            this.LblPersonType.Margin = new System.Windows.Forms.Padding(4);
+            this.LblPersonType.Name = "LblPersonType";
+            this.LblPersonType.Size = new System.Drawing.Size(200, 29);
+            this.LblPersonType.TabIndex = 29;
+            this.LblPersonType.Text = "加载内容";
             // 
-            // labelX29
+            // LblQQ
             // 
             // 
             // 
             // 
-            this.labelX29.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX29.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX29.Location = new System.Drawing.Point(275, 488);
-            this.labelX29.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX29.Name = "labelX29";
-            this.labelX29.Size = new System.Drawing.Size(104, 29);
-            this.labelX29.TabIndex = 28;
-            this.labelX29.Text = "加载内容";
+            this.LblQQ.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblQQ.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblQQ.Location = new System.Drawing.Point(275, 488);
+            this.LblQQ.Margin = new System.Windows.Forms.Padding(4);
+            this.LblQQ.Name = "LblQQ";
+            this.LblQQ.Size = new System.Drawing.Size(200, 29);
+            this.LblQQ.TabIndex = 28;
+            this.LblQQ.Text = "加载内容";
             // 
-            // labelX28
+            // LblPhone
             // 
             // 
             // 
             // 
-            this.labelX28.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX28.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX28.Location = new System.Drawing.Point(275, 438);
-            this.labelX28.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX28.Name = "labelX28";
-            this.labelX28.Size = new System.Drawing.Size(104, 29);
-            this.labelX28.TabIndex = 27;
-            this.labelX28.Text = "加载内容";
+            this.LblPhone.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblPhone.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblPhone.Location = new System.Drawing.Point(275, 438);
+            this.LblPhone.Margin = new System.Windows.Forms.Padding(4);
+            this.LblPhone.Name = "LblPhone";
+            this.LblPhone.Size = new System.Drawing.Size(200, 29);
+            this.LblPhone.TabIndex = 27;
+            this.LblPhone.Text = "加载内容";
             // 
-            // labelX27
+            // LblAddress
             // 
             // 
             // 
             // 
-            this.labelX27.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX27.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX27.Location = new System.Drawing.Point(275, 388);
-            this.labelX27.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX27.Name = "labelX27";
-            this.labelX27.Size = new System.Drawing.Size(104, 29);
-            this.labelX27.TabIndex = 26;
-            this.labelX27.Text = "加载内容";
+            this.LblAddress.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblAddress.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblAddress.Location = new System.Drawing.Point(275, 388);
+            this.LblAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.LblAddress.Name = "LblAddress";
+            this.LblAddress.Size = new System.Drawing.Size(200, 29);
+            this.LblAddress.TabIndex = 26;
+            this.LblAddress.Text = "加载内容";
             // 
-            // labelX26
+            // LblNativePlace
             // 
             // 
             // 
             // 
-            this.labelX26.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX26.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX26.Location = new System.Drawing.Point(275, 338);
-            this.labelX26.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX26.Name = "labelX26";
-            this.labelX26.Size = new System.Drawing.Size(104, 29);
-            this.labelX26.TabIndex = 25;
-            this.labelX26.Text = "加载内容";
+            this.LblNativePlace.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblNativePlace.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblNativePlace.Location = new System.Drawing.Point(275, 338);
+            this.LblNativePlace.Margin = new System.Windows.Forms.Padding(4);
+            this.LblNativePlace.Name = "LblNativePlace";
+            this.LblNativePlace.Size = new System.Drawing.Size(300, 29);
+            this.LblNativePlace.TabIndex = 25;
+            this.LblNativePlace.Text = "加载内容";
             // 
-            // labelX25
+            // LblNation
             // 
             // 
             // 
             // 
-            this.labelX25.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX25.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX25.Location = new System.Drawing.Point(275, 288);
-            this.labelX25.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX25.Name = "labelX25";
-            this.labelX25.Size = new System.Drawing.Size(104, 29);
-            this.labelX25.TabIndex = 24;
-            this.labelX25.Text = "加载内容";
+            this.LblNation.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblNation.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblNation.Location = new System.Drawing.Point(275, 288);
+            this.LblNation.Margin = new System.Windows.Forms.Padding(4);
+            this.LblNation.Name = "LblNation";
+            this.LblNation.Size = new System.Drawing.Size(200, 29);
+            this.LblNation.TabIndex = 24;
+            this.LblNation.Text = "加载内容";
             // 
-            // labelX24
+            // LblBirthDate
             // 
             // 
             // 
             // 
-            this.labelX24.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX24.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX24.Location = new System.Drawing.Point(275, 238);
-            this.labelX24.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX24.Name = "labelX24";
-            this.labelX24.Size = new System.Drawing.Size(104, 29);
-            this.labelX24.TabIndex = 23;
-            this.labelX24.Text = "加载内容";
+            this.LblBirthDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblBirthDate.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblBirthDate.Location = new System.Drawing.Point(275, 238);
+            this.LblBirthDate.Margin = new System.Windows.Forms.Padding(4);
+            this.LblBirthDate.Name = "LblBirthDate";
+            this.LblBirthDate.Size = new System.Drawing.Size(200, 29);
+            this.LblBirthDate.TabIndex = 23;
+            this.LblBirthDate.Text = "加载内容";
             // 
-            // labelX23
+            // LblID
             // 
             // 
             // 
             // 
-            this.labelX23.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX23.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX23.Location = new System.Drawing.Point(275, 188);
-            this.labelX23.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX23.Name = "labelX23";
-            this.labelX23.Size = new System.Drawing.Size(104, 29);
-            this.labelX23.TabIndex = 22;
-            this.labelX23.Text = "加载内容";
+            this.LblID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblID.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblID.Location = new System.Drawing.Point(275, 188);
+            this.LblID.Margin = new System.Windows.Forms.Padding(4);
+            this.LblID.Name = "LblID";
+            this.LblID.Size = new System.Drawing.Size(200, 29);
+            this.LblID.TabIndex = 22;
+            this.LblID.Text = "加载内容";
             // 
-            // labelX22
+            // LblGender
             // 
             // 
             // 
             // 
-            this.labelX22.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX22.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX22.Location = new System.Drawing.Point(275, 138);
-            this.labelX22.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX22.Name = "labelX22";
-            this.labelX22.Size = new System.Drawing.Size(104, 29);
-            this.labelX22.TabIndex = 21;
-            this.labelX22.Text = "加载内容";
+            this.LblGender.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblGender.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblGender.Location = new System.Drawing.Point(275, 138);
+            this.LblGender.Margin = new System.Windows.Forms.Padding(4);
+            this.LblGender.Name = "LblGender";
+            this.LblGender.Size = new System.Drawing.Size(200, 29);
+            this.LblGender.TabIndex = 21;
+            this.LblGender.Text = "加载内容";
             // 
-            // labelX21
+            // LblFormerName
             // 
             // 
             // 
             // 
-            this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX21.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX21.Location = new System.Drawing.Point(275, 88);
-            this.labelX21.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX21.Name = "labelX21";
-            this.labelX21.Size = new System.Drawing.Size(104, 29);
-            this.labelX21.TabIndex = 20;
-            this.labelX21.Text = "加载内容";
+            this.LblFormerName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblFormerName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblFormerName.Location = new System.Drawing.Point(275, 88);
+            this.LblFormerName.Margin = new System.Windows.Forms.Padding(4);
+            this.LblFormerName.Name = "LblFormerName";
+            this.LblFormerName.Size = new System.Drawing.Size(200, 29);
+            this.LblFormerName.TabIndex = 20;
+            this.LblFormerName.Text = "加载内容";
             // 
             // LblName
             // 
@@ -457,7 +457,7 @@
             this.LblName.Location = new System.Drawing.Point(275, 38);
             this.LblName.Margin = new System.Windows.Forms.Padding(4);
             this.LblName.Name = "LblName";
-            this.LblName.Size = new System.Drawing.Size(104, 29);
+            this.LblName.Size = new System.Drawing.Size(200, 29);
             this.LblName.TabIndex = 19;
             this.LblName.Text = "加载内容";
             // 
@@ -748,37 +748,37 @@
             // 
             // dataGridViewX1
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewX1.EnableHeadersVisualStyles = false;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.dataGridViewX1.Location = new System.Drawing.Point(0, 94);
             this.dataGridViewX1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewX1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewX1.RowHeadersWidth = 92;
             this.dataGridViewX1.RowTemplate.Height = 23;
             this.dataGridViewX1.Size = new System.Drawing.Size(645, 287);
@@ -979,24 +979,24 @@
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.LabelX labelX38;
-        private DevComponents.DotNetBar.LabelX labelX37;
-        private DevComponents.DotNetBar.LabelX labelX36;
-        private DevComponents.DotNetBar.LabelX labelX35;
-        private DevComponents.DotNetBar.LabelX labelX34;
-        private DevComponents.DotNetBar.LabelX labelX33;
-        private DevComponents.DotNetBar.LabelX labelX32;
-        private DevComponents.DotNetBar.LabelX labelX31;
-        private DevComponents.DotNetBar.LabelX labelX30;
-        private DevComponents.DotNetBar.LabelX labelX29;
-        private DevComponents.DotNetBar.LabelX labelX28;
-        private DevComponents.DotNetBar.LabelX labelX27;
-        private DevComponents.DotNetBar.LabelX labelX26;
-        private DevComponents.DotNetBar.LabelX labelX25;
-        private DevComponents.DotNetBar.LabelX labelX24;
-        private DevComponents.DotNetBar.LabelX labelX23;
-        private DevComponents.DotNetBar.LabelX labelX22;
-        private DevComponents.DotNetBar.LabelX labelX21;
+        private DevComponents.DotNetBar.LabelX LblUserId;
+        private DevComponents.DotNetBar.LabelX LblInputTime;
+        private DevComponents.DotNetBar.LabelX LblFamily;
+        private DevComponents.DotNetBar.LabelX LblTemper;
+        private DevComponents.DotNetBar.LabelX LblIncome;
+        private DevComponents.DotNetBar.LabelX LblJob;
+        private DevComponents.DotNetBar.LabelX LblMarry;
+        private DevComponents.DotNetBar.LabelX LblBelongPlace;
+        private DevComponents.DotNetBar.LabelX LblPersonType;
+        private DevComponents.DotNetBar.LabelX LblQQ;
+        private DevComponents.DotNetBar.LabelX LblPhone;
+        private DevComponents.DotNetBar.LabelX LblAddress;
+        private DevComponents.DotNetBar.LabelX LblNativePlace;
+        private DevComponents.DotNetBar.LabelX LblNation;
+        private DevComponents.DotNetBar.LabelX LblBirthDate;
+        private DevComponents.DotNetBar.LabelX LblID;
+        private DevComponents.DotNetBar.LabelX LblGender;
+        private DevComponents.DotNetBar.LabelX LblFormerName;
         private DevComponents.DotNetBar.LabelX LblName;
         private DevComponents.DotNetBar.LabelX labelX19;
     }

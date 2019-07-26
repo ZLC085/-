@@ -34,9 +34,8 @@ namespace PersonInfoManage.BLL.PersonInfo
                     r.Message = "添加失败！";
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw e;
             }
             return r;
         }
@@ -65,9 +64,8 @@ namespace PersonInfoManage.BLL.PersonInfo
                     r.Message = "添加失败！";
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw e;
             }
             return r;
         }
@@ -96,9 +94,8 @@ namespace PersonInfoManage.BLL.PersonInfo
                     r.Message = "添加失败！";
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw e;
             }
             return r;
         }
@@ -127,9 +124,8 @@ namespace PersonInfoManage.BLL.PersonInfo
                     r.Message = "添加失败！";
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw e;
             }
             return r;
         }
@@ -141,35 +137,14 @@ namespace PersonInfoManage.BLL.PersonInfo
         /// <returns>List类型</returns>
         public List<person_basic> Query(person_basic info)
         {
-            List<person_basic> list;
+            List<person_basic> list = new List<person_basic>();
             try
             {
                 // 接收列表
                 list = new DAL.PersonInfo.PersonBasicDAL().Query(info);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                throw e;
-            }
-            // 返回列表
-            return list;
-        }
-
-        /// <summary>
-        /// 人员信息检索（回收站页面）
-        /// </summary>
-        /// <returns>List类型</returns>
-        public List<person_basic> Query()
-        {
-            List<person_basic> list;
-            try
-            {
-                // 接收列表
-                list = new DAL.PersonInfo.PersonBasicDAL().Query();
-            }
-            catch (Exception e)
-            {
-                throw e;
             }
             // 返回列表
             return list;

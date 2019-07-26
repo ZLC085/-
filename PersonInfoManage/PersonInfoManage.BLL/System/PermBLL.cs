@@ -107,6 +107,13 @@ namespace PersonInfoManage.BLL.System
         /// </summary>
         /// <param name="group">查询条件</param>
         /// <returns>用户组信息</returns>
+        public List<sys_group> SelectGroupBy(sys_group group)
+        {
+            PermDAL perm = new PermDAL();
+            return perm.SelectGroupBy(group);
+        }
+
+
         public List<sys_group> SelectGroup(sys_group group)
         {
             PermDAL perm = new PermDAL();
