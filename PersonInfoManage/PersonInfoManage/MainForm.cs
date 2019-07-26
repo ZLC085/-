@@ -18,7 +18,7 @@ namespace PersonInfoManage
         private List<view_sys_u2g> UserInfo = new SysUserBLL().SelectAll();
         private List<sys_group> GroupInfo;
         private List<int> UserId;
-        private List<person_basic> PersonBasicsNotDel;
+
         public MainForm()
         {
             InitializeComponent();
