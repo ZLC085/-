@@ -116,7 +116,7 @@ namespace PersonInfoManage.BLL
         /// 通过parent_id查询组织机构
         /// </summary>
         /// <param name="pid"></param>
-        /// <returns></returns>
+        /// <returns>List<sys_org></returns>
         public List<sys_org> SelectByparentid(int pid)
         {
             OrganizationDAL orgDAL = new OrganizationDAL();

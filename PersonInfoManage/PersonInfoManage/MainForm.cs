@@ -1,4 +1,6 @@
-﻿using PersonInfoManage.BLL.Cost;
+﻿using DevComponents.AdvTree;
+using PersonInfoManage.BLL;
+using PersonInfoManage.BLL.Cost;
 using PersonInfoManage.BLL.Logs;
 using PersonInfoManage.BLL.System;
 using PersonInfoManage.BLL.Utils;
@@ -6,6 +8,7 @@ using PersonInfoManage.DAL.PersonInfo;
 using PersonInfoManage.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 
 namespace PersonInfoManage
@@ -150,12 +153,12 @@ namespace PersonInfoManage
         /// 消息提示方法
         /// </summary>
         /// <returns></returns>
-        //private List<cost> ShowMessage()
+        //private List<cost_approval> ShowMessage()
         //{
-        //    String localUser = LocalUserInfo.LoginInfo.UserName;
+        //    int localUserid = UserInfoBLL.UserId;
         //    CostApprovalBLL costApprovalBLL = new CostApprovalBLL();
         //    Dictionary<string, object> conditions = new Dictionary<string, object>();
-        //    conditions.Add(nameof(cost_main.approver), localUser);
+        //    conditions.Add(nameof(cost_approval.approval_id), localUserid);
         //    conditions.Add(nameof(cost_main.status), 0);
         //    return costApprovalBLL.Query(conditions);
         //}
@@ -328,6 +331,70 @@ namespace PersonInfoManage
         {
 
         }
+
+        //组织机构管理Tab页点击事件（二级）
+        private void TabOrgMan_Click(object sender, EventArgs e)
+        {
+        //    //从数据库获取数据，得到结果为DataTable
+        //    sys_org org = new sys_org();
+        //    OrganizationBLL orgBLL = new OrganizationBLL();
+        //    DataTable dt = new DataTable();
+        //    List<sys_org> list = new List<sys_org>();
+        //    list = orgBLL.SelectByparentid(0);
+        //    foreach (sys_org item in list)
+        //    {
+        //        dt.Columns.Add(item.org_name);
+        //    }
+        //    InitModuleTree(dt);
+        }
+        ////绑定TrreView
+        //private void InitModuleTree(DataTable dt)
+        //{
+        //    //清空treeview上所有节点
+        //    this.TreeOrg.Nodes.Clear();
+        //    int[] gen = new int[dt.Rows.Count]; //用于存储父节点Tag
+        //    int[] zi = new int[dt.Rows.Count];  //用于存储子节点Tag
+        //    for (int i = 0; i < gen.Length; i++)
+        //    {
+        //        string zhi = dt.Rows[i][3].ToString();//获取节点Tag值   eg：1-2
+        //        if (zhi.Length > 1)   //表示是子节点   eg：1-2
+        //        {
+        //            gen[i] = int.Parse(zhi.Substring(0, zhi.IndexOf('-')));
+        //            zi[i] = int.Parse(zhi.Substring(zhi.IndexOf('-') + 1));
+        //        }
+        //        else    //表示是根节点   eg：2
+        //        {
+        //            //将所有父节点加到treeview上
+        //            zi[i] = int.Parse(zhi);
+        //            Node nodeParent = new Node();
+        //            nodeParent.Tag = (zi[i]).ToString();
+        //            nodeParent.Text = dt.Rows[i][1].ToString();
+        //            TreeOrg.Nodes.Add(nodeParent);
+        //        }
+        //    }
+        //    bindChildNote(dt, gen, zi);
+        //}
+
+        //private void bindChildNote(DataTable dt, int[] gen, int[] zi)
+        //{
+        //    for (int i = 0; i < gen.Length; i++)
+        //    {
+        //        if (gen[i] != 0 && zi[i] != 0)        //便利所有节点，找到所有子节点
+        //        {
+        //            Node childNode = new Node();
+        //            foreach (Node item in TreeOrg.Nodes)   //便历treeview上所有父节点
+        //            {
+        //                if (item.Tag.ToString() == gen[i].ToString())  //找到当前子节点的父节点
+        //                {
+        //                    childNode.Tag = zi[i].ToString();
+        //                    childNode.Text = dt.Rows[i][1].ToString();
+        //                    item.Nodes.Add(childNode);
+        //                }
+        //            }
+        //        }
+        //    }
+        //    TreeOrg.ExpandAll();      //展开整棵树
+        //}
         //</苏文杰_2>
         #endregion
 
@@ -575,5 +642,6 @@ namespace PersonInfoManage
         //</蒋媛_3>
         #endregion
 
+        
     }
 }
