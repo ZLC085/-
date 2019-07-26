@@ -135,7 +135,7 @@ namespace PersonInfoManage.BLL.PersonInfo
         }
 
         /// <summary>
-        /// 人员信息检索
+        /// 人员信息检索（管理页面）
         /// </summary>
         /// <param name="info">查询条件</param>
         /// <returns>List类型</returns>
@@ -146,6 +146,26 @@ namespace PersonInfoManage.BLL.PersonInfo
             {
                 // 接收列表
                 list = new DAL.PersonInfo.PersonBasicDAL().Query(info);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            // 返回列表
+            return list;
+        }
+
+        /// <summary>
+        /// 人员信息检索（回收站页面）
+        /// </summary>
+        /// <returns>List类型</returns>
+        public List<person_basic> Query()
+        {
+            List<person_basic> list;
+            try
+            {
+                // 接收列表
+                list = new DAL.PersonInfo.PersonBasicDAL().Query();
             }
             catch (Exception e)
             {

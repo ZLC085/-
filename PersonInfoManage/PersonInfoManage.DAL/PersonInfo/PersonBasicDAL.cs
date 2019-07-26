@@ -55,12 +55,12 @@ namespace PersonInfoManage.DAL.PersonInfo
                 // 执行sql语句
                 res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, name, former_name, gender, identity_number, birth_date, native_place, marry_status, job_status, income, temper, family, person_type_id, qq, address, phone, belong_place_id, nation, input_time, user_id, isdel);
                 // 添加用户日志
-                new LogUserDAL().Add(LogOperations.LogUser("人员信息录入"));
+                //new LogUserDAL().Add(LogOperations.LogUser("人员信息录入"));
             }
             catch (Exception e)
             {
                 // 添加系统日志
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                //new LogSysDAL().Add(LogOperations.LogSys("人员信息录入：" + e.Message));
                 return 0;
             }
             // 返回执行成功条数
@@ -105,12 +105,12 @@ namespace PersonInfoManage.DAL.PersonInfo
                 // 执行sql语句
                 res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, name, former_name, gender, identity_number, birth_date, native_place, marry_status, job_status, income, temper, family, person_type_id, qq, address, phone, belong_place_id, nation, input_time, user_id, isdel, id);
                 // 添加用户日志
-                new LogUserDAL().Add(LogOperations.LogUser("人员信息修改"));
+                //new LogUserDAL().Add(LogOperations.LogUser("人员信息修改"));
             }
             catch (Exception e)
             {
                 // 添加系统日志
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                //new LogSysDAL().Add(LogOperations.LogSys("人员信息修改：" + e.Message));
                 return 0;
             }
             // 返回执行成功条数
@@ -133,12 +133,12 @@ namespace PersonInfoManage.DAL.PersonInfo
                 // 执行sql语句
                 res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, sp_id);
                 // 添加用户日志
-                new LogUserDAL().Add(LogOperations.LogUser("人员信息移除"));
+                //new LogUserDAL().Add(LogOperations.LogUser("人员信息移除"));
             }
             catch (Exception e)
             {
                 // 添加系统日志
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                //new LogSysDAL().Add(LogOperations.LogSys("人员信息移除：" + e.Message));
                 return 0;
             }
             // 返回成功条数
@@ -161,12 +161,12 @@ namespace PersonInfoManage.DAL.PersonInfo
                 // 执行sql语句
                 res = SqlHelper.ExecuteNonQuery(DALBase.ConStr, CommandType.Text, sql, sp_id);
                 // 添加用户日志
-                new LogUserDAL().Add(LogOperations.LogUser("人员信息删除"));
+                //new LogUserDAL().Add(LogOperations.LogUser("人员信息删除"));
             }
             catch (Exception e)
             {
                 // 添加系统日志
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                //new LogSysDAL().Add(LogOperations.LogSys("人员信息删除：" + e.Message));
                 return 0;
             }
             // 返回成功条数
@@ -174,7 +174,7 @@ namespace PersonInfoManage.DAL.PersonInfo
         }
 
         /// <summary>
-        /// 人员信息检索
+        /// 人员信息检索（管理页面）
         /// </summary>
         /// <param name="info">查询条件</param>
         /// <returns>List类型</returns>
@@ -242,12 +242,69 @@ namespace PersonInfoManage.DAL.PersonInfo
                     list.Add(pb);
                 }
                 // 添加用户日志
-                new LogUserDAL().Add(LogOperations.LogUser("人员信息检索"));
+                //new LogUserDAL().Add(LogOperations.LogUser("人员信息检索"));
             }
             catch (Exception e)
             {
                 // 添加系统日志
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                //new LogSysDAL().Add(LogOperations.LogSys("人员信息检索：" + e.Message));
+                throw e;
+            }
+            // 返回列表
+            return list;
+        }
+
+        /// <summary>
+        /// 人员信息检索（回收站页面）
+        /// </summary>
+        /// <returns>List类型</returns>
+        public List<person_basic> Query()
+        {
+            // 用于返回的列表
+            List<person_basic> list = new List<person_basic>();
+            try
+            {
+                // sql语句
+                string sql = "select * from person_basic where isdel = 1";
+
+                DataSet ds = new DataSet();
+                // 执行sql语句并返回数据集
+                ds = SqlHelper.ExecuteDataset(DALBase.ConStr, CommandType.Text, sql);
+                // 遍历表中的行
+                foreach (DataRow dr in ds.Tables[0].Rows)
+                {
+                    // 封装实体类
+                    person_basic pb = new person_basic();
+                    pb.id = int.Parse(dr[0].ToString());
+                    pb.name = dr[1].ToString();
+                    pb.former_name = dr[2].ToString();
+                    pb.gender = dr[3].ToString();
+                    pb.identity_number = dr[4].ToString();
+                    pb.birth_date = DateTime.Parse(dr[5].ToString());
+                    pb.native_place = dr[6].ToString();
+                    pb.marry_status = bool.Parse(dr[7].ToString());
+                    pb.job_status = dr[8].ToString();
+                    pb.income = decimal.Parse(dr[9].ToString());
+                    pb.temper = dr[10].ToString();
+                    pb.family = dr[11].ToString();
+                    pb.person_type_id = int.Parse(dr[12].ToString());
+                    pb.qq = dr[13].ToString();
+                    pb.address = dr[14].ToString();
+                    pb.phone = dr[15].ToString();
+                    pb.belong_place_id = int.Parse(dr[16].ToString());
+                    pb.nation = dr[17].ToString();
+                    pb.input_time = DateTime.Parse(dr[18].ToString());
+                    pb.user_id = int.Parse(dr[19].ToString());
+                    pb.isdel = int.Parse(dr[20].ToString());
+                    list.Add(pb);
+                }
+                // 添加用户日志
+                //new LogUserDAL().Add(LogOperations.LogUser("人员信息检索"));
+            }
+            catch (Exception e)
+            {
+                // 添加系统日志
+                //new LogSysDAL().Add(LogOperations.LogSys("人员信息检索：" + e.Message));
                 throw e;
             }
             // 返回列表

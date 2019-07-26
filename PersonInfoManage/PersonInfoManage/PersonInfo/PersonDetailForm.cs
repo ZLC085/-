@@ -1,7 +1,9 @@
 ﻿using Loading;
 using PersonInfoManage.BLL.PersonInfo;
 using PersonInfoManage.BLL.Utils;
+using PersonInfoManage.Model;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -15,6 +17,17 @@ namespace PersonInfoManage
         {
             InitializeComponent();
             PersonId = personId;
+        }
+
+        // 页面加载
+        private void PersonDetailForm_Load(object sender, EventArgs e)
+        {
+            person_basic pb = new person_basic { id = PersonId };
+            List<person_basic> list = new PersonBasicBLL().Query(pb);
+            LblName.Text = list[0].name;
+            ///
+            /// ...
+            ///
         }
 
         private void BtnAddFile_Click(object sender, EventArgs e)
@@ -122,5 +135,7 @@ namespace PersonInfoManage
                 this.Close();
             }
         }
+
+        
     }
 }
