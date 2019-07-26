@@ -51,7 +51,7 @@
             this.labelX24 = new DevComponents.DotNetBar.LabelX();
             this.labelX23 = new DevComponents.DotNetBar.LabelX();
             this.labelX22 = new DevComponents.DotNetBar.LabelX();
-            this.labelX21 = new DevComponents.DotNetBar.LabelX();
+            this.LblFormerName = new DevComponents.DotNetBar.LabelX();
             this.LblName = new DevComponents.DotNetBar.LabelX();
             this.labelX19 = new DevComponents.DotNetBar.LabelX();
             this.labelX18 = new DevComponents.DotNetBar.LabelX();
@@ -161,7 +161,7 @@
             this.panelEx2.Controls.Add(this.labelX24);
             this.panelEx2.Controls.Add(this.labelX23);
             this.panelEx2.Controls.Add(this.labelX22);
-            this.panelEx2.Controls.Add(this.labelX21);
+            this.panelEx2.Controls.Add(this.LblFormerName);
             this.panelEx2.Controls.Add(this.LblName);
             this.panelEx2.Controls.Add(this.labelX19);
             this.panelEx2.Controls.Add(this.labelX18);
@@ -433,19 +433,19 @@
             this.labelX22.TabIndex = 21;
             this.labelX22.Text = "加载内容";
             // 
-            // labelX21
+            // LblFormerName
             // 
             // 
             // 
             // 
-            this.labelX21.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX21.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX21.Location = new System.Drawing.Point(275, 88);
-            this.labelX21.Margin = new System.Windows.Forms.Padding(4);
-            this.labelX21.Name = "labelX21";
-            this.labelX21.Size = new System.Drawing.Size(104, 29);
-            this.labelX21.TabIndex = 20;
-            this.labelX21.Text = "加载内容";
+            this.LblFormerName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblFormerName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblFormerName.Location = new System.Drawing.Point(275, 88);
+            this.LblFormerName.Margin = new System.Windows.Forms.Padding(4);
+            this.LblFormerName.Name = "LblFormerName";
+            this.LblFormerName.Size = new System.Drawing.Size(104, 29);
+            this.LblFormerName.TabIndex = 20;
+            this.LblFormerName.Text = "加载内容";
             // 
             // LblName
             // 
@@ -996,7 +996,7 @@
         private DevComponents.DotNetBar.LabelX labelX24;
         private DevComponents.DotNetBar.LabelX labelX23;
         private DevComponents.DotNetBar.LabelX labelX22;
-        private DevComponents.DotNetBar.LabelX labelX21;
+        private DevComponents.DotNetBar.LabelX LblFormerName;
         private DevComponents.DotNetBar.LabelX LblName;
         private DevComponents.DotNetBar.LabelX labelX19;
     }

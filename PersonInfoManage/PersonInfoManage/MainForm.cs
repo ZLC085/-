@@ -12,10 +12,12 @@ namespace PersonInfoManage
 {
     public partial class MainForm : Form
     {
+        private List<view_sys_u2g> UserInfo;
+        private List<sys_group> GroupInfo;
         public MainForm()
         {
             InitializeComponent();
-            //dgvPerson.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -313,7 +315,7 @@ namespace PersonInfoManage
                 {
                     item.dict_name = "重点人员类别";
                 }
-                else if (item.dict_name.Equals(sys_dict_type.NativePlace.ToString()))
+                else if (item.dict_name.Equals(sys_dict_type.BelongPlace.ToString()))
                 {
                     item.dict_name = "归属地";
                 }
@@ -345,9 +347,8 @@ namespace PersonInfoManage
 
         private void BtnUpdateUser_Click(object sender, EventArgs e)
         {
-            AddUserForm addUserForm = new AddUserForm();
-            addUserForm.Text = "用户信息修改";
-            addUserForm.ShowDialog();
+            UpdateUserForm UpdateUserForm = new UpdateUserForm();
+            UpdateUserForm.ShowDialog();
         }
 
         private void BtnGroupManage_Click(object sender, EventArgs e)
@@ -384,7 +385,7 @@ namespace PersonInfoManage
         #region 曾丽川
         //<曾丽川_2>
         private void BtnAddRole_Click(object sender, EventArgs e)
-        {
+        {                       
             AddUserGroupForm addUserGroupForm = new AddUserGroupForm();
             addUserGroupForm.ShowDialog();
         }
@@ -398,13 +399,18 @@ namespace PersonInfoManage
 
         private void BtnAddKind_Click(object sender, EventArgs e)
         {
-            AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm();
+            string selectStr = CmbDictType.SelectedText;
+
+          
+          
+            AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm(selectStr);        
             addCategoreTypeForm.ShowDialog();
         }
 
         private void BtnUpdateKind_Click(object sender, EventArgs e)
         {
-            AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm();
+            string selectStr = CmbDictType.SelectedValue.ToString();
+            AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm(selectStr);
             addCategoreTypeForm.Text = "修改数据字典";
             addCategoreTypeForm.ShowDialog();
         }
@@ -426,8 +432,8 @@ namespace PersonInfoManage
 
         }
 
-        //数据字典下拉框选择事件
-        private void CmbDictType_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void CmbDictType_SelectedValueChanged(object sender, EventArgs e)
         {
 
         }
@@ -568,5 +574,6 @@ namespace PersonInfoManage
         }
         //</蒋媛_3>
         #endregion
+
     }
 }

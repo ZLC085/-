@@ -26,13 +26,13 @@ namespace PersonInfoManage.DAL.System
             try
             {
                 int res = 0;
-                string sql = "insert into sys_dict (category_name,create_time,modify_time) values(@p1,@p3,@p4) where dict_name = @p2";
+                string sql = "insert into sys_dict (category_name,dict_name,create_time,modify_time) values(@p1,@p2,@p3,@p4)";
                 SqlParameter sqlParameter = new SqlParameter("@p1", SysDict.category_name);
                 SqlParameter sqlParameter2 = new SqlParameter("@p2", SysDict.dict_name);
                 SqlParameter sqlParameter3 = new SqlParameter("@p3", DateTime.Now);
                 SqlParameter sqlParameter4 = new SqlParameter("@p4", DateTime.Now);
                 res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlParameter, sqlParameter2,sqlParameter3,sqlParameter4);
-                new LogUserDAL().Add(LogOperations.LogUser("添加数据字典"));
+                //new LogUserDAL().Add(LogOperations.LogUser("添加数据字典"));
                 return res;
             }
             catch (Exception e)
@@ -161,8 +161,8 @@ namespace PersonInfoManage.DAL.System
                 case sys_dict_type.Cost:
                     sql += sys_dict_type.Cost.ToString() + "' ";
                     break;
-                case sys_dict_type.NativePlace:
-                    sql += sys_dict_type.NativePlace.ToString() + "'";
+                case sys_dict_type.BelongPlace:
+                    sql += sys_dict_type.BelongPlace.ToString() + "'";
                     break;
                 case sys_dict_type.Person:
                     sql += sys_dict_type.Person.ToString() + " ' ";

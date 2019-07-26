@@ -124,7 +124,7 @@ namespace PersonInfoManage.DAL.System
         /// </summary>
         /// <param name="group">查询条件</param>
         /// <returns>用户组信息</returns>
-        public List<sys_group> SelectGroup(sys_group group)
+        public List<sys_group> SelectGroupBy(sys_group group)
         {
             DataSet ds = new DataSet();
             string sql = "Select * from sys_group where group_name=@group_name";
@@ -155,6 +155,32 @@ namespace PersonInfoManage.DAL.System
             }
             return group2;
         }
+        public List<sys_group> SelectGroup(sys_group group)
+        {
+            DataSet ds = new DataSet();
+            string sql = "Select * from sys_group";
+            List<sys_group> group2 = new List<sys_group>();
+            ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+            try
+            {
+                
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    sys_group group1 = new sys_group();
+                    group1.id = (int)ds.Tables[0].Rows[i][nameof(sys_group.id)];
+                    group1.group_name = (string)ds.Tables[0].Rows[i][nameof(sys_group.group_name)];
+                    group1.remark = (string)ds.Tables[0].Rows[i][nameof(sys_group.remark)];
+                    group1.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_group.create_time)];
+                    group1.modify_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_group.modify_time)];
+                    group2.Add(group1);
+                }
+            }
+            catch (Exception e)
+            {
+                new LogSysDAL().Add(LogOperations.LogSys("查询用户组" + e.Message));
+            }
+            return group2;
+        }
 
         /// <summary>
         /// 添加用户进用户组
@@ -171,12 +197,12 @@ namespace PersonInfoManage.DAL.System
                 SqlParameter sqlparameter = new SqlParameter("@p1", userId);
                 SqlParameter sqlparameter1 = new SqlParameter("@p2", groupId);
                 res = SqlHelper.ExecuteNonQuery(ConStr, CommandType.Text, sql, sqlparameter, sqlparameter1);
-                new LogUserDAL().Add(LogOperations.LogUser("添加用户进用户组"));
+                new LogUserDAL().Add(LogOperations.LogUser("用户组添加用户"));
                 return res;
             }
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("用户组添加用户"+e.Message));
                 return 0;
             }
         }
@@ -200,7 +226,7 @@ namespace PersonInfoManage.DAL.System
             }
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("用户组添加权限"+e.Message));
                 return 0;
             }
         }
@@ -223,7 +249,7 @@ namespace PersonInfoManage.DAL.System
             }
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys(""+e.Message));
                 return 0;
             }
         }
@@ -267,6 +293,9 @@ namespace PersonInfoManage.DAL.System
                     view_sys_u2g group1 = new view_sys_u2g();
                     group1.group_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.group_name)];
                     group1.username = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.username)];
+                    group1.name = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.name)];
+                    group1.phone= (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.phone)];
+                    group1.job = (string)ds.Tables[0].Rows[i][nameof(view_sys_u2g.job)];
                     group.Add(group1);
                 }
                 return group;
@@ -294,6 +323,36 @@ namespace PersonInfoManage.DAL.System
                 for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                 {
                     view_sys_g2m group1 = new view_sys_g2m();
+                    group1.group_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_g2m.group_name)];
+                    group1.menu_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_g2m.menu_name)];
+                    group.Add(group1);
+                }
+                return group;
+            }
+            catch (Exception e)
+            {
+                new LogSysDAL().Add(LogOperations.LogSys(e.Message));
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 查询所有权限
+        /// </summary>
+        /// <returns>用户组信息</returns>
+        public List<view_sys_g2m> SelectAllG2m()
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                string sql = "Select * from view_sys_g2m ";
+                List<view_sys_g2m> group = new List<view_sys_g2m>();
+                ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql);
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    view_sys_g2m group1 = new view_sys_g2m();
+                    group1.id= (int)ds.Tables[0].Rows[i][nameof(view_sys_g2m.id)];
+                    group1.menu_id = (int)ds.Tables[0].Rows[i][nameof(view_sys_g2m.menu_id)];
                     group1.group_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_g2m.group_name)];
                     group1.menu_name = (string)ds.Tables[0].Rows[i][nameof(view_sys_g2m.menu_name)];
                     group.Add(group1);

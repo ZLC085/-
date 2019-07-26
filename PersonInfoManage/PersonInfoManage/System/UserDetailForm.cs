@@ -21,7 +21,7 @@ namespace PersonInfoManage
 
         private void UserDetailForm_Load(object sender, EventArgs e)
         {
-            int UserId =0 ;//未赋值
+            int UserId =32 ;//未赋值
             List<view_sys_u2g> userinfo = new List<view_sys_u2g>();
             userinfo =new SysUserBLL().SelectById(UserId);
             foreach(var user in userinfo)

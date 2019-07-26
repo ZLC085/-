@@ -90,6 +90,7 @@
             this.LblNativePlace = new DevComponents.DotNetBar.LabelX();
             this.LblAddress = new DevComponents.DotNetBar.LabelX();
             this.LblOldPlace2 = new DevComponents.DotNetBar.LabelX();
+            this.LblBirthDate = new DevComponents.DotNetBar.LabelX();
             this.SuspendLayout();
             // 
             // labelX2
@@ -287,6 +288,7 @@
             // 
             // TimeBirthDate
             // 
+            this.TimeBirthDate.Checked = false;
             this.TimeBirthDate.Location = new System.Drawing.Point(170, 210);
             this.TimeBirthDate.Margin = new System.Windows.Forms.Padding(1);
             this.TimeBirthDate.Name = "TimeBirthDate";
@@ -972,11 +974,29 @@
             this.LblOldPlace2.Size = new System.Drawing.Size(400, 25);
             this.LblOldPlace2.TabIndex = 84;
             // 
+            // LblBirthDate
+            // 
+            this.LblBirthDate.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.LblBirthDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LblBirthDate.Font = new System.Drawing.Font("宋体", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.LblBirthDate.ForeColor = System.Drawing.Color.Red;
+            this.LblBirthDate.Location = new System.Drawing.Point(220, 240);
+            this.LblBirthDate.Margin = new System.Windows.Forms.Padding(4);
+            this.LblBirthDate.Name = "LblBirthDate";
+            this.LblBirthDate.Size = new System.Drawing.Size(150, 15);
+            this.LblBirthDate.TabIndex = 85;
+            this.LblBirthDate.Text = "请输入正确的日期";
+            this.LblBirthDate.TextAlignment = System.Drawing.StringAlignment.Far;
+            // 
             // PersonBasicForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(942, 583);
+            this.Controls.Add(this.LblBirthDate);
             this.Controls.Add(this.LblOldPlace2);
             this.Controls.Add(this.LblAddress);
             this.Controls.Add(this.LblNativePlace);
@@ -1117,5 +1137,6 @@
         private DevComponents.DotNetBar.LabelX LblOldPlace1;
         private DevComponents.DotNetBar.LabelX LblAddress;
         private DevComponents.DotNetBar.LabelX LblOldPlace2;
+        private DevComponents.DotNetBar.LabelX LblBirthDate;
     }
 }
