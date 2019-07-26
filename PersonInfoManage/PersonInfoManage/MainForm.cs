@@ -59,9 +59,9 @@ namespace PersonInfoManage
 
         private void BtnQueryPerson_Click(object sender, EventArgs e)
         {
-            PersonDetailForm personDetailForm = new PersonDetailForm(1);
-            personDetailForm.ShowDialog();
-            for (int i = 0; i < dgvPerson.Rows.Count; i++)
+
+            List<string> vs = DGVOperations.SelectPersonBasic(dgvPerson);
+            if (vs.Count > 1)
             {
                 MessageBoxCustom.Show("只能选择一条记录！", "提示", this);
                 return;
@@ -231,26 +231,18 @@ namespace PersonInfoManage
         //基本信息管理Tab页点击事件（二级）
         private void TabPersonBasic_Click(object sender, EventArgs e)
         {
-            dgvPerson.AutoGenerateColumns = false;
-            int localUserid = UserInfoBLL.UserId;
-            dgvPerson.DataSource = new PersonBasicDAL().Query(new person_basic { user_id = localUserid,isdel=1});
+            DGVOperations.DGVPersonBasicNotDelDataSource(dgvPerson);
         }
         //人员信息管理菜单Tab页切换事件（一级）
         private void MenuPersoninfo_Click(object sender, EventArgs e)
         {
-            TabControlPerson.SelectedTab = TabPersonBasic;
-            dgvPerson.AutoGenerateColumns = false;
-            int localUserid = UserInfoBLL.UserId;
-            dgvPerson.DataSource = new PersonBasicDAL().Query(new person_basic { user_id = localUserid,isdel=0 });
+            DGVOperations.DGVPersonBasicNotDelDataSource(dgvPerson);
         }
 
         //回收站Tab页点击事件（二级）
         private void TabPersonRecycle_Click(object sender, EventArgs e)
         {
-            DgvRecycle.AutoGenerateColumns = false;
-            person_basic person = new person_basic();
-            person.isdel = 1;
-            DgvRecycle.DataSource = new PersonBasicDAL().Query(person);
+            DGVOperations.DGVPersonBasicDelDataSource(dgvPerson);
         }
 
         //日志管理菜单Tab页切换事件（一级）
