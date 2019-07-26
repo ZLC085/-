@@ -124,7 +124,7 @@ namespace PersonInfoManage.DAL.PersonInfo
         public List<person_file> GetByPersonId(int personId)
         {
             List<person_file> personFileList = new List<person_file>();
-            string sql = "select id,person_id,filename,filename,create_time,modify_time from person_file where person_id=" + personId;
+            string sql = "select * from person_file where person_id=" + personId;
 
             try
             {
@@ -138,7 +138,7 @@ namespace PersonInfoManage.DAL.PersonInfo
                         id = (int)row["id"],
                         person_id = (int)row["person_id"],
                         filename = (string)row["filename"],
-                        filetype = (string)row["filename"],
+                        filetype = (string)row["filetype"],
                         create_time = (DateTime)row["create_time"],
                         modify_time = (DateTime)row["modify_time"]
                     };
