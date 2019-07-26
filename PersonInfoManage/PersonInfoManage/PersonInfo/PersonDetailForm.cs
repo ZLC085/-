@@ -107,35 +107,30 @@ namespace PersonInfoManage
             DialogResult res = MessageBoxCustom.Show("确认删除", "提示", MessageBoxButtons.YesNo, this);
             if (res == DialogResult.Yes)
             {
-                //PersonFileBLL a = new PersonFileBLL();
-                //a.Del(id);
-                //PersonFileBLL file = new PersonFileBLL();
-                //file.Del(id);
-                String file = " PersonFileBLL ";
-                String del = " Del ";
+                int id = 0;
+                person_file file= new person_file();
+                /*file.id = 0*/;
+                file.person_id = 0;
+                List<person_file> pf = new List<person_file>();
+                pf = new PersonFileBLL().GetByPersonId(PersonId);
+                List<int> file1 = new List<int>();
 
-                Type type;
-                Object obj;
-
-                type = Type.GetType(file);
-                obj = System.Activator.CreateInstance(type);
-
-                MethodInfo method = type.GetMethod(del, new Type[] { });
-                object[] parameters = null;
-                //method.Invoke(obj, parameters);
-
-
-                method = type.GetMethod(del, new Type[] { typeof(string) });
-                parameters = new[] { "id" };
-                method.Invoke(obj, parameters);
-
-            }
-            else
-            {
-                this.Close();
+                foreach (var file2 in pf)
+                {
+                    file1.Add(file2.id);
+                }
+                Result result = new PersonFileBLL().Del(id);
+                if (result.Code == RES.OK)
+                {
+                    MessageBoxCustom.Show("删除成功", "提示", MessageBoxButtons.OK, this);
+                    Close();
+                }
+                else if (result.Code == RES.ERROR)
+                {
+                    MessageBoxCustom.Show("删除失败", "提示", MessageBoxButtons.OK, this);
+                }
             }
         }
-
         
     }
 }
