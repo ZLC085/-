@@ -41,7 +41,7 @@ namespace PersonInfoManage
         /// <param name="e"></param>
         private void PersonBasicForm_Load(object sender, EventArgs e)
         {
-            if (Text.Equals("人员信息录入"))
+            if ("人员信息录入".Equals(Text))
             {
                 LblOldPlace1.Hide();
                 LblOldPlace2.Hide();
@@ -73,7 +73,7 @@ namespace PersonInfoManage
                 }
                 CmbPersonType.DataSource = personTypeList;
                 // 归属地
-                BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
+                BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.BelongPlace);
                 List<string> belongPlaceList = new List<string>();
                 foreach (var item in BelongPlace)
                 {
@@ -83,17 +83,36 @@ namespace PersonInfoManage
                 #endregion
             }
 
-            if (Text.Equals("人员信息修改"))
+            if ("人员信息修改".Equals(Text))
             {
                 #region 初始选项
                 person_basic pb = new person_basic();
-                //pb.id = "要修改的人员id";
+
+                pb.id = 1027;
+                pb.user_id = UserInfoBLL.UserId;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 List<person_basic> list = new PersonBasicBLL().Query(pb);
 
                 // 姓名
-                TxtName.Text = list[0].name.ToString();
+                TxtName.Text = list[0].name;
                 // 曾用名
-                TxtFormerName.Text = list[0].former_name.ToString();
+                TxtFormerName.Text = list[0].former_name;
                 // 性别
                 if (list[0].gender.Equals("男")) RdoMale.Checked = true;
                 if (list[0].gender.Equals("女")) RdoFemale.Checked = true;
@@ -102,7 +121,7 @@ namespace PersonInfoManage
                 // 出生日期
                 TimeBirthDate.Value = list[0].birth_date;
                 // 归属地
-                BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
+                BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.BelongPlace);
                 foreach (var item in BelongPlace)
                 {
                     if (item.id.Equals(list[0].belong_place_id))
@@ -116,9 +135,6 @@ namespace PersonInfoManage
                 // 地址
                 TxtAddress.Text = list[0].address;
                 // 籍贯
-                //CmbProvince.DataSource = province;
-                //CmbCity.DataSource = city;
-                //CmbProvince.DataSource = place;
                 // 省
                 Provinces = new List<string> { province };
                 CmbProvince.DataSource = Provinces;
@@ -163,6 +179,7 @@ namespace PersonInfoManage
             LblName.Hide();
             LblFormerName.Hide();
             LblIdentityNumber.Hide();
+            LblBirthDate.Hide();
             LblAddress.Hide();
             LblNativePlace.Hide();
             LblIncome.Hide();
@@ -290,7 +307,7 @@ namespace PersonInfoManage
         /// <param name="e"></param>
         private void CmbBelongPlace_DropDown(object sender, EventArgs e)
         {
-            BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
+            BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.BelongPlace);
             List<string> belongPlaceList = new List<string>();
             foreach (var item in BelongPlace)
             {
@@ -308,6 +325,13 @@ namespace PersonInfoManage
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
             person_basic pb = new person_basic();
+            pb.user_id = pb.id = 1027;
+            pb.user_id = UserInfoBLL.UserId;
+
+
+
+
+
 
             #region 姓名
             string name = TxtName.Text.Replace(" ", "");
@@ -343,11 +367,11 @@ namespace PersonInfoManage
             #region 性别
             if (RdoMale.Checked)
             {
-                pb.gender = RdoMale.Name;
+                pb.gender = RdoMale.Text;
             }
             if (RdoFemale.Checked)
             {
-                pb.gender = RdoFemale.Name;
+                pb.gender = RdoFemale.Text;
             }
             #endregion
 
@@ -365,7 +389,17 @@ namespace PersonInfoManage
             #endregion
 
             #region 出生日期
-            pb.birth_date = TimeBirthDate.Value;
+            if (DateTime.Compare(TimeBirthDate.Value, DateTime.Now) > 0)
+            {
+                LblBirthDate.Show();
+                return;
+            }
+            else
+            {
+                LblBirthDate.Hide();
+                pb.birth_date = TimeBirthDate.Value;
+            }
+            
             #endregion
 
             #region 籍贯
@@ -398,7 +432,16 @@ namespace PersonInfoManage
             #region 收入状况
             if (!string.IsNullOrEmpty(TxtIncome.Text))
             {
-                pb.income = Convert.ToDecimal(TxtIncome.Text);
+                if (Convert.ToDecimal(TxtIncome.Text) < 0)
+                {
+                    LblIncome.Show();
+                    return;
+                }
+                else
+                {
+                    LblIncome.Hide();
+                    pb.income = Convert.ToDecimal(TxtIncome.Text);
+                }
             }
             #endregion
 
@@ -460,7 +503,7 @@ namespace PersonInfoManage
             #endregion
 
             #region 归属地
-            BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.NativePlace);
+            BelongPlace = new SysSettingBLL().SelectByDictName(sys_dict_type.BelongPlace);
             foreach (var item in BelongPlace)
             {
                 if (item.category_name.Equals(CmbBelongPlace.Text))
@@ -483,7 +526,7 @@ namespace PersonInfoManage
             #endregion
 
             #region 删除标记
-            pb.isdel = 1;
+            pb.isdel = 0;
             #endregion
 
             #region 判断结果

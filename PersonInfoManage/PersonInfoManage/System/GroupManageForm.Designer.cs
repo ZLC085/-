@@ -40,6 +40,7 @@
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.选择 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -183,6 +184,7 @@
             this.dataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.选择,
             this.Column1,
             this.Column2,
             this.Column3,
@@ -243,6 +245,11 @@
             this.buttonX1.Text = "确定";
             this.buttonX1.Click += new System.EventHandler(this.buttonX1_Click);
             // 
+            // 选择
+            // 
+            this.选择.HeaderText = "选择";
+            this.选择.Name = "选择";
+            // 
             // Column1
             // 
             this.Column1.DataPropertyName = "username";
@@ -302,6 +309,7 @@
         private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
         private DevComponents.DotNetBar.ButtonX buttonX2;
         private DevComponents.DotNetBar.ButtonX buttonX1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn 选择;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
