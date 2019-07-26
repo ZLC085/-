@@ -4,6 +4,7 @@ using PersonInfoManage.BLL.System;
 using PersonInfoManage.BLL.Utils;
 using PersonInfoManage.DAL.PersonInfo;
 using PersonInfoManage.Model;
+using PersonInfoManage.Utils;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -420,7 +421,20 @@ namespace PersonInfoManage
             AddUserGroupForm addUserGroupForm = new AddUserGroupForm();
             addUserGroupForm.ShowDialog();
         }
+        private List<int> SelectId()
+        {
+            List<int> list = new List<int>();
+            for (int i = 0; i < DgvGroupMan.Rows.Count; i++)
+            {
 
+                if (Convert.ToBoolean(DgvGroupMan.Rows[i].Cells["Column45"].Value))
+                {
+                    int id = int.Parse(DgvGroupMan.Rows[i].Cells["groupid"].Value.ToString());
+                    list.Add(id);
+                }
+            }
+            return list;
+        }
         private void BtnUpdateRole_Click(object sender, EventArgs e)
         {
             AddUserGroupForm addUserGroupForm = new AddUserGroupForm();
@@ -430,13 +444,15 @@ namespace PersonInfoManage
 
         private void BtnAddKind_Click(object sender, EventArgs e)
         {
-            AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm();
+            string selectStr = CmbDictType.SelectedText;
+            AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm(selectStr);
             addCategoreTypeForm.ShowDialog();
         }
 
         private void BtnUpdateKind_Click(object sender, EventArgs e)
         {
-            AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm();
+            string selectStr = CmbDictType.SelectedText;
+            AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm(selectStr);
             addCategoreTypeForm.Text = "修改数据字典";
             addCategoreTypeForm.ShowDialog();
         }
@@ -449,7 +465,12 @@ namespace PersonInfoManage
 
         private void BtnsearchGroup_Click(object sender, EventArgs e)
         {
-
+            sys_group group = new sys_group();
+            group.group_name = TxtGroupName.Text;
+            group.create_time = TimeStartGroup.Value;
+            group.modify_time = TimeEditGroup.Value;
+            DgvUserMan.DataSource = null;
+            DgvGroupMan.DataSource = new PermBLL().SelectGroupBy(group);
         }
 
 
@@ -458,9 +479,27 @@ namespace PersonInfoManage
 
         }
 
-        //数据字典下拉框选择事件
-        private void CmbDictType_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbDictType_SelectedValueChanged_1(object sender, EventArgs e)
         {
+            DgvSysSet.AutoGenerateColumns = false;
+            string a = CmbDictType.SelectedItem.ToString();
+            var ds = new SysSettingBLL().SelectByDictName(SysDictTypeConvert.Change(a));
+            foreach (var item in ds)
+            {
+                if (item.dict_name.Equals(sys_dict_type.Cost.ToString()))
+                {
+                    item.dict_name = "费用类别";
+                }
+                else if (item.dict_name.Equals(sys_dict_type.Person.ToString()))
+                {
+                    item.dict_name = "重点人员类别";
+                }
+                else if (item.dict_name.Equals(sys_dict_type.BelongPlace.ToString()))
+                {
+                    item.dict_name = "归属地";
+                }
+            }
+            DgvSysSet.DataSource = ds;
 
         }
         //</曾丽川_2>
