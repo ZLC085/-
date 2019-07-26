@@ -13,8 +13,9 @@ namespace PersonInfoManage
 {
     public partial class MainForm : Form
     {
-        private List<view_sys_u2g> UserInfo;
+        private List<view_sys_u2g> UserInfo = new SysUserBLL().SelectAll();
         private List<sys_group> GroupInfo;
+        private List<int> UserId;
         public MainForm()
         {
             InitializeComponent();
@@ -365,6 +366,26 @@ namespace PersonInfoManage
 
         #region 王尔沛
         //<王尔沛_2>
+        private List<int> selectid()
+        {
+            UserId = new List<int>();
+            for (int i = 0; i < DgvUserMan.Rows.Count; i++)
+            {
+                if (Convert.ToBoolean(DgvUserMan.Rows[i].Cells["Column36"].Value))
+                {
+                    int id = int.Parse(DgvUserMan.Rows[i].Cells["user_id"].Value.ToString());
+                    UserId.Add(id);
+                }
+            }
+            return UserId;
+        }
+        private void DgvUserMan_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (this.DgvUserMan.IsCurrentCellDirty) //有未提交的更改
+            {
+                this.DgvUserMan.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
         private void BtnAddUser_Click(object sender, EventArgs e)
         {
             AddUserForm addUserForm = new AddUserForm();
@@ -373,43 +394,67 @@ namespace PersonInfoManage
 
         private void BtnQueryUser_Click(object sender, EventArgs e)
         {
-            UserDetailForm userDetailForm = new UserDetailForm();
+            UserDetailForm userDetailForm = new UserDetailForm(selectid());
             userDetailForm.ShowDialog();
         }
-
         private void BtnUpdateUser_Click(object sender, EventArgs e)
         {
-            UpdateUserForm UpdateUserForm = new UpdateUserForm();
+            UpdateUserForm UpdateUserForm = new UpdateUserForm(selectid());
             UpdateUserForm.ShowDialog();
         }
-
         private void BtnGroupManage_Click(object sender, EventArgs e)
         {
             GroupManageForm groupManageForm = new GroupManageForm();
             groupManageForm.ShowDialog();
         }
-
         private void BtnRoleManage_Click(object sender, EventArgs e)
         {
             GroupRoleManageForm groupRoleManageForm = new GroupRoleManageForm();
             groupRoleManageForm.ShowDialog();
         }
-
-
         private void BtnResetPsw_Click(object sender, EventArgs e)
         {
-
+            if (selectid() == null)
+            {
+                MessageBox.Show("请勾选用户");
+            }
+            else
+            {
+                DialogResult = MessageBoxCustom.Show("确认重置？", "操作确认", MessageBoxButtons.YesNo, this);
+                if (DialogResult == DialogResult.Yes)
+                {
+                    new SysUserBLL().RePassword(selectid());
+                    DgvUserMan.DataSource = null;
+                    DgvUserMan.DataSource = new SysUserBLL().Select(new sys_user());
+                }
+            }
         }
-
         private void BtnDelUser_Click(object sender, EventArgs e)
         {
-
+            if (selectid() == null)
+            {
+                MessageBox.Show("请勾选用户");
+            }
+            else
+            {
+                DialogResult = MessageBoxCustom.Show("确认删除？", "操作确认", MessageBoxButtons.YesNo, this);
+                if (DialogResult == DialogResult.Yes)
+                {
+                    new SysUserBLL().Del(selectid());
+                    DgvUserMan.DataSource = null;
+                    DgvUserMan.DataSource = new SysUserBLL().Select(new sys_user());
+                }
+            }
         }
-
-
         private void BtnSearchUser_Click(object sender, EventArgs e)
         {
-
+            sys_user user = new sys_user();
+            user.name = TxtUserName.Text;
+            user.username = TxtLoginName.Text;
+            user.gender = CmbUserSex.Text;
+            user.job = txtUserJob.Text;
+            DgvUserMan.DataSource = null;
+            DgvUserMan.DataSource = new SysUserBLL().Select(user);
         }
         //</王尔沛_2>
         #endregion
