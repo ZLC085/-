@@ -103,6 +103,34 @@ namespace PersonInfoManage.BLL.System
         }
 
         /// <summary>
+        /// 删除多条
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public Result DelAll(List<int> list)
+        {
+            PermDAL perm=new PermDAL();
+            Result res = new Result();
+            try
+            {
+                foreach (int a in list)
+                {
+                    perm.Del(a);
+
+                }
+                res.Code = RES.OK;
+                res.Message = "删除成功！";
+                return res;
+            }
+            catch
+            {
+                res.Code = RES.ERROR;
+                res.Message = "删除失败！";
+                return res;
+            }
+
+        }
+        /// <summary>
         /// 查询用户组
         /// </summary>
         /// <param name="group">查询条件</param>
@@ -113,13 +141,23 @@ namespace PersonInfoManage.BLL.System
             return perm.SelectGroupBy(group);
         }
 
-
+        /// <summary>
+        /// 查询所有用户组
+        /// </summary>
+        /// <param name="group"></param>
+        /// <returns></returns>
         public List<sys_group> SelectGroup(sys_group group)
         {
             PermDAL perm = new PermDAL();
             return perm.SelectGroup(group);
         }
 
+        public List<sys_group> SelectGroupByID(int id)
+        {
+            PermDAL perm = new PermDAL();
+            return perm.SelectGroupByID(id);
+
+        }
         /// <summary>
         /// 添加用户进用户组
         /// </summary>

@@ -127,9 +127,14 @@ namespace PersonInfoManage.DAL.System
         public List<sys_group> SelectGroupBy(sys_group group)
         {
             DataSet ds = new DataSet();
-            string sql = "Select * from sys_group where group_name=@group_name";
+            string sql = "Select * from sys_group where 1=1";
             List<SqlParameter> sqlPara = new List<SqlParameter>();
-            sqlPara.Add(new SqlParameter("@group_name", group.group_name));
+            if (!string.IsNullOrEmpty(group.group_name))
+            {
+                sql += " and group_name like @group_name";
+                sqlPara.Add(new SqlParameter("@group_name", "%" + group.group_name + "%"));
+            }
+           
             sql += " and create_time >= @createtime";
             sqlPara.Add(new SqlParameter("@createtime", group.create_time));
             sql += " and modify_time <= @modifytime";
@@ -151,10 +156,15 @@ namespace PersonInfoManage.DAL.System
             }
             catch (Exception e)
             {
-                new LogSysDAL().Add(LogOperations.LogSys("查询用户组"+e.Message));
+                new LogSysDAL().Add(LogOperations.LogSys("条件查询用户组"+e.Message));
             }
             return group2;
         }
+        /// <summary>
+        /// 查询用户组，无条件限制
+        /// </summary>
+        /// <param name="group"></param>
+        /// <returns></returns>
         public List<sys_group> SelectGroup(sys_group group)
         {
             DataSet ds = new DataSet();
@@ -178,6 +188,39 @@ namespace PersonInfoManage.DAL.System
             catch (Exception e)
             {
                 new LogSysDAL().Add(LogOperations.LogSys("查询用户组" + e.Message));
+            }
+            return group2;
+        }
+
+        /// <summary>
+        /// 根据id查找用户组
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<sys_group> SelectGroupByID(int id)
+        {
+            DataSet ds = new DataSet();
+            string sql = "Select * from sys_group where id = @p1";
+            SqlParameter sqlParameter1 = new SqlParameter("@p1", id);
+            List<sys_group> group2 = new List<sys_group>();
+            ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql,sqlParameter1);
+            try
+            {
+
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    sys_group group1 = new sys_group();
+                    group1.id = (int)ds.Tables[0].Rows[i][nameof(sys_group.id)];
+                    group1.group_name = (string)ds.Tables[0].Rows[i][nameof(sys_group.group_name)];
+                    group1.remark = (string)ds.Tables[0].Rows[i][nameof(sys_group.remark)];
+                    group1.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_group.create_time)];
+                    group1.modify_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_group.modify_time)];
+                    group2.Add(group1);
+                }
+            }
+            catch (Exception e)
+            {
+                new LogSysDAL().Add(LogOperations.LogSys("id查询用户组" + e.Message));
             }
             return group2;
         }

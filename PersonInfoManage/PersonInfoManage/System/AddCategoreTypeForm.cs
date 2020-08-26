@@ -16,11 +16,19 @@ namespace PersonInfoManage
 {
     public partial class AddCategoreTypeForm : Form
     {
-        private string value;
-        public AddCategoreTypeForm(string selectStr)
+        private int number;
+        public AddCategoreTypeForm(string selectStr,List<int> list4)
         {
+
+
+
             InitializeComponent();
-            labelX3.Text = selectStr.ToString();
+
+            foreach (var a in list4)
+            {
+                number = a;
+            }
+            labelX3.Text = selectStr;
         }
 
         private void textBoxX1_TextChanged(object sender, EventArgs e)
@@ -48,6 +56,7 @@ namespace PersonInfoManage
                 if (result.Message == "添加成功！")
                 {
                     MessageBoxCustom.Show("添加成功", "提示", this);
+                   
                 }
                 else
                 {
@@ -58,7 +67,9 @@ namespace PersonInfoManage
             else
             {
                 sys_dict dict = new sys_dict();
+                dict.dict_name = SysDictTypeConvert.CToE(labelX3.Text);
                 dict.category_name = textBoxX1.Text;
+                dict.id = number;
                 SysSettingBLL set = new SysSettingBLL();
                 Result result = new Result();
                 result = set.Update(dict);
@@ -71,6 +82,11 @@ namespace PersonInfoManage
                     MessageBoxCustom.Show("修改失败", "提示", this);
                 }
             }
+        }
+
+        private void AddCategoreTypeForm_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

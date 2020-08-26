@@ -21,7 +21,8 @@ namespace PersonInfoManage
         private List<view_sys_u2g> UserInfo = new SysUserBLL().SelectAll();
         private List<sys_group> GroupInfo;
         private List<int> UserId;
-
+        private List<int> list;
+        private List<int> list2;
         public MainForm()
         {
             InitializeComponent();
@@ -533,12 +534,14 @@ namespace PersonInfoManage
         //<曾丽川_2>
         private void BtnAddRole_Click(object sender, EventArgs e)
         {
-            AddUserGroupForm addUserGroupForm = new AddUserGroupForm();
+            AddUserGroupForm addUserGroupForm = new AddUserGroupForm(new List<int>());
             addUserGroupForm.ShowDialog();
+            DgvGroupMan.DataSource = null;
+            DgvGroupMan.DataSource = new PermBLL().SelectGroup(new sys_group());
         }
         private List<int> SelectId()
         {
-            List<int> list = new List<int>();
+            list = new List<int>();
             for (int i = 0; i < DgvGroupMan.Rows.Count; i++)
             {
 
@@ -550,32 +553,112 @@ namespace PersonInfoManage
             }
             return list;
         }
+        private List<int> SelectSettingId()
+        {
+            list2 = new List<int>();
+            for (int i = 0; i < DgvSysSet.Rows.Count; i++)
+            {
+
+                if (Convert.ToBoolean(DgvSysSet.Rows[i].Cells["Column51"].Value))
+                {
+                    int id = int.Parse(DgvSysSet.Rows[i].Cells["settingid"].Value.ToString());
+                    list2.Add(id);
+                }
+            }
+            return list2;
+        }
         private void BtnUpdateRole_Click(object sender, EventArgs e)
         {
-            AddUserGroupForm addUserGroupForm = new AddUserGroupForm();
-            addUserGroupForm.Text = "修改用户组";
-            addUserGroupForm.ShowDialog();
+            List<int> list = new List<int>();
+            list = SelectId();
+            if (list.Count == 0)
+            {
+                MessageBox.Show("请勾选用户组");
+            }
+            else
+            {
+                AddUserGroupForm addUserGroupForm = new AddUserGroupForm(list);
+                addUserGroupForm.Text = "修改用户组";
+                addUserGroupForm.ShowDialog();
+                DgvGroupMan.DataSource = null;
+                DgvGroupMan.DataSource = new PermBLL().SelectGroup(new sys_group());
+            }       
         }
 
         private void BtnAddKind_Click(object sender, EventArgs e)
         {
-            string selectStr = CmbDictType.SelectedText;
-            AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm(selectStr);
-            addCategoreTypeForm.ShowDialog();
+            List<int> list4 = new List<int>();
+            list4 = SelectSettingId();
+            if (CmbDictType.SelectedItem == null)
+            {
+                MessageBox.Show("请先选择一个数据字典");
+            }
+            else
+            {
+                string selectStr = CmbDictType.SelectedItem.ToString();
+                AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm(selectStr, list4);
+                addCategoreTypeForm.ShowDialog();
+                CmbDictType_SelectedValueChanged_1(sender, e);
+            }
         }
 
         private void BtnUpdateKind_Click(object sender, EventArgs e)
         {
-            string selectStr = CmbDictType.SelectedText;
-            AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm(selectStr);
-            addCategoreTypeForm.Text = "修改数据字典";
-            addCategoreTypeForm.ShowDialog();
+            List<int> list4 = new List<int>();
+            list4 = SelectSettingId();
+            if (CmbDictType.SelectedItem == null)
+            {
+                MessageBox.Show("请先选择一个数据字典");
+            }
+            else
+            {
+                string selectStr = CmbDictType.SelectedItem.ToString();
+                AddCategoreTypeForm addCategoreTypeForm = new AddCategoreTypeForm(selectStr, list4);
+                if (list4.Count == 0)
+                {
+                    MessageBox.Show("请勾选数据字典");
+                }
+                else
+                {
+                    addCategoreTypeForm.Text = "修改数据字典";
+                    addCategoreTypeForm.ShowDialog();
+                    CmbDictType_SelectedValueChanged_1(sender, e);
+                }
+            }
+          
+            
         }
 
 
         private void BtnDelGroup_Click(object sender, EventArgs e)
         {
-
+           List<int> list = new List<int>();
+            list = SelectId();
+            if (list.Count == 0)
+            {
+                MessageBox.Show("请勾选用户组");
+            }
+            else
+            {
+                DialogResult = MessageBoxCustom.Show("确认删除？", "操作确认", MessageBoxButtons.YesNo, this);
+                if (DialogResult == DialogResult.Yes)
+                {
+                   
+                    PermBLL perm = new PermBLL();
+                    Result result = new Result();
+                    result = perm.DelAll(list);
+                    if (result.Code == RES.OK)
+                    {
+                        MessageBoxCustom.Show("删除成功", "提示", this);
+                    }
+                    else
+                    {
+                        MessageBoxCustom.Show("删除失败", "提示", this);
+                    }
+                    DgvGroupMan.DataSource = null;
+                    DgvGroupMan.DataSource = new PermBLL().SelectGroup(new sys_group());
+                }
+            }
         }
 
         private void BtnsearchGroup_Click(object sender, EventArgs e)
@@ -584,38 +667,88 @@ namespace PersonInfoManage
             group.group_name = TxtGroupName.Text;
             group.create_time = TimeStartGroup.Value;
             group.modify_time = TimeEditGroup.Value;
-            DgvUserMan.DataSource = null;
+            DgvGroupMan.DataSource = null;
             DgvGroupMan.DataSource = new PermBLL().SelectGroupBy(group);
         }
 
 
         private void BtnDelType_Click(object sender, EventArgs e)
         {
+            if (CmbDictType.SelectedItem == null)
+            {
+                MessageBox.Show("请先选择一个数据字典");
+            }
+            else
+            {
+                List<int> list3 = new List<int>();
+                list3 = SelectSettingId();
+                if (list3.Count == 0)
+                {
+                    MessageBox.Show("请勾选数据字典");
+                }
+                else
+                {
+                    DialogResult = MessageBoxCustom.Show("已经使用的数据字典系统自动保留,确认删除？", "操作确认", MessageBoxButtons.YesNo, this);
+                    if (DialogResult == DialogResult.Yes)
+                    {
 
+                        SysSettingBLL set = new SysSettingBLL();
+                        Result result = new Result();
+                        result = set.DelAll(list3);
+                        if (result.Code == RES.OK)
+                        {
+                            MessageBoxCustom.Show("删除成功", "提示", this);
+                        }
+                        else
+                        {
+                            MessageBoxCustom.Show("删除失败", "提示", this);
+                        }
+
+                        CmbDictType_SelectedValueChanged_1(sender, e);
+
+                    }
+                }
+            }
         }
 
         private void CmbDictType_SelectedValueChanged_1(object sender, EventArgs e)
         {
-            DgvSysSet.AutoGenerateColumns = false;
-            string a = CmbDictType.SelectedItem.ToString();
-            var ds = new SysSettingBLL().SelectByDictName(SysDictTypeConvert.Change(a));
-            foreach (var item in ds)
+          
+              
+                string a = CmbDictType.SelectedItem.ToString();
+                var ds = new SysSettingBLL().SelectByDictName(SysDictTypeConvert.Change(a));
+                foreach (var item in ds)
+                {
+                    if (item.dict_name.Equals(sys_dict_type.Cost.ToString()))
+                    {
+                        item.dict_name = "费用类别";
+                    }
+                    else if (item.dict_name.Equals(sys_dict_type.Person.ToString()))
+                    {
+                        item.dict_name = "重点人员类别";
+                    }
+                    else if (item.dict_name.Equals(sys_dict_type.BelongPlace.ToString()))
+                    {
+                        item.dict_name = "归属地";
+                    }
+                }
+                DgvSysSet.AutoGenerateColumns = false;
+                DgvSysSet.DataSource = ds;
+            
+        }
+        private void DgvGroupMan_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (this.DgvGroupMan.IsCurrentCellDirty) //有未提交的更改
             {
-                if (item.dict_name.Equals(sys_dict_type.Cost.ToString()))
-                {
-                    item.dict_name = "费用类别";
-                }
-                else if (item.dict_name.Equals(sys_dict_type.Person.ToString()))
-                {
-                    item.dict_name = "重点人员类别";
-                }
-                else if (item.dict_name.Equals(sys_dict_type.BelongPlace.ToString()))
-                {
-                    item.dict_name = "归属地";
-                }
+                this.DgvGroupMan.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
-            DgvSysSet.DataSource = ds;
-
+        }
+        private void DgvSysSet_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (this.DgvSysSet.IsCurrentCellDirty) //有未提交的更改
+            {
+                this.DgvSysSet.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
         }
         //</曾丽川_2>
         #endregion
@@ -926,9 +1059,11 @@ namespace PersonInfoManage
         {
 
         }
+
+
         //</蒋媛_3>
         #endregion
 
-        
+      
     }
 }

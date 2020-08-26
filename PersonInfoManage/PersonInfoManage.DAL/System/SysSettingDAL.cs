@@ -145,7 +145,40 @@ namespace PersonInfoManage.DAL.System
             }
 
         }
-        
+
+        /// <summary>
+        /// 根据id查所有
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<sys_dict> Select(int id)
+        {
+            try
+            {
+                List<sys_dict> dict = new List<sys_dict>();
+                DataSet ds = new DataSet();
+                string sql = "select * from sys_dict where id = @p1";
+                SqlParameter sqlparameter1 = new SqlParameter("@p1", id);
+                ds = SqlHelper.ExecuteDataset(ConStr, CommandType.Text, sql,sqlparameter1);
+                for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                {
+                    sys_dict dict1 = new sys_dict();
+                    dict1.id = (int)ds.Tables[0].Rows[i][nameof(sys_dict.id)];
+                    dict1.dict_name = (string)ds.Tables[0].Rows[i][nameof(sys_dict.dict_name)];
+                    dict1.category_name = (string)ds.Tables[0].Rows[i][nameof(sys_dict.category_name)];
+                    dict1.create_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_dict.create_time)];
+                    dict1.modify_time = (DateTime)ds.Tables[0].Rows[i][nameof(sys_dict.modify_time)];
+                    dict.Add(dict1);
+                }
+                return dict;
+            }
+
+            catch (Exception e)
+            {
+                new LogSysDAL().Add(LogOperations.LogSys("查询数据字典" + e.Message));
+                return null;
+            }
+        }
         /// <summary>
         /// 返回数据字典类别
         /// </summary>

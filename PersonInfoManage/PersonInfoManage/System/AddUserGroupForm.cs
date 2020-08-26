@@ -15,9 +15,17 @@ namespace PersonInfoManage
 {
     public partial class AddUserGroupForm : Form
     {
-        public AddUserGroupForm()
+        private int number;
+        public AddUserGroupForm(List<int> list)
         {
+           
+            
+            foreach(var a in list)
+            {
+                number = a;              
+            }
             InitializeComponent();
+           
         }
 
         private void buttonX1_Click(object sender, EventArgs e)
@@ -32,22 +40,25 @@ namespace PersonInfoManage
                result= perm.Add(group);
                 if (result.Message == "添加成功！")
                 {
-                    MessageBoxCustom.Show("添加成功", "提示", MessageBoxButtons.YesNo,this);
+                    MessageBoxCustom.Show("添加成功", "提示",this);
                 }
                 else
                 {
-                    MessageBoxCustom.Show("添加失败", "提示", MessageBoxButtons.YesNo,this);
+                    MessageBoxCustom.Show("添加失败", "提示",this);
                 }
                
             }
             else
             {
-                sys_group group = new sys_group();
-                group.group_name = textBoxX1.Text;
-                group.remark = textBoxX2.Text;
-                PermBLL perm = new PermBLL();              
+               
+                PermBLL perm = new PermBLL();
+               sys_group group1 = new sys_group();
+                group1.group_name = textBoxX1.Text;
+                group1.remark = textBoxX2.Text;
+                group1.id = number;
+                       
                 Result result = new Result();
-                result = perm.Update(group);
+                result = perm.Update(group1);
                 if (result.Message == "修改成功！")
                 {
                     MessageBoxCustom.Show("修改成功", "提示", this);
@@ -61,7 +72,20 @@ namespace PersonInfoManage
 
         private void buttonX2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
+        }
+
+        private void AddUserGroupForm_Load(object sender, EventArgs e)
+        {
+
+            PermBLL perm = new PermBLL();
+            List<sys_group> group = new List<sys_group>();
+            group = perm.SelectGroupByID(number);
+            foreach (var z in group)
+            {
+                textBoxX1.Text = z.group_name;
+                textBoxX2.Text = z.remark;
+            }
         }
     }
 }

@@ -12,6 +12,7 @@ using PersonInfoManage.BLL.Login;
 using PersonInfoManage.DAL.System;
 using PersonInfoManage.BLL.PersonInfo;
 using PersonInfoManage.DAL.Utils;
+using PersonInfoManage.BLL.Utils;
 
 namespace PersonInfoManage.Test
 {
@@ -35,10 +36,13 @@ namespace PersonInfoManage.Test
             //Console.WriteLine(set.Update(SysDict));
 
             //测试set.Del(id)
-            //SysSettingBLL set = new SysSettingBLL();
-            //sys_dict SysDict = new sys_dict();         
-            //int id = 10;
-            //Console.WriteLine(set.Del(id));
+            SysSettingBLL set = new SysSettingBLL();          
+            List<int> list = new List<int>();
+            list.Add(37);
+            list.Add(48);
+            Result res = new Result();
+            res = set.DelAll(list);
+            Console.WriteLine(res.Message);
 
             //测试
             //SysSettingBLL set = new SysSettingBLL();
@@ -180,7 +184,7 @@ namespace PersonInfoManage.Test
             //SysSetting set = new SysSetting();
             //Console.WriteLine(set.SelectAll());
 
-            CostApplyDAL apply = new CostApplyDAL();
+            //CostApplyDAL apply = new CostApplyDAL();
 
             ///测试函数：costApply.Add(cost cost)
             ///返回类型：int
@@ -284,7 +288,7 @@ namespace PersonInfoManage.Test
             //    Console.WriteLine(cm.id + "  " + cm.applicant + "  " + cm.approver + "  " + cm.apply_time + "  " + cm.approval_time + "  " + cm.apply_money + "  " + cm.approval_money + "  " + cm.status + "  " + cm.remark);
 
             //}
-            new CostApplyDAL().GetApprovalInfo(8);
+          //  new CostApplyDAL().GetApprovalInfo(8);
             ///测试函数：costApproval.Update(cost_main main)
             ///返回类型：int
             ///测试结果：成功
